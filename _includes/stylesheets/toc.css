@@ -1,0 +1,99 @@
+
+/* Styles used in TOC */
+
+#toc-container {
+  margin: 0 0 20px 20px;
+  float: right;
+  border: 1px solid #D8D8D8; /* #E2E2E2; */
+  border-radius: 3px;
+}
+
+/* Selects all <p> elements that are placed immediately after toc-container */
+#toc-container + p {
+  padding-top: 20px;
+}
+
+#toc-container + h2 {
+  padding-top: 20px;
+}
+
+#toc {
+  background-color: #F8F8F8;
+  font-weight: normal;
+  padding: 5px;
+  line-height: 1.4;
+  border: 0px;
+}
+
+#toctitle {
+  text-align: center;
+  margin: 0 8px 4px 14px;
+  line-height: 1.5;
+  overflow:hidden;
+  padding: 0 0 10px 0;
+}
+
+#toctitle h2:before {
+  content: "";
+  margin-left: 0;
+}
+
+#toctitle h2 {
+  font-size: 16px;
+  font-weight: bold;
+  line-height: 1.2;
+  padding: 0;
+  border: 0;
+  display: inline;
+  /* font-family: inherit; */
+}
+
+#toc #toctitle {
+  text-align: center;
+  margin: 0; /* 0 14px 4px 14px; */
+}
+
+#toc ul {
+  list-style-image: none;
+  list-style-type: none;
+  padding-left: 0;
+  text-align: left;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.4;
+  margin: 0; /* 0 14px 10px 14px; */
+}
+
+#toc ul ul, .toc ul ul {
+  margin: 0 0 0 2em;
+}
+
+#toc ul li {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.tocnumber, .toctext {
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.toctext {
+  padding-left: 0;
+}
+
+table#toc {
+  width: auto;
+  padding: 10px;
+  margin: 0px;
+}
+
+table#toc td {
+  padding: 10px 10px 10px 12px;
+  border: 0px;
+}
+
+table#toc tr {
+  border: 0px;
+  background-color: #F8F8F8;
+}
