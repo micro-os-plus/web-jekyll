@@ -1,7 +1,28 @@
 <div class="site-header">
-  <img class="site-icon" src="{{ site.baseurl }}/assets/icons/{{ site.icon }}" height="100" width="100">
-  <div class="site-title">
-    <h1><a href="{{ site.baseurl }}/">{{ site.title }}</a></h1>
-    <p>{{ site.description }}</p>
-  </div>
+  <table style="width:100%">
+    <tr>
+      <td>
+        <a href="{{ site.baseurl }}/">
+          <img class="site-icon" src="{{ site.baseurl }}/assets/icons/{{ site.icon }}" height="100" width="100">
+      </a>
+      </td>
+      <td>
+        <table class="site-title" style="width:100%">
+          <tr>
+            <td class="site-title">
+              <a href="{{ site.baseurl }}/">{{ site.title }}</a>
+            </td>
+            <td class="site-motto" align="right">
+              {{ site.motto }}
+            </td>
+          </tr>
+          <tr>
+            <td class="site-description" colspan="2">
+              {{ site.description }}
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
 </div>

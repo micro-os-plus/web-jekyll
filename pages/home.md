@@ -1,7 +1,7 @@
 ---
 layout: main
 permalink: /
-title: The CMSIS++ / µOS++ IIIe Project!
+title: The CMSIS++ / µOS++ IIIe Project
 author: Liviu Ionescu
 
 date: 2016-03-03 22:35:00 +0300

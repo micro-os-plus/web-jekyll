@@ -3,7 +3,7 @@
 # Without a clear rule enforced, both title and name are used.
 title: CMSIS++ / µOS++ IIIe
 name: CMSIS++ / µOS++ IIIe
-description: The third version of µOS++, based on CMSIS++ (a proposal for the next generation CMSIS, written in C++).
+description: CMSIS++, a proposal for the next generation CMSIS, written in C++, and the third edition of µOS++.
 motto: “Perfekt ist nicht gut genug”
 icon: wall-e-icon.png
 
