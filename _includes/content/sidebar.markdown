@@ -14,7 +14,7 @@
 
 #### Reference
 
-* [CMSIS++]({{ site.baseurl }}/reference/cmsis-plus/html/)
+* [CMSIS++]({{ site.baseurl }}/reference/cmsis-plus/)
 
 #### [Support]({{ site.baseurl }}/support/)
 
