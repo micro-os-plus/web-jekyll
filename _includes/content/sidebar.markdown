@@ -3,7 +3,7 @@
 #### [CMSIS++]({{ site.baseurl }}/cmsis-plus/)
 
 * [Overview]({{ site.baseurl }}/cmsis-plus/)
-* [RTOS API]({{ site.baseurl }}/cmsis-plus/RTOS/)
+* [RTOS API]({{ site.baseurl }}/cmsis-plus/rtos/)
 
 #### [µOS++ IIIe]({{ site.baseurl }}/cmsis-plus/)
 
