@@ -76,3 +76,11 @@ To maintain sitelink.xml usefulness, while maintaining pages and posts, it is ne
 ## Timezone
 
 As per `_config.yml`, the default timezone is UTC. For other timezones, set it explicitly as offset (for example +0300)
+
+## Images
+
+The embedded images are located in the `/assets/images` folder.
+
+The preferred format is PNG, and the native width must be lower than 700 px.
+
+For a certain degree of portability, the recommended editable format is PPTX.
