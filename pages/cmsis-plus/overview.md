@@ -12,7 +12,7 @@ date: 2016-03-09 12:04:00 +0300
 
 CMSIS++ is a portable, vendor-independent hardware abstraction layer intended for embedded applications, but designed with special consideration for the industry standard ARM Cortex-M processor series.
 
-The original ARM Keil name stands for **Cortex Microcontroller Software Interface Standard**, and the CMSIS++ design inherits the good things from ARM CMSIS but goes one step further into the world of C++; it is not a C++ wrapper on top of ARM CMSIS, but a completely new design in C++, with the C API a wrapper on top of the native C++ API.
+The original ARM Keil name stands for **Cortex Microcontroller Software Interface Standard**, and the CMSIS++ design inherits the good things from ARM CMSIS but goes one step further into the world of C++; it is not a C++ wrapper on top of ARM CMSIS, but a completely new design in C++, with several C APIs as wrappers on top of the native C++ APIs.
 
 
 ## Components
