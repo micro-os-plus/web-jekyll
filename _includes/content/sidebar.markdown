@@ -26,6 +26,10 @@
 * [Report CMSIS++ issues](https://github.com/micro-os-plus/cmsis-plus/issues/)
 * [Report µOS++ IIIe issues](https://github.com/micro-os-plus/micro-os-plus-iii/issues/)
 
+#### Latest Articles
+
+* [CMSIS++: a proposal for a future CMSIS, written in C++]({{ site.baseurl }}/articles/arm-com-2016-03-11/)
+
 #### License
 
 * [LGPL](https://www.gnu.org/licenses/lgpl.html)
