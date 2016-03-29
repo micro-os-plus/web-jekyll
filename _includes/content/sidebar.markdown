@@ -32,6 +32,6 @@
 
 #### License
 
-* [LGPL](https://www.gnu.org/licenses/lgpl.html)
+* [MIT](https://opensource.org/licenses/MIT)
 
 #### [About]({{ site.baseurl }}/about/)
