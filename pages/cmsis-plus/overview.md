@@ -37,6 +37,6 @@ CMSIS++ was created both as a proposal for a future CMSIS, and to overcome the l
 
 ## License
 
-CMSIS++ is provided free of charge under the terms of the [GNU Lesser General Public License](http://www.gnu.org/licenses/lgpl.html), with the term "Library" extended to include all source and binary files in the CMSIS++ distribution.
+CMSIS++ is provided free of charge under the terms of the [MIT License](https://opensource.org/licenses/MIT).
 
-As long as you do not make changes, you can use CMSIS++ in any commercial or open source projects. If you modify any CMSIS++ files, you can still use them in any commercial or open source projects, but only **after** you convey the changed files, any data and utility programs needed, under the same license, in such a way as to not restrict the use of your changes into further projects. In any case, you do not need to convey any source code or binary files that, considered in isolation, are based on your application and are not required for the integration of your changed files into further projects.
+This means you can use CMSIS++ in any commercial or open source projects without any limitations except preserving the included copyright notice.
