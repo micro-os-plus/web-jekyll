@@ -19,7 +19,10 @@ The µOS++ project can be considered from two points of view.
 
 ### The µOS++ packages
 
-From a modular point of view, µOS++ is a **collection of packages** hosted on GitHub in two locations, the original code is grouped under the [CMSIS++ / µOS++ IIIe](https://github.com/micro-os-plus) GitHub collection of projects (or _Organization_, according to GitHub terminology) and projects based on third party code is grouped under the [xPacks](https://github.com/xpacks) collection.
+From a modular point of view, µOS++ is a **collection of packages** hosted on GitHub in two locations:
+
+* the original code is grouped under the [CMSIS++ / µOS++ IIIe](https://github.com/micro-os-plus) GitHub collection of projects (or _Organization_, according to GitHub terminology)
+* projects based on third party code are grouped under the [xPacks](https://github.com/xpacks) collection.
 
 <div style="text-align:center">
 <img src="{{ site.baseurl }}/assets/images/2016/micro-os-plus-collection.png" />
