@@ -28,6 +28,7 @@
 
 #### Latest Articles
 
+* [CMSIS++ RTOS: fully functional reference implementation]({{ site.baseurl }}/articles/arm-com-2016-06-24/)
 * [CMSIS++: a proposal for a future CMSIS, written in C++]({{ site.baseurl }}/articles/arm-com-2016-03-11/)
 
 #### License
