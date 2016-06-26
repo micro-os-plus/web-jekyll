@@ -43,14 +43,14 @@ The µOS++ software is released under the [MIT License](http://en.wikipedia.org/
 Links & References
 ------------------
 
--   [Standards and style]({{ site.baseurl }}/micro-os-plus/ii/References#Standards_and_style "wikilink")
--   [Embedded operating systems]({{ site.baseurl }}/micro-os-plus/ii/References#Embedded_operating_systems "wikilink")
--   [C/C++ language libraries]({{ site.baseurl }}/micro-os-plus/ii/References#C.2FC.2B.2B_language_libraries "wikilink")
--   [TCP/IP libraries]({{ site.baseurl }}/micro-os-plus/ii/References#TCP.2FIP_libraries "wikilink")
--   [Testing]({{ site.baseurl }}/micro-os-plus/ii/References#Testing "wikilink")
--   [Multi-tasking related links]({{ site.baseurl }}/micro-os-plus/ii/References#Multi-tasking_related_links "wikilink")
--   [Miscellaneous]({{ site.baseurl }}/micro-os-plus/ii/References#Miscellaneous "wikilink")
--   [Books]({{ site.baseurl }}/micro-os-plus/ii/References#Books "wikilink")
+-   [Standards and style]({{ site.baseurl }}/micro-os-plus/ii/References#standards-and-style "wikilink")
+-   [Embedded operating systems]({{ site.baseurl }}/micro-os-plus/ii/References#embedded-operating-systems "wikilink")
+-   [C/C++ language libraries]({{ site.baseurl }}/micro-os-plus/ii/References#cc-language--libraries "wikilink")
+-   [TCP/IP libraries]({{ site.baseurl }}/micro-os-plus/ii/References#tcpip-libraries "wikilink")
+-   [Testing]({{ site.baseurl }}/micro-os-plus/ii/References#testing "wikilink")
+-   [Multi-tasking related links]({{ site.baseurl }}/micro-os-plus/ii/References#multi-tasking-related-links "wikilink")
+-   [Miscellaneous]({{ site.baseurl }}/micro-os-plus/ii/References#miscellaneous "wikilink")
+-   [Books]({{ site.baseurl }}/micro-os-plus/ii/References#books "wikilink")
 -   [References notes]({{ site.baseurl }}/micro-os-plus/ii/References_notes "wikilink")
 
 Miscellaneous
@@ -63,16 +63,16 @@ Miscellaneous
 MediaWiki links
 ---------------
 
-Consult the [//meta.wikimedia.org/wiki/Help:Contents User's Guide] for information on using the wiki software.
+Consult the [User's Guide](http://meta.wikimedia.org/wiki/Help:Contents) for information on using the wiki software.
 
--   [//www.mediawiki.org/wiki/Manual:Configuration_settings Configuration settings list]
--   [//www.mediawiki.org/wiki/Manual:FAQ MediaWiki FAQ]
+-   [Configuration settings list](http://www.mediawiki.org/wiki/Manual:Configuration_settings)
+-   [MediaWiki FAQ](http://www.mediawiki.org/wiki/Manual:FAQ)
 -   [MediaWiki release mailing list](https://lists.wikimedia.org/mailman/listinfo/mediawiki-announce)
 
 Final thoughts
 --------------
 
-Althought not required by the license, I would be very happy if you could drop me a notice after reading these pages and eventually downloading any sources.
+Although not required by the license, I would be very happy if you could drop me a notice after reading these pages and eventually downloading any sources.
 
 Any comments/criticism/suggestions/etc will be highly appreciated.
 
