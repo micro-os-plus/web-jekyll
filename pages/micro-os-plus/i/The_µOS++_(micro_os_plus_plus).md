@@ -10,7 +10,7 @@ date: 2015-09-28 10:51:34 +0000
 
 * * * * *
 
-Note: This wiki refers to the first edition of this project. The second edition is documented in a new [wiki](http://micro-os-plus.sourceforge.net/wiki/) and a [Doxygen site](http://micro-os-plus.sourceforge.net/doc/).
+Note: These pages were converted from the wiki created for the first edition of this project. The second edition was documented in separate [pages]({{ site.baseurl }}/micro-os-plus/ii/The_µOS++_Second_Edition_Wiki/) and a [Doxygen site](http://micro-os-plus.sourceforge.net/doc/).
 
 * * * * *
 
@@ -20,7 +20,7 @@ The "µOS++" (micro OS plus plus) project is a [SourceForge hosted](http://sourc
 
 The build mechanism is highly granular, allowing a very small ROM+RAM footprint.
 
-The authoritative documents on how to use µOS++ can be found in the [project Wiki](http://sourceforge.net/apps/mediawiki/micro-os-plus/). The source code itself, publicly available for browsing via the web [Git Browse](http://micro-os-plus.git.sourceforge.net/git/gitweb-index.cgi) interface is another good source of information. (Additional resources are the [Trac](http://sourceforge.net/apps/trac/micro-os-plus/) and the [<http://micro-os-plus.svn.sourceforge.net/viewvc/micro-os-plus/trunk/> SVN)
+The authoritative documents on how to use µOS++ can be found in the [project Wiki](http://sourceforge.net/apps/mediawiki/micro-os-plus/). The source code itself, publicly available for browsing via the web [Git Browse](http://micro-os-plus.git.sourceforge.net/git/gitweb-index.cgi) interface is another good source of information. (Additional resources are the [Trac](http://sourceforge.net/apps/trac/micro-os-plus/) and the [SVN](http://micro-os-plus.svn.sourceforge.net/viewvc/micro-os-plus/trunk/).
 
 The current version is 4.3, as Release Candidate in 2012. Since there are no clear milestones on this project (yet), there will be no periodic releases, and the download section will probably not be updated very often. For an up-to-date version of this project, it is recommended to use the Git sources instead of the released packages.
 
@@ -37,8 +37,8 @@ Overview
 
 -   [Features]({{ site.baseurl }}/micro-os-plus/i/Features "wikilink")
 -   [The Scheduler]({{ site.baseurl }}/micro-os-plus/i/Scheduler "wikilink")
--   [Synchronisation events]({{ site.baseurl }}/micro-os-plus/i/Events "wikilink")
--   [System timers]({{ site.baseurl }}/micro-os-plus/i/Timers "wikilink")
+-   [Synchronisation events]({{ site.baseurl }}/micro-os-plus/i/Synchronisation_events "wikilink")
+-   [System timers]({{ site.baseurl }}/micro-os-plus/i/System_timers "wikilink")
 -   [Advanced/Custom timers]({{ site.baseurl }}/micro-os-plus/i/Advanced_(Custom)_Timers "wikilink")
 -   [Tasks]({{ site.baseurl }}/micro-os-plus/i/Tasks "wikilink")
 -   [Device drivers]({{ site.baseurl }}/micro-os-plus/i/Device_drivers "wikilink")
@@ -95,7 +95,7 @@ Misc
 -   [FAQ]({{ site.baseurl }}/micro-os-plus/i/FAQ "wikilink")
 -   [Reporting problems]({{ site.baseurl }}/micro-os-plus/i/Reporting_problems "wikilink")
 -   [Change log]({{ site.baseurl }}/micro-os-plus/i/Change_log "wikilink")
--   [The µOS++ SE](http://micro-os-plus.sourceforge.net/wiki/)
+-   [The µOS++ SE]({{ site.baseurl }}/micro-os-plus/ii/The_µOS++_Second_Edition_Wiki)
 
 Style guides
 ============
