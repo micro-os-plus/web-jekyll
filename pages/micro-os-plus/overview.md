@@ -15,3 +15,8 @@ The µOS++ IIIe (micro oh ɛs plus plus third edition) project  (affectionately 
 The corner stone of µOS++ IIIe is [CMSIS++ RTOS API]({{ site.baseurl }}/cmsis-plus/), and the relationship is reciprocal, since µOS++ provides CMSIS++ the reference implementation for the CMSIS++ syncronisation objects (mutex, semaphore, etc) and for the CMSIS++ scheduler.
 
 TODO: add more content
+
+## Old versions
+
+* [first edition (2011)]({{ site.baseurl }}/micro-os-plus/i/The_µOS++_(micro_os_plus_plus))
+* [second edition (2013)]({{ site.baseurl }}/micro-os-plus/ii/The_µOS++_Second_Edition_Wiki)
