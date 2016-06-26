@@ -163,13 +163,13 @@ To access the C/C++ Symbols, select the desired project (**minimal**, for exampl
 -   in the right panel, choose the desired configuration, for example **Debug-Atmel-STS525**
 -   in the right panel, select the **Symbols** tab
 
-===OS_CONFIG_BOARD_\${BOARD}=1===
+### OS_CONFIG_BOARD_\${BOARD}=1
 
 This is the only mandatory definitions required by µOS++, and needs to be present for all projects.
 
 As it can be seen, it expands the build variable BOARD to a custom C/C++ preprocessor definition.
 
-===DEBUG=1===
+### DEBUG=1
 
 This definition should be present in all build configurations intended for debug.
 
@@ -177,7 +177,7 @@ Among other things, the debug configurations defines a generic serial device, wh
 
 The selections is made by the following definitions. Only one of them should be present.
 
-===OS_CONFIG_DEBUG_DEVICE_\${DBGDEV}=1===
+### OS_CONFIG_DEBUG_DEVICE_\${DBGDEV}=1
 
 This definition should be present only for debug configurations, and defines the debug device to be the one defined by the build variable **DBGDEV**.
 
