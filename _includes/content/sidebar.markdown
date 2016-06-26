@@ -5,9 +5,9 @@
 * [Overview]({{ site.baseurl }}/cmsis-plus/)
 * [RTOS API]({{ site.baseurl }}/cmsis-plus/rtos/)
 
-#### [µOS++ IIIe]({{ site.baseurl }}/cmsis-plus/)
+#### [µOS++ IIIe]({{ site.baseurl }}/micro-os-plus/)
 
-* [Overview]({{ site.baseurl }}/cmsis-plus/)
+* [Overview]({{ site.baseurl }}/micro-os-plus/)
 
 #### [xPacks/XCDL]({{ site.baseurl }}/xpacks/)
 
