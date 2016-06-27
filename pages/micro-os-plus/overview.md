@@ -16,6 +16,10 @@ The corner stone of µOS++ IIIe is [CMSIS++ RTOS API]({{ site.baseurl }}/cmsis-p
 
 TODO: add more content
 
+## Coding styles
+
+* [Coding style]({{ site.baseurl }}/micro-os-plus/iii/coding-style/)
+
 ## Old versions
 
 * [first edition (2011)]({{ site.baseurl }}/micro-os-plus/i/The_µOS++_(micro_os_plus_plus)) ([orig wiki](http://micro-os-plus.sourceforge.net/old-wiki/))
