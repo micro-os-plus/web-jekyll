@@ -1,7 +1,7 @@
 ---
 layout: page
 permalink: /micro-os-plus/iii/coding-style/
-title: Coding style
+title: C++ coding style
 author: Liviu Ionescu
 
 date: 2014-02-22 15:57:49 +0000
@@ -10,8 +10,7 @@ date: 2014-02-22 15:57:49 +0000
 
 The following rules are mainly based on *MISRA C++:2008 Guidelines for the use of the C++ language in critical systems*, by Motor Industry Software Reliability Association with additions from *Joint Strike Fighter Air Vehicle C++ Coding Standards*, Lockheed Martin Corporation Doc. No. 2RDU00001 Rev D, dated June 2007, with some changes and clarifications.
 
-General Design
---------------
+## General Design
 
 This coding standards document is intended to help programmers develop code that conforms to safety-critical software principles, i.e., code that does not contain defects that could lead to catastrophic failures resulting in significant harm to individuals and/or equipment. In general, the code produced should exhibit the following important qualities:
 
@@ -53,8 +52,7 @@ There are three types of rules: should, will, and shall rules. Each rule contain
 
 -   [JSF AV Rule 7] - Approval **will not** be required for a deviation from a **"shall"** or **“will”** rule that complies with an exception specified by that rule.
 
-JSF AV Referenced Documents
----------------------------
+## JSF AV Referenced Documents
 
 1.  ANSI/IEEE Std 754, IEEE Standard for Binary Floating-Point Arithmetic, 1985.
 2.  Bjarne Stroustrup. *The C++ Programming Language, 3rd Edition*. Addison-Wesley, 2000.
@@ -72,8 +70,7 @@ JSF AV Referenced Documents
 14. *Programming in C++ Rules and Recommendations.* Copyright © by Ellemtel Telecommunication Systems Laboratories, Box 1505, 125 25 Alvsjo, Sweden, Document: M 90 0118 Uen, Rev. C, 27 April 1992.
 15. RTCA/DO-178B, *Software Considerations in Airborne Systems and Equipment Certification*, December 1992.
 
-Language independent issues
----------------------------
+## Language independent issues
 
 ### Unnecessary constructs
 
@@ -90,10 +87,10 @@ Language independent issues
 -   [MISRA C++ Rule 0–1–7, Required] The value returned by a function having a non-*void* return type that is not an overloaded operator **shall** always be *used*.
 -   [MISRA C++ Rule 0–1–8, Required] All functions with *void* return type **shall** have external side effect(s).
 -   [JSV AV Rule 187 (MISRA C Rule 53, Revised)] - All non-null statements **shall** potentially have a side-effect.
--   [MISRA C++ Rule 0–1–9, Required] There **shall** be no *dead code* (redundant, code whose removal would not affect the program output).
+-   [MISRA C++ Rule 0–1–9, Required] There **shall** be no _dead code_ (redundant, code whose removal would not affect the program output).
 -   [MISRA C++ Rule 0–1–10, Required] Every defined function **shall** be called at least once.
--   [MISRA C++ Rule 0–1–11, Required] There **shall** be no *unused* parameters (named or unnamed) in non-virtual functions.
--   [MISRA C++ Rule 0–1–12, Required] There **shall** be no *unused* parameters (named or unnamed) in the set of parameters for a virtual function and all the functions that override it.
+-   [MISRA C++ Rule 0–1–11, Required] There **shall** be no _unused_ parameters (named or unnamed) in non-virtual functions.
+-   [MISRA C++ Rule 0–1–12, Required] There **shall** be no _unused_ parameters (named or unnamed) in the set of parameters for a virtual function and all the functions that override it.
 
 ### Storage
 
@@ -116,8 +113,7 @@ Language independent issues
 -   [MISRA C++ Rule 0–4–2, Document] - Use of floating-point arithmetic **shall** be documented.
 -   [MISRA C++ Rule 0–4–3, Document] - Floating-point implementations **shall** comply with a defined floating- point standard.
 
-General
--------
+## General
 
 ### Language
 
@@ -128,8 +124,7 @@ General
 -   [ILG Rule 1-0-2, Advisory] - Both GNU GCC and LLVM Clang compilers **should** be considered.
 -   [MISRA C++ Rule 1–0–3, Document] - The implementation of integer division in the chosen compiler **shall** be determined and documented.
 
-Lexical conventions
--------------------
+## Lexical conventions
 
 ### Character sets
 
@@ -146,7 +141,7 @@ Lexical conventions
 
 -   [JSF AV Rule 10 (MISRA C Rule 6)] - Values of character types **will** be restricted to a defined and documented subset of ISO 10646-1. [9]
 -   ~~[JSF AV Rule 13 (MISRA C Rule 8)] - Multi-byte characters and wide string literals **will not** be used.~~
--   [ILG AV Rule 13 (MISRA C Rule 8)] - Multi-byte characters and wide string literals **will not** be used in variable names, but is legal in comments (and Doxygen documentation).
+-   [ILG AV Rule 13 (MISRA C Rule 8)] - Multi-byte characters and wide string literals **will not** be used in variable names, but are legal in comments (and Doxygen documentation).
 
 ### Trigraph sequences
 
@@ -155,7 +150,7 @@ Lexical conventions
 
 ### Alternative tokens
 
--   [MISRA C++ Rule 2–5–1, Advisory] - *Digraphs* **should** not be used.
+-   [MISRA C++ Rule 2–5–1, Advisory] - _Digraphs_ **should** not be used.
 -   [JSF AV Rule 12, (Extension of MISRA C Rule 7)] - The following digraphs **will not** be used:
 
 <!-- -->
@@ -165,9 +160,10 @@ Lexical conventions
 ### Comments
 
 -   [MISRA C++ Rule 2–7–1, Required] - The character sequence `/*` **shall not** be used within a C-style comment.
--   [JSF AV Rule 126] - Only valid C++ style comments (//) **shall** be used. See AV Rule 126 in Appendix A for additional details concerning valid C++ style comments.
+-   [JSF AV Rule 126] - Only valid C++ style comments (`//`) **shall** be used. See AV Rule 126 in Appendix A for additional details concerning valid C++ style comments.
 
-    **Exception**: Automatic code generators that cannot be configured to use the “//” form.
+    **Exception**: Automatic code generators that cannot be configured to use the `//` form.
+    **Exception**: Doxygen documentation can use C-style comments like `/** ... */`.
 
 -   [MISRA C++ Rule 2–7–2, Required] - Sections of code **shall not** be “commented out” using C-style comments.
 -   [MISRA C++ Rule 2–7–3, Advisory] - Sections of code **should not** be “commented out” using C++ comments.
@@ -190,12 +186,12 @@ Lexical conventions
 
 -   [MISRA C++ Rule 2–10–1, Required] - Different identifiers **shall** be typographically unambiguous.
 -   [MISRA C++ Rule 2–10–2, Required] - Identifiers declared in an inner scope **shall not** hide an identifier declared in an outer scope.
--   [MISRA C++ Rule 2–10–3, Required] - A *typedef* name (including qualification, if any) **shall** be a *unique* identifier.
--   [MISRA C++ Rule 2–10–4, Required] - A *class*, *union* or *enum* name (including qualification, if any) **shall** be a *unique* identifier.
+-   [MISRA C++ Rule 2–10–3, Required] - A _typedef_ name (including qualification, if any) **shall** be a _unique_ identifier.
+-   [MISRA C++ Rule 2–10–4, Required] - A _class_, _union_ or _enum_ name (including qualification, if any) **shall** be a _unique_ identifier.
 -   [MISRA C++ Rule 2–10–5, Advisory] - The identifier name of a non-member object or function with static storage duration **should not** be reused.
 -   [MISRA C++ Rule 2–10–6, Required] - If an identifier refers to a type, it **shall not** also refer to an object or a function in the same scope.
--   ~~[JSF AV Rule 45] - All words in an identifier **will** be separated by the ‘_’ character.~~
--   [ILG AV Rule 45 update] - The identifiers **should** use the CamelCase convention.
+-   [JSF AV Rule 45] - All words in an identifier **will** be separated by the ‘_’ character.
+-   ~~[ILG AV Rule 45 update] - The identifiers **should** use the CamelCase convention.~~
 -   [JSF AV Rule 46 (MISRA C Rule 11, Revised)] - User-specified identifiers (internal and external) **will not** rely on significance of more than 64 characters.
 -   [JSF AV Rule 47] - Identifiers **will not** begin with the underscore character ‘_’.
 -   [JSF AV Rule 48] - Identifiers **will not** differ by:
@@ -207,21 +203,21 @@ Lexical conventions
     -   The interchange of the letter ‘Z’ with the number 2
     -   The interchange of the letter ‘n’ with the letter ‘h’.
 -   ~~[JSF AV Rule 49] - All acronyms in an identifier **will** be composed of uppercase letters.~~
--   [ILG AV Rule 49 update] - As all CamelCase words, acronyms **will** be transformed to have only the first letter in uppercase.
+-   ~~[ILG AV Rule 49 update] - As all CamelCase words, acronyms **will** be transformed to have only the first letter in uppercase.~~
 -   ~~[JSF AV Rule 50] - The first word of the name of a class, structure, namespace, enumeration, or type created with typedef **will** begin with an uppercase letter. All others letters will be lowercase.~~
 
     ~~**Exception**: The first letter of a *typedef* name may be in lowercase in order to conform to a standard library interface or when used as a replacement for fundamental types (see AV Rule 209).~~
 
--   ~~[JSF AV Rule 51] - All letters contained in function and variable names **will** be composed entirely of lowercase letters.~~
--   ~~[JSF AV Rule 52] - Identifiers for constant and enumerator values **shall** be lowercase.~~
--   [ILG AV Rule 50 update] - The first word of the name of a class, typedef class alias, constant definition **will** begin with an uppercase letter. Namespace, or scalar type definitions **will** begin with an lowercase letter. (structures? enumerations?)
+-   [JSF AV Rule 51] - All letters contained in function and variable names **will** be composed entirely of lowercase letters.
+-   [JSF AV Rule 52] - Identifiers for constant and enumerator values **shall** be lowercase.
+-   ~~[ILG AV Rule 50 update] - The first word of the name of a class, typedef class alias, constant definition **will** begin with an uppercase letter. Namespace, or scalar type definitions **will** begin with an lowercase letter. (structures? enumerations?)~~
 
 ### Literals
 
 -   ~~[MISRA C++ Rule 2–13–1, Required] - Only those escape sequences that are defined in ISO/IEC 14882:2003 **shall** be used.~~
 -   [ILG Rule 2–13–1, Required] - Only those escape sequences that are defined in ISO/IEC 14882:2011 **shall** be used.
 -   [MISRA C++ Rule 2–13–2, Required] - Octal constants (other than zero) and octal escape sequences (other than “\\0”) **shall not** be used.
--   [MISRA C++ Rule 2–13–3, Required] - A *“U”* suffix **shall** be applied to all octal or hexadecimal integer literals of unsigned type.
+-   [MISRA C++ Rule 2–13–3, Required] - A `U` suffix **shall** be applied to all octal or hexadecimal integer literals of unsigned type.
 
     ILG: for example 0U.
 
@@ -232,8 +228,7 @@ Lexical conventions
 -   ~~[JSF AV Rule 14] - Literal suffixes **shall** use uppercase rather than lowercase letters.~~
 -   [MISRA C++ Rule 2–13–5, Required] - Narrow and wide string literals **shall not** be concatenated.
 
-Basic concepts
---------------
+## Basic concepts
 
 ### Declarations and definitions
 
@@ -255,11 +250,11 @@ Basic concepts
 
 ### Declarative regions and scope
 
--   [MISRA C++ Rule 3–3–1, Required] - Objects or functions with external linkage **shall** be declared in a *header file*.
+-   [MISRA C++ Rule 3–3–1, Required] - Objects or functions with external linkage **shall** be declared in a _header file_.
 
     ILG: to document that they are intended to be accessible from other translation units, otherwise isolate them as static.
 
--   [MISRA C++ Rule 3–3–2, Required] - If a function has internal linkage then all re-declarations **shall** include the *static* storage class specifier.
+-   [MISRA C++ Rule 3–3–2, Required] - If a function has internal linkage then all re-declarations **shall** include the `static` storage class specifier.
 
 ### Name lookup
 
@@ -268,7 +263,7 @@ Basic concepts
 ### Types
 
 -   [MISRA C++ Rule 3–9–1, Required] - The types used for an object, a function return type, or a function parameter **shall** be token-for-token identical in all declarations and re-declarations.
--   [MISRA C++ Rule 3–9–2, Advisory] - *typedefs* that indicate size and signedness **should** be used in place of the basic numerical types.
+-   [MISRA C++ Rule 3–9–2, Advisory] - `typedef`s that indicate size and signedness **should** be used in place of the basic numerical types.
 -   [ILG Note] - The ISO (POSIX) typedefs as shown below are recommended and are used for all basic numerical and character types in this document. For a 32-bit integer machine, these are as follows:
 
 <!-- -->
@@ -286,7 +281,7 @@ Basic concepts
     typedef double          float64_t;
     typedef long     double float128_t;
 
--   [JSV AV Rule 209 (MISRA C Rule 13, Revised)] - The basic types of *int*, *short*, *long*, *float* and *double* **shall not** be used, but specific-length equivalents should be *typedef*’d accordingly for each compiler, and these type names used in the code.
+-   [JSV AV Rule 209 (MISRA C Rule 13, Revised)] - The basic types of `int`, `short`, `long`, `float` and `double` **shall not** be used, but specific-length equivalents should be `typedef`’d accordingly for each compiler, and these type names used in the code.
 
     **Exception**: Basic types are permitted in low-level routines to assist in the management of word alignment issues (e.g. memory allocators).
 
@@ -299,30 +294,28 @@ Basic concepts
 
     Note: This rule is not intended to exclude character constants (e.g.‘A’,‘B’,‘C’,etc.) from use as case labels.
 
-Standard conversions
---------------------
+## Standard conversions
 
 ### Integral promotions
 
 -   [MISRA C++ Rule 4–5–1, Required] - Expressions with type *bool* **shall not** be used as operands to built-in operators other than the assignment operator `=`, the logical operators `&&`, `||`, `!`, the equality operators `==` and `!=`, the unary `&` operator, and the conditional operator.
 -   [MISRA C++ Rule 4–5–2, Required] - Expressions with type *enum* **shall not** be used as operands to built- in operators other than the subscript operator `[ ]`, the assignment operator `=`, the equality operators `==` and `!=`, the unary `&` operator, and the relational operators `<`, `<=`, `>`, `>=`.
--   [MISRA C++ Rule 4–5–3, Required] - Expressions with type (plain) *char* and *wchar_t* **shall not** be used as operands to built-in operators other than the assignment operator `=`, the equality operators `==` and `!=`, and the unary `&` operator.
+-   [MISRA C++ Rule 4–5–3, Required] - Expressions with type (plain) `char` and `wchar_t` **shall not** be used as operands to built-in operators other than the assignment operator `=`, the equality operators `==` and `!=`, and the unary `&` operator.
 
     **Exceptions**: Exceptionally, the following operators may be used if the associated restriction is observed:
 
     -   The binary + operator may be used to add an integral value in the range 0 to 9 to ‘0’;
     -   The binary – operator may be used to subtract character ‘0’;
-    -   The relational operators \<, \<=, \>, \>= may be used to determine if a character (or wide character) represents a digit.
+    -   The relational operators `<`, `<=`, `>`, `>=` may be used to determine if a character (or wide character) represents a digit.
 
 ### Pointer conversions
 
--   [MISRA C++ Rule 4–10–1, Required] - *NULL* **shall not** be used as an integer value.
+-   [MISRA C++ Rule 4–10–1, Required] - `NULL` **shall not** be used as an integer value.
 -   [MISRA C++ Rule 4–10–2, Required] - Literal zero (0) **shall not** be used as the *null-pointer-constant*.
 
-    ILG: use **nullptr**.
+    ILG: use `nullptr`.
 
-Expressions
------------
+## Expressions
 
 ### General
 
@@ -362,19 +355,19 @@ Expressions
 
     Note: Templates can be used to resolve many type conversion issues. Also, any compiler flags that result in warnings for value-destroying conversions should be activated.
 
--   [MISRA C++ Rule 5–0–10, Required] - If the bitwise operators `~` and `<<` are applied to an operand with an *underlying type* of *unsigned char* or *unsigned short*, the result **shall** be immediately cast to the *underlying type* of the operand.
+-   [MISRA C++ Rule 5–0–10, Required] - If the bitwise operators `~` and `<<` are applied to an operand with an *underlying type* of `unsigned char` or `unsigned short`, the result **shall** be immediately cast to the *underlying type* of the operand.
 
     ILG: prefer explicit intermediate steps, avoid `result_16 = ((port_8 << 4) & mode_16) >> 6;`.
 
--   [MISRA C++ Rule 5–0–11, Required] - The plain *char* type **shall** only be used for the storage and use of character values.
--   [MISRA C++ Rule 5–0–12, Required] - *signed char* and *unsigned char* type **shall** only be used for the storage and use of numeric values.
--   [MISRA C++ Rule 5–0–13, Required] - The *condition* of an *if-statement* and the *condition* of an *iteration-statement* **shall** have type bool.
+-   [MISRA C++ Rule 5–0–11, Required] - The plain `char` type **shall** only be used for the storage and use of character values.
+-   [MISRA C++ Rule 5–0–12, Required] - `signed char` and `unsigned char` type **shall** only be used for the storage and use of numeric values.
+-   [MISRA C++ Rule 5–0–13, Required] - The *condition* of an *if-statement* and the *condition* of an *iteration-statement* **shall** have type `bool`.
 
     ILG: avoid `if (u8)`)
 
     **Exception**: A condition of the form type-specifier-seq declarator is not required to have type bool. This exception is introduced because alternative mechanisms for achieving the same effect are cumbersome and error-prone.
 
--   [MISRA C++ Rule 5–0–14, Required] - The first operand of a *conditional-operator* **shall** have type *bool*.
+-   [MISRA C++ Rule 5–0–14, Required] - The first operand of a *conditional-operator* **shall** have type `bool`.
 
     ILG: avoid `int32_a = int16_b ? int32_c : int32_d;`.
 
@@ -398,7 +391,6 @@ Expressions
     -   the same function,
     -   members of the same object, or
     -   elements of the same array (including one past the end of the same array).
-
 
     Note that if either operand is null, then both shall be null. Also, “members of the same object” should not be construed to include base class subobjects (See also AV Rule 210).
 
@@ -425,8 +417,8 @@ Expressions
 
 -   [JSF AV Rule 167 (MISRA C Rule 41)] - The implementation of integer division in the chosen compiler **shall** be determined, documented and taken into account.
 -   [JSV AV Rule 174 (MISRA C Rule 107)] - The null pointer **shall not** be de-referenced.
--   ~~[JSV AV Rule 175] - A pointer **shall not** be compared to NULL or be assigned NULL; use plain 0 instead.~~
--   [ILG AV Rule 175] - A pointer **shall not** be compared to NULL or be assigned NULL; use **nullptr** instead.
+-   ~~[JSV AV Rule 175] - A pointer **shall not** be compared to `NULL` or be assigned `NULL`; use plain 0 instead.~~
+-   [ILG AV Rule 175] - A pointer **shall not** be compared to `NULL` or be assigned `NULL`; use `nullptr` instead.
 -   [JSV AV Rule 176] - A typedef **will** be used to simplify program syntax when declaring function pointers.
 -   [JSV AV Rule 177] - User-defined conversion functions **should** be avoided. See Meyers [7], item 5.
 -   [JSV AV Rule 203 (MISRA C Rule 51, Revised)] - Evaluation of expressions **shall not** lead to overflow/underflow (unless required algorithmically and then should be heavily documented).
@@ -439,8 +431,8 @@ Expressions
     5.  condition of a loop
     6.  switch condition
     7.  single part of a chained operation.
--   ~~[JSV AV Rule 205] - The *volatile* keyword **shall not** be used unless directly interfacing with hardware.~~
--   [ILG AV Rule 205] - The *volatile* keyword **shall not** be used unless directly interfacing with hardware or with multithreaded, or foreground/interrupt applications.
+-   ~~[JSV AV Rule 205] - The `volatile` keyword **shall not** be used unless directly interfacing with hardware.~~
+-   [ILG AV Rule 205] - The `volatile` keyword **shall not** be used unless directly interfacing with hardware or with multithreaded, or foreground/interrupt applications.
 -   [JSV AV Rule 214] - Assuming that non-local static objects, in separate translation units, are initialized in a special order **shall not** be done.
 
 ### Postfix expressions
@@ -449,11 +441,11 @@ Expressions
 
     ILG: The effect of this rule is to require that operands are appropriately parenthesized.
 
-    **Exception** Where an expression consists of either a sequence of only logical && or a sequence of only logical ||, extra parentheses are not required.
+    **Exception** Where an expression consists of either a sequence of only logical `&&` or a sequence of only logical `||`, extra parentheses are not required.
 
--   [MISRA C++ Rule 5–2–2, Required] - A pointer to a virtual base class **shall** only be cast to a pointer to a derived class by means of *dynamic_cast*.
+-   [MISRA C++ Rule 5–2–2, Required] - A pointer to a virtual base class **shall** only be cast to a pointer to a derived class by means of `dynamic_cast`.
 
-    ILG: Casting from a virtual base to a derived class, using any means other than dynamic_cast has undefined behaviour.
+    ILG: Casting from a virtual base to a derived class, using any means other than `dynamic_cast` has undefined behaviour.
 
 -   [JSV AV Rule 179] - A pointer to a virtual base class **shall not** be converted to a pointer to a derived class.
 -   [MISRA C++ Rule 5–2–3, Advisory] - Casts from a base class to a derived class **should not** be performed on polymorphic types.
@@ -464,27 +456,26 @@ Expressions
     -   Virtual functions that act like dynamic casts (most likely useful in relatively simple cases)
     -   Use of the visitor (or similar) pattern (most likely useful in complicated cases)
 
-
     Note: Type fields **shall not** be used as they are too error prone.
 
     Note: Dynamic casts are not allowed at this point due to lack of tool support, but could be considered at some point in the future after appropriate investigation has been performed for SEAL1/2 software. Dynamic casts are fine for general purpose software.
 
--   [MISRA C++ Rule 5–2–4, Required] - C-style casts (other than *void* casts) and functional notation casts (other than explicit constructor calls) **shall not** be used.
+-   [MISRA C++ Rule 5–2–4, Required] - C-style casts (other than `void` casts) and functional notation casts (other than explicit constructor calls) **shall not** be used.
 
     **Exception** A C-style cast to void may be used to signify that the return value for a non-void function call is being ignored (see Rule 0–1–7).
 
--   [JSV AV Rule 185] - C++ style casts (*const_cast*, *reinterpret_cast*, and *static_cast*) shall be used instead of the traditional C-style casts. See Stroustrup [2], 15.4 and Meyers [7], item 2.
--   [MISRA C++ Rule 5–2–5, Required] - A cast **shall not** remove any const or *volatile* qualification from the type of a pointer or reference.
+-   [JSV AV Rule 185] - C++ style casts (`const_cast`, `reinterpret_cast`, and `static_cast`) shall be used instead of the traditional C-style casts. See Stroustrup [2], 15.4 and Meyers [7], item 2.
+-   [MISRA C++ Rule 5–2–5, Required] - A cast **shall not** remove any const or `volatile` qualification from the type of a pointer or reference.
 -   [MISRA C++ Rule 5–2–6, Required] - A cast **shall not** convert a pointer to a function to any other pointer type, including a pointer to function type.
 -   [MISRA C++ Rule 5–2–7, Required] - An object with pointer type **shall not** be converted to an unrelated pointer type, either directly or indirectly.
--   [MISRA C++ Rule 5–2–8, Required] - An object with integer type or pointer to *void* type **shall not** be converted to an object with pointer type.
+-   [MISRA C++ Rule 5–2–8, Required] - An object with integer type or pointer to `void` type **shall not** be converted to an object with pointer type.
 -   [MISRA C++ Rule 5–2–9, Advisory] - A cast **should not** convert a pointer type to an integral type.
 
-    **Rationale**: The size of integer that is required when a pointer is converted to an integer is implementation- defined. Casting between a pointer and an integer type should be avoided where possible, but may be unavoidable when addressing memory mapped registers or other hardware specific features.
+    **Rationale**: The size of integer that is required when a pointer is converted to an integer is implementation-defined. Casting between a pointer and an integer type should be avoided where possible, but may be unavoidable when addressing memory mapped registers or other hardware specific features.
 
 -   [JSV AV Rule 182 (MISRA C Rule 45)] - Type casting from any type to or from pointers **shall not** be used.
 
-    **Exception 1**: Casting from *void\** to *T\** is permissible. In this case, *static_cast* should be used, but only if it is known that the object really is a *T*. Furthermore, such code should only occur in low level memory management routines.
+    **Exception 1**: Casting from `void*` to `T*` is permissible. In this case, `static_cast` should be used, but only if it is known that the object really is a `T`. Furthermore, such code should only occur in low level memory management routines.
 
     **Exception 2**: Conversion of literals (i.e. hardware addresses) to pointers.
 
@@ -492,16 +483,16 @@ Expressions
 -   [JSV AV Rule 183] - Every possible measure **should** be taken to avoid type casting.
 -   [MISRA C++ Rule 5–2–10, Advisory] - The increment (`++`) and decrement (`--`) operators **should not** be mixed with other operators in an expression.
 -   [MISRA C++ Rule 5–2–11, Required] - The comma operator, `&&` operator and the `||` operator **shall not** be overloaded.
--   [JSF AV Rule 159] - Operators ||, &&, and unary & **shall not** be overloaded. See Meyers [7], item 7.
+-   [JSF AV Rule 159] - Operators `||`, `&&`, and unary `&` **shall not** be overloaded. See Meyers [7], item 7.
 -   [MISRA C++ Rule 5–2–12, Required] - An identifier with array type passed as a function argument **shall not** decay to a pointer.
 
 ### Unary expressions
 
--   [MISRA C++ Rule 5–3–1, Required] - Each operand of the `!` operator, the logical `&&` or the logical `||` operators **shall** have type *bool*.
+-   [MISRA C++ Rule 5–3–1, Required] - Each operand of the `!` operator, the logical `&&` or the logical `||` operators **shall** have type `bool`.
 -   [MISRA C++ Rule 5–3–2, Required] - The unary minus operator **shall not** be applied to an expression whose *underlying type* is unsigned.
 -   [JSF AV Rule 165 (MISRA C Rule 39)] - The unary minus operator **shall not** be applied to an unsigned expression.
 -   [MISRA C++ Rule 5–3–3, Required] - The unary `&` operator **shall not** be overloaded.
--   [MISRA C++ Rule 5–3–4, Required] - Evaluation of the operand to the *sizeof* operator **shall not** contain side effects.
+-   [MISRA C++ Rule 5–3–4, Required] - Evaluation of the operand to the `sizeof` operator **shall not** contain side effects.
 -   [JSF AV Rule 166 (MISRA C Rule 40)] - The sizeof operator **will not** be used on expressions that contain side effects.
 
 ### Shift operators
@@ -513,11 +504,11 @@ Expressions
 ### Logical AND operator
 
 -   [MISRA C++ Rule 5–14–1, Required] - The right hand operand of a logical `&&` or `||` operator **shall not** contain side effects.
--   [JSF AV Rule 157 (MISRA C Rule 33)] - The right hand operand of a && or || operator **shall not** contain side effects.
+-   [JSF AV Rule 157 (MISRA C Rule 33)] - The right hand operand of a `&&` or `||` operator **shall not** contain side effects.
 
     ILG: avoid `if ( logical_expression && ++x)`.
 
--   [JSF AV Rule 158 (MISRA C Rule 34)] - The operands of a logical && or || **shall** be parenthesized if the operands contain binary operators.
+-   [JSF AV Rule 158 (MISRA C Rule 34)] - The operands of a logical `&&` or `||` **shall** be parenthesized if the operands contain binary operators.
 
     ILG: always use parenthesis.
 
@@ -525,7 +516,7 @@ Expressions
 
 -   [MISRA C++ Rule 5–17–1, Required] - The semantic equivalence between a binary operator and its assignment operator form **shall** be preserved.
 -   [JSF AV Rule 81] - The assignment operator **shall** handle self-assignment correctly (see Stroustrup [2])
--   [JSF AV Rule 82] - An assignment operator **shall** return a reference to *\*this*.
+-   [JSF AV Rule 82] - An assignment operator **shall** return a reference to `*this`.
 -   [JSF AV Rule 83] - An assignment operator **shall** assign all data members and bases that affect the class invariant (a data element representing a cache, for example, would not need to be copied).
 
 ### Comma operator
@@ -551,8 +542,7 @@ Expressions
 
     Note that strictly conforming compilers should catch violations, but many do not.
 
-Statements
-----------
+## Statements
 
 ### Expression statement
 
@@ -563,73 +553,72 @@ Statements
 
 ### Compound statement
 
--   [MISRA C++ Rule 6–3–1, Required] - The statement forming the body of a *switch*, *while*, *do ... while* or *for* statement **shall** be a compound statement.
+-   [MISRA C++ Rule 6–3–1, Required] - The statement forming the body of a `switch`, `while`, `do ... while` or `for` statement **shall** be a compound statement.
 
 ### Selection statements
 
--   [MISRA C++ Rule 6–4–1, Required] - An *if ( condition )* construct **shall** be followed by a compound statement. The *else* keyword shall be followed by either a compound statement, or another *if* statement.
--   [MISRA C++ Rule 6–4–2, Required] - All *if ... else if* constructs **shall** be terminated with an *else* clause.
--   [MISRA C++ Rule 6–4–3, Required] - A *switch* statement **shall** be a *well-formed switch statement*.
--   [MISRA C++ Rule 6–4–4, Required] - A *switch-label* **shall** only be used when the most closely-enclosing compound statement is the body of a *switch* statement.
--   [MISRA C++ Rule 6–4–5, Required] - An unconditional *throw* or *break* statement **shall** terminate every non-empty *switch-clause*.
--   [MISRA C++ Rule 6–4–6, Required] - The final clause of a *switch* statement **shall** be the *default-clause*.
--   [MISRA C++ Rule 6–4–7, Required] - The *condition* of a *switch* statement **shall not** have *bool* type.
--   [MISRA C++ Rule 6–4–8, Required] - Every *switch* statement **shall** have at least one *case-clause*.
+-   [MISRA C++ Rule 6–4–1, Required] - An `if ( condition )` construct **shall** be followed by a compound statement. The `else` keyword shall be followed by either a compound statement, or another `if` statement.
+-   [MISRA C++ Rule 6–4–2, Required] - All `if ... else if` constructs **shall** be terminated with an `else` clause.
+-   [MISRA C++ Rule 6–4–3, Required] - A `switch` statement **shall** be a *well-formed switch statement*.
+-   [MISRA C++ Rule 6–4–4, Required] - A *switch-label* **shall** only be used when the most closely-enclosing compound statement is the body of a `switch` statement.
+-   [MISRA C++ Rule 6–4–5, Required] - An unconditional `throw` or `break` statement **shall** terminate every non-empty *switch-clause*.
+-   [MISRA C++ Rule 6–4–6, Required] - The final clause of a `switch` statement **shall** be the *default-clause*.
+-   [MISRA C++ Rule 6–4–7, Required] - The *condition* of a `switch` statement **shall not** have `bool` type.
+-   [MISRA C++ Rule 6–4–8, Required] - Every `switch` statement **shall** have at least one *case-clause*.
 -   [JSV AV Rule 188 (MISRA C Rule 55, Revised)] - Labels **will not** be used, except in switch statements.
--   [JSV AV Rule 189 (MISRA C Rule 56)] - The *goto* statement **shall not** be used.
+-   [JSV AV Rule 189 (MISRA C Rule 56)] - The `goto` statement **shall not** be used.
 
     **Exception**: A goto may be used to break out of multiple nested loops provided the alternative would obscure or otherwise significantly complicate the control logic.
 
--   [JSV AV Rule 190 (MISRA C Rule 57)] - The *continue* statement **shall not** be used.
--   [JSV AV Rule 191 (MISRA C Rule 58)] - The *break* statement **shall not** be used (except to terminate the cases of a *switch* statement).
+-   [JSV AV Rule 190 (MISRA C Rule 57)] - The `continue` statement **shall not** be used.
+-   [JSV AV Rule 191 (MISRA C Rule 58)] - The `break` statement **shall not** be used (except to terminate the cases of a `switch` statement).
 
     **Exception**: The *break* statement may be used to “break” out of a single loop provided the alternative would obscure or otherwise significantly complicate the control logic.
 
--   [JSV AV Rule 192 (MISRA C Rule 60, Revised)] - All *if*, *else if* constructs **will** contain either a final *else* clause or a comment indicating why a final *else* clause is not necessary.
+-   [JSV AV Rule 192 (MISRA C Rule 60, Revised)] - All `if`, `else if` constructs **will** contain either a final `else` clause or a comment indicating why a final `else` clause is not necessary.
 
-    Note: This rule only applies when an *if* statement is followed by one or more *else if*’s.
+    Note: This rule only applies when an `if` statement is followed by one or more `else if`’s.
 
--   [JSV AV Rule 193 (MISRA C Rule 61)] - Every non-empty *case* clause in a switch statement **shall** be terminated with a *break* statement.
--   [JSV AV Rule 194 (MISRA C Rule 62, Revised)] - All *switch* statements that do not intend to test for every enumeration value **shall** contain a final *default* clause.
+-   [JSV AV Rule 193 (MISRA C Rule 61)] - Every non-empty `case` clause in a `switch` statement **shall** be terminated with a `break` statement.
+-   [JSV AV Rule 194 (MISRA C Rule 62, Revised)] - All `switch` statements that do not intend to test for every enumeration value **shall** contain a final `default` clause.
 
     MISRA revised with shall replacing should.
 
--   [JSV AV Rule 195 (MISRA C Rule 63)] - A *switch* expression **will not** represent a Boolean value.
--   [JSV AV Rule 196 (MISRA C Rule 64, Revised)] - Every *switch* statement **will** have at least two *cases* and a potential *default*.
+-   [JSV AV Rule 195 (MISRA C Rule 63)] - A `switch` expression **will not** represent a Boolean value.
+-   [JSV AV Rule 196 (MISRA C Rule 64, Revised)] - Every `switch` statement **will** have at least two `case`s and a potential `default`.
 
 ### Iteration statements
 
--   [MISRA C++ Rule 6–5–1, Required] - A *for* loop shall contain a single *loop-counter* which **shall not** have floating type.
+-   [MISRA C++ Rule 6–5–1, Required] - A `for` loop shall contain a single *loop-counter* which **shall not** have floating type.
 -   [MISRA C++ Rule 6–5–2, Required] - If *loop-counter* is not modified by `--` or `++`, then, within *condition*, the *loop-counter* **shall** only be used as an operand to `<=`, `<`, `>` or `>=`.
 -   [MISRA C++ Rule 6–5–3, Required] - The *loop-counter* **shall not** be modified within *condition* or *statement*.
 -   [MISRA C++ Rule 6–5–4, Required] - The *loop-counter* **shall** be modified by one of: `--`, `++`, `-=n`, or `+=n`; where `n` remains constant for the duration of the loop.
 -   [MISRA C++ Rule 6–5–5, Required] - A *loop-control-variable* other than the *loop-counter* **shall not** be modified within *condition* or *expression*.
 -   [MISRA C++ Rule 6–5–6, Required] - A *loop-control-variable* other than the *loop-counter* which is modified in *statement* **shall** have type *bool*.
 -   [JSV AV Rule 197 (MISRA C Rule 65)] - Floating point variables **shall not** be used as loop counters.
--   [JSV AV Rule 198] - The initialization expression in a *for* loop **will** perform no actions other than to initialize the value of a single *for* loop parameter.
+-   [JSV AV Rule 198] - The initialization expression in a `for` loop **will** perform no actions other than to initialize the value of a single `for` loop parameter.
 
     Note that the initialization expression may invoke an accessor that returns an initial element in a sequence:
 
--   [JSV AV Rule 199] - The increment expression in a *for* loop **will** perform no action other than to change a single loop parameter to the next value for the loop.
--   [JSV AV Rule 200] - Null initialize or increment expressions in *for* loops **will not** be used; a *while* loop will be used instead.
--   [JSV AV Rule 201 (MISRA C Rule 67, Revised)] - Numeric variables being used within a *for* loop for iteration counting **shall not** be modified in the body of the loop.
+-   [JSV AV Rule 199] - The increment expression in a `for` loop **will** perform no action other than to change a single loop parameter to the next value for the loop.
+-   [JSV AV Rule 200] - Null initialize or increment expressions in `for` loops **will not** be used; a `while` loop will be used instead.
+-   [JSV AV Rule 201 (MISRA C Rule 67, Revised)] - Numeric variables being used within a `for` loop for iteration counting **shall not** be modified in the body of the loop.
 
     MISRA C Rule 67 was revised by changing should to shall.
 
 ### Jump statements
 
--   [MISRA C++ Rule 6–6–1, Required] - Any label referenced by a *goto* statement **shall** be declared in the same block, or in a block enclosing the *goto* statement.
--   [MISRA C++ Rule 6–6–2, Required] - The *goto* statement **shall** jump to a label declared later in the same function body.
--   [MISRA C++ Rule 6–6–3, Required] - The *continue* statement **shall** only be used within a *well-formed for loop*.
--   [MISRA C++ Rule 6–6–4, Required] - For any iteration statement there **shall** be no more than one *break* or *goto* statement used for loop termination.
+-   [MISRA C++ Rule 6–6–1, Required] - Any label referenced by a `goto` statement **shall** be declared in the same block, or in a block enclosing the `goto` statement.
+-   [MISRA C++ Rule 6–6–2, Required] - The `goto` statement **shall** jump to a label declared later in the same function body.
+-   [MISRA C++ Rule 6–6–3, Required] - The `continue` statement **shall** only be used within a *well-formed for loop*.
+-   [MISRA C++ Rule 6–6–4, Required] - For any iteration statement there **shall** be no more than one `break` or `goto` statement used for loop termination.
 -   [MISRA C++ Rule 6–6–5, Required] - A function **shall** have a single point of exit at the end of the function.
 
-Declarations
-------------
+## Declarations
 
 ### Specifiers
 
--   [MISRA C++ Rule 7–1–1, Required] - A variable which is not modified **shall** be *const* qualified.
+-   [MISRA C++ Rule 7–1–1, Required] - A variable which is not modified **shall** be `const` qualified.
 -   [MISRA C++ Rule 7–1–2, Required] - A pointer or reference parameter in a function **shall** be declared as pointer to const or reference to const if the corresponding object is not modified.
 
 ### Enumeration declarations
@@ -638,8 +627,8 @@ Declarations
 
 ### Namespaces
 
--   [MISRA C++ Rule 7–3–1, Required] - The global namespace **shall** only contain main, namespace declarations and *extern "C"* declarations.
--   [MISRA C++ Rule 7–3–2, Required] - The identifier *main* **shall not** be used for a function other than the global function *main*.
+-   [MISRA C++ Rule 7–3–1, Required] - The global namespace **shall** only contain main, namespace declarations and `extern "C"` declarations.
+-   [MISRA C++ Rule 7–3–2, Required] - The identifier `main` **shall not** be used for a function other than the global function `main`.
 -   [MISRA C++ Rule 7–3–3, Required] - There **shall** be no unnamed namespaces in *header files*.
 -   [MISRA C++ Rule 7–3–4, Required] - *using-directives* **shall not** be used.
 -   [MISRA C++ Rule 7–3–5, Required] - Multiple declarations for an identifier in the same namespace **shall not** straddle a *using-declaration* for that identifier.
@@ -653,7 +642,7 @@ Declarations
 ### The *asm* declaration
 
 -   [MISRA C++ Rule 7–4–1, Document] - All usage of assembler **shall** be documented.
--   [MISRA C++ Rule 7–4–2, Required] - Assembler instructions **shall** only be introduced using the *asm* declaration.
+-   [MISRA C++ Rule 7–4–2, Required] - Assembler instructions **shall** only be introduced using the `asm` declaration.
 -   [MISRA C++ Rule 7–4–3, Required] - Assembly language **shall** be encapsulated and isolated.
 
 ### Linkage specifications
@@ -664,8 +653,7 @@ Declarations
 -   [MISRA C++ Rule 7–5–3, Required] - A function **shall not** return a reference or a pointer to a parameter that is passed by reference or const reference.
 -   [MISRA C++ Rule 7–5–4, Advisory] - Functions **should not** call themselves, either directly or indirectly.
 
-Declarators
------------
+## Declarators
 
 ### General
 
@@ -675,7 +663,7 @@ Declarators
 -   [JSF AV Rule 137 (MISRA C Rule 23)] - All declarations at file scope **should** be static where possible.
 -   [JSF AV Rule 138 (MISRA C Rule 24)] - Identifiers **shall not** simultaneously have both internal and external linkage in the same translation unit.
 -   [JSF AV Rule 139 (MISRA C Rule 27)] - External objects **will not** be declared in more than one file. (See also AV Rule 39.)
--   [JSF AV Rule 140 (MISRA C Rule 28, Revised)] - The *register* storage class specifier **shall not** be used.
+-   [JSF AV Rule 140 (MISRA C Rule 28, Revised)] - The `register` storage class specifier **shall not** be used.
 -   [JSF AV Rule 141] - A class, structure, or enumeration **will not** be declared in the definition of its type.
 
 ### Meaning of declarators
@@ -686,8 +674,8 @@ Declarators
 
 -   [MISRA C++ Rule 8–4–1, Required] - Functions **shall not** be defined using the ellipsis notation.
 -   [MISRA C++ Rule 8–4–2, Required] - The identifiers used for the parameters in a re-declaration of a function **shall** be identical to those in the declaration.
--   [MISRA C++ Rule 8–4–3, Required] - All exit paths from a function with non-*void* return type **shall** have an explicit *return* statement with an expression.
--   [MISRA C++ Rule 8–4–4, Required] - A function identifier **shall** either be used to call the function or it **shall** be preceded by &.
+-   [MISRA C++ Rule 8–4–3, Required] - All exit paths from a function with non-*void* return type **shall** have an explicit `return` statement with an expression.
+-   [MISRA C++ Rule 8–4–4, Required] - A function identifier **shall** either be used to call the function or it **shall** be preceded by `&`.
 -   ~~[JSF AV Rule 58] - When declaring and defining functions with more than two parameters, the leading parenthesis and the first argument **will** be written on the same line as the function name. Each additional argument **will** be written on a separate line (with the closing parenthesis directly after the last argument).~~
 -   [JSF AV Rule 107 (MISRA C Rule 68)] - Functions **shall** always be declared at file scope.
 -   [JSF AV Rule 108 (MISRA C Rule 69)] - Functions with variable numbers of arguments **shall not** be used.
@@ -702,12 +690,12 @@ Declarators
 -   [JSF AV Rule 114 (MISRA C Rule 83, Revised)] - All exit points of value-returning functions **shall be** through return statements.
 -   [JSF AV Rule 115 (MISRA C Rule 86)] - If a function returns error information, then that error information **will** be tested.
 -   [JSF AV Rule 116] - Small, concrete-type arguments (two or three words in size) **should** be passed by value if changes made to formal parameters should not be reflected in the calling function.
--   [JSF AV Rule 117] - Arguments **should** be passed by reference if NULL values are not possible:
-    -   [JSF AV Rule 117.1] - An object **should** be passed as *const T&* if the function should not change the value of the object.
-    -   [JSF AV Rule 117.2] - An object **should** be passed as *T&* if the function may change the value of the object.
--   [JSF AV Rule 118] - Arguments **should** be passed via pointers if NULL values are possible:
-    -   [JSF AV Rule 118.1] - An object **should** be passed as *const T\** if its value should not be modified.
-    -   [JSF AV Rule 118.2] - An object **should** be passed as *T\** if its value may be modified.
+-   [JSF AV Rule 117] - Arguments **should** be passed by reference if `NULL` values are not possible:
+    -   [JSF AV Rule 117.1] - An object **should** be passed as `const T&` if the function should not change the value of the object.
+    -   [JSF AV Rule 117.2] - An object **should** be passed as `T&` if the function may change the value of the object.
+-   [JSF AV Rule 118] - Arguments **should** be passed via pointers if `NULL` values are possible:
+    -   [JSF AV Rule 118.1] - An object **should** be passed as `const T*` if its value should not be modified.
+    -   [JSF AV Rule 118.2] - An object **should** be passed as `T*` if its value may be modified.
 -   [JSF AV Rule 119 (MISRA C Rule 70)] - Functions **shall not** call themselves, either directly or indirectly (i.e. recursion **shall not** be allowed).
 
     **Exception**: Recursion will be permitted under the following circumstances:
@@ -723,24 +711,23 @@ Declarators
 ### Declarators - Initialisers
 
 -   [MISRA C++ Rule 8–5–1, Required] - All variables **shall** have a defined value before they are used.
--   [MISRA C++ Rule 8–5–2, Required] - Braces **shall** be used to indicate and match the structure in the non- zero initialization of arrays and structures.
--   [MISRA C++ Rule 8–5–3, Required] - In an enumerator list, the = construct **shall not** be used to explicitly initialize members other than the first, unless all items are explicitly initialized.
+-   [MISRA C++ Rule 8–5–2, Required] - Braces **shall** be used to indicate and match the structure in the non-zero initialization of arrays and structures.
+-   [MISRA C++ Rule 8–5–3, Required] - In an enumerator list, the `=` construct **shall not** be used to explicitly initialize members other than the first, unless all items are explicitly initialized.
 -   [JSF AV Rule 142 (MISRA C Rule 30, Revised)] - All variables **shall** be initialized before use. (See also AV Rule 136, AV Rule 71, and AV Rule 73, and AV Rule 143 concerning declaration scope, object construction, default constructors, and the point of variable introduction respectively.)
 
     **Exception**: Exceptions are allowed where a name must be introduced before it can be initialized (e.g. value received via an input stream).
 
 -   [JSF AV Rule 143] - Variables **will not** be introduced until they can be initialized with meaningful values. (See also AV Rule 136, AV Rule 142, and AV Rule 73 concerning declaration scope, initialization before use, and default constructors respectively.)
 -   [JSF AV Rule 144 (MISRA C Rule 31)] - Braces **shall** be used to indicate and match the structure in the non-zero initialization of arrays and structures.
--   [JSF AV Rule 145 (MISRA C Rule 32)] - In an enumerator list, the ‘=‘ construct **shall not** be used to explicitly initialize members other than the first, unless all items are explicitly initialised.
+-   [JSF AV Rule 145 (MISRA C Rule 32)] - In an enumerator list, the `=` construct **shall not** be used to explicitly initialize members other than the first, unless all items are explicitly initialised.
 
-Classes
--------
+## Classes
 
 ### Member functions
 
 -   [MISRA C++ Rule 9–3–1, Required] - const member functions **shall not** return non-const pointers or references to *class-data*.
 -   [MISRA C++ Rule 9–3–2, Required] - Member functions **shall not** return non-*const* *handles* to *class-data*.
--   [MISRA C++ Rule 9–3–3, Required] - If a member function can be made *static* then it **shall** be made *static*, otherwise if it can be made *const* then it **shall** be made *const*.
+-   [MISRA C++ Rule 9–3–3, Required] - If a member function can be made `static` then it **shall** be made `static`, otherwise if it can be made `const` then it **shall** be made `const`.
 -   [JSF AV Rule 68] - Unneeded implicitly generated member functions **shall** be explicitly disallowed. See Meyers [6], item 27.
 
     Note: If the copy constructor is explicitly disallowed, the assignment operator should be as well.
@@ -753,9 +740,9 @@ Classes
 ### Bit-fields
 
 -   [MISRA C++ Rule 9–6–1, Document] - When the absolute positioning of bits representing a bit-field is required, then the behaviour and packing of bit-fields **shall** be documented.
--   [MISRA C++ Rule 9–6–2, Required] - Bit-fields **shall** be either bool type or an explicitly *unsigned* or *signed* integral type.
+-   [MISRA C++ Rule 9–6–2, Required] - Bit-fields **shall** be either bool type or an explicitly `unsigned` or `signed` integral type.
 -   [MISRA C++ Rule 9–6–3, Required] - Bit-fields **shall not** have enum type.
--   [MISRA C++ Rule 9–6–4, Required] - Named bit-fields with *signed* integer type **shall** have a length of more than one bit.
+-   [MISRA C++ Rule 9–6–4, Required] - Named bit-fields with `signed` integer type **shall** have a length of more than one bit.
 -   [JSF AV Rule 154 (MISRA Rules 111 and 112, Revised)] - Bit-fields **shall** have explicitly unsigned integral or enumeration types only.
 
     Note: MISRA C Rule 112 no longer applies since it discusses a two-bit minimum-length requirement for bit-fields of signed types.
@@ -770,8 +757,7 @@ Classes
 
     **Exception**: An unnamed bit-field of width zero may be used to specify alignment of the next bit-field at an allocation boundary. [10], 9.6(2)
 
-Derived classes
----------------
+## Derived classes
 
 ### Multiple base classes
 
@@ -786,12 +772,11 @@ Derived classes
 ### Virtual functions
 
 -   [MISRA C++ Rule 10–3–1, Required] - There **shall** be no more than one definition of each virtual function on each path through the inheritance hierarchy.
--   [MISRA C++ Rule 10–3–2, Required] - Each overriding virtual function **shall** be declared with the *virtual* keyword.
+-   [MISRA C++ Rule 10–3–2, Required] - Each overriding virtual function **shall** be declared with the `virtual` keyword.
 -   [MISRA C++ Rule 10–3–3, Required] - A virtual function **shall** only be overridden by a *pure virtual function* if it is itself declared as *pure virtual*.
--   [JSF AV Rule 97.1] - Neither operand of an equality operator (== or !=) **shall** be a pointer to a virtual member function.
+-   [JSF AV Rule 97.1] - Neither operand of an equality operator (`==` or `!=`) **shall** be a pointer to a virtual member function.
 
-Member access control
----------------------
+## Member access control
 
 ### General
 
@@ -803,14 +788,13 @@ Member access control
 
     **Exception**: Protected members may be used in a class as long as that class does not participate in a client interface. See AV Rule 88.
 
-Special member functions
-------------------------
+## Special member functions
 
 ### Constructors
 
 -   [MISRA C++ Rule 12–1–1, Required] - An object’s dynamic type **shall not** be used from the body of its constructor or destructor.
 -   [MISRA C++ Rule 12–1–2, Advisory] - All constructors of a class **should** explicitly call a constructor for all of its immediate base classes and all virtual base classes.
--   [MISRA C++ Rule 12–1–3, Required] - All constructors that are callable with a single argument of fundamental type **shall** be declared *explicit*.
+-   [MISRA C++ Rule 12–1–3, Required] - All constructors that are callable with a single argument of fundamental type **shall** be declared `explicit`.
 -   [JSF AV Rule 70.1] - An object **shall not** be improperly used before its lifetime begins or after its lifetime ends.
 -   [JSF AV Rule 71] - Calls to an externally visible operation of an object, other than its constructors, **shall not** be allowed until the object has been fully initialised.
 -   [JSF AV Rule 71.1] - A class’s virtual functions **shall not** be invoked from its destructor or any of its constructors.
@@ -848,8 +832,7 @@ Special member functions
 -   [MISRA C++ Rule 12–8–1, Required] - A copy constructor **shall** only initialize its base classes and the non- static members of the class of which it is a member.
 -   [MISRA C++ Rule 12–8–2, Required] - The copy assignment operator **shall** be declared *protected* or *private* in an abstract class.
 
-Templates
----------
+## Templates
 
 The following guidelines provided by Stroustrup[2], 13.8, offer advice when to prefer the use of templates over the use of inheritance:
 
@@ -866,7 +849,6 @@ The following guidelines provided by Stroustrup[2], 13.8, offer advice when to p
 -   [JSF AV Rule 101] - Templates **shall** be reviewed as follows:
     1.  with respect to the template in isolation considering assumptions or requirements placed on its arguments.
     2.  with respect to all functions instantiated by actual arguments.
-
 
     Note: The compiler should be configured to generate the list of actual template instantiations.
 
@@ -895,22 +877,21 @@ The following guidelines provided by Stroustrup[2], 13.8, offer advice when to p
 -   [MISRA C++ Rule 14–8–1, Required] - Overloaded function templates **shall not** be explicitly specialized.
 -   [MISRA C++ Rule 14–8–2, Advisory] - The viable *function set* for a function call **should** either contain no function specializations, or only contain function specialisations.
 
-Exception handling
-------------------
+## Exception handling
 
 ### General
 
--   ~~[JSV AV Rule 208] - C++ exceptions **shall not** be used (i.e. throw, catch and try shall not be used.)~~
+-   ~~[JSV AV Rule 208] - C++ exceptions **shall not** be used (i.e. `throw`, `catch` and `try` shall not be used.)~~
 -   [ILG Rule] - C++ exceptions **should not** be used (to be decided).
 -   [MISRA C++ Rule 15–0–1, Document] - Exceptions **shall** only be used for error handling.
 -   [MISRA C++ Rule 15–0–2, Advisory] - An exception object **should not** have pointer type.
--   [MISRA C++ Rule 15–0–3, Required] - Control **shall not** be transferred into a *try* or *catch* block using a *goto* or a *switch* statement.
+-   [MISRA C++ Rule 15–0–3, Required] - Control **shall not** be transferred into a `try` or catch block using a `goto` or a `switch` statement.
 
 ### Throwing an exception
 
--   [MISRA C++ Rule 15–1–1, Required] - The *assignment-expression* of a *throw* statement **shall not** itself cause an exception to be thrown.
--   [MISRA C++ Rule 15–1–2, Required] - *NULL* **shall not** be thrown explicitly.
--   [MISRA C++ Rule 15–1–3, Required] - An empty *throw* (`throw;`) **shall** only be used in the *compound-statement* of a *catch* handler.
+-   [MISRA C++ Rule 15–1–1, Required] - The *assignment-expression* of a `throw` statement **shall not** itself cause an exception to be thrown.
+-   [MISRA C++ Rule 15–1–2, Required] - `NULL` **shall not** be thrown explicitly.
+-   [MISRA C++ Rule 15–1–3, Required] - An empty `throw` (`throw;`) **shall** only be used in the *compound-statement* of a `catch` handler.
 
 ### Handling an exception
 
@@ -920,7 +901,7 @@ Exception handling
 -   [MISRA C++ Rule 15–3–4, Required] - Each exception explicitly thrown in the code **shall** have a handler of a compatible type in all call paths that could lead to that point.
 -   [MISRA C++ Rule 15–3–5, Required] - A class type exception **shall** always be caught by reference.
 -   [MISRA C++ Rule 15–3–6, Required] - Where multiple handlers are provided in a single *try-catch* statement or *function-try-block* for a derived class and some or all of its bases, the handlers **shall** be ordered most-derived to base class.
--   [MISRA C++ Rule 15–3–7, Required] - Where multiple handlers are provided in a single *try-catch* statement or *function-try-block*, any ellipsis (catch-all) handler **shall** occur last.
+-   [MISRA C++ Rule 15–3–7, Required] - Where multiple handlers are provided in a single `try` - `catch` statement or *function-try-block*, any ellipsis (catch-all) handler **shall** occur last.
 
 ### Exception specifications
 
@@ -930,64 +911,63 @@ Exception handling
 
 -   [MISRA C++ Rule 15–5–1, Required] - A class destructor **shall not** exit with an exception.
 -   [MISRA C++ Rule 15–5–2, Required] - Where a function’s declaration includes an exception-specification, the function **shall** only be capable of throwing exceptions of the indicated type(s).
--   [MISRA C++ Rule 15–5–3, Required] - The terminate() function **shall not** be called implicitly.
+-   [MISRA C++ Rule 15–5–3, Required] - The `terminate()` function **shall not** be called implicitly.
 
-Preprocessing directives
-------------------------
+## Preprocessing directives
 
 ### General
 
--   [MISRA C++ Rule 16–0–1, Required] - *\#include* directives in a file **shall** only be preceded by other preprocessor directives or comments.
--   [MISRA C++ Rule 16–0–2, Required] - Macros **shall** only be *\#define*’d or *\#undef*’d in the global namespace.
--   [MISRA C++ Rule 16–0–3, Required] - *\#undef* **shall not** be used.
+-   [MISRA C++ Rule 16–0–1, Required] - `#include` directives in a file **shall** only be preceded by other preprocessor directives or comments.
+-   [MISRA C++ Rule 16–0–2, Required] - Macros **shall** only be `#define`’d or `#undef`’d in the global namespace.
+-   [MISRA C++ Rule 16–0–3, Required] - `#undef` **shall not** be used.
 -   [MISRA C++ Rule 16–0–4, Required] - Function-like macros **shall not** be defined.
 -   [MISRA C++ Rule 16–0–5, Required] - Arguments to a function-like macro **shall not** contain tokens that look like preprocessing directives.
--   [MISRA C++ Rule 16–0–6, Required] - In the definition of a function-like macro, each instance of a parameter **shall** be enclosed in parentheses, unless it is used as the operand of \# or \#\#.
--   [JSF AV Rule 29] - The *\#define* pre-processor directive **shall not** be used to create inline macros. Inline functions **shall** be used instead.
--   [JSF AV Rule 30] - The *\#define* pre-processor directive **shall not** be used to define constant values. Instead, the *const* qualifier **shall** be applied to variable declarations to specify constant values.
+-   [MISRA C++ Rule 16–0–6, Required] - In the definition of a function-like macro, each instance of a parameter **shall** be enclosed in parentheses, unless it is used as the operand of `#` or `##`.
+-   [JSF AV Rule 29] - The `#define` pre-processor directive **shall not** be used to create inline macros. Inline functions **shall** be used instead.
+-   [JSF AV Rule 30] - The `#define` pre-processor directive **shall not** be used to define constant values. Instead, the `const` qualifier **shall** be applied to variable declarations to specify constant values.
 
-    The only exception to this rule is for constants that are commonly defined by third-party modules. For example, *\#define* is typically used to define *NULL* in standard header files. Consequently, *NULL* may be treated as a macro for compatibility with third-party tools.
+    The only exception to this rule is for constants that are commonly defined by third-party modules. For example, `#define` is typically used to define `NULL` in standard header files. Consequently, `NULL` may be treated as a macro for compatibility with third-party tools.
 
--   [MISRA C++ Rule 16–0–7, Required] - Undefined macro identifiers **shall not** be used in *\#if* or *\#elif* preprocessor directives, except as operands to the defined operator.
--   [MISRA C++ Rule 16–0–8, Required] - If the \# token appears as the first token on a line, then it **shall** be immediately followed by a preprocessing token.
+-   [MISRA C++ Rule 16–0–7, Required] - Undefined macro identifiers **shall not** be used in `#if` or `#elif` preprocessor directives, except as operands to the defined operator.
+-   [MISRA C++ Rule 16–0–8, Required] - If the `#` token appears as the first token on a line, then it **shall** be immediately followed by a preprocessing token.
 -   [JSF AV Rule 26] - Only the following pre-processor directives shall be used:
-    1.  *\#ifndef*
-    2.  *\#define*
-    3.  *\#endif*
-    4.  *\#include*
--   [JSF AV Rule 27] - *\#ifndef*, *\#define* and *\#endif* **will** be used to prevent multiple inclusions of the same header file. Other techniques to prevent the multiple inclusions of header files **will not** be used.
--   [JSF AV Rule 28] - The *\#ifndef* and *\#endif* pre-processor directives will only be used as defined in AV Rule 27 to prevent multiple inclusions of the same header file.
--   [JSF AV Rule 31] - The *\#define* pre-processor directive **will** only be used as part of the technique to prevent multiple inclusions of the same header file.
+    1.  `#ifndef`
+    2.  `#define`
+    3.  `#endif`
+    4.  `#include`
+-   [JSF AV Rule 27] - `#ifndef`, `#define` and `#endif` **will** be used to prevent multiple inclusions of the same header file. Other techniques to prevent the multiple inclusions of header files **will not** be used.
+-   [JSF AV Rule 28] - The `#ifndef` and `#endif` pre-processor directives will only be used as defined in AV Rule 27 to prevent multiple inclusions of the same header file.
+-   [JSF AV Rule 31] - The `#define` pre-processor directive **will** only be used as part of the technique to prevent multiple inclusions of the same header file.
 
 ### Conditional inclusion
 
--   [MISRA C++ Rule 16–1–1, Required] - The *defined* preprocessor operator **shall** only be used in one of the two standard forms.
+-   [MISRA C++ Rule 16–1–1, Required] - The `defined` preprocessor operator **shall** only be used in one of the two standard forms.
 
 <!-- -->
 
      defined ( identifier )
      defined identifier
 
--   [MISRA C++ Rule 16–1–2, Required] - All *\#else*, *\#elif* and *\#endif* preprocessor directives **shall** reside in the same file as the *\#if* or *\#ifdef* directive to which they are related.
+-   [MISRA C++ Rule 16–1–2, Required] - All `#else`, `#elif` and `#endif` preprocessor directives **shall** reside in the same file as the `#if` or `#ifdef` directive to which they are related.
 
 ### Source file inclusion
 
 -   [MISRA C++ Rule 16–2–1, Required] - The pre-processor **shall** only be used for file inclusion and include guards.
--   [MISRA C++ Rule 16–2–2, Required] - C++ macros **shall** only be used for: include guards, type qualifiers, or storage class specifiers.
+-   [MISRA C++ Rule 16–2–2, Required] - C++ macros **shall** only be used for include guards, type qualifiers, or storage class specifiers.
 -   [MISRA C++ Rule 16–2–3, Required] - Include guards **shall** be provided.
--   [MISRA C++ Rule 16–2–4, Required] - The ', ", /\* or // characters **shall not** occur in a header file name.
--   [MISRA C++ Rule 16–2–5, Advisory] - The \\ character **should not** occur in a header file name.
--   [MISRA C++ Rule 16–2–6, Required] - The *\#include* directive **shall** be followed by either a *<filename>* or *"filename"* sequence.
--   [JSF AV Rule 32] - The *\#include* pre-processor directive **will** only be used to include header (\*.h) files.
+-   [MISRA C++ Rule 16–2–4, Required] - The `'`, `"`, `/*` or `//` characters **shall not** occur in a header file name.
+-   [MISRA C++ Rule 16–2–5, Advisory] - The `\` character **should not** occur in a header file name.
+-   [MISRA C++ Rule 16–2–6, Required] - The `#include` directive **shall** be followed by either a *<filename>* or *"filename"* sequence.
+-   [JSF AV Rule 32] - The `#include` pre-processor directive **will** only be used to include header (\*.h) files.
 
     **Exception**: I the case of template class or function definitions, the code may be partitioned into separate header and implementation files. In this case, the implementation file may be included as a part of the header file. The implementation file is logically a part of the header and is not separately compilable.
 
--   [JSF AV Rule 33] - The *\#include* directive **shall** use the <filename.h> notation to include header files.
+-   [JSF AV Rule 33] - The `#include` directive **shall** use the <filename.h> notation to include header files.
 -   [JSF AV Rule 34] - Header files **should** contain logically related declarations only.
 -   [JSF AV Rule 35] - A header file **will** contain a mechanism that prevents multiple inclusions of itself.
 -   [JSF AV Rule 36] - Compilation dependencies **should** be minimized when possible. (Stroustrup [2], Meyers [6], item 34)
 -   [JSF AV Rule 37] - Header (include) files **should** include only those header files that are required for them to successfully compile. Files that are only used by the associated .cpp file should be placed in the .cpp file - not the .h file.
--   [JSF AV Rule 38] - Declarations of classes that are only accessed via pointers (\*) or references (&) **should** be supplied by forward headers that contain only forward declarations.
+-   [JSF AV Rule 38] - Declarations of classes that are only accessed via pointers (`*`) or references (`&`) **should** be supplied by forward headers that contain only forward declarations.
 -   [JSF AV Rule 39] - Header files (\*.h) **will not** contain non-const variable definitions or function definitions.
 
     **Exception**: Inline functions and template definitions may be included in header files.
@@ -996,12 +976,12 @@ Preprocessing directives
 
 ### Macro replacement
 
--   [MISRA C++ Rule 16–3–1, Required] - There **shall** be at most one occurrence of the \# or \#\# operators in a single macro definition.
--   [MISRA C++ Rule 16–3–2, Advisory] - The \# and \#\# operators **should not** be used.
+-   [MISRA C++ Rule 16–3–1, Required] - There **shall** be at most one occurrence of the `#` or `##` operators in a single macro definition.
+-   [MISRA C++ Rule 16–3–2, Advisory] - The `#` and `##` operators **should not** be used.
 
 ### Pragma directive
 
--   [MISRA C++ Rule 16–6–1, Document] - All uses of the *\#pragma* directive **shall** be documented.
+-   [MISRA C++ Rule 16–6–1, Document] - All uses of the `#pragma` directive **shall** be documented.
 
 ### Library introduction - General
 
@@ -1009,36 +989,35 @@ Preprocessing directives
 -   [MISRA C++ Rule 17–0–2, Required] - The names of standard library macros and objects **shall not** be reused.
 -   [MISRA C++ Rule 17–0–3, Required] - The names of standard library functions **shall not** be overridden.
 -   [MISRA C++ Rule 17–0–4, Document] - All library code **shall** conform to MISRA C++.
--   [MISRA C++ Rule 17–0–5, Required] - The *setjmp* macro and the *longjmp* function **shall not** be used.
--   ~~[JSF AV Rule 20 (MISRA C Rule 122)] - The *setjmp* macro and the *longjmp* function **shall not** be used.~~ (duplicate)
+-   [MISRA C++ Rule 17–0–5, Required] - The `setjmp` macro and the `longjmp` function **shall not** be used.
+-   ~~[JSF AV Rule 20 (MISRA C Rule 122)] - The `setjmp` macro and the `longjmp` function **shall not** be used.~~ (duplicate)
 
-Language support library
-------------------------
+## Language support library
 
 ### General
 
 -   [MISRA C++ Rule 18–0–1, Required] - The C library **shall not** be used.
--   [MISRA C++ Rule 18–0–2, Required] - The library functions *atof*, *atoi* and *atol* from library *<cstdlib>* **shall not** be used.
--   [JSF AV Rule 23 (MISRA C Rule 125] - The library functions *atof*, *atoi* and *atol* from library <stdlib.h> **shall not** be used.
--   [MISRA C++ Rule 18–0–3, Required] - The library functions *abort*, *exit*, *getenv* and *system* from library *<cstdlib>* **shall not** be used.
--   [JSF AV Rule 24 (MISRA C Rule 126] - The library functions *abort*, *exit*, *getenv* and *system* from library <stdlib.h> **shall not** be used.
--   [MISRA C++ Rule 18–0–4, Required] - The time handling functions of library *<ctime>* **shall not** be used.
--   [JSF AV Rule 25 (MISRA C Rule 127] - The time handling functions of library <time.h> **shall not** be used.
--   [MISRA C++ Rule 18–0–5, Required] - The unbounded functions of library *<cstring>* **shall not** be used.
--   [JSF AV Rule 19 (MISRA C Rule 121)] - <locale.h> and the *setlocale* function **shall not** be used.
+-   [MISRA C++ Rule 18–0–2, Required] - The library functions `atof`, `atoi` and `atol` from library `<cstdlib>` **shall not** be used.
+-   [JSF AV Rule 23 (MISRA C Rule 125] - The library functions `atof`, `atoi` and `atol` from library `<stdlib.h>` **shall not** be used.
+-   [MISRA C++ Rule 18–0–3, Required] - The library functions `abort`, `exit`, `getenv` and `system` from library `<cstdlib>` **shall not** be used.
+-   [JSF AV Rule 24 (MISRA C Rule 126] - The library functions `abort`, `exit`, `getenv` and `system` from library `<stdlib.h>` **shall not** be used.
+-   [MISRA C++ Rule 18–0–4, Required] - The time handling functions of library `<ctime>` **shall not** be used.
+-   [JSF AV Rule 25 (MISRA C Rule 127] - The time handling functions of library `<time.h>` **shall not** be used.
+-   [MISRA C++ Rule 18–0–5, Required] - The unbounded functions of library `<cstring>` **shall not** be used.
+-   [JSF AV Rule 19 (MISRA C Rule 121)] - `<locale.h>` and the `setlocale` function **shall not** be used.
 -   [JSF AV Rule 16] - Only DO-178B level A [15] - certifiable or SEAL 1 C/C++ libraries shall be used with safety-critical (i.e. SEAL 1) code [13].
 
 ### Implementation properties
 
--   [MISRA C++ Rule 18–2–1, Required] - The macro *offsetof* **shall not** be used.
--   [JSF AV Rule 18 (MISRA C Rule 120)] - The macro *offsetof*, in library <stddef.h>, **shall not** be used.
+-   [MISRA C++ Rule 18–2–1, Required] - The macro `offsetof` **shall not** be used.
+-   [JSF AV Rule 18 (MISRA C Rule 120)] - The macro `offsetof`, in library `<stddef.h>`, **shall not** be used.
 
 ### Dynamic memory management
 
 -   [MISRA C++ Rule 18–4–1, Required] - Dynamic heap memory allocation **shall not** be used.
 -   [JSV AV Rule 206 (MISRA C Rule 118, Revised)] - Allocation/deallocation from/to the free store (heap) **shall not** occur after initialization.
 
-    Note that the “placement” *operator new()*, although not technically dynamic memory, may only be used in low-level memory management routines. See AV Rule 70.1 for object lifetime issues associated with placement *operator new()*.
+    Note that the “placement” `operator new()`, although not technically dynamic memory, may only be used in low-level memory management routines. See AV Rule 70.1 for object lifetime issues associated with placement `operator new()`.
 
 -   [JSV AV Rule 207] - Unencapsulated global data **will** be avoided.
 
@@ -1046,29 +1025,26 @@ Language support library
 
 ### Other runtime support
 
--   [MISRA C++ Rule 18–7–1, Required] - The signal handling facilities of *<csignal>* **shall not** be used.
--   [JSF AV Rule 21 (MISRA C Rule 123)] - The signal handling facilities of <signal.h> **shall not** be used.
+-   [MISRA C++ Rule 18–7–1, Required] - The signal handling facilities of `<csignal>` **shall not** be used.
+-   [JSF AV Rule 21 (MISRA C Rule 123)] - The signal handling facilities of `<signal.h>` **shall not** be used.
 
-Diagnostics library
--------------------
+## Diagnostics library
 
 ### Error numbers
 
--   [MISRA C++ Rule 19–3–1, Required] - The error indicator *errno* **shall not** be used.
--   ~~[JSF AV Rule 17 (MISRA C Rule 119)] - The error indicator *errno* **shall not** be used.~~ (duplicate)
+-   [MISRA C++ Rule 19–3–1, Required] - The error indicator `errno` **shall not** be used.
+-   ~~[JSF AV Rule 17 (MISRA C Rule 119)] - The error indicator `errno` **shall not** be used.~~ (duplicate)
 
-    **Exception**: If there is no other reasonable way to communicate an error condition to an application, then *errno* may be used. For example, third party math libraries will often make use of *errno* to inform an application of underflow/overflow or out-of-range/domain conditions. Even in this case, *errno* should only be used if its design and implementation are well-defined and documented.
+    **Exception**: If there is no other reasonable way to communicate an error condition to an application, then `errno` may be used. For example, third party math libraries will often make use of `errno` to inform an application of underflow/overflow or out-of-range/domain conditions. Even in this case, `errno` should only be used if its design and implementation are well-defined and documented.
 
-Input/output library
---------------------
+## Input/output library
 
 ### General
 
--   [MISRA C++ Rule 27–0–1, Required] - The stream input/output library *<cstdio>* **shall not** be used.
--   [JSF AV Rule 22 (MISRA C Rule 124, Revised)] - The input/output library <stdio.h> **shall not** be used.
+-   [MISRA C++ Rule 27–0–1, Required] - The stream input/output library `<cstdio>` **shall not** be used.
+-   [JSF AV Rule 22 (MISRA C Rule 124, Revised)] - The input/output library `<stdio.h>` **shall not** be used.
 
-Miscellaneous
--------------
+## Miscellaneous
 
 ### Code Size and Complexity
 
@@ -1085,13 +1061,13 @@ Miscellaneous
 -   [JSF AV Rule 42] - Each expression-statement **will** be on a separate line.
 -   [JSF AV Rule 43] - Tabs **should** be avoided.
 -   [JSF AV Rule 44] - All indentations **will** be at least two spaces and be consistent within the same source file.
--   [JSF AV Rule 59 (MISRA C Rule 59, Revised)] - The statements forming the body of an *if*, *else if*, *else*, *while*, *do...while* or for statement shall always be enclosed in braces, even if the braces form an empty block.
--   ~~[JSF AV Rule 60] - Braces ("{}") which enclose a block will be placed in the same column, on separate lines directly before and after the block.~~
--   ~~[JSF AV Rule 61] - Braces ("{}") which enclose a block will have nothing else on the line except comments (if necessary).~~
+-   [JSF AV Rule 59 (MISRA C Rule 59, Revised)] - The statements forming the body of an `if`, `else if`, `else`, `while`, `do...while` or for statement shall always be enclosed in braces, even if the braces form an empty block.
+-   ~~[JSF AV Rule 60] - Braces (`{}`) which enclose a block will be placed in the same column, on separate lines directly before and after the block.~~
+-   ~~[JSF AV Rule 61] - Braces (`{}`) which enclose a block will have nothing else on the line except comments (if necessary).~~
 -   [ILG Rule] - Indentation shall be consistent for all source files of a project.
 -   [ILG Rule, Advisory] - The indentation style **should** be the GNU Style, preferably as implemented by default, without changes, by the IDE used for development (for example Eclipse CDT)
--   [JSF AV Rule 62] - The dereference operator ‘\*’ and the address-of operator ‘&’ **will** be directly connected with the type-specifier.
--   [JSF AV Rule 63] - Spaces **will not** be used around ‘.’ or ‘-\>’, nor between unary operators and operands.
+-   [JSF AV Rule 62] - The dereference operator `*` and the address-of operator `&` **will** be directly connected with the type-specifier.
+-   [JSF AV Rule 63] - Spaces **will not** be used around `.` or `->`, nor between unary operators and operands.
 -   [JSF AV Rule 152] - Multiple variable declarations shall not be allowed on the same line.
 -   [JSV AV Rule 216] - Programmers **should not** attempt to prematurely optimize code. See Meyers [7], item 16.
 
@@ -1105,23 +1081,23 @@ Miscellaneous
 ### Naming Files
 
 -   [JSF AV Rule 53] - Header files **will** always have a file name extension of ".h".
--   [JSF AV Rule 53.1] - The following character sequences **shall not** appear in header file names: ‘, \\, /\*, //, or ".
--   [JSF AV Rule 54] - Implementation files **will** always have a file name extension of ".cpp".
+-   [JSF AV Rule 53.1] - The following character sequences **shall not** appear in header file names: `‘`, `\`, `/*`, `//`, or `"`.
+-   [JSF AV Rule 54] - Implementation files **will** always have a file name extension of `.cpp`.
 -   [JSF AV Rule 55] - The name of a header file **should** reflect the logical entity for which it provides declarations.
--   [JSF AV Rule 56] - The name of an implementation file **should** reflect the logical entity for which it provides definitions and have a “.cpp” extension (this name will normally be identical to the header file that provides the corresponding declarations.)
+-   [JSF AV Rule 56] - The name of an implementation file **should** reflect the logical entity for which it provides definitions and have a `.cpp` extension (this name will normally be identical to the header file that provides the corresponding declarations.)
 
-    At times, more than one .cpp file for a given logical entity will be required. In these cases, a suffix should be appended to reflect a logical differentiation.
+    At times, more than one `.cpp` file for a given logical entity will be required. In these cases, a suffix should be appended to reflect a logical differentiation.
 
 ### Classes
 
 -   [JSF AV Rule 64] - A class interface **should** be complete and minimal. See Meyers [6], item 18.
 -   [JSF AV Rule 69] - A member function that does not affect the state of an object (its instance variables) **will** be declared *const*.
 
-    Member functions should be *const* by default. Only when there is a clear, explicit reason should the *const* modifier on member functions be omitted.
+    Member functions should be `const` by default. Only when there is a clear, explicit reason should the `const` modifier on member functions be omitted.
 
 -   [JSF AV Rule 70] - A class **will** have friends only when a function or object requires access to the private elements of the class, but is unable to be a member of the class for logical or efficiency reasons.
 -   [JSF AV Rule 84] - Operator overloading **will** be used sparingly and in a conventional manner.
--   [JSF AV Rule 85] - When two operators are opposites (such as == and !=), both **will** be defined and one **will** be defined in terms of the other.
+-   [JSF AV Rule 85] - When two operators are opposites (such as `==` and `!=`), both **will** be defined and one **will** be defined in terms of the other.
 
 ### Inheritance
 
@@ -1139,7 +1115,6 @@ The following rules provide additional detail and guidance when considering the 
 -   [JSF AV Rule 92] - A subtype (publicly derived classes) **will** conform to the following guidelines with respect to all classes involved in the polymorphic assignment of different subclass instances to the same variable or parameter during the execution of the system:
     -   Preconditions of derived methods must be at least as weak as the preconditions of the methods they override.
     -   Postconditions of derived methods must be at least as strong as the postconditions of the methods they override.
-
 
     In other words, subclass methods must expect less and deliver more than the base class methods they override. This rule implies that subtypes will conform to the Liskov Substitution Principle.
 
@@ -1165,6 +1140,11 @@ The following rules provide additional detail and guidance when considering the 
     **Exception**: Low level routines that are expressly written for the purpose of data formatting (e.g. marshalling data, endian conversions, etc.) are permitted.
 
 -   [JSV AV Rule 210.1] - Algorithms **shall not** make assumptions concerning the order of allocation of nonstatic data members separated by an access specifier. See also AV Rule 210 on data representation.
--   [JSV AV Rule 211] - Algorithms shall not assume that *shorts*, *ints*, *longs*, *floats*, *doubles* or *long doubles* begin at particular addresses.
+-   [JSV AV Rule 211] - Algorithms shall not assume that `short`s, `int`s, `long`s, `float`s, `double`s or `long double`s begin at particular addresses.
 
     **Exception**: Low level routines that are expressly written for the purpose of data formatting (e.g. marshalling data, endian conversions, etc.) are permitted.
+
+## Change log
+
+* [2016-06-27] - the CamelCase convention was replaced to all lowercase names, including for class names. A temporary version with class names starting with upper case was tested, but finally was dismissed.
+* [2016-06-27] - C style comments are accepted (even recommended) for Doxygen comments.
