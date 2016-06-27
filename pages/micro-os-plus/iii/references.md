@@ -8,8 +8,7 @@ date: 2014-11-16 08:48:09 +0000
 
 ---
 
-Standards and style
--------------------
+## Standards and style
 
 -   [IEEE Std 830-1998: IEEE Recommended Practice for Software Requirements Specifications](http://ieeexplore.ieee.org/xpl/articleDetails.jsp?arnumber=720574), published in 1998
 -   [MISRA C++:2008 Guidelines for the use of the C++ language in critical systems](http://www.misra-cpp.com/Activities/MISRAC/tabid/171/Default.aspx), by Motor Industry Software Reliability Association, published in 2008
@@ -18,8 +17,7 @@ Standards and style
 -   [C++11 - the new ISO C++ standard](http://www.stroustrup.com/C++11FAQ.html) - by Bjarne Stroustrup; although not really a standard, it reflects Stroustrup's thoughts about the standard, and it is also a great collection of links and references.
 -   [Technical Report on C++ Performance](http://www.open-std.org/jtc1/sc22/wg21/docs/TR18015.pdf) - ISO/IEC TR 18015:2006(E)
 
-Embedded operating systems
---------------------------
+## Embedded operating systems
 
 Note: Since GNU/Linux derived embedded systems are intended for a different class of applications, they currently do not make the subject of this project.
 
@@ -47,8 +45,7 @@ Note: Since GNU/Linux derived embedded systems are intended for a different clas
 
 QP Active Object (Actor) Frameworks is a [SourceForge project](http://sourceforge.net/projects/qpc/). The QP family consists of QP/C, QP/C++, and QP-nano frameworks, which are all strictly quality controlled, superbly documented, and commercially licensable. It is backed by [Quantum Leaps LLC](http://www.state-machine.com) who also published a very good book [Practical UML Statecharts in C/C++, Second Edition: Event-Driven Programming for Embedded Systems](http://www.state-machine.com/psicc2/index.php).
 
-C/C++ language & libraries
---------------------------
+## C/C++ language & libraries
 
 -   [GNU Tools for ARM Embedded Processors](http://launchpad.net/gcc-arm-embedded) - Pre-built GNU toolchain from ARM Cortex-M & Cortex-R processors (Cortex-M0/M0+/M3/M4, Cortex-R4/R5)
 -   [C++ reference](http://en.cppreference.com/w/cpp) - a wiki with lots of C++ language and libraries references
@@ -69,8 +66,7 @@ C/C++ language & libraries
 -   [STM32plus](http://andybrown.me.uk/wk/2013/02/10/stm32plus-2-0-0/) - a C++ library for STM32
 -   [libstm32pp](http://github.com/JorgeAparicio/libstm32pp) - A template peripheral library for the STM32 microcontrollers, written in C++
 
-TCP/IP libraries
-----------------
+## TCP/IP libraries
 
 -   [lwIP](http://savannah.nongnu.org/projects/lwip/) - A Lightweight TCP/IP stack
 -   [uIP](http://sourceforge.net/projects/uip-stack/) - The uIP Embedded TCP/IP Stack
@@ -81,8 +77,7 @@ TCP/IP libraries
 -   [Polar SSL](http://polarssl.org) - Straighforward, Secure Communication
 -   [CycloneTCP](http://www.oryx-embedded.com/cyclone_tcp.html) - TCP/IP Solutions for Embedded Systems
 
-Testing
--------
+## Testing
 
 -   [Jenkins](http://jenkins-ci.org) - an extendable open source continuous integration server
 -   [JUnit](http://junit.sourceforge.net) - the common Java framework for unit testing
@@ -92,26 +87,22 @@ Testing
 -   [Google Test](http://code.google.com/p/googletest/) - a great unit testing for C++
 -   [Google Mock](http://code.google.com/p/googlemock/) - adds Hamcrest matchers and mocks
 
-Multi-tasking related links
----------------------------
+## Multi-tasking related links
 
 -   [Python 3 threading](http://docs.python.org/3/library/threading.html) - thread-based parallelism
 -   [Semaphores and other Wait-and-Signal mechanisms](http://www.uio.no/studier/emner/matnat/ifi/INF3150/h03/annet/slides/semaphores.pdf) - a PDF presentation
 
-Miscellaneous
--------------
+## Miscellaneous
 
 -   [Doxygen](http://www.stack.nl/~dimitri/doxygen/index.html) - the de facto standard tool for generating documentation from annotated C++ sources
 
-Hardware
---------
+## Hardware
 
 ### Development boards
 
 -   [LeafLabs](http://leaflabs.com) - a company that builds Maple, an ARM Cortex M3 board, programmed using an Arduino-like development environment.
 
-Books
------
+## Books
 
 -   [The C++ Standard Library - A Tutorial and Reference, 2nd Edition](http://www.cppstdlib.com) - The Best-Selling Programmer Resource - Now Updated for C++11
 -   [Practical UML Statecharts in C/C++, Second Edition: Event-Driven Programming for Embedded Systems](http://www.state-machine.com/psicc2/index.php) also available from [Amazon](http://www.amazon.com/exec/obidos/ASIN/0750687061/quantumleap06-20)

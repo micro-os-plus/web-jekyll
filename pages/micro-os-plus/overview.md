@@ -18,12 +18,23 @@ TODO: add more content
 
 ## Coding styles
 
-* [C++ Coding style]({{ site.baseurl }}/micro-os-plus/iii/coding-style/)
+* [C++ coding style]({{ site.baseurl }}/micro-os-plus/iii/coding-style/)
 * [Doxygen style]({{ site.baseurl }}/micro-os-plus/iii/doxygen-style-guide/)
 
 ## Misc
 
 * [Predefined compiler macros]({{ site.baseurl }}/micro-os-plus/iii/predefined-macros/)
+
+## Links & References
+
+-   [Standards and style]({{ site.baseurl }}/micro-os-plus/iii/references#standards-and-style "wikilink")
+-   [Embedded operating systems]({{ site.baseurl }}/micro-os-plus/iii/references#embedded-operating-systems "wikilink")
+-   [C/C++ language libraries]({{ site.baseurl }}/micro-os-plus/iii/references#cc-language--libraries "wikilink")
+-   [TCP/IP libraries]({{ site.baseurl }}/micro-os-plus/iii/references#tcpip-libraries "wikilink")
+-   [Testing]({{ site.baseurl }}/micro-os-plus/iii/references#testing "wikilink")
+-   [Multi-tasking related links]({{ site.baseurl }}/micro-os-plus/iii/references#multi-tasking-related-links "wikilink")
+-   [Miscellaneous]({{ site.baseurl }}/micro-os-plus/iii/references#miscellaneous "wikilink")
+-   [Books]({{ site.baseurl }}/micro-os-plus/iii/references#books "wikilink")
 
 ## Old versions
 
