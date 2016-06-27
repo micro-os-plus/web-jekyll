@@ -4,10 +4,9 @@ permalink: /micro-os-plus/iii/predefined-macros/
 title: Predefined compiler macros
 author: Liviu Ionescu
 
-date: 2014-02-22 16:02:04 +0000
+date: 2015-08-05 13:48:01 +0000
 
 ---
-
 
 ## Platform dependencies
 
@@ -58,12 +57,11 @@ To see the GCC defines use:
     g++ -dM -E - < /dev/null
     clang++ -dM -E - < /dev/null
 
-### ARM Cortex-M
-
+## ARM Cortex-M
 
 When compiling Cortex-M applications, GCC 4.8 provides the following built-in definitions.
 
-#### ARM Cortex-M0/M0+
+### ARM Cortex-M0/M0+
 
     $ ./arm-none-eabi-gcc -mcpu=cortex-m0 -mthumb -E -dM - < /dev/null | egrep -i 'thumb|arm|cortex' | sort
     #define __ARMEL__ 1
@@ -76,17 +74,18 @@ When compiling Cortex-M applications, GCC 4.8 provides the following built-in de
     #define __ARM_NEON_FP 4
     #define __ARM_PCS 1
     #define __ARM_SIZEOF_MINIMAL_ENUM 1
-    #define __ARM_SIZEOF_WCHAR_T 32
+    #define __ARM_SIZEOF_WCHAR_T 4
     #define __THUMBEL__ 1
     #define __THUMB_INTERWORK__ 1
-    #define __VERSION__ "4.8.3 20131129 (release) [ARM/embedded-4_8-branch revision 205641]"
+    #define __VERSION__ "4.9.3 20150303 (release) [ARM/embedded-4_9-branch revision 221220]"
     #define __arm__ 1
     #define __thumb__ 1
 
-#### ARM Cortex-M3
+### ARM Cortex-M3
 
     $ ./arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -E -dM - < /dev/null | egrep -i 'thumb|arm|cortex' | sort
     #define __ARMEL__ 1
+    #define __ARM_32BIT_STATE 1
     #define __ARM_ARCH 7
     #define __ARM_ARCH_7M__ 1
     #define __ARM_ARCH_EXT_IDIV__ 1
@@ -102,18 +101,20 @@ When compiling Cortex-M applications, GCC 4.8 provides the following built-in de
     #define __ARM_NEON_FP 4
     #define __ARM_PCS 1
     #define __ARM_SIZEOF_MINIMAL_ENUM 1
-    #define __ARM_SIZEOF_WCHAR_T 32
+    #define __ARM_SIZEOF_WCHAR_T 4
     #define __THUMBEL__ 1
     #define __THUMB_INTERWORK__ 1
-    #define __VERSION__ "4.8.3 20131129 (release) [ARM/embedded-4_8-branch revision 205641]"
+    #define __VERSION__ "4.9.3 20150303 (release) [ARM/embedded-4_9-branch revision 221220]"
     #define __arm__ 1
     #define __thumb2__ 1
     #define __thumb__ 1
 
-#### ARM Cortex-M4
+### ARM Cortex-M4
 
-    $ ./arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=soft -E -dM - < /dev/null | egrep -i 'thumb|arm|cortex' | sort
+    $ ./arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=soft \
+    -E -dM - < /dev/null | egrep -i 'thumb|arm|cortex|fp__|version|abi' | sort
     #define __ARMEL__ 1
+    #define __ARM_32BIT_STATE 1
     #define __ARM_ARCH 7
     #define __ARM_ARCH_7EM__ 1
     #define __ARM_ARCH_EXT_IDIV__ 1
@@ -131,16 +132,21 @@ When compiling Cortex-M applications, GCC 4.8 provides the following built-in de
     #define __ARM_NEON_FP 4
     #define __ARM_PCS 1
     #define __ARM_SIZEOF_MINIMAL_ENUM 1
-    #define __ARM_SIZEOF_WCHAR_T 32
+    #define __ARM_SIZEOF_WCHAR_T 4
+    #define __GXX_ABI_VERSION 1002
+    #define __SOFTFP__ 1
     #define __THUMBEL__ 1
     #define __THUMB_INTERWORK__ 1
-    #define __VERSION__ "4.8.3 20131129 (release) [ARM/embedded-4_8-branch revision 205641]"
+    #define __VERSION__ "4.9.3 20150303 (release) [ARM/embedded-4_9-branch revision 221220]"
+    #define __VFP_FP__ 1
     #define __arm__ 1
     #define __thumb2__ 1
     #define __thumb__ 1
 
-    $ ./arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -E -dM - < /dev/null | egrep -i 'thumb|arm|cortex' | sort
+    $ ./arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard \
+    -mfpu=fpv4-sp-d16 -E -dM - < /dev/null | egrep -i 'thumb|arm|cortex|fp__|version|abi' | sort
     #define __ARMEL__ 1
+    #define __ARM_32BIT_STATE 1
     #define __ARM_ARCH 7
     #define __ARM_ARCH_7EM__ 1
     #define __ARM_ARCH_EXT_IDIV__ 1
@@ -159,10 +165,84 @@ When compiling Cortex-M applications, GCC 4.8 provides the following built-in de
     #define __ARM_NEON_FP 4
     #define __ARM_PCS_VFP 1
     #define __ARM_SIZEOF_MINIMAL_ENUM 1
-    #define __ARM_SIZEOF_WCHAR_T 32
+    #define __ARM_SIZEOF_WCHAR_T 4
+    #define __GXX_ABI_VERSION 1002
     #define __THUMBEL__ 1
     #define __THUMB_INTERWORK__ 1
-    #define __VERSION__ "4.8.3 20131129 (release) [ARM/embedded-4_8-branch revision 205641]"
+    #define __VERSION__ "4.9.3 20150303 (release) [ARM/embedded-4_9-branch revision 221220]"
+    #define __VFP_FP__ 1
     #define __arm__ 1
     #define __thumb2__ 1
     #define __thumb__ 1
+
+### ARM Cortex-M7
+
+    $ ./arm-none-eabi-gcc -mcpu=cortex-m7 -mthumb -mfloat-abi=soft \
+    -E -dM - < /dev/null | egrep -i 'thumb|arm|cortex|fp__|version|abi' | sort
+    #define __ARMEL__ 1
+    #define __ARM_32BIT_STATE 1
+    #define __ARM_ARCH 7
+    #define __ARM_ARCH_7EM__ 1
+    #define __ARM_ARCH_EXT_IDIV__ 1
+    #define __ARM_ARCH_ISA_THUMB 2
+    #define __ARM_ARCH_PROFILE 77
+    #define __ARM_EABI__ 1
+    #define __ARM_FEATURE_CLZ 1
+    #define __ARM_FEATURE_DSP 1
+    #define __ARM_FEATURE_LDREX 7
+    #define __ARM_FEATURE_QBIT 1
+    #define __ARM_FEATURE_SAT 1
+    #define __ARM_FEATURE_SIMD32 1
+    #define __ARM_FEATURE_UNALIGNED 1
+    #define __ARM_FP 12
+    #define __ARM_NEON_FP 4
+    #define __ARM_PCS 1
+    #define __ARM_SIZEOF_MINIMAL_ENUM 1
+    #define __ARM_SIZEOF_WCHAR_T 4
+    #define __GXX_ABI_VERSION 1002
+    #define __SOFTFP__ 1
+    #define __THUMBEL__ 1
+    #define __THUMB_INTERWORK__ 1
+    #define __VERSION__ "4.9.3 20150303 (release) [ARM/embedded-4_9-branch revision 221220]"
+    #define __VFP_FP__ 1
+    #define __arm__ 1
+    #define __thumb2__ 1
+    #define __thumb__ 1
+
+## Freestanding
+
+To check if -ffreestanding was defined, you can use the following:
+
+    #define __STDC_HOSTED__ 0
+
+By default, i.e. with -fhosted defined, the value is 1.
+
+## C++ Exceptions
+
+To check if a C++ program is compiled with -fexceptions, use:
+
+    #define __EXCEPTIONS 1
+
+## Other macros
+
+    #define __CHAR_UNSIGNED__ 1
+    #define __LP64__ 1
+
+## Warnings
+
+When compiling third party sources, it might be necessary to temporarily disable some warnings:
+
+    // [ILG]
+    #pragma GCC diagnostic push
+    #pragma GCC diagnostic ignored "-Wundef"
+    #pragma GCC diagnostic ignored "-Wsign-conversion"
+
+    // [ILG]
+    #pragma GCC diagnostic pop
+
+    // [ILG]
+    #pragma clang diagnostic push
+    #pragma clang diagnostic ignored "-Wundef"
+
+    // [ILG]
+    #pragma clang diagnostic pop
