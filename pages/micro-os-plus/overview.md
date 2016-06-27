@@ -19,6 +19,7 @@ TODO: add more content
 ## Coding styles
 
 * [Coding style]({{ site.baseurl }}/micro-os-plus/iii/coding-style/)
+* [Doxygen style]({{ site.baseurl }}/micro-os-plus/iii/doxygen-style-guide/)
 
 ## Old versions
 
