@@ -21,6 +21,10 @@ TODO: add more content
 * [Coding style]({{ site.baseurl }}/micro-os-plus/iii/coding-style/)
 * [Doxygen style]({{ site.baseurl }}/micro-os-plus/iii/doxygen-style-guide/)
 
+## Misc
+
+* [Predefined compiler macros]({{ site.baseurl }}/micro-os-plus/iii/predefined-macros/)
+
 ## Old versions
 
 * [first edition (2011)]({{ site.baseurl }}/micro-os-plus/i/The_µOS++_(micro_os_plus_plus)) ([orig wiki](http://micro-os-plus.sourceforge.net/old-wiki/))
