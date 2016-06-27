@@ -8,34 +8,32 @@ date: 2014-02-22 16:02:04 +0000
 
 ---
 
-µOS++ uses the common C++ naming convention, based on the [CamelCase](http://en.wikipedia.org/wiki/CamelCase) convention.
+## Underscore separated lower case names
 
-Full words vs. short words
-==========================
+In previous versions, µOS++ used the [CamelCase](http://en.wikipedia.org/wiki/CamelCase) naming convention, but, after a long consideration, the naming was brought back to what the ISO standard libraries use, and to what existing coding styles (like MISRA, JSF) recommend, which is **underscore separated lower case names**.
+
+## Full words vs. short words
 
 Whenever possible, it is recommended to use the full words; shortening words in member or member function names does not make the program shorter or faster, but, when used properly, highly increases the readability of the program.
 
     int initialise(); <- instead of init();
     int configure(); <- instead of config();
     ...
-    int delaySeconds; <- instead of delaySec;
+    int delay_seconds; <- instead of delay_sec;
 
-Pairs of opposed actions or names
-=================================
+## Pairs of opposed actions or names
 
-Antonyms
---------
+### Antonyms
 
 When defining pairs of opposed actions, use the proper antonyms:
 
-    int startAcquisition();
-    int stopAcquisition();
+    int start_acquisition();
+    int stop_acquisition();
     ...
-    int enableInterrupts();
-    int disableInterrupts();
+    int enable_interrupts();
+    int disable_interrupts();
 
-Technical terms
----------------
+### Technical terms
 
 Sometimes, even if the words are not listed in dictionaries as antonyms, the pairs of opposed names are defined by practice:
 
@@ -47,86 +45,76 @@ Sometimes, even if the words are not listed in dictionaries as antonyms, the pai
     int acquire();
     int release();
 
-start/stop vs. begin/end
-------------------------
+### start/stop vs. begin/end
 
 When defining actions, prefer **start**/**stop** to **begin**/**end**, since they have a stronger verb-like meaning (end is more an adjective than a verb).
 
-    int startAcquisition(); <- instead of beginAcquisition()
-    int stopAcquisition(); <- instead of endAcquisition()
+    int start_acquisition(); <- instead of begin_acquisition()
+    int stop_acquisition(); <- instead of end_acquisition()
 
 However, when the meaning is adjectival, for example adding determinants to a noun, the pair begin/end is preferred.
 
-    int listBegin; <- instead of listStart
-    int listEnd; <- instead of listStop
+    int list_begin; <- instead of list_start
+    int list_end; <- instead of list_stop
 
-Class names
-===========
+## Class names
 
-Class names start with upper case letters, and are singular names or nominative constructs.
+Class names are singular names or nominative constructs; they do not need to start with upper case letters.
 
-    class Logger;
-    class CircularBuffer;
+    class logger;
+    class circular_buffer;
 
-Derived class names
--------------------
+### Derived class names
 
-Derived class names should extend the base class name, by adding a differentiator at one end.
+Derived class names should extend the base class name, by adding a differentiator at the end.
 
-    class OSDeviceCharacterBuffered : public OSDeviceCharacter
+    class device_character_buffered : public device_character
     {
      ...
     };
 
-Abstract base classes
----------------------
+### Abstract base classes
 
-When an abstract class is used as a base class for concrete implementations, the word Base can be used in the name, and this name can be skipped in the derived class name:
+When an abstract class is used as a base class for concrete implementations, the suffix `_base` can be added to the name, and this name can be skipped in the derived class name:
 
-    class DeviceCharacterBufferedUsart0 : public DeviceCharacterBufferedBase
+    class device_character_buffered_usart0 : public device_character_buffered_base
     {
      ...
     };
 
-Templates
-=========
+## Templates
 
 Templates are a great C++ feature, that can be used for many purposes, with the common one being to implement compile time polymorphism.
 
-Template class names
---------------------
+### Template class names
 
-Template class names follow the same convention as the class names, but are prefixed with an upper case 'T'.
+Template class names follow the same convention as the class names. No need to prefix them with anything.
 
-When instantiated, obviously the instance names drop the initial 'T'.
-
-Template parameter types
-------------------------
+### Template parameter types
 
 There are several template parameter types, parameters naming user-defined types (like classes), parameters naming primitive types and constant parameters (usually integer).
 
-Although not required by the language, it is recommended to define parameters naming user-defined types with **class Name_T** and parameters naming primitive types **typename Name_T**.
+Although not required by the language, it is recommended to define parameters naming types with `typename Name_T`.
 
 In class templates, it is recommended to alias the template parameters to new names, and use these new names in code, reserving the template parameters only to define the template syntax.
 
-    template <class GPIO_T, typename Result_T = void, int Bit_T>
-    class TPin
+    template <typename GPIO_T, typename Result_T = void, int Bit_T>
+    class pin
     {
     public:
-      typedef GPIO_T GPIO;
-      typedef Result_T result_t;
+      using gpio = GPIO_T;
+      using result_t = Result_T ;
       static const int bit = Bit_T;
      ...
     }
 
     // Explicit instantiation
-    template class TPin<GPIOC1>;
-    typename class TPin<GPIOC1> Pin;
+    template class pin<GPIOC1>;
+    using my_pin = class pin<GPIOC1> ;
 
-Member function names
-=====================
+## Member function names
 
-All member function names start with lower case letters.
+Function names are formed from lower case letters.
 
 Since functions define actions to be performed upon the object, the function name should have the function of a predicate, and usually **start with an imperative verb**.
 
@@ -134,26 +122,19 @@ Since functions define actions to be performed upon the object, the function nam
 
 If there are multiple functions that perform similar actions, they should differentiate by the following noun, with the function of a direct complement.
 
-    int readByte();
-    long readLong();
+    int read_byte();
+    long read_long();
     ...
-    void readBlock();
+    void read_block();
 
-The rule of starting with a verb is not absolute, when multiple functions are logically grouped by a common criteria, then predicative groups can be used as function names, and the verb is placed at the end.
+The rule of starting with a verb is not absolute, when multiple functions are logically grouped by a common criteria, then predicative groups can be used as function names, and the verb is placed at the end. However, when such names occur, it might be a sign that the design can be further refined by defining additional objects, for example instead of:
 
-    bool eventWaitPrepare(OSEvent_t event);
-    OSEventWaitReturn_t eventWaitPerform(void);
+    void critical_enter();
+    void critical_exit();
 
-    int eventNotify(OSEvent_t event, OSEventWaitReturn_t ret = OSEventWaitReturn::OS_VOID);
+a separate object to manage critical sections might be useful, like:
 
-However, when such names occur, it might be a sign that the design can be further refined by defining additional objects, for example instead of
-
-    void criticalEnter();
-    void criticalExit();
-
-in the new version of µOS++ we use a separate object to manage critical sections, like
-
-    class OSCriticalSection
+    class critical
     {
       void enter(void);
       void exit(void);
@@ -161,113 +142,94 @@ in the new version of µOS++ we use a separate object to manage critical section
 
 In this case the naming convention is again simplified, according to the initial recommendation to use a verb.
 
-Getters/Setters
----------------
+### Accessors/mutators
 
-As in most object oriented designs, member variables are usually private to the class and external direct access to them is discouraged. Instead, special getters and setters should be defined.
+As in most object oriented designs, member variables are usually private to the class and external direct access to them is discouraged. Instead, special accessors and mutators should be defined.
 
-The name should contain exactly the variable name, prefixed with **get** or **set**.
+The name should generally contain the variable name, without parameters for the accessors and with at least one parameter for the mutators.
 
     private:
-      int m_count;
+      int prio_;
 
     public:
-      int getCount(void);
-      void setCount(int);
+      int prio(void);
+      void prio(int);
 
-get/set vs. read/write
-----------------------
+### get/set vs. read/write
 
-When dealing with hardware, even if the memory mapped registers are seen as class members, it is recommended to prefix member functions with read/write, not get/set, which should be used only for accessing private data members of usual objects.
+When dealing with hardware, even if the memory mapped registers are seen as class members, it is recommended to prefix member functions with read/write, not get/set, which are usually the sign of accessors/mutators in other languages.
 
     hal::cortexm::reg32_t
-    readMode(void);
+    read_mode(void);
 
     void
-    writeMode(const hal::cortexm::reg32_t value);
+    write_mode(const hal::cortexm::reg32_t value);
 
-Boolean functions
------------------
+### Boolean functions
 
 Functions that return boolean values should start with boolean verbs, like **is**, **has**, **does**. Depending on the context, past or future tense versions, like **was** or **will** may be more appropriate.
 
-    bool isAvailable();
-    bool wasInterrupted();
-    bool willBlock();
-    bool hasMembers();
-    bool doesReturn();  <-- instead of 'bool returns();'
+    bool is_available();
+    bool was_interrupted();
+    bool will_block();
+    bool has_members();
+    bool does_return();  <-- instead of 'bool returns();'
 
-initialise() vs. configure()
-----------------------------
+### initialise() vs. configure()
 
 In classes implementing device drivers, there are member functions that can be called only before the device is enabled and functions that can be called at any moment.
 
 To mark this distinction, the recommended names should start with **initialise** for functions that are used before the device is enabled and with **configure** for functions that can be used at any moment.
 
-    bool initialiseSomething(void);
+    bool initialise_something(void);
     ...
-    bool configureBaudRate(BaudRate_t baudRate);
-    bool configureHighSpeed(void);
+    bool configure_baud_rate(baud_rate_t baud_rate);
+    bool configure_high_speed(void);
 
-It is recommended to use the full words, shortening initialise() to init() or configure() to config() does not make the program shorter or faster.
+It is recommended to use the full words, shortening `initialise()` to `init()` or `configure()` to `config()` does not make the program shorter or faster.
 
-set() vs. configure()
----------------------
+### set() vs. configure()
 
-As mentioned before, setMember() generally should be used as a setter for a class member variable. When dealing with device drivers, changing the state of the device is in fact a configuration change, so it is more appropriate to name functions like configureSomething().
+When dealing with device drivers, changing the state of the device is in fact a configuration change, so it is more appropriate to name functions like `configure_something()`.
 
-Member variables names
-======================
+## Member variables names
 
 Similar to member functions, all member variables names start with lower case letters.
 
 Since member variables define characteristics of the object, the member variables name should have the function of an attribute, and usually **start with a noun**. Boolean status variables naming convention should follow the boolean function naming convention, i.e. start with a verb like **is**, **has**, **does**, at present/past/future tense.
 
-Private member variables names
-------------------------------
+### Private member variables names
 
-As the most common type of member variable names, the private member variables should be prefixed with **m_**.
+As the most common type of member variable names, the private member variables should be suffixed with `_`.
 
     private:
-      int m_count;
-      char* m_bufferAddress;
-      int m_bufferSize;
+      int count_;
+      char* buffer_address_;
+      int buffer_size_;
 
-      bool m_isRunning;
-      bool m_wasCancelled;
+      bool is_running_;
+      bool was_cancelled_;
 
-Static member variables names
------------------------------
+### Static member variables names
 
-Static member variables should be prefixed with **ms_**.
+Static member variables need not be prefixed or suffixed.
 
-    static OSThread* volatile ms_pThreadRunning;
+    static constexpr uint32_t frequency_hz = 1;
 
-Public member names
--------------------
+### Public member names
 
-As an exception to the above rules, some globally available member variables, like those in the global **os** or **app** objects, can be named without the **m_** prefix.
+As an exception to the above rules, some globally available member variables, can be named without the `_` suffix.
 
-    class OS : public OSImpl
-    {
-    public:
-      ...
-      OSScheduler sched;
-      ...
-    };
-
-Array members
--------------
+### Array members
 
 For a better code readability, it is recommended to name array members or pointers to arrays explicitly, like this:
 
-    OSTask** m_pWaitingTasksArray;
-    unsigned short m_waitingTasksArraySize;
+    thread** waiting_array;
+    unsigned short waiting_array_size;
 
-const & volatile
-================
+## const & volatile
 
-The rules for using these keywords are sometimes tricky, and the easiest to remember is *const makes a constant whatever is on its left*:
+The rules for using these keywords are sometimes tricky, and the easiest to remember is **_const makes a constant whatever is on its left_**:
 
      int* const p1; // constant pointer to int
      const int* p2; // pointer to an int constant
@@ -280,356 +242,124 @@ Systematic use of the above rule would put the type of scalars at the left of co
 So, for scalars and for constants, it is also acceptable to use the more common order:
 
      const int n;
-     static const int CONST = 7;
+     static const int my_const = 7;
 
-Constants
-=========
+## Constants
 
-Constant names are all upper case, with words separated by underscores, as in most C programs.
+Constant names are regular names, all lower case.
 
 Although in C/C++ it is possible to define constants using the preprocessor, it is recommended to use them only for project configuration variables, otherwise use only typed definitions, and the compiler might catch some errors.
 
-For individual definitions, the recommended way is to use **constexpr**.
+For individual definitions, the recommended way is to use `constexpr`.
 
-    constexpr threadId_t NO_ID = 0xFF;
+    constexpr thread_id_t no_id = 0xFF;
 
-For definitions inside a class, use **static constexpr** members.
+For definitions inside a class, use `static constexpr` members.
 
-    static constexpr OSReturn_t OS_OK = 0;
+    static constexpr return_t os_ok = 0;
 
 Depending on the specific scope, if the constants are to be used only inside the given class, they can be made private.
 
-Constants can be grouped in separated classes, like the system OSReturn class, that groups together various return values, although enums would be probably more appropriate.
+Constants can be grouped in separated classes, that groups together various return values, although enums would be probably more appropriate.
 
-For group of constants, the recommended method is to use [class enumerations]({{ site.baseurl }}/micro-os-plus/ii/#Enumeration_definitions "wikilink").
+For group of constants, the recommended method is to use enumerations.
 
-static constexpr vs. constexpr static
--------------------------------------
+### static constexpr vs. constexpr static
 
-The recommended order is **static constexpr**.
+The recommended order is `static constexpr`.
 
-Type definitions
-================
+## Type definitions
 
 For a better code maintainability, where needed, it is recommended to use type definitions instead of direct C/C++ scalar types.
 
-Scalar type definitions should start with lower case letters and end with **_t**; class aliases should follow the usual naming convention of class names.
+Scalar type definitions should start with lower case letters and end with `_t`; class aliases should follow the usual naming convention of class names.
 
-Language type definition
-------------------------
+### Language type definition
 
-### Explicit size definitions
+#### Explicit size definitions
 
-These are mainly the definitions from <stdint.h>
+These are mainly the definitions from `<stdint.h>`
 
--   **uint8_t**, **int8_t**
--   **uint16_t**, **int16_t**
--   **uint32_t**, **int32_t**
+-   `uint8_t`, `int8_t`
+-   `uint16_t`, `int16_t`
+-   `uint32_t`, `int32_t`
 
-### Explicit size versus platform size
+#### Explicit size versus platform size
 
-Once we introduce the above definitions, the usual question is when to use **int** versus **int8_t**/**int16_t**/**int32_t** or **uint_t** versus **uint8_t**/**uint16_t**/**uint32_t**?
+Once we introduce the above definitions, the usual question is when to use `int` versus `int8_t`/`int16_t`/`int32_t` or `unsigned int` versus `uint8_t`/`uint16_t`/`uint32_t`?
 
-Probably there is no single rule, but several usage cases. For applications that depend on a specific size, regardless of the platform, it is recommended to use the explicit size type definitions. Otherwise, using the platform native size may be more efficient in some cases. For example loop counts are usually better compiled when the the platform register size is used, so even if you know that the counter is small, using uint8_t instead of unsigned int may not produce a shorter/faster code (on the contrary).
+Probably there is no single rule, but several usage cases. For applications that depend on a specific size, regardless of the platform, it is recommended to use the explicit size type definitions. Otherwise, using the platform native size may be more efficient in some cases. For example loop counts are usually better compiled when the the platform register size is used, so even if you know that the counter is small, using `uint8_t` instead of unsigned int may not produce a shorter/faster code (on the contrary).
 
 As a general rule, when defining types that should match a memory mapped structure, or a packet header, or some other fixed size structure, you obviously need to use the explicit size definitions. For the rest, platform size definitions might be preferred.
 
-### Signed versus unsigned
+#### Signed versus unsigned
 
-Another usual question is when to use int (signed) versus unsigned int. The answer is obvious, if the variable you want to represent can take negative values, then use signed variables. Otherwise, use unsigned variables.
+Another usual question is when to use `int` (signed) versus `unsigned int`. The answer is obvious, if the variable you want to represent can take negative values, then use signed variables. Otherwise, use unsigned variables.
 
 One single note: sometimes, although the variable itself can take only positive values, it might be needed to also multiplex error codes on the same variable, and, in order to differentiate them, error cases are defined as impossible/illegal negative values.
 
-Although an universal solution is not enforced, it is preferable NOT to return error codes multiplexed with valid content; instead, use a separate **OSReturn_t** for errors, and leave the value unaffected by error processing.
+Although an universal solution is not enforced, it is preferable NOT to return error codes multiplexed with valid content; instead, return the error code and use a separate pointer parameter to return values, and leave the value unaffected by error processing.
 
-User type definitions
----------------------
+### User type definitions
 
 These are custom definitions, made to increase code readability and maintainability. Preferably they should rely on the previous type definitions.
 
-    typedef uint8_t threadPriority_t;
+    typedef uint8_t thread_priority_t;
 
 If the new type can be an alias, that does not introduce a new type definition, the C++11 syntax is:
 
-    using threadPriority_t = uint8_t threadPriority_t;
+    using thread_priority_t = uint8_t;
 
-Enumeration definitions
------------------------
+### Enumeration definitions
 
-C++11 solved the old C enumeration problem and introduced strongly typed and scoped enumerations (**enum class**), so usually there is no need to use embedded classes with constants.
+C++11 solved the old C enumeration problem and introduced strongly typed and scoped enumerations (`enum class`), so usually there is no need to use embedded classes with constants.
 
     typedef uint32_t mode_t;
 
-    enum class Mode : mode_t
+    enum class mode : mode_t
     {
-        Input = 0, Output = 1, Alternate = 2, Analog = 3
+        input = 0, output = 1, alternate = 2, analog = 3
     };
 
-    static const mode_t MODE_MASK = 0x3;
+    static const mode_t mode_mask = 0x3;
     ...
-    someFunction(Mode::Input);
+    some_function(mode::input);
 
-Structure definitions
----------------------
+### Structure definitions
 
 Usually, structure definitions should be avoided, and be replaced by class definitions.
 
 However, if for any reasons, struct definitions are needed, it is recommended to define both the struct name and the type, using the following syntax:
 
-    typedef struct Region_s
+    typedef struct region_s
     {
-      regionAddress_t address;
-      regionSize_t size;
-    } Region;
+      region_address_t address;
+      region_size_t size;
+    } region_t;
 
-Aliases to classes
-------------------
+### Aliases to classes
 
-For a more uniform look, type names used as aliases to class names should not end with **_t**.
+For a more uniform look, type names used as aliases to class names need not end with `_t`.
 
-    class MyClass
+    class my_class
     {
     public:
-      regionAddress_t address;
-      regionSize_t size;
+      region_address_t address;
+      region_size_t size;
     };
 
-    typedef MyClass MyClassAlias;
+    using my_class_alias = my_class;
 
-or even better, if the alias does not need to introduce a new type:
-
-    using MyClassAlias = MyClass;
-
-Measuring units
-===============
+## Measuring units
 
 Whenever not absolutely obvious, append the measuring units to the member variable or function name.
 
-    int busFrequencyHz;
-    int delaySeconds;
-    int delayMilliseconds;
-    int delayMicroseconds;
-    int lengthMetres;
-    int lengthCentimetres;
-    int lengthMillimetres;
+    int bus_frequency_hz;
+    int delay_seconds;
+    int delay_milliseconds;
+    int delay_microseconds;
+    int length_metres;
+    int length_centimetres;
+    int length_millimetres;
 
 If possible, use the full unit names.
-
-Use of underscore
-=================
-
-Normally under camelCase rules, the underscore is no longer necessary. However, in special cases the underscore can be used as a class specifier separator.
-
-    inline static void
-    ledActiveOn(void);
-
-    inline static void
-    ISR_ledActiveOn(void);
-
-XCDL configuration definitions
-==============================
-
-There are several types of configuration definitions:
-
--   conditional compilation definitions
--   value definitions
-
-Conditional compilation definitions
------------------------------------
-
-These are the definitions used to select various components to compile.
-
-By convention, they all start with **OS_INCLUDE_** and are followed by the path of the component.
-
-Examples:
-
--   OS_INCLUDE_HAL_ARCHITECTURE_SYNTHETIC_POSIX
--   OS_INCLUDE_HAL_PLATFORM_SYNTHETIC_OSX
--   OS_INCLUDE_PORTABLE_DIAGNOSTICS_TRACE
-
-Value definitions
------------------
-
-These are the definitions used to configure various values at compile time.
-
-By convention, they all start with the value type:
-
--   **OS_STRING_**
--   **OS_INTEGER_**
-
-Examples:
-
--   OS_INTEGER_CORE_SCHEDULER_MAXUSERTHREADS
--   OS_STRING_CORE_SCHEDULER_CUSTOM_HEADER
-
-PATH definitions
-----------------
-
-These special definitions are used to enter strings that contain file paths, for example for custom preprocessor includes.
-
-By convention, they all start with:
-
--   **OS_PATH_**
-
-Examples:
-
--   OS_PATH_HAL_PLATFORM_PLATFORMIMPLEMENTATION
-
-Platform dependencies
-=====================
-
-If some parts of the code are platform dependent, test the following preprocessor definitions:
-
-    #if defined(__APPLE__)
-    #if defined(__linux__)
-    #if defined(__x86_64__)
-
-To check the compiler:
-
-    #if defined (__GNUC__)
-    #if __GNUC__ == 4 && __GNUC_MINOR__ == 7
-    #if defined(__clang__)
-
-To check the size of the pointer:
-
-    #if __SIZEOF_POINTER__ == __SIZEOF_INT__
-    #elif __SIZEOF_POINTER__ == __SIZEOF_LONG__
-    #elif __SIZEOF_POINTER__ == __SIZEOF_LONG_LONG__
-
-To check if there are no **long long** variables:
-
-    #if !defined(__SIZEOF_LONG_LONG)
-
-To check if the compiling unit is C++:
-
-    #if defined (__cplusplus)
-
-To check if the compiling unit is an assembly file:
-
-    #if defined(__ASSEMBLER__)
-
-To check if optimisation is enabled (more than -O0):
-
-    #if defined(__OPTIMIZE__)
-
-To check if optimisation for size is enabled (-Os):
-
-    #if defined(__OPTIMIZE_SIZE__)
-
-To check if no inlines are enabled:
-
-    #if defined(__NO_INLINE__)
-
-To see the GCC defines use:
-
-    g++ -dM -E - < /dev/null
-    clang++ -dM -E - < /dev/null
-
-ARM Cortex-M
-------------
-
-When compiling Cortex-M applications, GCC 4.8 provides the following built-in definitions.
-
-### ARM Cortex-M0/M0+
-
-    $ ./arm-none-eabi-gcc -mcpu=cortex-m0 -mthumb -E -dM - < /dev/null | egrep -i 'thumb|arm|cortex' | sort
-    #define __ARMEL__ 1
-    #define __ARM_ARCH 6
-    #define __ARM_ARCH_6M__ 1
-    #define __ARM_ARCH_ISA_THUMB 1
-    #define __ARM_ARCH_PROFILE 77
-    #define __ARM_EABI__ 1
-    #define __ARM_FP 12
-    #define __ARM_NEON_FP 4
-    #define __ARM_PCS 1
-    #define __ARM_SIZEOF_MINIMAL_ENUM 1
-    #define __ARM_SIZEOF_WCHAR_T 32
-    #define __THUMBEL__ 1
-    #define __THUMB_INTERWORK__ 1
-    #define __VERSION__ "4.8.3 20131129 (release) [ARM/embedded-4_8-branch revision 205641]"
-    #define __arm__ 1
-    #define __thumb__ 1
-
-### ARM Cortex-M3
-
-    $ ./arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -E -dM - < /dev/null | egrep -i 'thumb|arm|cortex' | sort
-    #define __ARMEL__ 1
-    #define __ARM_ARCH 7
-    #define __ARM_ARCH_7M__ 1
-    #define __ARM_ARCH_EXT_IDIV__ 1
-    #define __ARM_ARCH_ISA_THUMB 2
-    #define __ARM_ARCH_PROFILE 77
-    #define __ARM_EABI__ 1
-    #define __ARM_FEATURE_CLZ 1
-    #define __ARM_FEATURE_LDREX 7
-    #define __ARM_FEATURE_QBIT 1
-    #define __ARM_FEATURE_SAT 1
-    #define __ARM_FEATURE_UNALIGNED 1
-    #define __ARM_FP 12
-    #define __ARM_NEON_FP 4
-    #define __ARM_PCS 1
-    #define __ARM_SIZEOF_MINIMAL_ENUM 1
-    #define __ARM_SIZEOF_WCHAR_T 32
-    #define __THUMBEL__ 1
-    #define __THUMB_INTERWORK__ 1
-    #define __VERSION__ "4.8.3 20131129 (release) [ARM/embedded-4_8-branch revision 205641]"
-    #define __arm__ 1
-    #define __thumb2__ 1
-    #define __thumb__ 1
-
-### ARM Cortex-M4
-
-    $ ./arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=soft -E -dM - < /dev/null | egrep -i 'thumb|arm|cortex' | sort
-    #define __ARMEL__ 1
-    #define __ARM_ARCH 7
-    #define __ARM_ARCH_7EM__ 1
-    #define __ARM_ARCH_EXT_IDIV__ 1
-    #define __ARM_ARCH_ISA_THUMB 2
-    #define __ARM_ARCH_PROFILE 77
-    #define __ARM_EABI__ 1
-    #define __ARM_FEATURE_CLZ 1
-    #define __ARM_FEATURE_DSP 1
-    #define __ARM_FEATURE_LDREX 7
-    #define __ARM_FEATURE_QBIT 1
-    #define __ARM_FEATURE_SAT 1
-    #define __ARM_FEATURE_SIMD32 1
-    #define __ARM_FEATURE_UNALIGNED 1
-    #define __ARM_FP 12
-    #define __ARM_NEON_FP 4
-    #define __ARM_PCS 1
-    #define __ARM_SIZEOF_MINIMAL_ENUM 1
-    #define __ARM_SIZEOF_WCHAR_T 32
-    #define __THUMBEL__ 1
-    #define __THUMB_INTERWORK__ 1
-    #define __VERSION__ "4.8.3 20131129 (release) [ARM/embedded-4_8-branch revision 205641]"
-    #define __arm__ 1
-    #define __thumb2__ 1
-    #define __thumb__ 1
-
-    $ ./arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -E -dM - < /dev/null | egrep -i 'thumb|arm|cortex' | sort
-    #define __ARMEL__ 1
-    #define __ARM_ARCH 7
-    #define __ARM_ARCH_7EM__ 1
-    #define __ARM_ARCH_EXT_IDIV__ 1
-    #define __ARM_ARCH_ISA_THUMB 2
-    #define __ARM_ARCH_PROFILE 77
-    #define __ARM_EABI__ 1
-    #define __ARM_FEATURE_CLZ 1
-    #define __ARM_FEATURE_DSP 1
-    #define __ARM_FEATURE_FMA 1
-    #define __ARM_FEATURE_LDREX 7
-    #define __ARM_FEATURE_QBIT 1
-    #define __ARM_FEATURE_SAT 1
-    #define __ARM_FEATURE_SIMD32 1
-    #define __ARM_FEATURE_UNALIGNED 1
-    #define __ARM_FP 4
-    #define __ARM_NEON_FP 4
-    #define __ARM_PCS_VFP 1
-    #define __ARM_SIZEOF_MINIMAL_ENUM 1
-    #define __ARM_SIZEOF_WCHAR_T 32
-    #define __THUMBEL__ 1
-    #define __THUMB_INTERWORK__ 1
-    #define __VERSION__ "4.8.3 20131129 (release) [ARM/embedded-4_8-branch revision 205641]"
-    #define __arm__ 1
-    #define __thumb2__ 1
-    #define __thumb__ 1

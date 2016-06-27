@@ -19,6 +19,7 @@ TODO: add more content
 ## Coding styles
 
 * [C++ coding style]({{ site.baseurl }}/micro-os-plus/iii/coding-style/)
+* [C/C++ naming conventions]({{ site.baseurl }}/micro-os-plus/iii/naming-conventions/)
 * [Doxygen style]({{ site.baseurl }}/micro-os-plus/iii/doxygen-style-guide/)
 
 ## Misc
