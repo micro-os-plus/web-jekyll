@@ -1,23 +1,29 @@
 #### [Home]({{ site.baseurl }}/)
 
-#### [CMSIS++]({{ site.baseurl }}/cmsis-plus/)
+#### CMSIS++
 
 * [Overview]({{ site.baseurl }}/cmsis-plus/)
 * [RTOS API]({{ site.baseurl }}/cmsis-plus/rtos/)
 
-#### [µOS++ IIIe]({{ site.baseurl }}/micro-os-plus/)
+#### µOS++ IIIe
 
 * [Overview]({{ site.baseurl }}/micro-os-plus/)
 
-#### [xPacks/XCDL]({{ site.baseurl }}/xpacks/)
+#### xPacks/XCDL
 
 * [Overview]({{ site.baseurl }}/xpacks/)
 
-#### Reference
+#### References
 
 * [CMSIS++]({{ site.baseurl }}/reference/cmsis-plus/)
 
-#### [Support]({{ site.baseurl }}/support/)
+#### Developer
+
+* [Overview]({{ site.baseurl }}/develop/)
+* [C++ coding style]({{ site.baseurl }}/develop/coding-style/)
+* [Links & references]({{ site.baseurl }}/develop/references/)
+
+#### Support
 
 * [Overview]({{ site.baseurl }}/support/)
 * [Known issues]({{ site.baseurl }}/support/known-issues/)

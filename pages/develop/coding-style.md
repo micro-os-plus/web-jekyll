@@ -1,6 +1,6 @@
 ---
 layout: page
-permalink: /micro-os-plus/iii/coding-style/
+permalink: /develop/coding-style/
 title: C++ coding style
 author: Liviu Ionescu
 

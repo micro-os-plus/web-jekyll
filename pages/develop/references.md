@@ -1,6 +1,6 @@
 ---
 layout: page
-permalink: /micro-os-plus/iii/references/
+permalink: /develop/references/
 title: References
 author: Liviu Ionescu
 

@@ -1,6 +1,6 @@
 ---
 layout: page
-permalink: /micro-os-plus/iii/naming-conventions/
+permalink: /develop/naming-conventions/
 title: C/C++ naming conventions
 author: Liviu Ionescu
 

@@ -1,6 +1,6 @@
 ---
 layout: page
-permalink: /micro-os-plus/iii/predefined-macros/
+permalink: /develop/predefined-macros/
 title: Predefined compiler macros
 author: Liviu Ionescu
 

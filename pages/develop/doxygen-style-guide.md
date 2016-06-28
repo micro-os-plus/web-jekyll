@@ -1,6 +1,6 @@
 ---
 layout: page
-permalink: /micro-os-plus/iii/doxygen-style-guide/
+permalink: /develop/doxygen-style-guide/
 title: Doxygen style guide
 author: Liviu Ionescu
 
