@@ -12,10 +12,11 @@ Note: The Users's Manual is currently work in progress, actually in an early pla
 
 ## RTOS
 
-* Getting started with µOS++
+### Getting started with µOS++
   * The main thread
   * Multiple thread applications
-* Basic concepts
+
+### Basic concepts
   * Tasks / threads / processes
   * Context switching
     * Cooperative vs preemptive thread switching
@@ -35,7 +36,8 @@ Note: The Users's Manual is currently work in progress, actually in an early pla
     * Use mutual exclusion (mutex)
     * Should a semaphore or a mutex be used?
     * Deadlock (or deadly embrace)
-* Threads
+
+### Threads
   * Overview
   * Thread functions
   * Thread priorities
@@ -47,12 +49,14 @@ Note: The Users's Manual is currently work in progress, actually in an early pla
   * Thread states
   * Determining the size of a thread stack
   * Detecting stack overflow
-* Thread signal flags
+
+### Thread signal flags
   * Overview
   * Raising thread signal flags
   * Waiting for thread signal flags
   * Other signal flags functions
-* Semaphores
+
+### Semaphores
   * Overview
     * Binary semaphores
     * Counting semaphores
@@ -62,7 +66,8 @@ Note: The Users's Manual is currently work in progress, actually in an early pla
   * Waiting on semaphores
   * Other semaphore functions
   * Destroying semaphores  
-* Mutexes
+
+### Mutexes
   * Overview
     * Normal mutexes
     * Recursive mutexes
@@ -74,10 +79,12 @@ Note: The Users's Manual is currently work in progress, actually in an early pla
   * Priority inversion
   * Priority inheritance
   * Deadlock (or deadly embrace)
-* Condition variables
+
+### Condition variables
   * Overview
   * TODO
-* Event flags
+
+### Event flags
   * Overview
   * Creating event flags
   * Raising event flags
@@ -85,7 +92,8 @@ Note: The Users's Manual is currently work in progress, actually in an early pla
   * Waiting for event flags
   * Other event flags functions
   * Destroying event flags
-* Message queues
+
+### Message queues
   * Overview
   * Queue storage
   * Message priorities
@@ -95,7 +103,8 @@ Note: The Users's Manual is currently work in progress, actually in an early pla
   * Receiving messages from queues
   * Other message queue functions
   * Destroying queues
-* Fixed size memory pools
+
+### Fixed size memory pools
   * Overview
   * Pool storage
   * Creating memory pools
@@ -104,7 +113,8 @@ Note: The Users's Manual is currently work in progress, actually in an early pla
   * Returning a memory block
   * Other memory pools functions
   * Destroying memory pools
-* Software timers
+
+### Software timers
   * Overview
   * Timer functions
   * Creating timers
@@ -112,26 +122,32 @@ Note: The Users's Manual is currently work in progress, actually in an early pla
   * Stop a timer
   * Other timer functions
   * Destroying timers
-* Clocks
+
+### Clocks
   * Overview
   * The system clock
   * The real time clock
   * The high resolution clock
-* Interrupts & critical sections
+
+### Interrupts & critical sections
   * Overview
   * High/low priority interrupts
   * Interrupt nesting
   * Critical sections
   * Uncritical sections
-* Memory allocators
+
+### Memory allocators
   * TODO
-* The scheduler
+
+### The scheduler
   * Scheduling points
   * The ready list
   * The scheduling algorithm
   * Waiting lists
   * The idle thread
-* Run-time statistics
+
+### Run-time statistics
   * Per-thread number of context switches
   * Per-thread number of CPU clocks used
-* Iterating threads
+  
+### Iterating threads
