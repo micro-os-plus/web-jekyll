@@ -13,9 +13,10 @@
 
 * [Overview]({{ site.baseurl }}/xpacks/)
 
-#### References
+#### Documentation
 
-* [CMSIS++]({{ site.baseurl }}/reference/cmsis-plus/)
+* [User's manual]({{ site.baseurl }}/user-manual/)
+* [CMSIS++ reference]({{ site.baseurl }}/reference/cmsis-plus/)
 
 #### Developer
 
