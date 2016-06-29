@@ -38,7 +38,7 @@ Overview
 -   [Features]({{ site.baseurl }}/micro-os-plus/i/Features "wikilink")
 -   [The Scheduler]({{ site.baseurl }}/micro-os-plus/i/Scheduler "wikilink")
 -   [Synchronisation events]({{ site.baseurl }}/micro-os-plus/i/Synchronisation_events "wikilink")
--   [System timers]({{ site.baseurl }}/micro-os-plus/i/System_timers "wikilink")
+-   [System timers]({{ site.baseurl }}/micro-os-plus/i/System_Timers "wikilink")
 -   [Advanced/Custom timers]({{ site.baseurl }}/micro-os-plus/i/Advanced_(Custom)_Timers "wikilink")
 -   [Tasks]({{ site.baseurl }}/micro-os-plus/i/Tasks "wikilink")
 -   [Device drivers]({{ site.baseurl }}/micro-os-plus/i/Device_drivers "wikilink")

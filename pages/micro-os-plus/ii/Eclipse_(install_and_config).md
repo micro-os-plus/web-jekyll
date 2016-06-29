@@ -12,7 +12,9 @@ Although the minimum development environment for µOS++ SE requires only a shell
 
 Currently there are no specific plug-ins required, so any recent Eclipse version should work. The below steps are based on Eclipse 4.3 Kepler, running on OS X, but should not be much different when running on Ubuntu.
 
-[center]({{ site.baseurl }}/micro-os-plus/ii/File:Eclipse_Kepler.png "wikilink")
+<div style="text-align:center">
+<img src="{{ site.baseurl }}/assets/images/old/Eclipse_Kepler.png" />
+</div>
 
 Personal preferences
 --------------------
@@ -63,7 +65,9 @@ In **Help** menu → **Install New Software...**
 -   press the **OK** button
 -   enable **PyDev** and optionally **PyDev Mylyn Integration**
 
-[center]({{ site.baseurl }}/micro-os-plus/ii/File:Install_PyDev.png "wikilink")
+<div style="text-align:center">
+<img src="{{ site.baseurl }}/assets/images/old/Install_PyDev.png" />
+</div>
 
 -   press the **Next** button
 -   accept the license
@@ -84,7 +88,9 @@ In **Help** menu → **Install New Software...**
 -   in the below window expand **Mobile and Device Development**
 -   and select **C/C++ GDB Hardware Debugging**
 
-[center]({{ site.baseurl }}/micro-os-plus/ii/File:Install_GDB_Hardware.png "wikilink")
+<div style="text-align:center">
+<img src="{{ site.baseurl }}/assets/images/old/Install_GDB_Hardware.png" />
+</div>
 
 -   press the **Next \>** button
 -   press the **Next \>** button
@@ -101,7 +107,9 @@ In **Eclipse** menu → **Preferences...** → **General** → **Workspace**
 -   enable **Save automatically before build**
 -   set **Text file encoding: UTF-8**
 
-[center]({{ site.baseurl }}/micro-os-plus/ii/File:General_Workspace.png "wikilink")
+<div style="text-align:center">
+<img src="{{ site.baseurl }}/assets/images/old/General_Workspace.png" />
+</div>
 
 In **Eclipse** menu → **Preferences...** → **General** → **Editors** → **Text Editors**
 
@@ -109,13 +117,17 @@ In **Eclipse** menu → **Preferences...** → **General** → **Editors** → *
 -   check **Print margin column: 80**
 -   enable **Show line numbers**
 
-[center]({{ site.baseurl }}/micro-os-plus/ii/File:General_Editors.png "wikilink")
+<div style="text-align:center">
+<img src="{{ site.baseurl }}/assets/images/old/General_Editors.png" />
+</div>
 
 In **Eclipse** menu → **Preferences...** → **C/C++** → **Code Style** → **Formatter**
 
 -   set **Active profile: GNU [built-in]**
 
-[center]({{ site.baseurl }}/micro-os-plus/ii/File:Code_Style_Formatter.png "wikilink")
+<div style="text-align:center">
+<img src="{{ site.baseurl }}/assets/images/old/Code_Style_Formatter.png" />
+</div>
 
 In **Eclipse** menu → **Preferences...** → **C/C++** → **Indexer**
 
@@ -123,7 +135,9 @@ In **Eclipse** menu → **Preferences...** → **C/C++** → **Indexer**
 -   check Indexing strategy: **Update index immediately after every file-save**
 -   set **Build configuration for the indexer: Use active build configuration**
 
-[center]({{ site.baseurl }}/micro-os-plus/ii/File:Indexer.png "wikilink")
+<div style="text-align:center">
+<img src="{{ site.baseurl }}/assets/images/old/Indexer.png" />
+</div>
 
 Configure PyDev preferences
 ---------------------------
@@ -135,14 +149,18 @@ In **Eclipse** menu → **Preferences...** → **PyDev** → **Interpreter - Pyt
     -   press the **OK** button
 -   press the **OK** button
 
-[center]({{ site.baseurl }}/micro-os-plus/ii/File:Python_Interpreter.png "wikilink")
+<div style="text-align:center">
+<img src="{{ site.baseurl }}/assets/images/old/Python_Interpreter.png" />
+</div>
 
 In **Eclipse** menu → **Preferences...** → **PyDev** → **Editor**
 
 -   in **Appearance color options**, select Comments
 -   configure **Color** to a **50% grey**
 
-[center]({{ site.baseurl }}/micro-os-plus/ii/File:PyDev_Comments.png "wikilink")
+<div style="text-align:center">
+<img src="{{ site.baseurl }}/assets/images/old/PyDev_Comments.png" />
+</div>
 
 Clone repositories
 ------------------
@@ -167,7 +185,9 @@ For this, in the **File** menu → **Import**
 -   select the **micro-os-plus-se.git** project
 -   click the **Finish** button
 
-[center]({{ site.baseurl }}/micro-os-plus/ii/File:Import_uOS.png "wikilink")
+<div style="text-align:center">
+<img src="{{ site.baseurl }}/assets/images/old/Import_uOS.png" />
+</div>
 
 Repeat this procedure for the **xcdl-python.git** repository, and import the **xcdl-python** project.
 
@@ -218,7 +238,9 @@ In the **Eclipse** menu → **Preferences...** → **C/C++** → **Build** → *
     -   press the **OK** button
 -   press the **OK** button
 
-[center]({{ site.baseurl }}/micro-os-plus/ii/File:Build_Variables.png "wikilink")
+<div style="text-align:center">
+<img src="{{ site.baseurl }}/assets/images/old/Build_Variables.png" />
+</div>
 
 In addition to the C/C++ Build Variables, we also need the µOS++ SE location for a linked folder, so an additional definition General Workspace group is required.
 
@@ -230,7 +252,9 @@ In the **Eclipse** menu → **Preferences...** → **General** → **Workspace**
     -   press the **OK** button
 -   press the **OK** button
 
-[center]({{ site.baseurl }}/micro-os-plus/ii/File:Linked_Resources.png "wikilink")
+<div style="text-align:center">
+<img src="{{ site.baseurl }}/assets/images/old/Linked_Resources.png" />
+</div>
 
 Note: The yellow exclamation mark is there because the sample path is not valid.
 
@@ -258,7 +282,9 @@ In the **File** menu: **New** → **C++ Project**
 -   in the **Toolchains** list, select **-- Other Toolchain --** (note: this detail is very important)
 -   press the **Finish** button
 
-[center]({{ site.baseurl }}/micro-os-plus/ii/File:New_Project.png "wikilink")
+<div style="text-align:center">
+<img src="{{ site.baseurl }}/assets/images/old/New_Project.png" />
+</div>
 
 The new project is now visible in the Project Explorer, but is completely empty, and, to be functional, it needs to be configured.
 
@@ -274,7 +300,9 @@ The new project is now visible in the Project Explorer, but is completely empty,
 -   a new environment definition should be added, with the variable at the end
 -   press the **OK** button
 
-[center]({{ site.baseurl }}/micro-os-plus/ii/File:Toochain_Path.png "wikilink")
+<div style="text-align:center">
+<img src="{{ site.baseurl }}/assets/images/old/Toochain_Path.png" />
+</div>
 
 ### Configure preprocessor discovery command
 
@@ -292,11 +320,15 @@ The new project is now visible in the Project Explorer, but is completely empty,
 -   edit the command line and replace the **\${COMMAND}** with the actual g++ command name, for example **arm-none-eabi-g++**
 -   press the **OK** button
 
-[center]({{ site.baseurl }}/micro-os-plus/ii/File:Discovery_Providers.png "wikilink")
+<div style="text-align:center">
+<img src="{{ site.baseurl }}/assets/images/old/Discovery_Providers.png" />
+</div>
 
 Once the toolchain path and the discovery command are properly configured, the **Includes** list in the **Project Explorer** should be populated with the a list specific to the toolchain.
 
-[center]({{ site.baseurl }}/micro-os-plus/ii/File:QEMU_Includes.png "wikilink")
+<div style="text-align:center">
+<img src="{{ site.baseurl }}/assets/images/old/QEMU_Includes.png" />
+</div>
 
 ### Add the µOS++ specific include folders
 
@@ -325,7 +357,9 @@ Once the toolchain path and the discovery command are properly configured, the *
 
 To check if the definition is valid, expand the **micro-os-plus-se** folder and check if the µOS++ SE sources are available.
 
-[center]({{ site.baseurl }}/micro-os-plus/ii/File:Linked_Folder.png "wikilink")
+<div style="text-align:center">
+<img src="{{ site.baseurl }}/assets/images/old/Linked_Folder.png" />
+</div>
 
 ### Configure the custom build command
 
@@ -356,13 +390,17 @@ Eventually repeat this step, and add a new build configuration named **qemu_osx_
 
 To build only one configuration, click on the down pointing triangle on the right of the hammer icon and select one of the existing configuration. This selects the active configuration and also starts the build process.
 
-[center]({{ site.baseurl }}/micro-os-plus/ii/File:Build_configurations.png "wikilink")
+<div style="text-align:center">
+<img src="{{ site.baseurl }}/assets/images/old/Build_configurations.png" />
+</div>
 
 Avoid to build all defined configurations (using the Project menu: Build All) since this will also try to build the python projects, and it takes some time.
 
 The result of each build is a folder below the **build** folder, with the same name as the build configuration.
 
-[center]({{ site.baseurl }}/micro-os-plus/ii/File:Minimal_build.png "wikilink")
+<div style="text-align:center">
+<img src="{{ site.baseurl }}/assets/images/old/Minimal_build.png" />
+</div>
 
 ### Check indexer
 
@@ -381,7 +419,9 @@ The **Eclipse** menu: **Preferences...** → **Run/Debug** → **Console**
 
 -   disable **Limit console output**
 
-[center]({{ site.baseurl }}/micro-os-plus/ii/File:Run_Console.png "wikilink")
+<div style="text-align:center">
+<img src="{{ site.baseurl }}/assets/images/old/Run_Console.png" />
+</div>
 
 Configure the project Clean options
 -----------------------------------
@@ -395,4 +435,6 @@ This is achieved via the **Project** menu → **Clean...**
 -   disable **Start a build immediately**
 -   press the **OK** button
 
-[center]({{ site.baseurl }}/micro-os-plus/ii/File:Clean.png "wikilink")
+<div style="text-align:center">
+<img src="{{ site.baseurl }}/assets/images/old/Clean.png" />
+</div>

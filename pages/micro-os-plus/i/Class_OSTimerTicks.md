@@ -31,7 +31,7 @@ Initialize the internal members.
 Methods
 =======
 
-static [OSTimerTicks_t]({{ site.baseurl }}/micro-os-plus/i/Typedef_OSTimerTicks "wikilink") microsToTicks(unsigned short micros)
+static [OSTimerTicks_t]({{ site.baseurl }}/micro-os-plus/i/Typedef_OSTimerTicks_t "wikilink") microsToTicks(unsigned short micros)
 -----------------------------------------------------------------------------------------------
 
 **Description**

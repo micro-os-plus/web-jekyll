@@ -52,4 +52,4 @@ The SE project wiki was created, initially hosted in the SourceForge project web
 Early history
 -------------
 
-The [early history]({{ site.baseurl }}/micro-os-plus/ii/early_history "wikilink"), copied from the first edition wiki, with the reasons for a new micro OS and the decision to use C++.
+The [early history]({{ site.baseurl }}/micro-os-plus/ii/Early_history "wikilink"), copied from the first edition wiki, with the reasons for a new micro OS and the decision to use C++.

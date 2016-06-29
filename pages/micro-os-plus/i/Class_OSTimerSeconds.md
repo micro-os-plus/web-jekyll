@@ -35,7 +35,7 @@ Initializes the internal members.
 Methods
 =======
 
-static [OSTimerTicks_t]({{ site.baseurl }}/micro-os-plus/i/Typedef_OSTimerTicks "wikilink") getSchedulerTicks(void)
+static [OSTimerTicks_t]({{ site.baseurl }}/micro-os-plus/i/Typedef_OSTimerTicks_t "wikilink") getSchedulerTicks(void)
 ----------------------------------------------------------------------------------
 
 **Description**
@@ -118,11 +118,10 @@ Check for every task if the software watchdog (counter) expired. If any software
 Variables
 =========
 
-static [OSTimerTicks_t]({{ site.baseurl }}/micro-os-plus/i/Typedef_OSTimerTicks "wikilink") ms_schedulerTicks
+static [OSTimerTicks_t]({{ site.baseurl }}/micro-os-plus/i/Typedef_OSTimerTicks_t "wikilink") ms_schedulerTicks
 -----------------------------------------------------------------------------
 
 **Description**
 
 
 The number of OS ticks within current second.
-

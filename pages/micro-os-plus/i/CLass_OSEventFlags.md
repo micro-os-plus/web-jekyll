@@ -10,7 +10,7 @@ date: 2011-02-25 13:06:54 +0000
 
 OSEventFlags
 
-The class OSEventFlags requires the definition of **[OS_INCLUDE_OSEVENTFLAGS]({{ site.baseurl }}/micro-os-plus/i/Define_OS_INCLUDE_OSEVENTFLAGS "wikilink")**.
+The class OSEventFlags requires the definition of **OS_INCLUDE_OSEVENTFLAGS**.
 
 Constructors
 ============

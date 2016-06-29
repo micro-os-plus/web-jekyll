@@ -16,7 +16,7 @@ The following recommendations are based on chapter 4.7 of [Real-Time Systems Des
 IEEE Standard 830-1998
 ======================
 
-There are many ways to organize the SRS, but [IEEE Standard 830-1998](http://standards.ieee.org/findstds/standard/830-1998.html) is the IEEE’s Recommended Practice for Software Requirements Specifications (SRS), and provides a template of what an SRS should look like (A local copy of the PDF document is available at [IEEE830-1998.pdf]({{ site.baseurl }}/micro-os-plus/i/:File:IEEE830-1998.pdf "wikilink")).
+There are many ways to organize the SRS, but [IEEE Standard 830-1998](http://standards.ieee.org/findstds/standard/830-1998.html) is the IEEE’s Recommended Practice for Software Requirements Specifications (SRS), and provides a template of what an SRS should look like.
 
 The SRS is described as a “binding contract among designers, programmers, customers, and testers,” and it encompasses different design views or paradigms for system design. The recommended design views include some combination of decomposition, dependency, interface, and detail descriptions.
 
