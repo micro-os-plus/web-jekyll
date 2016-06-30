@@ -57,3 +57,9 @@ More text.
 ## Header 2
 
 Again.
+
+Centered image:
+
+<div style="text-align:center">
+<img src="{{ site.baseurl }}/assets/images/feed-20.png" />
+</div>

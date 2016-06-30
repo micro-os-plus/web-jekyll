@@ -13,6 +13,7 @@ date: 2016-03-09 12:04:00 +0300
 * [C++ coding style]({{ site.baseurl }}/develop/coding-style/)
 * [C/C++ naming conventions]({{ site.baseurl }}/develop/naming-conventions/)
 * [Doxygen style]({{ site.baseurl }}/develop/doxygen-style-guide/)
+* [Jekyll style]({{ site.baseurl }}/develop/jekyll-style-guide/)
 
 ## Misc
 
