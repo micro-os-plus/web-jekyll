@@ -12,9 +12,10 @@ Note: The Users's Manual is currently work in progress, actually in an early pla
 
 ## RTOS
 
-### Getting started with µOS++
-  * The main thread
-  * Multiple thread applications
+### [Getting started with µOS++]({{ site.baseurl }}/user-manual/getting-started/)
+  * [Overview]({{ site.baseurl }}/user-manual/getting-started/#overview)
+  * [The os_main() and the main thread]({{ site.baseurl }}/user-manual/getting-started/#the-osmain-and-the-main-thread)
+  * [Multiple thread applications]({{ site.baseurl }}/user-manual/getting-started/#multiple-thread-applications)
 
 ### Basic concepts
   * Tasks / threads / processes
@@ -149,5 +150,5 @@ Note: The Users's Manual is currently work in progress, actually in an early pla
 ### Run-time statistics
   * Per-thread number of context switches
   * Per-thread number of CPU clocks used
-  
+
 ### Iterating threads
