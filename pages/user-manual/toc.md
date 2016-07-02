@@ -14,29 +14,44 @@ Note: The Users's Manual is currently work in progress, actually in an early pla
 
 ### [Getting started with µOS++]({{ site.baseurl }}/user-manual/getting-started/)
   * [Overview]({{ site.baseurl }}/user-manual/getting-started/#overview)
-  * [The os_main() and the main thread]({{ site.baseurl }}/user-manual/getting-started/#the-osmain-and-the-main-thread)
+    * [Multiple APIs]({{ site.baseurl }}/user-manual/getting-started/#multiple-apis)
+  * [The `os_main()` and the main thread]({{ site.baseurl }}/user-manual/getting-started/#the-osmain-and-the-main-thread)
   * [Multiple thread applications]({{ site.baseurl }}/user-manual/getting-started/#multiple-thread-applications)
 
-### Basic concepts
-  * Tasks / threads / processes
-  * Context switching
-    * Cooperative vs preemptive thread switching
-  * Scheduling
-    * Round-robin vs priority scheduling
-    * Priority inversion / priority inheritance
-  * Static vs. dynamically allocated objects
-  * Communication between threads
-    * Periodic polling
-    * Passing messages
-    * Event flags
-    * Semaphores
-  * Managing common resources
-    * Disable/enable interrupts
-    * Lock/unlock the scheduler
-    * Use semaphores
-    * Use mutual exclusion (mutex)
-    * Should a semaphore or a mutex be used?
-    * Deadlock (or deadly embrace)
+### [Basic concepts]({{ site.baseurl }}/user-manual/basic-concepts/)
+
+* [Soft vs hard real-time systems]({{ site.baseurl }}/user-manual/basic-concepts/#soft-vs-hard-real-time-systems)
+* [Superloop (foreground/background) applications]({{ site.baseurl }}/user-manual/basic-concepts/#superloop-foregroundbackground-applications)
+* [Multi-tasking]({{ site.baseurl }}/user-manual/basic-concepts/#multi-tasking)
+  * [Tasks]({{ site.baseurl }}/user-manual/basic-concepts/#tasks)
+  * [Threads & processes]({{ site.baseurl }}/user-manual/basic-concepts/#threads--processes)
+  * [Context switching]({{ site.baseurl }}/user-manual/basic-concepts/#context-switching)
+  * [Thread stacks]({{ site.baseurl }}/user-manual/basic-concepts/#thread-stacks)
+  * [Cooperative vs preemptive multi-tasking]({{ site.baseurl }}/user-manual/basic-concepts/#cooperative-vs-preemptive-multi-tasking)
+* [Scheduling]({{ site.baseurl }}/user-manual/basic-concepts/#scheduling)
+  * [Thread states]({{ site.baseurl }}/user-manual/basic-concepts/#thread-states)
+  * [The READY list]({{ site.baseurl }}/user-manual/basic-concepts/#the-ready-list)
+  * [Scheduling algorithms]({{ site.baseurl }}/user-manual/basic-concepts/#scheduling-algorithms)
+  * [Round-robin vs priority scheduling]({{ site.baseurl }}/user-manual/basic-concepts/#round-robin-vs-priority-scheduling)
+  * [Selecting thread priorities]({{ site.baseurl }}/user-manual/basic-concepts/#selecting-thread-priorities)
+  * [Priority inversion / priority inheritance]({{ site.baseurl }}/user-manual/basic-concepts/#priority-inversion--priority-inheritance)
+* [Communicating between threads and/or ISRs]({{ site.baseurl }}/user-manual/basic-concepts/#communicating-between-threads-andor-isrs)
+  * [Periodic polling vs event waiting]({{ site.baseurl }}/user-manual/basic-concepts/#periodic-polling-vs-event-waiting)
+  * [Passing messages]({{ site.baseurl }}/user-manual/basic-concepts/#passing-messages)
+  * [Event flags]({{ site.baseurl }}/user-manual/basic-concepts/#event-flags)
+  * [Semaphores]({{ site.baseurl }}/user-manual/basic-concepts/#semaphores)
+* [Managing common resources]({{ site.baseurl }}/user-manual/basic-concepts/#managing-common-resources)
+  * [Disable/enable interrupts]({{ site.baseurl }}/user-manual/basic-concepts/#disable-enable-interrupts)
+  * [Lock/unlock the scheduler]({{ site.baseurl }}/user-manual/basic-concepts/#lock-unlock-the-scheduler)
+  * [Counting semaphores]({{ site.baseurl }}/user-manual/basic-concepts/#counting-semaphores)
+  * [Mutual exclusion (mutex)]({{ site.baseurl }}/user-manual/basic-concepts/#mutual-exclusion-mutex)
+  * [Should a semaphore or a mutex be used?]({{ site.baseurl }}/user-manual/basic-concepts/#should-a-semaphore-or-a-mutex-be-used)
+  * [Deadlock (or deadly embrace)]({{ site.baseurl }}/user-manual/basic-concepts/#deadlock-or-deadly-embrace)
+* [Statically vs. dynamically allocated objects]({{ site.baseurl }}/user-manual/basic-concepts/#statically-vs-dynamically-allocated-objects)
+  * [The system allocator]({{ site.baseurl }}/user-manual/basic-concepts/#the-system-allocator)
+  * [Fragmentation]({{ site.baseurl }}/user-manual/basic-concepts/#fragmentation)
+
+### Features
 
 ### Threads
   * Overview
@@ -152,3 +167,13 @@ Note: The Users's Manual is currently work in progress, actually in an early pla
   * Per-thread number of CPU clocks used
 
 ### Iterating threads
+
+### Credits
+
+As the saying goes, _"Books are written from books, and software from software"_. As such, this manual too did not appear from nothing, but was influenced by the following manuals:
+
+- _"Using the FreeRTOS Real Time Kernel"_, by Richard Barry
+- _"µC/OC-III The Real-Time Kernel - User's Manual"_, by Micriµm
+- _"embOS & embOS-MPU - Real-Time Operating System - CPU-independent - User & Reference Guide"_, by SEGGER
+
+Many thanks for their impressive work and for providing the inspiration.

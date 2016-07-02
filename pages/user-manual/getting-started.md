@@ -1,7 +1,7 @@
 ---
 layout: page
 permalink: /user-manual/getting-started/
-title: Getting started with µOS++
+title: Getting started with µOS++ IIIe
 author: Liviu Ionescu
 
 date: 2016-06-29 21:28:00 +0300
@@ -150,7 +150,7 @@ th_func(void* args)
 }
 
 // The thread definition.
-thread th { th_func, nullptr };
+thread th { "th", th_func, nullptr };
 
 int
 os_main (int argc, char* argv[])
