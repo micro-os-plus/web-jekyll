@@ -59,7 +59,13 @@ A complex application can be decomposed as a series of tasks, some executed in s
 
 Multi-tasking is the technique of running multiple tasks in parallel.
 
-### Threads & processes
+### Why multiple threads?
+
+The [Java Threads](http://www.amazon.com/Java-Threads-Scott-Oaks/dp/0596007825/) book (one of the inspiration source for the early versions of this project) states:
+
+> Historically, threading was first exploited to make certain programs easier to write: if a program can be split into separate tasks, it’s often easier to program the algorithm as separate tasks or threads… while it is possible to write a single-threaded program to perform multiple tasks, it’s easier and more elegant to place each task in its own thread.
+
+### Threads vs processes
 
 Threads and processes are the operating system mechanisms for running multiple tasks in parallel.
 
@@ -70,6 +76,42 @@ The implementation of virtual memory requires hardware support for a [MMU](https
 Smaller devices, like the ARM Cortex-M devices, can still run multiple tasks in parallel, but, without a MMU and the benefits of virtual memory, these multiple tasks are performed by multiple threads, all sharing the same memory space.
 
 As such, µOS++ is a **multi-threaded system**, supporting **any number of threads**, with the actual number limited only by the amount of available memory.
+
+### Blocking I/O
+
+One of the most encountered scenario when implementing tasks, is to wait for some kind of input data, for example by performing a `read()`, then process the data and, most of the times, repeat this sequence in a loop. When the system executes the `read()` call, the thread might need to wait for the required data to become available before it can continue to the next statement. This type of I/O is called **blocking I/O**: the thread blocks until some data is available to satisfy the `read()` function.
+
+One possible implementation is to loop until the data becomes available, but this type of behaviour simply wastes resources (CPU cycles and implicitly power) and should be avoided by all means.
+
+Well behaved applications should never enter (long) busy loops waiting for conditions to occur, but instead suspend the thread and arrange for an it to be resumed when the condition is met. During this waiting period the thread completely releases the CPU, so the CPU will be fully available for the other active threads.
+
+For the sake of completeness, it should be noted that the only exception to the rule applies to short delays, where short means delays with durations comparable with the multitasking overhead. On most modern microcontrollers this is usually in the range of microseconds.
+
+### The idle thread
+
+As seen before, at thread level the goal is to process the available data as soon as possible and suspend itself to wait for more data. In other words, the thread ideal way of life should be... to do nothing!
+
+But what happens if all threads accomplish this goal and there is nothing else to do?
+
+Well, enter the **idle** thread. This internal thread is always created before the scheduler is started; it has the lowest possible priority, and is always running when there are no more other threads to run.
+
+The idle thread can perform various low priority maintenance chores (like destroying terminated threads), but at a certain moment even the idle thread will have nothing else to do.
+
+### Sleep modes and power savings
+
+When the idle thread has nothing to do, it still can do something useful: it can put the CPU to a shallow sleep, and wait for the next interrupt (the Cortex-M devices use the Wait For Interrupt instruction for this).
+
+In this mode the CPU is fully functional, with all internal peripherals active, but it does not run any instructions, so it is able to save a certain amount of power.
+
+If the application has relatively long inactive moments, further savings are possible, i.e. power down all peripherals except a low frequency real time timer, usually triggered once a second. In this case the idle task can arrange for the CPU to enter a deep sleep mode, saving a significantly higher amount of power.
+
+As a summary, the multilevel strategy used to reduce power consumption implies:
+
+- if nothing to do, each thread should enter the waiting state as soon as possible, and release the CPU to the other active tasks;
+- if no active threads are available, the idle thread should arrange for the CPU to enter the sleep mode as soon as possible;
+- if all tasks know they will be inactive for a longer period, the idle task should arrange for the CPU to enter a deep sleep mode.
+
+In conclusion, by using a wide range of power management techniques, an RTOS can be successfully used in very low power applications.
 
 ### Context switching
 
@@ -97,7 +139,7 @@ The most frequent reason for a context switch is when a thread decides to wait f
 
 In this case, yielding the CPU from one thread to another is done implicitly by the system function called to wait for the resource.
 
-In case of long computations, a well behaved thread would not hold the CPU for  the entire computation period, but explicitly yield the CPU from time to time, to give other threads a chance to run.
+In case of long computations, a well behaved thread would not hold the CPU for the entire computation period, but explicitly yield the CPU from time to time, to give other threads a chance to run.
 
 This polite behaviour, when the switch is performed by the thread itself, is called **cooperative** multi-tasking, since it depends on a the good-will of all tasks running in parallel.
 
@@ -122,7 +164,17 @@ Once the mechanism for an interrupt to preempt a thread is functional, a further
 <p>Preemptive context switching with periodic timer</p>
 </div>
 
+In general cooperative multitasking is easier to implement, and, since the CPU is released under the application control, inter-thread synchronisation race conditions are avoided. However, at a more thorough analysis, this is not necessarily a feature, but a subtle way to hide other application synchronisation bugs, like the lack of explicit critical sections. In other words, a well behaved application should protect a shared resource by use of a critical section anyway, since although another task cannot execute inside another task, interrupt service routines can, and without the critical section it is very likely that a race condition may occur.
+
+One special useful application of the cooperative mode is for debugging possible inter-thread race conditions. In case of strange behaviours that might be associated with synchronisation problems, if disabling preemption solves the problem, then an inter-thread race condition is highly probable. It the problem is still present in cooperative mode, than most probably the race condition involves the interrupt service routines. In both cases, the cure is to use critical sections where needed.
+
 µOS++ implements both cooperative and preemptive multi-tasking.
+
+### Thread interruption/cancellation
+
+In real life applications, there are cases when some threads, for various reasons, must be interrupted.
+
+µOS++ threads include support for interruption, but this support is cooperative, i.e. threads that might be interrupted should check for interruption requests and quit inner loops in an ordered manner.
 
 ## Scheduling
 
@@ -253,7 +305,7 @@ When the resource is also accessed from ISRs, the usual solution is to temporari
 
 The overhead to disable/enable interrupts is usually low, and for some devices, like the Cortex-M[347] ones, it is even possible to disable interrupts only partially, from a given priority level down, keeping high priority interrupts enabled.
 
-Although apparently simple, this technique is often misused in cases of nested critical sections, when the inner critical section inadvertently enable interrupts, leading to very hard to trace bugs. The correct and bullet proof method to implement the critical sections in to always save the initial interrupt state and restore it when the critical section is exited.
+Although apparently simple, this technique is often misused in cases of nested critical sections, when the inner critical section inadvertently enables interrupts, leading to very hard to trace bugs. The correct and bullet proof method to implement the critical sections is to always save the initial interrupt state and restore it when the critical section is exited.
 
 This method must be used with caution, since keeping the interrupts disabled too long impacts the system responsiveness.
 
@@ -315,7 +367,7 @@ The following techniques can be used to avoid deadlocks:
 
 ## Statically vs. dynamically allocated objects
 
-Most system objects are self-contained, and the rule is that if the storage requirements are known, constant and the same for all instances, the storage is  allocated in the object instance data.
+Most system objects are self-contained, and the rule is that if the storage requirements are known, constant and identical for all instances, then the storage is allocated in the object instance data.
 
 However some system objects require additional memory, different from one instance to the other. Examples for such objects are threads (which require stacks), message queues and memory pools.
 
