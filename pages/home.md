@@ -10,7 +10,7 @@ date: 2016-03-03 22:35:00 +0300
 
 The CMSIS++ project is a proposal for a future CMSIS, written in C++, and is the core component of µOS++ IIIe. The project is hosted on GitHub as [micro-os-plus/cmsis-plus](https://github.com/micro-os-plus/cmsis-plus).
 
-The µOS++ IIIe (micro oh ɛs plus plus third edition) project is the third iteration of µOS++, an open source, royalty-free, multi-tasking operating system intended for 8/16/32/64 bit embedded systems, written in C++.
+The µOS++ IIIe (micro oh ɛs plus plus third edition) project is the third iteration of µOS++, a POSIX-like, portable, open source, royalty-free, multi-tasking operating system intended for 32/64-bits embedded systems, written in C++.
 
 
 ## Twofold identity

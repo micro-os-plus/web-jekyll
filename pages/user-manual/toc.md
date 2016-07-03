@@ -8,7 +8,7 @@ date: 2016-06-28 19:39:00 +0300
 
 ---
 
-Note: The Users's Manual is currently work in progress, actually in an early planning stage.
+Note: The Users's Manual is currently work in progress.
 
 ## RTOS
 
@@ -56,7 +56,7 @@ Note: The Users's Manual is currently work in progress, actually in an early pla
   * [The system allocator]({{ site.baseurl }}/user-manual/basic-concepts/#the-system-allocator)
   * [Fragmentation]({{ site.baseurl }}/user-manual/basic-concepts/#fragmentation)
 
-### Features
+### [Features]({{ site.baseurl }}/user-manual/features/)
 
 ### Threads
   * Overview
