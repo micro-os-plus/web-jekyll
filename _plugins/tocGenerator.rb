@@ -48,6 +48,8 @@ module Jekyll
       item_number = 1
       level_html = ''
 
+      toc_count = 0
+
       doc = Nokogiri::HTML(html)
 
       # Find H1 tag and all its H2 siblings until next H1
@@ -79,6 +81,7 @@ module Jekyll
                                             item_number.to_s + '.' + inner_section.to_s,
                                             sect.text,
                                             '')
+            toc_count += 1;
           end
         end
 
@@ -97,21 +100,18 @@ module Jekyll
                                       item_number,
                                       tag.text,
                                       level_html);
+        toc_count += 1;
 
         toc_section += 1 + inner_section;
         item_number += 1;
       end
-
-      # for convenience item_number starts from 1
-      # so we decrement it to obtain the index count
-      toc_index_count = item_number - 1
 
       return html unless toc_html.length > 0
 
       hide_html = '';
       hide_html = HIDE_HTML.gsub('%1', hide_label) if (show_toggle_button)
 
-      if min_items_to_show_toc <= toc_index_count
+      if min_items_to_show_toc <= toc_count
         replaced_toggle_html = TOGGLE_HTML
         .gsub('%1', contents_label)
         .gsub('%2', hide_html);
