@@ -8,7 +8,7 @@ date: 2016-03-03 22:35:00 +0300
 
 ---
 
-The **µOS++ IIIe** _(micro oh ɛs plus plus third edition)_ project is the third iteration of µOS++, a POSIX-like, portable, open source, royalty-free, multi-tasking real-time operating system intended for 32/64-bits embedded applications, written in C++.
+The **µOS++ IIIe** _(micro oh ɛs plus plus third edition)_ project is the third iteration of µOS++, a POSIX-like, portable, open source, royalty-free, multi-tasking real-time operating system intended for 32/64-bits embedded applications, written in C++. The project is hosted on GitHub as [micro-os-plus](https://github.com/micro-os-plus).
 
 **CMSIS++** is a proposal for a future CMSIS, written in C++, and is the core component of **µOS++ IIIe**. The project is hosted on GitHub as [micro-os-plus/cmsis-plus](https://github.com/micro-os-plus/cmsis-plus).
 
