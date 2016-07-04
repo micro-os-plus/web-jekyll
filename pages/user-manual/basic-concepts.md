@@ -8,9 +8,33 @@ date: 2016-06-30 14:39:00 +0300
 
 ---
 
+## Embedded systems
+
+From the software point of view, an embedded system is a small computer, built for a dedicated function (as opposed to general purpose computers).
+
+There are many types of embedded systems, with varying degrees of complexity, from small proximity sensors used in home automation, to internet routers, remote surveillance cameras and even smart phones.
+
+Complex systems, especially those with high bandwidth communication needs, are designed around embedded versions of GNU/Linux, which include a large kernel, a root file system, multiple processes, not very different from their larger cousins running on desktop computers.
+
+The _application_ is generally a combination of processes running in user space, and device drivers, running inside the kernel.
+
+## Bare-metal embedded systems
+
+Smaller devices have much less resources, and are build around microcontrollers which do not have the required hardware to properly run an Unix kernel.
+
+In this case the application is monolithic and runs directly on the hardware, thus the name _bare-metal_.
+
+µOS++ focuses on these bare-metal applications, especially those running on ARM Cortex-M devices. Although µOS++ can be ported on larger ARM cores, even the 64-bits ones, there are no plans to include support for MMU, virtual memory, separate processes and other such features specific to the Unix world.
+
+## Real-time systems
+
+A real-time embedded system is a piece of software that manages the resources and the time behaviour of an embedded device, usually build around a microcontroller, emphasising on the correctness of the computed values and their availability at the expected time.
+
+µOS++ is a real-time operating system (RTOS).
+
 ## Soft vs hard real-time systems
 
-A real-time embedded system is a piece of software that manages the resources and the time behaviour of an embedded device, usually build around a microcontroller, emphasising on the correctness of the computed values and their availability at the expected time. There are two types of real-time systems, hard and soft real-time systems.
+There are two types of real-time systems, hard and soft real-time systems.
 
 The main difference between them is determined by the consequences associated with missing **deadlines**. Obtaining correctly computed values but after the deadline has passed may range from useless to dangerous.
 
@@ -26,7 +50,7 @@ Legal-notice: According to the MIT license, _"the software is provided as-is, wi
 
 ## Superloop (foreground/background) applications
 
-There are many techniques for writing embedded software. For low complexity  systems, the classic way does not use an RTOS, but are designed as foreground/background systems, or **_superloops_**.
+There are many techniques for writing embedded software. For low complexity systems, the classic way does not use an RTOS, but are designed as foreground/background systems, or **_superloops_**.
 
 An application consists of an infinite loop that calls one or more functions in succession to perform the desired operations (**background**).
 
@@ -83,7 +107,7 @@ One of the most encountered scenario when implementing tasks, is to wait for som
 
 One possible implementation is to loop until the data becomes available, but this type of behaviour simply wastes resources (CPU cycles and implicitly power) and should be avoided by all means.
 
-Well behaved applications should never enter (long) busy loops waiting for conditions to occur, but instead suspend the thread and arrange for an it to be resumed when the condition is met. During this waiting period the thread completely releases the CPU, so the CPU will be fully available for the other active threads.
+Well behaved applications should never enter (long) busy loops waiting for conditions to occur, but instead suspend the thread and arrange for it to be resumed when the condition is met. During this waiting period the thread completely releases the CPU, so the CPU will be fully available for the other active threads.
 
 For the sake of completeness, it should be noted that the only exception to the rule applies to short delays, where short means delays with durations comparable with the multitasking overhead. On most modern microcontrollers this is usually in the range of microseconds.
 
@@ -169,6 +193,16 @@ In general cooperative multitasking is easier to implement, and, since the CPU i
 One special useful application of the cooperative mode is for debugging possible inter-thread race conditions. In case of strange behaviours that might be associated with synchronisation problems, if disabling preemption solves the problem, then an inter-thread race condition is highly probable. It the problem is still present in cooperative mode, than most probably the race condition involves the interrupt service routines. In both cases, the cure is to use critical sections where needed.
 
 µOS++ implements both cooperative and preemptive multi-tasking.
+
+### The scheduler timer
+
+Most schedulers keep track of time, at least for handling timeouts. Technically this is implemented with a periodic hardware timer, and timeouts are expressed in timer ticks.
+
+A common frequency for the scheduler timer is 1000 Hz, which gives a resolution of 1 ms for the scheduler derived clock.
+
+For preemptive schedulers, the same timer can be used to trigger context switches.
+
+Acknowledging the importance of a system timer, ARM defined SysTick as a common timer for Cortex-M devices, which makes it a perfect match for the scheduler timer.
 
 ### Thread interruption/cancellation
 
@@ -301,7 +335,7 @@ The technique for obtaining exclusive access to shared resources is to create **
 
 ### Disable/enable interrupts
 
-When the resource is also accessed from ISRs, the usual solution is to temporarily disable the interrupts, and so prevent the ISR to access the resource.
+When the resource is also accessed from ISRs, the usual solution to prevent an ISR to access the resource at the same time with a thread or another lower priority ISR, is to temporarily disable the interrupts while using the shared resource.
 
 The overhead to disable/enable interrupts is usually low, and for some devices, like the Cortex-M[347] ones, it is even possible to disable interrupts only partially, from a given priority level down, keeping high priority interrupts enabled.
 
@@ -391,4 +425,16 @@ Even more, system objects that need memory are defined as templates, which can b
 
 The biggest concern with using dynamic memory is fragmentation, a condition that may render a system unusable.
 
-To be noted that internally µOS++ does not use dynamic allocation at all, so if the application is careful enough not to use objects that need it, the resulting code is fully static.
+To be noted that internally µOS++ does not use dynamic allocation at all, so if the application is careful enough not to use objects that need dynamic allocation, the resulting code is fully static.
+
+## Real-time clock
+
+Most application handle time by using the scheduler timer.
+
+However low power applications opt to put the CPU in a deep sleep, which usually powers down most peripherals, including the scheduler timer.
+
+For these situations a separate low power real-time clock is required; powered by a separate power source, possibly a battery, this clock runs even when the rest of the device is sleeping.
+
+This clock not only keeps track of time, it can also trigger interrupts to wakeup the CPU at desired moments.
+
+The usual resolution of the real-time clock is 1 sec.
