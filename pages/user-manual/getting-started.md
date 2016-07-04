@@ -10,7 +10,7 @@ date: 2016-06-29 21:28:00 +0300
 
 ## Overview
 
-**µOS++ IIIe** _(micro oh ɛs plus plus third edition)_ is the third iteration of µOS++, a POSIX-like, portable, open source, royalty-free, multi-tasking system intended for 32/64-bits embedded applications.
+**µOS++ IIIe** _(micro oh ɛs plus plus third edition)_ is the third iteration of µOS++, a POSIX-like, portable, open source, royalty-free, multi-tasking real-time operating system intended for 32/64-bits embedded applications.
 
 **µOS++ IIIe** is written in modern C++, with C++ applications in mind, but also provides equally functional C APIs.
 

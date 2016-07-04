@@ -1,13 +1,13 @@
 # Site settings.
 
 # Without a clear rule enforced, both title and name are used.
-title: CMSIS++ / µOS++ IIIe
-name: CMSIS++ / µOS++ IIIe
-description: CMSIS++, a proposal for the next generation CMSIS, written in C++, and the third edition of µOS++.
+title: µOS++ IIIe / CMSIS++
+name: µOS++ IIIe / CMSIS++
+description: The third edition of µOS++ and CMSIS++, a proposal for the next generation CMSIS, written in C++.
 motto: “Perfekt ist nicht gut genug”
 icon: wall-e-icon.png
 
-email: il@livius.net
+email: ilg@livius.net
 
 destination: _site
 exclude:

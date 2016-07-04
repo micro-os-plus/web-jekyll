@@ -1,13 +1,13 @@
 #### [Home]({{ site.baseurl }}/)
 
+#### µOS++ IIIe
+
+* [Overview]({{ site.baseurl }}/micro-os-plus/)
+
 #### CMSIS++
 
 * [Overview]({{ site.baseurl }}/cmsis-plus/)
 * [RTOS API]({{ site.baseurl }}/cmsis-plus/rtos/)
-
-#### µOS++ IIIe
-
-* [Overview]({{ site.baseurl }}/micro-os-plus/)
 
 #### xPacks/XCDL
 
