@@ -113,7 +113,7 @@ For the sake of completeness, it should be noted that the only exception to the 
 
 ### The idle thread
 
-As seen before, at thread level the goal is to process the available data as soon as possible and suspend itself to wait for more data. In other words, the thread ideal way of life should be... to do nothing!
+As seen before, at thread level, the goal is to process the available data as soon as possible and suspend itself to wait for more data. In other words, the thread ideal way of life should be... to do nothing!
 
 But what happens if all threads accomplish this goal and there is nothing else to do?
 
@@ -123,7 +123,7 @@ The idle thread can perform various low priority maintenance chores (like destro
 
 ### Sleep modes and power savings
 
-When the idle thread has nothing to do, it still can do something useful: it can put the CPU to a shallow sleep, and wait for the next interrupt (the Cortex-M devices use the Wait For Interrupt instruction for this).
+When the idle thread has nothing to do, it still can do something useful: it can put the CPU to a shallow sleep, and wait for the next interrupt (the Cortex-M devices use the **Wait For Interrupt** instruction for this).
 
 In this mode the CPU is fully functional, with all internal peripherals active, but it does not run any instructions, so it is able to save a certain amount of power.
 
@@ -131,15 +131,19 @@ If the application has relatively long inactive moments, further savings are pos
 
 As a summary, the multilevel strategy used to reduce power consumption implies:
 
-- if nothing to do, each thread should enter the waiting state as soon as possible, and release the CPU to the other active tasks;
+- if nothing to do, each thread should suspend itself as soon as possible, and release the CPU to the other active threads;
 - if no active threads are available, the idle thread should arrange for the CPU to enter the sleep mode as soon as possible;
 - if all tasks know they will be inactive for a longer period, the idle task should arrange for the CPU to enter a deep sleep mode.
 
 In conclusion, by using a wide range of power management techniques, an RTOS can be successfully used in very low power applications.
 
-### Context switching
+### Running vs suspended threads
 
-Running multiple threads in parallel is only apparent, since under the hood the threads are decomposed in small sequences of operations, serialised in a certain order, on the available CPU cores. Threads are _frozen_ and put aside; when the conditions are again favourable, they are _revived_ and, for a while, are allowed to use the CPU.
+Running multiple threads in parallel is only apparent, since under the hood the threads are decomposed in small sequences of operations, serialised in a certain order, on the available CPU cores. If there is only one CPU core, there is only one **running** thread at a certain moment. The other threads are **suspended**, in a sense are _frozen_ and put aside for later use; when the conditions are again favourable, each one may be _revived_ and, for a while, allowed to use the CPU.
+
+Suspended threads are sometimes called sleeping, or dormant; these terms are also correct, but it must be clearly understood that the thread status is only a software status, that has nothing to do with the CPU sleep modes, which are hardware related; the existence of suspended threads means only that the threads are not scheduled for execution; they do not imply that the CPU will enter any of the sleep modes, which may happen only when all threads are suspended.
+
+### Context switching
 
 Restarting a suspended thread requires restoring exactly the internal CPU state existing at the moment when the thread was suspended. Physically, this state is usually stored in a certain number of CPU registers. When the thread is suspended, the content of these registers must be stored in a separate RAM area, specific to each thread. When the thread is resumed, the same registers must be restored with the saved values.
 
@@ -210,6 +214,14 @@ In real life applications, there are cases when some threads, for various reason
 
 µOS++ threads include support for interruption, but this support is cooperative, i.e. threads that might be interrupted should check for interruption requests and quit inner loops in an ordered manner.
 
+### Thread Control Blocks (TCBs)
+
+A thread control block (TCB) is a data structure used by the scheduler to maintain information about a thread. Each thread requires its own TCB.
+
+Being implemented in a structured, object oriented language like C++, the µOS++ threads implicitly have instance data structures associated with the objects, which are functionally equivalent to common TCBs; in other words, the µOS++ TCBs are the actual thread instances themselves.
+
+The thread internal variables are protected, and cannot be directly accessed from user code, but for all relevant members there are public accessor and mutator functions defined.
+
 ## Scheduling
 
 The mechanism that performs the context switches is also called **scheduling**, and the code implementing this mechanism is also called **scheduler**.
@@ -222,11 +234,11 @@ Apart from some states used during thread creation and destruction, the most imp
 
 - **running** - a thread is marked as running when it is using the CPU;
 - **ready** - a thread that is ready to run, but does not use the CPU yet;
-- **waiting** - a thread that is not ready to run since it must wait for a resource that is not yet available, or for an event that will occur in the future.
+- **suspended** - a thread that is not ready to run since it must wait for a resource that is not yet available, or for an event that will occur in the future.
 
 ### The READY list
 
-To performs its duties efficiently, the scheduler needs to keep track only of the threads ready to run. Threads that for a little while wait for various events can be considered to momentarily exit the scheduler jurisdiction, and other mechanisms, like timers, synchronisation objects, notifications, etc are expected to return them to the scheduler when ready to run.
+To performs its duties efficiently, the scheduler needs to keep track only of the threads ready to run. Threads that for a little while must wait for various events can be considered to momentarily exit the scheduler jurisdiction, and other mechanisms, like timers, synchronisation objects, notifications, etc are expected to return them to the scheduler when ready to run.
 
 In order to keep track of the ready threads, the scheduler maintains a ready list. The term list is generic, regardless of the actual implementation, which might be anything from a simple array to multiple double linked lists.
 
