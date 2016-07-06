@@ -123,7 +123,8 @@ typedef struct msg_s
   uint8_t payload[7];
 } msg_t;
 
-// Define a queue of 7 messages. The queue itself will be dynamically allocated.
+// Define a queue of 7 messages.
+// The queue itself will be dynamically allocated.
 message_queue_typed<msg_t> mq { 7 };
 
 // Called from an ISR context.
@@ -189,7 +190,8 @@ typedef struct msg_s
   uint8_t payload[7];
 } msg_t;
 
-// Storage for the queue object. The queue itself will be dynamically allocated.
+// Storage for the queue object.
+// The queue itself will be dynamically allocated.
 os_mqueue_t mq;
 
 // Called from an ISR context.
