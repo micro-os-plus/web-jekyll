@@ -58,18 +58,19 @@ Note: The Users's Manual is currently work in progress.
 
 ### [Features]({{ site.baseurl }}/user-manual/features/)
 
-### Threads
-  * Overview
-  * Thread functions
-  * Thread priorities
-  * Creating threads
-  * Changing thread priorities
-  * Other thread functions
-  * Destroying threads
-  * The current thread
-  * Thread states
-  * Determining the size of a thread stack
-  * Detecting stack overflow
+### [Threads]({{ site.baseurl }}/user-manual/threads/)
+  * [Overview]({{ site.baseurl }}/user-manual/threads/#overview)
+  * [Thread functions]({{ site.baseurl }}/user-manual/threads/#thread-functions)
+  * [Thread priorities]({{ site.baseurl }}/user-manual/threads/#thread-priorities)
+  * [Creating threads]({{ site.baseurl }}/user-manual/threads/#creating-threads)
+  * [Changing thread priorities]({{ site.baseurl }}/user-manual/threads/#changing-thread-priorities)
+  * [Other thread functions]({{ site.baseurl }}/user-manual/threads/#other-thread-functions)
+  * [Destroying threads]({{ site.baseurl }}/user-manual/threads/#destroying-threads)
+  * [The current thread]({{ site.baseurl }}/user-manual/threads/#the-current-thread)
+  * [Thread states]({{ site.baseurl }}/user-manual/threads/#thread-states)
+  * [The thread stack]({{ site.baseurl }}/user-manual/threads/#the-thread-stack)
+  * [The idle thread]({{ site.baseurl }}/user-manual/threads/#the-idle-thread)
+  * [The main thread]({{ site.baseurl }}/user-manual/threads/#the-main-thread)
 
 ### Thread signal flags
   * Overview
@@ -85,6 +86,7 @@ Note: The Users's Manual is currently work in progress.
   * Posting tokens to semaphores
     * Posting tokens from ISRs
   * Waiting on semaphores
+  * Multiple threads waiting on a semaphore
   * Other semaphore functions
   * Destroying semaphores  
 
@@ -99,6 +101,7 @@ Note: The Users's Manual is currently work in progress.
   * Destroying mutexes
   * Priority inversion
   * Priority inheritance
+  * Multiple threads waiting on a mutex
   * Deadlock (or deadly embrace)
 
 ### Condition variables
@@ -112,6 +115,7 @@ Note: The Users's Manual is currently work in progress.
     * Raising event flags from ISRs
   * Waiting for event flags
   * Other event flags functions
+  * Multiple threads waiting on event flags
   * Destroying event flags
 
 ### Message queues
@@ -123,6 +127,7 @@ Note: The Users's Manual is currently work in progress.
     * Sending messages from ISRs
   * Receiving messages from queues
   * Other message queue functions
+  * Multiple threads waiting on message queues
   * Destroying queues
 
 ### Fixed size memory pools
@@ -133,6 +138,7 @@ Note: The Users's Manual is currently work in progress.
     * Getting a memory block from ISRs
   * Returning a memory block
   * Other memory pools functions
+  * Multiple threads waiting on memory pools
   * Destroying memory pools
 
 ### Software timers
