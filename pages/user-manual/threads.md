@@ -210,7 +210,7 @@ th_func(void* args)
 }
 ```
 
-The scheduler service used in this example is waiting to receive a message from a queue. The thread will have nothing to do until the message is received. Once a message will be send to the queue, the thread will be resumed and the message  consumed.
+The µOS++ service used in this example to pass control back to the scheduler is the queue receive function. The thread will have nothing to do until the message is received. Once a message is send to the queue, the thread will be resumed and the message consumed.
 
 Another common situation the thread might be waiting for is the passage of time. For example, a design may need to scan a keyboard every 100 ticks. In this case, simply delay the thread for 100 ticks (`sysclock.sleep_for(100)`) then see if a key was pressed on the keyboard and, possibly perform some action based on which key was pressed.
 
@@ -792,7 +792,7 @@ os_thread_set_sched_prio(&th, os_thread_priority_high);
 
 ### Getting the thread stack
 
-The thread stack is a separate object, managing the thread stack; the stack storage itself is not included in this object, but only a pointer to it is available.
+The `thread::stack` is a separate object, managing the thread stack; the stack storage itself is not included in this object, but only a pointer to it is available.
 
 The APIs is simple:
 
