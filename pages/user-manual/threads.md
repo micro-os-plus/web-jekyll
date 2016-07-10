@@ -87,10 +87,10 @@ os_main (int argc, char* argv[])
   // ...
 
   // Create the thread. Stack is dynamically allocated.
-  thread my_thread { "th", th_func, nullptr };
+  thread th { "th", th_func, nullptr };
 
   // Wait for the thread to terminate.
-  my_thread.join();
+  th.join();
 
   // ...
   return 0;
@@ -118,20 +118,20 @@ os_main (int argc, char* argv[])
   // ...
 
   // Local storage for the thread object.
-  os_thread_t my_thread;
+  os_thread_t th;
 
   // Initialise the thread object and allocate the thread stack.
-  os_thread_create(&my_thread, "th", th_func, NULL, NULL);
+  os_thread_create(&th, "th", th_func, NULL, NULL);
 
   // ...
 
   // Wait for the thread to terminate.
-  os_thread_join(&my_thread, NULL);
+  os_thread_join(&th, NULL);
 
   // ...
 
   // For completeness, destroy the thread.
-  os_thread_destroy(&my_thread);
+  os_thread_destroy(&th);
 
   return 0;
 }
@@ -613,7 +613,7 @@ For more details, please read the _ISO/IEC 14882:2011(E), Programming Languages 
 
 ## Changing thread priorities
 
-By default, threads are created with `thread::priority::normal` which is a middle value priority, but it can be changed at any time during the thread lifetime.
+By default, threads are created with `thread::priority::normal` which is a middle value priority, but it can be changed at any moment during the thread lifetime.
 
 ``` c++
 /// @file app-main.cpp

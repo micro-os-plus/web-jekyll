@@ -72,11 +72,11 @@ Note: The Users's Manual is currently work in progress.
   * [The idle thread]({{ site.baseurl }}/user-manual/threads/#the-idle-thread)
   * [The main thread]({{ site.baseurl }}/user-manual/threads/#the-main-thread)
 
-### Thread signal flags
-  * Overview
-  * Raising thread signal flags
-  * Waiting for thread signal flags
-  * Other signal flags functions
+### [Thread event flags]({{ site.baseurl }}/user-manual/thread-event-flags/)
+  * [Overview]({{ site.baseurl }}/user-manual/thread-event-flags/#overview)
+  * [Raising thread event flags]({{ site.baseurl }}/user-manual/thread-event-flags/#raising-thread-event-flags)
+  * [Waiting for thread event flags]({{ site.baseurl }}/user-manual/thread-event-flags/#waiting-for-thread-event-flags)
+  * [Other thread event flags functions]({{ site.baseurl }}/user-manual/thread-event-flags/#other-thread-event-flags-functions)
 
 ### Semaphores
   * Overview
