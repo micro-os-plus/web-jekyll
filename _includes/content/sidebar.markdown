@@ -15,12 +15,12 @@
 
 #### Documentation
 
-* [User's manual]({{ site.baseurl }}/user-manual/)
+* [User's **manual**]({{ site.baseurl }}/user-manual/)
   * [Getting started]({{ site.baseurl }}/user-manual/getting-started/)
   * [Basic concepts]({{ site.baseurl }}/user-manual/basic-concepts/)
   * [Features]({{ site.baseurl }}/user-manual/features/)
   * [Threads]({{ site.baseurl }}/user-manual/threads/)
-* [CMSIS++ reference]({{ site.baseurl }}/reference/cmsis-plus/)
+* [CMSIS++ **reference**]({{ site.baseurl }}/reference/cmsis-plus/)
 
 #### Developer
 
