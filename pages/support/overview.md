@@ -15,7 +15,7 @@ In case you encounter problems while using the xPacks, please consider the follo
 * read the documentation pages
 * check the [Known issues]({{ site.baseurl }}/support/known-issues/)
 * check the [FAQ]({{ site.baseurl }}/support/faq/)
-* check the CMSIS++ or the µOS++ III sections in the [GNU ARM Eclipse forum]({{ site.baseurl }}/support/forum/) for similar problems
+* check the **CMSIS++** or the **µOS++ IIIe** sections in the [GNU ARM Eclipse forum]({{ site.baseurl }}/support/forum/) for similar problems
 * check the GitHub Issues trackers the specific package (for example the [CMSIS++ tracker](https://github.com/micro-os-plus/cmsis-plus/issues/))
 
 If you still could not find a solution, if you have interesting use cases, if you have custom configurations, and generally if you have any experience that you want to share with others, please use the GNU ARM Eclipse [forum]({{ site.baseurl }}/support/forum/).

@@ -14,13 +14,13 @@ The **µOS++ IIIe** _(micro oh ɛs plus plus third edition)_ project is the thir
 
 ## Twofold identity
 
-The µOS++ IIIe project can be considered from two points of view.
+The **µOS++ IIIe** project can be considered from two points of view.
 
 ### The µOS++ packages
 
-From a modular point of view, µOS++ IIIe is a **collection of packages** hosted on GitHub in two locations:
+From a modular point of view, **µOS++ IIIe** is a **collection of packages** hosted on GitHub in two locations:
 
-* the original code is grouped under the [µOS++ IIIe / CMSIS++](https://github.com/micro-os-plus) GitHub collection of projects (or _Organization_, according to GitHub terminology)
+* the original code is grouped under the [µOS++ IIIe / CMSIS++](https://github.com/micro-os-plus) GitHub collection of projects
 * projects based on third party code are grouped under the [xPacks](https://github.com/xpacks) collection.
 
 <div style="text-align:center">
@@ -29,7 +29,7 @@ From a modular point of view, µOS++ IIIe is a **collection of packages** hosted
 
 ### The µOS++ RTOS
 
-From an embedded system point of view, µOS++ IIIe provides the **reference implementation** for the CMSIS++ **scheduler** and **portable synchronisation** objects (like mutex, semaphore, etc).
+From an embedded system point of view, **µOS++ IIIe** provides the **reference implementation** for the CMSIS++ **scheduler** and **portable synchronisation** objects (like mutex, semaphore, etc).
 
 <div style="text-align:center">
 <img src="{{ site.baseurl }}/assets/images/2016/micro-os-plus-rtos.png" />
@@ -37,4 +37,4 @@ From an embedded system point of view, µOS++ IIIe provides the **reference impl
 
 ## License
 
-Unless otherwise mentioned, all µOS++ IIIe / CMSIS++ components are provided free of charge under the terms of the [MIT License](https://opensource.org/licenses/MIT).
+Unless otherwise mentioned, all **µOS++ IIIe / CMSIS++** components are provided **free of charge** under the terms of the [MIT License](https://opensource.org/licenses/MIT).

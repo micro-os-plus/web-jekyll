@@ -1,7 +1,7 @@
 ---
 layout: page
 permalink: /cmsis-plus/rtos/
-title: CMSIS++ RTOS API
+title: CMSIS++ RTOS APIs
 author: Liviu Ionescu
 
 date: 2016-03-09 12:04:00 +0300
@@ -10,9 +10,11 @@ date: 2016-03-09 12:04:00 +0300
 
 ## Overview
 
-The CMSIS++ RTOS API is a portable RTOS interface, but designed to best match the ARM Cortex-M processor-based devices.
+The CMSIS++ RTOS APIs are a set of RTOS interfaces, highly portable but designed to best match the ARM Cortex-M processor-based devices.
 
-![CMSIS++ RTOS API]({{ site.baseurl }}/assets/images/2016/cmsis-plus-rtos-overview.png)
+<div style="text-align:center">
+<img src="{{ site.baseurl }}/assets/images/2016/cmsis-plus-rtos-overview.png" />
+</div>
 
 ## Project highlights
 
