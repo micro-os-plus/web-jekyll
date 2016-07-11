@@ -626,7 +626,7 @@ using namespace os::rtos;
 void*
 th_func(void* args)
 {
-  this_thread::thread().sched_prio(thread::priority::high);
+  this_thread::thread().priority(thread::priority::high);
 
   // Do something useful.
 
@@ -776,8 +776,8 @@ The APIs is simple:
 ``` c++
 thread th { "th", th_func, nullptr };
 
-thread::priority_t prio = th.sched_prio();
-th.sched_prio(thread::priority::high);
+thread::priority_t prio = th.priority();
+th.priority(thread::priority::high);
 ```
 
 A similar example, but written in C:
@@ -786,8 +786,8 @@ A similar example, but written in C:
 os_thread_t th;
 os_thread_create(&th, "th", th_func, NULL, NULL };
 
-os_thread_priority_t prio = os_thread_get_sched_prio(&th);
-os_thread_set_sched_prio(&th, os_thread_priority_high);
+os_thread_priority_t prio = os_thread_get_priority(&th);
+os_thread_set_priority(&th, os_thread_priority_high);
 ```
 
 ### Getting the thread stack
