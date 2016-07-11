@@ -22,6 +22,10 @@ With Eclipse, edit `doxygen/pages/changes-log.markdown`
 * add new `###` section, with version and date
 * copy from GitHub Desktop the relevant changes, in chronological order
 
+## Update the doxygen header version
+
+With Eclipse, edit `doxygen/config.doxyfile`.
+
 ## Update the doxygen main.markdown
 
 If the CMSIS APIs changed, update `doxygen/pages/main.markdown`.
