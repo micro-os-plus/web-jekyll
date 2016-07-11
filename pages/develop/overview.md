@@ -19,6 +19,10 @@ date: 2016-03-09 12:04:00 +0300
 
 * [Predefined compiler macros]({{ site.baseurl }}/develop/predefined-macros/)
 
+## Procedures
+
+* [How to release]({{ site.baseurl }}/develop/how-to-release/)
+
 ## Links & References
 
 -   [Standards and style]({{ site.baseurl }}/develop/references#standards-and-style)
