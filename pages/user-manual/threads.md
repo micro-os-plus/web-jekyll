@@ -93,6 +93,8 @@ os_main (int argc, char* argv[])
   th.join();
 
   // ...
+
+  // The local thread is destroyed automatically before exiting this block.
   return 0;
 }
 ```
@@ -117,7 +119,7 @@ os_main (int argc, char* argv[])
 {
   // ...
 
-  // Local storage for the thread object.
+  // Local storage for the thread object instance.
   os_thread_t th;
 
   // Initialise the thread object and allocate the thread stack.
@@ -190,7 +192,7 @@ typedef struct msg_s
   uint8_t payload[7];
 } msg_t;
 
-// Storage for the queue object.
+// Global static storage for the queue object instance.
 // The queue itself will be dynamically allocated.
 os_mqueue_t mq;
 
@@ -233,9 +235,9 @@ Thread priorities are unsigned values, with higher values meaning higher priorit
 
 ## Creating threads
 
-Creating threads is probably the most complex part of any RTOS API, so it is unfortunate that it is usually the first encountered when dealing with a new RTOS, but threads must be mastered first as they are the most fundamental component of a multitasking system.
+Creating threads is probably the most complex part of any RTOS API, and it is unfortunate that this is usually one of the first issues encountered when dealing with a new RTOS, but threads must be mastered as soon as possible as they are a fundamental component of multitasking systems.
 
-For flexibility reasons, µOS++ has a rich set of functions for creating threads. Threads can use either statically or dynamically allocated stacks, threads can be created as local objects on the function stack, or as global objects, threads can be created with default characteristics or with custom attributes, and so on.
+For convenience reasons, µOS++ has a rich set of functions for creating threads. Threads can use either statically or dynamically allocated stacks, threads can be created as local objects on the function stack, or as global objects, threads can be created with default characteristics or with custom attributes, and so on.
 
 For infinite loop threads, the easiest way to create threads is to make them global objects.
 
@@ -254,9 +256,9 @@ void*
 th_func(void* args)
 {
   while (true)
-  {
-    // Do something useful.
-  }
+    {
+      // Do something useful.
+    }
 
   return nullptr;
 }
@@ -292,6 +294,9 @@ os_main (int argc, char* argv[])
 
   return 0;
 }
+
+// All threads are automatically destroyed if os_main() returns.
+
 ```
 
 A similar example, but written in C:
@@ -306,17 +311,17 @@ void*
 th_func(void* args)
 {
   while (true)
-  {
-    // Do something useful.
-  }
+    {
+      // Do something useful.
+    }
 
   return NULL;
 }
 
-// Static storage for the thread object.
+// Global static storage for the thread object instance.
 os_thread_t th1;
 
-// Static storage for the thread object.
+// Global static storage for the thread object instance.
 os_thread_t th2;
 
 #define MY_STACK_SIZE_BYTES 3000
@@ -324,7 +329,7 @@ os_thread_t th2;
 os_thread_stack_allocation_element_t
 th3_stack[MY_STACK_SIZE_BYTES/sizeof(os_thread_stack_allocation_element_t)];
 
-// Static storage for the thread object.
+// Global static storage for the thread object instance.
 os_thread_t th3;
 
 int
@@ -373,7 +378,7 @@ os_main (int argc, char* argv[])
 }
 ```
 
-If, in C++, for a better control, it is required to create global thread objects, but construct them manually, use the placement `new` operator.
+In C++, if it is necessary to control the moment when global objects instances are created, it is possible to separately allocate the storage as global variables, then use the placement `new` operator to initialise them.
 
 ``` c++
 /// @file app-main.cpp
@@ -388,14 +393,15 @@ void*
 th_func(void* args)
 {
   while (true)
-  {
-    // Do something useful.
-  }
+    {
+      // Do something useful.
+    }
 
   return nullptr;
 }
 
-// Static storage for the thread object.
+// Global static storage for the thread object instance.
+// This storage is set to 0 as any uninitialised variable.
 std::aligned_storage<sizeof(thread), alignof(thread)>::type th1;
 
 int
@@ -406,20 +412,29 @@ os_main (int argc, char* argv[])
   // Use placement new, to explicitly call the constructor
   // and initialise the thread.
   new (&th1) thread { "th1", th_func, nullptr };
+
+  // Local static storage for the thread object instance.
+  std::aligned_storage<sizeof(thread), alignof(thread)>::type th2;
+
+  // Use placement new, to explicitly call the constructor
+  // and initialise the thread.
+  new (&th2) thread { "th2", th_func, nullptr };
+
   // ...
 
   // Wait for the thread to terminate.
   th1.join();
 
-  // For completeness, call the thread destructor, which for placement new
+  // For completeness, call the threads destructors, which for placement new
   // is no longer called automatically.
   th1.~thread();
+  th2.~thread();
 
   return 0;
 }
 ```
 
-Threads objects can also be created on the local stack, for example on the main thread stack. Just be sure the stack is large enough to store all defined local objects.
+Threads objects instances can also be created on the local stack, for example on the main thread stack. Just be sure the stack is large enough to store all defined local objects.
 
 ``` c++
 /// @file app-main.cpp
@@ -434,9 +449,9 @@ void*
 th_func(void* args)
 {
   while (true)
-  {
-    // Do something useful.
-  }
+    {
+      // Do something useful.
+    }
 
   return nullptr;
 }
@@ -467,6 +482,10 @@ os_main (int argc, char* argv[])
   // Create a thread; the stack is statically allocated.
   thread th3 { "th3", th_func, nullptr, attr };
 
+  // Beware of local static instances, since they'll use atexit()
+  // to register the destructor; avoid and prefer placement new, as before.
+  // static thread th4 { "th4", th_func, nullptr };
+
   // ...
 
   // Wait for the threads to terminate.
@@ -474,6 +493,7 @@ os_main (int argc, char* argv[])
   th2.join();
   th3.join();
 
+  // The local threads are destroyed automatically before exiting this block.
   return 0;
 }
 ```
@@ -490,9 +510,9 @@ void*
 th_func(void* args)
 {
   while (true)
-  {
-    // Do something useful.
-  }
+    {
+      // Do something useful.
+    }
 
   return NULL;
 }
@@ -507,7 +527,7 @@ os_main (int argc, char* argv[])
 {
   // ...
 
-  // Local storage for the thread object.
+  // Local storage for the thread object instance.
   os_thread_t th1;
 
   // Create a thread; the stack is allocated with the default RTOS allocator.
@@ -521,7 +541,7 @@ os_main (int argc, char* argv[])
   attr2.th_stack_address = my_allocator_allocate(my_size);
   attr2.th_stack_size_bytes = my_size;
 
-  // Local storage for the thread object.
+  // Local storage for the thread object instance.
   os_thread_t th2;
 
   // Create a thread; the stack is allocated with the user allocator.
@@ -532,7 +552,7 @@ os_main (int argc, char* argv[])
   attr3.th_stack_address = th3_stack;
   attr3.th_stack_size_bytes = sizeof(th3_stack);
 
-  // Local storage for the thread object.
+  // Local storage for the thread object instance.
   os_thread_t th3;
 
   // Create a thread; the stack is statically allocated.
@@ -601,13 +621,14 @@ os_main (int argc, char* argv[])
   // Wait for the thread to terminate.
   th1.join();
 
+  // The local thread is destroyed automatically before exiting this block.
   return 0;
 }
 ```
 
-The expected standard implementation dynamically allocates the underlying `rtos::thread` object, which in turn allocates the stack; it is not possible to configure static stacks with ISO C++ threads, neither to set a name to the thread.
+The expected standard implementation dynamically allocates the underlying `rtos::thread` object instance, which in turn allocates the stack; it is not possible to configure static stacks with ISO C++ threads, neither to set a name for the thread.
 
-To be noted that standard C++ threads can have any number of arguments. The internal implementation uses tuples and std::bind, which also imply a dynamic memory allocation.
+To be noted that standard C++ threads can have any number of arguments. The internal implementation uses tuples and `std::bind`, which also imply a dynamic memory allocation.
 
 For more details, please read the _ISO/IEC 14882:2011(E), Programming Languages – C++_ specifications.
 
@@ -644,7 +665,7 @@ A similar example, but written in C:
 void*
 th_func(void* args)
 {
-  os_thread_set_prio(os_this_thread(), os_thread_priority_high);
+  os_thread_set_priority(os_this_thread(), os_thread_priority_high);
 
   // Do something useful.
 
@@ -667,9 +688,9 @@ void*
 th_func(void* args)
 {
   while (true)
-  {
-    // Do something useful.
-  }
+    {
+      // Do something useful.
+    }
 
   return nullptr;
 }
@@ -691,6 +712,7 @@ os_main (int argc, char* argv[])
   // Wait for the thread to terminate.
   th1.join();
 
+  // The local thread is destroyed automatically before exiting this block.
   return 0;
 }
 ```
@@ -707,9 +729,9 @@ void*
 th_func(void* args)
 {
   while (true)
-  {
-    // Do something useful.
-  }
+    {
+      // Do something useful.
+    }
 
   return NULL;
 }
@@ -723,7 +745,7 @@ os_main (int argc, char* argv[])
   os_thread_attr_init(&attr);
   attr.th_priority = os_thread_priority_high;
 
-  // Local storage for the thread object.
+  // Local storage for the thread object instance.
   os_thread_t th1;
 
   // Create a thread; the stack is allocated with the default RTOS allocator.
@@ -748,9 +770,9 @@ The µOS++ thread API basically implements the POSIX threads, with several exten
 
 ### Getting the thread name
 
-The thread name is a string defined during thread creation. It is generally used to identify the thread during debugging sessions.
+The thread name is an optional string defined during thread creation. It is generally used to identify the thread during debugging sessions.
 
-The APIs is simple:
+The C++ API is:
 
 ``` c++
 thread th { "th", th_func, nullptr };
@@ -758,7 +780,7 @@ thread th { "th", th_func, nullptr };
 const char* name = th.name();
 ```
 
-A similar example, but written in C:
+The C API is:
 
 ``` c
 os_thread_t th;
@@ -771,7 +793,7 @@ const char* name = os_thread_get_name(&th);
 
 The thread priority can be accessed and modified by the thread itself, or by another thread.
 
-The APIs is simple:
+The C++ API is:
 
 ``` c++
 thread th { "th", th_func, nullptr };
@@ -780,7 +802,7 @@ thread::priority_t prio = th.priority();
 th.priority(thread::priority::high);
 ```
 
-A similar example, but written in C:
+The C API is:
 
 ``` c
 os_thread_t th;
@@ -794,7 +816,7 @@ os_thread_set_priority(&th, os_thread_priority_high);
 
 The `thread::stack` is a separate object, managing the thread stack; the stack storage itself is not included in this object, but only a pointer to it is available.
 
-The APIs is simple:
+The C++ API is:
 
 ``` c++
 thread th { "th", th_func, nullptr };
@@ -808,7 +830,7 @@ bool bm = stack.check_bottom_magic();
 bool tm = stack.check_top_magic();
 ```
 
-A similar example, but written in C:
+The C API is:
 
 ``` c
 os_thread_t th;
@@ -827,7 +849,7 @@ bool tm = os_thread_stack_check_top_magic(stack);
 
 The thread user storage is a user defined structure added to each thread storage.
 
-The APIs is simple:
+The C++ API is:
 
 ``` c++
 thread th { "th", th_func, nullptr };
@@ -870,9 +892,9 @@ th_func(void* args)
   // Block on a long sleep.
   result_t res = sysclock.sleep_for(99999999);
   if (res == EINTR)
-  {
-    this_thread::thread().interrupt(false);
-  }
+    {
+      this_thread::thread().interrupt(false);
+    }
 
   return nullptr;
 }
@@ -894,6 +916,7 @@ os_main (int argc, char* argv[])
   // Wait for the thread to terminate.
   th1.join();
 
+  // The local thread is destroyed automatically before exiting this block.
   return 0;
 }
 ```
@@ -911,9 +934,9 @@ th_func(void* args)
   // Block on a long sleep.
   os_result_t res = os_sysclock_sleep_for(99999999);
   if (res == EINTR)
-  {
-    os_thread_interrupt(os_this_thread(), false);
-  }
+    {
+      os_thread_interrupt(os_this_thread(), false);
+    }
 
   return NULL;
 }
@@ -923,7 +946,7 @@ os_main (int argc, char* argv[])
 {
   // ...
 
-  // Local storage for the thread object.
+  // Local storage for the thread object instance.
   os_thread_t th1;
 
   // Create a thread; the stack is allocated with the default RTOS allocator.
@@ -944,7 +967,6 @@ os_main (int argc, char* argv[])
   return 0;
 }
 ```
-
 
 ## Destroying threads
 
@@ -1079,9 +1101,9 @@ th_func(void* args)
   thread::stack& st = this_thread::thread().stack();
   std::size_t available = st.available();
   if (available < (st.size() * 20 / 100))
-  {
-    trace::printf("Low stack!\n");
-  }
+    {
+      trace::printf("Low stack!\n");
+    }
 
   // Do something.
 
@@ -1105,9 +1127,9 @@ th_func(void* args)
   os_thread_stack_t* st = os_thread_get_stack(os_this_thread());
   size_t available = os_thread_stack_get_available(st);
   if (available < (os_thread_stack_get_size() * 20 / 100))
-  {
-    trace_printf("Low stack!\n");
-  }
+    {
+      trace_printf("Low stack!\n");
+    }
 
   // Do something.
 
@@ -1197,7 +1219,7 @@ os_thread_attr_init(&attr3);
 attr3.th_stack_address = th3_stack;
 attr3.th_stack_size_bytes = sizeof(th3_stack);
 
-// Local storage for the thread object.
+// Local storage for the thread object instance.
 os_thread_t th3;
 
 // Create a thread; the stack is statically allocated.
@@ -1218,7 +1240,7 @@ The **idle** thread is a mandatory internal component of µOS++. It is the lowes
 
 The idle thread manages a list of threads terminated and waiting to be destroyed. The `thread::exit()` call links the terminating thread to this list, since it cannot destroy the thread while still running on the thread stack.
 
-When the idle is resumed, it first checks this list, and, if any threads are present, they are fully destroyed and possibly the stack space is deallocated.
+When the idle thread is resumed, it first checks this list, and, if any threads are present, they are fully destroyed and possibly the stack space is deallocated.
 
 When the idle thread has nothing else to do, it places the CPU into sleep, and waits for the next interrupt (the Cortex-M devices use the **Wait For Interrupt - WFI** instruction for this).
 
