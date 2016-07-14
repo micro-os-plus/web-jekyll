@@ -327,15 +327,15 @@ A message queue is usually an array of structures accessed in a FIFO way. Thread
 
 Threads can block while waiting for messages, and as such do not waste CPU cycles.
 
+### Semaphores
+
+Semaphores, and especially binary semaphores, are commonly used to pass notifications between different parts of the code, mostly from ISRs to threads. However, they have a richer semantic, especially the counting semaphores, and can also be used to keep track of the number of available resources (for example total positions in a circular buffer), which somehow places them at the border with managing shared resources.
+
 ### Event flags
 
 An event flag is a binary variable, representing a specific condition that a thread can wait for. When the condition occurs, the flag is raised and the thread is resumed.
 
 Multiple flags can be grouped and the thread can be notified when all or any of the flags was raised.
-
-### Semaphores
-
-Semaphores can also be used to pass notifications between different parts of the code, although they generally are associated with protecting access to shared resources.
 
 ## Managing common resources
 
@@ -379,7 +379,7 @@ This is the preferred method for accessing shared resources, especially if the t
 
 µOS++ mutexes have a built-in priority inheritance mechanism, which avoids unbound priority inversions.
 
-However, mutexes are slightly slower (in execution time) than semaphores since the priority of the owner may need to be changed, which requires CPU processing.
+However, mutexes are slightly slower (in execution time) than semaphores since the priority of the owner may need to be changed, which requires more CPU processing.
 
 ### Should a semaphore or a mutex be used?
 
@@ -387,7 +387,7 @@ A semaphore should be used when resources are shared with an ISR.
 
 A semaphore can be used instead of a mutex if none of the threads competing for the shared resource have deadlines to be satisfied.
 
-However, if there are deadlines to meet, you should use a mutex prior to accessing shared resources. Semaphores are subject to unbounded priority inversions, while mutex are not.
+However, if there are deadlines to meet, you should use a mutex prior to accessing shared resources. Semaphores are subject to unbounded priority inversions, while mutexes are not.
 
 ### Deadlock (or deadly embrace)
 

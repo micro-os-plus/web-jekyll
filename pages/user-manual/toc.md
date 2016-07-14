@@ -78,17 +78,35 @@ Note: The Users's Manual is currently work in progress.
   * [Waiting for thread event flags]({{ site.baseurl }}/user-manual/thread-event-flags/#waiting-for-thread-event-flags)
   * [Other thread event flags functions]({{ site.baseurl }}/user-manual/thread-event-flags/#other-thread-event-flags-functions)
 
-### Semaphores
+### [Semaphores]({{ site.baseurl }}/user-manual/semaphores/)
+  * [Overview]({{ site.baseurl }}/user-manual/semaphores/#overview)
+  * [Semaphore types]({{ site.baseurl }}/user-manual/semaphores/#semaphore-types)
+    * [Binary semaphores]({{ site.baseurl }}/user-manual/semaphores/#binary-semaphores)
+    * [Counting semaphores]({{ site.baseurl }}/user-manual/semaphores/#counting-semaphores)
+  * [Creating semaphores]({{ site.baseurl }}/user-manual/semaphores/#creating-semaphores)
+  * [Posting to semaphores]({{ site.baseurl }}/user-manual/semaphores/#posting-to-semaphores)
+    * [Posting from ISRs]({{ site.baseurl }}/user-manual/semaphores/#posting-from-isrs)
+  * [Waiting on semaphores]({{ site.baseurl }}/user-manual/semaphores/#waiting-on-semaphores)
+  * [Multiple threads waiting on a semaphore]({{ site.baseurl }}/user-manual/semaphores/#multiple-threads-waiting-on-a-semaphore)
+  * [Other semaphore functions]({{ site.baseurl }}/user-manual/semaphores/#other-semaphore-functions)
+    * [Getting the semaphore name]({{ site.baseurl }}/user-manual/semaphores/#getting-the-semaphore-name)
+    * [Getting the semaphore value]({{ site.baseurl }}/user-manual/semaphores/#getting-the-semaphore-value)
+    * [Getting the semaphore maximum value]({{ site.baseurl }}/user-manual/semaphores/#getting-the-semaphore-maximum-value)
+    * [Getting the semaphore initial value]({{ site.baseurl }}/user-manual/semaphores/#getting-the-semaphore-initial-value)
+  * [Destroying semaphores]({{ site.baseurl }}/user-manual/semaphores/#destroying-semaphores)
+  * [Using semaphores for resource management]({{ site.baseurl }}/user-manual/semaphores/#using-semaphores-for-resource-management)
+  * [Unilateral rendezvous]({{ site.baseurl }}/user-manual/semaphores/#unilateral-rendezvous)
+  * [Semaphore pitfalls]({{ site.baseurl }}/user-manual/semaphores/#semaphore-pitfalls)
+
+### Event flags
   * Overview
-    * Binary semaphores
-    * Counting semaphores
-  * Creating semaphores
-  * Posting tokens to semaphores
-    * Posting tokens from ISRs
-  * Waiting on semaphores
-  * Multiple threads waiting on a semaphore
-  * Other semaphore functions
-  * Destroying semaphores  
+  * Creating event flags
+  * Raising event flags
+    * Raising event flags from ISRs
+  * Waiting for event flags
+  * Other event flags functions
+  * Multiple threads waiting on event flags
+  * Destroying event flags
 
 ### Mutexes
   * Overview
@@ -108,15 +126,6 @@ Note: The Users's Manual is currently work in progress.
   * Overview
   * TODO
 
-### Event flags
-  * Overview
-  * Creating event flags
-  * Raising event flags
-    * Raising event flags from ISRs
-  * Waiting for event flags
-  * Other event flags functions
-  * Multiple threads waiting on event flags
-  * Destroying event flags
 
 ### Message queues
   * Overview
