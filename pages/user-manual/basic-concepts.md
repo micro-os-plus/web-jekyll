@@ -10,7 +10,7 @@ date: 2016-06-30 14:39:00 +0300
 
 ## Embedded systems
 
-From the software point of view, an embedded system is a small computer, built for a dedicated function (as opposed to general purpose computers).
+From the software point of view, an [embedded system](https://en.wikipedia.org/wiki/Embedded_system) is a small computer, built for a dedicated function (as opposed to general purpose [computers](https://en.wikipedia.org/wiki/Computer)).
 
 There are many types of embedded systems, with varying degrees of complexity, from small proximity sensors used in home automation, to internet routers, remote surveillance cameras and even smart phones.
 
@@ -24,11 +24,11 @@ Smaller devices have much less resources, and are build around microcontrollers 
 
 In this case the application is monolithic and runs directly on the hardware, thus the name _bare-metal_.
 
-µOS++ focuses on these bare-metal applications, especially those running on ARM Cortex-M devices. Although µOS++ can be ported on larger ARM cores, even the 64-bits ones, there are no plans to include support for MMU, virtual memory, separate processes and other such features specific to the Unix world.
+µOS++ focuses on these [bare-metal](https://en.wikipedia.org/wiki/Bare_machine) applications, especially those running on ARM Cortex-M devices. Although µOS++ can be ported on larger ARM cores, even the 64-bits ones, there are no plans to include support for MMU, virtual memory, separate processes and other such features specific to the Unix world.
 
 ## Real-time systems
 
-A real-time embedded system is a piece of software that manages the resources and the time behaviour of an embedded device, usually build around a microcontroller, emphasising on the correctness of the computed values and their availability at the expected time.
+A [real-time](https://en.wikipedia.org/wiki/Real-time_computing) embedded system is a piece of software that manages the resources and the time behaviour of an embedded device, usually build around a microcontroller, emphasising on the correctness of the computed values and their availability at the expected time.
 
 µOS++ is a real-time operating system (RTOS).
 
@@ -302,6 +302,8 @@ An even more unfortunate scenario is the following:
 
 The problem in this scenario is that although the high priority thread announced its intention to acquire the resource and knows it must wait for the low priority thread to release it, a medium priority thread can still prevent this to happen, behaving as like having the highest priority. This is known as **unbounded priority inversion**. It is unbounded because any medium priority can extend the time the high priority thread has to wait for the resource.
 
+This problem was known for long, but many times ignored, until it was reported to have affected the [NASA JPL’s Mars Pathfinder](https://en.wikipedia.org/wiki/Mars_Pathfinder) spacecraft (see [What really happened on Mars?](http://research.microsoft.com/en-us/um/people/mbj/Mars_Pathfinder/)).
+
 One of the possible solutions to avoid this is for the high priority thread to temporarily boost the priority of the low priority thread, to prevent other threads to interfere and so help the low priority thread to complete its job sooner. This is known as **priority inheritance**.
 
 <div style="text-align:center">
@@ -309,9 +311,12 @@ One of the possible solutions to avoid this is for the high priority thread to t
 <p>Priority inheritance</p>
 </div>
 
+To be noted that priority inheritance does not completely fix the priority inversion problem, the high priority thread still has to wait for the low priority thread to release the resource, but at least it does its best to prevent other middle priority threads to interfere. It is not a good practice to rely only on priority inheritance for correct system operation and the problem should be avoided at system design time, by considering how resources are accessed.
+
+
 ## Communicating between threads and/or ISRs
 
-In a multi-tasking application, the threads and the ISRs are basically separate entities. However, in order to achieve the application's goals, they must exchange information in various ways.
+In a multi-tasking application, the threads and the ISRs are basically separate entities. However, in order to achieve the application's goals, they must work together and exchange information in various ways.
 
 ### Periodic polling vs event waiting
 
@@ -371,7 +376,7 @@ This method must be used with caution, since keeping the scheduler locked too lo
 
 Counting semaphores can be used to control access to shared resources used on ISRs, like circular buffers.
 
-Since they may be affected by priority inversions, their use to communicate between threads is not recommended.
+Since they may be affected by priority inversions, their use to manage common resources should be done with caution.
 
 ### Mutual exclusion (mutex)
 
@@ -387,7 +392,7 @@ A semaphore should be used when resources are shared with an ISR.
 
 A semaphore can be used instead of a mutex if none of the threads competing for the shared resource have deadlines to be satisfied.
 
-However, if there are deadlines to meet, you should use a mutex prior to accessing shared resources. Semaphores are subject to unbounded priority inversions, while mutexes are not.
+However, if there are deadlines to meet, you should use a mutex prior to accessing shared resources. Semaphores are subject to unbounded priority inversions, while mutexes are not. On the other hand, mutexes cannot be used on interrupts, since they need an owner thread.
 
 ### Deadlock (or deadly embrace)
 
@@ -450,3 +455,17 @@ For these situations a separate low power real-time clock is required; powered b
 This clock not only keeps track of time, it can also trigger interrupts to wakeup the CPU at desired moments.
 
 The usual resolution of the real-time clock is 1 sec.
+
+## Terms to use with caution
+
+### Kernel
+
+Many authors also refer to their RTOSes as "kernels". Well, even if _OS_ in RTOS stands for _operating system_, this definition is somehow stretched to the limit, since in bare-metal embedded systems the so called [operating system](https://en.wikipedia.org/wiki/Operating_system) is only a collection of functions handling thread switching and synchronisation, linked together with the application in a monolithic executable.
+
+As such, the term [kernel](https://en.wikipedia.org/wiki/Kernel_(operating_system)) is even more inappropriate, since there is no distinct component to manage all available resources (memory, CPU, I/O, etc) and to provide them to the application in a controlled way; most of the time the application has full control over the entire memory space, which, for systems with memory mapped peripherals, also means full control over the I/O.
+
+The only kernel specific function available in bare-metal embedded systems is CPU management; with multiple threads sharing the CPU, probably a more appropriate name for the RTOS core component is **scheduler**; the µOS++ IIIe documentation uses the term _operating system_ in its definition, occasionally refers to itself as a _scheduler_, and explicitly tries to avoid the term _kernel_.
+
+### Tasks vs threads
+
+Many authors refer to threads as "tasks". Strictly speaking, [threads](https://en.wikipedia.org/wiki/Thread_(computing)) (together with [processes](https://en.wikipedia.org/wiki/Process_(computing))) are the system primitives used to run multiple tasks in parallel in a multitasking system.
