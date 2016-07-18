@@ -55,6 +55,10 @@ Note: The Users's Manual is currently work in progress.
 * [Statically vs. dynamically allocated objects]({{ site.baseurl }}/user-manual/basic-concepts/#statically-vs-dynamically-allocated-objects)
   * [The system allocator]({{ site.baseurl }}/user-manual/basic-concepts/#the-system-allocator)
   * [Fragmentation]({{ site.baseurl }}/user-manual/basic-concepts/#fragmentation)
+* [Real-time clock]({{ site.baseurl }}/user-manual/basic-concepts/#real-time-clock)
+* [Terms to use with caution]({{ site.baseurl }}/user-manual/basic-concepts/#terms-to-use-with-caution)
+  * [Kernel]({{ site.baseurl }}/user-manual/basic-concepts/#kernel)
+  * [Tasks vs threads]({{ site.baseurl }}/user-manual/basic-concepts/#tasks-vs-threads)
 
 ### [Features]({{ site.baseurl }}/user-manual/features/)
 
@@ -85,7 +89,7 @@ Note: The Users's Manual is currently work in progress.
     * [Counting semaphores]({{ site.baseurl }}/user-manual/semaphores/#counting-semaphores)
   * [Creating semaphores]({{ site.baseurl }}/user-manual/semaphores/#creating-semaphores)
   * [Posting to semaphores]({{ site.baseurl }}/user-manual/semaphores/#posting-to-semaphores)
-    * [Posting from ISRs]({{ site.baseurl }}/user-manual/semaphores/#posting-from-isrs)
+    * [Posting to semaphores from ISRs]({{ site.baseurl }}/user-manual/semaphores/#posting-to-semaphores-from-isrs)
   * [Waiting on semaphores]({{ site.baseurl }}/user-manual/semaphores/#waiting-on-semaphores)
   * [Multiple threads waiting on a semaphore]({{ site.baseurl }}/user-manual/semaphores/#multiple-threads-waiting-on-a-semaphore)
   * [Other semaphore functions]({{ site.baseurl }}/user-manual/semaphores/#other-semaphore-functions)
@@ -97,16 +101,24 @@ Note: The Users's Manual is currently work in progress.
   * [Using semaphores for resource management]({{ site.baseurl }}/user-manual/semaphores/#using-semaphores-for-resource-management)
   * [Unilateral rendezvous]({{ site.baseurl }}/user-manual/semaphores/#unilateral-rendezvous)
   * [Semaphore pitfalls]({{ site.baseurl }}/user-manual/semaphores/#semaphore-pitfalls)
+    * [Unbalanced wait()/post()]({{ site.baseurl }}/user-manual/semaphores/#unbalanced-waitpost)
+    * [Recursive deadlock]({{ site.baseurl }}/user-manual/semaphores/#recursive-deadlock)
+    * [Thread-termination deadlock]({{ site.baseurl }}/user-manual/semaphores/#thread-termination-deadlock)
+    * [Priority inversion]({{ site.baseurl }}/user-manual/semaphores/#priority-inversion)
+    * [Wrong initialisation]({{ site.baseurl }}/user-manual/semaphores/#wrong-initialisation)
 
-### Event flags
-  * Overview
-  * Creating event flags
-  * Raising event flags
-    * Raising event flags from ISRs
-  * Waiting for event flags
-  * Other event flags functions
-  * Multiple threads waiting on event flags
-  * Destroying event flags
+### [Event flags]({{ site.baseurl }}/user-manual/event-flags/)
+  * [Overview]({{ site.baseurl }}/user-manual/event-flags/#overview)
+  * [Creating event flags]({{ site.baseurl }}/user-manual/event-flags/#creating-event-flags)
+  * [Raising event flags]({{ site.baseurl }}/user-manual/event-flags/#raising-event-flags)
+    * [Raising event flags from ISRs]({{ site.baseurl }}/user-manual/event-flags/#raising-event-flags-from-isrs)
+  * [Waiting for event flags]({{ site.baseurl }}/user-manual/event-flags/#waiting-for-event-flags)
+  * [Multiple threads waiting on event flags]({{ site.baseurl }}/user-manual/event-flags/#multiple-threads-waiting-on-event-flags)
+  * [Other event flags functions]({{ site.baseurl }}/user-manual/event-flags/#other-event-flags-functions)
+    * [Getting the event flags name]({{ site.baseurl }}/user-manual/event-flags/#getting-the-event-flags-name)
+    * [Getting individual flags]({{ site.baseurl }}/user-manual/event-flags/#getting-individual-flags)
+    * [Clearing individual flags]({{ site.baseurl }}/user-manual/event-flags/#clearing-individual-flags)
+  * [Destroying event flags]({{ site.baseurl }}/user-manual/event-flags/#destroying-event-flags)
 
 ### Mutexes
   * Overview
@@ -195,5 +207,9 @@ As the saying goes, _"Books are written from books, and software from software"_
 - _"Using the FreeRTOS Real Time Kernel"_, by Richard Barry
 - _"µC/OC-III The Real-Time Kernel - User's Manual"_, by Micriµm
 - _"embOS & embOS-MPU - Real-Time Operating System - CPU-independent - User & Reference Guide"_, by SEGGER
+
+Other links:
+
+- [The Feabhas Blog](https://blog.feabhas.com/category/rtos/)
 
 Many thanks for their impressive work and for providing the inspiration.

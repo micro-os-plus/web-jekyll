@@ -47,13 +47,13 @@ th_func(void* args)
   result_t res;
   res = this_thread::flags_timed_wait(0x3, 100);
   if (res == os_ok)
-  {
-    trace::printf("Both flags raised\n");
-  }
+    {
+      trace::printf("Both flags raised\n");
+    }
   else if (res == ETIMEDOUT)
-  {
-    trace::printf("Timeout\n");
-  }
+    {
+      trace::printf("Timeout\n");
+    }
 
   return nullptr;
 }
@@ -98,13 +98,13 @@ th_func(void* args)
   os_result_t res;
   res = os_this_thread_flags_timed_wait(0x3, 100, NULL, os_flags_mode_all | os_flags_mode_clear);
   if (res == os_ok)
-  {
-    trace_printf("Both flags raised\n");
-  }
+    {
+      trace_printf("Both flags raised\n");
+    }
   else if (res == ETIMEDOUT)
-  {
-    trace_printf("Timeout\n");
-  }
+    {
+      trace_printf("Timeout\n");
+    }
 
   return NULL;
 }
@@ -141,7 +141,7 @@ os_main (int argc, char* argv[])
 }
 ```
 
-To check if any of the flags in the set is raised, use `flags::mode::any` (in C use `os_flags_mode_any`).
+To check if any flag in the set is raised, use `flags::mode::any` (in C use `os_flags_mode_any`).
 
 ## Other thread event flags functions
 

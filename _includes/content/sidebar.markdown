@@ -20,6 +20,15 @@
   * [Basic concepts]({{ site.baseurl }}/user-manual/basic-concepts/)
   * [Features]({{ site.baseurl }}/user-manual/features/)
   * [Threads]({{ site.baseurl }}/user-manual/threads/)
+  * [Thread event flags]({{ site.baseurl }}/user-manual/thread-event-flags/)
+  * [Semaphores]({{ site.baseurl }}/user-manual/semaphores/)
+  * [Event flags]({{ site.baseurl }}/user-manual/event-flags/)
+  * Mutexes
+  * Condition variables
+  * Message queues
+  * Memory pools
+  * Software timers
+  * Clocks
 * [CMSIS++ **reference**]({{ site.baseurl }}/reference/cmsis-plus/)
 
 #### Developer

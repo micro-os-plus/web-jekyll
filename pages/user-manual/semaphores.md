@@ -71,7 +71,7 @@ A counting semaphore is used when elements of a resource can be used by more tha
 
 For convenience reasons, µOS++ has several functions for creating semaphores. Semaphores can be created as local objects on the function stack, or as global objects, semaphores can be binary, or counting, semaphores can be created with default characteristics or with custom attributes, and so on.
 
-When used to synchronise threads with ISRs, the easiest way to create semaphores is to make them global objects.
+When used to synchronise threads with ISRs, the easiest way to access semaphores is when they are created as global objects.
 
 The initial value for the semaphore is typically zero (0), indicating that the event has not yet occurred, or there are no resources. It is possible to initialize the semaphore with a value other than zero, indicating that the semaphore initially contains that number of resources.
 
@@ -84,16 +84,21 @@ In C++, the global semaphores are created and initialised by the global static c
 using namespace os;
 using namespace os::rtos;
 
-// Create a binary semaphore, with the initial count as 0.
+// Create a global binary semaphore object instance,
+// with the initial count as 0.
 semaphore_binary sb1 { "sb1", 0 };
 
-// Create a binary semaphore, with the initial count as 1.
+// Create a global binary semaphore object instance,
+// Create a global binary semaphore,
+// with the initial count as 1.
 semaphore_binary sb2 { "sb2", 1 };
 
-// Create a counting semaphore, with max 7 items and the initial count as 0.
+// Create a global binary semaphore object instance,
+// with max 7 items and the initial count as 0.
 semaphore_counting sc1 { "sc1", 7, 0 };
 
-// Create a counting semaphore, with max 7 items and the initial count as 7.
+// Create a global binary semaphore object instance,
+// with max 7 items and the initial count as 7.
 semaphore_counting sc2 { "sc2", 7, 7 };
 
 int
@@ -109,7 +114,7 @@ os_main (int argc, char* argv[])
   return 0;
 }
 
-// All semaphores are automatically destroyed if os_main() returns.
+// All global semaphores are automatically destroyed if os_main() returns.
 
 ```
 
@@ -130,16 +135,20 @@ os_main (int argc, char* argv[])
 {
   // ...
 
-  // Create a binary semaphore, with the initial count as 0.
+  // Create a global binary semaphore object instance,
+  // with the initial count as 0.
   os_semaphore_binary_create(&sb1, "sb1", 0);
 
-  // Create a binary semaphore, with the initial count as 1.
+  // Create a global binary semaphore object instance,
+  // with the initial count as 1.
   os_semaphore_binary_create(&sb2, "sb2", 1);
 
-  // Create a counting semaphore, with max 7 items and the initial count as 0.
+  // Create a global binary semaphore object instance,
+  // with max 7 items and the initial count as 0.
   os_semaphore_counting_create(&sc1, "sc1", 7, 0);
 
-  // Create a counting semaphore, with max 7 items and the initial count as 7.
+  // Create a global binary semaphore object instance,
+  // with max 7 items and the initial count as 7.
   os_semaphore_counting_create(&sc2, "sc2", 7, 7);
 
   // ...
@@ -174,7 +183,8 @@ os_main (int argc, char* argv[])
 
   // Use placement new, to explicitly call the constructor
   // and initialise the semaphore.
-  // Create a binary semaphore, with the initial count as 1.
+  // Create a global binary semaphore object instance,
+  // with the initial count as 1.
   new (&sb1) semaphore_binary { "sb1", 1 };
 
   // Local static storage for the semaphore object instance.
@@ -182,7 +192,8 @@ os_main (int argc, char* argv[])
 
   // Use placement new, to explicitly call the constructor
   // and initialise the semaphore.
-  // Create a counting semaphore, with max 7 items and the initial count as 0.
+  // Create a static counting semaphore object instance,
+  // max 7 items and the initial count as 0.
   new (&sc1) semaphore_counting { "sc1", 7, 0 };
 
   // ...
@@ -210,16 +221,20 @@ os_main (int argc, char* argv[])
 {
   // ...
 
-  // Create a binary semaphore, with the initial count as 0.
+  // Create a local binary semaphore object instance,
+  // with the initial count as 0.
   semaphore_binary sb1 { "sb1", 0 };
 
-  // Create a binary semaphore, with the initial count as 1.
+  // Create a local binary semaphore object instance,
+  // with the initial count as 1.
   semaphore_binary sb2 { "sb2", 1 };
 
-  // Create a counting semaphore, with max 7 items and the initial count as 0.
+  // Create a local binary semaphore object instance,
+  // with max 7 items and the initial count as 0.
   semaphore_counting sc1 { "sc1", 7, 0 };
 
-  // Create a counting semaphore, with max 7 items and the initial count as 7.
+  // Create a local binary semaphore object instance,
+  // with max 7 items and the initial count as 7.
   semaphore_counting sc2 { "sc2", 7, 7 };
 
   // Beware of local static instances, since they'll use atexit()
@@ -247,25 +262,29 @@ os_main (int argc, char* argv[])
   // Local storage for the semaphore object instance.
   os_semaphore_t sb1;
 
-  // Create a binary semaphore, with the initial count as 0.
+  // Create a binary semaphore,
+  // with the initial count as 0.
   os_semaphore_binary_create(&sb1, "sb1", 0);
 
   // Local storage for the semaphore object instance.
   os_semaphore_t sb2;
 
-  // Create a binary semaphore, with the initial count as 1.
+  // Create a binary semaphore,
+  // with the initial count as 1.
   os_semaphore_binary_create(&sb2, "sb2", 1);
 
   // Local storage for the semaphore object instance.
   os_semaphore_t sc1;
 
-  // Create a counting semaphore, with max 7 items and the initial count as 0.
+  // Create a counting semaphore,
+  // with max 7 items and the initial count as 0.
   os_semaphore_counting_create(&sc1, "sc1", 7, 0);
 
   // Local storage for the semaphore object instance.
   os_semaphore_t sc2;
 
-  // Create a counting semaphore, with max 7 items and the initial count as 7.
+  // Create a counting semaphore,
+  // with max 7 items and the initial count as 7.
   os_semaphore_counting_create(&sc2, "sc2", 7, 7);
 
   // ...
@@ -297,13 +316,15 @@ os_main (int argc, char* argv[])
   semaphore::attribute_binary attr_b1 { 0 };
   attr_b1.clock = &rtclock;
 
-  // Create a binary semaphore, with the initial count as 0.
+  // Create a local binary semaphore object instance,
+  // the initial count as 0.
   semaphore sb1 { "sb1", attr_b1 };
 
   semaphore::attribute_counting attr_c2 { 7, 0 };
   attr_c2.clock = &rtclock;
 
-  // Create a counting semaphore, with max 7 items and the initial count as 0.
+  // Create a local binary semaphore object instance,
+  // with max 7 items and the initial count as 0.
   semaphore sc1 { "sc1", attr_c2 };
 
   // Attributes for a generic counting semaphore, with max 7 items
@@ -343,7 +364,8 @@ os_main (int argc, char* argv[])
   // Local storage for the semaphore object instance.
   os_semaphore_t sb1;
 
-  // Create a binary semaphore, with the initial count as 0.
+  // Create a binary semaphore,
+  // with the initial count as 0.
   os_semaphore_create(&sb1, "sb1", &attr_b1);
 
   os_semaphore_attr_t attr_c2;
@@ -354,7 +376,8 @@ os_main (int argc, char* argv[])
   // Local storage for the semaphore object instance.
   os_semaphore_t sc1;
 
-  // Create a counting semaphore, with max 7 items and the initial count as 0.
+  // Create a counting semaphore,
+  // with max 7 items and the initial count as 0.
   os_semaphore_create(&sc1, "sc1", &attr_c2);
 
   os_semaphore_attr_t attr_g1;
@@ -491,7 +514,7 @@ The µOS++ semaphore API basically implements the POSIX semaphores, with several
 
 ### Getting the semaphore name
 
-The semaphore name is an optional string defined during semaphore creation. It is generally used to identify the semaphore during debugging sessions.
+The semaphore name is an optional string defined during the semaphore object instance creation. It is generally used to identify the semaphore during debugging sessions.
 
 The C++ API is:
 
@@ -576,7 +599,7 @@ os_semaphore_reset(&sem);
 
 ## Destroying semaphores
 
-In C++, if the semaphores were created using the normal way, the destructors are automatically invoked when the current block exits, or, for the global semaphores instances, after the `main()` function returns.  Semaphores created with placement `new` need to be destructed manually.
+In C++, if the semaphores were created using the normal way, the destructors are automatically invoked when the current block exits, or, for the global semaphores instances, after the `main()` function returns. Semaphores created with placement `new` need to be destructed manually.
 
 In C, all semaphores must be destructed by explicit calls to `os_semaphore_destroy()`.
 

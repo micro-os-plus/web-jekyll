@@ -577,6 +577,8 @@ os_main (int argc, char* argv[])
 }
 ```
 
+The application programmer can create an unlimited number of threads (limited only by the available RAM).
+
 ### ISO/IEC C++ threads
 
 The 2011 release of the ISO/IEC C++ 14882 standard finally introduced a standard definition for the C++ threads objects.
@@ -770,7 +772,7 @@ The µOS++ thread API basically implements the POSIX threads, with several exten
 
 ### Getting the thread name
 
-The thread name is an optional string defined during thread creation. It is generally used to identify the thread during debugging sessions.
+The thread name is an optional string defined during thread object instance creation. It is generally used to identify the thread during debugging sessions.
 
 The C++ API is:
 
@@ -1141,7 +1143,7 @@ Note: For reentrancy reasons, the `trace::printf()` facility requires some stack
 
 ### Configuring the thread stack size
 
-The stack size can be specified during creation time for each thread, using the `th_stack_size_bytes` thread attribute. If attributes are not used, or the provided value is zero, a default value is used.
+The stack size can be specified during creation time for each thread, using the `th_stack_size_bytes` thread attribute. If attributes are not used, or the provided value is zero, a default value is supplied.
 
 This default value can be set at any time using `thread::stack::default_size(std::size_t)` (in C with `os_thread_stack_set_default_size(size_t)`), and applies to all threads created afterwords.
 
