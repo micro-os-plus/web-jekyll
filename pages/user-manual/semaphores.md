@@ -800,7 +800,7 @@ This example is for demonstrative purposes only. A real-world example would prob
 
 Semaphores are great synchronisation objects, especially with events occurring on interrupts.
 
-However semaphores are subject to a serious problem in real-time systems called [priority inversion]({{ site.baseurl }}/user-manual/basic-concepts/#priority-inversion--priority-inheritance), and for such cases other methods, like mutexes, were introduced.
+However semaphores are subject to several problems, which must be known and addressed during system design.
 
 ### Unbalanced wait()/post()
 
@@ -910,7 +910,6 @@ write_many_messages(void)
 }
 
 ```
-**
 
 Well... bad idea! Since the semaphore was created as binary, the first `wait()` in `write_many_messages()` will lock it, and the inner `wait()` in `write_message()` will find it locked and block forever.
 
