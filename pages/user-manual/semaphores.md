@@ -10,21 +10,25 @@ date: 2016-07-12 10:36:00 +0300
 
 ## Overview
 
-Semaphores are one of the oldest mechanisms introduced by multitasking systems, being used both for resource management and synchronisation.
+Semaphores are one of the oldest mechanisms introduced by multitasking systems, being used both for managing common resources and synchronisation.
 
-Synchronisation is required to efficiently implement blocking I/O; when a thread requires some data that is not yet available (for example by performing a `read()`), it is not efficient to poll until the data becomes available, but it is much better to suspend the thread and arrange for the data producer (usually an ISR) to resume the thread when the data is available.
+Managing common resources, in its simple form, prevents several threads to concurrently use a shared resource by blocking access of all other threads until the thread that acquired the resource releases it.
+
+Synchronisation is generally required to efficiently implement blocking I/O; when a thread requires some data that is not yet available (for example by performing a `read()`), it is not efficient to poll until the data becomes available, but it is much better to suspend the thread and arrange for the data producer (usually an ISR) to resume the thread when the data is available.
 
 In µOS++ there are two basic synchronisations mechanisms: **semaphores** and **event flags**.
 
-A [semaphore](https://en.wikipedia.org/wiki/Semaphore_(programming)) is a synchronisation mechanism offered by most multitasking systems. In its simplest form, a semaphore is similar to the real-world traffic light, which blocks access to a segment of road in certain conditions. The semaphore concept was invented by the Dutch computer scientist [Edsger Dijkstra](https://en.wikipedia.org/wiki/Edsger_Dijkstra) and historically it is said to be inspired by the railroad semaphore (the binary semaphore, which controls access to a single resource).
+A [semaphore](https://en.wikipedia.org/wiki/Semaphore_(programming)) is a synchronisation mechanism offered by most multitasking systems. In its simplest form, a semaphore is similar to the real-world traffic light, which blocks access to a segment of road in certain conditions.
+
+The semaphore concept was introduced in 1965 by the Dutch computer scientist [Edsger Dijkstra](https://en.wikipedia.org/wiki/Edsger_Dijkstra) and historically it is said to be inspired by the railway semaphore (the binary semaphore, which controls access to a single resource by bracing the critical section with the `P(S)` and `V(S)` primitives).
 
 <div style="float:right; margin-left: 10px;">
 <img src="{{ site.baseurl }}/assets/images/2016/160px-Rail-semaphore-signal-Dave-F.jpg" />
 </div>
 
-The concept was later extended to control access to an arbitrary number of resources (the counting semaphore).
+The concept was later extended by another Dutchman, Carel S. Scholten, to control access to an arbitrary number of resources. In his proposal the semaphore can have an initial value (or count) greater than one (thus the counting semaphore).
 
-Semaphores were originally used to control access to shared resources. However, depending on the application, better mechanisms exist to manage common resources, like locks, mutexes, etc. Semaphores are best used to synchronize a thread with an ISR or with another thread (unilateral rendezvous).
+Semaphores were originally used to control access to shared resources. However, depending on the application, better mechanisms exist now to manage shared resources, like locks, mutexes, etc. Semaphores are best used to synchronize a thread with an ISR or with another thread (unilateral rendezvous).
 
 ## Semaphore types
 
@@ -34,15 +38,23 @@ Note: In µOS++, even if binary and counting semaphores are defined by different
 
 ### Binary semaphores
 
-Like a railroad semaphore, which is either red or green, and protects access to a single railroad track segment, a binary semaphore has only two values, 0 or 1. If the value is 0, the resource associated with the semaphore is not available, and whoever needs it, must wait, like a train must wait at a red semaphore. When the railroad track segment becomes available, the semaphore is "posted", which makes the arm swing up, the light turn green, and the train can continue its journey.
+Since we mentioned the analogy with the railway system, let's imagine we have a small train station, with a single platform. The first arriving train enters the station without any restrictions, and stops at the platform. To prevent a second train from entering the station and bumping onto the first, a semaphore is installed at a certain distance before the station. The railway semaphore has a red hand which can be either lowered or raised. Modern semaphores are electric, and also have lights (red and green). After the first train enters the station, the hand is lowered and the light turns red. If a second train arrives, it reads this as "stop" and waits. When the first train leaves the station, the semaphore arm swings up, the light turns green, and the second train can enter the station.
 
-What a binary semaphore has in addition to a rail semaphore, is a signaling method, which is used to resume waiting threads when the semaphore is posted (think of this mechanism as a loud horn used to wakeup the sleeping train driver, waiting for the semaphore).
+Like a railway semaphore which has two states, a binary semaphore has only two values, 0 or 1. If the value is 0, the resource associated with the semaphore is not available, and whoever needs it, must wait, like the train that stops at a red semaphore. When the resource becomes available, the semaphore is "posted", allowing the next thread waiting for the semaphore to resume.
+
+Depending on the semaphore usage, it can start either with 0 (when used for synchronisation) or 1 (when used to protect a single shared resource).
+
+What a binary semaphore has in addition to a railway semaphore, is a signaling method (think of this mechanism as a loud horn used to wakeup the sleeping train driver, waiting for the semaphore).
 
 ### Counting semaphores
 
-To continue the analogy with the railroad system, what if we have a train station, with multiple parallel tracks, where many trains can be present at the same time? Well, the solution is similar, but the semaphore logic should keep track of the number of trains in the station, and turn red when all tracks are busy. When one train leaves the station, the semaphore can be turned green, and, if there is a train waiting, it'll be allowed to enter the station.
+To continue the analogy with the railway system, what if we have a larger train station, with multiple platforms, where many trains can be present at the same time? Well, the solution is similar, but the semaphore logic should keep track of the number of trains in the station, and turn red when all tracks are busy. When one train leaves the station, the semaphore can be turned green, and, if there is a train waiting, it'll be allowed to enter the station.
 
-A counting semaphore has a counter with a limit, representing the maximum number of available resources. Assuming it starts at zero, with no resources available, the semaphore is "posted" each time a new resource becomes available, which increments the counter. When the maximum is reached, further "posts" will fail and the counter will remain unchanged.
+A counting semaphore has a counter with a limit, representing the maximum number of available resources.
+
+Depending on the semaphore usage, it usually starts either at 0 (when used for synchronisation) or at the limit (when used to protect a multiple shared resources).
+
+Assuming it starts at zero, with no resources available, the semaphore is "posted" each time a new resource becomes available, which increments the counter. When the maximum is reached, further "posts" will fail and the counter will remain unchanged.
 
 On the other side, when resources need to be consumed, as long as the counter is positive, the requesting thread will be allowed access to the resource, and, at each request, the counter will be decremented.
 
@@ -268,7 +280,7 @@ os_main (int argc, char* argv[])
 }
 ```
 
-For a total control over the semaphore creation (for example to set a custom clock), the semaphore attribute mechanism is available.
+For a total control over the semaphore creation (for example to set a custom clock), the semaphore attribute mechanism can be used.
 
 ``` cpp
 /// @file app-main.cpp
@@ -370,6 +382,8 @@ os_main (int argc, char* argv[])
 }
 ```
 
+The application programmer can create an unlimited number of semaphores (limited only by the available RAM).
+
 ## Posting to semaphores
 
 When one resource associated with the semaphore becomes available, the semaphore is notified.
@@ -406,9 +420,9 @@ else if (res == EGAIN)
 
 When the semaphore is correctly posted, the value is increased and the oldest high priority thread waiting (if any) is added to the READY list, allowing it to acquire the semaphore.
 
-If any of the waiting threads has a higher priority than the currently running thread, µOS++ will run the highest-priority thread made ready by `post()`. The current thread is suspended until it again becomes the highest-priority thread that is ready to run.
+If any of the waiting threads has a higher priority than the currently running thread, µOS++ will run the highest-priority thread made ready by `post()`. The current thread is suspended until it'll become the highest-priority thread that is ready to run.
 
-### Posting from ISRs
+### Posting to semaphores from ISRs
 
 It is perfectly possible to post semaphores from ISRs, generally to synchronise waiting threads with events occurring on interrupts.
 
@@ -418,9 +432,9 @@ To synchronise access to a resource, a thread must invoke the semaphore `wait()`
 
 If the resource is available, in other words if the semaphore was posted and the count value is positive, the count is decremented and the call returns.
 
-If the value is zero, this means that no more resources are available, and the thread will be suspended. The thread will be resumed when the semaphore will be posted, a timeout will occur, or the thread will be interrupted.
+If the count value is zero, this means that no more resources are available, and the calling thread will be suspended. The thread will resume either when the semaphore is posted, a timeout occurs, or the thread is interrupted.
 
-Along with the semaphore’s value, µOS++ also keeps track of threads waiting for the semaphore’s availability (a double linked list, ordered by thread priorities).
+Along with the semaphore’s value, µOS++ also keeps track of the threads waiting for the semaphore’s availability (a double linked list, ordered by thread priorities).
 
 ``` cpp
 result_t res;
@@ -462,14 +476,14 @@ The name **wait** comes from POSIX; other names used are **V**, **acquire**, **p
 
 ## Multiple threads waiting on a semaphore
 
-It is possible for several threads to wait on the same semaphore, each with its own timeout.
+When semaphores are used to manage common resources, it is possible for several threads to wait on the same semaphore, each with its own timeout.
 
 <div style="text-align:center">
 <img src="{{ site.baseurl }}/assets/images/2016/semaphore-multi-thread.png" />
 <p>Multiple threads waiting on a semaphore</p>
 </div>
 
-When the semaphore is posted (whether by a thread or an ISR), µOS++ makes the highest-priority thread waiting on the semaphore ready to run. If at this moment any of the waiting threads has a higher priority than the currently running thread, µOS++ will run all higher-priority threads and only then return to the current thread.
+When the semaphore is posted, µOS++ makes the highest-priority thread waiting on the semaphore ready to run. If at this moment any of the waiting threads has a higher priority than the currently running thread, µOS++ will run all higher-priority threads and only then return to the current thread.
 
 ## Other semaphore functions
 
@@ -562,7 +576,7 @@ os_semaphore_reset(&sem);
 
 ## Destroying semaphores
 
-In C++, if the semaphores were created using the normal way, the destructors are automatically called when the current block is exited, or, for the global semaphores instances, after the `main()` function returns.  Semaphores created with placement `new` need to be destructed manually.
+In C++, if the semaphores were created using the normal way, the destructors are automatically invoked when the current block exits, or, for the global semaphores instances, after the `main()` function returns.  Semaphores created with placement `new` need to be destructed manually.
 
 In C, all semaphores must be destructed by explicit calls to `os_semaphore_destroy()`.
 
@@ -647,12 +661,12 @@ write_message(const char* msg)
   os_semaphore_post(&sem);
 }
 ```
-
+**
 It is mandatory for the binary semaphore to be initialised with 1 (i.e. device available) for the first `wait()` to not block.
 
 ## Unilateral rendezvous
 
-It is common for a thread to wait for event generated by an ISR (or another thread). In this case, no data needs to be exchanged, only the fact that the ISR or the thread (on the left) has occurred is important. Using a semaphore for this type of synchronization is called a unilateral rendezvous.
+It is common for a thread to wait for event generated by an ISR (or another thread). In this case, no data needs to be exchanged, only the fact that the ISR or the thread (on the left) has occurred is important. Using a semaphore for this type of synchronization is called a **unilateral rendezvous**.
 
 <div style="text-align:center">
 <img src="{{ site.baseurl }}/assets/images/2016/semaphore-unilateral-rendezvous.png" />
@@ -701,7 +715,7 @@ read_byte(void)
 }
 
 void
-device_handler(void)
+device_interrupt_service_routine(void)
 {
   // Store the device data in a static location.
   device_byte = read_device_register();
@@ -747,7 +761,7 @@ read_byte(void)
 }
 
 void
-device_handler(void)
+device_interrupt_service_routine(void)
 {
   // Store the device data in a static location.
   device_byte = read_device_register();
@@ -764,3 +778,131 @@ This example is for demonstrative purposes only. A real-world example would prob
 Semaphores are great synchronisation objects, especially with events occurring on interrupts.
 
 However semaphores are subject to a serious problem in real-time systems called [priority inversion]({{ site.baseurl }}/user-manual/basic-concepts/#priority-inversion--priority-inheritance), and for such cases other methods, like mutexes, were introduced.
+
+### Unbalanced wait()/post()
+
+When using the semaphores for managing common resources, it is absolutely mandatory to begin the critical section with `wait()` and to end it with `post()`. Any possibility to leave the critical section in the middle of it (via `return`, `break`, `continue`, `goto`, etc) will result in a deadlock and should be avoided.
+
+### Recursive deadlock
+
+Recursive deadlock can occur if a thread tries to lock a semaphore it has already locked. This can typically occur in libraries or recursive functions.
+
+A typical scenario is to have a functional program, like the one protecting the `write_message()` function and try to "improve" it to protect a series of messages:
+
+``` cpp
+/// @file app-main.cpp
+#include <cmsis-plus/rtos/os.h>
+
+using namespace os;
+using namespace os::rtos;
+
+// Create a binary semaphore, with the initial count as 1.
+semaphore_binary sem { "sem", 1 };
+
+void
+write_message(const char* msg)
+{
+  // Wait until no other thread is using the device and lock access to it.
+  sem.wait();
+
+  // Write the message, one character at a time, without fear
+  // that other threads will intervene.
+  while (*msg)
+    {
+      write_char(*msg);
+      ++msg;
+    }
+
+  // Unlock access to the device.
+  sem.post();
+}
+
+// ...
+
+void
+write_many_messages(void)
+{
+  sem.wait();
+
+  write_message("one");
+  write_message("two");
+  write_message("three");
+
+  sem.post();
+}
+```
+
+A similar example, but written in C:
+
+``` c
+/// @file app-main.c
+#include <cmsis-plus/rtos/os-c-api.h>
+
+// Global static global storage for the semaphore object instance.
+os_semaphore_t sem;
+
+int
+os_main (int argc, char* argv[])
+{
+  // ...
+
+  // Create a binary semaphore, with the initial count as 1.
+  os_semaphore_binary_create(&sem, "sem", 1);
+
+  // ...
+
+  os_semaphore_destroy(&sem);
+
+  return 0;
+}
+
+void
+write_message(const char* msg)
+{
+  // Wait until no other thread is using the device and lock access to it.
+  os_semaphore_wait(&sem);
+
+  // Write the message, one character at a time, without fear
+  // that other threads will intervene.
+  while (*msg)
+    {
+      write_char(*msg);
+      ++msg;
+    }
+
+  // Unlock access to the device.
+  os_semaphore_post(&sem);
+}
+
+void
+write_many_messages(void)
+{
+  os_semaphore_wait(&sem);
+
+  write_message("one");
+  write_message("two");
+  write_message("three");
+
+  os_semaphore_post(&sem);
+}
+
+```
+**
+
+Well... bad idea! Since the semaphore was created as binary, the first `wait()` in `write_many_messages()` will lock it, and the inner `wait()` in `write_message()` will find it locked and block forever.
+
+For such scenarios, recursive mutexes are definitely more appropriate.
+
+### Thread-termination deadlock
+
+What if a thread that locked a semaphore is terminated? Since the semaphore does not keep track of its owner, most implementations are not able to detect this and all thread waiting (or may wait in the future) will never acquire the semaphore and deadlock. To partially address this, it is recommended to use the `timed_wait()`, which specifies a timeout.
+
+### Priority inversion
+
+Semaphores are subject to a serious problem in real-time systems called [priority inversion]({{ site.baseurl }}/user-manual/basic-concepts/#priority-inversion--priority-inheritance), where a high priority thread becomes delayed for an indefinite period by a low priority thread, preventing it to meet its deadlines. A very high profile case was the [NASA JPL’s Mars Pathfinder](https://en.wikipedia.org/wiki/Mars_Pathfinder) spacecraft (see [What really happened on Mars?](http://research.microsoft.com/en-us/um/people/mbj/Mars_Pathfinder/))
+
+One of the best solutions to prevent priority inversion is to use mutexes with priority inheritance.
+
+### Wrong initialisation
+
+If using semaphores for mutual exclusion is problematic, using them for synchronisation is fine, and the the typical scenario is unilateral rendezvous. However, for this to work, the semaphore must be created with an initial count value of 0 (zero).
