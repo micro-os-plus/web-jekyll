@@ -120,18 +120,18 @@ Note: The Users's Manual is currently work in progress.
     * [Clearing individual flags]({{ site.baseurl }}/user-manual/event-flags/#clearing-individual-flags)
   * [Destroying event flags]({{ site.baseurl }}/user-manual/event-flags/#destroying-event-flags)
 
-### Mutexes
-  * Overview
+### [Mutexes]({{ site.baseurl }}/user-manual/mutexes/)
+  * [Overview]({{ site.baseurl }}/user-manual/mutexes/#overview)
     * Normal mutexes
     * Recursive mutexes
   * Creating mutexes
   * Acquiring a mutex
   * Releasing a mutex
+  * Multiple threads waiting on a mutex
   * Other mutex functions
   * Destroying mutexes
   * Priority inversion
   * Priority inheritance
-  * Multiple threads waiting on a mutex
   * Deadlock (or deadly embrace)
 
 ### Condition variables
