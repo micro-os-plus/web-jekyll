@@ -17,6 +17,7 @@ exclude:
   - atom.command
   - localhost-4001.webloc
   - '*.pptx'
+  - .github
 
 # Used in sitemap.xml.
 url: "http://micro-os-plus.github.io" # the base hostname & protocol for your site.
@@ -61,6 +62,18 @@ gems:
   - jekyll-redirect-from
   - jekyll-sitemap
   - jekyll-paginate
+
+# Not yet functional
+#  - jekyll-multiple-languages
+
+# If you want to use pagination, you should add jekyll-paginate into gems
+# and make sure it is in front of jekyll-multiple-languages
+
+# All languages used
+languages:          ['en', 'pt']
+
+# If not configured, the first item of languages will be used as the default.
+language_default:   'en'
 
 # Custom definitions.
 
