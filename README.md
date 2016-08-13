@@ -1,13 +1,13 @@
-# The CMSIS++ / µOS++ IIIe web site source
+# The µOS++ IIIe / CMSIS++ web site source
 
 
 ## Overview
 
-This GitHub project, available from [micro-os-plus/micro-os-plus.github.io-source](https://github.com/micro-os-plus/micro-os-plus.github.io-source), contains the source files used to generate the **CMSIS++ / µOS++ IIIe**.
+This GitHub project, available from [micro-os-plus/micro-os-plus.github.io-source](https://github.com/micro-os-plus/micro-os-plus.github.io-source), contains the source files used to generate the **µOS++ IIIe / CMSIS++ **.
 
 ## Destination URL
 
-The **CMSIS++ / µOS++ IIIe web site** is an organisation [GitHub Pages](https://pages.github.com) site, stored in the [micro-os-plus/micro-os-plus.github.io](https://github.com/micro-os-plus/micro-os-plus.github.io) Git and publicly available from [http://micro-os-plus.github.io](http://micro-os-plus.github.io).
+The **µOS++ IIIe / CMSIS++ web site** is an organisation [GitHub Pages](https://pages.github.com) site, stored in the [micro-os-plus/micro-os-plus.github.io](https://github.com/micro-os-plus/micro-os-plus.github.io) Git and publicly available from [http://micro-os-plus.github.io](http://micro-os-plus.github.io).
 
 
 ## Jekyll
@@ -18,27 +18,31 @@ The web site is generated off-line by [Jekyll](http://jekyllrb.com). It cannot b
 
 To be able to run the Jekyll build process, the `ruby` interpreter and the `gem` tool are required. In OS X 10.10.5, these tools are preinstalled, at least when the Developer Command Line tools are present.
 
-	$ ruby --version
-	ruby 2.0.0p481 (2014-05-08 revision 45883) [universal.x86_64-darwin14]
-	$ gem --version
-	2.0.14
-	$ sudo gem install jekyll
-	...
-	$ jekyll --version
-	jekyll 2.5.3
-
+```
+$ ruby --version
+ruby 2.0.0p481 (2014-05-08 revision 45883) [universal.x86_64-darwin14]
+$ gem --version
+2.0.14
+$ sudo gem install jekyll
+...
+$ jekyll --version
+jekyll 3.1.6
+```
 
 In addition, the several specific gems are required:
 
-	$ sudo gem install jekyll-mentions jemoji jekyll-redirect-from jekyll-feed jekyll-sitemap jekyll-last-modified-at
-
-
+```
+$ sudo gem install jekyll-last-modified-at jekyll-mentions jemoji jekyll-redirect-from jekyll-sitemap jekyll-paginate jekyll-gist jekyll-multiple-languages
+```
 
 ## Clone Git
 
 To manage the web site, a local copy of this repository is required.
 
-	$ git clone https://github.com/micro-os-plus/micro-os-plus.github.io-source.git micro-os-plus.github.io-source.git
+```
+$ git clone https://github.com/micro-os-plus/micro-os-plus.github.io-source.git micro-os-plus.github.io-source.git
+$ git clone https://github.com/micro-os-plus/micro-os-plus.github.io.git micro-os-plus.github.io.git
+```
 
 ## Development
 
@@ -46,18 +50,24 @@ The current development cycle is edit-save-build-view.
 
 The build can be performed automatically by Jekyll when started in server mode.
 
-	$ cd micro-os-plus.github.io-source.git
-	$ jekyll serve --baseurl "" --trace --port 40001
+```
+$ cd micro-os-plus.github.io-source.git
+$ jekyll serve --baseurl "" --destination _site_local --trace --port 4001
+```
 
+The build result is in `_site_local`
 To view the result, point the browser to `localhost:4001`.
 
 ## Publish
 
-The build result is in the `_site` folder.
+```
+$ cd micro-os-plus.github.io-source.git
+$ jekyll build --destination ../micro-os-plus.github.io.git
+```
 
-This folder is configured as a submodule, linked to the [micro-os-plus.github.io](https://github.com/micro-os-plus/micro-os-plus.github.io) project.
+The build result is in the `micro-os-plus.github.io.git` folder.
 
-To publish, just commit this Git and the new site will be automatically updated.
+To publish, commit this Git and the new site will be automatically updated.
 
 ## Folder structure
 
