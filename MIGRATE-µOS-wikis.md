@@ -12,6 +12,7 @@ php composer.phar install
 
 In **Special:Allpages**, copy/paste names:
 
+```
 Coding style
 Coding style (SE)
 Criticism of previous versions
@@ -40,6 +41,7 @@ The µOS++ SE Wiki:Copyrights
 The µOS++ Second Edition Wiki
 Wiki pages style guide
 Wiki pages style guide (SE)
+```
 
 In **Special:Export**
 
@@ -57,6 +59,7 @@ php convert.php --filename=uOS-ii-mw.xml --output=uOS-ii-output --urlprefix=micr
 
 In **Special:Allpages**, copy/paste names:
 
+```
 Advanced (Custom) Timers
 Application configuration
 C++ naming convention
@@ -129,6 +132,7 @@ Using LEDs
 Using the AVR32 bootloader
 Wiki pages style guide
 Wiki style guide
+```
 
 In **Special:Export**
 
