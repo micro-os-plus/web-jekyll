@@ -17,6 +17,7 @@ exclude:
   - atom.command
   - localhost-4001.webloc
   - '*.pptx'
+  - .github
 
 # Used in sitemap.xml.
 url: "http://micro-os-plus.github.io" # the base hostname & protocol for your site.
