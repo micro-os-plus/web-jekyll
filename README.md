@@ -3,7 +3,7 @@
 
 ## Overview
 
-This GitHub project, available from [micro-os-plus/micro-os-plus.github.io-source](https://github.com/micro-os-plus/micro-os-plus.github.io-source), contains the source files used to generate the **µOS++ IIIe / CMSIS++ **.
+This GitHub project, available from [micro-os-plus/micro-os-plus.github.io-source](https://github.com/micro-os-plus/micro-os-plus.github.io-source), contains the source files used to generate the **[µOS++ IIIe / CMSIS++ web site](http://micro-os-plus.github.io)**.
 
 ## Destination URL
 
