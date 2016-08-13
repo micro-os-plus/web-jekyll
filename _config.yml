@@ -61,6 +61,13 @@ gems:
   - jekyll-redirect-from
   - jekyll-sitemap
   - jekyll-paginate
+  - jekyll-multiple-languages']
+
+# The all languages used
+languages:          ['en', 'pt']
+
+# If not config, the first item of languages will be used as the default.
+language_default:   'en'
 
 # Custom definitions.
 
