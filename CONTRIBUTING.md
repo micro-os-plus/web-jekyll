@@ -6,13 +6,13 @@ There are many ways you can contribute to this project, and all contributions ar
 
 If you have interesting ideas on how to improve the project Web, and generally if you have any experience that you want to share with others, please use the [GNU ARM Eclipse forum](http://www.element14.com/community/groups/gnu-arm-eclipse).
 
-Just [register](http://www.element14.com/community/create-account.jspa) to element14 community and use the [Start a discussion](http://www.element14.com/community/discussion/create.jspa?containerID=2436&containerType=700) link.
+[Register](http://www.element14.com/community/create-account.jspa) to element14 community and use the [Start a discussion](http://www.element14.com/community/discussion/create.jspa?containerID=2436&containerType=700) link.
 
 ## Submit bug reports & enhancement requests
 
-If you discovered a typo, a broken link, or you have a pertinent suggestion how to enhance the µOS++ web site, please use the [GitHub Issues](https://github.com/micro-os-plus/micro-os-plus.github.io/issues) tracker.
+If you discovered a typo, a broken link, or you have a pertinent suggestion how to enhance the µOS++ web site, please use the [GitHub Issues](https://github.com/micro-os-plus/micro-os-plus.github.io-source/issues) tracker.
 
-Be sure you report only issues related to the µOS++ web site. **DO NOT** use it for issues related to the CMSIS++ or to the µOS++ scheduler, which should be addressed to their corresponding trackers.
+Be sure you report only issues related to the µOS++ IIIe / CMSIS++ web site. **DO NOT** use this tracker for functional issues related to CMSIS++ or to the µOS++.
 
 To be allowed to enter issues, you need to first login to GitHub.
 
