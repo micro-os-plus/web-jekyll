@@ -55,7 +55,8 @@ $ cd micro-os-plus.github.io-source.git
 $ jekyll serve --baseurl "" --destination _site_local --trace --port 4001
 ```
 
-The build result is in `_site_local`
+The build result is in `_site_local`.
+
 To view the result, point the browser to `localhost:4001`.
 
 ## Publish
