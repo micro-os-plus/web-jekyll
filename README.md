@@ -20,7 +20,7 @@ To be able to run the Jekyll build process, the `ruby` interpreter and the `gem`
 
 ### Install separate homebrew
 
-If you are like me and like really separated thing, install a separate homebrew instance only for the jekyll builds.
+If you are like me and like really separated things, install a separate homebrew instance only for the jekyll builds.
 
 ```
 $ HB_PREFIX="/opt/homebrew-jekyll3"
