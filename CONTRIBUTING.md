@@ -17,3 +17,7 @@ Be sure you report only issues related to the µOS++ IIIe / CMSIS++ web site. **
 To be allowed to enter issues, you need to first login to GitHub.
 
 Note: the text should respect the markdown syntax; preview the message before posting and correct if it does not look as  expected, especially inline code or other quoted text.
+
+## Code of conduct
+
+This project adheres to the [Contributor Covenant code of conduct](http://contributor-covenant.org). 

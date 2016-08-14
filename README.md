@@ -1,4 +1,4 @@
-# The µOS++ IIIe / CMSIS++ web site source
+S++ IIIe / CMSIS++ web site source
 
 
 ## Overview
@@ -18,21 +18,46 @@ The web site is generated off-line by [Jekyll](http://jekyllrb.com). It cannot b
 
 To be able to run the Jekyll build process, the `ruby` interpreter and the `gem` tool are required. In OS X 10.10.5, these tools are preinstalled, at least when the Developer Command Line tools are present.
 
+### Install separate homebrew
+
+If you are like me and like really separated things, install a separate homebrew instance only for the jekyll builds.
+
+```
+$ HB_PREFIX="/opt/homebrew-jekyll3"
+
+$ echo 'Enter sudo password'
+$ sudo rm -rf "${HB_PREFIX}"
+$ sudo mkdir -p "${HB_PREFIX}"
+$ sudo bash -c "(curl -L https://github.com/Homebrew/homebrew/tarball/master | tar -x -v --strip 1 -C "${HB_PREFIX}" -f -)"
+
+$ "${HB_PREFIX}/bin/brew" --version
+$ "${HB_PREFIX}/bin/brew" update
+
+$ alias hbj3='export PATH=/opt/homebrew-jekyll3/bin:$PATH'
+
+$ hbj3
+
+$ sudo brew install ruby
+```
+
+The result is in `/opt/homebrew-jekyll3/Cellar/ruby/2.3.1`
+
+### Install bundler
+
 ```
 $ ruby --version
-ruby 2.0.0p481 (2014-05-08 revision 45883) [universal.x86_64-darwin14]
+ruby 2.3.1p112 (2016-04-26 revision 54768) [x86_64-darwin15]
 $ gem --version
-2.0.14
-$ sudo gem install jekyll
-...
-$ jekyll --version
-jekyll 3.1.6
-```
-
-In addition, the several specific gems are required:
-
-```
-$ sudo gem install jekyll-last-modified-at jekyll-mentions jemoji jekyll-redirect-from jekyll-sitemap jekyll-paginate jekyll-gist jekyll-multiple-languages
+2.5.1
+$ sudo gem install bundler
+Fetching: bundler-1.12.5.gem (100%)
+Successfully installed bundler-1.12.5
+Parsing documentation for bundler-1.12.5
+Installing ri documentation for bundler-1.12.5
+Done installing documentation for bundler after 7 seconds
+1 gem installed
+$ bundler --version
+Bundler version 1.12.5
 ```
 
 ## Clone Git
@@ -44,6 +69,58 @@ $ git clone https://github.com/micro-os-plus/micro-os-plus.github.io-source.git 
 $ git clone https://github.com/micro-os-plus/micro-os-plus.github.io.git micro-os-plus.github.io.git
 ```
 
+## Install jekyll & gems
+
+Install jekyll and all gems referred in `Gemfile`. Probably usually there is no need to run bundler as root, it can ask for sudo if needed, but in my setup it looks necessary.
+
+```
+$ cd micro-os-plus.github.io-source.git
+$ sudo bundle install
+Fetching gem metadata from https://rubygems.org/
+Fetching version metadata from https://rubygems.org/
+Fetching dependency metadata from https://rubygems.org/
+Resolving dependencies...
+Using i18n 0.7.0
+Using json 1.8.3
+Installing minitest 5.9.0
+Using thread_safe 0.3.5
+Installing addressable 2.4.0
+Installing colorator 1.1.0
+Installing ffi 1.9.14 with native extensions
+Installing forwardable-extended 2.6.0
+Using gemoji 2.1.0
+Using mini_portile2 2.1.0
+Using pkg-config 1.1.7
+Using sass 3.4.22
+Using rb-fsevent 0.9.7
+Using kramdown 1.11.1
+Using liquid 3.0.6
+Using mercenary 0.3.6
+Using rouge 1.11.1
+Using safe_yaml 1.0.4
+Using jekyll-paginate 1.1.0
+Using bundler 1.12.5
+Using tzinfo 1.2.2
+Installing jekyll-sitemap 0.11.0
+Using rb-inotify 0.9.7
+Installing pathutil 0.14.0
+Using nokogiri 1.6.8
+Using jekyll-sass-converter 1.4.0
+Installing activesupport 4.2.7.1
+Using listen 3.0.8
+Installing html-pipeline 2.4.2
+Installing jekyll-watch 1.5.0
+Installing jekyll 3.2.1
+Using jekyll-last-modified-at 0.3.4
+Installing jekyll-mentions 1.1.3
+Installing jekyll-redirect-from 0.11.0
+Installing jemoji 0.7.0
+Bundle complete! 7 Gemfile dependencies, 35 gems now installed.
+Use `bundle show [gemname]` to see where a bundled gem is installed.
+$ bundle exec jekyll --version
+jekyll 3.2.1
+```
+
 ## Development
 
 The current development cycle is edit-save-build-view.
@@ -52,7 +129,7 @@ The build can be performed automatically by Jekyll when started in server mode.
 
 ```
 $ cd micro-os-plus.github.io-source.git
-$ jekyll serve --baseurl "" --destination _site_local --trace --port 4001
+$ bundle exec jekyll serve --baseurl "" --destination _site_local --trace --port 4001
 ```
 
 The build result is in `_site_local`.
@@ -63,12 +140,63 @@ To view the result, point the browser to `localhost:4001`.
 
 ```
 $ cd micro-os-plus.github.io-source.git
-$ jekyll build --destination ../micro-os-plus.github.io.git
+$ bundle exec jekyll build --destination ../micro-os-plus.github.io.git
 ```
 
 The build result is in the `micro-os-plus.github.io.git` folder.
 
 To publish, commit this Git and the new site will be automatically updated.
+
+## Updates
+
+When new versions of Jekyll, or of gems, are available, run `bundle update` and be sure the `Gemfile.lock` file is committed:
+
+```
+$ cd micro-os-plus.github.io-source.git
+$ sudo bundle update
+Fetching gem metadata from https://rubygems.org/
+Fetching version metadata from https://rubygems.org/
+Fetching dependency metadata from https://rubygems.org/
+Resolving dependencies...
+Using i18n 0.7.0
+Using json 1.8.3
+Using minitest 5.9.0
+Using thread_safe 0.3.5
+Using addressable 2.4.0
+Using colorator 1.1.0
+Using ffi 1.9.14
+Using forwardable-extended 2.6.0
+Using gemoji 2.1.0
+Using mini_portile2 2.1.0
+Using pkg-config 1.1.7
+Using sass 3.4.22
+Using rb-fsevent 0.9.7
+Using kramdown 1.11.1
+Using liquid 3.0.6
+Using mercenary 0.3.6
+Using rouge 1.11.1
+Using safe_yaml 1.0.4
+Using jekyll-paginate 1.1.0
+Using bundler 1.12.5
+Using tzinfo 1.2.2
+Using jekyll-sitemap 0.11.0
+Using rb-inotify 0.9.7
+Using pathutil 0.14.0
+Using nokogiri 1.6.8
+Using jekyll-sass-converter 1.4.0
+Using activesupport 4.2.7.1
+Using listen 3.0.8
+Using html-pipeline 2.4.2
+Using jekyll-watch 1.5.0
+Using jekyll 3.2.1
+Using jekyll-last-modified-at 0.3.4
+Using jekyll-mentions 1.1.3
+Using jekyll-redirect-from 0.11.0
+Using jemoji 0.7.0
+Bundle updated!
+```
+
+People using forked repositories must run `bundle install` to be sure the required versions are properly installed. 
 
 ## Folder structure
 
@@ -96,3 +224,5 @@ The embedded images are located in the `/assets/images` folder.
 For a certain degree of portability, the recommended editable format is PPTX. On macOS, PPTX files can be processed with Keynote, although saving can be done only indirectly via **Export To**, not directly via **Save**.
 
 The preferred format is PNG. The available width is lower than 700 px, but apparently Jekyll scales images properly. By default Keynote exports images as 1024 x 768, which is generally ok for regular (non-HiRes) screens.
+
+
