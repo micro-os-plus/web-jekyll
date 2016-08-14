@@ -149,6 +149,8 @@ To publish, commit this Git and the new site will be automatically updated.
 
 ## Updates
 
+When new versions of Jekyll, or of gems, are available, run `bundle update` and be sure the `Gemfile.lock` file is committed:
+
 ```
 $ cd micro-os-plus.github.io-source.git
 $ sudo bundle update
@@ -193,6 +195,8 @@ Using jekyll-redirect-from 0.11.0
 Using jemoji 0.7.0
 Bundle updated!
 ```
+
+People using forked repositories must run `bundle install` to be sure the required versions are properly installed. 
 
 ## Folder structure
 
