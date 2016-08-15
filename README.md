@@ -1,4 +1,4 @@
-# The µOS++ IIIe / CMSIS++ web site source
+S++ IIIe / CMSIS++ web site source
 
 
 ## Overview
@@ -224,3 +224,5 @@ The embedded images are located in the `/assets/images` folder.
 For a certain degree of portability, the recommended editable format is PPTX. On macOS, PPTX files can be processed with Keynote, although saving can be done only indirectly via **Export To**, not directly via **Save**.
 
 The preferred format is PNG. The available width is lower than 700 px, but apparently Jekyll scales images properly. By default Keynote exports images as 1024 x 768, which is generally ok for regular (non-HiRes) screens.
+
+

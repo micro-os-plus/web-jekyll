@@ -866,12 +866,6 @@ h1.post-title  {
   margin-top: 20px;
 }
 
-p.last-modified {
-  font-size: 80%;
-  padding-top: 5px;
-  border-top: 1px solid #D8D8D8; /* #eee; */
-}
-
 
 p.post-meta {
   font-size: 80%;
@@ -1029,4 +1023,38 @@ ul.share-buttons {
 .wrapper figure.highlight {
   margin-left: 0px;
   margin-right: 0px;
+}
+
+p.last-modified {
+  font-size: 80%;
+  padding-top: 5px;
+  border-top: 1px solid #D8D8D8; /* #eee; */
+}
+
+table#last-modified {
+  font-size: 80%;
+  padding-top: 10px;
+  border-top: 1px solid #D8D8D8; /* #eee; */
+  border-left: 0px;
+  border-right: 0px;
+  border-bottom: 0px;
+}
+
+td#last-modified  {
+  padding-top: 5px;
+  padding-left: 0px;
+  padding-bottom: 0px;
+  border: 0px;
+}
+
+td#improve  {
+  padding-top: 5px;
+  padding-right: 0px;
+  padding-bottom: 0px;
+  border: 0px;
+}
+
+td#improve a:visited, td#improve a:link, td#improve a:hover, td#improve a:active
+{
+    text-decoration: none;
 }
