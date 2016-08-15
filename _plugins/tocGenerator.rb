@@ -8,7 +8,7 @@ module Jekyll
     TOC_CONTAINER_HTML = '<div id="toc-container"><table class="toc" id="toc"><tbody><tr><td>%1<ul>%2</ul></td></tr></tbody></table></div>'
     HIDE_HTML = '<span class="toctoggle">[<a id="toctogglelink" class="internal" href="#">%1</a>]</span>'
 
-    def toc_generate(html)
+    def toc_generate(html, label = 'Contents')
       # No Toc can be specified on every single page
       # For example the index page has no table of contents
       no_toc = @context.environments.first["page"]["noToc"] || false;
@@ -37,7 +37,7 @@ module Jekyll
 
 
       # Text labels
-      contents_label     = config["contentsLabel"] || 'Contents'
+      contents_label     = config["contentsLabel"] || label
       hide_label         = config["hideLabel"] || 'hide'
       # show_label       = config["showLabel"] || 'show' # unused
       show_toggle_button = config["showToggleButton"]

@@ -11,7 +11,7 @@ layout: default
   </tr>
 </table>{% endif %}
 
-{{ content | toc_generate | replace_regexp: '\<\/code\>\n\<\/pre\>', '</code></pre>' }}
+{{ content | toc_generate: site.data.i18n.contents[page.lang] | replace_regexp: '\<\/code\>\n\<\/pre\>', '</code></pre>' }}
 
 {% if page.title %}
 {% else %}
