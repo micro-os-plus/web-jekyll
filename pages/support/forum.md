@@ -1,5 +1,6 @@
 ---
 layout: page
+lang: en
 permalink: /support/forum/
 title: Discussions forum
 author: Liviu Ionescu

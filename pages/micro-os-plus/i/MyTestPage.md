@@ -1,5 +1,6 @@
 ---
 layout: old-wiki-page
+lang: en
 permalink: /micro-os-plus/i/MyTestPage/
 title: MyTestPage
 author: Liviu Ionescu

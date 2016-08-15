@@ -1,5 +1,6 @@
 ---
 layout: old-wiki-page
+lang: en
 permalink: /micro-os-plus/i/Class_OSScheduler/
 title: Class OSScheduler
 author: Liviu Ionescu
@@ -453,4 +454,3 @@ static OSTask \*ms_pTaskRunning
 
 
 Pointer to the active task (running task).
-

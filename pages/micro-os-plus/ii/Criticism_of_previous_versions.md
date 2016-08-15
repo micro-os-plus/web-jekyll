@@ -1,5 +1,6 @@
 ---
 layout: old-wiki-page
+lang: en
 permalink: /micro-os-plus/ii/Criticism_of_previous_versions/
 title: Criticism of previous versions
 author: Liviu Ionescu

@@ -1,5 +1,6 @@
 ---
 layout: old-wiki-page
+lang: en
 permalink: /micro-os-plus/ii/Eclipse_(install_and_config)/
 title: Eclipse (install and config)
 author: Liviu Ionescu

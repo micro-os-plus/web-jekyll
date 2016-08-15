@@ -1,5 +1,6 @@
 ---
 layout: old-wiki-page
+lang: en
 permalink: /micro-os-plus/ii/Deviations_from_standards/
 title: Deviations from standards
 author: Liviu Ionescu

@@ -1,5 +1,6 @@
 ---
 layout: page
+lang: en
 permalink: /micro-os-plus/
 title: µOS++ IIIe
 author: Liviu Ionescu

@@ -1,5 +1,6 @@
 ---
 layout: old-wiki-page
+lang: en
 permalink: /micro-os-plus/i/Typedef_OSEventWaitReturn_t/
 title: Typedef OSEventWaitReturn t
 author: Liviu Ionescu

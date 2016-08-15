@@ -1,5 +1,6 @@
 ---
 layout: old-wiki-page
+lang: en
 permalink: /micro-os-plus/i/Class_OSMutex/
 title: Class OSMutex
 author: Liviu Ionescu
@@ -135,4 +136,3 @@ Variables
 
 
 All are used as result code for acquire and release methods.
-

@@ -1,5 +1,6 @@
 ---
 layout: old-wiki-page
+lang: en
 permalink: /micro-os-plus/i/Using_the_AVR32_bootloader/
 title: Using the AVR32 bootloader
 author: Liviu Ionescu

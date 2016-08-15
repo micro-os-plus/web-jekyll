@@ -1,5 +1,6 @@
 ---
 layout: old-wiki-page
+lang: en
 permalink: /micro-os-plus/i/Reporting_problems/
 title: Reporting problems
 author: Liviu Ionescu

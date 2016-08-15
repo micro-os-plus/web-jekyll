@@ -1,8 +1,7 @@
 ---
 layout: post
-
+lang: en
 title: The µOS++ IIIe new web site (using GitHub Pages)
-
 author: Liviu Ionescu
 
 date: 2016-03-03 22:10:00 +0300

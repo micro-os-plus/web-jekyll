@@ -1,10 +1,8 @@
 ---
 layout: post
-
+lang: en
 title: ARM Connected Community article, March 11, 2016
-
 author: Liviu Ionescu
-
 date: 2016-03-10 12:00:00 +0300
 
 categories:

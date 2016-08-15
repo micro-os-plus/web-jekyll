@@ -1,5 +1,6 @@
 ---
 layout: page
+lang: en
 permalink: /user-manual/mutexes/
 title: Mutexes
 author: Liviu Ionescu

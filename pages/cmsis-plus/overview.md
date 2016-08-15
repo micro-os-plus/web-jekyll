@@ -1,5 +1,6 @@
 ---
 layout: page
+lang: en
 permalink: /cmsis-plus/
 title: CMSIS++
 author: Liviu Ionescu

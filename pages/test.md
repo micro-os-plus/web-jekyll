@@ -1,5 +1,6 @@
 ---
 layout: page
+lang: en
 permalink: /test/
 title: Page Title
 author: Liviu Ionescu

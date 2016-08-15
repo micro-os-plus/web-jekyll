@@ -1,5 +1,6 @@
 ---
 layout: page
+lang: en
 permalink: /user-manual/
 title: User's manual
 author: Liviu Ionescu

@@ -1,5 +1,6 @@
 ---
 layout: old-wiki-page
+lang: en
 permalink: /micro-os-plus/i/Synchronisation_events/
 title: Synchronisation events
 author: Liviu Ionescu

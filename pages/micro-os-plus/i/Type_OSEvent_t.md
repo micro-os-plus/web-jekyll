@@ -1,5 +1,6 @@
 ---
 layout: old-wiki-page
+lang: en
 permalink: /micro-os-plus/i/Type_OSEvent_t/
 title: Type OSEvent t
 author: Liviu Ionescu

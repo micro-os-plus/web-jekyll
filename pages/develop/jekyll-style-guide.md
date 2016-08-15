@@ -1,5 +1,6 @@
 ---
 layout: page
+lang: en
 permalink: /develop/jekyll-style-guide/
 title: Jekyll style guide
 author: Liviu Ionescu

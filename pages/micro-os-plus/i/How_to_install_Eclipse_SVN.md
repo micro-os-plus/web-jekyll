@@ -1,5 +1,6 @@
 ---
 layout: old-wiki-page
+lang: en
 permalink: /micro-os-plus/i/How_to_install_Eclipse_SVN/
 title: How to install Eclipse SVN
 author: Liviu Ionescu
@@ -63,4 +64,3 @@ Since a functional SVN configuration is mandatory for using the latest repositor
     -   select the **SVN Connector** tab
     -   check if the **SVNKit 1.3.2** connector is selected
     -   if the SVN Connector field is empty, go back to **SVN Connectors**
-

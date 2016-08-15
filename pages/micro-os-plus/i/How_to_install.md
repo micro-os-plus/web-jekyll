@@ -1,5 +1,6 @@
 ---
 layout: old-wiki-page
+lang: en
 permalink: /micro-os-plus/i/How_to_install/
 title: How to install
 author: Liviu Ionescu

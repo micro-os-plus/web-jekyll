@@ -1,5 +1,6 @@
 ---
 layout: old-wiki-page
+lang: en
 permalink: /micro-os-plus/i/Typedef_OSTimerStruct_t/
 title: Typedef OSTimerStruct t
 author: Liviu Ionescu
@@ -37,4 +38,3 @@ The return value of the event.
 
 
 Pointer to an advanced timer used to extend the capabilities of the OSTimer. Using this member the timeout could be set as periodic, or even a custom one.
-

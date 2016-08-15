@@ -1,5 +1,6 @@
 ---
 layout: old-wiki-page
+lang: en
 permalink: /micro-os-plus/ii/Predefined_macros/
 title: Predefined macros
 author: Liviu Ionescu

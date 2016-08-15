@@ -1,5 +1,6 @@
 ---
 layout: old-wiki-page
+lang: en
 permalink: /micro-os-plus/i/C++_naming_convention/
 title: C++ naming convention
 author: Liviu Ionescu

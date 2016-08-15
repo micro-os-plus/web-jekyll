@@ -1,5 +1,6 @@
 ---
 layout: old-wiki-page
+lang: en
 permalink: /micro-os-plus/ii/References_notes/
 title: References notes
 author: Liviu Ionescu

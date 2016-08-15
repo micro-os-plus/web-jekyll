@@ -1,5 +1,6 @@
 ---
 layout: page
+lang: en
 permalink: /develop/predefined-macros/
 title: Predefined compiler macros
 author: Liviu Ionescu

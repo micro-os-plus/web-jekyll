@@ -1,5 +1,6 @@
 ---
 layout: old-wiki-page
+lang: en
 permalink: /micro-os-plus/i/Advanced_(Custom)_Timers/
 title: Advanced (Custom) Timers
 author: Liviu Ionescu

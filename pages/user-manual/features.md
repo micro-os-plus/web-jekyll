@@ -1,5 +1,6 @@
 ---
 layout: page
+lang: en
 permalink: /user-manual/features/
 title: µOS++ IIIe features
 author: Liviu Ionescu

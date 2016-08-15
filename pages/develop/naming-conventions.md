@@ -1,5 +1,6 @@
 ---
 layout: page
+lang: en
 permalink: /develop/naming-conventions/
 title: C/C++ naming conventions
 author: Liviu Ionescu

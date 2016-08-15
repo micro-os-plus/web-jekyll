@@ -1,5 +1,6 @@
 ---
 layout: old-wiki-page
+lang: en
 permalink: /micro-os-plus/i/Project_backup/
 title: Project backup
 author: Liviu Ionescu
@@ -58,4 +59,3 @@ Rename it to include the current date, like this:
 
 
 micro-os-plus_mediawiki_files_20110712.tar.gz
-

@@ -1,8 +1,7 @@
 ---
 layout: post
-
+lang: en
 title: License changed from LGPL to MIT License
-
 author: Liviu Ionescu
 
 date: 2016-03-29 12:00:00 +0300

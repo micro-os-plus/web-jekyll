@@ -1,5 +1,6 @@
 ---
 layout: old-wiki-page
+lang: en
 permalink: /micro-os-plus/i/Configuration_definitions_index/
 title: Configuration definitions index
 author: Liviu Ionescu

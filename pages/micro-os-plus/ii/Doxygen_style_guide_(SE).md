@@ -1,5 +1,6 @@
 ---
 layout: old-wiki-page
+lang: en
 permalink: /micro-os-plus/ii/Doxygen_style_guide_(SE)/
 title: Doxygen style guide (SE)
 author: Liviu Ionescu

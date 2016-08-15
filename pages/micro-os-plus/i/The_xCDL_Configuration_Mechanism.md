@@ -1,5 +1,6 @@
 ---
 layout: old-wiki-page
+lang: en
 permalink: /micro-os-plus/i/The_xCDL_Configuration_Mechanism/
 title: The xCDL Configuration Mechanism
 author: Liviu Ionescu

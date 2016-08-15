@@ -1,5 +1,6 @@
 ---
 layout: main
+lang: en
 permalink: /
 title: The µOS++ IIIe / CMSIS++ Project
 author: Liviu Ionescu

@@ -1,5 +1,6 @@
 ---
 layout: old-wiki-page
+lang: en
 permalink: /micro-os-plus/i/Wiki_style_guide/
 title: Wiki style guide
 author: Liviu Ionescu

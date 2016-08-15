@@ -1,5 +1,6 @@
 ---
 layout: page
+lang: en
 permalink: /support/
 title: How to get support?
 author: Liviu Ionescu

@@ -1,5 +1,6 @@
 ---
 layout: old-wiki-page
+lang: en
 permalink: /micro-os-plus/ii/The_µOS++_SE_Wiki/
 title: The µOS++ SE Wiki
 author: Liviu Ionescu

@@ -1,5 +1,6 @@
 ---
 layout: page
+lang: en
 permalink: /user-manual/basic-concepts/
 title: Basic concepts
 author: Liviu Ionescu

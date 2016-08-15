@@ -1,5 +1,6 @@
 ---
 layout: old-wiki-page
+lang: en
 permalink: /micro-os-plus/i/Class_OSLogger/
 title: Class OSLogger
 author: Liviu Ionescu
@@ -191,4 +192,3 @@ const char\* m_name
 
 
 Logger's name.
-

@@ -1,5 +1,6 @@
 ---
 layout: old-wiki-page
+lang: en
 permalink: /micro-os-plus/i/Configuration_variables/
 title: Configuration variables
 author: Liviu Ionescu

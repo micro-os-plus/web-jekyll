@@ -1,5 +1,6 @@
 ---
 layout: old-wiki-page
+lang: en
 permalink: /micro-os-plus/i/The_xCDL_software_requirements_specifications/
 title: The xCDL software requirements specifications
 author: Liviu Ionescu

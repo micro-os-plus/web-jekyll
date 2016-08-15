@@ -1,5 +1,6 @@
 ---
 layout: page
+lang: en
 permalink: /support/faq/
 title: FAQ
 author: Liviu Ionescu

@@ -1,5 +1,6 @@
 ---
 layout: old-wiki-page
+lang: en
 permalink: /micro-os-plus/i/How_to_use/
 title: How to use
 author: Liviu Ionescu

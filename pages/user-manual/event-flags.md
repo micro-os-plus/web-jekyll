@@ -1,5 +1,6 @@
 ---
 layout: page
+lang: en
 permalink: /user-manual/event-flags/
 title: Event flags
 author: Liviu Ionescu

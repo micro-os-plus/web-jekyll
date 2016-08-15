@@ -1,5 +1,6 @@
 ---
 layout: page
+lang: en
 permalink: /user-manual/getting-started/
 title: Getting started with µOS++ IIIe
 author: Liviu Ionescu

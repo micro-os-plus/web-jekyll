@@ -1,5 +1,6 @@
 ---
 layout: old-wiki-page
+lang: en
 permalink: /micro-os-plus/i/Class_OSDeviceDebug/
 title: Class OSDeviceDebug
 author: Liviu Ionescu
