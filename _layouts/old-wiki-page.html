@@ -4,8 +4,12 @@ layout: default
 
 {% if page.title %}
 <h1 class="page-title">{{ page.title }} - DEPRECATED</h1>
-<p class="last-modified">Page date {{ page.date | date: '%c %Z' }}.</p>
-{% endif %}
+<table id="last-modified">
+  <tr>
+    <td id="last-modified">Page date {{ page.date | date: '%c %Z' }}.</td>
+    <td id="improve" align="right"><a id="improve" href="{{ site.github-this-project-url }}/edit/{{ site.github-this-project-branch}}/{{ page.path }}"><i class="fa fa-pencil"></i>&nbsp;&nbsp;Improve this page</a></td>
+  </tr>
+</table>{% endif %}
 
 {{ content | toc_generate | replace_regexp: '\<\/code\>\n\<\/pre\>', '</code></pre>' }}
 
