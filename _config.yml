@@ -14,6 +14,7 @@ exclude:
   - README.md
   - CONTRIBUTING.md
   - 'MIGRATE-*.md'
+  - 'CODE_OF_CONDUCT*.md'
   - .github
   - jekyll-serve.command
   - jekyll-build.command

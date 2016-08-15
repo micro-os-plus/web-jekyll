@@ -30,4 +30,4 @@ Note: the text should respect the markdown syntax; preview the message before po
 
 ## Code of conduct
 
-This project adheres to the [Contributor Covenant code of conduct](http://contributor-covenant.org).
+This project adheres to the [Contributor Covenant code of conduct](CODE_OF_CONDUCT.md).
