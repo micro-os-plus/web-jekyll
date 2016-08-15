@@ -12,12 +12,17 @@ email: ilg@livius.net
 destination: _site
 exclude:
   - README.md
+  - CONTRIBUTING.md
+  - 'MIGRATE-*.md'
+  - .github
   - jekyll-serve.command
   - jekyll-build.command
   - atom.command
   - localhost-4001.webloc
   - '*.pptx'
-  - .github
+  - Gemfile
+  - Gemfile.lock
+
 
 # Used in sitemap.xml.
 url: "http://micro-os-plus.github.io" # the base hostname & protocol for your site.
@@ -103,7 +108,7 @@ tocTopTag: h2
 minItemsToShowToc: 3
 useExistingAnchors: true
 
-css-date: 201603032012
+css-date: 201608151703
 
 # Content copyright. Update it to your needs.
 copyright-message: "© 2016 Liviu Ionescu"
