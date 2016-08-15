@@ -1,5 +1,6 @@
 ---
 layout: old-wiki-page
+lang: en
 permalink: /micro-os-plus/ii/Coding_style_(SE)/
 title: Coding style (SE)
 author: Liviu Ionescu
@@ -1168,4 +1169,3 @@ The following rules provide additional detail and guidance when considering the 
 -   [JSV AV Rule 211] - Algorithms shall not assume that *shorts*, *ints*, *longs*, *floats*, *doubles* or *long doubles* begin at particular addresses.
 
     **Exception**: Low level routines that are expressly written for the purpose of data formatting (e.g. marshalling data, endian conversions, etc.) are permitted.
-

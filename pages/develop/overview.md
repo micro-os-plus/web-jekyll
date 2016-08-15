@@ -1,5 +1,6 @@
 ---
 layout: page
+lang: en
 permalink: /develop/
 title: Developer resources
 author: Liviu Ionescu

@@ -1,5 +1,6 @@
 ---
 layout: old-wiki-page
+lang: en
 permalink: /micro-os-plus/ii/SRS_Guide/
 title: SRS Guide
 author: Liviu Ionescu

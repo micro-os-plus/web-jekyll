@@ -1,5 +1,6 @@
 ---
 layout: old-wiki-page
+lang: en
 permalink: /micro-os-plus/ii/Early_history/
 title: Early history
 author: Liviu Ionescu

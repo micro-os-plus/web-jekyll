@@ -1,5 +1,6 @@
 ---
 layout: page
+lang: en
 permalink: /develop/references/
 title: References
 author: Liviu Ionescu

@@ -1,5 +1,6 @@
 ---
 layout: old-wiki-page
+lang: en
 permalink: /micro-os-plus/i/C++_source_code_style_guide/
 title: C++ source code style guide
 author: Liviu Ionescu

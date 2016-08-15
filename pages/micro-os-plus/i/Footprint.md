@@ -1,5 +1,6 @@
 ---
 layout: old-wiki-page
+lang: en
 permalink: /micro-os-plus/i/Footprint/
 title: Footprint
 author: Liviu Ionescu
@@ -15,4 +16,3 @@ For a comparison between architectures, below are some measured values:
 |Project|AVR8|Cortex-M3|Notes|
 |-------|----|---------|-----|
 |sample-minimal|Flash=3744, Ram=223|Flash=3096, Ram=592|v3.0, -Os, WinAVR, Code Sourcery|
-

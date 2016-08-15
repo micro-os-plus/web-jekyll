@@ -1,5 +1,9 @@
 <!doctype html>
+{% if page.lang %}
+<html lang="{{ page.lang }}">
+{% else %}
 <html>
+{% endif %}
 
 {% include layouts/head.html %}
 

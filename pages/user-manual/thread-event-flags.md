@@ -1,5 +1,6 @@
 ---
 layout: page
+lang: en
 permalink: /user-manual/thread-event-flags/
 title: Thread event flags
 author: Liviu Ionescu

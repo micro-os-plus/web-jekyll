@@ -1,5 +1,6 @@
 ---
 layout: old-wiki-page
+lang: en
 permalink: /micro-os-plus/i/The_build_mechanism/
 title: The build mechanism
 author: Liviu Ionescu

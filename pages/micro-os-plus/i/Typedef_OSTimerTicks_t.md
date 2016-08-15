@@ -1,5 +1,6 @@
 ---
 layout: old-wiki-page
+lang: en
 permalink: /micro-os-plus/i/Typedef_OSTimerTicks_t/
 title: Typedef OSTimerTicks t
 author: Liviu Ionescu
@@ -13,4 +14,3 @@ typedef unsigned short OSTimerTicks_t
 
 
 Define new type to store ticks interval values. It is unsigned short, because of portability on AVR8 platform.
-

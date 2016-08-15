@@ -1,5 +1,6 @@
 ---
 layout: page
+lang: en
 permalink: /user-manual/semaphores/
 title: Semaphores
 author: Liviu Ionescu

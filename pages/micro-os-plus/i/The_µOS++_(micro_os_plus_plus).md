@@ -1,5 +1,6 @@
 ---
 layout: old-wiki-page
+lang: en
 permalink: /micro-os-plus/i/The_µOS++_(micro_os_plus_plus)/
 title: The µOS++ (micro os plus plus)
 author: Liviu Ionescu

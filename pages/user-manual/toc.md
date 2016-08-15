@@ -1,5 +1,6 @@
 ---
 layout: page
+lang: en
 permalink: /user-manual/
 title: User's manual
 author: Liviu Ionescu
@@ -8,7 +9,7 @@ date: 2016-06-28 19:39:00 +0300
 
 ---
 
-Note: The Users's Manual is currently work in progress.
+Note: The User's Manual is currently work in progress.
 
 ## RTOS
 

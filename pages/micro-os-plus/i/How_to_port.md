@@ -1,5 +1,6 @@
 ---
 layout: old-wiki-page
+lang: en
 permalink: /micro-os-plus/i/How_to_port/
 title: How to port
 author: Liviu Ionescu

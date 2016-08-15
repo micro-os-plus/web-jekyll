@@ -1,5 +1,6 @@
 ---
 layout: old-wiki-page
+lang: en
 permalink: /micro-os-plus/i/Sample_Mutex_Stress/
 title: Sample Mutex Stress
 author: Liviu Ionescu

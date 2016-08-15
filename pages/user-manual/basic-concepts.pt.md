@@ -1,8 +1,8 @@
 ---
 layout: page
-lang: en
-permalink: /user-manual/basic-concepts/
-title: Basic concepts
+lang: pt
+permalink: /pt/user-manual/basic-concepts/
+title: Conceitos básicos
 author: Liviu Ionescu
 
 date: 2016-06-30 14:39:00 +0300

@@ -1,5 +1,6 @@
 ---
 layout: old-wiki-page
+lang: en
 permalink: /micro-os-plus/i/Memory_management/
 title: Memory management
 author: Liviu Ionescu

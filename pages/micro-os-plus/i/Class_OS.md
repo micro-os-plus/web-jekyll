@@ -1,5 +1,6 @@
 ---
 layout: old-wiki-page
+lang: en
 permalink: /micro-os-plus/i/Class_OS/
 title: Class OS
 author: Liviu Ionescu
@@ -138,4 +139,3 @@ OSScheduler sched
 
 
 Scheduler object used by this class.
-

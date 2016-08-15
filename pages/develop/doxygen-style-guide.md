@@ -1,5 +1,6 @@
 ---
 layout: page
+lang: en
 permalink: /develop/doxygen-style-guide/
 title: Doxygen style guide
 author: Liviu Ionescu

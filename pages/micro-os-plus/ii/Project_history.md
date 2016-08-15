@@ -1,5 +1,6 @@
 ---
 layout: old-wiki-page
+lang: en
 permalink: /micro-os-plus/ii/Project_history/
 title: Project history
 author: Liviu Ionescu

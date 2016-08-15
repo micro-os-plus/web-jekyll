@@ -1,5 +1,6 @@
 ---
 layout: old-wiki-page
+lang: en
 permalink: /micro-os-plus/ii/Naming_conventions/
 title: Naming conventions
 author: Liviu Ionescu

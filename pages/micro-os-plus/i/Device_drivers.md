@@ -1,5 +1,6 @@
 ---
 layout: old-wiki-page
+lang: en
 permalink: /micro-os-plus/i/Device_drivers/
 title: Device drivers
 author: Liviu Ionescu

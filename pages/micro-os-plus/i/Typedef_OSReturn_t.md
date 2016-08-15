@@ -1,5 +1,6 @@
 ---
 layout: old-wiki-page
+lang: en
 permalink: /micro-os-plus/i/Typedef_OSReturn_t/
 title: Typedef OSReturn t
 author: Liviu Ionescu

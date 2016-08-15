@@ -1,5 +1,6 @@
 ---
 layout: page
+lang: en
 permalink: /about/
 title: About
 author: Liviu Ionescu

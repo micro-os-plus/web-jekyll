@@ -1,5 +1,6 @@
 ---
 layout: page
+lang: en
 permalink: /user-manual/threads/
 title: Threads
 author: Liviu Ionescu

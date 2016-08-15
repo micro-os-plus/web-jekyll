@@ -1,5 +1,6 @@
 ---
 layout: page
+lang: en
 permalink: /micro-os-plus/iii/project-history/
 title: Project history
 author: Liviu Ionescu

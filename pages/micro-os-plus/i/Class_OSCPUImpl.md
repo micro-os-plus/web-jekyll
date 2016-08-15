@@ -1,5 +1,6 @@
 ---
 layout: old-wiki-page
+lang: en
 permalink: /micro-os-plus/i/Class_OSCPUImpl/
 title: Class OSCPUImpl
 author: Liviu Ionescu

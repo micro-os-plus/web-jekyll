@@ -1,5 +1,6 @@
 ---
 layout: page
+lang: en
 permalink: /develop/coding-style/
 title: C++ coding style
 author: Liviu Ionescu

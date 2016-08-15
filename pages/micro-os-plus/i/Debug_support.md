@@ -1,5 +1,6 @@
 ---
 layout: old-wiki-page
+lang: en
 permalink: /micro-os-plus/i/Debug_support/
 title: Debug support
 author: Liviu Ionescu

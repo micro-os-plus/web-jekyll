@@ -1,5 +1,6 @@
 ---
 layout: page
+lang: en
 permalink: /support/known-issues/
 title: Known issues
 author: Liviu Ionescu

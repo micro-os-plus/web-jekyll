@@ -1,5 +1,6 @@
 ---
 layout: old-wiki-page
+lang: en
 permalink: /micro-os-plus/i/System_Timers/
 title: System Timers
 author: Liviu Ionescu

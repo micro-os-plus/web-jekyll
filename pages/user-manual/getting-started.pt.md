@@ -1,8 +1,8 @@
 ---
 layout: page
-lang: en
-permalink: /user-manual/getting-started/
-title: Getting started with µOS++ IIIe
+lang: pt
+permalink: /pt/user-manual/getting-started/
+title: Começando com μOS++ IIIe
 author: Liviu Ionescu
 
 date: 2016-06-29 21:28:00 +0300

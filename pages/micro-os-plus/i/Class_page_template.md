@@ -1,5 +1,6 @@
 ---
 layout: old-wiki-page
+lang: en
 permalink: /micro-os-plus/i/Class_page_template/
 title: Class page template
 author: Liviu Ionescu

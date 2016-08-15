@@ -1,5 +1,6 @@
 ---
 layout: page
+lang: en
 permalink: /develop/how-to-release/
 title: How to release
 author: Liviu Ionescu

@@ -1,5 +1,6 @@
 ---
 layout: old-wiki-page
+lang: en
 permalink: /micro-os-plus/i/Recommended_preferences/
 title: Recommended preferences
 author: Liviu Ionescu

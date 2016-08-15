@@ -1,5 +1,6 @@
 ---
 layout: page
+lang: en
 permalink: /cmsis-plus/rtos/
 title: CMSIS++ RTOS APIs
 author: Liviu Ionescu

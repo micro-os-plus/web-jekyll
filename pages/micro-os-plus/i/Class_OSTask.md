@@ -1,5 +1,6 @@
 ---
 layout: old-wiki-page
+lang: en
 permalink: /micro-os-plus/i/Class_OSTask/
 title: Class OSTask
 author: Liviu Ionescu
@@ -423,4 +424,3 @@ OSStack_t \*m_pStack
 
 
 The SP is saved in this variable at contextSave and restored from here at contextRestore.
-

@@ -1,5 +1,6 @@
 ---
 layout: old-wiki-page
+lang: en
 permalink: /micro-os-plus/i/Scheduler/
 title: Scheduler
 author: Liviu Ionescu

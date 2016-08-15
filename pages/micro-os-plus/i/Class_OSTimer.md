@@ -1,5 +1,6 @@
 ---
 layout: old-wiki-page
+lang: en
 permalink: /micro-os-plus/i/Class_OSTimer/
 title: Class OSTimer
 author: Liviu Ionescu

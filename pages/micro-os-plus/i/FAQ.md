@@ -1,5 +1,6 @@
 ---
 layout: old-wiki-page
+lang: en
 permalink: /micro-os-plus/i/FAQ/
 title: FAQ
 author: Liviu Ionescu

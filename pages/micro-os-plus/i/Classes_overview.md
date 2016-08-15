@@ -1,5 +1,6 @@
 ---
 layout: old-wiki-page
+lang: en
 permalink: /micro-os-plus/i/Classes_overview/
 title: Classes overview
 author: Liviu Ionescu
