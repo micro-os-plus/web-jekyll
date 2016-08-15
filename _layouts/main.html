@@ -4,7 +4,12 @@ layout: default
 
 {% if page.title %}
 <h1 class="page-title">{{ page.title }}</h1>
-<p class="last-modified">Last modified on {{ page.last_modified_at | date: '%c %Z' }}.</p>
+<table id="last-modified">
+  <tr>
+    <td id="last-modified">Last modified on {{ page.last_modified_at | date: '%c %Z' }}.</td>
+    <td id="improve" align="right"><a id="improve" href="{{ site.github-this-project-url }}/edit/{{ site.github-this-project-branch}}/{{ page.path }}"><i class="fa fa-pencil"></i>&nbsp;Improve this page</a></td>
+  </tr>
+</table>
 {% endif %}
 
 {{ content }}

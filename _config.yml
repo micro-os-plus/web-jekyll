@@ -70,10 +70,10 @@ gems:
 # and make sure it is in front of jekyll-multiple-languages
 
 # All languages used
-languages:          ['en', 'pt']
+# languages:          ['en', 'pt']
 
 # If not configured, the first item of languages will be used as the default.
-language_default:   'en'
+# language_default:   'en'
 
 # Custom definitions.
 
@@ -81,6 +81,8 @@ language_default:   'en'
 github-username:  ilg-ul
 github-project-name: micro-os-plus/cmsis-plus
 github-project-url: http://github.com/micro-os-plus/cmsis-plus
+github-this-project-url: https://github.com/micro-os-plus/micro-os-plus.github.io-source
+github-this-project-branch: master
 sourceforge-project-url: http://sourceforge.net/projects/micro-os-plus
 
 # Change it to refer to project's page
