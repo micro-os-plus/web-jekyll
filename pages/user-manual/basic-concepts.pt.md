@@ -11,7 +11,7 @@ date: 2016-06-30 14:39:00 +0300
 ---
 {% comment %}
 Start work: 2016-08-15 19:30:00 +300
-Last modified: 2016-08-16 13:30:00 +300
+Last modified: 2016-08-16 14:50:00 +300
 Todo: Mudar URLs de sites externos para o português para fontes em portugues quando adequado em especial no wiki. Outros sites analisar com bastante caute-las e discutir fontes com terceiros.
 Base Commit: eebd7a5148f2dc3a7deb2d096ace7205d531b1c2
 {% endcomment %}
@@ -58,28 +58,28 @@ Porem, com um projeto cuidadoso, razoável tolerância pode obtida, e   **µOS++
 **Nota Jurídica:** De acordo com a licença do MIT, _"o software é fornecido _como é_, sem garantias de algum tipo"_, como tal seu uso em aplicações com risco de vida deve ser evitado.
 
 
-## Superloop (foreground/background) applications
+## Aplicações _Superloop_ (_foreground_/_background_)
 
-There are many techniques for writing embedded software. For low complexity systems, the classic way does not use an RTOS, but are designed as foreground/background systems, or **_superloops_**.
+Há muitas técnicas para escrever um software para sistemas embarcados. Pra sistemas de baixa complexidade, há formas clássicas que não usam RTOS, mas padrões de desenvolvimento como sistemas _foreground_/_background_, ou **_superloops_**.
 
-An application consists of an infinite loop that calls one or more functions in succession to perform the desired operations (**background**).
+Uma aplicação consiste de um _loop_ infinito que chama uma ou mais funções em sucessão para executar as operações desejadas (**background**).
 
-Interrupt service routines (ISRs) are used to handle the asynchronous,  real-time parts of the application (**foreground**).
+Rotinas de serviço de interrupção (Interrupt service routines - ISRs) são usados para tratar de forma assíncrona, partes _real-time_ da aplicação (**foreground**).
 
-In this architecture, the functions implementing the various functionalities are inherently, even if not formally declared as such, some kind of [finite state machines](https://en.wikipedia.org/wiki/Finite-state_machine), spinning around and switching states based on inputs provided by the ISRs.
+Nesta arquitetura, funções implementando várias funcionalidades são inerentes, ainda que não seja formalmente declarados como tal, um tipo de [máquina de estado finito](https://pt.wikipedia.org/wiki/M%C3%A1quina_de_estados_finitos), girando em torno de si e mudando estados baseado nas entradas fornecidas pelas **ISRs**..
 
 <div style="text-align:center">
 <img src="{{ site.baseurl }}/assets/images/2016/superloop.png" />
 <p>Superloop application</p>
 </div>
 
-The superloop technique has the advantage of requiring only one stack and sometimes may result in simpler applications, especially when the entire functionality is performed on ISRs, and the background logic is reduced to an empty loop waiting for interrupts.
+A tecnica de _superloop_ tem a vantagem de exigir apenas um _stack_ e algumas vezes pode resultar em uma aplicação simples, especialmente quando o funcionalidades são inteiramente executadas na ISRs, e a logica do _background_ é resumida em um loop vazio aguardando por interrupções.
 
-However, for slightly more complex applications, expressing the entire logic as a set of state machines is not easy, and maintenance becomes a serious problem as the program grows.
+Porem, para aplicações ligeiramente mais complexas, expressando toda a lógica como um conjunto de maquinas de estados não é fácil e a manutenção torna-se um sério problema conforme o problema cresce.
 
-The overall reaction speed may also be a problem, since the delay between the moment when the ISR makes available the input and the moment when the background routine can use it is not deterministic, depending on many other actions that can happen at the same time in the superloop.
+A velocidade de reação pode ser um problema, desde que o atraso entre o momento que o _ISR_ torna disponível as entradas e o momento quando a rotina de _background_ pode usa-la não é determinístico, dependendo de muitas outras ações que podem acontecer ao mesmo tempo no _superloop_.
 
-To ensure that urgent actions are performed in a timely manner, they must be moved on the ISRs, lengthening them and further worsening the reaction speed of the application.
+Para assegurar que ações urgentes sejam executadas em tempo hábil, ela deve ser movida para o _ISRs_, estendendo e tornando a resposta da aplicação pior.
 
 ## Multi-tasking
 
