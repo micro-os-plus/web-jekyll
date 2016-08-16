@@ -155,12 +155,12 @@ Como resumo, a estratégia de multinivel usada para reduzir o consumo de energia
 
 Em conclusão, pelo uso de uma vasta gama de técnicas de economias de energia, um RTOS pode ser usado com sucesso em uma variedade de aplicações e baixa energia.
 
-### Running vs suspended threads
+### _Threads_ em execução e suspensas
 
-Running multiple threads in parallel is only apparent, since under the hood the threads are decomposed in small sequences of operations, serialised in a certain order, on the available CPU cores. If there is only one CPU core, there is only one **running** thread at a certain moment. The other threads are **suspended**, in a sense are _frozen_ and put aside for later use; when the conditions are again favourable, each one may be _revived_ and, for a while, allowed to use the CPU.
-
-Suspended threads are sometimes called sleeping, or dormant; these terms are also correct, but it must be clearly understood that the thread status is only a software status, that has nothing to do with the CPU sleep modes, which are hardware related; the existence of suspended threads means only that the threads are not scheduled for execution; they do not imply that the CPU will enter any of the sleep modes, which may happen only when all threads are suspended.
-
+Executando múltiplas _threads_ em paralelo é apenas aparente, já que internamente as _threads_ são decompostas em pequenas sequências de operações, serializadas em uma certa ordem, em cada cores disponíveis na CPU. Se há somente um core de CPU, há somente um core na CPU, há somente uma _thread_ **rodando** em certo momento. As outras _threads_ são **suspensas**, de certa forma são _congeladas_ e colocadas de lado para uso posterior; quando as condições se tornam favoraveis, cada uma pode ser _reanimada_ e, por um tempo, permitidas usar a CPU.
+ 
+ _Threads_ suspensas são as vezes chamadas _sleeping_, ou _inativas_; este termo também é correto, mas ele deve ser claramente entendido que o estado da _thread_ é somente o estado do _software_, que não há nenhuma relação com o modo _sleep_ da CPU, que é relativo ao estado da CPU; A existência de _threads_ suspensas apenas significa que não há _threads_ agendadas para execução; isso não implica que a CPU entrará em algum dos modos _sleep_, que pode ocorrer somente quanto todas as _threadas_ são suspensas.
+ 
 ### Context switching
 
 Restarting a suspended thread requires restoring exactly the internal CPU state existing at the moment when the thread was suspended. Physically, this state is usually stored in a certain number of CPU registers. When the thread is suspended, the content of these registers must be stored in a separate RAM area, specific to each thread. When the thread is resumed, the same registers must be restored with the saved values.
