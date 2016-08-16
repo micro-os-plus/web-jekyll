@@ -136,24 +136,24 @@ Mas o que acontece se todas as _threads_ atender este requisito e não houver na
 
 Bem, entra a **idle** _thread_. Esta _thread_ interna é sempre criada antes do agendador (_scheduler_) ser iniciado; ela tem a prioridade mais baixa possível, e está sempre em execução quando não há nada mais para outras _threads_ executarem.
 
-A _idle thread_ pode executar várias ações de manutenção de baixa prioridade (como destuir _threads_ finalizadas), mas em certos momentos até mesmo a _idle thread_ não terá nada para ser feito.
+A _idle thread_ pode executar várias ações de manutenção de baixa prioridade (como destruir _threads_ finalizadas), mas em certos momentos até mesmo a _idle thread_ não terá nada para ser feito.
 
 
-### Sleep modes and power savings
+### _Sleep modes_ e ecnomia de energia
 
-When the idle thread has nothing to do, it still can do something useful: it can put the CPU to a shallow sleep, and wait for the next interrupt (the Cortex-M devices use the **Wait For Interrupt** instruction for this).
+Quando a _idle thread_ não tem nada a fazer, ele ainda pode ser útil: ela pode colocar a CPU em modo _sleep_ superficial e aguardar pela próxima interrupção (os dispositivos Cortex-M usam a instrução Aguardar Interrupção - **Wait For Interrupt** para isso).
 
-In this mode the CPU is fully functional, with all internal peripherals active, but it does not run any instructions, so it is able to save a certain amount of power.
+Neste modo a CPU é inteiramente funcional, com todos os periféricos internos ativos, mas ela não executa nenhuma instrução, por isso é capaz de economizar certa quantidade de energia.
 
-If the application has relatively long inactive moments, further savings are possible, i.e. power down all peripherals except a low frequency real time timer, usually triggered once a second. In this case the idle task can arrange for the CPU to enter a deep sleep mode, saving a significantly higher amount of power.
+Se a aplicação tem momentos de inatividade relativamente longos, é possível se maior economia, por exemplo desligar todos os periféricos exceto o relogio de tempo real de baixa frequência. que usualmente dispara a cada segundo. Neste caso a tarefa inativa pode se preparar pra a CPU entrar em modo _deep sleep_, economizando uma quantidade significante de energia.
 
-As a summary, the multilevel strategy used to reduce power consumption implies:
+Como resumo, a estratégia de multinivel usada para reduzir o consumo de energia implica em:
 
-- if nothing to do, each thread should suspend itself as soon as possible, and release the CPU to the other active threads;
-- if no active threads are available, the idle thread should arrange for the CPU to enter the sleep mode as soon as possible;
-- if all tasks know they will be inactive for a longer period, the idle task should arrange for the CPU to enter a deep sleep mode.
+- Se não há nada a ser feito, cada _thread_ deve suspender a si mesma assim que possível, e liberar a CPU para outra _thread_ ativa;
+- Se nenhum _thread_ ativa está disponível, a _idle thread_ deve preparar para que a CPU entre em modo _sleep_ assim que possível;
+- Se todas as tarefas sabem que irão ficar inativas por um longo período, a tarefa inativa deve se preparar para a CPU entrar em modo _deep sleep_.
 
-In conclusion, by using a wide range of power management techniques, an RTOS can be successfully used in very low power applications.
+Em conclusão, pelo uso de uma vasta gama de técnicas de economias de energia, um RTOS pode ser usado com sucesso em uma variedade de aplicações e baixa energia.
 
 ### Running vs suspended threads
 
