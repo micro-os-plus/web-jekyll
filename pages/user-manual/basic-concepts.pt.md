@@ -103,27 +103,30 @@ O livro [Java Threads](http://www.amazon.com/Java-Threads-Scott-Oaks/dp/05960078
 > Históricamente, _threading_ foi explorado para tornar certos programas fáceis de escrever: se um programa pode ser separado em tarefas separadas, ele em muitos casos é fácil de ser escrito em _tasks_ ou _threads_… enquanto é possível escrever um programa _single-threaded_ para executar múltiplas tarefas, é fácil e mais elegante colocar cada tarefa em sua própria _thread_.
 
 
-### Threads vs processes
+### Threads vs processos
 
-Threads and processes are the operating system mechanisms for running multiple tasks in parallel.
+_Threads_ e processos são mecanismos do sistema operacional para executar múltiplas tarefas em paralelo.
 
-The main difference between threads and processes is how the memory space is organised. Processes run in separate, virtual memory spaces, while threads share a common memory space.
+A principal diferença entre _threads_ e processos é como o espaço de memória é organizado. Processos rodam em separado, espaços de memoria virtual, enquanto _threads_ compartilham o mesmo espaço de memória.
 
-The implementation of virtual memory requires hardware support for a [MMU](https://en.wikipedia.org/wiki/Memory_management_unit), available only in application class processors, like the Cortex-A devices.
+A implementação de memoria virtual requer suporte de hardware para gerenciamento de memória (um Memory Management Unit - [MMU](https://pt.wikipedia.org/wiki/Unidade_de_gerenciamento_de_mem%C3%B3ria), disponível somente em processadores para uso em aplicações, como os dispositivos Cortex-A.
 
-Smaller devices, like the ARM Cortex-M devices, can still run multiple tasks in parallel, but, without a MMU and the benefits of virtual memory, these multiple tasks are performed by multiple threads, all sharing the same memory space.
+Pequenos dispositivos, como o ARM Cortex-M, podem até rodar múltiplas tarefas em paralelo, mas, sem um MMU e o beneficio de memórias virtuais, estas tarefas são executadas por múltiplas _threads_, todas compartilhando o mesmo espaço de memoria.
 
-As such, µOS++ is a **multi-threaded system**, supporting **any number of threads**, with the actual number limited only by the amount of available memory.
+Como tal, µOS++ é um **sistema multi-threaded** (permite Múltiplas Threads), suportando **qualquer número de threads**, com o numero atual limitado apenas pela quantidade de memória disponível.
 
-### Blocking I/O
+### Bloqueio por I/O
 
-One of the most encountered scenario when implementing tasks, is to wait for some kind of input data, for example by performing a `read()`, then process the data and, most of the times, repeat this sequence in a loop. When the system executes the `read()` call, the thread might need to wait for the required data to become available before it can continue to the next statement. This type of I/O is called **blocking I/O**: the thread blocks until some data is available to satisfy the `read()` function.
+Um dos senários mais encontrados quando implementando tarefas, é aguardar por um tipo de dado de entrada, por exemplo executando um `read()`, então processar o dado e muitas vezes, repetir issa sequência em um laço. Quando o sistema executa uma chamada `read()`, a _thread_ pode precisar esperar pelo dado solicitado se tornar disponível antes que possa continuar a próxima instrução. este tipo de I/O é chamado bloqueio de I/O (**blocking I/O**): A _thread_ bloqueia até que algum dado esteja disponível para satisfazer a função `read()`.
 
-One possible implementation is to loop until the data becomes available, but this type of behaviour simply wastes resources (CPU cycles and implicitly power) and should be avoided by all means.
+Uma possível implementação é fazer um laço até que o dado se torne disponível. mas este tipo de comportamento simplesmente é um disperdicio de recursos (ciclos de CPU e implicitamente energia) e deve ser evitado de todas as formas.
 
-Well behaved applications should never enter (long) busy loops waiting for conditions to occur, but instead suspend the thread and arrange for it to be resumed when the condition is met. During this waiting period the thread completely releases the CPU, so the CPU will be fully available for the other active threads.
+Bem, aplicações comportadas nunca devem entrar (longos) loops ocupados esperando por condições por ocorrer, mas ao invez disso supender a thread e se organizar para que possa retomado quando a condição é encontrada. Durante este periodo de espera a thread libera completamente a CPU, então a CPU se torna totalmente disponível para outra _thread_ disponível.
 
+{% comment %} Rever a seguinte tradução, apesar de compreensível está difícil manter o texto em tradução direta:
 For the sake of completeness, it should be noted that the only exception to the rule applies to short delays, where short means delays with durations comparable with the multitasking overhead. On most modern microcontrollers this is usually in the range of microseconds.
+{% endcomment %}
+Por razões de exaustividade, deve-se notar que a única exceção à regra se aplica a pequenos atrasos, onde quanto mais curtos significa que os atrasos com durações comparáveis com a sobrecarga da multitarefa. Na maioria dos microcontroladores modernos esta é geralmente no intervalo de microssegundos.
 
 ### The idle thread
 
