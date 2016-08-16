@@ -11,8 +11,10 @@ date: 2016-06-30 14:39:00 +0300
 ---
 {% comment %}
 Start work: 2016-08-15 19:30:00 +300
-Last modified: 2016-08-16 14:50:00 +300
-Todo: Mudar URLs de sites externos para o português para fontes em portugues quando adequado em especial no wiki. Outros sites analisar com bastante caute-las e discutir fontes com terceiros.
+Last modified: 2016-08-16 15:12:00 +300
+Todo: 
+ - Mudar URLs de sites externos para o português para fontes em portugues quando adequado em especial no wiki. Outros sites analisar com bastante caute-las e discutir fontes com terceiros.
+ - Mudar a referência do livro "Java Threads" para portugues, e usar citação do texto original.
 Base Commit: eebd7a5148f2dc3a7deb2d096ace7205d531b1c2
 {% endcomment %}
 
@@ -73,7 +75,7 @@ Nesta arquitetura, funções implementando várias funcionalidades são inerente
 <p>Superloop application</p>
 </div>
 
-A tecnica de _superloop_ tem a vantagem de exigir apenas um _stack_ e algumas vezes pode resultar em uma aplicação simples, especialmente quando o funcionalidades são inteiramente executadas na ISRs, e a logica do _background_ é resumida em um loop vazio aguardando por interrupções.
+A técnica de _superloop_ tem a vantagem de exigir apenas um _stack_ e algumas vezes pode resultar em uma aplicação simples, especialmente quando o funcionalidades são inteiramente executadas na ISRs, e a logica do _background_ é resumida em um loop vazio aguardando por interrupções.
 
 Porem, para aplicações ligeiramente mais complexas, expressando toda a lógica como um conjunto de maquinas de estados não é fácil e a manutenção torna-se um sério problema conforme o problema cresce.
 
@@ -83,21 +85,23 @@ Para assegurar que ações urgentes sejam executadas em tempo hábil, ela deve s
 
 ## Multi-tasking
 
-Regardless how elaborate the techniques for implementing the finite state machines are, the human mind still feels more comfortable with linear representations of lists of steps to be done, than with graph and state tables.
+Independente de quão elaborado seja a técnica para implementação da maquina de estado finito (_finite state machine_), a mente humana ainda se sente a mais confortável com representações lineares de listas de passos a serem executadas, do que com grafos e tabelas de estados.
+
 
 ### Tasks
 
-In the µOS++ context, a task is a well defined sequence of operations, usually represented in a programing language as a function.
+No contexto do µOS++, uma tarefa (_task_) é uma sequência de operações bem definidas, usualmente representadas em uma linguagem de programa por uma função.
 
-A complex application can be decomposed as a series of tasks, some executed in succession, some executed in parallel and possibly exchanging data.
+Uma aplicação complexa pode ser decomposta com uma serie de tarefas, algumas executadas em sucessão, algumas executadas em paralelo e e possivelmente trocando dados.
 
-Multi-tasking is the technique of running multiple tasks in parallel.
+_Multi-tasking_ é a técnica de executar múltiplas tarefas (_tasks_) em paralelo.
 
-### Why multiple threads?
+### Porque multiplas _threads_?
 
-The [Java Threads](http://www.amazon.com/Java-Threads-Scott-Oaks/dp/0596007825/) book (one of the inspiration source for the early versions of this project) states:
+O livro [Java Threads](http://www.amazon.com/Java-Threads-Scott-Oaks/dp/0596007825/) (uma das fontes de inspiração para as primeiras versões deste projeto) afirma:
 
-> Historically, threading was first exploited to make certain programs easier to write: if a program can be split into separate tasks, it’s often easier to program the algorithm as separate tasks or threads… while it is possible to write a single-threaded program to perform multiple tasks, it’s easier and more elegant to place each task in its own thread.
+> Históricamente, _threading_ foi explorado para tornar certos programas fáceis de escrever: se um programa pode ser separado em tarefas separadas, ele em muitos casos é fácil de ser escrito em _tasks_ ou _threads_… enquanto é possível escrever um programa _single-threaded_ para executar múltiplas tarefas, é fácil e mais elegante colocar cada tarefa em sua própria _thread_.
+
 
 ### Threads vs processes
 
