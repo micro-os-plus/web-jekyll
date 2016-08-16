@@ -7,11 +7,10 @@ author: Liviu Ionescu
 translator: Carlos Delfino
 
 date: 2016-06-30 14:39:00 +0300
-
+last_modified_at: 2016-08-16 19:30:00 +300
 ---
 {% comment %}
-Start work: 2016-08-15 19:30:00 +300
-Last modified: 2016-08-16 15:12:00 +300
+Start translate at: 2016-08-15 19:30:00 +300
 Todo: 
  - Mudar URLs de sites externos para o português para fontes em portugues quando adequado em especial no wiki. Outros sites analisar com bastante caute-las e discutir fontes com terceiros.
  - Mudar a referência do livro "Java Threads" para portugues, e usar citação do texto original.
