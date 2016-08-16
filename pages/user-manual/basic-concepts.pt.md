@@ -161,13 +161,13 @@ Executando múltiplas _threads_ em paralelo é apenas aparente, já que internam
  
  _Threads_ suspensas são as vezes chamadas _sleeping_, ou _inativas_; este termo também é correto, mas ele deve ser claramente entendido que o estado da _thread_ é somente o estado do _software_, que não há nenhuma relação com o modo _sleep_ da CPU, que é relativo ao estado da CPU; A existência de _threads_ suspensas apenas significa que não há _threads_ agendadas para execução; isso não implica que a CPU entrará em algum dos modos _sleep_, que pode ocorrer somente quanto todas as _threadas_ são suspensas.
  
-### Context switching
+### Troca de Contexto
 
-Restarting a suspended thread requires restoring exactly the internal CPU state existing at the moment when the thread was suspended. Physically, this state is usually stored in a certain number of CPU registers. When the thread is suspended, the content of these registers must be stored in a separate RAM area, specific to each thread. When the thread is resumed, the same registers must be restored with the saved values.
+Reiniciar uma _thread_ suspensa requer restaurar exatamente o estado interno da CPU existente no momento quando a _thread_ foi suspensa. Fisicamente este estado é usualmente restaurado em um certo números de registradores da CPU. Quando a _thread_ está suspensa, o conteúdo destes registradores devem ser armazenados uma área de memória RAM separada, especifica para cada _thread_. Quando a _thread_ é continuada, os mesmos registradores devem ser restaurados com os mesmos valores.
 
-This set of information required to resume a thread is also called the **thread execution context**, in short the **context**.
+Este conjunto de informações necessárias para resumir a _thread_ é também chamado de **Contexto de execução da Thread** (Thread execution context), em resumo **contexto** (context).
 
-The set of operations required to save the context of the running thread, select the next thread and restore its context is called **context switching**.
+O conjunto de operações necessárias para armazenar o contexto da _thread_ em execução. selecionar a próxima _thread_ e restaurar seu contexto é chamado **Troca de Contexto** (context switching).
 
 ### Thread stacks
 
