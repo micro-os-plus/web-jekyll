@@ -119,24 +119,25 @@ Como tal, µOS++ é um **sistema multi-threaded** (permite Múltiplas Threads), 
 
 Um dos senários mais encontrados quando implementando tarefas, é aguardar por um tipo de dado de entrada, por exemplo executando um `read()`, então processar o dado e muitas vezes, repetir issa sequência em um laço. Quando o sistema executa uma chamada `read()`, a _thread_ pode precisar esperar pelo dado solicitado se tornar disponível antes que possa continuar a próxima instrução. este tipo de I/O é chamado bloqueio de I/O (**blocking I/O**): A _thread_ bloqueia até que algum dado esteja disponível para satisfazer a função `read()`.
 
-Uma possível implementação é fazer um laço até que o dado se torne disponível. mas este tipo de comportamento simplesmente é um disperdicio de recursos (ciclos de CPU e implicitamente energia) e deve ser evitado de todas as formas.
+Uma possível implementação é fazer um laço até que o dado se torne disponível. mas este tipo de comportamento simplesmente é um desperdício de recursos (ciclos de CPU e implicitamente energia) e deve ser evitado de todas as formas.
 
-Bem, aplicações comportadas nunca devem entrar (longos) loops ocupados esperando por condições por ocorrer, mas ao invez disso supender a thread e se organizar para que possa retomado quando a condição é encontrada. Durante este periodo de espera a thread libera completamente a CPU, então a CPU se torna totalmente disponível para outra _thread_ disponível.
+Bem, aplicações comportadas nunca devem entrar (longos) _loops_ ocupados esperando por condições por ocorrer, mas ao invés disso suspender a _thread_ e se organizar para que possa retomado quando a condição é encontrada. Durante este período de espera a _thread_ libera completamente a CPU, então a CPU se torna totalmente disponível para outra _thread_ disponível.
 
 {% comment %} Rever a seguinte tradução, apesar de compreensível está difícil manter o texto em tradução direta:
 For the sake of completeness, it should be noted that the only exception to the rule applies to short delays, where short means delays with durations comparable with the multitasking overhead. On most modern microcontrollers this is usually in the range of microseconds.
 {% endcomment %}
 Por razões de exaustividade, deve-se notar que a única exceção à regra se aplica a pequenos atrasos, onde quanto mais curtos significa que os atrasos com durações comparáveis com a sobrecarga da multitarefa. Na maioria dos microcontroladores modernos esta é geralmente no intervalo de microssegundos.
 
-### The idle thread
+### A **Idle** _thread_
 
-As seen before, at thread level, the goal is to process the available data as soon as possible and suspend itself to wait for more data. In other words, the thread ideal way of life should be... to do nothing!
+Como vimos antes, a nível de _threads_, o objetivo é processar o dado assim que possível e suspender a si própria para aguardar por mais dados. E outras palavras, a forma ideal da _thread_ se manter é... não fazer nada|
 
-But what happens if all threads accomplish this goal and there is nothing else to do?
+Mas o que acontece se todas as _threads_ atender este requisito e não houver nada a ser feito?
 
-Well, enter the **idle** thread. This internal thread is always created before the scheduler is started; it has the lowest possible priority, and is always running when there are no more other threads to run.
+Bem, entra a **idle** _thread_. Esta _thread_ interna é sempre criada antes do agendador (_scheduler_) ser iniciado; ela tem a prioridade mais baixa possível, e está sempre em execução quando não há nada mais para outras _threads_ executarem.
 
-The idle thread can perform various low priority maintenance chores (like destroying terminated threads), but at a certain moment even the idle thread will have nothing else to do.
+A _idle thread_ pode executar várias ações de manutenção de baixa prioridade (como destuir _threads_ finalizadas), mas em certos momentos até mesmo a _idle thread_ não terá nada para ser feito.
+
 
 ### Sleep modes and power savings
 
