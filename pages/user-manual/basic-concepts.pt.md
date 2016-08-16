@@ -4,50 +4,59 @@ lang: pt
 permalink: /pt/user-manual/basic-concepts/
 title: Conceitos básicos
 author: Liviu Ionescu
+translator: Carlos Delfino
 
 date: 2016-06-30 14:39:00 +0300
 
 ---
+{% comment %}
+Start work: 2016-08-15 19:30:00 +300
+Last modified: 2016-08-16 13:30:00 +300
+Todo: Mudar URLs de sites externos para o português para fontes em portugues quando adequado em especial no wiki. Outros sites analisar com bastante caute-las e discutir fontes com terceiros.
+Base Commit: eebd7a5148f2dc3a7deb2d096ace7205d531b1c2
+{% endcomment %}
 
-## Embedded systems
+## Sistemas Embarcados
 
-From the software point of view, an [embedded system](https://en.wikipedia.org/wiki/Embedded_system) is a small computer, built for a dedicated function (as opposed to general purpose [computers](https://en.wikipedia.org/wiki/Computer)).
+Do ponto de vista do software, um [Sistema Embarcado](https://pt.wikipedia.org/wiki/Sistema_embarcado) é um pequeno computador, construído para funções específicas (em oposição aos [computadores](https://pt.wikipedia.org/wiki/Computadr) de propósito geral).
 
-There are many types of embedded systems, with varying degrees of complexity, from small proximity sensors used in home automation, to internet routers, remote surveillance cameras and even smart phones.
+Há muitos tipos de sistemas embarcados, com vários níveis de complexidade, de pequenos sensores de proximidade usados em automação residencial, até roteadores de internet, câmeras de vigilância remota e até mesmo smart phones.
 
-Complex systems, especially those with high bandwidth communication needs, are designed around embedded versions of GNU/Linux, which include a large kernel, a root file system, multiple processes, not very different from their larger cousins running on desktop computers.
+Sistemas complexos, especialmente aqueles com alta demanda de largura de banda para comunicação, são projetos com base versões embarcadas so sistemas GNU/Linux, que incluem um grande kernel, um sistema de arquivo, multiplos processadores, o que não difere muito de seus primos maiores que rodam em computadores desktop.
 
-The _application_ is generally a combination of processes running in user space, and device drivers, running inside the kernel.
+A _aplicação_ é geralmente uma combinação de processos rodando em um espaço de usuário ("user space"), e "device drivers", rodando dentro do kernel.
 
-## Bare-metal embedded systems
+## Sistemas embarcados "Bare-metal"
 
-Smaller devices have much less resources, and are build around microcontrollers which do not have the required hardware to properly run an Unix kernel.
+Pequenos dispositivos tem muito menos recursos, e são construídos em torno de microcontroladores que não tem o hardware necessário para executar adequadamente um um kernel Unix.
 
-In this case the application is monolithic and runs directly on the hardware, thus the name _bare-metal_.
+Neste caso a aplicação é monolítica e executa diretamente no hardware, por isso o nome _bare-metal_.
 
-µOS++ focuses on these [bare-metal](https://en.wikipedia.org/wiki/Bare_machine) applications, especially those running on ARM Cortex-M devices. Although µOS++ can be ported on larger ARM cores, even the 64-bits ones, there are no plans to include support for MMU, virtual memory, separate processes and other such features specific to the Unix world.
+µOS++ tem como foco as aplicações [bare-metal](https://en.wikipedia.org/wiki/Bare_machine), especialmente aquelas que rodam em dispositivos Cortex-M. Através do µOS++ pode-se portar para grandes cores ARM, inclusive os de 64-bits, que não tem planos de incluir suporte MMU, memória virtual, processos separados e outros tais como recursos específicos para o mundo Unix. 
 
-## Real-time systems
+## Sistemas de tempo real (Real-time)
 
-A [real-time](https://en.wikipedia.org/wiki/Real-time_computing) embedded system is a piece of software that manages the resources and the time behaviour of an embedded device, usually build around a microcontroller, emphasising on the correctness of the computed values and their availability at the expected time.
+Um sistema embarcado [real-time](https://en.wikipedia.org/wiki/Real-time_computing)é uma peça de software que gerencia os recursos e o comportamento com relação ao tempo de um dispositivo embarcado, normalmente construído em torno de um microcontrolador, enfatizando os valores calculados e a disponibilidade de tempo esperado por processo.
+{% comment %} added "por processos" for contextualize the "expected time" {% endcomment %}
 
-µOS++ is a real-time operating system (RTOS).
+µOS++ é um sistema operacional real-time (do inglês Real-Time Operating System - RTOS).
 
-## Soft vs hard real-time systems
+## sistemas real-time, Soft vs hard
 
-There are two types of real-time systems, hard and soft real-time systems.
+Há dois tipos de sistemas real-time, sistemas real-time soft e sistemas real-time hard.
 
-The main difference between them is determined by the consequences associated with missing **deadlines**. Obtaining correctly computed values but after the deadline has passed may range from useless to dangerous.
+A principal diferença entre eles é determinada pelas consequências associadas com a perda do _deadline_. Obter o valor computador corretamente mas após o prazo de execução (_deadline_) pode ser de inútil a perigoso.
 
-For **hard real-time systems** the tolerance to missing deadlines is very low, since missing a deadline often results in a catastrophe, which may involve the loss of human lives.
+Para um **Sistema Hard Real-Time** a tolerância para perda do _deadline_ é muito baixa, desde que a perda de uma **deadline** muitas vezes resulta numa catástrofe., que pode envolver pedas de vidas humanas.
 
-For **soft real-time systems** this tolerance is not as tight, since missing deadlines is generally not as critical.
+Para um **Sistema Soft Real-Time** esta tolerância não é tão critica, deede que a _deadline_ perdida não seja em geral critica.
 
-Absolute hard real-time systems, with near zero tolerance, are typically very difficult to design, and it is recommended to approach them with caution.
+Absolutamente Sistemas Hard Real-Time, com tolerância próxima de zero, são tipicamente muito difícil de projetar, e é recomentado aborda-los com cautela.
 
-However, with a careful design, reasonable tolerance can be obtained, and **µOS++ can be successfully used in real-time applications**.
+Porem, com um projeto cuidadoso, razoável tolerância pode obtida, e   **µOS++ pode ser usado com sucesso em aplicações _Real-Time_**.
 
-Legal-notice: According to the MIT license, _"the software is provided as-is, without warranty of any kind"_. As such, its use in life threatening applications should be avoided.
+**Nota Jurídica:** De acordo com a licença do MIT, _"o software é fornecido _como é_, sem garantias de algum tipo"_, como tal seu uso em aplicações com risco de vida deve ser evitado.
+
 
 ## Superloop (foreground/background) applications
 
