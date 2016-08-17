@@ -170,13 +170,13 @@ O conjunto de operações necessárias para armazenar o contexto da _thread_ em 
 
 ### Thread stacks
 
-Modern CPUs, like the ARM Cortex-M devices, make use of a stack to implement nested function calls and local function storage.
+CPUs modernas, como os dispositivos ARM Cortex-M, fazem uso do _stack_ para implementar chamadas de funções intercaladas e armazenamento de funções locais.
 
-The same stack can be used to store the thread context. When starting a context switch all registers are pushed onto the thread stack. Then the resulting stack pointer is saved in the thread context area. Resuming a thread is done in reverse order, i.e. the stack pointer is retrieved from the thread context, all registers are popped from the stack and execution is resumed.
+O mesmo _stack_ pode ser usado para gravar o contexto da _thread_. Quando iniciando uma troca de contexto todos os registradores são armazenados no _stack_ da _thread_. Então o ponteiro resultante do _stack_ é gravado na área de contexto da _thread_. Em resumo a _thread_ está pronta na ordem reversa, por exemplo o ponteiro do _stack_ (pilha) é recuperado do contexto da _thread_, todos os registradores são puxados do _stack_ e a excussão é resumida.
 
-This mechanism usually simplifies the scheduler implementation; it is used in the Cortex-M port of the µOS++ scheduler.
+Este mecanismo usualmente simplifica a implementação do agendador (_scheduler); ele é usado na implementação do agendador do µOS++ para o Cortex-M.
 
-Historical note: early microcontrollers, like PIC before the 18 series, did not have a general purpose stack; instead they had a limited call stack, allowing only a small number of nested calls.
+Observação Histórica: microcontroladores antigos, como o PIC antes da série 18, não tem um _stack_ de propósito geral; ao invez ele tem uma chamada limitada para o _stack_, permitindo somente uma pequena quantidade de chamadas aninhadas.
 
 ### Cooperative vs preemptive multi-tasking
 
