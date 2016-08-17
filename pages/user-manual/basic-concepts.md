@@ -25,7 +25,7 @@ Smaller devices have much less resources, and are build around microcontrollers 
 
 In this case the application is monolithic and runs directly on the hardware, thus the name _bare-metal_.
 
-µOS++ focuses on these [bare-metal](https://en.wikipedia.org/wiki/Bare_machine) applications, especially those running on ARM Cortex-M devices. Although µOS++ can be ported on larger ARM cores, even the 64-bits ones, there are no plans to include support for MMU, virtual memory, separate processes and other such features specific to the Unix world.
+µOS++ focuses on these [bare-metal](https://en.wikipedia.org/wiki/Bare_machine) applications, especially those running on ARM Cortex-M devices. Although µOS++ can be ported on larger ARM Cortex-A cores, even the 64-bits ones, there are no plans to include support for MMU, virtual memory, separate processes and other such features specific to the Unix world.
 
 ## Real-time systems
 
@@ -110,7 +110,7 @@ One possible implementation is to loop until the data becomes available, but thi
 
 Well behaved applications should never enter (long) busy loops waiting for conditions to occur, but instead suspend the thread and arrange for it to be resumed when the condition is met. During this waiting period the thread completely releases the CPU, so the CPU will be fully available for the other active threads.
 
-For the sake of completeness, it should be noted that the only exception to the rule applies to short delays, where short means delays with durations comparable with the multitasking overhead. On most modern microcontrollers this is usually in the range of microseconds.
+For the sake of completeness, it should be noted that the only exception to the rule applies to short delays, where short means delays with durations comparable with the multitasking overhead required to suspend/resume threads (where the context switching time plays an important role). On most modern microcontrollers this is usually in the range of microseconds.
 
 ### The idle thread
 
