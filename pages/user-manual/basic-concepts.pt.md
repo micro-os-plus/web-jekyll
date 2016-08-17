@@ -7,7 +7,7 @@ author: Liviu Ionescu
 translator: Carlos Delfino
 
 date: 2016-06-30 14:39:00 +0300
-last_modified_at: 2016-08-17 14:40:00 +300
+last_modified_at: 2016-08-17 15:10:00 +300
 ---
 {% comment %}
 Start translate at: 2016-08-15 19:30:00 +300
@@ -256,19 +256,19 @@ Além de alguns estados usados durante a criação da _thread_ e sua destruiçã
 - **pronta** (**read**) - uma _thread_ é marcada como **pronta** (**read**) para rodar, mas não está usando a CPU ainda;
 - **suspensa** - (**suspended**) - uma _thread_ que não esteja pronta (**read**) para rodar e que deva aguardar por um recurso que não está disponível, ou por um evento que irá ocorrer no futuro.
 
-### The READY list
+### A lista READY
 
-To performs its duties efficiently, the scheduler needs to keep track only of the threads ready to run. Threads that for a little while must wait for various events can be considered to momentarily exit the scheduler jurisdiction, and other mechanisms, like timers, synchronisation objects, notifications, etc are expected to return them to the scheduler when ready to run.
+Para desempenhar suas funções de forma eficiente, o escalonador precisa manter o controle somente das _threads_ prontas para executar. _Threads_ que por um pequeno tempo devem aguardar vários eventos podem ser consideradas momentaneamente fora da jurisdição do escalonador, e outros mecanismos como cronômetros, objetos de sincronização, notificações etc, são esperados retornar então para o escalonador quando pronto para executar.
 
-In order to keep track of the ready threads, the scheduler maintains a ready list. The term list is generic, regardless of the actual implementation, which might be anything from a simple array to multiple double linked lists.
+Objetivando manter o controle das _threads_ prontas, o escalonador mantem uma lista _ready_ (prontos). O termo lista é genérico, e independênte da implementação atual, pode ser qualquer coisa desde um simples _array_ até múltiplas listas duplamente encadeadas.
 
-### Scheduling algorithms
+### Algoritmos de Escalonamento
 
-The main existential question in the life of a scheduler is _how to select the next thread to run among the treads in the READY list?_ This question is actually much more difficult to answer when dealing with a hard real-time application, with strict life or death deadlines for threads.
+A principal questão existencial na vida do escalonador é _como selecionar a próxima _thread_ para executar dentre as _threads_ na lista READY?_ Esta questão é atualmente muito mais difícil de responder quando tratando com uma aplicação _hard real-time_, com rigorosos prazos de vida ou morte definidos para as _threads_.
 
-Legal notice: From this point of view it must be clearly stated that the µOS++ scheduler does not guarantee any deadlines in thread executions.
+Informe jurídico: Deste ponto de vista pode ser claramente afirmado que o agendador do µOS++ não garante algum prazo na execução da _thread_.
 
-However, what the µOS++ scheduler does, is to be as fair as possible with existing threads, and give them the best chance to access the CPU.
+Porem, o que o agendador do µOS++ faz, é ser o mais justos possível com as threas existentes, e dar a melhor chance para cada uma ter acesso a CPU.
 
 ### Round-robin vs priority scheduling
 
