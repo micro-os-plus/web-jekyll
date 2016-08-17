@@ -228,11 +228,11 @@ Para escalonadores preemptivos, o mesmo cronometro pode ser usado para disparar 
 
 Sabendo da importância de um cronometro do sistema, A ARM definiu **SysTick** como o cronometro comum para dispositivos Cortex-M, que fazem dele um recurso perfeito para o cronometro do escalonador.
 
-### Thread interruption/cancellation
+### Interrompendo/Cancelando uma Thread
 
-In real life applications, there are cases when some threads, for various reasons, must be interrupted.
+Em aplicações da vida real, há casos quando algumas _threads_, por vários motivos, devem ser interrompidos.
 
-µOS++ threads include support for interruption, but this support is cooperative, i.e. threads that might be interrupted should check for interruption requests and quit inner loops in an ordered manner.
+_Threads do µOS++ incluem suporte para interrupção, mas este suporte é cooperativo, por exemplo _threads_ que podem ser interrompidas devem verificar pela requisição de interrupção e e sair de seu loop de uma forma organizada.
 
 ### Thread Control Blocks (TCBs)
 
