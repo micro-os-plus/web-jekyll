@@ -7,7 +7,7 @@ author: Liviu Ionescu
 translator: Carlos Delfino
 
 date: 2016-06-30 14:39:00 +0300
-last_modified_at: 2016-08-17 13:22:00 +300
+last_modified_at: 2016-08-17 14:05:00 +300
 ---
 {% comment %}
 Start translate at: 2016-08-15 19:30:00 +300
@@ -216,19 +216,17 @@ Em geral multi tarefas cooperativas são fáceis de implementar e desde que a CP
 
 Uma aplicação especialmente útil do modo cooperativo é para depuração de condições de competição _inter-thread_. Em casos de comportamento estranho que podem ser associados com problemas de sincronização, se desabilitar a preempção resolve o problema, então uma condição de competição _inter-threads_ é altamente provável. O problema permanece presente no modo cooperativo, então é muito provável que a condição de competição envolve o serviço de interrupção (IRS). Em ambos os casos a correção é usar seções criticas quando necessário.
 
+µOS++ implementa ambos os modos multi-tasking preemptivo e cooperativo.
 
-µOS++ implementa ambos os modos multi-tasking preempitvo e cooperativo.
+### O Cronometro do Escalonador
 
+Muitos escalonadores mantem o rastro do temo, ao menos para tratar limites de tempo (timeouts). Tecnicamente isto é implementado através de um temporizador por hardware, e os limites de tempo são expressos como ticks deste temporizador.
 
-### The scheduler timer
+Uma frequência comum para o temporizador do escalonador é 1000hz, que dá uma resolução de 1ms para a derivação do relógio do escalonador.
 
-Most schedulers keep track of time, at least for handling timeouts. Technically this is implemented with a periodic hardware timer, and timeouts are expressed in timer ticks.
+Para escalonadores preemptivos, o mesmo cronometro pode ser usado para disparar a troca de contextos.
 
-A common frequency for the scheduler timer is 1000 Hz, which gives a resolution of 1 ms for the scheduler derived clock.
-
-For preemptive schedulers, the same timer can be used to trigger context switches.
-
-Acknowledging the importance of a system timer, ARM defined SysTick as a common timer for Cortex-M devices, which makes it a perfect match for the scheduler timer.
+Sabendo da importância de um cronometro do sistema, A ARM definiu **SysTick** como o cronometro comum para dispositivos Cortex-M, que fazem dele um recurso perfeito para o cronometro do escalonador.
 
 ### Thread interruption/cancellation
 
