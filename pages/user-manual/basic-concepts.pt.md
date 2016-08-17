@@ -7,7 +7,7 @@ author: Liviu Ionescu
 translator: Carlos Delfino
 
 date: 2016-06-30 14:39:00 +0300
-last_modified_at: 2016-08-17 14:22:00 +300
+last_modified_at: 2016-08-17 14:40:00 +300
 ---
 {% comment %}
 Start translate at: 2016-08-15 19:30:00 +300
@@ -238,23 +238,23 @@ _Threads do µOS++ incluem suporte para interrupção, mas este suporte é coope
 
 Um bloco de controle de _thread_ (thread control block - TCB) é uma estrutura de dados usada pelo escalonador para manter informações sobre a _thread_. Cada _thread_ requer seu próprio **TCB**.
 
-Por trás de uma linguagem estruturada e orientada a objetos como o C++, as _threads_ do µOS++ tem de forma implicita uma instância da estrutura de dados associada com os objetos, que são funcionalmente equivalentes aos TCBs comuns; em outras palavras, o TCB do µOS++ são as instancia das _threads_ em si.
+Por trás de uma linguagem estruturada e orientada a objetos como o C++, as _threads_ do µOS++ tem de forma implícita uma instância da estrutura de dados associada com os objetos, que são funcionalmente equivalentes aos TCBs comuns; em outras palavras, o TCB do µOS++ são as instancia das _threads_ em si.
 
 As variáveis internas das _threads_ são protegidas, e não podem ser diretamente acessadas pelo código do usuário, mas para todos os membros relevantes há assessores públicos e funções modificadores definidas.
 
-## Scheduling
+## Escalonador
 
-The mechanism that performs the context switches is also called **scheduling**, and the code implementing this mechanism is also called **scheduler**.
+O mecanismo que permite a troca de contexto é também chamado de **escalonamento** (**_scheduling_**), e o código que implementa este mecanismo é também chamado de **escalonador** (**_scheduler_**).
 
-### Thread states
+### Estado da _Thread_ 
 
-During their lifetime, threads can be in different states.
+Durante seu tempo de vida, _threads_ podem ter diferentes estados.
 
-Apart from some states used during thread creation and destruction, the most important thread states are:
+Além de alguns estados usados durante a criação da _thread_ e sua destruição, os estados mais importantes são:
 
-- **running** - a thread is marked as running when it is using the CPU;
-- **ready** - a thread that is ready to run, but does not use the CPU yet;
-- **suspended** - a thread that is not ready to run since it must wait for a resource that is not yet available, or for an event that will occur in the future.
+- **executando** (**running**) - uma _thread_ é marcada como **running** quando ela está usando a CPU;
+- **pronta** (**read**) - uma _thread_ é marcada como **pronta** (**read**) para rodar, mas não está usando a CPU ainda;
+- **suspensa** - (**suspended**) - uma _thread_ que não esteja pronta (**read**) para rodar e que deva aguardar por um recurso que não está disponível, ou por um evento que irá ocorrer no futuro.
 
 ### The READY list
 
