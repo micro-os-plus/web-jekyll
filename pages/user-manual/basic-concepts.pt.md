@@ -7,7 +7,7 @@ author: Liviu Ionescu
 translator: Carlos Delfino
 
 date: 2016-06-30 14:39:00 +0300
-last_modified_at: 2016-08-16 19:30:00 +300
+last_modified_at: 2016-08-16 23:30:00 +300
 ---
 {% comment %}
 Start translate at: 2016-08-15 19:30:00 +300
@@ -178,42 +178,45 @@ Este mecanismo usualmente simplifica a implementação do agendador (_scheduler)
 
 Observação Histórica: microcontroladores antigos, como o PIC antes da série 18, não tem um _stack_ de propósito geral; ao invez ele tem uma chamada limitada para o _stack_, permitindo somente uma pequena quantidade de chamadas aninhadas.
 
-### Cooperative vs preemptive multi-tasking
+### Multi-tarefa cooperativa vs preemptiva
 
-The most frequent reason for a context switch is when a thread decides to wait for a resource that is not yet available, like a new character from a device, a message in a queue, a mutex protecting a shared resource, etc.
+A razão mais frequênte para a troca de contexto é quando a _thread_ decide aguardar por recursos que não estão disponíveis ainda, como um novo caractere de um dispositivo, uma mensagem no _queue_, uma proteção por _mutex_ de um recurso compartilhado.
 
-In this case, yielding the CPU from one thread to another is done implicitly by the system function called to wait for the resource.
+Neste caso, cedendo a CPU de uma _thread_ para outra é feito implicitamente pela função de sistema chamada para aguardar por este recurso.
 
-In case of long computations, a well behaved thread would not hold the CPU for the entire computation period, but explicitly yield the CPU from time to time, to give other threads a chance to run.
+No caso de longos cálculos, uma _thread_ bem comportada não deve manter a CPU inteiramente no período de calculo, mas explicitamente ceder (_yield_) a CPU de tempo em tempos, para dar a outras _threads_ a chance de rodar.
 
-This polite behaviour, when the switch is performed by the thread itself, is called **cooperative** multi-tasking, since it depends on a the good-will of all tasks running in parallel.
+Este politica de comportamento, quando troca é executada pela própria _thread_ é chamada multi-tarefa cooperativa (**coperative**), uma vez que depende do bom comportamento de todas as tarefas rodando em paralelo.
 
-The biggest disadvantage of cooperative multi-tasking is a possible low reaction speed, for example when an interrupt wants to resume a high priority thread, this might not happen until the low priority thread decides to yield.
+A grande desvantagem da multi-tarefa cooperativa é uma possibilidade de reação de baixa velocidade, por exemplo quando uma interrupção deseja resumir uma _thread_ de alta prioridade, este pode não acontecer até que a prioridade de baixa prioridade decida ceder (_yield_).
 
 <div style="text-align:center">
 <img src="{{ site.baseurl }}/assets/images/2016/scheduling-cooperative.png" />
 <p>Cooperative context switching.</p>
 </div>
 
-In this case the solution is to allow the interrupt to trigger a context switch from the low priority thread to the high priority thread without the threads event knowing about. This automatic kind of context switch is also called **preemptive** multi-tasking, since long running threads are _preempted_ to hog the CPU in favour of higher priority threads.
+Neste caso a solução é permitir a interrupção disparar uma troca de contexto de uma _thread_ de baixa prioridade para uma _thread_ de alta prioridade sem que as _threads_ tomem conhecimento do evento. Este tipo de troca de contexto é também chamado de multi-tarefa **preemptiva** (_preemptive_ multi-tasking), desta forma _threads_ de longo tempo de execução irão de forma preemptiva monopolizar a CPU em favor de prioridades de maior prioridade.
+
 
 <div style="text-align:center">
 <img src="{{ site.baseurl }}/assets/images/2016/scheduling-preemptive.png" />
 <p>Preemptive context switching</p>
 </div>
 
-Once the mechanism for an interrupt to preempt a thread is functional, a further improvement can be added: a periodic timer (for example the timer used to keep track of time), can be used to automatically preempt threads and give a chance to equal priority threads to alternatively get the CPU.
+Uma vez o mecanismo para uma interrupção agir de forma preemptiva para uma _thread_ é funcional, uma melhoria futura pode ser adicionada: um _timer_ periódico (por exemplo o _timer_ usado para manter o tempo atualizado), pode ser usado para automaticamente agir de forma preemptiva sobre as _threads_  e dar a chance para _threads_ de prioridade igual de forma alternada ter acesso a CPU.
 
 <div style="text-align:center">
 <img src="{{ site.baseurl }}/assets/images/2016/scheduling-preemptive-timer.png" />
 <p>Preemptive context switching with periodic timer</p>
 </div>
 
-In general cooperative multitasking is easier to implement, and, since the CPU is released under the application control, inter-thread synchronisation race conditions are avoided. However, at a more thorough analysis, this is not necessarily a feature, but a subtle way to hide other application synchronisation bugs, like the lack of explicit critical sections. In other words, a well behaved application should protect a shared resource by use of a critical section anyway, since although another task cannot execute inside another task, interrupt service routines can, and without the critical section it is very likely that a race condition may occur.
+Em geral multi tarefas cooperativas são fáceis de implementar e desde que a CPU seja liberada sobre o controle da aplicação, a condição de competição por sincronização _inter-threads_ são evitadas. Porém, em uma analise mais profunda, isso não é um recursos, mas uma forma de esconder outros erros de sincronização da aplicação, como a falta de seções criticas explicitas. Em outras palavras, uma aplicação bem comportada deve proteger um recursos compartilhado de uma seção critica de qualquer forma, já que desde que outras tarefas não pode executar dentro de outra tarefa, serviços de interrupção (ISR) podem, e sem uma seção critica é bem provável que uma uma condição de competição possa ocorrer.
 
-One special useful application of the cooperative mode is for debugging possible inter-thread race conditions. In case of strange behaviours that might be associated with synchronisation problems, if disabling preemption solves the problem, then an inter-thread race condition is highly probable. It the problem is still present in cooperative mode, than most probably the race condition involves the interrupt service routines. In both cases, the cure is to use critical sections where needed.
+Uma aplicação especialmente útil do modo cooperativo é para depuração de condições de competição _inter-thread_. Em casos de comportamento estranho que podem ser associados com problemas de sincronização, se desabilitar a preempção resolve o problema, então uma condição de competição _inter-threads_ é altamente provável. O problema permanece presente no modo cooperativo, então é muito provável que a condição de competição envolve o serviço de interrupção (IRS). Em ambos os casos a correção é usar seções criticas quando necessário.
 
-µOS++ implements both cooperative and preemptive multi-tasking.
+
+µOS++ implementa ambos os modos multi-tasking preempitvo e cooperativo.
+
 
 ### The scheduler timer
 
