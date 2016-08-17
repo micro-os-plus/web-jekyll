@@ -7,7 +7,7 @@ author: Liviu Ionescu
 translator: Carlos Delfino
 
 date: 2016-06-30 14:39:00 +0300
-last_modified_at: 2016-08-17 14:05:00 +300
+last_modified_at: 2016-08-17 14:22:00 +300
 ---
 {% comment %}
 Start translate at: 2016-08-15 19:30:00 +300
@@ -234,13 +234,13 @@ Em aplicações da vida real, há casos quando algumas _threads_, por vários mo
 
 _Threads do µOS++ incluem suporte para interrupção, mas este suporte é cooperativo, por exemplo _threads_ que podem ser interrompidas devem verificar pela requisição de interrupção e e sair de seu loop de uma forma organizada.
 
-### Thread Control Blocks (TCBs)
+### Blocos de controle de Threads (Thread Control Blocks - TCBs)
 
-A thread control block (TCB) is a data structure used by the scheduler to maintain information about a thread. Each thread requires its own TCB.
+Um bloco de controle de _thread_ (thread control block - TCB) é uma estrutura de dados usada pelo escalonador para manter informações sobre a _thread_. Cada _thread_ requer seu próprio **TCB**.
 
-Being implemented in a structured, object oriented language like C++, the µOS++ threads implicitly have instance data structures associated with the objects, which are functionally equivalent to common TCBs; in other words, the µOS++ TCBs are the actual thread instances themselves.
+Por trás de uma linguagem estruturada e orientada a objetos como o C++, as _threads_ do µOS++ tem de forma implicita uma instância da estrutura de dados associada com os objetos, que são funcionalmente equivalentes aos TCBs comuns; em outras palavras, o TCB do µOS++ são as instancia das _threads_ em si.
 
-The thread internal variables are protected, and cannot be directly accessed from user code, but for all relevant members there are public accessor and mutator functions defined.
+As variáveis internas das _threads_ são protegidas, e não podem ser diretamente acessadas pelo código do usuário, mas para todos os membros relevantes há assessores públicos e funções modificadores definidas.
 
 ## Scheduling
 
