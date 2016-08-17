@@ -7,7 +7,7 @@ author: Liviu Ionescu
 translator: Carlos Delfino
 
 date: 2016-06-30 14:39:00 +0300
-last_modified_at: 2016-08-17 15:10:00 +300
+last_modified_at: 2016-08-17 15:30:00 +300
 ---
 {% comment %}
 Start translate at: 2016-08-15 19:30:00 +300
@@ -268,22 +268,26 @@ A principal questão existencial na vida do escalonador é _como selecionar a pr
 
 Informe jurídico: Deste ponto de vista pode ser claramente afirmado que o agendador do µOS++ não garante algum prazo na execução da _thread_.
 
-Porem, o que o agendador do µOS++ faz, é ser o mais justos possível com as threas existentes, e dar a melhor chance para cada uma ter acesso a CPU.
+Porém, o que o agendador do µOS++ faz, é ser o mais justos possível com as _threas_ existentes, e dar a melhor chance para cada uma ter acesso a CPU.
 
-### Round-robin vs priority scheduling
+### Round-robin vs prioridade de escalonamento 
 
-One of the simple ways to manage the ready list is [FIFO](https://en.wikipedia.org/wiki/FIFO_(computing_and_electronics)), with new threads inserted at the back, and the scheduler extracting from the front. This mechanism works well if there is no need to guarantee response time.
+Uma das formas simples de gerenciar a lista de _threads_ prontas é uma lista do tipo[FIFO](https://pt.wikipedia.org/wiki/FIFO_(escalonamento)), com novas _threads_ sendo inseridas no final da fila, e o escalonador extraindo do inicio da fila. Este mecanismo funciona bem se não necessidade de garantir tempo de resposta.
 
-When response time becomes important, the mechanism can be greatly improved by assigning priorities to threads, and ordering the ready list by priorities.
+Quando o tempo de resposta se torna importante, o mecanismo pode ser melhorado substancialmente adicionando prioridades para as _threads_, e ordenando a lista de _threads_ prontas pela prioridade.
 
-By always inserting higher priority threads immediately in front of the lower priority ones, two goals are achieved at the same time:
+Desta forma inserindo _threads_ de alta prioridades imediatamente na frente das _threads_ de baixa prioridades, dois objetivos são atingidos ao mesmo tempo:
 
-- the highest priority thread is always in the front of the list, so the scheduler will always give control to the highest priority thread;
-- threads with equal priority are not only kept together but also preserve the insertion order.
+- a _thread_ de maior prioridade está sempre na frente da lista, assim o escalonador sempre dará o controle para as _threads_ de alta prioridade;
+- _threads_ com prioridades iguais não apenas são mantidas juntas, mas também manterão a ordem de inserção.
 
-By default, the µOS++ user threads are created with _normal_ priority. As the result, the scheduler default behaviour is round-robin.
+{% comment %}
+define: round-robin -> https://pt.wikipedia.org/wiki/Round-robin
+{% endcomment %}
+Por padrão, as _threads_ de usuário no µOS++  são criadas com prioridade _normal_. Como resultado o comportamento padrão do escalonador é _round-robin_.
 
-As soon as thread priorities are changed, the scheduler behaviour automatically changes to priority scheduling, falling back to round-robin for threads with equal priorities.
+Assim que a prioridades são alteradas, o comportamento do escalonador muda automaticamente alterando o escalonamento das prioridades, voltando a usar _round-robin_ para _threads_ com prioridades iguais.
+
 
 ### Selecting thread priorities
 
