@@ -7,14 +7,16 @@ author: Liviu Ionescu
 translator: Carlos Delfino
 
 date: 2016-06-30 14:39:00 +0300
-last_modified_at: 2016-08-16 23:30:00 +300
+last_modified_at: 2016-08-17 13:22:00 +300
 ---
 {% comment %}
 Start translate at: 2016-08-15 19:30:00 +300
 Todo: 
  - Mudar URLs de sites externos para o português para fontes em português quando adequado em especial no wiki. Outros sites analisar com bastante cautelas e discutir fontes com terceiros.
  - Mudar a referência do livro "Java Threads" para português, e usar citação do texto original.
-Base Commit: eebd7a5148f2dc3a7deb2d096ace7205d531b1c2
+Base Commit: 
+ - 9c7c14d9db312574e6b8bc281e962f8db58549cb
+ - eebd7a5148f2dc3a7deb2d096ace7205d531b1c2
 {% endcomment %}
 
 ## Sistemas Embarcados
@@ -33,7 +35,7 @@ Pequenos dispositivos tem muito menos recursos, e são construídos em torno de 
 
 Neste caso a aplicação é monolítica e executa diretamente no hardware, por isso o nome _bare-metal_.
 
-µOS++ tem como foco as aplicações [bare-metal](https://en.wikipedia.org/wiki/Bare_machine), especialmente aquelas que rodam em dispositivos Cortex-M. Através do µOS++ pode-se portar para grandes cores ARM, inclusive os de 64-bits, que não tem planos de incluir suporte MMU, memória virtual, processos separados e outros tais como recursos específicos para o mundo Unix. 
+µOS++ tem como foco as aplicações [bare-metal](https://en.wikipedia.org/wiki/Bare_machine), especialmente aquelas que rodam em dispositivos Cortex-M. Através do µOS++ pode-se portar para grandes cores ARM Cortex-A, inclusive os de 64-bits, que não tem planos de incluir suporte MMU, memória virtual, processos separados e outros tais como recursos específicos para o mundo Unix. 
 
 ## Sistemas de tempo real (Real-time)
 
@@ -123,9 +125,9 @@ Uma possível implementação é fazer um laço até que o dado se torne dispon�
 Bem, aplicações comportadas nunca devem entrar (longos) _loops_ ocupados esperando por condições por ocorrer, mas ao invés disso suspender a _thread_ e se organizar para que possa retomado quando a condição é encontrada. Durante este período de espera a _thread_ libera completamente a CPU, então a CPU se torna totalmente disponível para outra _thread_ disponível.
 
 {% comment %} Rever a seguinte tradução, apesar de compreensível está difícil manter o texto em tradução direta:
-For the sake of completeness, it should be noted that the only exception to the rule applies to short delays, where short means delays with durations comparable with the multitasking overhead. On most modern microcontrollers this is usually in the range of microseconds.
+For the sake of completeness, it should be noted that the only exception to the rule applies to short delays, where short means delays with durations comparable with the multitasking overhead required to suspend/resume threads (where the context switching time plays an important role). On most modern microcontrollers this is usually in the range of microseconds.
 {% endcomment %}
-Por razões de exaustividade, deve-se notar que a única exceção à regra se aplica a pequenos atrasos, onde quanto mais curtos significa que os atrasos com durações comparáveis com a sobrecarga da multitarefa. Na maioria dos microcontroladores modernos esta é geralmente no intervalo de microssegundos.
+Por razões de exaustividade, deve-se notar que a única exceção a regra se aplica a pequenos atrasos, onde quanto mais curtos significa que os atrasos com durações comparáveis com a sobrecarga da multitarefa necessários para suspender/resumir as _threads_ (enquanto o tempo necessário para a troca de contexto é um fator importante). Na maioria dos microcontroladores modernos esta é geralmente no intervalo de microssegundos.
 
 ### A **Idle** _thread_
 
