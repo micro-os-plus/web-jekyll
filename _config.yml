@@ -68,14 +68,6 @@ gems:
   - jekyll-redirect-from
   - jekyll-sitemap
   - jekyll-paginate
-  - jekyll-multiple-languages']
-
-# The all languages used
-languages:          ['en', 'pt']
-
-# If not config, the first item of languages will be used as the default.
-language_default:   'en'
-
 # Not yet functional
 #  - jekyll-multiple-languages
 
@@ -83,22 +75,11 @@ language_default:   'en'
 # and make sure it is in front of jekyll-multiple-languages
 
 # All languages used
-languages:          ['en', 'pt']
+#languages:          ['en', 'pt']
 
 # If not configured, the first item of languages will be used as the default.
-language_default:   'en'
+#language_default:   'en'
 
-# Not yet functional
-#  - jekyll-multiple-languages
-
-# If you want to use pagination, you should add jekyll-paginate into gems
-# and make sure it is in front of jekyll-multiple-languages
-
-# All languages used
-# languages:          ['en', 'pt']
-
-# If not configured, the first item of languages will be used as the default.
-# language_default:   'en'
 
 # Custom definitions.
 
