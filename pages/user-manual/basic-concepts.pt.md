@@ -12,8 +12,8 @@ last_modified_at: 2016-08-16 19:30:00 +300
 {% comment %}
 Start translate at: 2016-08-15 19:30:00 +300
 Todo: 
- - Mudar URLs de sites externos para o português para fontes em portugues quando adequado em especial no wiki. Outros sites analisar com bastante caute-las e discutir fontes com terceiros.
- - Mudar a referência do livro "Java Threads" para portugues, e usar citação do texto original.
+ - Mudar URLs de sites externos para o português para fontes em português quando adequado em especial no wiki. Outros sites analisar com bastante cautelas e discutir fontes com terceiros.
+ - Mudar a referência do livro "Java Threads" para português, e usar citação do texto original.
 Base Commit: eebd7a5148f2dc3a7deb2d096ace7205d531b1c2
 {% endcomment %}
 
@@ -48,9 +48,9 @@ Há dois tipos de sistemas real-time, sistemas real-time soft e sistemas real-ti
 
 A principal diferença entre eles é determinada pelas consequências associadas com a perda do _deadline_. Obter o valor computador corretamente mas após o prazo de execução (_deadline_) pode ser de inútil a perigoso.
 
-Para um **Sistema Hard Real-Time** a tolerância para perda do _deadline_ é muito baixa, desde que a perda de uma **deadline** muitas vezes resulta numa catástrofe., que pode envolver pedas de vidas humanas.
+Para um **Sistema Hard Real-Time** a tolerância para perda do _deadline_ é muito baixa, desde que a perda de uma **deadline** muitas vezes resulta numa catástrofe, que pode envolver perdas de vidas humanas.
 
-Para um **Sistema Soft Real-Time** esta tolerância não é tão critica, deede que a _deadline_ perdida não seja em geral critica.
+Para um **Sistema Soft Real-Time** esta tolerância não é tão critica, desde que a _deadline_ perdida não seja em geral critica.
 
 Absolutamente Sistemas Hard Real-Time, com tolerância próxima de zero, são tipicamente muito difícil de projetar, e é recomentado aborda-los com cautela.
 
@@ -74,7 +74,7 @@ Nesta arquitetura, funções implementando várias funcionalidades são inerente
 <p>Superloop application</p>
 </div>
 
-A técnica de _superloop_ tem a vantagem de exigir apenas um _stack_ e algumas vezes pode resultar em uma aplicação simples, especialmente quando o funcionalidades são inteiramente executadas na ISRs, e a logica do _background_ é resumida em um loop vazio aguardando por interrupções.
+A técnica de _superloop_ tem a vantagem de exigir apenas um _stack_ e algumas vezes pode resultar em uma aplicação simples, especialmente quando o funcionalidades são inteiramente executadas na ISRs, e a lógica do _background_ é resumida em um laço vazio aguardando por interrupções.
 
 Porem, para aplicações ligeiramente mais complexas, expressando toda a lógica como um conjunto de maquinas de estados não é fácil e a manutenção torna-se um sério problema conforme o problema cresce.
 
@@ -91,15 +91,15 @@ Independente de quão elaborado seja a técnica para implementação da maquina 
 
 No contexto do µOS++, uma tarefa (_task_) é uma sequência de operações bem definidas, usualmente representadas em uma linguagem de programa por uma função.
 
-Uma aplicação complexa pode ser decomposta com uma serie de tarefas, algumas executadas em sucessão, algumas executadas em paralelo e e possivelmente trocando dados.
+Uma aplicação complexa pode ser decomposta com uma série de tarefas, algumas executadas em sucessão, algumas executadas em paralelo e possivelmente trocando dados.
 
 _Multi-tasking_ é a técnica de executar múltiplas tarefas (_tasks_) em paralelo.
 
-### Porque multiplas _threads_?
+### Porque múltiplas _threads_?
 
 O livro [Java Threads](http://www.amazon.com/Java-Threads-Scott-Oaks/dp/0596007825/) (uma das fontes de inspiração para as primeiras versões deste projeto) afirma:
 
-> Históricamente, _threading_ foi explorado para tornar certos programas fáceis de escrever: se um programa pode ser separado em tarefas separadas, ele em muitos casos é fácil de ser escrito em _tasks_ ou _threads_… enquanto é possível escrever um programa _single-threaded_ para executar múltiplas tarefas, é fácil e mais elegante colocar cada tarefa em sua própria _thread_.
+> Historicamente, _threading_ foi explorado para tornar certos programas fáceis de escrever: se um programa pode ser separado em tarefas separadas, ele em muitos casos é fácil de ser escrito em _tasks_ ou _threads_… enquanto é possível escrever um programa _single-threaded_ para executar múltiplas tarefas, é fácil e mais elegante colocar cada tarefa em sua própria _thread_.
 
 
 ### Threads vs processos
@@ -116,7 +116,7 @@ Como tal, µOS++ é um **sistema multi-threaded** (permite Múltiplas Threads), 
 
 ### Bloqueio por I/O
 
-Um dos senários mais encontrados quando implementando tarefas, é aguardar por um tipo de dado de entrada, por exemplo executando um `read()`, então processar o dado e muitas vezes, repetir issa sequência em um laço. Quando o sistema executa uma chamada `read()`, a _thread_ pode precisar esperar pelo dado solicitado se tornar disponível antes que possa continuar a próxima instrução. este tipo de I/O é chamado bloqueio de I/O (**blocking I/O**): A _thread_ bloqueia até que algum dado esteja disponível para satisfazer a função `read()`.
+Um dos senários mais encontrados quando implementando tarefas, é aguardar por um tipo de dado de entrada, por exemplo executando um `read()`, então processar o dado e muitas vezes, repetir essa sequência em um laço. Quando o sistema executa uma chamada `read()`, a _thread_ pode precisar esperar pelo dado solicitado se tornar disponível antes que possa continuar a próxima instrução. este tipo de I/O é chamado bloqueio de I/O (**blocking I/O**): A _thread_ bloqueia até que algum dado esteja disponível para satisfazer a função `read()`.
 
 Uma possível implementação é fazer um laço até que o dado se torne disponível. mas este tipo de comportamento simplesmente é um desperdício de recursos (ciclos de CPU e implicitamente energia) e deve ser evitado de todas as formas.
 
@@ -138,15 +138,15 @@ Bem, entra a **idle** _thread_. Esta _thread_ interna é sempre criada antes do 
 A _idle thread_ pode executar várias ações de manutenção de baixa prioridade (como destruir _threads_ finalizadas), mas em certos momentos até mesmo a _idle thread_ não terá nada para ser feito.
 
 
-### _Sleep modes_ e ecnomia de energia
+### _Sleep modes_ e economia de energia
 
 Quando a _idle thread_ não tem nada a fazer, ele ainda pode ser útil: ela pode colocar a CPU em modo _sleep_ superficial e aguardar pela próxima interrupção (os dispositivos Cortex-M usam a instrução Aguardar Interrupção - **Wait For Interrupt** para isso).
 
 Neste modo a CPU é inteiramente funcional, com todos os periféricos internos ativos, mas ela não executa nenhuma instrução, por isso é capaz de economizar certa quantidade de energia.
 
-Se a aplicação tem momentos de inatividade relativamente longos, é possível se maior economia, por exemplo desligar todos os periféricos exceto o relogio de tempo real de baixa frequência. que usualmente dispara a cada segundo. Neste caso a tarefa inativa pode se preparar pra a CPU entrar em modo _deep sleep_, economizando uma quantidade significante de energia.
+Se a aplicação tem momentos de inatividade relativamente longos, é possível se maior economia, por exemplo desligar todos os periféricos exceto o relógio de tempo real de baixa frequência. que usualmente dispara a cada segundo. Neste caso a tarefa inativa pode se preparar pra a CPU entrar em modo _deep sleep_, economizando uma quantidade significante de energia.
 
-Como resumo, a estratégia de multinivel usada para reduzir o consumo de energia implica em:
+Como resumo, a estratégia de multinível usada para reduzir o consumo de energia implica em:
 
 - Se não há nada a ser feito, cada _thread_ deve suspender a si mesma assim que possível, e liberar a CPU para outra _thread_ ativa;
 - Se nenhum _thread_ ativa está disponível, a _idle thread_ deve preparar para que a CPU entre em modo _sleep_ assim que possível;
@@ -156,7 +156,7 @@ Em conclusão, pelo uso de uma vasta gama de técnicas de economias de energia, 
 
 ### _Threads_ em execução e suspensas
 
-Executando múltiplas _threads_ em paralelo é apenas aparente, já que internamente as _threads_ são decompostas em pequenas sequências de operações, serializadas em uma certa ordem, em cada cores disponíveis na CPU. Se há somente um core de CPU, há somente um core na CPU, há somente uma _thread_ **rodando** em certo momento. As outras _threads_ são **suspensas**, de certa forma são _congeladas_ e colocadas de lado para uso posterior; quando as condições se tornam favoraveis, cada uma pode ser _reanimada_ e, por um tempo, permitidas usar a CPU.
+Executando múltiplas _threads_ em paralelo é apenas aparente, já que internamente as _threads_ são decompostas em pequenas sequências de operações, serializadas em uma certa ordem, em cada cores disponíveis na CPU. Se há somente um core de CPU, há somente um core na CPU, há somente uma _thread_ **rodando** em certo momento. As outras _threads_ são **suspensas**, de certa forma são _congeladas_ e colocadas de lado para uso posterior; quando as condições se tornam favoráveis, cada uma pode ser _reanimada_ e, por um tempo, permitidas usar a CPU.
  
  _Threads_ suspensas são as vezes chamadas _sleeping_, ou _inativas_; este termo também é correto, mas ele deve ser claramente entendido que o estado da _thread_ é somente o estado do _software_, que não há nenhuma relação com o modo _sleep_ da CPU, que é relativo ao estado da CPU; A existência de _threads_ suspensas apenas significa que não há _threads_ agendadas para execução; isso não implica que a CPU entrará em algum dos modos _sleep_, que pode ocorrer somente quanto todas as _threadas_ são suspensas.
  
