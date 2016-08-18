@@ -7,7 +7,7 @@ author: Liviu Ionescu
 translator: Carlos Delfino
 
 date: 2016-06-30 14:39:00 +0300
-last_modified_at: 2016-08-18 14:30:00 +300
+last_modified_at: 2016-08-18 18:15:00 +300
 ---
 {% comment %}
 Start translate at: 2016-08-15 19:30:00 +300
@@ -15,6 +15,7 @@ Todo:
  - Mudar URLs de sites externos para o português para fontes em português quando adequado em especial no wiki. Outros sites analisar com bastante cautelas e discutir fontes com terceiros.
  - Mudar a referência do livro "Java Threads" para português, e usar citação do texto original.
 Base Commit: 
+ - 6484f7badf1bcc2d09b45134d61484785241d0d2
  - 9c7c14d9db312574e6b8bc281e962f8db58549cb
  - eebd7a5148f2dc3a7deb2d096ace7205d531b1c2
 {% endcomment %}
@@ -374,9 +375,12 @@ Exemplos típicos são listas, alocadores de memória, dispositivos de armazenam
 
 A técnica para obter acesso exclusivo a recursos compartilhados é criar **seções criticas**, que temporariamente travam o acesso.
 
+{% comment %}
+updated with: 6484f7badf1bcc2d09b45134d61484785241d0d2
+{% endcomment %}
 ### Habilitando/desabilitando interrupções
 
-quando o recurso é também acessado de uma _ISRs_, a solução típica para prevenir uma _ISR_ acessar um recurso ao mesmo tempo que uma _thread_ ou outra _ISR_ de menor prioridade , é temporariamente desabilitar as interrupções enquanto usando os recursos compartilhados.
+Quando o recurso é também acessado de uma _ISRs_, a solução típica para prevenir uma _ISR_ de alta prioridade executar no meio de uma _thread_ ou ou outra _ISR_ de menor prioridade, é temporariamente desabilitar as interrupções enquanto usando os recursos compartilhados.
 
 A sobrecarga de desabilitar/habilitar interrupções é normalmente baixa e para alguns dispositivos, como o Cortex-M[347] também, há até a possibilidade de desabilitar interrupções parcialmente, de um nível de prioridade para baixo. mantendo as prioridades mais baixas habilitadas.
 
@@ -420,7 +424,6 @@ Porém, se há prazos a serem respeitados, você deve usar um _mutex_ antes de a
 
 ### Deadlock (or deadly embrace)
 
-Um _deadlock_, também chamadado 
 A deadlock, also called a deadly embrace, is a situation in which two threads are each unknowingly waiting for resources held by the other.
 
 Consider the following scenario where thread A and thread B both need to acquire mutex X and mutex Y in order to perform an action:
