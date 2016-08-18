@@ -1,7 +1,7 @@
 ---
 layout: old-wiki-page
 lang: en
-permalink: /micro-os-plus/i/The_µOS++_(micro_os_plus_plus)/
+permalink: /micro-os-plus/i/The_uOS++_(micro_os_plus_plus)/
 title: The µOS++ (micro os plus plus)
 author: Liviu Ionescu
 
@@ -11,7 +11,7 @@ date: 2015-09-28 10:51:34 +0000
 
 * * * * *
 
-Note: These pages were converted from the wiki created for the first edition of this project. The second edition was documented in separate [pages]({{ site.baseurl }}/micro-os-plus/ii/The_µOS++_Second_Edition_Wiki/) and a [Doxygen site](http://micro-os-plus.sourceforge.net/doc/).
+Note: These pages were converted from the wiki created for the first edition of this project. The second edition was documented in separate [pages]({{ site.baseurl }}/micro-os-plus/ii/The_uOS++_Second_Edition_Wiki/) and a [Doxygen site](http://micro-os-plus.sourceforge.net/doc/).
 
 * * * * *
 
@@ -96,7 +96,7 @@ Misc
 -   [FAQ]({{ site.baseurl }}/micro-os-plus/i/FAQ "wikilink")
 -   [Reporting problems]({{ site.baseurl }}/micro-os-plus/i/Reporting_problems "wikilink")
 -   [Change log]({{ site.baseurl }}/micro-os-plus/i/Change_log "wikilink")
--   [The µOS++ SE]({{ site.baseurl }}/micro-os-plus/ii/The_µOS++_Second_Edition_Wiki)
+-   [The µOS++ SE]({{ site.baseurl }}/micro-os-plus/ii/The_uOS++_Second_Edition_Wiki)
 
 Style guides
 ============

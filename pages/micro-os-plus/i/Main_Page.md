@@ -9,4 +9,4 @@ date: 2010-11-10 15:41:46 +0000
 
 ---
 
-1.  REDIRECT [The µOS++ (micro os plus plus)]({{ site.baseurl }}/micro-os-plus/i/The_µOS++_(micro_os_plus_plus) "wikilink")
+1.  REDIRECT [The µOS++ (micro os plus plus)]({{ site.baseurl }}/micro-os-plus/i/The_uOS++_(micro_os_plus_plus) "wikilink")
