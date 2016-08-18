@@ -7,7 +7,7 @@ author: Liviu Ionescu
 translator: Carlos Delfino
 
 date: 2016-06-30 14:39:00 +0300
-last_modified_at: 2016-08-17 15:30:00 +300
+last_modified_at: 2016-08-18 01:25:00 +300
 ---
 {% comment %}
 Start translate at: 2016-08-15 19:30:00 +300
@@ -288,12 +288,11 @@ Por padrão, as _threads_ de usuário no µOS++  são criadas com prioridade _no
 
 Assim que a prioridades são alteradas, o comportamento do escalonador muda automaticamente alterando o escalonamento das prioridades, voltando a usar _round-robin_ para _threads_ com prioridades iguais.
 
+### Selecionando a prioridade das _threads_
 
-### Selecting thread priorities
+Como regra geral, _threads_ que sejam implemente funções _hard real-time_ devem ser designadas com prioridade superior as que implementam funções _soft real-time_. Porem, outras caracteristicas, tais como tempo de execução e utilização do processador, devem também ser considerados para assegurar que a aplicação como um todo nunca perca um prazo _hard real-time_.
 
-As a general rule, threads that implement hard real-time functions should be assigned priorities above those that implement soft real-time functions. However, other characteristics, such as execution times and processor utilization, must also be taken into account to ensure that the entire application will never miss a hard real-time deadline.
-
-One possible technique is to assign unique priorities, in accordance with the thread periodic execution rate (the highest priority is assigned to the thread that has the highest frequency of periodic execution). This technique is called Rate Monotonic Scheduling (RMS).
+Uma técnica possível para é designar prioridades únicas, de acordo com a taxa de execução periódica (uma prioridade maior é designada para a _thread_ que tem o período de execução com maior frequência). Esta técnica  é chamada de _Rate Monotonic Scheduling_ (RMS).
 
 ### Priority inversion / priority inheritance
 
