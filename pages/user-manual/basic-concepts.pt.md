@@ -7,7 +7,7 @@ author: Liviu Ionescu
 translator: Carlos Delfino
 
 date: 2016-06-30 14:39:00 +0300
-last_modified_at: 2016-08-18 17:33:00 +300
+last_modified_at: 2016-08-18 18:15:00 +300
 ---
 {% comment %}
 Start translate at: 2016-08-15 19:30:00 +300
@@ -416,9 +416,9 @@ Porém , _mutexes_ são levemente lentos (em tempo de execução) do semáforos 
 
 ### Quando se deve usar um semáforo ou um _mutex_?
 
-Um semáforo deve ser usado quando recursos são compartilhados em uma ISR.
+Um semáforo deve ser usado quando recursos são compartilhados com uma _ISR_.
 
-Um semáforo pode ser usado ao invés de um _mutex_ se nenhuma das _threads competir por um recurso compartilhado tendo prazos (_deadlines_) a serem satisfeitos.
+Um semáforo pode ser usado ao invés de um _mutex_ se nenhuma das _threads_ competir por um recurso compartilhado tendo prazos (_deadlines_) a serem satisfeitos.
 
 Porém, se há prazos a serem respeitados, você deve usar um _mutex_ antes de acessar o recurso. Semáforos são sujeitos a inversão de prioridades ilimitados, enquanto _mutexes_ não são. De outra forma, _mutexes_ não podem ser usados em interrupções, desde que eles precisam uma _thread_ que seja seu dono.
 
