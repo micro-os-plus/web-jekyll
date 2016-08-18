@@ -366,57 +366,57 @@ Uma _flag_ de evento é uma variável binária, representando uma condição esp
 
 Múltiplas _flags_ podem ser agrupadas e as _threads_ podem ser informadas quando todas ou algumas das _flags_ foram levantadas.
 
-## Managing common resources
+## Gerenciando recursos comuns
 
-A shared resource is typically a variable (static or global), a data structure, table (in RAM), or registers in an I/O device, accessed in common by different parts of the code.
+Um recurso compartilhado é tipicamente uma variável (static ou global), uma estrutura de dados, uma tabela (em memoria RAM), ou registradores em um dispositivo de I/O, acessado em comum por diferentes partes do código.
 
-Typical examples are lists, memory allocators, storage devices, that all need a specific method to protect agains concurrent accesses.
+Exemplos típicos são listas, alocadores de memória, dispositivos de armazenamento, que todos precisam de um metodo para projeter contra acesso concorrente.
 
-The technique for obtaining exclusive access to shared resources is to create **critical sections**, which temporarily lock access.
+A técnica para obter acesso exclusivo a recursos compartilhados é criar **seções criticas**, que temporariamente travam o acesso.
 
-### Disable/enable interrupts
+### Habilitando/desabilitando interrupções
 
-When the resource is also accessed from ISRs, the usual solution to prevent an ISR to access the resource at the same time with a thread or another lower priority ISR, is to temporarily disable the interrupts while using the shared resource.
+quando o recurso é também acessado de uma _ISRs_, a solução típica para prevenir uma _ISR_ acessar um recurso ao mesmo tempo que uma _thread_ ou outra _ISR_ de menor prioridade , é temporariamente desabilitar as interrupções enquanto usando os recursos compartilhados.
 
-The overhead to disable/enable interrupts is usually low, and for some devices, like the Cortex-M[347] ones, it is even possible to disable interrupts only partially, from a given priority level down, keeping high priority interrupts enabled.
+A sobrecarga de desabilitar/habilitar interrupções é normalmente baixa e para alguns dispositivos, como o Cortex-M[347] também, há até a possibilidade de desabilitar interrupções parcialmente, de um nível de prioridade para baixo. mantendo as prioridades mais baixas habilitadas.
 
-Although apparently simple, this technique is often misused in cases of nested critical sections, when the inner critical section inadvertently enables interrupts, leading to very hard to trace bugs. The correct and bullet proof method to implement the critical sections is to always save the initial interrupt state and restore it when the critical section is exited.
+Embora aparentemente simples, esta técnica é muitas vezes mal utilizada em casos de seções críticas aninhadas, quando a seção crítica interna permite inadvertidamente interrupções, tornando o rastreamento de bugs muito difícil. O método à prova de bala e correto para implementar as secções críticas é salvar sempre o estado da interrupção inicial e restaurá-lo quando a seção crítica é encerrada.
 
-This method must be used with caution, since keeping the interrupts disabled too long impacts the system responsiveness.
+Este método deve ser usado com cuidado, desde que mantenha a interrupção desabilitada por muito tempo isso impacta na responsividade do sistema.
 
-Typical resources that might be protected with interrupts critical sections are circular buffers, linked lists, memory pools, etc.
+Tipicamente recursos que podem ser protegidos com seções criticas para interrupções são buffers circulares, listas lincadas, _pool_ de memoria e etc.
 
-### Lock/unlock the scheduler
+### Bloqueando/Desbloqueando o escalonador
 
-If the resource is not accessed from ISRs, a simple solution to prevent other threads to access it is to temporarily lock the scheduler, so that no context switches can occur.
+Se o recurso não é acessado de _ISRs_, uma solução simples para prevenir que outras _threads_ acessem o recurso é temporariamente bloquear o escalonador, desta forma trocas de contexto não podem ocorrer.
 
-Locking the scheduler has the same effect as making the task that locks the scheduler the highest-priority task.
+Bloqueando o escalonador tem o mesmo efeito que tornar a tarefa que bloqueou o escalonador em uma tarefa de maior prioridade.
 
-Similar to interrupts critical sections, the implementation of scheduler critical sections must consider nested calls, and always save the initial scheduler state and restore it when the critical section is exited.
+De forma similar a interrupções de seção critica, a implementação da seção critica do escalonador deve considerar chamadas aninhadas, e sempre salvar o estado inicial do escalonador e restaura-lo quando a seção critica estiver finalizada.
 
-This method must be used with caution, since keeping the scheduler locked too long impacts the system responsiveness.
+Este método deve ser usado com cuidado, desde que mantendo o agendador bloqueado por muito tempo a responsividade do sistema.
 
-### Counting semaphores
+### semáforos contadores
 
-Counting semaphores can be used to control access to shared resources used on ISRs, like circular buffers.
+Semáforos contadores pode ser usados pra controlar acesso a recursos compartilhados usados em _ISRs_, como buffers circulares.
 
-Since they may be affected by priority inversions, their use to manage common resources should be done with caution.
+Desde que ele pode ser afetado pela inversão de prioridade, eles são uados para gerenciar recursos que devem ser usados com certo cuidado.
 
-### Mutual exclusion (mutex)
+### Exclusão Mutua (mutex)
 
-This is the preferred method for accessing shared resources, especially if the threads that need to access a shared resource have deadlines.
+Este é o método preferido para acessar recursos compartilhados, especialmente se as _threads_ precisam acessar um recurso compartilhado tenham prazos (_deadline_).
 
-µOS++ mutexes have a built-in priority inheritance mechanism, which avoids unbound priority inversions.
+_Mutex_ do µOS++ tem um mecanismos de herança interno, que evita inversão de prioridade ilimitada.
 
-However, mutexes are slightly slower (in execution time) than semaphores since the priority of the owner may need to be changed, which requires more CPU processing.
+Porém , _mutexes_ são levemente lentos (em tempo de execução) do semáforos desde que a prioridade do proprietário pode ser alterada, o que exige mais processamento da CPU.
 
-### Should a semaphore or a mutex be used?
+### Quando se deve usar um semáforo ou um _mutex_?
 
-A semaphore should be used when resources are shared with an ISR.
+Um semáforo deve ser usado quando recursos são compartilhados em uma ISR.
 
-A semaphore can be used instead of a mutex if none of the threads competing for the shared resource have deadlines to be satisfied.
+Um semáforo pode ser usado ao invés de um _mutex_ se nenhuma das _threads competir por um recurso compartilhado tendo prazos (_deadlines_) a serem satisfeitos.
 
-However, if there are deadlines to meet, you should use a mutex prior to accessing shared resources. Semaphores are subject to unbounded priority inversions, while mutexes are not. On the other hand, mutexes cannot be used on interrupts, since they need an owner thread.
+Porém, se há prazos a serem respeitados, você deve usar um _mutex_ antes de acessar o recurso. Semáforos são sujeitos a inversão de prioridades ilimitados, enquanto _mutexes_ não são. De outra forma, _mutexes_ não podem ser usados em interrupções, desde que eles precisam uma _thread_ que seja seu dono.
 
 ### Deadlock (or deadly embrace)
 
