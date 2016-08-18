@@ -34,3 +34,7 @@ date: 2016-03-09 12:04:00 +0300
 -   [Multi-tasking related links]({{ site.baseurl }}/develop/references#multi-tasking-related-links)
 -   [Miscellaneous]({{ site.baseurl }}/develop/references#miscellaneous)
 -   [Books]({{ site.baseurl }}/develop/references#books)
+
+## Hardware
+
+- [Test boards]({{ site.baseurl }}/develop/boards/)
