@@ -7,7 +7,7 @@ author: Liviu Ionescu
 translator: Carlos Delfino
 
 date: 2016-06-30 14:39:00 +0300
-last_modified_at: 2016-08-18 18:15:00 +300
+last_modified_at: 2016-08-18 19:00:00 +300
 ---
 {% comment %}
 Start translate at: 2016-08-15 19:30:00 +300
@@ -422,27 +422,28 @@ Um semáforo pode ser usado ao invés de um _mutex_ se nenhuma das _threads_ com
 
 Porém, se há prazos a serem respeitados, você deve usar um _mutex_ antes de acessar o recurso. Semáforos são sujeitos a inversão de prioridades ilimitados, enquanto _mutexes_ não são. De outra forma, _mutexes_ não podem ser usados em interrupções, desde que eles precisam uma _thread_ que seja seu dono.
 
-### Deadlock (or deadly embrace)
+### Trava da morte (Deadlock ou deadly embrace)
 
-A deadlock, also called a deadly embrace, is a situation in which two threads are each unknowingly waiting for resources held by the other.
+A trva da morte (_deadlock_), tamabem chamada de abraço da morte (_deadly embrace_), é uma situação em que duas _threads_ estão sem saber aguaradndo um recurso requerido pela outra.
 
-Consider the following scenario where thread A and thread B both need to acquire mutex X and mutex Y in order to perform an action:
+Considere o seguinte cenário quando ambas as  _thread_ A e  _thread_ B  precisam adquirir o _mutex_ X e _mutex_ Y para executar uma ação:
 
-- thread A executes and successfully locks mutex X;
-- thread A is pre-empted by thread B;
-- thread B successfully locks mutex Y before attempting to also lock mutex X, but mutex X is held by thread A, so is not available to thread B. Thread B opts to enter the wait for mutex X to be released;
-- thread A continues executing. It attempts to lock mutex Y, but mutex Y is held by thread B, so is not available to thread A. Thread A opts to wait for mutex Y to be released.
+- _Thread_ A executa e com sucesso trava o _mutex_ X;
+- _Thread_ A é preemptada pela _thread_ B;
+- _Thread_ B trava com sucesso o _mutex_ Y antes de tentar também travar o _mutex_ X, mas o _mutex_ X está preso pela _thread_ A, portanto não está disponível para a _thread_ B. _Thread_ B opta por entrar em modo de espera (_wait_) até que o _mutex_ X seja liberado;
+- _Thread_ A continua sua execução. Ela tenta travar o _mutex_ Y, mas o _mutex_ Y está travado pela _thread_ B, por tanto não está disponível para a _thread_ A. _Thread_ A opta por aguardar o _mutex_ Y ser liberado.
 
-At the end of this scenario, thread A is waiting for a mutex held by thread B, and thread B is waiting for a mutex held by thread A. Deadlock has occurred because neither thread can proceed.
 
-As with priority inversion, the best method of avoiding deadlock is to consider its potential at design time, and design the system to ensure that deadlock cannot occur.
+No fim deste cenário, _thread_ A está aguardando pelo _mutex_ bloqueado pela _thread_ B, e _thread_ B está aguardando pelo _mutex_ bloqueado pela _thread_ A. _Deadlock_ ocorre porque nenhuma das _threads_ podem continuar.
 
-The following techniques can be used to avoid deadlocks:
+Com a inversão de prioridade, o melhor método de evitar _deadlock_ é considerar seu potencial em tempo de desenvolvimento, e desenvolver o sistema para assegurar que o _deadlock_ não irá acontecer.
 
-- do not acquire more than one mutex at a time
-- do not acquire a mutex directly (i.e., let them be hidden inside drivers and reentrant library calls)
-- acquire all resources before proceeding
-- acquire resources in the same order
+A seguinte técnica pode ser usada para evitar _deadlocks_:
+
+- Não adquirir mas que um _mutex_ de cada vez;
+- Não adquirir um _mutex_ diretamente (por exemplo: oculte dentro de chamada a um driver e bibliotecas reentrantes);
+- Adquira todos os recursos antesd e prosseguir;
+- Adquira recursos na mesma ordem;
 
 ## Statically vs. dynamically allocated objects
 
