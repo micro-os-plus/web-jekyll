@@ -353,7 +353,7 @@ The technique for obtaining exclusive access to shared resources is to create **
 
 ### Disable/enable interrupts
 
-When the resource is also accessed from ISRs, the usual solution to prevent an ISR to access the resource at the same time with a thread or another lower priority ISR, is to temporarily disable the interrupts while using the shared resource.
+When the resource is also accessed from ISRs, the usual solution to prevent a high priority ISR to run in the middle of a thread or another lower priority ISR, is to temporarily disable the interrupts while using the shared resource.
 
 The overhead to disable/enable interrupts is usually low, and for some devices, like the Cortex-M[347] ones, it is even possible to disable interrupts only partially, from a given priority level down, keeping high priority interrupts enabled.
 

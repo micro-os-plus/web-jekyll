@@ -1,7 +1,7 @@
 ---
 layout: old-wiki-page
 lang: en
-permalink: /micro-os-plus/ii/The_µOS++_Second_Edition_Wiki/
+permalink: /micro-os-plus/ii/The_uOS++_Second_Edition_Wiki/
 title: The µOS++ Second Edition Wiki
 author: Liviu Ionescu
 
