@@ -7,7 +7,7 @@ author: Liviu Ionescu
 translator: Carlos Delfino
 
 date: 2016-06-30 14:39:00 +0300
-last_modified_at: 2016-08-18 19:00:00 +300
+last_modified_at: 2016-08-18 20:25:00 +300
 ---
 {% comment %}
 Start translate at: 2016-08-15 19:30:00 +300
@@ -424,7 +424,7 @@ Porém, se há prazos a serem respeitados, você deve usar um _mutex_ antes de a
 
 ### Trava da morte (Deadlock ou deadly embrace)
 
-A trva da morte (_deadlock_), tamabem chamada de abraço da morte (_deadly embrace_), é uma situação em que duas _threads_ estão sem saber aguaradndo um recurso requerido pela outra.
+A trava da morte (_deadlock_), também chamada de abraço da morte (_deadly embrace_), é uma situação em que duas _threads_ estão sem saber aguardando um recurso requerido pela outra.
 
 Considere o seguinte cenário quando ambas as  _thread_ A e  _thread_ B  precisam adquirir o _mutex_ X e _mutex_ Y para executar uma ação:
 
@@ -445,45 +445,45 @@ A seguinte técnica pode ser usada para evitar _deadlocks_:
 - Adquira todos os recursos antesd e prosseguir;
 - Adquira recursos na mesma ordem;
 
-## Statically vs. dynamically allocated objects
+## Alocação de Objetos Estaticamente vs Dinamicamente
 
-Most system objects are self-contained, and the rule is that if the storage requirements are known, constant and identical for all instances, then the storage is allocated in the object instance data.
+Muitos objetos de sistemas são auto suficientes, e a regra é que se os requisitos de armazenamento sejam conhecidos, constantes e idênticos para todas as instâncias, então o armazenamento deve ser alocado nos dados da instancia do objeto.
 
-However some system objects require additional memory, different from one instance to the other. Examples for such objects are threads (which require stacks), message queues and memory pools.
+Porém, alguns objetos de sistema requerem memoria adicional, diferente de uma instancia para outra, Exemplos para tais objetos são _threads_ (que requerem pilhas (_stacks_)), filas de mensagens e bancos (_pool_) de memória.
 
-This additional memory can be allocated either statically (at compile-time) or dynamically (at run-time).
+Esta memória adicional pode ser alocada ou estaticamente (em tempo de compilação) ou dinamicamente (em tempo de execução).
 
-By default, all base classes use the system allocator to get memory.
+Por padrão, todas as classes base usam o alocador do sistema para obter memória.
 
-In C++ all such classes are doubled by templates which handle allocation.
+Em C++ tais classes são tratadas por _templates_ que tratam tais alocações.
 
-Another solution, also available to the C API, is to pass user defined storage areas via the attributes used during object creation.
+Outra solução, também disponível para C API, é passar áreas de armazenamento definidas pelo usuário via atributos usados durante a criação dos objetos.
 
-### The system allocator
+### O Alocador do Sistema
 
-For all objects that might need memory, µOS++ uses the system allocator `os::rtos::memory::allocator<T>`, which by default is mapped to an allocator that uses the standard new/delete primitives, allocating storage on the heap.
+Para todos os objetos que podem precisar de memória, o µOS++ usa o alocador do sistema `os::rtos::memory::allocator<T>`, que por padrão é mapeado para um alocador que usa as primitivas padrão new/delete, alocando armazenamento no _heap_.
 
-This allocator is a standard C++ allocator. The user can define another such standard allocator, and configure the system allocator to use it, thus customising the behaviour of all system objects.
+Este alocador é um alocador padrão do C++. O usuário pode definir outro alocador padrão, e configurar o alocador de sistema para usa-lo, assim personalizando o comportamento de todos os objetos de sistema.
 
-Even more, system objects that need memory are defined as templates, which can be parametrised with an allocator, so, at the limit, each object can be constructed with its own separate allocator.
+Ainda mais, objetos de sistemas que precisam de memoria são definidos como templates, que pode ser parametrizados com um alocador, por tanto, no limite, cada objeto pode ser construído com seu próprio alocador em separado.
 
-### Fragmentation
+### Fragmentação
 
-The biggest concern with using dynamic memory is fragmentation, a condition that may render a system unusable.
+O grande problema com referência ao uso de memoria dinâmica é a fragmentação, uma condição que pode gerar um sistema inútil.
 
-To be noted that internally µOS++ does not use dynamic allocation at all, so if the application is careful enough not to use objects that need dynamic allocation, the resulting code is fully static.
+Observe que internamente µOS++ não faz uso de alocação dinâmica no todo, porém se a aplicação é cuidadosa o suficiente para não ubjetos que precisam de alocação dinâmica, o código resultante é totalmente estático.
 
-## Real-time clock
+## Relógio Real-time
 
-Most application handle time by using the scheduler timer.
+Muitas aplicações tratam o tempo através do uso de um temporizador.
 
-However low power applications opt to put the CPU in a deep sleep, which usually powers down most peripherals, including the scheduler timer.
+Porem aplicações de baixo consumo, optam por colocar a CPU em modo de sono profundo (deep sleep), que usualmente desliga muitos periféricos, incluindo o temporizador.
 
-For these situations a separate low power real-time clock is required; powered by a separate power source, possibly a battery, this clock runs even when the rest of the device is sleeping.
+Para esta situação um relógio de tempo real (RTC) de baixo consumo separado é necessário; alimentado por uma fonte de energia separada, possivelmente uma bateria, este relógio roda quando o resto do dispositivo está suspenso.
 
-This clock not only keeps track of time, it can also trigger interrupts to wakeup the CPU at desired moments.
+Este relógio não apenas mantem o controle do tempo, ele também dispara interrupções para acordar a CPU em momentos necessários.
 
-The usual resolution of the real-time clock is 1 sec.
+A resolução típica do relógio real-time é 1 sec.
 
 ## Terms to use with caution
 
