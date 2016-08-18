@@ -360,11 +360,11 @@ _Threads_ podem bloquear enquanto esperam  por uma mensagem e como assim não de
 
 Semáforos e especialmente semáforos binários, são usados comumente para passar notificações entre diferentes partes do código, muitas vezes de _ISRs_ para _threads_. Porém, elas tem uma semântica mais rica, especialmente em semáforos de contagem e podem também ser usados para manter o controle do número de recursos disponíveis (por exemplo total de posições em um buffer circular), que de alguma maneira os coloca na fronteira com o gerenciamento de recursos compartilhados.
 
-### Bandeiras de Eventos
+### _Flags_ de Eventos
 
-Uma bandeira de evento é uma variável binária, representando uma condição especifica que uma _thread_ pode aguardar. Quando a condição ocorre, a bandeira é levantada e a _thread_ é retomada.
+Uma _flag_ de evento é uma variável binária, representando uma condição especifica que uma _thread_ pode aguardar. Quando a condição ocorre a _flag_ (bandeira) é levantada e a _thread_ é retomada.
 
-Múltiplas bandeiras podem ser agrupadas e as _threads_ podem ser informadas quando todas ou algumas das bandeiras foram levantadas.
+Múltiplas _flags_ podem ser agrupadas e as _threads_ podem ser informadas quando todas ou algumas das _flags_ foram levantadas.
 
 ## Managing common resources
 
