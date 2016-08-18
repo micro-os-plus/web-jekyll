@@ -30,7 +30,9 @@ Note: Since GNU/Linux derived embedded systems are intended for a different clas
 
 ### Written in C
 
--   [µC/OS-III](http://micrium.com/rtos/ucosiii/overview/) - µC/OS-III is a highly portable, ROMable, scalable, preemptive, real-time, deterministic, multitasking kernel for microprocessors, microcontrollers and DSPs, by [Micrium](http://micrium.com).
+-   [µC/OS-III](http://micrium.com/rtos/ucosiii/overview/) - **µC/OS-III** is a highly portable, ROMable, scalable, preemptive, real-time, deterministic, multitasking kernel for microprocessors, microcontrollers and DSPs, by [Micrium](http://micrium.com).
+- [threadX](http://rtos.com/products/threadx/) - **ThreadX** has many advanced features, including its picokernel architecture, preemption-threshold scheduling, event-chaining, execution profiling, performance metrics, and system event tracing.
+- [smx](http://www.smxrtos.com/rtos/kernel/smx.htm) - **smx** is an advanced RTOS kernel, which offers unique features related to memory management. 
 -   [FreeRTOS](http://www.freertos.org) - is probably the most popular open source, cross platform, real time operating system, available from [Real Time Engineers Ltd.](http://www.freertos.org/RTOS-contact-and-support.html)
 -   [CMSIS with RTOS API](http://www.arm.com/about/newsroom/arm-extends-cmsis-with-rtos-api-and-system-view-description.php) - CMSIS 3.0 is expanded with a standardized API for Real-Time Operating System (RTOS) kernels and support for System View Description (SVD) XML files; [Hitex PDF](http://www.hitex.co.uk/fileadmin/uk-files/downloads/ARM%20Day/Hitex%20Conference%20-%20CMSIS-RTOS%20Feabhas.pdf)
 -   [Contiki](http://www.contiki-os.org) - The Open Source OS for the Internet of Things
