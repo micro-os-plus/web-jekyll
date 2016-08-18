@@ -402,7 +402,7 @@ Semáforos contadores pode ser usados pra controlar acesso a recursos compartilh
 
 Desde que ele pode ser afetado pela inversão de prioridade, eles são uados para gerenciar recursos que devem ser usados com certo cuidado.
 
-### Exclusão Mutua (mutex)
+### Exclusão Mutua (_mutex_)
 
 Este é o método preferido para acessar recursos compartilhados, especialmente se as _threads_ precisam acessar um recurso compartilhado tenham prazos (_deadline_).
 
@@ -420,6 +420,7 @@ Porém, se há prazos a serem respeitados, você deve usar um _mutex_ antes de a
 
 ### Deadlock (or deadly embrace)
 
+Um _deadlock_, também chamadado 
 A deadlock, also called a deadly embrace, is a situation in which two threads are each unknowingly waiting for resources held by the other.
 
 Consider the following scenario where thread A and thread B both need to acquire mutex X and mutex Y in order to perform an action:

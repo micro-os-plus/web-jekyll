@@ -1,7 +1,7 @@
 ---
 layout: old-wiki-page
 lang: en
-permalink: /micro-os-plus/ii/The_µOS++_IIIe_Wiki/
+permalink: /micro-os-plus/ii/The_uOS++_IIIe_Wiki/
 title: The µOS++ IIIe Wiki
 author: Liviu Ionescu
 
