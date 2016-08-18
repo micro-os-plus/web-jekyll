@@ -7,7 +7,7 @@ author: Liviu Ionescu
 translator: Carlos Delfino
 
 date: 2016-06-30 14:39:00 +0300
-last_modified_at: 2016-08-18 01:25:00 +300
+last_modified_at: 2016-08-18 14:30:00 +300
 ---
 {% comment %}
 Start translate at: 2016-08-15 19:30:00 +300
@@ -337,33 +337,34 @@ Uma das possíveis soluções para evitar isso é a _thread_ de alta prioridade 
 Deve ser observado que este herança de prioridade não resolve o problema de inversão de prioridade completamente, a _thread_ de alta prioridade continua tendo que esperar a _thread_ de baixa prioridade liberar o recurso, mas pelo menos ela faz o melhor para evitar que outras _threads_ de meia prioridade interferir. Não é uma boa prática depender somente erança de prioridade para corrigir a operação do sistema e o problema deve ser evitado em tempo de desenvolvimento do sistema, através da consideração de como os recursos serão acessados.
 
 
-## Communicating between threads and/or ISRs
+## Comunicação entre _threads_ e/ou ISRs
 
-In a multi-tasking application, the threads and the ISRs are basically separate entities. However, in order to achieve the application's goals, they must work together and exchange information in various ways.
+Em uma aplicação multi tarefa, as _threads_ e as _ISRs_ são basicamente entidades separadas. Porém, visando atingir os objetivos da aplicação, elas devem trabalhar juntas e trocar informações de varias formas.
 
-### Periodic polling vs event waiting
 
-The easiest way to communicate between different pieces of code is by using global variables. In certain situations, it can make sense to communicate via global variables, but most of the time this method has disadvantages.
+### Sondagem periódica vs espera por evento
 
-For example, if you want to synchronize a thread to perform some action when the value of a global variable changes, the thread must continually poll this variable, wasting precious computation time and energy, and the reaction time depends on how often you poll.
+A forma fácil de comunicar entre diferentes partes de um código é por variáveis globais. Em certas situações, pode fazer sentido comunicar via variáveis globais, mas muitas vezes este método tem desvantagens.
 
-A better way is to suspend the waiting thread and, when the expected event occurs, to resume it. This method requires a bit of support from the system, to manage the operations behind suspend/resume, but has the big advantage that a suspended thread does not waste computation time and energy.
+Por exemplo, se você deseja sincronizar uma _thread_ para executar alguma ação quando o valor de uma variável global altera, a _thread_ deve continuamente sondar a variável, desperdiçando tempo de computação precioso e energia, e o tempo de reação depende de como é feita a sondagem. 
 
-### Passing messages
+Uma melhor forma é suspender a _thread_ e aguardar e quando o esperado ocorrer retoma-la. este método requer um pouco de suporte do sistema, para gerenciar as operações por traz de suspender/retomar, mas tem a grande vantagem que uma _thread_ suspensa não desperdiça tempo computacional e energia.
 
-A message queue is usually an array of structures accessed in a FIFO way. Threads or ISRs can send messages to the queue, and other threads or interrupts can consume them.
+### Passando Mensagens
 
-Threads can block while waiting for messages, and as such do not waste CPU cycles.
+Uma fila de mensagens é usualmente um _array_ de estruturas acessada em um formato FIFO. _Threads_ ou _ISRs_ podem enviar mensagens para a fila (_queue_), e outras _threads_ ou interrupções podem então consumi-las .
 
-### Semaphores
+_Threads_ podem bloquear enquanto esperam  por uma mensagem e como assim não desperdiçar ciclos de CPU.
 
-Semaphores, and especially binary semaphores, are commonly used to pass notifications between different parts of the code, mostly from ISRs to threads. However, they have a richer semantic, especially the counting semaphores, and can also be used to keep track of the number of available resources (for example total positions in a circular buffer), which somehow places them at the border with managing shared resources.
+### Semáforos
 
-### Event flags
+Semáforos e especialmente semáforos binários, são usados comumente para passar notificações entre diferentes partes do código, muitas vezes de _ISRs_ para _threads_. Porém, elas tem uma semântica mais rica, especialmente em semáforos de contagem e podem também ser usados para manter o controle do número de recursos disponíveis (por exemplo total de posições em um buffer circular), que de alguma maneira os coloca na fronteira com o gerenciamento de recursos compartilhados.
 
-An event flag is a binary variable, representing a specific condition that a thread can wait for. When the condition occurs, the flag is raised and the thread is resumed.
+### Bandeiras de Eventos
 
-Multiple flags can be grouped and the thread can be notified when all or any of the flags was raised.
+Uma bandeira de evento é uma variável binária, representando uma condição especifica que uma _thread_ pode aguardar. Quando a condição ocorre, a bandeira é levantada e a _thread_ é retomada.
+
+Múltiplas bandeiras podem ser agrupadas e as _threads_ podem ser informadas quando todas ou algumas das bandeiras foram levantadas.
 
 ## Managing common resources
 
