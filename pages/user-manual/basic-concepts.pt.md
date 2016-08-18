@@ -118,7 +118,7 @@ Como tal, µOS++ é um **sistema multi-threaded** (permite Múltiplas Threads), 
 
 ### Bloqueio por I/O
 
-Um dos senários mais encontrados quando implementando tarefas, é aguardar por um tipo de dado de entrada, por exemplo executando um `read()`, então processar o dado e muitas vezes, repetir essa sequência em um laço. Quando o sistema executa uma chamada `read()`, a _thread_ pode precisar esperar pelo dado solicitado se tornar disponível antes que possa continuar a próxima instrução. este tipo de I/O é chamado bloqueio de I/O (**blocking I/O**): A _thread_ bloqueia até que algum dado esteja disponível para satisfazer a função `read()`.
+Um dos cenários mais encontrados quando implementando tarefas, é aguardar por um tipo de dado de entrada, por exemplo executando um `read()`, então processar o dado e muitas vezes, repetir essa sequência em um laço. Quando o sistema executa uma chamada `read()`, a _thread_ pode precisar esperar pelo dado solicitado se tornar disponível antes que possa continuar a próxima instrução. este tipo de I/O é chamado bloqueio de I/O (**blocking I/O**): A _thread_ bloqueia até que algum dado esteja disponível para satisfazer a função `read()`.
 
 Uma possível implementação é fazer um laço até que o dado se torne disponível. mas este tipo de comportamento simplesmente é um desperdício de recursos (ciclos de CPU e implicitamente energia) e deve ser evitado de todas as formas.
 
@@ -294,47 +294,47 @@ Como regra geral, _threads_ que sejam implemente funções _hard real-time_ deve
 
 Uma técnica possível para é designar prioridades únicas, de acordo com a taxa de execução periódica (uma prioridade maior é designada para a _thread_ que tem o período de execução com maior frequência). Esta técnica  é chamada de _Rate Monotonic Scheduling_ (RMS).
 
-### Priority inversion / priority inheritance
+### Inversão de Prioridade / Herança de Prioridade
 
-Priority inversion is a problematic scenario in scheduling in which a high priority thread is indirectly prevented to run by a lower priority thread effectively "inverting" the relative priorities of the two threads.
+Inversão de prioridade é um cenário problemático no escalonador em que uma _thread_ de alta prioridade é indiretamente impedida de executar por uma _thread_ de baixa prioridade efetivamente "invertendo" a prioridade relativa das duas _threads_.
 
-The first scenario is the following:
+O primeiro cenário é o seguinte:
 
-- one low priority thread acquires a common resource
-- following an ISR, a high priority thread becomes active, and tries to acquire the same resource, but is finds it busy and is blocked, waiting for the resource to be released
-- the low priority thread is resumed, completes its job and releases the resource
-- the high priority thread is resumed and can acquire the resource to perform its job
+- Uma _thread_ de baixa prioridade adquire um recurso comum;
+- Em seguida uma ISR, uma _thread_ de alta prioridade se torna ativa, e tenta adquirir o mesmo recurso, mas o encontra ocupado e é bloqueada, aguardando o recurso a ser liberado;
+- A _thread_ de baixa prioridade é retomada, completa seu trabalho e libera o recurso;
+- A _thread_ de alta prioridade é retomada e pode adquirir o recurso para executar seu trabalho;
 
-Although for the high priority thread this is an unfortunate scenario, there is not much that it can do but wait for the low priority thread to release the resource.
+Apesar que para a _thread_ de alta prioridade este é um cenário lamentável, não há muito o que se possa fazer mas aguardar pela _thread_ de baixa prioridade liberar o recurso.
 
-An even more unfortunate scenario is the following:
+Um cenário ainda mais lamentável é o seguinte:
 
-- one low priority thread acquires a common resource
-- following an ISR, a high priority thread becomes active, and tries to acquire the same resource, but is finds it busy and is blocked, waiting for the resource to be released
-- during this time, a medium priority thread becomes ready
-- as soon as the high priority thread is suspended, the medium priority thread is resumed
-- this prevents the low priority thread to run and release the resource, which prevents the high priority thread to run
-- at a certain moment, the medium priority thread is suspended
-- the low priority thread is resumed, completes its job and releases the resource
-- the high priority thread is resumed and can acquire the resource to perform its job
+- Uma _thread_ de baixa prioridade adquire um recurso;
+- Em seguida uma ISR, uma _thread_ de alta prioridade se torna ativa, e tenta adquirir o mesmo recurso, mas ela o encontra ocupado e é bloqueada, aguardando pelo recurso a ser liberado;
+- Durante este tempo, uma _thread_ de prioridade média se torna pronta;
+- Assim que a _thread_ de alta prioridade é suspensa, a _thread_ de prioridade média é retomada;
+- Esta evita que a _thread_ de baixa prioridade execute e libere o recurso, o que evita que a _thread_ de alta prioridade execute;
+- Em certo momento, a _thread_ de prioridade média é suspendida;
+- A _thread_ de baixa prioridade é resumida, completa seu trabalho e libera o recurso;
+- a _thread_ de atla prioridade é retomada e pode adquirir o recurso para executar seu trabalho;
 
 <div style="text-align:center">
 <img src="{{ site.baseurl }}/assets/images/2016/priority-inversion.png" />
 <p>Priority inversion</p>
 </div>
 
-The problem in this scenario is that although the high priority thread announced its intention to acquire the resource and knows it must wait for the low priority thread to release it, a medium priority thread can still prevent this to happen, behaving as like having the highest priority. This is known as **unbounded priority inversion**. It is unbounded because any medium priority can extend the time the high priority thread has to wait for the resource.
+O problema neste cenário é que apesar da _thread_ de alta prioridade anunciar sua intenção de adquirir o recurso e saber que deve agudar pela _thread_ de baixa prioridade libera-lo, uma _thread_ de prioridade média ainda pode evitar que isso aconteça, comportando-se como se tivesse uma prioridade alta. Isto é conhecido como **inversão de prioridade ilimitada** (unbounded priority inversion). Ela é ilimitada porque alguma prioridade média pode extender o tempo que _thread_ de alta prioridade tenha que esperar pelos recursos.
 
-This problem was known for long, but many times ignored, until it was reported to have affected the [NASA JPL’s Mars Pathfinder](https://en.wikipedia.org/wiki/Mars_Pathfinder) spacecraft (see [What really happened on Mars?](http://research.microsoft.com/en-us/um/people/mbj/Mars_Pathfinder/)).
+Este problema foi conhecido por certo tempo, mas muitas vezes ignorado, até ele ter sido reportado com efeito sobre a espaçonava [NASA JPL’s Mars Pathfinder](https://en.wikipedia.org/wiki/Mars_Pathfinder), (veja em [What really happened on Mars?](http://research.microsoft.com/en-us/um/people/mbj/Mars_Pathfinder/)).
 
-One of the possible solutions to avoid this is for the high priority thread to temporarily boost the priority of the low priority thread, to prevent other threads to interfere and so help the low priority thread to complete its job sooner. This is known as **priority inheritance**.
+Uma das possíveis soluções para evitar isso é a _thread_ de alta prioridade temporariamente elevar a prioridade da _thread_ de baixa prioridade, para evitar que outras _threads_ interfira e assim ajudar a _thread_ de baixa prioridade completar seu trabalho mais cedo. Isso é conhecido como **herança de prioridade** (priority inheritance).
 
 <div style="text-align:center">
 <img src="{{ site.baseurl }}/assets/images/2016/priority-inheritance.png" />
 <p>Priority inheritance</p>
 </div>
 
-To be noted that priority inheritance does not completely fix the priority inversion problem, the high priority thread still has to wait for the low priority thread to release the resource, but at least it does its best to prevent other middle priority threads to interfere. It is not a good practice to rely only on priority inheritance for correct system operation and the problem should be avoided at system design time, by considering how resources are accessed.
+Deve ser observado que este herança de prioridade não resolve o problema de inversão de prioridade completamente, a _thread_ de alta prioridade continua tendo que esperar a _thread_ de baixa prioridade liberar o recurso, mas pelo menos ela faz o melhor para evitar que outras _threads_ de meia prioridade interferir. Não é uma boa prática depender somente erança de prioridade para corrigir a operação do sistema e o problema deve ser evitado em tempo de desenvolvimento do sistema, através da consideração de como os recursos serão acessados.
 
 
 ## Communicating between threads and/or ISRs
