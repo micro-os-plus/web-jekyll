@@ -7,7 +7,7 @@ author: Liviu Ionescu
 translator: Carlos Delfino
 
 date: 2016-06-30 14:39:00 +0300
-last_modified_at: 2016-08-18 20:25:00 +300
+last_modified_at: 2016-08-18 21:00:00 +300
 ---
 {% comment %}
 Start translate at: 2016-08-15 19:30:00 +300
@@ -485,16 +485,16 @@ Este relógio não apenas mantem o controle do tempo, ele também dispara interr
 
 A resolução típica do relógio real-time é 1 sec.
 
-## Terms to use with caution
+## Termos a serem usados com cuidado
 
 ### Kernel
 
-Many authors also refer to their RTOSes as "kernels". Well, even if _OS_ in RTOS stands for _operating system_, this definition is somehow stretched to the limit, since in bare-metal embedded systems the so called [operating system](https://en.wikipedia.org/wiki/Operating_system) is only a collection of functions handling thread switching and synchronisation, linked together with the application in a monolithic executable.
+Muitos autores também fazerem referencia a seus RTOSes como "kernels" (núcleos). Bem, mesmo que _OS_ em um RTOS é o padrão para _oprating system_ (sistema operacional), esta definição é de alguma maneira estendida ao limite, já que em sistemas embarcados do tipo _bare-metal_ o que é chamado de [Sistema Operacional](https://pt.wikipedia.org/wiki/Sistema_operativo) é apenas uma coleção de funções que tratam de trocas e sincronizações, ligado (_linked_) com a aplicação de uma formando um executável monolítico.
 
-As such, the term [kernel](https://en.wikipedia.org/wiki/Kernel_(operating_system)) is even more inappropriate, since there is no distinct component to manage all available resources (memory, CPU, I/O, etc) and to provide them to the application in a controlled way; most of the time the application has full control over the entire memory space, which, for systems with memory mapped peripherals, also means full control over the I/O.
+como tal, o termo [kernel (núcleo)](https://pt.wikipedia.org/wiki/N%C3%BAcleo_(sistema_operacional)) é ainda mais inapropriado, já que não há um componente distinto para gerenciar todos os recursos disponíveis (memoria, CPU, I/O, etc) e prover então para a aplicação de uma forma controlada; muito do tempo, a aplicação tem total controle sobre todo o espaço de memória, como para sistemas com memoria mapeada para periféricos, também tem total controle sobre o I/O.
 
-The only kernel specific function available in bare-metal embedded systems is CPU management; with multiple threads sharing the CPU, probably a more appropriate name for the RTOS core component is **scheduler**; the µOS++ IIIe documentation uses the term _operating system_ in its definition, occasionally refers to itself as a _scheduler_, and explicitly tries to avoid the term _kernel_.
+A única função especifica de um _kernel_ disponível no sistema embarcado _bare-metal_ é o gerenciamento da CPU; com múltiplas _threads_ compartilhando a CPU provavelmente um nome mais apropriada para o _core_ do RTOS é **scheduler** (Escalonador); A documentação do µOS++ IIIe usa o termo _operating system_ (Sistema Operacional) em sua definição explicita tentando evitar o termo _kernel_.
 
 ### Tasks vs threads
 
-Many authors refer to threads as "tasks". Strictly speaking, [threads](https://en.wikipedia.org/wiki/Thread_(computing)) (together with [processes](https://en.wikipedia.org/wiki/Process_(computing))) are the system primitives used to run multiple tasks in parallel in a multitasking system.
+Muitos autores preferem _threads_ como "task" (e no português usamos tarefa). Falando estritamente, [threads](https://pt.wikipedia.org/wiki/Escalonamento_de_processos#Threads) (juntamente com [processos](https://pt.wikipedia.org/wiki/Escalonamento_de_processos) são primitivas do sistema usadas para rodar multiplas tarefas em paralelos em um sistema multi tarefa.
