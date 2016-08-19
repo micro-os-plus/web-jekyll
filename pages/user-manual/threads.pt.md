@@ -7,7 +7,7 @@ author: Liviu Ionescu
 translator: Carlos Delfino
 
 date: 2016-07-05 11:27:00 +0300
-last_modified_at: 2016-08-19 00:10:00 +0300
+last_modified_at: 2016-08-19 14:22:00 +0300
 
 ---
 {% comment %} 
@@ -37,13 +37,13 @@ _Threads_ separadas são usadas para tais como monitoramento de entradas, atuali
 
 Tarefas são implementadas como funções regulares em C, passadas para a chamadas de criação das _threads_ como parâmetros obrigatórios.
 
-## Thread functions
+## Funções _Thread_
 
-There are two types of threads: *run-to-completion* and *infinite loop*. In most embedded systems, threads typically run as infinite loops.
+Há dois tipos de threads: *run-to-completion* (execute até terminar) e *infinite loop* (laço infinito). Em muitos sistemas embarcados, _threads_ tipicamente são executadas como laços infinitos.
 
-As specified by POSIX, **threads can terminate**, and as such, µOS++ properly implements both run-to-completion and infinite loop threads.
+Como especificado pelo POSIX, **_threads_ podem terminar**, e como tal,  µOS++ implementa adequamento ambas as _threads_ _run-to-completion_ e _infinit loop_.
 
-Apart from having a specific prototype, thread functions are regular C function; as such they benefit from all C functions features, including having local variables on their own stacks, calling as many functions as they need, etc.
+Além de ter protótipo especifico, funções de _threads_ são funções tipicas do C; Como tal elas se beneficiam de todos os recursos da função C, incluindo ter variáveis locais em sua pilha, chamando quantas funções ela precisar, etc.
 
 ``` c++
 // Thread function.
