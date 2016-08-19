@@ -6,7 +6,7 @@ title: Começando com o μOS++ IIIe
 author: Liviu Ionescu
 
 date: 2016-06-29 21:28:00 +0300
-last_modified_at:
+last_modified_at: 2016-08-17 22:30:00 +0300
 ---
 % comment %} 
 
@@ -16,32 +16,33 @@ Base Commit:
 - f16bc9f0b4f524ee5ccd7f2929ebc6ceb84a644a
 {% endcomment %}
 
-## Overview
+## Visão Geral
 
-**µOS++ IIIe** _(micro oh ɛs plus plus third edition)_ is the third iteration of µOS++, a POSIX-like, portable, open source, royalty-free, multi-tasking real-time operating system intended for 32/64-bits embedded applications.
+**µOS++ IIIe** _(micro oh ɛs plus plus terceira edição)_ é a terceira interação do µOS++, um POSIX-like, portavel, open source, royalty-free, sistema operacional multi-tarefa real-time criado para aplicações embarcadas de 32/64-bits.
 
-**µOS++ IIIe** is written in modern C++, with C++ applications in mind, but also provides equally functional C APIs.
+**µOS++ IIIe** é escrito em C++ moderno, com aplicações C++ em mente, mas também fornece igualmente API C funcional.
 
-### Multiple APIs
+### Multiplas APIs
 
-µOS++ is based on CMSIS++, and as such it provides services via multiple APIs, covering both C++ and C applications.
+µOS++ é baseado no CMSIS++, e como tal prover serviços via multiplas APIs, cobrindo ambas aplicações C++ e C.
 
 <div style="text-align:center">
 <img src="{{ site.baseurl }}/assets/images/2016/cmsis-plus-rtos-overview.png" />
 </div>
 
-The supported APIs are:
+As API suportadas são:
 
-- **CMSIS++ RTOS C++ API** - the native µOS++ IIIe C++ API, giving direct access to the system services;
-- **CMSIS++ RTOS C API** - a 1:1 C wrapper on top of the C++ API;
-- **ISO C++ Threads API** - an implementation of the standard ISO threads on top of the C++ API;
-- **ARM CMSIS RTOS v1 API** - a compatibility layer with ARM CMSIS RTOS
+- **CMSIS++ RTOS C++ API** - Uma API C++ nativa do µOS++ IIIe C++ API, dá acesso direto para os serviços do sistema;
+- **CMSIS++ RTOS C API** - Um Wrapper C 1:1  no topo da API C++;
+- **ISO C++ Threads API** - Uma implementação do padrão ISO para _threads_ no topo da API C++;
+- **ARM CMSIS RTOS v1 API** - Uma camada de compartibilização com o ARM CMSIS RTOS
 
-The functions in these APIs provide services to manage threads, semaphores, message queues, mutexes and more. As far as the user code is concerned, the calls to the µOS++ system functions are exactly as any other function calls, using the toolchain standard [ABI](https://en.wikipedia.org/wiki/Application_binary_interface); no system service calls (SVC) are used to switch from user to system modes.
+A função nestas APIs é fornecer serviços para gerenciar _threads_, semáforos, fila de mensagens, _mutexes_ entre outros. A medica que o código do usuário é desenvolvido, as chamadas para as funções do sistema µOS++ exatamente como outras chamadas de função, usando o padrão [ABI](https://pt.wikipedia.org/wiki/Interface_bin%C3%A1ria_de_aplica%C3%A7%C3%A3o) para o _toolchain_; não são feitas chamadas de serviços de sistema (SVC) para trocar do modo de sistema para usuário.
 
-In this chapter, the reader will appreciate how easy it is to start using µOS++. Refer to [CMSIS++ Reference](http://micro-os-plus.github.io/reference/cmsis-plus/) for the full descriptions of the µOS++ functions used.
+Neste capítulo, o leitor irá perceber o quanto é fácil iniciar usando o µOS++. Use a [Referência CMSIS++](http://micro-os-plus.github.io/reference/cmsis-plus/) para  uma descrição completa das funções do µOS++ usadas.
 
-For this introductory chapter, the project setup (files and folders, toolchain and other tools, hardware initialisations) are considered not relevant and are not addressed.
+Para este capítulo introdutório, a configuração do projeto (arquivos e pastas, _toolchain_ e outras ferramentas, inicialização do hardware) são considerados irrelevantes e não serão apontados aqui.
+
 
 ## The `os_main()` and the main thread
 
