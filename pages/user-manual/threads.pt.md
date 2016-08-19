@@ -152,13 +152,14 @@ os_main (int argc, char* argv[])
 }
 ```
 
-### Infinite loop threads
+### _Threads_ de loop infinito
 
-The use of an infinite loop threads is more common in embedded systems because of the repetitive work needed in such systems (reading inputs, updating displays, performing control operations, etc).
+O uso de _threads_ de loop infinito são mais comuns em sistemas embarcados, porque trabalho repetitivo é necessário neste tipo de sistema (leitura de entradas, atualização de displays, execução de operações de controles), etc).
 
-Note that one could use a `while (true)` or `for (;;)` to implement the infinite loop, since both behave the same.
+Observe que elas podem usar um `while (true)` ou um `for (;;)` para implementar o loop infinito já que ambos tem o mesmo comportamento.
 
-The infinite loop must call a µOS++ service that will cause the thread to pass control back to the scheduler, for example a service to wait for an event to occur, or sleep for a certain duration. It is important that each thread will pass control back to the scheduler, otherwise the thread would be a true busy wait loop and will simply hog the CPU for the time quanta it is allowed to run. This concept of **suspending waiting threads** is key to an efficient CPU use in any RTOS.
+O _loop_ infinito deve chamar um serviço do µOS++ que faz a _thread_ retornar o controle para o escalonador, por exemplo um serviço para agudar por um evento ocorrer, ou adormecer por um certo tempo. É importante que cada _thread_ passe o controle de volta ao escalonador , caso contrário a _thread_ será um verdadeiramente um loop ocupado e simplesmente monopolizando a CPU pelo tempo que for permitida sua execução. Este conceito de **suspender a _thread_ em enquanto espera** é a chave para o uso eficiente da CPU em qualquer RTOS.
+
 
 ``` c++
 /// @file app-main.cpp
@@ -193,7 +194,7 @@ th_func(void* args)
 }
 ```
 
-A similar example, but written in C:
+Um exemplo similar, mas escrito em C:
 
 ``` c
 /// @file app-main.c
@@ -225,11 +226,12 @@ th_func(void* args)
 }
 ```
 
-The µOS++ service used in this example to pass control back to the scheduler is the queue receive function. The thread will have nothing to do until the message is received. Once a message is send to the queue, the thread will be resumed and the message consumed.
+O serviço do µOS++ usado neste exemplo para passar o controle de volta ao escalonador é a função que recebe da fila. a _thread_ não terá nada para fazer até a mensagem ser recebida. Uma vez a mensagem é enviada para a fila, a _thread_ será retomada e a mensagem consumida.
 
-Another common situation the thread might be waiting for is the passage of time. For example, a design may need to scan a keyboard every 100 ticks. In this case, simply delay the thread for 100 ticks (`sysclock.sleep_for(100)`) then see if a key was pressed on the keyboard and, possibly perform some action based on which key was pressed.
+Outra situação comum a _thread_ pode estar aguardando o tempo passar. Por exemplo, um projeto pode precisar varrer um teclado a cada 100 _ticks_. Neste caso, simplesmente suspenda a _thread_ por 100 _ticks_ (`sysclock.sleep_for(100)`) então verifique se a tecla foi pressionada no teclado e, possivelmente execute alguma ação baseada no que foi pressionado.
 
-It’s important to note that when a thread is suspended and waits for an event, it does not consume any CPU time.
+É importante observar que quando a _thread_ é suspendida e aguarda por um evento, ela não deve consumir algum tempo da CPU.
+
 
 ## Thread priorities
 
