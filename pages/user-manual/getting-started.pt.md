@@ -6,14 +6,18 @@ title: Começando com o μOS++ IIIe
 author: Liviu Ionescu
 
 date: 2016-06-29 21:28:00 +0300
-last_modified_at: 2016-08-17 22:30:00 +0300
+last_modified_at: 2016-08-17 23:10:00 +0300
 ---
 % comment %} 
 
 Start translate at: 2016-08-17 21:30:00 +300 Todo:
 
+Todo:
+ - Translate text comment on source code?
+ 
 Base Commit:
 - f16bc9f0b4f524ee5ccd7f2929ebc6ceb84a644a
+
 {% endcomment %}
 
 ## Visão Geral
@@ -44,14 +48,13 @@ Neste capítulo, o leitor irá perceber o quanto é fácil iniciar usando o µOS
 Para este capítulo introdutório, a configuração do projeto (arquivos e pastas, _toolchain_ e outras ferramentas, inicialização do hardware) são considerados irrelevantes e não serão apontados aqui.
 
 
-## The `os_main()` and the main thread
+## O `os_main()` e a _thread_ principal
 
-For user convenience, the default `main()` function creates an initial thread (not surprisingly called `main`) and arranges for the `os_main()` function to be called on this thread context.
+Para conveniência do usuário, a função `main()` padrão cria uma thread inicial (não surpreendentemente chamada `main`) e demandas para a função `os_main()` ser chamada neste contexto da _thread_.
 
-This arrangement relieves the user from the concerns of initialising and starting the scheduler, and also provides a parent for the user threads created from here.
+Esta organização libera o usuário de se preocupar com a inicialização e execução do escalonador, e também prove uma referência para as _threads_ criadas a partir ai.
 
-
-A simple C++ _blinky_ application that toggles a LED at 1 Hz might look like this:
+Uma aplicação _blinky_ simples em C++ que pisca um LED a cada 1 Hz pode se parecer como isso:
 
 ``` c++
 /// @file app-main.cpp
@@ -81,10 +84,9 @@ os_main (int argc, char* argv[])
   return 0;
 }
 ```
+O exemplo em geral é auto explicativo. as funções do LED são fornecidas pela aplicação. A unica função de sistema usada é `sleep_for()`, que, quando chamada pelo objeto `sysclock`, coloca a thread corrente em modo _sleep_ pelo número de ticks informado, que, neste caso é o numero de _SysTick ticks_ por segundos, resultando em um 1 segundo de suspensão.
 
-The example is generally self explanatory. The LED functions are provided by the application. The only system function used is `sleep_for()`, which, when called for the `sysclock` object, puts the current thread to sleep for the given number of ticks, which, in this case, is the number of SysTick ticks per second, resulting in an 1 second sleep.
-
-A similar application, but written in C:
+Uma aplicação similar, mas escrita em C:
 
 ``` c
 /// @file app-main.c
@@ -112,7 +114,7 @@ os_main (int argc, char* argv[])
 }
 ```
 
-Please note that for plain C applications, the system include header is different.
+Por favor, observe que uma aplicação pura em C, o cabeçalho de sistema incluso é diferente.
 
 ## Multiple thread applications
 
