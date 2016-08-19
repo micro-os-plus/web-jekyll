@@ -6,7 +6,7 @@ title: Começando com o μOS++ IIIe
 author: Liviu Ionescu
 
 date: 2016-06-29 21:28:00 +0300
-last_modified_at: 2016-08-17 23:10:00 +0300
+last_modified_at: 2016-08-17 23:25:00 +0300
 ---
 % comment %} 
 
@@ -116,9 +116,9 @@ os_main (int argc, char* argv[])
 
 Por favor, observe que uma aplicação pura em C, o cabeçalho de sistema incluso é diferente.
 
-## Multiple thread applications
+## Aplicação múltiplas _threads_
 
-In addition to the blinking LED, the next example adds a message queue where messages are enqueued from an interrupt callback, and a user thread that gets messages from the queue and prints them on the trace channel.
+Em adição a aplicação piscar o LED, o próximo exemplo adiciona uma fila (_queue_) de mensagens onde as mensagens são enfileiradas por  um _callback_ de interrupção, e uma _thread_ de usuário que pega as mensagens da fila e então imprime no canal de rastreamento.
 
 ``` c++
 /// @file app-main.cpp
@@ -188,7 +188,7 @@ os_main (int argc, char* argv[])
 }
 ```
 
-A similar application, but written in C:
+Uma aplicação semelhante escrita em C:
 
 ``` c
 /// @file app-main.c
@@ -262,4 +262,4 @@ os_main (int argc, char* argv[])
 }
 ```
 
-The visible difference is that in C the queue and the thread objects need to be explicitly created, while in C++ the constructors are called implicitly by the compiler.
+A diferença visível é que em C a fila de mensagens e o os objetos _threads_ precisam ser explicitamente criados, enquanto em C++ o construtor são chamados implicitamente pelo compilador.
