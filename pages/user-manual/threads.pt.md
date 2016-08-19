@@ -1,7 +1,7 @@
 ---
 layout: page
 lang: pt
-permalink: /user-manual/threads/
+permalink: /pt/user-manual/threads/
 title: Threads
 author: Liviu Ionescu
 translator: Carlos Delfino
@@ -18,23 +18,24 @@ Base Commit:
 - f16bc9f0b4f524ee5ccd7f2929ebc6ceb84a644a
 {% endcomment %}
  
-## Overview
+## Visão Geral
 
-One of the early decisions during the design of a real-time application is how to partition the required functionality into separate tasks, such that each task is as simple as possible and has minimal interactions with the other tasks.
+Uma das primeiras decisões durante o projeto de uma aplicação _real-time_ é como particionar as funcionalidades demandada em cada tarefa em separado, tal que cada tarefa é tão simples quanto possível e tem o mínimo de interação com outras tarefas.
 
-µOS++ makes it easy for an application programmer to adopt this paradigm. Each **task** is executed by **a separate thread** and can talk to other threads and to ISRs via various communication/synchonisation primitives.
 
-A thread is a simple program that thinks it has the CPU all to itself. On a single CPU, only one thread can execute at any given time.
+µOS++ torna fácil para um programador adotar este paradigma. Cada **tarefa** é executada por uma **thread separada** e pode conversar com as outras _threads_ e com ISRs via diversas primitivas de comunicação/sincronização.
 
-µOS++ supports multitasking and allows the application to have **any number of threads**. The maximum number of threads is actually only limited by the amount of memory (both code and data space) available to the processor.
+Uma _thread_ é um simples programa que pensa ter a CPU toda para ele. Em uma simples CPU, somente uma _thread_ pode executar a cada certo tempo.
 
-Multitasking is the process of scheduling and switching the CPU between several threads. The CPU switches its attention between several threads. Multitasking provides the illusion of having multiple CPUs and, actually maximizes the use of the CPU.
+µOS++ suporta multi tarefa e permite a aplicação ter **qualquer quantidde de _threads_**. O máximo número de _threads_  é atualmente somente o limite de quantidade de memória disponível no processador (ambo espaço de código e dados).
 
-Multitasking also helps in the creation of modular applications. Without multitasking, applications usually are a big superloop, which spins through one or several finite state machines. With multitasking, the application programmer has to manage much simpler, linear tasks. Application programs are typically easier to design and maintain when multitasking is used.
+Multitarefa é o processo de escalonamento e troca na CPU entre diversas _threads. A CPU chaveia sua atenção A CPU troca sua atenção entre diversas _threads_. Multitarefa prove a ilusão de ter múltiplas CPUs e, atualmente maximiza o uso da CPU.
 
-Separate threads are used for such chores as monitoring inputs, updating outputs, performing computations, control loops, update one or more displays, reading buttons and keyboards, communicating with other systems, and more. One application may contain a handful of threads while another application may require hundreds. The number of threads does not establish how good or effective a design may be, it really depends on what the application (or product) needs to do. The amount of work a thread performs also depends on the application. One thread may have a few microseconds worth of work to perform while another thread may require tens of milliseconds.
+Multitarefa também ajuda a criação de aplicação modular. Sem multitarefa, a aplicação é normalmente um superloop, com giros através de um ou varias máquinas de estado finitos. Com multitarefa, o programador da aplicação tem que gerenciar tarefas muito simples e lineares. Programação tipicamente fáceis de projetar e manter quando é usado multitarefa.
 
-Tasks are implemented as regular C functions, passed to the thread creation calls as mandatory parameters.
+_Threads_ separadas são usadas para tais como monitoramento de entradas, atualização de saída, executar cálculos, controlar laços (loops), atualizar um ou mais _displays_, ler botões e teclados, comunicar com outros sistemas, e mais. Uma aplicação pode conter um punhado de _threads_ enquanto outra aplicação pode requer centenas. O número de _threads_ não estabelece o quanto bom ou efetivo um projeto pode ser, ele realmente depende do que a aplicação (ou produto) precisa fazer. A quantidade de trabalho que uma _thread_ executa também depende da aplicação. Uma _thread_ pode ter alguns microssegundos que valem a pena o trabalho executado enquanto outra _thread_ pode requerer dezenas de milissegundos.
+
+Tarefas são implementadas como funções regulares em C, passadas para a chamadas de criação das _threads_ como parâmetros obrigatórios.
 
 ## Thread functions
 
