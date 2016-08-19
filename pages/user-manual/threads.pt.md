@@ -60,15 +60,17 @@ th_func(void* args)
 }
 ```
 
-### Reentrant thread functions
+### Funções reentrantes de _Thread_
 
-When a µOS++ thread begins executing, it is passed an optional `void*` argument, **args**. This pointer is a universal vehicle that can be used to pass to the thread the address of a variable, the address of a structure, or even the address of a function, if necessary. With this pointer, it is possible to create many identical threads, that all use the same reentrant thread body, but will be executed with different run-time data.
+Quando uma _thread_ µOS++ inicia sua execução, é passado um argumento opcional do tipo `void*`, **args**. Este ponteiro é um veiculo universal que pode ser usado para passar para a _thread_ o endereço de uma variável, o endereço de uma estrutura, ou o endereço de uma função, se necessário. Com este ponteiro, é possível criar muitas _threads_ idênticas, todas usando o mesmo corpo de _thread_ reentrante, mas será executado com dados de tempo de execução diferentes.
 
-A _reentrant_ function is a function that does not use static or otherwise global variables unless they are protected.
+Uma função _reentrante_ é uma função que não faz uso de código estático ou mesmo de variáveis globais mesmo que elas estejam protegidas.
 
-An example of a non-reentrant function is the famous `strtok()` provided by most C standard libraries. This function is used to parse strings for tokens. The first time this function is called, the string to parse and what constitute tokens must be specified. As soon as the function finds the first token, it returns. The function _remembers_ where it was last so when called again, it can extract additional tokens, which is clearly non-reentrant. Most such functions were identified and reentrant versions are now available in standard libraries (in this case `strtok_r()`).
+Um exemplo de uma função não reentrante é a famosa `strtok()` fornecida pela maioria das bibliotecas C padrão. Esta função é usada para buscar em strings por _tokens_. A primeira vez que esta função é chamada, a _string_ a ser analisada e os _tokens_ devem ser informados. Assim que a função encontra o primeiro _token_, ela retorna. A função _lembra_ quando foi a última vez que ela foi chamada novamente, e pode extrair novos _tokens_, o que é claramente não reentrante.  Mas tais funções são identificadas e agora versões reentrantes estão disponíveis nas bibliotecas padrão (no caso desta `strtok_r()`).
+s case `strtok_r()`).
 
-As an example of reentrant thread functions, one application may have four asynchronous serial ports that are each managed by their own thread. However, the thread functions are actually identical. Instead of copying the code four times, create the code for a “generic” thread that receives a pointer to a data structure, which contains the serial port’s parameters (baud rate, I/O port addresses, interrupt vector number, etc.) as an argument. In other words, instantiate the same thread code four times and pass it different data for each serial port that each instance will manage.
+Como um exemplo de funções _thread_ reentrante, uma aplicação pode ter quatro portas seriais assíncronas que são cada uma gerenciada pela sua própria _thread_. Porem, a função da _thread_ são atualmente idênticas, Ao invés de copiar o código quatro vezes, crie o código para uma _thread_ genérica que recebe um ponteiro para a estrutura de dados, qeu contem os parâmetros da porta serial (baud rate, endereço da porta I/O, numero do vetor de interrupção, etc.) como argumento. em outras palavras, instanciar o mesmo código de _thread_ quatro vez e passar dados diferentes para cada porta serial qeu cada instancia pode gerenciar.
+
 
 ### Run-to-completion threads
 
