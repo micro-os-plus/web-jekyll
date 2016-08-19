@@ -2,12 +2,19 @@
 layout: page
 lang: pt
 permalink: /pt/user-manual/getting-started/
-title: Começando com μOS++ IIIe
+title: Começando com o μOS++ IIIe
 author: Liviu Ionescu
 
 date: 2016-06-29 21:28:00 +0300
-
+last_modified_at:
 ---
+% comment %} 
+
+Start translate at: 2016-08-17 21:30:00 +300 Todo:
+
+Base Commit:
+- f16bc9f0b4f524ee5ccd7f2929ebc6ceb84a644a
+{% endcomment %}
 
 ## Overview
 
