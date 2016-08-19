@@ -72,11 +72,11 @@ s case `strtok_r()`).
 Como um exemplo de funções _thread_ reentrante, uma aplicação pode ter quatro portas seriais assíncronas que são cada uma gerenciada pela sua própria _thread_. Porem, a função da _thread_ são atualmente idênticas, Ao invés de copiar o código quatro vezes, crie o código para uma _thread_ genérica que recebe um ponteiro para a estrutura de dados, qeu contem os parâmetros da porta serial (baud rate, endereço da porta I/O, numero do vetor de interrupção, etc.) como argumento. em outras palavras, instanciar o mesmo código de _thread_ quatro vez e passar dados diferentes para cada porta serial qeu cada instancia pode gerenciar.
 
 
-### Run-to-completion threads
+### _Threads_ Run-to-completion (execute até terminar)
 
-A µOS++ run-to-completion thread is implemented as a function that terminates and optionally returns a pointer. Alternatively it can explicitly call the `this_thread::exit(void*)`, with identical results.
+Uma _thread_ µOS++ _run-to-completion_é implementada como uma função que termina e opcionalmente retorna um ponteiro. alternativamente ela pode explicitamente chamar o  `this_thread::exit(void*)`, com resultados identicos.
 
-A run-to-completion thread starts, performs its function, and terminates. Later on such a thread can be reused as many times as necessary. However, there is a certain overhead involved with creating and destroying threads, and, if the thread is not configured to use a static stack, the stack area must be allocated and deallocated each time, which not only increases the overhead, but also may contribute to fragmentation.
+Uma _thread_ _run-to-completion_ inicia, executa sua função, e termina, depois esta _thread_ pode ser reusada quantas vezes for necessário. Porém, há uma certa sobrecarga envolvendo a criação e destruição de _threads_, e, se a _thread_ não é configurada para usar uma pilha (_stack_) estático, a área de _stack_ deve ser alocada e desalocada cada vez, que não somente aumenta o _overhead_, mas também pode contribuir pra a fragmentação.
 
 ``` c++
 /// @file app-main.cpp
@@ -112,7 +112,7 @@ os_main (int argc, char* argv[])
 }
 ```
 
-A similar example, but written in C:
+Um exemplo similar, mas escrito em C:
 
 ``` c
 /// @file app-main.c
