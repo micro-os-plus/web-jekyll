@@ -6,7 +6,7 @@ title: Começando com o μOS++ IIIe
 author: Liviu Ionescu
 
 date: 2016-06-29 21:28:00 +0300
-last_modified_at: 2016-08-17 23:25:00 +0300
+last_modified_at: 2016-08-19 00:15:00 +0300
 ---
 % comment %} 
 
@@ -22,11 +22,11 @@ Base Commit:
 
 ## Visão Geral
 
-**µOS++ IIIe** _(micro oh ɛs plus plus terceira edição)_ é a terceira interação do µOS++, um POSIX-like, portavel, open source, royalty-free, sistema operacional multi-tarefa real-time criado para aplicações embarcadas de 32/64-bits.
+**µOS++ IIIe** _(micro oh ɛs plus plus terceira edição)_ é a terceira interação do µOS++, um POSIX-like, portável, open source, royalty-free, sistema operacional multi-tarefa real-time criado para aplicações embarcadas de 32/64-bits.
 
 **µOS++ IIIe** é escrito em C++ moderno, com aplicações C++ em mente, mas também fornece igualmente API C funcional.
 
-### Multiplas APIs
+### Múltiplas APIs
 
 µOS++ é baseado no CMSIS++, e como tal prover serviços via multiplas APIs, cobrindo ambas aplicações C++ e C.
 
@@ -37,9 +37,9 @@ Base Commit:
 As API suportadas são:
 
 - **CMSIS++ RTOS C++ API** - Uma API C++ nativa do µOS++ IIIe C++ API, dá acesso direto para os serviços do sistema;
-- **CMSIS++ RTOS C API** - Um Wrapper C 1:1  no topo da API C++;
+- **CMSIS++ RTOS C API** - Um _wrapper_ C 1:1  no topo da API C++;
 - **ISO C++ Threads API** - Uma implementação do padrão ISO para _threads_ no topo da API C++;
-- **ARM CMSIS RTOS v1 API** - Uma camada de compartibilização com o ARM CMSIS RTOS
+- **ARM CMSIS RTOS v1 API** - Uma camada de compatibilização com o ARM CMSIS RTOS
 
 A função nestas APIs é fornecer serviços para gerenciar _threads_, semáforos, fila de mensagens, _mutexes_ entre outros. A medica que o código do usuário é desenvolvido, as chamadas para as funções do sistema µOS++ exatamente como outras chamadas de função, usando o padrão [ABI](https://pt.wikipedia.org/wiki/Interface_bin%C3%A1ria_de_aplica%C3%A7%C3%A3o) para o _toolchain_; não são feitas chamadas de serviços de sistema (SVC) para trocar do modo de sistema para usuário.
 
@@ -50,7 +50,7 @@ Para este capítulo introdutório, a configuração do projeto (arquivos e pasta
 
 ## O `os_main()` e a _thread_ principal
 
-Para conveniência do usuário, a função `main()` padrão cria uma thread inicial (não surpreendentemente chamada `main`) e demandas para a função `os_main()` ser chamada neste contexto da _thread_.
+Para conveniência do usuário, a função `main()` padrão cria uma _thread_ inicial (não surpreendentemente chamada `main`) e demandas para a função `os_main()` ser chamada neste contexto da _thread_.
 
 Esta organização libera o usuário de se preocupar com a inicialização e execução do escalonador, e também prove uma referência para as _threads_ criadas a partir ai.
 
@@ -84,7 +84,7 @@ os_main (int argc, char* argv[])
   return 0;
 }
 ```
-O exemplo em geral é auto explicativo. as funções do LED são fornecidas pela aplicação. A unica função de sistema usada é `sleep_for()`, que, quando chamada pelo objeto `sysclock`, coloca a thread corrente em modo _sleep_ pelo número de ticks informado, que, neste caso é o numero de _SysTick ticks_ por segundos, resultando em um 1 segundo de suspensão.
+O exemplo em geral é auto explicativo. as funções do LED são fornecidas pela aplicação. A única função de sistema usada é `sleep_for()`, que, quando chamada pelo objeto `sysclock`, coloca a _thread_ corrente em modo _sleep_ pelo número de _ticks_ informado, que, neste caso é o numero de _SysTick ticks_ por segundos, resultando em um 1 segundo de suspensão.
 
 Uma aplicação similar, mas escrita em C:
 
