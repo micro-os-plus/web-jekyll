@@ -595,18 +595,18 @@ os_main (int argc, char* argv[])
 ```
 O Programador da aplicação pode criar um numero ilimitado de threads (limitado apenas pela disponibilidade de mémoria RAM).
 
+### _Threads_ ISO/IEC C++
 
-### ISO/IEC C++ threads
+A liberação em 2011 do padrão ISO/IEC C++ 14882 finalmente introduziu uma definição de padrão para objetos de _threads_ em C++.
 
-The 2011 release of the ISO/IEC C++ 14882 standard finally introduced a standard definition for the C++ threads objects.
+Este definição padrão foi definida com _threads_ POSIX em mente, e o padrão de _threads_ C++ não tem intenção de reimplementar as _threads_ POSIX no C++, mas se parecer como _wrapper_ C++ no topo de _threads POSIX em C existentes.
 
-This standard definition was designed with POSIX threads in mind, and the standard C++ threads do not intend to reimplement the POSIX threads in C++, but are seen as a C++ wrapper on top of the existing C POSIX threads.
+Com as _threads_ µOS++/CMSIS++ sendo uma implementação em C++ das _threads_ POSIX, o _wrapper_ ISO/IEC se aproxima 1:1 as _threads_ µOS++.
 
-With µOS++/CMSIS++ threads being a C++ reimplementation of the POSIX threads, the ISO/IEC wrapper approach matches almost 1:1 the native µOS++ threads.
+Pra evitar conflitos com a biblioteca padrão  quando executando testes em uma plataformas sintéticas que já implementem o padrão C++ para _threads_, as definições são parte do _namespace_ `os::estd::` ("embedded" std), ao invés do _namespace_ `std::`.
 
-To avoid clashes with the standard library when running tests on synthetic platforms that already implement the C++ standard threads, the µOS++/CMSIS++ definitions are part of the `os::estd::` namespace ("embedded" std), instead of the `std::` namespace.
+Quando usando o _namespace_ `os::estd::`é recomendado evitar definições `using namespace` abaixo do _namespace_ `os`; ao invés, use o _namespace_ `rtos` e `estd` explicitamente.
 
-When using the `os::estd::` namespace it is recommended to avoid `using namespace` definitions below the `os` namespace; instead, use the `rtos` and `estd` namespaces explicitly.
 
 ``` c++
 /// @file app-main.cpp
@@ -645,11 +645,11 @@ os_main (int argc, char* argv[])
 }
 ```
 
-The expected standard implementation dynamically allocates the underlying `rtos::thread` object instance, which in turn allocates the stack; it is not possible to configure static stacks with ISO C++ threads, neither to set a name for the thread.
+A expectativa de implementação padrão  aloca  dinamicamente instâncias adjacentes do objeto `rtos::thread`, que por sua vez aloca o _stack_; Não é possível configurar _stacks_ estáticos com _threads_ ISO C++, nem setar o nome da _thread_.
 
-To be noted that standard C++ threads can have any number of arguments. The internal implementation uses tuples and `std::bind`, which also imply a dynamic memory allocation.
+Deve ser observado que as _threads_ C++ podem ter algum número de argumentos. A implementação interna usa _tuplas_ e `std::bin`, que também implica em alocação dinâmica de memória.
 
-For more details, please read the _ISO/IEC 14882:2011(E), Programming Languages – C++_ specifications.
+Para maiores detalhes, por favor leia a especificação _Linguagens de Programação C++ – ISO/IEC 14882:2011(E)_.
 
 ## Changing thread priorities
 
