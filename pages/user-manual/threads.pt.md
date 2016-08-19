@@ -233,30 +233,31 @@ Outra situação comum a _thread_ pode estar aguardando o tempo passar. Por exem
 É importante observar que quando a _thread_ é suspendida e aguarda por um evento, ela não deve consumir algum tempo da CPU.
 
 
-## Thread priorities
+## Prioridade das Thread 
 
-The rules used by the µOS++ scheduler to select the next thread are simple:
+A regra usada pelo escalonador do µOS++ para selecionar a proxima thread são simples:
 
-- select the thread with the highest priority
-- if there are multiple threads with this priority, select the one waiting for the longest time.
+- selecione a _thread_ com a maior prioridade
+- se há múltiplas _threads_ com esta prioridade, selecione uma que está aguardando a mais tempo.
 
-In short, this can be rephrased as:
+Em resumo, isso pode ser reescrito assim:
 
-> The oldest thread with the highest priority.
+> A _thread_ que espera a mais tempo com a maior prioridade
 
-Thread priorities are unsigned values, with higher values meaning higher priorities.
+Prioridades das _threads_ são valores sem sinal, com valores maiores representando maior prioridade.
 
-µOS++ imposes no restrictions on how priorities can be assigned to threads. The choice can be anything from assigning a unique priority to every thread (as required by some special scheduling strategies), to assigning the same priority to all threads. By default, all threads are created with the `normal` priority.
+µOS++ não impõem restrições de como prioridades podem ser designadas para _threads_. A escolha pode ser qualquer uma desde que uma única prioridade para cada _thread_ (como exigido por alguma escalonamento especialmente estratégico), para designar a mesma prioridade para todas as _threads_. por padrão, todas as _threads_ são criadas com a prioridade `normal`.
 
-## Creating threads
+## Criando _threads_
 
-Creating threads is probably the most complex part of any RTOS API, and it is unfortunate that this is usually one of the first issues encountered when dealing with a new RTOS, but threads must be mastered as soon as possible as they are a fundamental component of multitasking systems.
+Criar as _threads_ sejam provavelmente a parte mais complexa de alguma API RTOS, e é infelizmente é o primeiro problema que é encontrado quando litando com um novo RTOS, mas _threads_ devem ser dominado assim que possível já que são um componente fundamental de sistemas multitarefa.
 
-For convenience reasons, µOS++ has a rich set of functions for creating threads. Threads can use either statically or dynamically allocated stacks, threads can be created as local objects on the function stack, or as global objects, threads can be created with default characteristics or with custom attributes, and so on.
+Por razões de conveniência, µOS++ tem tem um conjunto rico de funções para criar _threads_. _Threads_ podem ser usadas de em pilhas alocadas estaticamente ou dinamicamente, _threads_ podem ser criadas como objetos locais na pilha de funções, ou podem ser objetos globais, _threads_ podem ser criadas com características padrões ou com atributos personalizados, e assim por diante.
 
-For infinite loop threads, the easiest way to create threads is to make them global objects.
+Para _threads_ de loop infinito, a forma fácil de criar a _thread_ é através de um objeto global.
 
-In C++, the global threads are created and initialised by the global static constructors mechanism, so they are already linked in the READY list when `main()` is executed.
+Em C++, as _threads_ globais são criadas e inicializadas pelo mecanismo de construtor estático global, portanto elas são já _lincadas_ a lista READY quando `main()` é executado.
+
 
 ``` c++
 /// @file app-main.cpp
@@ -314,7 +315,7 @@ os_main (int argc, char* argv[])
 
 ```
 
-A similar example, but written in C:
+Um exemplo similar, escrito em C:
 
 ``` c
 /// @file app-main.c
@@ -393,7 +394,8 @@ os_main (int argc, char* argv[])
 }
 ```
 
-In C++, if it is necessary to control the moment when global objects instances are created, it is possible to separately allocate the storage as global variables, then use the placement `new` operator to initialise them.
+Em C++, se há necessidade de controlar o momento quando instancia de um objeto global é criado, é possível separadamente alocar o armazenado como as variáveis globais, então usar no lugar o operador `new` para inicializa-la.
+
 
 ``` c++
 /// @file app-main.cpp
@@ -449,7 +451,7 @@ os_main (int argc, char* argv[])
 }
 ```
 
-Threads objects instances can also be created on the local stack, for example on the main thread stack. Just be sure the stack is large enough to store all defined local objects.
+As instancias de objetos de _threads_ podem também ser criados no _stack_ local, por exemplo no _stack_ da _thread_ local. Certifique-se que o _stack_ é grande o suficiente para armazenar todas as definições de objetos locais.
 
 ``` c++
 /// @file app-main.cpp
@@ -513,7 +515,7 @@ os_main (int argc, char* argv[])
 }
 ```
 
-A similar example, but written in C:
+Um exemplo similar escrito em C:
 
 ``` c
 /// @file app-main.c
@@ -591,8 +593,8 @@ os_main (int argc, char* argv[])
   return 0;
 }
 ```
+O Programador da aplicação pode criar um numero ilimitado de threads (limitado apenas pela disponibilidade de mémoria RAM).
 
-The application programmer can create an unlimited number of threads (limited only by the available RAM).
 
 ### ISO/IEC C++ threads
 
