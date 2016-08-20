@@ -7,7 +7,7 @@ author: Liviu Ionescu
 translator: Carlos Delfino
 
 date: 2016-07-05 11:27:00 +0300
-last_modified_at: 2016-08-19 14:22:00 +0300
+last_modified_at: 2016-08-20 20:30:00 +0300
 
 ---
 {% comment %} 
@@ -22,12 +22,11 @@ Base Commit:
 
 Uma das primeiras decisões durante o projeto de uma aplicação _real-time_ é como particionar as funcionalidades demandada em cada tarefa em separado, tal que cada tarefa é tão simples quanto possível e tem o mínimo de interação com outras tarefas.
 
-
 µOS++ torna fácil para um programador adotar este paradigma. Cada **tarefa** é executada por uma **thread separada** e pode conversar com as outras _threads_ e com ISRs via diversas primitivas de comunicação/sincronização.
 
 Uma _thread_ é um simples programa que pensa ter a CPU toda para ele. Em uma simples CPU, somente uma _thread_ pode executar a cada certo tempo.
 
-µOS++ suporta multi tarefa e permite a aplicação ter **qualquer quantidde de _threads_**. O máximo número de _threads_  é atualmente somente o limite de quantidade de memória disponível no processador (ambo espaço de código e dados).
+µOS++ suporta multi tarefa e permite a aplicação ter **qualquer quantidade de _threads_**. O máximo número de _threads_  é atualmente somente o limite de quantidade de memória disponível no processador (ambo espaço de código e dados).
 
 Multitarefa é o processo de escalonamento e troca na CPU entre diversas _threads. A CPU chaveia sua atenção A CPU troca sua atenção entre diversas _threads_. Multitarefa prove a ilusão de ter múltiplas CPUs e, atualmente maximiza o uso da CPU.
 
@@ -64,17 +63,17 @@ th_func(void* args)
 
 Quando uma _thread_ µOS++ inicia sua execução, é passado um argumento opcional do tipo `void*`, **args**. Este ponteiro é um veiculo universal que pode ser usado para passar para a _thread_ o endereço de uma variável, o endereço de uma estrutura, ou o endereço de uma função, se necessário. Com este ponteiro, é possível criar muitas _threads_ idênticas, todas usando o mesmo corpo de _thread_ reentrante, mas será executado com dados de tempo de execução diferentes.
 
-Uma função _reentrante_ é uma função que não faz uso de código estático ou mesmo de variáveis globais mesmo que elas estejam protegidas.
+Uma função _reentrante_ é uma função que não faz uso de variáveis estáticas ou mesmo globais mesmo que elas estejam protegidas.
 
 Um exemplo de uma função não reentrante é a famosa `strtok()` fornecida pela maioria das bibliotecas C padrão. Esta função é usada para buscar em strings por _tokens_. A primeira vez que esta função é chamada, a _string_ a ser analisada e os _tokens_ devem ser informados. Assim que a função encontra o primeiro _token_, ela retorna. A função _lembra_ quando foi a última vez que ela foi chamada novamente, e pode extrair novos _tokens_, o que é claramente não reentrante.  Mas tais funções são identificadas e agora versões reentrantes estão disponíveis nas bibliotecas padrão (no caso desta `strtok_r()`).
 s case `strtok_r()`).
 
-Como um exemplo de funções _thread_ reentrante, uma aplicação pode ter quatro portas seriais assíncronas que são cada uma gerenciada pela sua própria _thread_. Porem, a função da _thread_ são atualmente idênticas, Ao invés de copiar o código quatro vezes, crie o código para uma _thread_ genérica que recebe um ponteiro para a estrutura de dados, qeu contem os parâmetros da porta serial (baud rate, endereço da porta I/O, numero do vetor de interrupção, etc.) como argumento. em outras palavras, instanciar o mesmo código de _thread_ quatro vez e passar dados diferentes para cada porta serial qeu cada instancia pode gerenciar.
+Como um exemplo de funções reentrantes de _thread_, uma aplicação pode ter quatro portas seriais assíncronas que são cada uma gerenciada pela sua própria _thread_. Porem, a função da _thread_ são atualmente idênticas, Ao invés de copiar o código quatro vezes, crie o código para uma _thread_ genérica que recebe um ponteiro para a estrutura de dados, que contem os parâmetros da porta serial (baud rate, endereço da porta I/O, numero do vetor de interrupção, etc.) como argumento. em outras palavras, instanciar o mesmo código de _thread_ quatro vez e passar dados diferentes para cada porta serial que cada instância pode gerenciar.
 
 
 ### _Threads_ Run-to-completion (execute até terminar)
 
-Uma _thread_ µOS++ _run-to-completion_é implementada como uma função que termina e opcionalmente retorna um ponteiro. alternativamente ela pode explicitamente chamar o  `this_thread::exit(void*)`, com resultados identicos.
+Uma _thread_ µOS++ _run-to-completion_é implementada como uma função que termina e opcionalmente retorna um ponteiro. alternativamente ela pode explicitamente chamar o  `this_thread::exit(void*)`, com resultados idênticos.
 
 Uma _thread_ _run-to-completion_ inicia, executa sua função, e termina, depois esta _thread_ pode ser reusada quantas vezes for necessário. Porém, há uma certa sobrecarga envolvendo a criação e destruição de _threads_, e, se a _thread_ não é configurada para usar uma pilha (_stack_) estático, a área de _stack_ deve ser alocada e desalocada cada vez, que não somente aumenta o _overhead_, mas também pode contribuir pra a fragmentação.
 
@@ -154,12 +153,11 @@ os_main (int argc, char* argv[])
 
 ### _Threads_ de loop infinito
 
-O uso de _threads_ de loop infinito são mais comuns em sistemas embarcados, porque trabalho repetitivo é necessário neste tipo de sistema (leitura de entradas, atualização de displays, execução de operações de controles), etc).
+O uso de _threads_ de loop infinito são mais comuns em sistemas embarcados, porque trabalho repetitivo é necessário neste tipo de sistema (leitura de entradas, atualização de _displays_, execução de operações de controles, etc).
 
 Observe que elas podem usar um `while (true)` ou um `for (;;)` para implementar o loop infinito já que ambos tem o mesmo comportamento.
 
 O _loop_ infinito deve chamar um serviço do µOS++ que faz a _thread_ retornar o controle para o escalonador, por exemplo um serviço para agudar por um evento ocorrer, ou adormecer por um certo tempo. É importante que cada _thread_ passe o controle de volta ao escalonador , caso contrário a _thread_ será um verdadeiramente um loop ocupado e simplesmente monopolizando a CPU pelo tempo que for permitida sua execução. Este conceito de **suspender a _thread_ em enquanto espera** é a chave para o uso eficiente da CPU em qualquer RTOS.
-
 
 ``` c++
 /// @file app-main.cpp
@@ -232,10 +230,9 @@ Outra situação comum a _thread_ pode estar aguardando o tempo passar. Por exem
 
 É importante observar que quando a _thread_ é suspendida e aguarda por um evento, ela não deve consumir algum tempo da CPU.
 
+## Prioridade das _Thread_ 
 
-## Prioridade das Thread 
-
-A regra usada pelo escalonador do µOS++ para selecionar a proxima thread são simples:
+A regra usada pelo escalonador do µOS++ para selecionar a próxima _thread_ são simples:
 
 - selecione a _thread_ com a maior prioridade
 - se há múltiplas _threads_ com esta prioridade, selecione uma que está aguardando a mais tempo.
@@ -451,7 +448,7 @@ os_main (int argc, char* argv[])
 }
 ```
 
-As instancias de objetos de _threads_ podem também ser criados no _stack_ local, por exemplo no _stack_ da _thread_ local. Certifique-se que o _stack_ é grande o suficiente para armazenar todas as definições de objetos locais.
+As instâncias de objetos de _threads_ podem também ser criados no _stack_ local, por exemplo no _stack_ da _thread_ principal. Certifique-se que o _stack_ é grande o suficiente para armazenar todas as definições de objetos locais.
 
 ``` c++
 /// @file app-main.cpp
@@ -593,7 +590,7 @@ os_main (int argc, char* argv[])
   return 0;
 }
 ```
-O Programador da aplicação pode criar um numero ilimitado de threads (limitado apenas pela disponibilidade de mémoria RAM).
+O Programador da aplicação pode criar um numero ilimitado de _threads_ (limitado apenas pela disponibilidade de memoria RAM).
 
 ### _Threads_ ISO/IEC C++
 
@@ -645,7 +642,7 @@ os_main (int argc, char* argv[])
 }
 ```
 
-A expectativa de implementação padrão  aloca  dinamicamente instâncias adjacentes do objeto `rtos::thread`, que por sua vez aloca o _stack_; Não é possível configurar _stacks_ estáticos com _threads_ ISO C++, nem setar o nome da _thread_.
+A expectativa de implementação padrão  aloca  dinamicamente instâncias adjacentes do objeto `rtos::thread`, que por sua vez aloca o _stack_; Não é possível configurar _stacks_ estáticos com _threads_ ISO C++, nem definir o nome da _thread_.
 
 Deve ser observado que as _threads_ C++ podem ter algum número de argumentos. A implementação interna usa _tuplas_ e `std::bin`, que também implica em alocação dinâmica de memória.
 
