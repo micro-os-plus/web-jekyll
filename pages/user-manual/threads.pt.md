@@ -648,9 +648,9 @@ Deve ser observado que as _threads_ C++ podem ter algum número de argumentos. A
 
 Para maiores detalhes, por favor leia a especificação _Linguagens de Programação C++ – ISO/IEC 14882:2011(E)_.
 
-## Changing thread priorities
+## Alterando as prioridades das _thread_
 
-By default, threads are created with `thread::priority::normal` which is a middle value priority, but it can be changed at any moment during the thread lifetime.
+Por padrão, _threads_ são criadas com `thread::priority::normal` que é valor médio para prioridade, mas ele pode ser alterado em qualquer momento durante o tempo de vida da _thread_
 
 ``` c++
 /// @file app-main.cpp
@@ -671,7 +671,7 @@ th_func(void* args)
 }
 ```
 
-A similar example, but written in C:
+Um exemplo similar, mas escrito em C:
 
 ``` c
 /// @file app-main.c
@@ -689,7 +689,7 @@ th_func(void* args)
 }
 ```
 
-If, for any reasons, the initial thread priority must be different, it can be set to any legal value during the thread creation call, using the `th_priority` thread attribute.
+Se, por alguma razão, a prioridade inicial da _thread_ deve ser diferente, ela pode ser definida para um dos valores permitidos durante a sua criação, usando o atributo `th_priority` da _thread_.
 
 ``` c++
 /// @file app-main.cpp
@@ -733,7 +733,7 @@ os_main (int argc, char* argv[])
 }
 ```
 
-A similar example, but written in C:
+Um exemplo similar, mas escrito em C:
 
 ``` c
 /// @file app-main.c
