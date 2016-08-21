@@ -7,7 +7,7 @@ author: Liviu Ionescu
 translator: Carlos Delfino
 
 date: 2016-07-05 11:27:00 +0300
-last_modified_at: 2016-08-21 00:43:00 +0300
+last_modified_at: 2016-08-21 14:15:00 +0300
 
 ---
 {% comment %} 
@@ -1004,13 +1004,13 @@ Em um sistema bem comportado isto não é um problema, porque a _thread_ _idle_ 
 Se a _thread_ é necessária para reuso imediato, é recomendado que as _threads_ pais invoquem `thread::kill()`, o que irá destruir a _thread_ na hora, sem ter que esperar pela _idle_ atuar como um matador.
 
 
-## The current thread
+## A _thread_ corrente
 
-Some thread functions (like `suspend()`) can be performed only on the current thread, in other words one thread cannot suspend another, only the thread itself can do it.
+Algumas funções de _thread_ (como `suspend()`) somente podem ser executadas na thread corrente, em outras palavras uma _thread_ não pode suspender outra, somente a própria _thread_ pode faze-lo.
 
-To access these special functions, in C++, a dedicated namespace `this_thread` is used (in C a family of functions prefixed with `os_this_thread_` is defined).
+Para acessar funções especiais, em c++, um _namespace_ dedicado `this_thread` é usado (em C uma família de funções prefixadas com òs_this_thread_ é definida).
 
-For more specific functions, a reference to the current thread can be obtained with `this_thread::thread()` (in C with `os_this_thread()`);
+Para funções mais especificas, uma referência para a corrente _thread_ pode ser obtida com `this_thread::thread()`(em C com `os_this_thread()`);
 
 ``` c++
 /// @file app-main.cpp
@@ -1031,7 +1031,7 @@ th_func(void* args)
 }
 ```
 
-A similar example, but written in C:
+Um exemplo similar, escrito em C:
 
 ``` c
 /// @file app-main.c
