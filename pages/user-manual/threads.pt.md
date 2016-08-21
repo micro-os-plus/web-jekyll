@@ -7,7 +7,7 @@ author: Liviu Ionescu
 translator: Carlos Delfino
 
 date: 2016-07-05 11:27:00 +0300
-last_modified_at: 2016-08-21 14:15:00 +0300
+last_modified_at: 2016-08-21 15:45:00 +0300
 
 ---
 {% comment %} 
@@ -997,7 +997,7 @@ Há varias formas formas de se finalizar uma _thread_:
 
 Todos estes métodos são funcionalmente equivalentes, em todos a _thread_ é destruída e se o _stack_ da _thread_  foi dinamicamente alocado, este armazenamento é automaticamente desalocado.
 
-Há uma certa diferença quando a _thread_ decide terminar a si mesma (chamando `exit()` ou retornando de uma função da _thread_, o que é exatamente a mesma coisa): A finalização da _thread_ pode proceder somente um ponto, mas não pode completar a desalocação do _stack_ quando enquanto continua usando-o. Para resolver esto, em uOS++ a _thread_ adiciona a si mesma para a lista que será processada depois pela _idle_ _thread_ e pela próxima vez que _idle_ é escalonada, o _stack_ será desalocado e a destruição da _thread_ será finalizada.
+Há uma certa diferença quando a _thread_ decide terminar a si mesma (chamando `exit()` ou retornando de uma função da _thread_, o que é exatamente a mesma coisa): A finalização da _thread_ pode proceder somente um ponto, mas não pode completar a desalocação do _stack_ quando enquanto continua usando-o. Para resolver esto, em µOS++ a _thread_ adiciona a si mesma para a lista que será processada depois pela _idle_ _thread_ e pela próxima vez que _idle_ é escalonada, o _stack_ será desalocado e a destruição da _thread_ será finalizada.
 
 Em um sistema bem comportado isto não é um problema, porque a _thread_ _idle_ é agendada com bastante frequência, mas em um sistema sobrecarregado pode levar um certo tempo.
 
@@ -1049,45 +1049,46 @@ th_func(void* args)
 }
 ```
 
-## Thread states
+## Estados da _Thread_
 
-A thread may be in one of several states at any given time. The main distinction is based on the presence of the thread in the READY list; a thread in the READY list is said to be in the **ready** state.
+Uma _thread_ pode estar em um de vários estados em um dado momento. O principal distinção é baseado na presença de uma _thread_ na lista _READY_; uma _thread_ na lista _READ_ é dizer que está no estado **pronto** (**read**).
 
 <div style="text-align:center">
 <img src="{{ site.baseurl }}/assets/images/2016/thread-states.png" />
 </div>
 
-The memory area associated with a not-yet-created thread may have any content, and the thread is considered to be in the **undefined** state.
+A área de memória associada com a uma thread que ainda não fi criada pode ter algum conteúdo, e a _thread_ é considerada estar no estado **indefinido** (**undefined**).
 
-When a thread is created, it is placed into the **ready** state.
+Quando a _thread_ é criada, ela é colocada no estado **pronto** (**ready**).
 
-### The ready state
+### O estado pronto (ready)
 
-When threads become ready-to-run, they are inserted in the READY list and at the same time are placed in the **ready** state.
+Quando as _threads_ estão prontas para executar, elas são inseridas em uma lista _READY_  e ao mesmo tempo são colocadas no estado **pronto** (**ready**).
 
-At the next scheduling point, the oldest high-priority ready thread gets the CPU and is placed in the **running** state.
+No próximo ponto de escalonamento, a thread mais antiga de alta prioridade _pronta_ pega a CPU e é colocada no estado **em execução** (**running**).
 
-### The running state
+### O estado em execução (running)
 
-Only one thread may be **running** at a time. If a thread with higher priority becomes **ready**, the current running thread is preempted and moved back in the **ready** state; the higher priority thread becomes the **running** thread.
+Somente uma _thread_ pode estar **em execução** (**running**) por vez. se uma _thread_ com alta prioridade se torna **pronta** (**ready**), a _thread_ em execução no momento é preempitada e movida de volta para o estado **ready**; a _thread_ de maior prioridade se torna a _thread_ **em execução**.
 
-The **running** thread may found itself having nothing else to do for the moment; in this case it is placed into the **suspended** state and the next-highest-priority thread in the **ready** state is activated.
+A _thread_ **em execução** pode encontrar a se mesmo sem nada mais para fazer no momento; neste caso é colocada no estado **suspenso** (**suspended**) e a próxima _thread_ de alta prioridade no estado **ready** é ativada.
 
-### The suspended state
+### O estado suspenso (suspended)
 
-When threads are removed from the READY list, they are placed in the **suspended** state.
+Quando _threads_ são removidas da lista READY, elas são colocadas no estado **suspenso** (**suspended**).
 
-Internally, µOS++ has a single function to suspend a thread (`this_thread::suspend()`), and it does not differentiate between suspended states; it makes no difference if the thread is suspended to wait for a mutex to become unlocked, for a software timer to expire or for a timeout to break a wait.
+Internamente, µOS++ tem uma simples função para suspender uma _thread_  (`this_thread::suspend()`) e ela não diferencia entre estados de suspensão, ela não faz distinção se a _thread_ está suspensa por aguardar por um _mutex_ se tornar destravado, pelo tempo do software expirar ou por um prazo interromper uma espera.
 
-In the public APIs, all waiting functions, with or without timeouts, are implemented on top of the `this_thread::suspend()` function (actually on the internal `port::scheduler::reschedule()` used to implement `this_thread::suspend()` too).
+Na API pública, todas as funções de espera, com ou sem prazos, são implementadas sobre a função `this_thread::suspend()` (atualmente na função interna `port::scheduler::reschedule()` também usada para implementar `this_thread::suspend()`).
 
-The scheduler itself does not keep track of the suspended threads. It is the responsibility of the synchronisation objects that suspended the thread to link it to the specific object (mutex, semaphore, etc) waiting list, and possibly to the clock timeout list.
+O escalonador por si mesmo não mantem controle das _threads_ suspensas, ele é o responsável pela sincronização de objetos que suspenderam as _threads_ para linga-la a um objeto especifico (mutex, semáforos, etc) a lista de espera, e possivelmente a lista de espera.
 
-µOS++ has a single function to resume a thread (`thread::resume()`), and it makes no difference why the thread was suspended for, it is resumed and placed in the **ready** state anyway.
 
-### The terminated state
+µOS++ tem uma função simples para retomar a _thread_ (`thread::resume()`) e não faz diferença porque a _thread_ foi suspensa, ela é retomada e colocada no estado **pronto** (**ready**) de qualquer forma.
 
-When a thread is terminated, it is first put in the **terminated** state, and after resources associated to it are released, it is put in the **destroyed** state.
+### O estado finalizado (terminated)
+
+Quando uma _thread_ é finalizada, ela é primeira colocada no estado **finalizado** (**terminated**), e depois os recursos associados com ela são liberados, então é colocada no estado **destruída** (**destroyed**).
 
 ## The thread stack
 
