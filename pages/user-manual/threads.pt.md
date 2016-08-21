@@ -7,7 +7,7 @@ author: Liviu Ionescu
 translator: Carlos Delfino
 
 date: 2016-07-05 11:27:00 +0300
-last_modified_at: 2016-08-20 21:15:00 +0300
+last_modified_at: 2016-08-21 00:43:00 +0300
 
 ---
 {% comment %} 
@@ -984,24 +984,25 @@ os_main (int argc, char* argv[])
 }
 ```
 
-## Destroying threads
+## Destruindo _threads_
 
-If for infinite loop threads this is not an issue, since they are never destroyed, for run-to-completion threads it is important to properly terminate them, to ensure all resources are released.
+Se para uma _thread_ de loop infinito esto não é um problema, desde que ela nunca precisa ser destruída, para _threads_ _run-to-completion_ é importante a propriedade de ser finalizada, para assegurar que todos os recursos sejam liberados.
 
-There are several ways of terminating a thread:
+Há varias formas formas de se finalizar uma _thread_:
 
-- return from the thread function, which automatically invoke `this_thread::exit()`
-- manually invoke `this_thread::exit()`
-- one thread may kill another thread using `thread::kill()`
-- for threads defined in a local scope, if the block terminates, the thread destructor is automatically invoked (in C, `os_thread_destroy()` must be manually invoked).
+- retornar da função definida para a _thread_, que é automaticamente invoca `this_thread::exit()`
+- invocando manualmente `this_thread::exit()`
+- Uma _thread_ pode matar outra _thread_ usando `thread::kill()`
+- para _threads_ definidas no escopo local, se o bloco finaliza, o destrutor da _thread_ é automaticamente invocado (em C, deve ser manualmente invocado `os_thread_destroy()`).
 
-All these methods are functionally equivalent, in that the thread is destroyed, and, if the thread stack was dynamically allocated, this storage is automatically deallocated.
+Todos estes métodos são funcionalmente equivalentes, em todos a _thread_ é destruída e se o _stack_ da _thread_  foi dinamicamente alocado, este armazenamento é automaticamente desalocado.
 
-There is a subtle difference when the thread decides to terminate itself (by calling exit() or returning from the thread function, which is exactly the same): the thread termination can proceed only up to a point, but cannot complete the stack deallocation while still using the stack. To solve this, in µOS++ the thread adds itself to a list that will be later processed by the idle thread, and, by the next time idle is scheduled, the stack will be deallocated and the thread destruction will be finalised.
+Há uma certa diferença quando a _thread_ decide terminar a si mesma (chamando `exit()` ou retornando de uma função da _thread_, o que é exatamente a mesma coisa): A finalização da _thread_ pode proceder somente um ponto, mas não pode completar a desalocação do _stack_ quando enquanto continua usando-o. Para resolver esto, em uOS++ a _thread_ adiciona a si mesma para a lista que será processada depois pela _idle_ _thread_ e pela próxima vez que _idle_ é escalonada, o _stack_ será desalocado e a destruição da _thread_ será finalizada.
 
-In a well behaved system this is not a problem, because the idle thread is scheduled quite often, but in a busy system it might take some time.
+Em um sistema bem comportado isto não é um problema, porque a _thread_ _idle_ é agendada com bastante frequência, mas em um sistema sobrecarregado pode levar um certo tempo.
 
-If the thread is needed for immediate reuse, it is recommended for the parent thread to invoke `thread::kill()`, which will destroy the thread on the spot, without having to wait for idle to act as a hitman.
+Se a _thread_ é necessária para reuso imediato, é recomendado que as _threads_ pais invoquem `thread::kill()`, o que irá destruir a _thread_ na hora, sem ter que esperar pela _idle_ atuar como um matador.
+
 
 ## The current thread
 
