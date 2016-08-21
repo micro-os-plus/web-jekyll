@@ -7,7 +7,7 @@ author: Liviu Ionescu
 translator: Carlos Delfino
 
 date: 2016-07-05 11:27:00 +0300
-last_modified_at: 2016-08-20 20:30:00 +0300
+last_modified_at: 2016-08-20 21:15:00 +0300
 
 ---
 {% comment %} 
@@ -780,15 +780,16 @@ os_main (int argc, char* argv[])
 }
 ```
 
-## Other thread functions
+## Outras funções de _thread_
 
-The µOS++ thread API basically implements the POSIX threads, with several extensions.
+A API de _thread_ do  µOS++ basicamente implementa _threads_ POSIX, com várias extensões.
 
-### Getting the thread name
 
-The thread name is an optional string defined during thread object instance creation. It is generally used to identify the thread during debugging sessions.
+### Obter o nome da _thread_
 
-The C++ API is:
+O nome da _thread_ é uma _string_ opcional definido durante a criação da instância do objeto _thread_. Ele é geralmente usado para identificar a _thread_ durante seções de depuração.
+
+A API no C++:
 
 ``` c++
 thread th { "th", th_func, nullptr };
@@ -796,7 +797,7 @@ thread th { "th", th_func, nullptr };
 const char* name = th.name();
 ```
 
-The C API is:
+A API no C é:
 
 ``` c
 os_thread_t th;
@@ -805,11 +806,11 @@ os_thread_create(&th, "th", th_func, NULL, NULL };
 const char* name = os_thread_get_name(&th);
 ```
 
-### Setting/getting the thread priority
+### definindo/obtendo a prioridade da _thread_
 
-The thread priority can be accessed and modified by the thread itself, or by another thread.
+A prioridade da _thread_ pode ser acessada e modificada pela própria _thread_, ou por outras _threads_
 
-The C++ API is:
+A API no C++:
 
 ``` c++
 thread th { "th", th_func, nullptr };
@@ -817,8 +818,7 @@ thread th { "th", th_func, nullptr };
 thread::priority_t prio = th.priority();
 th.priority(thread::priority::high);
 ```
-
-The C API is:
+A API no C é:
 
 ``` c
 os_thread_t th;
@@ -828,11 +828,11 @@ os_thread_priority_t prio = os_thread_get_priority(&th);
 os_thread_set_priority(&th, os_thread_priority_high);
 ```
 
-### Getting the thread stack
+### Obtendo o _stack_ da _thread_
 
-The `thread::stack` is a separate object, managing the thread stack; the stack storage itself is not included in this object, but only a pointer to it is available.
+O `thread::stack` é um objeto separado, gerenciando o _stack_ da _thread_; o armazenamento do _stack_ por si próprio não é armazenado neste objeto, mas somente um ponteiro para ele está disponível.
 
-The C++ API is:
+A API no C++ é:
 
 ``` c++
 thread th { "th", th_func, nullptr };
@@ -846,7 +846,7 @@ bool bm = stack.check_bottom_magic();
 bool tm = stack.check_top_magic();
 ```
 
-The C API is:
+A API no C é:
 
 ``` c
 os_thread_t th;
@@ -861,9 +861,9 @@ bool bm = os_thread_stack_check_bottom_magic(stack);
 bool tm = os_thread_stack_check_top_magic(stack);
 ```
 
-### Getting the thread user storage
+### Obtendo o armazenamento de nível de usuário da _thread_
 
-The thread user storage is a user defined structure added to each thread storage.
+O armazenamento de nível de usuário da _thread_ é uma estrutura definida pelo usuário adicionada a cada armazenamento da _thread_.
 
 The C++ API is:
 
@@ -873,7 +873,7 @@ thread th { "th", th_func, nullptr };
 os_thread_user_storage_t* p = = th.user_storage();
 ```
 
-A similar example, but written in C:
+Um exemplo similar, mas escrito em C:
 
 ``` c
 os_thread_t th;
@@ -882,17 +882,17 @@ os_thread_create(&th, "th", th_func, NULL, NULL };
 os_thread_user_storage_t* p = os_thread_get_user_storage(&th);
 ```
 
-The content of `os_thread_user_storage_t` must be defined in `os-app-config.h`, together with `OS_INCLUDE_RTOS_CUSTOM_THREAD_USER_STORAGE`, which enables the user storage feature.
+O conteúdo de `os_thread_user_storage_t` deve ser definido em  `os-app-config.h`, juntamente com `OS_INCLUDE_RTOS_CUSTOM_THREAD_USER_STORAGE`, que habilita os recursos de armazenamento a nível de usuário.
 
-### Thread interruption
+### Interrupção da _Thread_
 
-For error processing purposes, it is sometimes useful for a monitoring thread to be able to interrupt another thread blocked in a waiting functions.
+Com o proposito de tratar processamento de erros, é muito útil para monitoramento da _thread_ ser possível interromper outra _thread_ bloqueada esperando uma função.
 
-For this purpose, each thread has an "interrupted" flag, that can be set/reset and checked.
+para este proposito, cada _thread_ tem um _flat_ *interrupted* (interrompida), que pode ser ativado/redefinido e verificado.
 
-When this flag is set, the thread is resumed and the blocking function, if written carefully, should check this flag and return `EINTR`.
+Quando este _flag_ é definida, a _thread_ é retomada e e função bloqueada, se escrita cuidadosamente, deve verificar este _flag_ e tretornar `EINTR`.
 
-After detecting the `EINTR` condition, the interrupted thread must clear the flag, with `thread::interrupt(false)` (in C `os_thread_set_interrupt(false)`).
+Depois de detectar a condição `EINTR`, a _thread_ interrompida deve limpar o flag, com  `thread::interrupt(false)` (em C `os_thread_set_interrupt(false)`).
 
 ``` c++
 /// @file app-main.cpp
@@ -937,7 +937,7 @@ os_main (int argc, char* argv[])
 }
 ```
 
-A similar example, but written in C:
+Um exemplo similar, mas escrito em C:
 
 ``` c
 /// @file app-main.c
