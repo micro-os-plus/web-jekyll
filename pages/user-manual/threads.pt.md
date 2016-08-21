@@ -38,7 +38,7 @@ Tarefas são implementadas como funções regulares em C, passadas para a chamad
 
 ## Funções _Thread_
 
-Há dois tipos de threads: *run-to-completion* (execute até terminar) e *infinite loop* (laço infinito). Em muitos sistemas embarcados, _threads_ tipicamente são executadas como laços infinitos.
+Há dois tipos de threads: *run-to-completion* (execute até terminar) e **infinite loop** (laço infinito). Em muitos sistemas embarcados, _threads_ tipicamente são executadas como laços infinitos.
 
 Como especificado pelo POSIX, **_threads_ podem terminar**, e como tal,  µOS++ implementa adequamento ambas as _threads_ _run-to-completion_ e _infinit loop_.
 
@@ -450,6 +450,7 @@ os_main (int argc, char* argv[])
 
 As instâncias de objetos de _threads_ podem também ser criados no _stack_ local, por exemplo no _stack_ da _thread_ principal. Certifique-se que o _stack_ é grande o suficiente para armazenar todas as definições de objetos locais.
 
+
 ``` c++
 /// @file app-main.cpp
 #include <cmsis-plus/rtos/os.h>
@@ -602,7 +603,7 @@ Com as _threads_ µOS++/CMSIS++ sendo uma implementação em C++ das _threads_ P
 
 Pra evitar conflitos com a biblioteca padrão  quando executando testes em uma plataformas sintéticas que já implementem o padrão C++ para _threads_, as definições são parte do _namespace_ `os::estd::` ("embedded" std), ao invés do _namespace_ `std::`.
 
-Quando usando o _namespace_ `os::estd::`é recomendado evitar definições `using namespace` abaixo do _namespace_ `os`; ao invés, use o _namespace_ `rtos` e `estd` explicitamente.
+Quando usando o _namespace_ `os::estd::` é recomendado evitar definições `using namespace` abaixo do _namespace_ `os`; ao invés, use o _namespace_ `rtos` e `estd` explicitamente.
 
 
 ``` c++
@@ -865,7 +866,7 @@ bool tm = os_thread_stack_check_top_magic(stack);
 
 O armazenamento de nível de usuário da _thread_ é uma estrutura definida pelo usuário adicionada a cada armazenamento da _thread_.
 
-The C++ API is:
+A API em C++ é:
 
 ``` c++
 thread th { "th", th_func, nullptr };
@@ -890,9 +891,9 @@ Com o proposito de tratar processamento de erros, é muito útil para monitorame
 
 para este proposito, cada _thread_ tem um _flat_ *interrupted* (interrompida), que pode ser ativado/redefinido e verificado.
 
-Quando este _flag_ é definida, a _thread_ é retomada e e função bloqueada, se escrita cuidadosamente, deve verificar este _flag_ e tretornar `EINTR`.
+Quando este _flag_ é definida, a _thread_ é retomada e a função bloqueada, se escrita cuidadosamente, deve verificar este _flag_ e retornar `EINTR`.
 
-Depois de detectar a condição `EINTR`, a _thread_ interrompida deve limpar o flag, com  `thread::interrupt(false)` (em C `os_thread_set_interrupt(false)`).
+Depois de detectar a condição `EINTR`, a _thread_ interrompida deve limpar o _flag_, com  `thread::interrupt(false)` (em C `os_thread_set_interrupt(false)`).
 
 ``` c++
 /// @file app-main.cpp
@@ -1006,9 +1007,9 @@ Se a _thread_ é necessária para reuso imediato, é recomendado que as _threads
 
 ## A _thread_ corrente
 
-Algumas funções de _thread_ (como `suspend()`) somente podem ser executadas na thread corrente, em outras palavras uma _thread_ não pode suspender outra, somente a própria _thread_ pode faze-lo.
+Algumas funções de _thread_ (como `suspend()`) somente podem ser executadas na _thread_ corrente, em outras palavras uma _thread_ não pode suspender outra, somente a própria _thread_ pode faze-lo.
 
-Para acessar funções especiais, em c++, um _namespace_ dedicado `this_thread` é usado (em C uma família de funções prefixadas com òs_this_thread_ é definida).
+Para acessar funções especiais, em C++, um _namespace_ dedicado `this_thread` é usado (em C uma família de funções prefixadas com òs_this_thread_ é definida).
 
 Para funções mais especificas, uma referência para a corrente _thread_ pode ser obtida com `this_thread::thread()`(em C com `os_this_thread()`);
 
@@ -1057,7 +1058,7 @@ Uma _thread_ pode estar em um de vários estados em um dado momento. O principal
 <img src="{{ site.baseurl }}/assets/images/2016/thread-states.png" />
 </div>
 
-A área de memória associada com a uma thread que ainda não fi criada pode ter algum conteúdo, e a _thread_ é considerada estar no estado **indefinido** (**undefined**).
+A área de memória associada com a uma _thread_ que ainda não fi criada pode ter algum conteúdo, e a _thread_ é considerada estar no estado **indefinido** (**undefined**).
 
 Quando a _thread_ é criada, ela é colocada no estado **pronto** (**ready**).
 
@@ -1065,7 +1066,7 @@ Quando a _thread_ é criada, ela é colocada no estado **pronto** (**ready**).
 
 Quando as _threads_ estão prontas para executar, elas são inseridas em uma lista _READY_  e ao mesmo tempo são colocadas no estado **pronto** (**ready**).
 
-No próximo ponto de escalonamento, a thread mais antiga de alta prioridade _pronta_ pega a CPU e é colocada no estado **em execução** (**running**).
+No próximo ponto de escalonamento, a _thread_ mais antiga de alta prioridade _pronta_ pega a CPU e é colocada no estado **em execução** (**running**).
 
 ### O estado em execução (running)
 
