@@ -1091,17 +1091,18 @@ O escalonador por si mesmo não mantem controle das _threads_ suspensas, ele é 
 
 Quando uma _thread_ é finalizada, ela é primeira colocada no estado **finalizado** (**terminated**), e depois os recursos associados com ela são liberados, então é colocada no estado **destruída** (**destroyed**).
 
-## The thread stack
+## A pilha (stack) da Thread
 
-The thread's stack has the same function as in a single-thread system: storage of return addresses of nested function calls, parameters and local variables, and temporary storage of intermediate results and register values.
+A pilha da _thread_  tem a mesma função que em um sistema de _thread_ simples: armazenar o endereço de retorno das funções encadeadas, parametros e variáveis locais, e armazenamento temporário de resusltados intermediários e valores dos registradores.
 
-### How much stack is required?
+### O quanto de pilha (stack) é exigido?
 
-Each thread has its own stack, with a fixed size determined during thread creation, and each thread has its own stack usage pattern. It is very difficult to compute the exact stack space required by a thread, especially when recursive algorithms are used.
+Cada _thread_ tem sua própria pilha (_stack_), que tem um valor fixo determinado durante a criação da _thread_, e cada _thread tem sua próprio padrão de uso da pilha. É muito dificil calcular o tamanho exato da pilha necessário para uma _thread_, especialmente quando algoritmos recursivos são usados.
 
-What most users do, is to start with some reasonable values, and adjust them if needed.
+O que muitos usuários fazem, é iniciar com algum valor rasoável, e ajustar então se necessário.
 
-µOS++ provides support for computing the thread stack available space, and a user defined monitoring mechanism can invoke it and detect low stack conditions.
+µOS++ fornece suporte para calcular o espaço da pilha disponível para a thread_ e o usuário define o mecanismos de monitoramento que invoca condições de baixo espaço da pilha.
+
 
 ``` c++
 /// @file app-main.cpp
@@ -1130,7 +1131,8 @@ th_func(void* args)
 }
 ```
 
-A similar example, but written in C:
+Um exemplo similar, porém escrito em C:
+
 
 ``` c
 /// @file app-main.c
@@ -1156,25 +1158,26 @@ th_func(void* args)
 }
 ```
 
-Note: For reentrancy reasons, the `trace::printf()` facility requires some stack space for its internal buffers, space that must be added to the effective space required by the application; for Cortex-M applications running in debugging mode, a stack of **2000 bytes** is a good starting point.
+Atençã0: por questões de reentrancia, a facilidade `trace::printf()` requer algum espaço de pilha para seus buffers internos, espaço que deve ser adicionado para o espaço efetivo requerido pela aplicação; para o Cortex-m, aplicações rodando em modo de depuração, a pilha de **2000 bytes** é um bom ponto de inicio.
 
-### Configuring the thread stack size
+### Configurando o tamanho da pilha do _stack_
 
-The stack size can be specified during creation time for each thread, using the `th_stack_size_bytes` thread attribute. If attributes are not used, or the provided value is zero, a default value is supplied.
+O tamanho do _stack_ pode ser especificado durante o tempo de criação de cada _thread_, usando o atributo da _thread_ `th_stack_size_bytes`. Se os atributos não são usados ou os valores fornecidos são zero, o valor padrão é fornecido.
 
-This default value can be set at any time using `thread::stack::default_size(std::size_t)` (in C with `os_thread_stack_set_default_size(size_t)`), and applies to all threads created afterwords.
+Este valor padrão pode ser definido a qualuqer momento usando `thread::stack::default_size(std::size_t)` (em C com  `os_thread_stack_set_default_size(size_t)`), e aplica para todas as _threads_ criadas depois.
 
-The initial value of the default stack size can be set during compile time with `OS_INTEGER_RTOS_DEFAULT_STACK_SIZE_BYTES`.
+O valor inicial do tamanho padrão da pilha pode ser definido durante o tempo de compilação com `OS_INTEGER_RTOS_DEFAULT_STACK_SIZE_BYTES`.
 
-### The minimum stack size
+### O tamanho mínimo da pilha
 
-For validation purposes, the thread creation code validates the thread stack size to be above a minimum value.
+Para questão de validação, o código da _thread_ valida o tamanho da pilha do _stack_ para que seja acima do valor mínimo.
 
-This value can be set at any time using `thread::stack::min_size(std::size_t)` (in C with `os_thread_stack_set_min_size(size_t)`), and applies to all threads created afterwords.
+Este valor pode ser definido a qualquer tempo usando `thread::stack::min_size(std::size_t)` (em  C com `os_thread_stack_set_min_size(size_t)`), e aplicar a todas as _threads_ criadas posteriormente.
 
-The initial value of the minimum stack size is defined by the port, but can be set during compile time with `OS_INTEGER_RTOS_MIN_STACK_SIZE_BYTES`.
+{% comment %}by the port{% endcomment %}
+Os valores iniciais do tamanho mínimo da pilha é definido pelo implementação, mas pode ser definida durante o tempo de compilação com `OS_INTEGER_RTOS_MIN_STACK_SIZE_BYTES`.
 
-The recommended location to set these defaults is at the beginning of the `os_main()` function:
+A localização recomendada para definir os valores padrões é no inicio da função `os_main()`:
 
 ``` c++
 /// @file app-main.cpp
@@ -1197,7 +1200,7 @@ os_main (int argc, char* argv[])
 }
 ```
 
-A similar example, but written in C:
+Um exemplo similar, porém em C:
 
 ``` c
 /// @file app-main.c
@@ -1217,9 +1220,9 @@ os_main (int argc, char* argv[])
 }
 ```
 
-### Configuring a user defined stack
+### Configurando uma pilha definida para o usuário
 
-Except when using the `thread_static` template, by default threads are created with a dynamically allocated stack. This can be changed to a user defined stack using the `th_stack_address` and `th_stack_size_bytes` thread attributes.
+Exceto quando usando o _template_ `thread_static`, pela _thread_ padrão são criadas com uma pilha alocada dinamicamente. Isso pode ser alterado pelo usuário definindo a pilha usando os atributos de _thread_ `th_stack_address` e `th_stack_size_bytes`.
 
 ``` c++
 thread::attributtes attr;
@@ -1230,7 +1233,7 @@ attr.th_stack_size_bytes = sizeof(th3_stack);
 thread th3 { "th3", th_func, nullptr, attr };
 ```
 
-A similar example, but written in C:
+Um exemplo similar, mas escrito em C:
 
 ``` c
 os_thread_attr_t attr3;
@@ -1245,13 +1248,13 @@ os_thread_t th3;
 os_thread_create(&th3, "th3", th_func, NULL, &attr3);
 ```
 
-### Detecting stack overflow
+### Detectando a sobrecarga da pilha
 
-Accurate stack overflow detection requires hardware support, not available on common Cortex-M devices.
+A detecção da sobrecarga da pilha requer suporte do hardware, que não é disponível nos dispositivos Cortex-M.
 
-Although not bullet proof, since it does not prevent the stack to overflow, but can tell if this event happened, is a software method, which stores a magic word at the bottom of the stack, and periodically checks it.
+Apesar que isso não é infalível, já que  não evita a sobrecarga do _stack_, mas pode informar se está por ocorrer, é um método por software, que armazena uma palavra mágica no topo da pilha, e periodicamente a verifica.
 
-µOS++ uses this method, and checks the stack during each context switches; an assert `stack ().check_bottom_magic ()` is triggered in the `thread::_relink_running()` function if the stack overflow damaged the magic word.
+µOS++ usa este método, e verifica a pilha durante a troca de contexto; uma assertiva `stack().check_bottom_magic()` é lançada na função  `thread::_relink_running()` se o estouro da pilha danifica a palavra mágica
 
 ## The idle thread
 
