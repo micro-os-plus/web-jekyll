@@ -1256,17 +1256,17 @@ Apesar que isso não é infalível, já que  não evita a sobrecarga do _stack_,
 
 µOS++ usa este método, e verifica a pilha durante a troca de contexto; uma assertiva `stack().check_bottom_magic()` é lançada na função  `thread::_relink_running()` se o estouro da pilha danifica a palavra mágica
 
-## The idle thread
+## A thread inativa (idle)
 
-The **idle** thread is a mandatory internal component of µOS++. It is the lowest priority thread, always ready to run when no other threads are active. The initialisation code always creates the idle thread, way before the scheduler is started.
+A _thread_ inativa (idle) é um componente interno do µOS++. Ela é uma _thread_ de baixa prioridade, sempre pronta para executar quando outras _threads_ não estão ativas. O código de inicialização sempre cria a _thread_ inativa, sempre antes do escalonador ser inicializado.
 
-The idle thread manages a list of threads terminated and waiting to be destroyed. The `thread::exit()` call links the terminating thread to this list, since it cannot destroy the thread while still running on the thread stack.
+A _thread_ inativa gerencia a lista de _threads_ finalizadas e aguardando por serem destruídas. A chamada para `thread::exit()` liga a _thread_ sendo finalizada para esta lista, desde que ela não pode destruir a _thread_ enquanto ainda está em execução na pilha de _thread_.
 
-When the idle thread is resumed, it first checks this list, and, if any threads are present, they are fully destroyed and possibly the stack space is deallocated.
+Enquanto a _thread_ inativa é retomada, ela primeiro verifica esta lista e se alguma _thread_ está presente, ela são totalmente destruídas e possibilita que o espaço da pilha seja desalocado.
 
-When the idle thread has nothing else to do, it places the CPU into sleep, and waits for the next interrupt (the Cortex-M devices use the **Wait For Interrupt - WFI** instruction for this).
+Quando a _thread_ inativa não tem nada para ser feito, ela coloca a CPU em modo _sleep_, e aguarda por uma próxima interrupção (os dispositivos Cortex-M usa a instrução "Aguarde por uma Interrupção" - **Wait For Interrupt - WFI** para isso).
 
-If needed, the **idle** thread stack size can be configured during compile time with `OS_INTEGER_RTOS_IDLE_STACK_SIZE_BYTES`.
+Se necessário, o tamanho da pilha da _thread_ **inativa** pode ser configurado durante o tempo de compilação com `OS_INTEGER_RTOS_IDLE_STACK_SIZE_BYTES`.
 
 ## The main thread
 
