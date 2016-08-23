@@ -7,7 +7,7 @@ author: Liviu Ionescu
 translator: Carlos Delfino
 
 date: 2016-07-05 11:27:00 +0300
-last_modified_at: 2016-08-21 15:45:00 +0300
+last_modified_at: 2016-08-23 17:55:00 +0300
 
 ---
 {% comment %} 
@@ -1268,10 +1268,10 @@ Quando a _thread_ inativa não tem nada para ser feito, ela coloca a CPU em modo
 
 Se necessário, o tamanho da pilha da _thread_ **inativa** pode ser configurado durante o tempo de compilação com `OS_INTEGER_RTOS_IDLE_STACK_SIZE_BYTES`.
 
-## The main thread
+## A thread principal
 
-The main thread is an optional internal component of µOS++. If the `main()` function is not defined by the application, a weak default version of it is provided by µOS++.
+A _thread_ principal é um componente interno opcional para o µOS++. Se a função `main()` não é definida pela aplicação, uma versão padrão e vazia é provida pelo µOS++.
 
-This default `main()` function creates an initial thread called exactly **main**, with normal priority, that is configured to start the user-provided function `os_main(int argc, char* argv[])` as the thread function.
+Esta função `main()`cria uma thread inicial chamada exatamente **main**, com prioridade normal, que é configurada para iniciar a função `os_main(int argc, char* argv[])` fornecida pelo usuário com sendo a função da _thread_
 
-If needed, the **main** thread stack size can be configured during compile time with `OS_INTEGER_RTOS_MAIN_STACK_SIZE_BYTES`.
+Se necessário, o tamanho da pilha da _thread_ **main** pode ser configurado durante o tempo de compilação com `OS_INTEGER_RTOS_MAIN_STACK_SIZE_BYTES`.
