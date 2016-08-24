@@ -7,7 +7,7 @@ author: Liviu Ionescu
 translator: Carlos Delfino
 
 date: 2016-08-23 17:55:00 +0300
-last_updated_at:  2016-08-23 17:55:00 +0300
+last_updated_at:  2016-08-23 21:05:00 +0300
 
 ---
 {% comment %}
@@ -16,13 +16,14 @@ start_translate_at:  2016-08-23 17:55:00 +0300
 
 {% endcomment %}
 
-## Overview
+## Visão Geral
 
-µOS++ IIIe is a POSIX-like, portable, open source, royalty-free, multi-tasking real-time operating system intended for 32/64-bits embedded applications.
+µOS++ IIIe é um sistema operacional POSIX-like, portável, código aberto, livre de royalties, multi tarefa, real-time, destinado a aplicações embarcadas 32/64-bits.
 
-µOS++ IIIe is written in **modern C++ 11**, with C++ applications in mind, but also provides equally functional C APIs.
 
-µOS++ IIIe is the third edition of µOS++, offering all of the services expected from a modern real-time system including resource management, synchronization, inter-thread communication, and more. µOS++ IIIe also offers many features not found in many other real-time systems, such as both C++ and C APIs, POSIX-like threads, POSIX synchronisation objects, use of standard C++ memory allocators, and more.
+µOS++ IIIe é escrito no **Moderno C++ 11**, com aplicações C++ em mente, mas também oferece funcionalidades iguais através de APIs em C.
+
+µOS++ IIIe é a terceira edição do µOS++, oferecendo todos os serviços esperados de um sistema real-time moderno, incluindo gerencimaneto de recursos, sincronização, comunicação _inter-thread_, e mais. µOS++ IIIe também oferece muitos recursos não encontrados em muitos outros sistemas real-time, como ambas as APIs em C++ e C, _threads_ POSIX-like, sincronização POSIX de objetos, uso de alocadores de memória em C++ e muito mais.
 
 ## Features
 
