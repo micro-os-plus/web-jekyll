@@ -25,122 +25,125 @@ start_translate_at:  2016-08-23 17:55:00 +0300
 
 µOS++ IIIe é a terceira edição do µOS++, oferecendo todos os serviços esperados de um sistema real-time moderno, incluindo gerencimaneto de recursos, sincronização, comunicação _inter-thread_, e mais. µOS++ IIIe também oferece muitos recursos não encontrados em muitos outros sistemas real-time, como ambas as APIs em C++ e C, _threads_ POSIX-like, sincronização POSIX de objetos, uso de alocadores de memória em C++ e muito mais.
 
-## Features
+## Recursos
 
-Here is a list of features provided by µOS++ IIIe.
+Há uma lista de recursos oferecidos pelo µOS++ IIIe.
 
-### Source code
+### Código Fonte
 
-µOS++ is an **open source project**, provided under the very **permissive terms of the MIT license**.
+µOS++ é um **projeto de código aberta (Open Source)**, fornecido sobre altamente **permissivos termos da licença do MIT**.
 
-The source code availability not only helps debugging, but also greatly improves the general understanding of the entire run environment, resulting in better and more robust applications.
+O código aberto disponível não somente ajuda a depurar, mas também melhora grandemente o entendimento geral de todo o ambiente de execução, resultando em uma aplicação melhor e mais robusta.
 
-### Multiple C++ and C APIs
+### Multiplas APIs C++ e C
 
-µOS++ is based on CMSIS++, and provides services via multiple APIs, covering both C++ and C applications.
+µOS++ é baseado no CMSIS++, e fornece serviços via multiplas APIs, convergindo aplicações C++ e C.
 
-The supported APIs are:
+As APIs suportadas são:
 
-- CMSIS++ RTOS C++ API - the native µOS++ IIIe C++ API, giving direct access to the system services;
-- CMSIS++ RTOS C API - a 1:1 C wrapper on top of the C++ API;
-- ISO C++ Threads API - an implementation of the standard ISO threads on top of the C++ API;
-- ARM CMSIS RTOS v1 API - a compatibility layer with ARM CMSIS RTOS
+- CMSIS++ RTOS C++ API - A API C++ nativa do µOS++ IIIe C++ API, dá acesso direto aos serviços de sistemas;
+- CMSIS++ RTOS C API - Um Wrapper C 1 por 1 no topo da API C++;
+- ISO C++ Threads API - Uma implementação do padrão ISO de _threads_ sobre a API C++;
+- ARM CMSIS RTOS v1 API - Uma camada de compatibilização com ARM CMSIS RTOS.
 
-The CMSIS++ RTOS C API allows to write plain C applications, even if the RTOS core is written in C++.
+A API C do CMSIS++ permite escrever aplicações em C puro, mesmo se o core é escrito em C++.
 
-The ARM CMSIS RTOS API allows to run legacy applications, written for the ARM RTOS API.
+A API  ARM CMSIS RTOS permite rodar aplicações legadas, escrita para ARM RTOS API
 
-The ISO C++ Threads API provides a convenient way to run ISO standard code with almost no changes.
+A API _Threads_ ISO C++ fornece uma forma conviniente para executar código ISO padrão sem nenhuma alteração.
 
-### POSIX-like APIs
+### APIs POSIX-like
 
-The design of the core APIs was heavily influenced by the POSIX threads specs. From this point of view, µOS++ can also be seen as **POSIX++**, a C++ version of POSIX.
+O projeto das APIs de core foram fortemente influenciadas pelas especificações de _threads_ do POSIX. Deste ponto  de vista, µOS++ pode também ser visto com  **POSIX++**, uma versão  C++ do POSIX.
 
-POSIX compatibility is a very important feature, since POSIX is a mature and well established portable standard, and the experience gained while using POSIX on larger systems can improve productivity of embedded application developers too.
+A compatibilidade com POSIX é um recurso muito importante, desde que o POSIX é um padrão portável maduro e bem estabelecido e experiência obtida enquanto usando um grande sistema POSIX pode aumentar também a produtividade de desenvolvedores de aplicação embarcadas.
 
 ### ISO thread C++ API
 
-µOS++ also implements the standard ISO C++ thread API, including the `chrono` functionality.
+µOS++ também implementa o padrão de API ISO C++ para _threads_, incluindo a funcionalidade `chrono`.
 
-The ISO C++ 14882:2011 introduced a standard API for threads, mutexes, condition variables, locks, time related functions, etc.
+O ISO C++ 14882:2011 introduziu uma API padrão para _threads_, mutexes, variáveis condicionais, locks, funções relacionadas a tempo, etc.
 
-This API is relatively easy to use, the overhead is low, and, if sharing code with some server environments is required, this may be a very interesting solution.
+Esta API é relativamente fácil de usar, a sobrecarga é baixa e se compartilhar código com algum ambiente de servidor é necessário, isto pode ser uma solução bem interessante.
 
-### Consistent APIs
 
-The APIs used by µOS++ are highly consistent. Once familiar with the coding conventions used, it is simple to predict the functions to call for the services required, and even predict which arguments are needed. For example, in the C API a pointer to an object is always the first argument, most functions return a POSIX error code, etc.
+### APIs Consistente
 
-This translates into increased productivity and improved code readability over time.
+As APIs usadas pelo µOS++ são altamente consistente. Uma com as convenções de código usadas, é simples prever qual função chamar para um serviços necessário, e também prever quais argumentos são necessários. Por exemplo, na API C um ponteiro para um objeto é sempre o primeiro argumento, muitas funções retornam um código de erro POSIX, etc.
 
-### Preemptive multi-tasking
 
-µOS++ implements a priority based, preemptive, multi-tasking scheduler and therefore, µOS++ always runs the most important ready-to-run thread.
+Isso se traduz em aumento de produtividade e melhoria de legibilidade do código ao longo do tempo.
 
-For real-time systems, this improves the reaction speed and helps meeting the required deadlines.
 
-### Round robin scheduling
+### Preemptição de multi-tarefa
 
-µOS++ allows multiple threads to run at the same priority level. When multiple threads at the same priority are ready to run, they are scheduled in a round-robin way.
+µOS++ implementa um escalonador baseado em prioridade, preemptivo, multi tarefa e para este fim, µOS++ sempre roda a a thread mais importante pronta para executar.
 
-This scheduling algorithm provides a fair distribution of the CPU time to common threads that do not have special needs, and can all share a common priority.
+Para um sistema real-time, isso melhora a velocidade de reação e ajuda encontrar os prazos requeridos.
 
-### Low interrupt disable time
+### Escalonador Round robin 
 
-µOS++ has a number of internal data structures and variables that it needs to access atomically. To ensure this, µOS++ disables interrupts for very short periods, to ensure minimal interrupt latency.
+µOS++ permite múltiplas _theards_ executar no mesmo nível de prioridade. Quando múltiplas _threads_ no mesmo nível de prioridade estão prontas para executar, elas são agendadas através do método round-robin.
 
-Keeping the critical sections short gives a chance to fast interrupts to occur and system responsiveness is increased.
+Este algoritmo de agendamento, fornece uma distribuição justa do tempo da CPU para _threads_ comuns que não tem necessidades especiais, e pode compartilhar uma prioridade comum.
 
-### Safe nested critical sections
+### Baixo tempo de desativação de interrupções
 
-To avoid subtle bugs, the µOS++ critical sections are designed to be easily nested, saving the initial status during enter and restoring it while exiting.
+µOS++ tem um número interno de estruturas de dados e variáveis que precisam ser acessadas atomicamente, Para assegurar isso, µOS++  desabilita interrupções por um curto período, para assegurar a latência mínima.
 
-This save implementation allows to invoke µOS++ system calls from any environment, including from callbacks coming from code using poorly implemented critical sections (for example those using counters to tell when to re-enable interrupts).
+Mantendo as seções criticas curtas, dá a chance de interrupções rápidas ocorrerem e e a capacidade de resposta do sistema é aumentada.
 
-To be noted that the reverse is not true, calling library functions that implement critical sections using counters from environments where the interrupts are disabled possibly introduces a synchronisation problem, since the those functions will erroneously enable the interrupts.
+### Seções criticas seguras aninhadas
 
-### Configurable
+para evitar bugs sutis, as seções criticas do µOS++ são definidas para serem facilmente aninhadas, armazenando o estado inicial durante a entrada e restaurando as quando saindo.
 
-The footprint (both code and data) can be adjusted based on the requirements of the application. This is performed at compile time through many available `#defines` (see `os-app-config.h`). µOS++ also performs a number of run-time checks on arguments passed to its services, like not passing NULL pointers, not calling thread level services from ISRs, that arguments are within allowable range, and options specified are valid, etc. These checks can be disabled (at compile time) to further reduce the code footprint and improve performance.
+Estas implementação de armazenamento permite invocar chamadas de sistemas do µOS++  de qualquer ambiente, incluindo callbacks desenvolvidos com código que usam implementações inadequadas de seções criticas (por exemplo aqueles que usam contadores para informar quando re-abilitar interrupções).
+
+Deve ser observado que o inverso não verdade, chamar bibliotecas de funções que implementam seções criticas usando contadores do ambiente quando a interrupção estão desabilitadas possibilita introduzir um problema de sincronização, desde que estas funções erroneamente habilitarão as interrupções.
+
+### Configurável
+
+As configurações (ambos dados e códigos) podem ser ajustadas baseadas nas demandas da aplicação. Isso é executado em tempo de compilação através de muitos `#define` disponíveis (veja òs-app-config.h`). µOS++ também executa um número de verificações em tempo de execução nos argumentos passados para seus serviços, como não passar ponteiros NULL, não chamar serviços de nível _threads_ de dentro de ISRs, quais argumentos estão na faixa permitida, e opções informadas são válidas, etc. Estas verificações podem ser desabilitadas (em tempo de compilação) para reduzir o tamanho do código e melhorar a performance.
 
 ### Modular
 
-By a careful design, only those functions that are required are linked into an application, keeping the ROM size small.
+Por um cuidado do projeto, somente as funções que são necessárias são lincadas em uma aplicação, mantendo o tamanho da ROM pequeno.
 
-### Portable
+### Portabilidade
 
-By design µOS++/CMSIS++ is highly portable; it was developed mostly on macOS and its tests are constantly run on both 32 and 64-bits platforms.
+Por projeto µOS++/CMSIS++ é altamente portável; ele foi desenvolvido boa parte em um MacOS e seus testes são constantemente executados tanto em plataforma 32 como 64-bits.
 
-### ROMable
+### Habilitado para ROM
 
-µOS++ was designed especially for embedded systems and can be ROMed along with the application code.
+µOS++ foi projetado especialmente para sistemas embarcados e pode ser gravado na ROM juntamente com o código da aplicação.
 
-This is important for modern microcontrollers, which include large amounts of flash internally, and can execute code from there, without having to copy it to RAM.
+Isso é importante para microcontroladores modernos, que incluem larga quantidade de memória flash internamente, e pode executar codigo dela, sem ter que copiar para RAM.
 
-### Fully statically allocated
+### Totalmente alocado estaticamente
 
-µOS++ itself is fully statically allocated, it does not require dynamic memory, which makes it a perfect fit for special applications that cannot tolerate the risks associated with fragmentation.
+µOS++ por sí é totalmente alocado estaticamente, ele não requer memória dinâmica.que o torna perfeito para aplicações especiais que não toleram riscos associados com fragmentações.
 
-### Users choice of memory allocation
+### Escolha do usuário para alocação de memória
 
-For objects that require additional memory, the user has full control on using either **statically** or **dynamically** allocated memory.
+Para objetos que requerem memoria adicional, o usuário tem total controle de usar ou memória alocada estaticamente ou dinamicamente.
 
-µOS++ can be used to build special applications that are not allowed to use dynamic allocations.
+µOS++ pode ser usado para construir aplicações especiais que não são permitidas usar alocação dinâmica.
 
-### Custom memory allocators
+### Alocadores de memória personalizados
 
-In the µOS++ C++ API, all objects requiring additional memory can be configured to use a custom memory allocator, so, at the limit, each object can be allocated using a separate allocator.
+Na API C++ do µOS++, todos os objetos que requerem memória adicional podem ser configurados para usar um alocador de memória personalizado, para, com limite, cada objeto possa ser alocado usando um alocador separado.
 
-### Unlimited number of threads
+### Ilimitado números de threads
 
-µOS++ supports an unlimited number of threads. From a practical standpoint, however, the number of threads is actually limited by the amount of memory (both code and data space) that the processor has access to. Each thread requires its own stack; µOS++ provides features to allow stack growth to be monitored at run-time.
+µOS++ suporta um número ilimitado de _threads_. De um ponto de vista prático, porém, o numero de _threads_ é atualmente limitado pela quantidade de memória (ambos os espaços de código e dados) que o processador pode acessar, Cada _thread_ requer sua própria pilha (_stack_); µOS++ fornece recursos que permite monitorar em tempo de execução o crescimento da pilha.
 
-The default stack size and the minimum stack size can be configured by the user.
+O tamanho padrão do pilha e o tamanho mínimo da pilha pode ser configurado pelo usuário.
 
-### Unlimited number of system objects
+### Número ilimitado de objetos de sisteas.
 
-µOS++ allows for any number of threads, semaphores, mutexes, event flags, message queues, timers, memory pools, etc. The user at run-time allocates all system objects, either as global static objects, stack objects, or dynamically allocated objects.
+µOS++ permite qualquer quantidade de _threads_, semáforos, _mutexes_, _flags_ de eventos, filas de mensagens, _timers_, e bancos de memória, etc. O usuário em tempo de execução aloca todos os objetos de sistemas, seja como objetos estáticos globais, pilha de objetos ou objetos alocados dinamicamente.
 
-Not having to statically define at compile time the maximum number of objects is very convenient.
+Não tendo que definir estaticamente em tempo de compilação o numero máximo de objetos é muito conveniente.
 
 ### POSIX mutexes
 
