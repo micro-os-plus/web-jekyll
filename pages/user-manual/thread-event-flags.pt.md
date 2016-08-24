@@ -37,9 +37,9 @@ Em termos de linguagem de programação, ativar flags é o equivalente a fazer u
 
 Se a _thread_ foi suspensa e aguarda por _flags_, ela é retomada.
 
-## Waiting for thread event flags
+## Esperando pelas flags de eventos de _thread_
 
-A thread can check at any time if an expected set of flags are raised; it is possible to check if all flags in a set are raised, or if any flag in a set is raised.
+Uma _thread_ pode verificar a qualquer momento se um conjunto de _flags_ esperados foram ativados; é possível verificar se todas as _flags_ em um conjunto são ativados, ou se alguma _flag_ em um conjunto foi ativada.
 
 ``` c++
 /// @file app-main.cpp
@@ -91,8 +91,7 @@ os_main (int argc, char* argv[])
   return 0;
 }
 ```
-
-A similar example, but written in C:
+Um exemplo similar, mas escrito em C:
 
 ``` c
 /// @file app-main.c
@@ -150,7 +149,7 @@ os_main (int argc, char* argv[])
 }
 ```
 
-To check if any flag in the set is raised, use `flags::mode::any` (in C use `os_flags_mode_any`).
+Para verificar se alguma _flag_ no conjunto está ativa, use  `flags::mode::any` (em C use `os_flags_mode_any`).
 
 ## Other thread event flags functions
 
