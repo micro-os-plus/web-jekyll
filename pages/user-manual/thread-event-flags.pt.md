@@ -7,7 +7,7 @@ author: Liviu Ionescu
 translator: Carlos Delfino
 
 date: 2016-07-08 09:37:00 +0300
-last_updated_at:  2016-08-24 18:45:00 +0300
+last_updated_at:  2016-08-24 20:20:00 +0300
 
 ---
 {% comment %}
@@ -151,39 +151,38 @@ os_main (int argc, char* argv[])
 
 Para verificar se alguma _flag_ no conjunto está ativa, use  `flags::mode::any` (em C use `os_flags_mode_any`).
 
-## Other thread event flags functions
+## Outras funções de flags de eventos de _thread_
 
-As presented in the above example, the common use case of the thread event flags is to automatically clear the raised flags after testing. For special cases it might be useful to individually read and clear each flag.
+Como apresentado no exemplo acima, o caso comum de uso das _flags_ de eventos da _thread_  é automaticamente limpar as _flags_ lançadas após testar. Para casos especiais isso pode ser útil para individualmente ler ou limpar cada _flag_.
 
-### Getting individual flags
+### Obtendo _flags_ individuais
 
-It is possible for one thread to selectively read its own flags, and possibly clear them afterwards. To prevent clearing, pass a 0 mode value.
+É possível para uma _thread_ seletivamente ler sua própria _flags_ e possívelmene limpar então depois, para evitar limpa-la, passe um valor modo 0.
 
-Only the flags present in the mask are affected.
+Somente os _flags_ presentes na mascara serão afetados.
 
 ``` c++
 flags::mask_t mask = this_thread::flags_get(0x2, flags::mode::clear);
 ```
 
-A similar example, but written in C:
+Um exemplo similar, mas escrito em C:
 
 ``` c
 os_flags_mask_t mask = os_this_thread_flags_get(0x2, os_flags_mode_clear);
 ```
 
-### Clearing individual flags
+### Limpando _flags_ individuais
 
-It is possible for one thread to selectively clear its own flags, and possibly get the value of the flags before clearing. If the passed pointer is null, the previous values of the selected flags are
-lost.
+É possível para uma _thread_ limpar seletivamente suas próprias _flags_, e possivelmente obter o valor das _flags_ antes de limpa-las. Se o ponteiro informado é _null_, os valores anteriores das _flags_ selecionadas são perdidos.
 
-Only the flags present in the mask are affected.
+Somente as _flags_ presentes no mascara serão afetadas.
 
 ``` c++
 flags::mask_t mask;
 this_thread::flags_clear(0x2, &mask);
 ```
 
-A similar example, but written in C:
+Um exemplo similar, mas escrito em C:
 
 ``` c
 os_flags_mask_t mask;
