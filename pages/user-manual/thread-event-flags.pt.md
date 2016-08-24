@@ -17,17 +17,17 @@ start_translate_at:  2016-08-24 18:45:00 +0300
 {% endcomment %}
 
 
-## Overview
+## Visão Geral
 
-Traditionally, one of the first inter-process communication methods provided by Unix was sending signals from one process to another. Although limited, this method still has its benefits, and all later POSIX systems preserved and enhanced it.
+Tradicionalmente, um dos primeiros métodos de comunicação entre processos oferecidos pelo Unix foi enviar sinais de um processo a outro. Apesar de limitado, este método tem beneficios, e todos os sistemas POSIX posteriores preservaram e aperfeiçoaram isso.
 
-However, for embedded systems, the implementation is a bit too heavy, and, for the moment, was not considered appropriate.
+Porém, para sistemas embarcados, a implementação é um pouco mais pesada e para o momento não tem sido considerada apropriada.
 
-Instead, a light mechanism was adopted, the thread event flags, very similar to the generic event flags, but specific to each thread.
+Ao invés disso, um mecanismo mais leve foi adotado, flags de eventos de _threads_, muito similar a flags de eventos genéricos, mas especifico pra cada _thread_.
 
-This mechanism provides a number of separate flags for each thread, that can be raised by other threads or ISRs, and can be checked by the owner thread in various ways, including with blocked waits on multiple flags.
+Este mecanismo fornece um número separado de flags para cada _thread_, que pode ser lançado para outras _threads_ ou ISRs, e pode ser verificado pelo proprietário da _thread_ de várias formas, incluindo com esperas bloqueadas em múltiplas flags.
 
-Each such event flag can be considered as a simplified binary semaphore, that can be posted from outside and the thread can wait for it.
+Cada flag de evento pode ser considerado como um semáforo binário simplificado, que pode ser postado de fora e a _thread_ pode aguadar por ele.
 
 ## Raising thread event flags
 
