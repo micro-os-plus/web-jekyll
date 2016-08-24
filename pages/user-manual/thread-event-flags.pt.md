@@ -29,13 +29,13 @@ Este mecanismo fornece um número separado de flags para cada _thread_, que pode
 
 Cada flag de evento pode ser considerado como um semáforo binário simplificado, que pode ser postado de fora e a _thread_ pode aguadar por ele.
 
-## Raising thread event flags
+## Ativar flag de eventos da _thread_
 
-As long as the thread identity is known, any other thread or ISR can raise any set of flags, at any time.
+Assim que a identidade da _thread_ é conhecida, alguma outra _thread_ ou ISR pode ativar um conjunto de _flags_, a qualquer momento.
 
-In programing language terms, raising flags is equivalent to OR-ing the corresponding bits in the thread event flags mask. Once raised, the flag remains raised until it is checked by the thread, or explicitly cleared by the thread. Raising an already raised flag is a no-op.
+Em termos de linguagem de programação, ativar flags é o equivalente a fazer um OR (OU Lógico) nos bits correspondentes na mascara de eventos da _flag_ da _thread_. Uma vez ativado, a _flag_ se mante ativa até ela ser verificada pela _thread_, ou explicitamente limpa pela _thread_. Ativar uma _flag_ já ativada é um no-op.
 
-If the thread was suspended and waits for flags, it is resumed.
+Se a _thread_ foi suspensa e aguarda por _flags_, ela é retomada.
 
 ## Waiting for thread event flags
 
