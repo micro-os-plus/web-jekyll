@@ -7,7 +7,7 @@ author: Liviu Ionescu
 translator: Carlos Delfino
 
 date: 2016-08-23 17:55:00 +0300
-last_updated_at:  2016-08-23 21:05:00 +0300
+last_updated_at:  2016-08-24 18:35:00 +0300
 
 ---
 {% comment %}
@@ -35,7 +35,7 @@ Há uma lista de recursos oferecidos pelo µOS++ IIIe.
 
 O código aberto disponível não somente ajuda a depurar, mas também melhora grandemente o entendimento geral de todo o ambiente de execução, resultando em uma aplicação melhor e mais robusta.
 
-### Multiplas APIs C++ e C
+### Múltiplas APIs C++ e C
 
 µOS++ é baseado no CMSIS++, e fornece serviços via multiplas APIs, convergindo aplicações C++ e C.
 
@@ -75,13 +75,13 @@ As APIs usadas pelo µOS++ são altamente consistente. Uma com as convenções d
 Isso se traduz em aumento de produtividade e melhoria de legibilidade do código ao longo do tempo.
 
 
-### Preemptição de multi-tarefa
+### Preempção de multi-tarefa
 
-µOS++ implementa um escalonador baseado em prioridade, preemptivo, multi tarefa e para este fim, µOS++ sempre roda a a thread mais importante pronta para executar.
+µOS++ implementa um escalonador baseado em prioridade, preemptivo, multi tarefa e para este fim, µOS++ sempre roda a a _thread_ mais importante pronta para executar.
 
 Para um sistema real-time, isso melhora a velocidade de reação e ajuda encontrar os prazos requeridos.
 
-### Escalonador Round robin 
+### Escalonador Round-Robin 
 
 µOS++ permite múltiplas _theards_ executar no mesmo nível de prioridade. Quando múltiplas _threads_ no mesmo nível de prioridade estão prontas para executar, elas são agendadas através do método round-robin.
 
@@ -97,13 +97,13 @@ Mantendo as seções criticas curtas, dá a chance de interrupções rápidas oc
 
 para evitar bugs sutis, as seções criticas do µOS++ são definidas para serem facilmente aninhadas, armazenando o estado inicial durante a entrada e restaurando as quando saindo.
 
-Estas implementação de armazenamento permite invocar chamadas de sistemas do µOS++  de qualquer ambiente, incluindo callbacks desenvolvidos com código que usam implementações inadequadas de seções criticas (por exemplo aqueles que usam contadores para informar quando re-abilitar interrupções).
+Estas implementação de armazenamento permite invocar chamadas de sistemas do µOS++  de qualquer ambiente, incluindo callbacks desenvolvidos com código que usam implementações inadequadas de seções criticas (por exemplo aqueles que usam contadores para informar quando re-habilitar interrupções).
 
 Deve ser observado que o inverso não verdade, chamar bibliotecas de funções que implementam seções criticas usando contadores do ambiente quando a interrupção estão desabilitadas possibilita introduzir um problema de sincronização, desde que estas funções erroneamente habilitarão as interrupções.
 
 ### Configurável
 
-As configurações (ambos dados e códigos) podem ser ajustadas baseadas nas demandas da aplicação. Isso é executado em tempo de compilação através de muitos `#define` disponíveis (veja òs-app-config.h`). µOS++ também executa um número de verificações em tempo de execução nos argumentos passados para seus serviços, como não passar ponteiros NULL, não chamar serviços de nível _threads_ de dentro de ISRs, quais argumentos estão na faixa permitida, e opções informadas são válidas, etc. Estas verificações podem ser desabilitadas (em tempo de compilação) para reduzir o tamanho do código e melhorar a performance.
+As configurações (ambos dados e códigos) podem ser ajustadas baseadas nas demandas da aplicação. Isso é executado em tempo de compilação através de muitos `#define` disponíveis (veja `os-app-config.h`). µOS++ também executa um número de verificações em tempo de execução nos argumentos passados para seus serviços, como não passar ponteiros NULL, não chamar serviços de nível _threads_ de dentro de ISRs, quais argumentos estão na faixa permitida, e opções informadas são válidas, etc. Estas verificações podem ser desabilitadas (em tempo de compilação) para reduzir o tamanho do código e melhorar a performance.
 
 ### Modular
 
@@ -147,58 +147,58 @@ Não tendo que definir estaticamente em tempo de compilação o numero máximo d
 
 ### POSIX mutexes
 
-Mutexes with POSIX functionality are provided for resource management. Both normal and recursive mutexes are available. Mutexes can be configured to have built-in priority inheritance, which eliminate unbounded priority inversions.
+Mutexes com funcionalidades POSIX são fornecidos para gerenciamento de recursos. Ambos mutexes, normal e recursivos, estão disponíveis. Mutexes podem ser configurados para ter herança de prioridade embutida, que eliminam as inversões de prioridades ilimitadas.
 
-### Software timers
+### _Timers_ por softwares
 
-Timers are countdown counters that perform a user-definable action upon counting down to 0. Each timer can have its own action and, if a timer is periodic, the timer is automatically reloaded and the action is executed every time the countdown reaches zero.
+_Timers_ são contadores regressivos que executam uma ação definida pelo usuário a cada vez que a contagem chega a 0. Cada _timer_ pode ter sua própria ação e, se um _timer_ é periódico, o _timer_ é automaticamente recarregado e a ação é executada a cada vez que a contagem atinge zero.
 
-### Thread Signals
+### Sinalização de _Thread_
 
-µOS++ allows an ISR or thread to directly signal a thread. This avoids having to create an intermediate system object such as a semaphore or event flag just to signal a thread, and results in better performance.
+µOS++ permite uma ISR ou _threads_ sinalizar diretamente uma _thread_. Isso evita ter que criar um objeto de sistema intermediário como um semaforo ou _flat_ de evento exatamente para sinalizar uma thread, e assim resulta em uma melhor performance.
 
-### Thread user data
+### Dados de usuário na _thread_
 
-Threads can include a user-definable user data structure, where the application can store any custom data.
+_Threads podem incluir uma estrutura de dados de usuário definivel pelo usuário, onde a aplicação pode gravar dados personalizados.
 
-The definition of this data structure is a plain C `struct`, and the content is fully under user control.
+A definição desta estrutura de dados em C puro é um `struct` e o conteúdo é totalmente sobre o controle do usuário.
 
-### Error checking
+### Verificação de Error
 
-µOS++ verifies that NULL pointers are not passed, that the user is not calling thread-level services from ISRs, that arguments are within allowable range, that options specified are valid, that a handler is passed to the proper object as part of the arguments to services that manipulate the desired object, and more.
+µOS++ verifica que ponteiros NULL não sejam passados, que o usuário não está chamando um serviço de nível de _thread_ de dentro de uma ISR, que faixa de argumentos são permitidos, que opções especificas são válidas, qual _handler_ é passado para o objeto correto com parte de argumentos de serviços que manipulam o objeto desejado, e mais.
 
-Generally these additional validations are enabled in the Debug configurations, and disabled in Release, to save significant space and some run-time.
+Geralmente estas validações adicionais são habilitadas em configurações de depuração, e desabilitadas nos _Releases_, para salvar espaço significante e algum tempo de execução.
 
-### Thread statistics
+### Estatísticas da _thread_
 
-µOS++ has built-in features to measure the execution time of each thread, stack usage, the number of times a thread executes, CPU usage, and more.
+µOS++ tem recursos embutidos para medir o tempo de execução de cada _thread_, uso do _stack_ o numero de vezes que uma _thread_ é executada, uso da CPU e mais.
 
-This can be used monitor the system behaviour at run-time, and detect possible busy wait inefficient implementations.
+Isso pode ser usado para monitorar o comportamento do sistema em tempo de execução, e detectar possibilidades de implementações de esperas ocupadas ineficientes.
 
-### Deadlock prevention
+### Prevenção de Deadlock
 
-All of the µOS++ blocking calls have versions that include timeouts, which help avoid deadlocks.
+Todas as chamadas de bloqueio do µOS++ tem versões que incluem prazos de espera, que ajudam a evitar _deadlocks_.
 
-### Object names
+### Nome de Objetos
 
-Each µOS++ system object can have a name associated with it. This makes it easy to recognize what the object is assigned to. Assign a name to a thread, a semaphore, a mutex, an event flag group, a message queue, a memory pool, and a timer. The object name can have any length, but must be NULL terminated.
+Cada objeto de sistema no µOS++ pode ter um nome associado com ele. Isso faz com dele mais fácil de reconhecer qual objeto é designado para que. Designando um nome para uma _thread_, um semáforo, um _mutex_, uma _flat_ de evento de grupo, uma fila de mensagem, um banco de memória, e um timer. O nome do objeto  pode ter qualquer comprimento, mas deve ser terminado com NULL.
 
-These names can be inspected during debug sessions, to identify objects, and can also be displayed by advanced instrumentation tools.
+Este nomes podem ser inspecionados durante a seção de depuração, para identificar objetos, e pode também ser exibido por ferramentas de instrumentação avançadas.
 
-### Support for thread aware debuggers
+### Suporte para depuradores de Threads.
 
-This feature allows thread aware debuggers to examine and display µOS++ variables and data structures in a user-friendly way. (Work in progress).
+Este recurso permite depuradores de _threads_ examinar e exibir variáveis e estruturas de dados do µOS++ em uma forma amigáveis ao usuário. (Ainda em implementação)
 
-### Support for instrumentation
+### Suporte para instrumentação
 
-This feature allows integration with instrumentation tools like SEGGER SystemView. (Work in progress).
+Este recurso permite integração com ferramentas de instrumentação como SEGGER, SystemView. (Ainda em implementação)
 
-### Multiple clocks
+### Múltiplos relógios
 
-The classic solution for handling time in most embedded systems is to use the scheduler timer. By default in µOS++ the resolution for this clock is 1 ms, acceptable for most applications.
+A solução clássica para tratar o tempo em muito sistemas embarcados é usar um timer de agendamento, Por padrão no µOS++ a resolução do relógio é de 1ms, aceitável para as maiores aplicações.
 
-µOS++ also defines a standard API to access the real-time clock, which has a resolution of 1 sec, and can be used to configure timeouts even when the CPU is in deep sleep.
+µOS++ também define uma API padrão para acessar o relógio real-time, que tem resolução de 1 segundo, e pode ser usado para configurar prazos mesmo quando a CPU esteja em suspensão profunda.
 
-For accurate time measurements, down to the CPU cycle level, a high resolution timer derived from the scheduler timer, is also available.
+Para medição apurada do tempo, até o nível do ciclo da CPU, um timer de alta resolução derivado do timer do escalonador, também está disponível.
 
-µOS++ provides a common API for all clocks, and all synchronisation objects that can be configured to use any of the available clocks.
+µOS++ fornece uma API comum para todos os relógios, e objetos de sincronização que podem ser configurados para usar algum dos relógios disponíveis.
