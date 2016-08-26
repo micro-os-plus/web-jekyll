@@ -12,7 +12,7 @@ email: ilg@livius.net
 destination: _site
 exclude:
   - README.md
-  - CONTRIBUTING.md
+  - 'CONTRIBUTING*.md'
   - 'MIGRATE-*.md'
   - 'CODE_OF_CONDUCT*.md'
   - .github
