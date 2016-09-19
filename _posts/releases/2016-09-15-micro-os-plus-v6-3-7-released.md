@@ -19,11 +19,11 @@ Version v6.3.7 is the first **µOS++ IIIe/CMSIS++** public release. The major ad
 ## Download
 
 As of now, the **µOS++** code is split between several GitHub projects and needs to be brought together to compose a project.
-To automate this process, some scripts were written. Toe experiment with **µOS++**, please check the demo projects, available from [GitHub](https://github.com/micro-os-plus/eclipse-demo-projects), and use a similar structure for your projects.
+To automate this process, some scripts were written. To experiment with **µOS++**, please check the demo projects, available from [GitHub](https://github.com/micro-os-plus/eclipse-demo-projects), and use a similar structure for your projects.
 
 ## New features
 
-- advanced memory management; several `memory_resource` classes were added, with various allocation policies (`first_fit_top`, `lifo`, `block_pool`). Based on this classes, an application allocator was implemented, and the standard C++ `new` and `delete`, as the standard C `malloc()` and `free()` were routed to this allocator. An optional allocator for the RTOS system objects can be defined. For special applications, optional pools of system objects can be created and allocation for these objects redirected to the pools.
+- advanced memory management; several `memory_resource` classes were added, with various allocation policies (`first_fit_top`, `lifo`, `block_pool`). Based on these classes, an application allocator was implemented, and the standard C++ `new` and `delete`, as the standard C `malloc()` and `free()` were routed to this allocator. An optional allocator for the RTOS system objects can be defined. For special applications, optional pools of system objects can be created and allocation for these objects redirected to the pools.
 
 ## Addressed bugs
 
