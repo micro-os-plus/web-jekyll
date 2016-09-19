@@ -195,8 +195,9 @@ For each class, structure, enum or other object definition, use `@headerfile` to
 
 ```
 /**
- * @brief ARM Cortex-M architecture interrupt numbers base
  * @headerfile CoreInterruptNumbers.h "hal/architecture/arm/cortexm/include/CoreInterruptNumbers.h"
+ * @brief ARM Cortex-M architecture interrupt numbers base
+ *
  * @details
  * Interrupt numbers defined by the Cortex-M0 light architecture.
  */
@@ -374,9 +375,9 @@ Use plural.
 @brief Type of variables holding mutex recursion counters.
 ```
 
-### Extra line between @brief and @details
+### Extra line between `@brief` and `@details`
 
-For headers which define @details too, add an extra line.
+For headers which define `@details` too, add an extra line.
 
 ```
 @brief Type of variables holding scheduler state codes.
