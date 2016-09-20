@@ -16,10 +16,8 @@ exclude:
   - 'MIGRATE-*.md'
   - 'CODE_OF_CONDUCT*.md'
   - .github
-  - jekyll-serve.command
-  - jekyll-build.command
-  - atom.command
-  - localhost-4001.webloc
+  - '*.command'
+  - '*.webloc'
   - '*.pptx'
   - Gemfile
   - Gemfile.lock
