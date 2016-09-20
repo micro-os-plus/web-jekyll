@@ -93,9 +93,10 @@ sourceforge-project-url: http://sourceforge.net/projects/micro-os-plus
 
 # Change it to refer to project's page
 # facebook-url: https://facebook.com/ilg-ul/
-facebook-page: https://facebook.com/microosplus/
+facebook-page: https://facebook.com/micro.os.plus/
 
-# twitter-url: http://twitter.com/ilegeul
+twitter-id: micro_os_plus
+twitter-url: http://twitter.com/micro_os_plus
 
 # If you have one, define it here.
 google-analytics-id: UA-16767008-14
