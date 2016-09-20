@@ -11,6 +11,8 @@ date: 2016-03-09 12:04:00 +0300
 
 ## Coding styles
 
+> ... the likelihood a program will work is significantly enhanced by our ability to read it, which also increases the likelihood that it actually works as intended. It is also the nature of software to be extensively modified over its productive life. If we can read and understand it, then we can hope to modify and improve it. (Douglas Crockford)
+
 * [C++ coding style]({{ site.baseurl }}/develop/coding-style/)
 * [C/C++ naming conventions]({{ site.baseurl }}/develop/naming-conventions/)
 * [Doxygen style]({{ site.baseurl }}/develop/doxygen-style-guide/)
