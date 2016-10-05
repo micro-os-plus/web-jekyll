@@ -27,10 +27,6 @@ With Eclipse, edit `doxygen/pages/changes-log.markdown`
 
 With Eclipse, edit `doxygen/config.doxyfile`.
 
-## Update the doxygen main.markdown
-
-If the CMSIS APIs changed, update `doxygen/pages/main.markdown`.
-
 ## Update os-versions.h
 
 With Eclipse,
