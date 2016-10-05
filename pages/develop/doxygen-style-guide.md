@@ -330,7 +330,7 @@ This command allows to define the name of the section within a page. Usually it 
 
 ```
 /**
- * @name Constructors/destructor
+ * @name Constructors & Destructor
  * @{
  */
     <- mandatory different blocks
@@ -352,17 +352,17 @@ main_thread(void);
 Recommended sections name are:
 
 ```
-@name Types and constants
+@name Types & Constants
 
-@name Constructors/destructor
+@name Constructors & Destructor
 
 @name Operators
 
-@name Public member functions
+@name Public Member Functions
 
-@name Private friends
+@name Public Static Member Functions
 
-@name Private member variables
+@name Private Member variables
 ```
 
 ## Samples
