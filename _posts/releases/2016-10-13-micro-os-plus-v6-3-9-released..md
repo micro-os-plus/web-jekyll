@@ -14,7 +14,7 @@ categories:
 
 ---
 
-Version v6.3.9 is a new **µOS++ IIIe/CMSIS++** public release (v6.3.8 was an internal release). The major additions are: the integration of the first version of the POSIX I/O subsystem and an experimental set of scripts to generate µOS++ projects.
+Version v6.3.9 is a new **µOS++ IIIe/CMSIS++** public release (v6.3.8 was an internal release). The major additions are: the first integration of the POSIX I/O subsystem and an experimental set of scripts to generate µOS++ projects.
 
 ## Download
 
@@ -25,7 +25,7 @@ To automate this process, some scripts were written. To experiment with **µOS++
 
 - integrate posix-io & posix-driver git subtrees from the separate projects; currently only character devices are fully functional;
 - automate char device registry by using lists; no need to manually add/remove devices;
-- in order to support ticless deep sleeps, the `update_for_slept_time()` function was added to the clock class, to update the internal count with the number of ticks lost during the sleep;
+- in order to support tickless deep sleeps, the `update_for_slept_time()` function was added to the `clock` class, to update the internal count with the number of ticks lost during the sleep;
 
 ## Addressed bugs
 
