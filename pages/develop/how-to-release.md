@@ -33,6 +33,12 @@ With Eclipse,
 
 * edit `include/os-versions.h`.
 
+## Update the xpack.json file
+
+With Eclipse,
+
+- edit the `xpack.json` and update the release number.
+
 ## Run doxygen
 
 With Eclipse,
