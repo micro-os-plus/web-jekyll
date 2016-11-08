@@ -2,7 +2,7 @@
 layout: main
 lang: en
 permalink: /
-title: The µOS++ IIIe / CMSIS++ Project
+title: The µOS++ IIIe Project
 author: Liviu Ionescu
 
 date: 2016-03-03 22:35:00 +0300
@@ -11,7 +11,9 @@ date: 2016-03-03 22:35:00 +0300
 
 The **µOS++ IIIe** _(micro oh ɛs plus plus third edition)_ project is the third iteration of µOS++, a POSIX-like, portable, open source, royalty-free, multi-tasking real-time operating system intended for 32/64-bits embedded applications, written in C++. The project is hosted on GitHub as [micro-os-plus](https://github.com/micro-os-plus). It has a comprehensive [User's manual]({{ site.baseurl }}/user-manual/).
 
-**CMSIS++** is a proposal for a future CMSIS, written in C++, and is the core component of **µOS++ IIIe**, defining the system APIs. The project is hosted on GitHub as [micro-os-plus/cmsis-plus](https://github.com/micro-os-plus/cmsis-plus). The APIs are documented in the [CMSIS++ reference]({{ site.baseurl }}/reference/cmsis-plus/).
+**CMSIS++** is a proposal for a future CMSIS, written in C++, and is the core component of **µOS++ IIIe**, defining the system APIs. These APIs are documented in the [CMSIS++ reference]({{ site.baseurl }}/reference/cmsis-plus/).
+
+**POSIX++** is another point of view of the project; with most system APIs using the POSIX semantics, but being written in C++, the **µOS++ IIIe** APIs can also be seen as a C++ version of POSIX, thus the name **POSIX++**.
 
 ## Twofold identity
 

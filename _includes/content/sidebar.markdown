@@ -54,6 +54,7 @@
 #### Developer
 
 * [Overview]({{ site.baseurl }}/develop/)
+* [Change log]({{ site.baseurl }}/reference/cmsis-plus/md_doxygen_pages_change-log.html)
 * [C++ coding style]({{ site.baseurl }}/develop/coding-style/)
 * [Links & references]({{ site.baseurl }}/develop/references/)
 
