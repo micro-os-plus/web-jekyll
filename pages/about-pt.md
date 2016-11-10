@@ -58,3 +58,14 @@ compiladores e tecnologias relacionadas a Internet.
 Ele pode ser encontrado em [ilg@livius.net](mailto:ilg@livius.net) 
 (este e-mail é dado por cortesia, para todas as correspondências relacionadas a este
 plug-in por favor use a página de [Suporte]({{ site.baseurl }}/support/) do projeto).
+
+## A Tradução
+
+A tradução do projeto hoje está sendo feita para o português por **Carlos Delfino**
+Um programador que atua no setor de TI a 30 anos e que se dedica aos estudos 
+da tecnologias relacionadas ao universo Cortex-M da ARM.
+
+Para contribuir com a tradução deste site para o português e outros idiomas
+entre em contato pela página de [Suporte]({{ site.baseurl }}/support/) do projeto).
+ou diretamente pelo serviço de [issues](https://github.com/micro-os-plus/micro-os-plus.github.io-source/issues/)
+lembre-se de citar o nome de Carlos Delfino na sua apresentação usando @carlosdelfino.
