@@ -594,7 +594,7 @@ When using the `os::estd::` namespace it is recommended to avoid `using namespac
 
 ``` c++
 /// @file app-main.cpp
-#include <cmsis-plus/iso/thread>
+#include <cmsis-plus/est/thread>
 
 using namespace os;
 
