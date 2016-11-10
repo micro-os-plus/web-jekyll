@@ -2,48 +2,82 @@
 layout: page
 lang: pt
 permalink: /pt/user-manual/getting-started/
-title: Começando com μOS++ IIIe
+title: Começando com o μOS++ IIIe
 author: Liviu Ionescu
-
+translator: Carlos Delfino
+ 
 date: 2016-06-29 21:28:00 +0300
-
+last_modified_at: 2016-11-09 22:15:00 +0300
 ---
+% comment %} 
 
-## Overview
+Start translate at: 2016-08-17 21:30:00 +300 Todo:
 
-**µOS++ IIIe** _(micro oh ɛs plus plus third edition)_ is the third iteration of µOS++, a POSIX-like, portable, open source, royalty-free, multi-tasking real-time operating system intended for 32/64-bits embedded applications.
+Todo:
+ - Translate text comment on source code?
+ 
+Base Commit:
+- aac11b8d05198ec0a390c2c046e9578e92726ad0
+- f16bc9f0b4f524ee5ccd7f2929ebc6ceb84a644a
 
-**µOS++ IIIe** is written in modern C++, with C++ applications in mind, but also provides equally functional C APIs.
+{% endcomment %}
 
-### Multiple APIs
+## Visão Geral
 
-µOS++ is based on CMSIS++, and as such it provides services via multiple APIs, covering both C++ and C applications.
+**µOS++ IIIe** _(micro oh ɛs plus plus terceira edição)_ é a terceira interação 
+do µOS++, um POSIX-like, portável, open source, royalty-free, sistema operacional 
+multi-tarefa real-time criado para aplicações embarcadas de 32/64-bits.
+
+**µOS++ IIIe** é escrito em C++ moderno, com aplicações C++ em mente, mas também 
+fornece igualmente API C funcional.
+
+### Múltiplas APIs
+
+µOS++ é baseado no CMSIS++, e como tal prove serviços via multiplas APIs, cobrindo 
+ambas aplicações C++ e C.
 
 <div style="text-align:center">
 <img src="{{ site.baseurl }}/assets/images/2016/cmsis-plus-rtos-overview.png" />
 </div>
 
-The supported APIs are:
+As API suportadas são:
 
-- **CMSIS++ RTOS C++ API** - the native µOS++ IIIe C++ API, giving direct access to the system services;
-- **CMSIS++ RTOS C API** - a 1:1 C wrapper on top of the C++ API;
-- **ISO C++ Threads API** - an implementation of the standard ISO threads on top of the C++ API;
-- **ARM CMSIS RTOS v1 API** - a compatibility layer with ARM CMSIS RTOS
+ - **CMSIS++ RTOS C++ API** - Uma API C++ nativa do µOS++ IIIe, dá acesso direto 
+   para os serviços do sistema;
+ - **CMSIS++ RTOS C API** - Um _wrapper_ C 1:1  no topo da API C++;
+ - **ISO C++ Threads API** - Uma implementação do padrão ISO para _threads_ no 
+   topo da API C++;
+ - **ARM CMSIS RTOS v1 API** - Uma camada de compatibilização com o ARM CMSIS 
+   RTOS
 
-The functions in these APIs provide services to manage threads, semaphores, message queues, mutexes and more. As far as the user code is concerned, the calls to the µOS++ system functions are exactly as any other function calls, using the toolchain standard [ABI](https://en.wikipedia.org/wiki/Application_binary_interface); no system service calls (SVC) are used to switch from user to system modes.
+A função nestas APIs é fornecer serviços para gerenciar _threads_, semáforos, 
+fila de mensagens, _mutexes_ entre outros. A medica que o código do usuário é 
+desenvolvido, as chamadas para as funções do sistema µOS++ exatamente como outras 
+chamadas de função, usando o padrão 
+[ABI](https://pt.wikipedia.org/wiki/Interface_bin%C3%A1ria_de_aplica%C3%A7%C3%A3o) 
+para o _toolchain_; não são feitas chamadas de serviços de sistema (SVC) para 
+trocar do modo de sistema para usuário.
 
-In this chapter, the reader will appreciate how easy it is to start using µOS++. Refer to [CMSIS++ Reference](http://micro-os-plus.github.io/reference/cmsis-plus/) for the full descriptions of the µOS++ functions used.
+Neste capítulo, o leitor irá perceber o quanto é fácil iniciar usando o µOS++. 
+Use a [Referência CMSIS++](http://micro-os-plus.github.io/reference/cmsis-plus/) 
+para  uma descrição completa das funções do µOS++ usadas.
 
-For this introductory chapter, the project setup (files and folders, toolchain and other tools, hardware initialisations) are considered not relevant and are not addressed.
-
-## The `os_main()` and the main thread
-
-For user convenience, the default `main()` function creates an initial thread (not surprisingly called `main`) and arranges for the `os_main()` function to be called on this thread context.
-
-This arrangement relieves the user from the concerns of initialising and starting the scheduler, and also provides a parent for the user threads created from here.
+Para este capítulo introdutório, a configuração do projeto (arquivos e pastas, 
+_toolchain_ e outras ferramentas, inicialização do hardware) são considerados 
+irrelevantes e não serão apontados aqui.
 
 
-A simple C++ _blinky_ application that toggles a LED at 1 Hz might look like this:
+## O `os_main()` e a _thread_ principal
+
+Para conveniência do usuário, a função `main()` padrão cria uma _thread_ inicial 
+(não surpreendentemente chamada `main`) e demandas para a função `os_main()` ser 
+chamada neste contexto da _thread_.
+
+Esta organização libera o usuário de se preocupar com a inicialização e execução 
+do escalonador, e também prove uma referência para as _threads_ criadas a partir ai.
+
+Uma aplicação _blinky_ simples em C++ que pisca um LED a cada 1 Hz pode se parecer 
+com isso:
 
 ``` c++
 /// @file app-main.cpp
@@ -74,9 +108,13 @@ os_main (int argc, char* argv[])
 }
 ```
 
-The example is generally self explanatory. The LED functions are provided by the application. The only system function used is `sleep_for()`, which, when called for the `sysclock` object, puts the current thread to sleep for the given number of ticks, which, in this case, is the number of SysTick ticks per second, resulting in an 1 second sleep.
+O exemplo em geral é auto explicativo. as funções do LED são fornecidas pela 
+aplicação. A única função de sistema usada é `sleep_for()`, que, quando chamada 
+pelo objeto `sysclock`, coloca a _thread_ corrente em modo _sleep_ pelo número 
+de _ticks_ informado, que, neste caso é o numero de _SysTick ticks_ por segundos, 
+resultando em um 1 segundo de suspensão.
 
-A similar application, but written in C:
+Uma aplicação similar, mas escrita em C:
 
 ``` c
 /// @file app-main.c
@@ -104,11 +142,15 @@ os_main (int argc, char* argv[])
 }
 ```
 
-Please note that for plain C applications, the system include header is different.
+Por favor, observe que uma aplicação pura em C, o cabeçalho de sistema incluso 
+é diferente.
 
-## Multiple thread applications
+## Aplicação múltiplas _threads_
 
-In addition to the blinking LED, the next example adds a message queue where messages are enqueued from an interrupt callback, and a user thread that gets messages from the queue and prints them on the trace channel.
+Em adição a aplicação piscar o LED, o próximo exemplo adiciona uma fila (_queue_) 
+de mensagens onde as mensagens são enfileiradas por  um _callback_ de interrupção, 
+e uma _thread_ de usuário que pega as mensagens da fila e então imprime no canal de 
+rastreamento.
 
 ``` c++
 /// @file app-main.cpp
@@ -178,7 +220,7 @@ os_main (int argc, char* argv[])
 }
 ```
 
-A similar application, but written in C:
+Uma aplicação semelhante escrita em C:
 
 ``` c
 /// @file app-main.c
@@ -252,4 +294,6 @@ os_main (int argc, char* argv[])
 }
 ```
 
-The visible difference is that in C the queue and the thread objects need to be explicitly created, while in C++ the constructors are called implicitly by the compiler.
+A diferença visível é que em C a fila de mensagens e o os objetos _threads_ 
+precisam ser explicitamente criados, enquanto em C++ o construtor são chamados 
+implicitamente pelo compilador.
