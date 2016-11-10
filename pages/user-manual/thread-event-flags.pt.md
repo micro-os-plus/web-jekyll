@@ -2,44 +2,63 @@
 layout: page
 lang: pt
 permalink: /pt/user-manual/thread-event-flags/
-title: Thread event flags
+title: Flags de Eventos para Thread
 author: Liviu Ionescu
 translator: Carlos Delfino
 
 date: 2016-07-08 09:37:00 +0300
-last_updated_at:  2016-08-24 20:20:00 +0300
+last_updated_at:  2016-11-10 15:00:00 +0300
 
 ---
 {% comment %}
 
 start_translate_at:  2016-08-24 18:45:00 +0300
 
+Base Commit:
+ - aac11b8d05198ec0a390c2c046e9578e92726ad0
+
 {% endcomment %}
 
 
 ## Visão Geral
 
-Tradicionalmente, um dos primeiros métodos de comunicação entre processos oferecidos pelo Unix foi enviar sinais de um processo a outro. Apesar de limitado, este método tem beneficios, e todos os sistemas POSIX posteriores preservaram e aperfeiçoaram isso.
+Tradicionalmente, um dos primeiros métodos de comunicação entre processos 
+oferecidos pelo Unix foi enviar sinais de um processo a outro. Apesar de 
+limitado, este método tem beneficios, e todos os sistemas POSIX posteriores 
+preservaram e aperfeiçoaram isso.
 
-Porém, para sistemas embarcados, a implementação é um pouco mais pesada e para o momento não tem sido considerada apropriada.
+Porém, para sistemas embarcados, a implementação é um pouco mais pesada e para 
+o momento não tem sido considerada apropriada.
 
-Ao invés disso, um mecanismo mais leve foi adotado, flags de eventos de _threads_, muito similar a flags de eventos genéricos, mas especifico pra cada _thread_.
+Ao invés disso, um mecanismo mais leve foi adotado, flags de eventos de _threads_, 
+muito similar a flags de eventos genéricos, mas especifico pra cada _thread_.
 
-Este mecanismo fornece um número separado de flags para cada _thread_, que pode ser lançado para outras _threads_ ou ISRs, e pode ser verificado pelo proprietário da _thread_ de várias formas, incluindo com esperas bloqueadas em múltiplas flags.
+Este mecanismo fornece um número separado de flags para cada _thread_, que pode 
+ser lançado para outras _threads_ ou ISRs, e pode ser verificado pelo 
+proprietário da _thread_ de várias formas, incluindo com esperas bloqueadas em 
+múltiplas flags.
 
-Cada flag de evento pode ser considerado como um semáforo binário simplificado, que pode ser postado de fora e a _thread_ pode aguadar por ele.
+Cada flag de evento pode ser considerado como um semáforo binário simplificado, 
+que pode ser postado de fora e a _thread_ pode aguadar por ele.
 
 ## Ativar flag de eventos da _thread_
 
-Assim que a identidade da _thread_ é conhecida, alguma outra _thread_ ou ISR pode ativar um conjunto de _flags_, a qualquer momento.
+Assim que a identidade da _thread_ é conhecida, alguma outra _thread_ ou ISR 
+pode ativar um conjunto de _flags_, a qualquer momento.
 
-Em termos de linguagem de programação, ativar flags é o equivalente a fazer um OR (OU Lógico) nos bits correspondentes na mascara de eventos da _flag_ da _thread_. Uma vez ativado, a _flag_ se mante ativa até ela ser verificada pela _thread_, ou explicitamente limpa pela _thread_. Ativar uma _flag_ já ativada é um no-op.
+Em termos de linguagem de programação, ativar flags é o equivalente a fazer um 
+OR (OU Lógico) nos bits correspondentes na mascara de eventos da _flag_ da 
+_thread_. Uma vez ativado, a _flag_ se mante ativa até ela ser verificada pela 
+_thread_, ou explicitamente limpa pela _thread_. Ativar uma _flag_ já ativada 
+é um no-op.
 
 Se a _thread_ foi suspensa e aguarda por _flags_, ela é retomada.
 
 ## Esperando pelas flags de eventos de _thread_
 
-Uma _thread_ pode verificar a qualquer momento se um conjunto de _flags_ esperados foram ativados; é possível verificar se todas as _flags_ em um conjunto são ativados, ou se alguma _flag_ em um conjunto foi ativada.
+Uma _thread_ pode verificar a qualquer momento se um conjunto de _flags_ esperados 
+foram ativados; é possível verificar se todas as _flags_ em um conjunto são 
+ativados, ou se alguma _flag_ em um conjunto foi ativada.
 
 ``` c++
 /// @file app-main.cpp
@@ -149,15 +168,19 @@ os_main (int argc, char* argv[])
 }
 ```
 
-Para verificar se alguma _flag_ no conjunto está ativa, use  `flags::mode::any` (em C use `os_flags_mode_any`).
+Para verificar se alguma _flag_ no conjunto está ativa, use  `flags::mode::any` 
+(em C use `os_flags_mode_any`).
 
 ## Outras funções de flags de eventos de _thread_
 
-Como apresentado no exemplo acima, o caso comum de uso das _flags_ de eventos da _thread_  é automaticamente limpar as _flags_ lançadas após testar. Para casos especiais isso pode ser útil para individualmente ler ou limpar cada _flag_.
+Como apresentado no exemplo acima, o caso comum de uso das _flags_ de eventos 
+da _thread_  é automaticamente limpar as _flags_ lançadas após testar. Para 
+casos especiais isso pode ser útil para individualmente ler ou limpar cada _flag_.
 
 ### Obtendo _flags_ individuais
 
-É possível para uma _thread_ seletivamente ler sua própria _flags_ e possívelmene limpar então depois, para evitar limpa-la, passe um valor modo 0.
+É possível para uma _thread_ seletivamente ler sua própria _flags_ e possívelmene 
+limpar então depois, para evitar limpa-la, passe um valor modo 0.
 
 Somente os _flags_ presentes na mascara serão afetados.
 
@@ -173,7 +196,9 @@ os_flags_mask_t mask = os_this_thread_flags_get(0x2, os_flags_mode_clear);
 
 ### Limpando _flags_ individuais
 
-É possível para uma _thread_ limpar seletivamente suas próprias _flags_, e possivelmente obter o valor das _flags_ antes de limpa-las. Se o ponteiro informado é _null_, os valores anteriores das _flags_ selecionadas são perdidos.
+É possível para uma _thread_ limpar seletivamente suas próprias _flags_, e 
+possivelmente obter o valor das _flags_ antes de limpa-las. Se o ponteiro 
+informado é _null_, os valores anteriores das _flags_ selecionadas são perdidos.
 
 Somente as _flags_ presentes no mascara serão afetadas.
 
