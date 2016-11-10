@@ -9,7 +9,7 @@ translator: Carlos Delfino
 date: 2016-06-29 21:28:00 +0300
 last_modified_at: 2016-11-09 22:15:00 +0300
 ---
-% comment %} 
+{% comment %} 
 
 Start translate at: 2016-08-17 21:30:00 +300 Todo:
 
