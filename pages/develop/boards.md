@@ -29,6 +29,8 @@ Nucleo boards:
 - [NUCLEO-F334R8](http://www.st.com/content/st_com/en/products/evaluation-tools/product-evaluation-tools/mcu-eval-tools/stm32-mcu-eval-tools/stm32-mcu-nucleo/nucleo-f334r8.html) (M4, STM32F334R8T6)
 - [NUCLEO-F411RE](http://www.st.com/content/st_com/en/products/evaluation-tools/product-evaluation-tools/mcu-eval-tools/stm32-mcu-eval-tools/stm32-mcu-nucleo/nucleo-f411re.html) (M4, STM32F411RET6)
 
+- [NUCLEO-L073RZ](http://www.st.com/content/st_com/en/products/evaluation-tools/product-evaluation-tools/mcu-eval-tools/stm32-mcu-eval-tools/stm32-mcu-nucleo/nucleo-l073rz.html) (M0+, STM32L073RZ, 192KB, 20KB)
+
 Olimex boards:
 
 - STM32-H103
@@ -72,14 +74,18 @@ Olimex boards:
 
 [STM32 MCU Eval Tools ](http://www.st.com/content/st_com/en/products/evaluation-tools/product-evaluation-tools/mcu-eval-tools/stm32-mcu-eval-tools.html?querycriteria=productId=SS1532)
 
+F7 boards:
+
 - [32F769IDISCOVERY](http://www.st.com/content/st_com/en/products/evaluation-tools/product-evaluation-tools/mcu-eval-tools/stm32-mcu-eval-tools/stm32-mcu-discovery-kits/32f769idiscovery.html) (M7, STM32F769NI, 2MB, 512KB), Ethernet, display, many, $77
 - [NUCLEO-F767ZI](http://www.st.com/content/st_com/en/products/evaluation-tools/product-evaluation-tools/mcu-eval-tools/stm32-mcu-eval-tools/stm32-mcu-nucleo/nucleo-f767zi.html) (M7, STM32F767ZI, 2MB, 512KB) $23
+
+Possibly more F4 boards:
+
 - [NUCLEO-F446ZE](http://www.st.com/content/st_com/en/products/evaluation-tools/product-evaluation-tools/mcu-eval-tools/stm32-mcu-eval-tools/stm32-mcu-nucleo/nucleo-f446ze.html)
 - [NUCLEO-L476RG](http://www.st.com/content/st_com/en/products/evaluation-tools/product-evaluation-tools/mcu-eval-tools/stm32-mcu-eval-tools/stm32-mcu-nucleo/nucleo-l476rg.html)
 
-One of the L0 devices:
+Possibly the L0 device, for the e-paper display:
 
-- [NUCLEO-L073RZ](http://www.st.com/content/st_com/en/products/evaluation-tools/product-evaluation-tools/mcu-eval-tools/stm32-mcu-eval-tools/stm32-mcu-nucleo/nucleo-l073rz.html) (M0+, STM32L073RZ, 192KB, 20KB) $13 \+
 - [32L0538DISCOVERY](http://www.st.com/content/st_com/en/products/evaluation-tools/product-evaluation-tools/mcu-eval-tools/stm32-mcu-eval-tools/stm32-mcu-discovery-kits/32l0538discovery.html) (M0+, STM32L053C8T6, 64KB, 8KB), e-paper display, 172x72, $23
 
 
@@ -87,3 +93,7 @@ Possibly one other M0 device
 
 -  [NUCLEO-F091RC](http://www.st.com/content/st_com/en/products/evaluation-tools/product-evaluation-tools/mcu-eval-tools/stm32-mcu-eval-tools/stm32-mcu-nucleo/nucleo-f091rc.html) (M0, STM32F091RC, 256KB, 32KB)
 - [NUCLEO-F070RB](http://www.st.com/content/st_com/en/products/evaluation-tools/product-evaluation-tools/mcu-eval-tools/stm32-mcu-eval-tools/stm32-mcu-nucleo/nucleo-f070rb.html) (M0, STM32F070RB, 128KB, 16KB, USB)
+
+## SEGGER ST-Link to J-Link conversion
+
+Except STM32VLDISCOVERY, which uses an unsupported version, **all other ST boards were converted to J-Link**, using the [SEGGER ST-Link conversion tools](https://www.segger.com/jlink-st-link.html). Highly recommended!
