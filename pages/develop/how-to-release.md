@@ -27,15 +27,17 @@ With Eclipse, edit `doxygen/pages/changes-log.markdown`
 
 With Eclipse, edit `doxygen/config.doxyfile`.
 
-## Update the doxygen main.markdown
-
-If the CMSIS APIs changed, update `doxygen/pages/main.markdown`.
-
 ## Update os-versions.h
 
 With Eclipse,
 
 * edit `include/os-versions.h`.
+
+## Update the xpack.json file
+
+With Eclipse,
+
+- edit the `xpack.json` and update the release number.
 
 ## Run doxygen
 

@@ -195,8 +195,9 @@ For each class, structure, enum or other object definition, use `@headerfile` to
 
 ```
 /**
- * @brief ARM Cortex-M architecture interrupt numbers base
  * @headerfile CoreInterruptNumbers.h "hal/architecture/arm/cortexm/include/CoreInterruptNumbers.h"
+ * @brief ARM Cortex-M architecture interrupt numbers base
+ *
  * @details
  * Interrupt numbers defined by the Cortex-M0 light architecture.
  */
@@ -329,7 +330,7 @@ This command allows to define the name of the section within a page. Usually it 
 
 ```
 /**
- * @name Constructors/destructor
+ * @name Constructors & Destructor
  * @{
  */
     <- mandatory different blocks
@@ -351,17 +352,17 @@ main_thread(void);
 Recommended sections name are:
 
 ```
-@name Types and constants
+@name Types & Constants
 
-@name Constructors/destructor
+@name Constructors & Destructor
 
 @name Operators
 
-@name Public member functions
+@name Public Member Functions
 
-@name Private friends
+@name Public Static Member Functions
 
-@name Private member variables
+@name Private Member variables
 ```
 
 ## Samples
@@ -374,9 +375,9 @@ Use plural.
 @brief Type of variables holding mutex recursion counters.
 ```
 
-### Extra line between @brief and @details
+### Extra line between `@brief` and `@details`
 
-For headers which define @details too, add an extra line.
+For headers which define `@details` too, add an extra line.
 
 ```
 @brief Type of variables holding scheduler state codes.
