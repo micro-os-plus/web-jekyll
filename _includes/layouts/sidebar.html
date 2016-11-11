@@ -12,7 +12,7 @@
     <div class="boxed-group-inner">
       {% if page.lang != null and page.lang != "en" %}
         {% capture sidebar_file %}sidebar-{{ page.lang }}.markdown{% endcapture %}
-      (% endif %}
+      {% endif %}
       {% capture sb %}{% include content/{{ sidebar_file | default: "sidebar.markdown" }} %}{% endcapture %}{{ sb | markdownify }}
     </div>
   </div>
