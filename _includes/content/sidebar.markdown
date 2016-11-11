@@ -13,25 +13,6 @@
 
 * [Overview]({{ site.baseurl }}/xpacks/)
 
-{% if page.lang == 'pt' %}
-#### Documentação
-
-* [Manual do usuário]({{ site.baseurl }}/{{ page.lang }}/user-manual/)
-  * [Começando]({{ site.baseurl }}/{{ page.lang }}/user-manual/getting-started/)
-  * [Conceitos básicos]({{ site.baseurl }}/{{ page.lang }}/user-manual/basic-concepts/)
-  * [Características]({{ site.baseurl }}/{{ page.lang }}/user-manual/features/)
-  * [Threads]({{ site.baseurl }}/{{ page.lang }}/user-manual/threads/)
-  * [Thread event flags]({{ site.baseurl }}/{{ page.lang }}/user-manual/thread-event-flags/)
-  * [Semaphores]({{ site.baseurl }}/{{ page.lang }}/user-manual/semaphores/)
-  * [Event flags]({{ site.baseurl }}/{{ page.lang }}/user-manual/event-flags/)
-  * Mutexes
-  * Condition variables
-  * Message queues
-  * Memory pools
-  * Software timers
-  * Clocks
-* [CMSIS++ **reference**]({{ site.baseurl }}/reference/cmsis-plus/)
-{% else %}
 #### Documentation
 
 * [User's **manual**]({{ site.baseurl }}/user-manual/)
@@ -49,7 +30,6 @@
   * Software timers
   * Clocks
 * [CMSIS++ **reference**]({{ site.baseurl }}/reference/cmsis-plus/)
-{% endif %}
 
 #### Developer
 
