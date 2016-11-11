@@ -53,6 +53,9 @@ kramdown:
 # The number of links added to the 'Latest news' box.
 latest-news-pages: 4
 
+# The number of links added to the 'Latest articles' box.
+latest-articles-pages: 4
+
 # Currently disabled, since it generates incomplete content.
 # Use manually written RSS feed.xml.
 #   - jekyll-feed
