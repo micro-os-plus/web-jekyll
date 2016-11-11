@@ -1,0 +1,17 @@
+---
+permalink: /articles/
+layout: default
+title: CMSIS++ / µOS++ News
+author: Liviu Ionescu
+
+---
+
+<!-- Articles can´t paginate because use hidden flag
+<!-- This loops through all site posts -->
+{% for post in site.posts %}
+{% if post.layout == "article" %}
+  <h3><a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a></h3>
+  <p><em>{{ post.date | date: "%b %-d, %Y" }}</em> - {{ post.excerpt | replace:'<p>','' | replace:'</p>','' }}</p>
+  <hr />
+{% endif %}  
+{% endfor %}

@@ -47,13 +47,11 @@
 * [Report CMSIS++ issues](https://github.com/micro-os-plus/cmsis-plus/issues/)
 * [Report µOS++ IIIe issues](https://github.com/micro-os-plus/micro-os-plus-iii/issues/)
 
-#### Latest Articles
+{% comment %}
+#### [Latest Articles](/articles/)
+{% endcomment %}
 
-<ul>
-{% for post in site.posts limit:latest-articles-pages %}
-<li><a href="{{ post.url }}">{{ post.title }}</a></li>
-{% endfor %}
-</ul>
+{% include content/latest.markdown lang="en" layout="article" title="Latest Articles" url="/articles/" %}
 
 #### License
 
