@@ -10,7 +10,10 @@
 
   <div class="custom-sidebar">
     <div class="boxed-group-inner">
-      {% capture sb %}{% include content/sidebar.markdown %}{% endcapture %}{{ sb | markdownify }}
+      {% if page.lang != null and page.lang != "en" %}
+        {% capture sidebar_file %}sidebar-{{ page.lang }}.markdown{% endcapture %}
+      (% endif %}
+      {% capture sb %}{% include content/{{ sidebar_file | default: "sidebar.markdown" }} %}{% endcapture %}{{ sb | markdownify }}
     </div>
   </div>
 
