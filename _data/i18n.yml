@@ -1,3 +1,11 @@
+langs:
+ - en
+ - pt
+ 
 contents:
   en: Contents
   pt: Conteúdo
+
+news:
+  en: News
+  pt: Notícias

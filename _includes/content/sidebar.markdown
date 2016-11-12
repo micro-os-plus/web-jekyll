@@ -47,10 +47,11 @@
 * [Report CMSIS++ issues](https://github.com/micro-os-plus/cmsis-plus/issues/)
 * [Report µOS++ IIIe issues](https://github.com/micro-os-plus/micro-os-plus-iii/issues/)
 
-#### Latest Articles
+{% comment %}
+#### [Latest Articles](/articles/)
+{% endcomment %}
 
-* [CMSIS++ RTOS: fully functional reference implementation]({{ site.baseurl }}/articles/arm-com-2016-06-24/)
-* [CMSIS++: a proposal for a future CMSIS, written in C++]({{ site.baseurl }}/articles/arm-com-2016-03-11/)
+{% include content/latest.markdown lang="en" layout="article" title="Latest Articles" url="/articles/" %}
 
 #### License
 
