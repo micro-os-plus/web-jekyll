@@ -16,10 +16,20 @@ categories:
 
 Version v6.3.10 is a new **µOS++ IIIe/CMSIS++** public release that addresses several bugs.
 
-## Download
+## Affected xPacks
+
+- [micro-os-plus-iii](https://github.com/micro-os-plus/micro-os-plus-iii)
+- [micro-os-plus-iii-cortexm](https://github.com/micro-os-plus/micro-os-plus-iii-cortexm)
+
+## Download or update
 
 As of now, the **µOS++** code is split between several GitHub projects and needs to be brought together to compose a project.
-To automate this process, some scripts were written. To experiment with **µOS++**, please check the demo projects, available from [GitHub](https://github.com/micro-os-plus/eclipse-demo-projects), and use a similar structure for your projects.
+To automate this process, some scripts are available from a [separate project](https://github.com/xpacks/scripts). 
+
+To update the local copy of the xPacks, use the `scripts.git/xpacks-update-repo.sh` script.
+
+To experiment with **µOS++**, please check the demo projects, available from [GitHub](https://github.com/micro-os-plus/eclipse-demo-projects), and use a similar structure for your projects.
+
 
 ## New features
 
