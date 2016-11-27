@@ -1,7 +1,7 @@
 ---
 layout: post
 lang: en
-title: The µOS++ IIIe first public version v6.3.7 released
+title: First µOS++ IIIe public version v6.3.7 released
 author: Liviu Ionescu
 
 date: 2016-09-15 15:28:00 +0300
