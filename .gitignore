@@ -3,3 +3,6 @@ _site_local
 .DS_Store
 reference/cmsis-plus/
 .jekyll-metadata
+*~
+.project
+.settings/

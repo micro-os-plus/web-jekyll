@@ -4,469 +4,712 @@ lang: pt
 permalink: /pt/user-manual/basic-concepts/
 title: Conceitos básicos
 author: Liviu Ionescu
+translator: Carlos Delfino
 
 date: 2016-06-30 14:39:00 +0300
-
+last_modified_at: 2016-11-08 14:30:00 +300
 ---
+{% comment %}
+Start translate at: 2016-08-15 19:30:00 +300
+Todo: 
+ - Mudar URLs de sites externos para fontes em português quando adequado em especial no wiki. Outros sites analisar com bastante cautelas e discutir fontes com terceiros.
+ - Mudar a referência do livro "Java Threads" para português, e usar citação do texto original.
+Base Commit: 
+ - aac11b8d05198ec0a390c2c046e9578e92726ad0
+ - 6484f7badf1bcc2d09b45134d61484785241d0d2
+ - 9c7c14d9db312574e6b8bc281e962f8db58549cb
+ - eebd7a5148f2dc3a7deb2d096ace7205d531b1c2
+{% endcomment %}
 
-## Embedded systems
+## Sistemas Embarcados
 
-From the software point of view, an [embedded system](https://en.wikipedia.org/wiki/Embedded_system) is a small computer, built for a dedicated function (as opposed to general purpose [computers](https://en.wikipedia.org/wiki/Computer)).
+Do ponto de vista do software, um [Sistema Embarcado](https://pt.wikipedia.org/wiki/Sistema_embarcado) 
+é um pequeno computador, construído para funções específicas (em oposição aos 
+[computadores](https://pt.wikipedia.org/wiki/Computadr) de propósito geral).
 
-There are many types of embedded systems, with varying degrees of complexity, from small proximity sensors used in home automation, to internet routers, remote surveillance cameras and even smart phones.
+Há muitos tipos de sistemas embarcados, com vários níveis de complexidade, de 
+pequenos sensores de proximidade usados em automação residencial, até roteadores 
+de internet, câmeras de vigilância remota e até mesmo smart phones.
 
-Complex systems, especially those with high bandwidth communication needs, are designed around embedded versions of GNU/Linux, which include a large kernel, a root file system, multiple processes, not very different from their larger cousins running on desktop computers.
+Sistemas complexos, especialmente aqueles com alta demanda de largura de banda 
+para comunicação, são projetos com base em versões embarcadas so sistemas GNU/Linux, 
+que incluem um grande kernel, um sistema de arquivo, multiplos processadores, o 
+que não difere muito de seus primos maiores que rodam em computadores desktop.
 
-The _application_ is generally a combination of processes running in user space, and device drivers, running inside the kernel.
+A _aplicação_ é geralmente uma combinação de processos rodando em um espaço de 
+usuário ("user space"), e "device drivers", rodando dentro do kernel.
 
-## Bare-metal embedded systems
+## Sistemas embarcados "Bare-metal"
 
-Smaller devices have much less resources, and are build around microcontrollers which do not have the required hardware to properly run an Unix kernel.
+Pequenos dispositivos tem muito menos recursos, e são construídos em torno de 
+microcontroladores que não tem o hardware necessário para executar adequadamente 
+um um kernel Unix.
 
-In this case the application is monolithic and runs directly on the hardware, thus the name _bare-metal_.
+Neste caso a aplicação é monolítica e executa diretamente no hardware, por isso 
+o nome _bare-metal_.
 
-µOS++ focuses on these [bare-metal](https://en.wikipedia.org/wiki/Bare_machine) applications, especially those running on ARM Cortex-M devices. Although µOS++ can be ported on larger ARM cores, even the 64-bits ones, there are no plans to include support for MMU, virtual memory, separate processes and other such features specific to the Unix world.
+µOS++ tem como foco as aplicações [bare-metal](https://en.wikipedia.org/wiki/Bare_machine), 
+especialmente aquelas que rodam em dispositivos Cortex-M. Através do µOS++ pode-se 
+portar para grandes cores ARM Cortex-A, inclusive os de 64-bits, que não tem planos 
+de incluir suporte para MMU, memória virtual, processos separados e outros, tais 
+como recursos específicos para o mundo Unix. 
 
-## Real-time systems
+## Sistemas de tempo real (Real-time)
 
-A [real-time](https://en.wikipedia.org/wiki/Real-time_computing) embedded system is a piece of software that manages the resources and the time behaviour of an embedded device, usually build around a microcontroller, emphasising on the correctness of the computed values and their availability at the expected time.
+Um sistema embarcado [real-time](https://en.wikipedia.org/wiki/Real-time_computing) 
+é uma peça de software que gerencia os recursos e o comportamento com relação ao 
+tempo de um dispositivo embarcado, normalmente construído em torno de um 
+microcontrolador, enfatizando os valores calculados e a disponibilidade de tempo 
+esperado por processo.
+{% comment %} added "por processos" for contextualize the "expected time" {% endcomment %}
 
-µOS++ is a real-time operating system (RTOS).
+µOS++ é um sistema operacional de tempo real (do inglês Real-Time Operating System - RTOS).
 
-## Soft vs hard real-time systems
+## Sistemas real-time, Soft vs Hard
 
-There are two types of real-time systems, hard and soft real-time systems.
+Há dois tipos de sistemas real-time, sistemas real-time soft e sistemas real-time 
+hard.
 
-The main difference between them is determined by the consequences associated with missing **deadlines**. Obtaining correctly computed values but after the deadline has passed may range from useless to dangerous.
+A principal diferença entre eles é determinada pelas consequências associadas 
+com a perda do _deadline_ (tempo limite). Obter o valor computado corretamente 
+mas após o prazo de execução (_deadline_) pode ser de inútil a perigoso.
 
-For **hard real-time systems** the tolerance to missing deadlines is very low, since missing a deadline often results in a catastrophe, which may involve the loss of human lives.
+Para um **Sistema Hard Real-Time** a tolerância para perda do _deadline_ é muito 
+baixa, desde que a perda de uma **deadline** muitas vezes resulta numa catástrofe, 
+que pode envolver perdas de vidas humanas.
 
-For **soft real-time systems** this tolerance is not as tight, since missing deadlines is generally not as critical.
+Para um **Sistema Soft Real-Time** esta tolerância não é tão critica, desde que 
+a _deadline_ perdida não seja em geral critica.
 
-Absolute hard real-time systems, with near zero tolerance, are typically very difficult to design, and it is recommended to approach them with caution.
+Absolutamente Sistemas Hard Real-Time, com tolerância próxima de zero, são 
+tipicamente muito difícil de projetar, e é recomentado aborda-los com cautela.
 
-However, with a careful design, reasonable tolerance can be obtained, and **µOS++ can be successfully used in real-time applications**.
+Porem, com um projeto cuidadoso, razoável tolerância pode ser obtida, e  o 
+**µOS++ pode ser usado com sucesso em aplicações _Real-Time_**.
 
-Legal-notice: According to the MIT license, _"the software is provided as-is, without warranty of any kind"_. As such, its use in life threatening applications should be avoided.
+**Nota Jurídica:** De acordo com a licença do MIT, 
+_"o software é fornecido _como é, sem garantias de algum tipo"_, como tal seu 
+uso em aplicações com risco de vida deve ser evitado.
 
-## Superloop (foreground/background) applications
 
-There are many techniques for writing embedded software. For low complexity systems, the classic way does not use an RTOS, but are designed as foreground/background systems, or **_superloops_**.
+## Aplicações _Superloop_ (_foreground_/_background_)
 
-An application consists of an infinite loop that calls one or more functions in succession to perform the desired operations (**background**).
+Há muitas técnicas para escrever um software para sistemas embarcados. Pra 
+sistemas de baixa complexidade, há formas clássicas que não usam RTOS, mas 
+padrões de desenvolvimento como sistemas _foreground_/_background_, ou 
+**_superloops_**.
 
-Interrupt service routines (ISRs) are used to handle the asynchronous,  real-time parts of the application (**foreground**).
+Uma aplicação consiste de um _loop_ infinito que chama uma ou mais funções em 
+sucessão para executar as operações desejadas (**background**).
 
-In this architecture, the functions implementing the various functionalities are inherently, even if not formally declared as such, some kind of [finite state machines](https://en.wikipedia.org/wiki/Finite-state_machine), spinning around and switching states based on inputs provided by the ISRs.
+Rotinas de serviço de interrupção (Interrupt service routines - ISRs) são usados 
+para tratar de forma assíncrona, partes _real-time_ da aplicação (**foreground**).
+
+Nesta arquitetura, funções implementando várias funcionalidades são inerentes, 
+ainda que não seja formalmente declarados como tal, um tipo de 
+[máquina de estado finito](https://pt.wikipedia.org/wiki/M%C3%A1quina_de_estados_finitos), 
+girando em torno de si e mudando estados baseado nas entradas fornecidas pelas 
+**ISRs**..
 
 <div style="text-align:center">
 <img src="{{ site.baseurl }}/assets/images/2016/superloop.png" />
 <p>Superloop application</p>
 </div>
 
-The superloop technique has the advantage of requiring only one stack and sometimes may result in simpler applications, especially when the entire functionality is performed on ISRs, and the background logic is reduced to an empty loop waiting for interrupts.
+A técnica de _superloop_ tem a vantagem de exigir apenas um _stack_ e algumas 
+vezes pode resultar em uma aplicação simples, especialmente quando o 
+funcionalidades são inteiramente executadas na ISRs, e a lógica do _background_ 
+é resumida em um laço vazio aguardando por interrupções.
 
-However, for slightly more complex applications, expressing the entire logic as a set of state machines is not easy, and maintenance becomes a serious problem as the program grows.
+Porem, para aplicações ligeiramente mais complexas, expressando toda a lógica 
+como um conjunto de maquinas de estados não é fácil e a manutenção torna-se um 
+sério problema conforme o problema cresce.
 
-The overall reaction speed may also be a problem, since the delay between the moment when the ISR makes available the input and the moment when the background routine can use it is not deterministic, depending on many other actions that can happen at the same time in the superloop.
+A velocidade de reação pode ser um problema, desde que o atraso entre o momento 
+que o _ISR_ torna disponível as entradas e o momento quando a rotina de _background_ 
+pode usa-la não é determinístico, dependendo de muitas outras ações que podem 
+acontecer ao mesmo tempo no _superloop_.
 
-To ensure that urgent actions are performed in a timely manner, they must be moved on the ISRs, lengthening them and further worsening the reaction speed of the application.
+Para assegurar que ações urgentes sejam executadas em tempo hábil, ela deve ser 
+movida para o _ISRs_, estendendo e tornando a resposta da aplicação pior.
 
 ## Multi-tasking
 
-Regardless how elaborate the techniques for implementing the finite state machines are, the human mind still feels more comfortable with linear representations of lists of steps to be done, than with graph and state tables.
+Independente de quão elaborado seja a técnica para implementação da máquina de 
+estado finito (_finite state machine_), a mente humana ainda se sente mais 
+confortável com representações lineares de listas de passos a serem executadas, 
+do que com grafos e tabelas de estados.
 
 ### Tasks
 
-In the µOS++ context, a task is a well defined sequence of operations, usually represented in a programing language as a function.
+No contexto do µOS++, uma tarefa (_task_) é uma sequência de operações bem 
+definidas, usualmente representadas em uma linguagem de programa por uma função.
 
-A complex application can be decomposed as a series of tasks, some executed in succession, some executed in parallel and possibly exchanging data.
+Uma aplicação complexa pode ser decomposta com uma série de tarefas, algumas 
+executadas em sucessão, algumas executadas em paralelo e possivelmente trocando 
+dados.
 
-Multi-tasking is the technique of running multiple tasks in parallel.
+_Multi-tasking_ é a técnica de executar múltiplas tarefas (_tasks_) em paralelo.
 
-### Why multiple threads?
+### Porque múltiplas _threads_?
 
-The [Java Threads](http://www.amazon.com/Java-Threads-Scott-Oaks/dp/0596007825/) book (one of the inspiration source for the early versions of this project) states:
+O livro [Java Threads](http://www.amazon.com/Java-Threads-Scott-Oaks/dp/0596007825/) 
+(uma das fontes de inspiração para as primeiras versões deste projeto) afirma:
 
-> Historically, threading was first exploited to make certain programs easier to write: if a program can be split into separate tasks, it’s often easier to program the algorithm as separate tasks or threads… while it is possible to write a single-threaded program to perform multiple tasks, it’s easier and more elegant to place each task in its own thread.
+> Historicamente, _threading_ foi explorado para tornar certos programas fáceis 
+  de escrever: se um programa pode ser separado em tarefas separadas, ele em muitos 
+  casos é fácil de ser escrito em _tasks_ ou _threads_… enquanto é possível 
+  escrever um programa _single-threaded_ para executar múltiplas tarefas, é fácil
+  e mais elegante colocar cada tarefa em sua própria _thread_.
 
-### Threads vs processes
 
-Threads and processes are the operating system mechanisms for running multiple tasks in parallel.
+### Threads vs Processos
 
-The main difference between threads and processes is how the memory space is organised. Processes run in separate, virtual memory spaces, while threads share a common memory space.
+_Threads_ e Processos são mecanismos do sistema operacional para executar 
+múltiplas tarefas em paralelo.
 
-The implementation of virtual memory requires hardware support for a [MMU](https://en.wikipedia.org/wiki/Memory_management_unit), available only in application class processors, like the Cortex-A devices.
+A principal diferença entre _threads_ e processos é como o espaço de memória é 
+organizado. Processos rodam em separado, espaços de memoria virtual, enquanto 
+_threads_ compartilham o mesmo espaço de memória.
 
-Smaller devices, like the ARM Cortex-M devices, can still run multiple tasks in parallel, but, without a MMU and the benefits of virtual memory, these multiple tasks are performed by multiple threads, all sharing the same memory space.
+A implementação de memoria virtual requer suporte de hardware para gerenciamento 
+de memória (um Memory Management Unit - 
+[MMU](https://pt.wikipedia.org/wiki/Unidade_de_gerenciamento_de_mem%C3%B3ria), 
+disponível somente em processadores para uso em aplicações, como os dispositivos 
+Cortex-A.
 
-As such, µOS++ is a **multi-threaded system**, supporting **any number of threads**, with the actual number limited only by the amount of available memory.
+Pequenos dispositivos, como o ARM Cortex-M, podem até pode rodar múltiplas tarefas 
+em paralelo, mas, sem um MMU e o beneficio de memórias virtuais, estas tarefas 
+são executadas por múltiplas _threads_, todas compartilhando o mesmo espaço de 
+memoria.
 
-### Blocking I/O
+Como tal, µOS++ é um **sistema multi-threaded** (permite Múltiplas Threads), 
+suportando **qualquer número de threads**, com o numero atual limitado apenas 
+pela quantidade de memória disponível.
 
-One of the most encountered scenario when implementing tasks, is to wait for some kind of input data, for example by performing a `read()`, then process the data and, most of the times, repeat this sequence in a loop. When the system executes the `read()` call, the thread might need to wait for the required data to become available before it can continue to the next statement. This type of I/O is called **blocking I/O**: the thread blocks until some data is available to satisfy the `read()` function.
+### Bloqueio por I/O
 
-One possible implementation is to loop until the data becomes available, but this type of behaviour simply wastes resources (CPU cycles and implicitly power) and should be avoided by all means.
+Um dos cenários mais encontrados quando implementando tarefas, é aguardar por 
+um tipo de dado de entrada, por exemplo executando um `read()`, então processar 
+o dado e muitas vezes, repetir essa sequência em um laço. Quando o sistema executa 
+uma chamada `read()`, a _thread_ pode precisar esperar pelo dado solicitado se 
+tornar disponível antes que possa continuar a próxima instrução. este tipo de 
+I/O é chamado bloqueio de I/O (**blocking I/O**): A _thread_ bloqueia até que 
+algum dado esteja disponível para satisfazer a função `read()`.
 
-Well behaved applications should never enter (long) busy loops waiting for conditions to occur, but instead suspend the thread and arrange for it to be resumed when the condition is met. During this waiting period the thread completely releases the CPU, so the CPU will be fully available for the other active threads.
+Uma possível implementação é fazer um laço até que o dado se torne disponível. 
+mas este tipo de comportamento simplesmente é um desperdício de recursos (ciclos 
+de CPU e implicitamente energia) e deve ser evitado de todas as formas.
 
-For the sake of completeness, it should be noted that the only exception to the rule applies to short delays, where short means delays with durations comparable with the multitasking overhead. On most modern microcontrollers this is usually in the range of microseconds.
+Bem, aplicações comportadas nunca devem entrar em (longos) _loops_ ocupados 
+esperando por condições por ocorrer, mas ao invés disso suspender a _thread_ e 
+se organizar para que possa ser retomado quando a condição é encontrada. Durante 
+este período de espera a _thread_ libera completamente a CPU, então a CPU se 
+torna totalmente disponível para outra _thread_ disponível.
 
-### The idle thread
+{% comment %} 
+Rever a seguinte tradução, apesar de compreensível está difícil manter o texto em tradução direta:
+For the sake of completeness, it should be noted that the only exception to the rule applies to short delays, where short means delays with durations comparable with the multitasking overhead required to suspend/resume threads (where the context switching time plays an important role). On most modern microcontrollers this is usually in the range of microseconds.
+{% endcomment %}
+Por razões de exaustividade, deve-se notar que a única exceção a regra se aplica 
+a pequenos atrasos, onde quanto mais curtos significa que os atrasos com durações 
+comparáveis com a sobrecarga da multitarefa necessários para suspender/resumir 
+as _threads_ (enquanto o tempo necessário para a troca de contexto é um fator 
+importante). Na maioria dos microcontroladores modernos esta é geralmente no 
+intervalo de microssegundos.
 
-As seen before, at thread level, the goal is to process the available data as soon as possible and suspend itself to wait for more data. In other words, the thread ideal way of life should be... to do nothing!
+### A **Idle** _thread_
 
-But what happens if all threads accomplish this goal and there is nothing else to do?
+Como vimos antes, a nível de _threads_, o objetivo é processar o dado assim que 
+possível e suspender a si própria para aguardar por mais dados. E outras palavras, 
+a forma ideal da _thread_ se manter é... não fazer nada!
 
-Well, enter the **idle** thread. This internal thread is always created before the scheduler is started; it has the lowest possible priority, and is always running when there are no more other threads to run.
+Mas o que acontece se todas as _threads_ atender este requisito e não houver 
+nada a ser feito?
 
-The idle thread can perform various low priority maintenance chores (like destroying terminated threads), but at a certain moment even the idle thread will have nothing else to do.
+Bem, entra a **idle** _thread_. Esta _thread_ interna é sempre criada antes do 
+agendador (_scheduler_) ser iniciado; 
+ela tem a prioridade mais baixa possível, e está sempre em execução quando não 
+há nada mais para outras _threads_ executarem.
 
-### Sleep modes and power savings
+A _idle thread_ pode executar várias ações de manutenção de baixa prioridade 
+(como destruir _threads_ finalizadas), mas em certos momentos até mesmo a 
+_idle thread_ não terá nada para ser feito.
 
-When the idle thread has nothing to do, it still can do something useful: it can put the CPU to a shallow sleep, and wait for the next interrupt (the Cortex-M devices use the **Wait For Interrupt** instruction for this).
 
-In this mode the CPU is fully functional, with all internal peripherals active, but it does not run any instructions, so it is able to save a certain amount of power.
+### _Sleep modes_ e economia de energia
 
-If the application has relatively long inactive moments, further savings are possible, i.e. power down all peripherals except a low frequency real time timer, usually triggered once a second. In this case the idle task can arrange for the CPU to enter a deep sleep mode, saving a significantly higher amount of power.
+Quando a _idle thread_ não tem nada a fazer, ele ainda pode ser útil: ela pode 
+colocar a CPU em modo _sleep_ superficial e aguardar pela próxima interrupção 
+(os dispositivos Cortex-M usam a instrução Aguardar Interrupção - 
+**Wait For Interrupt** para isso).
 
-As a summary, the multilevel strategy used to reduce power consumption implies:
+Neste modo a CPU é inteiramente funcional, com todos os periféricos internos 
+ativos, mas ela não executa nenhuma instrução, por isso é capaz de economizar 
+certa quantidade de energia.
 
-- if nothing to do, each thread should suspend itself as soon as possible, and release the CPU to the other active threads;
-- if no active threads are available, the idle thread should arrange for the CPU to enter the sleep mode as soon as possible;
-- if all tasks know they will be inactive for a longer period, the idle task should arrange for the CPU to enter a deep sleep mode.
+Se a aplicação tem momentos de inatividade relativamente longos, é possível ter 
+maior economia, por exemplo desligar todos os periféricos exceto o relógio de 
+tempo real de baixa frequência. que usualmente dispara a cada segundo. Neste 
+caso a tarefa inativa pode se preparar pra a CPU entrar em modo _deep sleep_, 
+economizando uma quantidade significante de energia.
 
-In conclusion, by using a wide range of power management techniques, an RTOS can be successfully used in very low power applications.
+Como resumo, a estratégia de multinível usada para reduzir o consumo de energia 
+implica em:
 
-### Running vs suspended threads
+ - Se não há nada a ser feito, cada _thread_ deve suspender a si mesma assim que
+   possível, e liberar a CPU para outra _thread_ ativa;
+ - Se nenhum _thread_ ativa está disponível, a _idle thread_ deve preparar para 
+   que a CPU entre em modo _sleep_ assim que possível;
+ - Se todas as tarefas sabem que irão ficar inativas por um longo período, a 
+   tarefa inativa deve se preparar para a CPU entrar em modo _deep sleep_.
 
-Running multiple threads in parallel is only apparent, since under the hood the threads are decomposed in small sequences of operations, serialised in a certain order, on the available CPU cores. If there is only one CPU core, there is only one **running** thread at a certain moment. The other threads are **suspended**, in a sense are _frozen_ and put aside for later use; when the conditions are again favourable, each one may be _revived_ and, for a while, allowed to use the CPU.
+Em conclusão, pelo uso de uma vasta gama de técnicas de economias de energia, 
+um RTOS pode ser usado com sucesso em uma variedade de aplicações e baixa energia.
 
-Suspended threads are sometimes called sleeping, or dormant; these terms are also correct, but it must be clearly understood that the thread status is only a software status, that has nothing to do with the CPU sleep modes, which are hardware related; the existence of suspended threads means only that the threads are not scheduled for execution; they do not imply that the CPU will enter any of the sleep modes, which may happen only when all threads are suspended.
+### _Threads_ em execução e suspensas
 
-### Context switching
+Executar múltiplas _threads_ em paralelo é apenas aparente, já que internamente 
+as _threads_ são decompostas em pequenas sequências de operações, serializadas 
+em uma certa ordem, em cada core disponíveis na CPU. Se há somente um core de 
+CPU, há somente uma _thread_ **rodando** em certo momento. As outras _threads_ 
+são **suspensas**, de certa forma são _congeladas_ e colocadas de lado para uso 
+posterior; quando as condições se tornam favoráveis, cada uma pode ser 
+_reanimada_ e, por um tempo, permitidas usar a CPU.
+ 
+_Threads_ suspensas são as vezes chamadas _sleeping_, ou _inativas_; este termo 
+também é correto, mas ele deve ser claramente entendido que o estado da _thread_ 
+é somente o estado do _software_, que não há nenhuma relação com o modo _sleep_ 
+da CPU, que é relativo ao estado da CPU; A existência de _threads_ suspensas 
+apenas significa que não há _threads_ agendadas para execução; isso não implica 
+que a CPU entrará em algum dos modos _sleep_, que pode ocorrer somente quanto 
+todas as _threadas_ são suspensas.
+ 
+### Troca de Contexto
 
-Restarting a suspended thread requires restoring exactly the internal CPU state existing at the moment when the thread was suspended. Physically, this state is usually stored in a certain number of CPU registers. When the thread is suspended, the content of these registers must be stored in a separate RAM area, specific to each thread. When the thread is resumed, the same registers must be restored with the saved values.
+Reiniciar uma _thread_ suspensa requer restaurar exatamente o estado interno da 
+CPU existente no momento quando a _thread_ foi suspensa. Fisicamente este estado 
+é usualmente restaurado em um certo números de registradores da CPU. Quando a 
+_thread_ está suspensa, o conteúdo destes registradores devem ser armazenados 
+em uma área de memória RAM separada, especifica para cada _thread_. Quando a 
+_thread_ é continuada, os mesmos registradores devem ser restaurados com os 
+mesmos valores.
 
-This set of information required to resume a thread is also called the **thread execution context**, in short the **context**.
+Este conjunto de informações necessárias para resumir a _thread_ é também chamado 
+de **Contexto de execução da Thread** (Thread execution context), em resumo 
+**contexto** (context).
 
-The set of operations required to save the context of the running thread, select the next thread and restore its context is called **context switching**.
+O conjunto de operações necessárias para armazenar o contexto da _thread_ em 
+execução. selecionar a próxima _thread_ e restaurar seu contexto é chamado 
+**Troca de Contexto** (context switching).
 
 ### Thread stacks
 
-Modern CPUs, like the ARM Cortex-M devices, make use of a stack to implement nested function calls and local function storage.
+CPUs modernas, como os dispositivos ARM Cortex-M, fazem uso do _stack_ para 
+implementar chamadas de funções intercaladas e armazenamento de funções locais.
 
-The same stack can be used to store the thread context. When starting a context switch all registers are pushed onto the thread stack. Then the resulting stack pointer is saved in the thread context area. Resuming a thread is done in reverse order, i.e. the stack pointer is retrieved from the thread context, all registers are popped from the stack and execution is resumed.
+O mesmo _stack_ pode ser usado para gravar o contexto da _thread_. Quando 
+iniciando uma troca de contexto todos os registradores são armazenados no _stack_ 
+da _thread_. Então o ponteiro resultante do _stack_ é gravado na área de contexto 
+da _thread_. Em resumo a _thread_ está pronta na ordem reversa, por exemplo o 
+ponteiro do _stack_ (pilha) é recuperado do contexto da _thread_, todos os 
+registradores são puxados do _stack_ e a excussão é resumida.
 
-This mechanism usually simplifies the scheduler implementation; it is used in the Cortex-M port of the µOS++ scheduler.
+Este mecanismo usualmente simplifica a implementação do agendador (_scheduler); 
+ele é usado na implementação do agendador do µOS++ para o Cortex-M.
 
-Historical note: early microcontrollers, like PIC before the 18 series, did not have a general purpose stack; instead they had a limited call stack, allowing only a small number of nested calls.
+Observação Histórica: microcontroladores antigos, como o PIC antes da série 18, 
+não tem um _stack_ de propósito geral; ao invez ele tem uma chamada limitada 
+para o _stack_, permitindo somente uma pequena quantidade de chamadas aninhadas.
 
-### Cooperative vs preemptive multi-tasking
+### Multi-tarefa cooperativa vs preemptiva
 
-The most frequent reason for a context switch is when a thread decides to wait for a resource that is not yet available, like a new character from a device, a message in a queue, a mutex protecting a shared resource, etc.
+A razão mais frequênte para a troca de contexto é quando a _thread_ decide 
+aguardar por recursos que não estão disponíveis ainda, como um novo caractere 
+de um dispositivo, uma mensagem no _queue_, uma proteção por _mutex_ de um 
+recurso compartilhado.
 
-In this case, yielding the CPU from one thread to another is done implicitly by the system function called to wait for the resource.
+Neste caso, cedendo a CPU de uma _thread_ para outra é feito implicitamente pela 
+função de sistema chamada para aguardar por este recurso.
 
-In case of long computations, a well behaved thread would not hold the CPU for the entire computation period, but explicitly yield the CPU from time to time, to give other threads a chance to run.
+No caso de longos cálculos, uma _thread_ bem comportada não deve manter a CPU 
+inteiramente no período de calculo, mas explicitamente ceder (_yield_) a CPU 
+de tempo em tempos, para dar a outras _threads_ a chance de rodar.
 
-This polite behaviour, when the switch is performed by the thread itself, is called **cooperative** multi-tasking, since it depends on a the good-will of all tasks running in parallel.
+Esta politica de comportamento, quando a troca é executada pela própria _thread_ 
+é chamada multi-tarefa cooperativa (**coperative**), uma vez que depende do bom 
+comportamento de todas as tarefas rodando em paralelo.
 
-The biggest disadvantage of cooperative multi-tasking is a possible low reaction speed, for example when an interrupt wants to resume a high priority thread, this might not happen until the low priority thread decides to yield.
+A grande desvantagem da multi-tarefa cooperativa é uma possibilidade de reação 
+de baixa velocidade, por exemplo quando uma interrupção deseja resumir uma _thread_ 
+de alta prioridade, isso pode não acontecer até que a prioridade de baixa 
+prioridade decida ceder (_yield_).
 
 <div style="text-align:center">
 <img src="{{ site.baseurl }}/assets/images/2016/scheduling-cooperative.png" />
 <p>Cooperative context switching.</p>
 </div>
 
-In this case the solution is to allow the interrupt to trigger a context switch from the low priority thread to the high priority thread without the threads event knowing about. This automatic kind of context switch is also called **preemptive** multi-tasking, since long running threads are _preempted_ to hog the CPU in favour of higher priority threads.
+Neste caso a solução é permitir a interrupção disparar uma troca de contexto de 
+uma _thread_ de baixa prioridade para uma _thread_ de alta prioridade sem que 
+as _threads_ tomem conhecimento do evento. Este tipo de troca de contexto é 
+também chamado de multi-tarefa **preemptiva** (_preemptive_ multi-tasking), 
+desta forma _threads_ de longo tempo de execução irão de forma preemptiva 
+monopolizar a CPU em favor de prioridades maiores.
 
 <div style="text-align:center">
 <img src="{{ site.baseurl }}/assets/images/2016/scheduling-preemptive.png" />
 <p>Preemptive context switching</p>
 </div>
 
-Once the mechanism for an interrupt to preempt a thread is functional, a further improvement can be added: a periodic timer (for example the timer used to keep track of time), can be used to automatically preempt threads and give a chance to equal priority threads to alternatively get the CPU.
+Uma vez o mecanismo para uma interrupção agir de forma preemptiva para uma _thread_ 
+é funcional, uma melhoria futura pode ser adicionada: um _timer_ periódico (por 
+exemplo o _timer_ usado para manter o tempo atualizado), pode ser usado para 
+automaticamente agir de forma preemptiva sobre as _threads_  e dar a chance para 
+_threads_ de prioridade igual de forma alternada ter acesso a CPU.
 
 <div style="text-align:center">
 <img src="{{ site.baseurl }}/assets/images/2016/scheduling-preemptive-timer.png" />
 <p>Preemptive context switching with periodic timer</p>
 </div>
 
-In general cooperative multitasking is easier to implement, and, since the CPU is released under the application control, inter-thread synchronisation race conditions are avoided. However, at a more thorough analysis, this is not necessarily a feature, but a subtle way to hide other application synchronisation bugs, like the lack of explicit critical sections. In other words, a well behaved application should protect a shared resource by use of a critical section anyway, since although another task cannot execute inside another task, interrupt service routines can, and without the critical section it is very likely that a race condition may occur.
+Em geral multi tarefas cooperativas são fáceis de implementar e desde que a CPU 
+seja liberada sobre o controle da aplicação, a condição de competição por 
+sincronização _inter-threads_ são evitadas. Porém, em uma analise mais profunda, 
+isso não é um recursos, mas uma forma de esconder outros erros de sincronização 
+da aplicação, como a falta de seções criticas explicitas. Em outras palavras, 
+uma aplicação bem comportada deve proteger recursos compartilhado de uma seção 
+critica de qualquer forma, já que desde que outras tarefas não pode executar 
+dentro de outra tarefa, serviços de interrupção (ISR) podem, e sem uma seção 
+critica é bem provável que uma uma condição de competição possa ocorrer.
 
-One special useful application of the cooperative mode is for debugging possible inter-thread race conditions. In case of strange behaviours that might be associated with synchronisation problems, if disabling preemption solves the problem, then an inter-thread race condition is highly probable. It the problem is still present in cooperative mode, than most probably the race condition involves the interrupt service routines. In both cases, the cure is to use critical sections where needed.
+Uma aplicação especialmente útil do modo cooperativo é para depuração de condições 
+de competição _inter-thread_. Em casos de comportamento estranho que podem ser 
+associados com problemas de sincronização, se desabilitar a preempção resolve o 
+problema, então uma condição de competição _inter-threads_ é altamente provável. 
+O problema permanece presente no modo cooperativo, então é muito provável que a 
+condição de competição envolve o serviço de interrupção (IRS). Em ambos os casos 
+a correção é usar seções criticas quando necessário.
 
-µOS++ implements both cooperative and preemptive multi-tasking.
+µOS++ implementa ambos os modos multi-tasking preemptivo e cooperativo.
 
-### The scheduler timer
+### O Cronometro do Escalonador
 
-Most schedulers keep track of time, at least for handling timeouts. Technically this is implemented with a periodic hardware timer, and timeouts are expressed in timer ticks.
+Muitos escalonadores mantem o rastro do tempo, ao menos para tratar limites de 
+tempo (timeouts). Tecnicamente isto é implementado através de um temporizador 
+por hardware, e os limites de tempo são expressos como ticks deste temporizador.
 
-A common frequency for the scheduler timer is 1000 Hz, which gives a resolution of 1 ms for the scheduler derived clock.
+Uma frequência comum para o temporizador do escalonador é 1000hz, que dá uma 
+resolução de 1ms para a derivação do relógio do escalonador.
 
-For preemptive schedulers, the same timer can be used to trigger context switches.
+Para escalonadores preemptivos, o mesmo cronometro pode ser usado para disparar 
+a troca de contextos.
 
-Acknowledging the importance of a system timer, ARM defined SysTick as a common timer for Cortex-M devices, which makes it a perfect match for the scheduler timer.
+Sabendo da importância de um cronometro do sistema, A ARM definiu **SysTick** 
+como o cronometro comum para dispositivos Cortex-M, que fazem dele um recurso 
+perfeito para o cronometro do escalonador.
 
-### Thread interruption/cancellation
+### Interrompendo/Cancelando uma Thread
 
-In real life applications, there are cases when some threads, for various reasons, must be interrupted.
+Em aplicações da vida real, há casos quando algumas _threads_, por vários motivos, 
+devem ser interrompidos.
 
-µOS++ threads include support for interruption, but this support is cooperative, i.e. threads that might be interrupted should check for interruption requests and quit inner loops in an ordered manner.
+_Threads_ do µOS++ incluem suporte para interrupção, mas este suporte é cooperativo, 
+por exemplo _threads_ que podem ser interrompidas devem verificar pela requisição 
+de interrupção e e sair de seu loop de uma forma organizada.
 
-### Thread Control Blocks (TCBs)
+### Blocos de controle de Threads (Thread Control Blocks - TCBs)
 
-A thread control block (TCB) is a data structure used by the scheduler to maintain information about a thread. Each thread requires its own TCB.
+Um bloco de controle de _thread_ (thread control block - TCB) é uma estrutura 
+de dados usada pelo escalonador para manter informações sobre a _thread_. Cada 
+_thread_ requer seu próprio **TCB**.
 
-Being implemented in a structured, object oriented language like C++, the µOS++ threads implicitly have instance data structures associated with the objects, which are functionally equivalent to common TCBs; in other words, the µOS++ TCBs are the actual thread instances themselves.
+Por trás de uma linguagem estruturada e orientada a objetos como o C++, as _threads_ 
+do µOS++ tem de forma implícita uma instância da estrutura de dados associada com 
+os objetos, que são funcionalmente equivalentes aos TCBs comuns; em outras 
+palavras, o TCB do µOS++ são as instancia das _threads_ em si.
 
-The thread internal variables are protected, and cannot be directly accessed from user code, but for all relevant members there are public accessor and mutator functions defined.
+As variáveis internas das _threads_ são protegidas, e não podem ser diretamente 
+acessadas pelo código do usuário, mas para todos os membros relevantes há 
+assessores públicos e funções modificadores definidas.
 
-## Scheduling
+## Escalonador
 
-The mechanism that performs the context switches is also called **scheduling**, and the code implementing this mechanism is also called **scheduler**.
+O mecanismo que permite a troca de contexto é chamado de **escalonamento** 
+(**_scheduling_**), e o código que implementa este mecanismo também é chamado 
+de **escalonador** (**_scheduler_**).
 
-### Thread states
+### Estado da _Thread_ 
 
-During their lifetime, threads can be in different states.
+Durante seu tempo de vida, _threads_ podem ter diferentes estados.
 
-Apart from some states used during thread creation and destruction, the most important thread states are:
+Além de alguns estados usados durante a criação da _thread_ e sua destruição, 
+os estados mais importantes são:
 
-- **running** - a thread is marked as running when it is using the CPU;
-- **ready** - a thread that is ready to run, but does not use the CPU yet;
-- **suspended** - a thread that is not ready to run since it must wait for a resource that is not yet available, or for an event that will occur in the future.
+ - **executando** (**running**) - uma _thread_ é marcada como **running** quando 
+   ela está usando a CPU;
+ - **pronta** (**read**) - uma _thread_ é marcada como **pronta** (**read**) 
+   para rodar, mas não está usando a CPU ainda;
+ - **suspensa** - (**suspended**) - uma _thread_ que não esteja pronta (**read**) 
+   para rodar e que deva aguardar por um recurso que não está disponível, ou 
+   por um evento que irá ocorrer no futuro.
 
-### The READY list
+### A lista READY
 
-To performs its duties efficiently, the scheduler needs to keep track only of the threads ready to run. Threads that for a little while must wait for various events can be considered to momentarily exit the scheduler jurisdiction, and other mechanisms, like timers, synchronisation objects, notifications, etc are expected to return them to the scheduler when ready to run.
+Para desempenhar suas funções de forma eficiente, o escalonador precisa manter 
+o controle somente das _threads_ prontas para executar. _Threads_ que por um 
+pequeno tempo devem aguardar vários eventos podem ser consideradas momentaneamente 
+fora da jurisdição do escalonador, e outros mecanismos como cronômetros, objetos 
+de sincronização, notificações etc, são esperados retornar então para o 
+escalonador quando pronto para executar.
 
-In order to keep track of the ready threads, the scheduler maintains a ready list. The term list is generic, regardless of the actual implementation, which might be anything from a simple array to multiple double linked lists.
+Objetivando manter o controle das _threads_ prontas, o escalonador mantem uma 
+lista _ready_ (prontos). O termo lista é genérico, e independênte da implementação 
+atual, pode ser qualquer coisa desde um simples _array_ até múltiplas listas 
+duplamente encadeadas.
 
-### Scheduling algorithms
+### Algoritmos de Escalonamento
 
-The main existential question in the life of a scheduler is _how to select the next thread to run among the treads in the READY list?_ This question is actually much more difficult to answer when dealing with a hard real-time application, with strict life or death deadlines for threads.
+A principal questão existencial na vida do escalonador é 
+_como selecionar a próxima thread a ser executada dentre as threads na lista READY?_ 
+Esta questão é atualmente muito mais difícil de responder quando tratando com 
+uma aplicação _hard real-time_, com rigorosos prazos de vida ou morte definidos 
+para as _threads_.
 
-Legal notice: From this point of view it must be clearly stated that the µOS++ scheduler does not guarantee any deadlines in thread executions.
+**Informe jurídico:** Deste ponto de vista pode ser claramente afirmado que o 
+agendador do µOS++ não garante algum prazo na execução da _thread_.
 
-However, what the µOS++ scheduler does, is to be as fair as possible with existing threads, and give them the best chance to access the CPU.
+Porém, o que o agendador do µOS++ faz, é ser o mais justos possível com as _threads_
+existentes, e dar a melhor chance para cada uma ter acesso a CPU.
 
-### Round-robin vs priority scheduling
+### Round-robin vs prioridade de escalonamento 
 
-One of the simple ways to manage the ready list is [FIFO](https://en.wikipedia.org/wiki/FIFO_(computing_and_electronics)), with new threads inserted at the back, and the scheduler extracting from the front. This mechanism works well if there is no need to guarantee response time.
+Uma das formas simples de gerenciar a lista de _threads_ prontas é uma lista do 
+tipo [FIFO](https://pt.wikipedia.org/wiki/FIFO_(escalonamento)), com novas 
+_threads_ sendo inseridas no final da fila, e o escalonador extraindo do inicio 
+da fila. Este mecanismo funciona bem se não necessidade de garantir tempo de 
+resposta.
 
-When response time becomes important, the mechanism can be greatly improved by assigning priorities to threads, and ordering the ready list by priorities.
+Quando o tempo de resposta se torna importante, o mecanismo pode ser melhorado substancialmente adicionando prioridades para as _threads_, e ordenando a lista de _threads_ prontas pela prioridade.
 
-By always inserting higher priority threads immediately in front of the lower priority ones, two goals are achieved at the same time:
+Desta forma inserindo _threads_ de alta prioridades imediatamente na frente das _threads_ de baixa prioridades, dois objetivos são atingidos ao mesmo tempo:
 
-- the highest priority thread is always in the front of the list, so the scheduler will always give control to the highest priority thread;
-- threads with equal priority are not only kept together but also preserve the insertion order.
+- a _thread_ de maior prioridade está sempre na frente da lista, assim o escalonador sempre dará o controle para as _threads_ de alta prioridade;
+- _threads_ com prioridades iguais não apenas são mantidas juntas, mas também manterão a ordem de inserção.
 
-By default, the µOS++ user threads are created with _normal_ priority. As the result, the scheduler default behaviour is round-robin.
+{% comment %}
+define: round-robin -> https://pt.wikipedia.org/wiki/Round-robin
+{% endcomment %}
+Por padrão, as _threads_ de usuário no µOS++  são criadas com prioridade _normal_. Como resultado o comportamento padrão do escalonador é _round-robin_.
 
-As soon as thread priorities are changed, the scheduler behaviour automatically changes to priority scheduling, falling back to round-robin for threads with equal priorities.
+Assim que a prioridades são alteradas, o comportamento do escalonador muda automaticamente alterando o escalonamento das prioridades, voltando a usar _round-robin_ para _threads_ com prioridades iguais.
 
-### Selecting thread priorities
+### Selecionando a prioridade das _threads_
 
-As a general rule, threads that implement hard real-time functions should be assigned priorities above those that implement soft real-time functions. However, other characteristics, such as execution times and processor utilization, must also be taken into account to ensure that the entire application will never miss a hard real-time deadline.
+Como regra geral, _threads_ que sejam implemente funções _hard real-time_ devem ser designadas com prioridade superior as que implementam funções _soft real-time_. Porem, outras caracteristicas, tais como tempo de execução e utilização do processador, devem também ser considerados para assegurar que a aplicação como um todo nunca perca um prazo _hard real-time_.
 
-One possible technique is to assign unique priorities, in accordance with the thread periodic execution rate (the highest priority is assigned to the thread that has the highest frequency of periodic execution). This technique is called Rate Monotonic Scheduling (RMS).
+Uma técnica possível para é designar prioridades únicas, de acordo com a taxa de execução periódica (uma prioridade maior é designada para a _thread_ que tem o período de execução com maior frequência). Esta técnica  é chamada de _Rate Monotonic Scheduling_ (RMS).
 
-### Priority inversion / priority inheritance
+### Inversão de Prioridade / Herança de Prioridade
 
-Priority inversion is a problematic scenario in scheduling in which a high priority thread is indirectly prevented to run by a lower priority thread effectively "inverting" the relative priorities of the two threads.
+Inversão de prioridade é um cenário problemático no escalonador em que uma _thread_ de alta prioridade é indiretamente impedida de executar por uma _thread_ de baixa prioridade efetivamente "invertendo" a prioridade relativa das duas _threads_.
 
-The first scenario is the following:
+O primeiro cenário é o seguinte:
 
-- one low priority thread acquires a common resource
-- following an ISR, a high priority thread becomes active, and tries to acquire the same resource, but is finds it busy and is blocked, waiting for the resource to be released
-- the low priority thread is resumed, completes its job and releases the resource
-- the high priority thread is resumed and can acquire the resource to perform its job
+- Uma _thread_ de baixa prioridade adquire um recurso comum;
+- Em seguida uma ISR, uma _thread_ de alta prioridade se torna ativa, e tenta adquirir o mesmo recurso, mas o encontra ocupado e é bloqueada, aguardando o recurso a ser liberado;
+- A _thread_ de baixa prioridade é retomada, completa seu trabalho e libera o recurso;
+- A _thread_ de alta prioridade é retomada e pode adquirir o recurso para executar seu trabalho;
 
-Although for the high priority thread this is an unfortunate scenario, there is not much that it can do but wait for the low priority thread to release the resource.
+Apesar que para a _thread_ de alta prioridade este é um cenário lamentável, não há muito o que se possa fazer mas aguardar pela _thread_ de baixa prioridade liberar o recurso.
 
-An even more unfortunate scenario is the following:
+Um cenário ainda mais lamentável é o seguinte:
 
-- one low priority thread acquires a common resource
-- following an ISR, a high priority thread becomes active, and tries to acquire the same resource, but is finds it busy and is blocked, waiting for the resource to be released
-- during this time, a medium priority thread becomes ready
-- as soon as the high priority thread is suspended, the medium priority thread is resumed
-- this prevents the low priority thread to run and release the resource, which prevents the high priority thread to run
-- at a certain moment, the medium priority thread is suspended
-- the low priority thread is resumed, completes its job and releases the resource
-- the high priority thread is resumed and can acquire the resource to perform its job
+- Uma _thread_ de baixa prioridade adquire um recurso;
+- Em seguida uma ISR, uma _thread_ de alta prioridade se torna ativa, e tenta adquirir o mesmo recurso, mas ela o encontra ocupado e é bloqueada, aguardando pelo recurso a ser liberado;
+- Durante este tempo, uma _thread_ de prioridade média se torna pronta;
+- Assim que a _thread_ de alta prioridade é suspensa, a _thread_ de prioridade média é retomada;
+- Esta evita que a _thread_ de baixa prioridade execute e libere o recurso, o que evita que a _thread_ de alta prioridade execute;
+- Em certo momento, a _thread_ de prioridade média é suspendida;
+- A _thread_ de baixa prioridade é resumida, completa seu trabalho e libera o recurso;
+- a _thread_ de atla prioridade é retomada e pode adquirir o recurso para executar seu trabalho;
 
 <div style="text-align:center">
 <img src="{{ site.baseurl }}/assets/images/2016/priority-inversion.png" />
 <p>Priority inversion</p>
 </div>
 
-The problem in this scenario is that although the high priority thread announced its intention to acquire the resource and knows it must wait for the low priority thread to release it, a medium priority thread can still prevent this to happen, behaving as like having the highest priority. This is known as **unbounded priority inversion**. It is unbounded because any medium priority can extend the time the high priority thread has to wait for the resource.
+O problema neste cenário é que apesar da _thread_ de alta prioridade anunciar sua intenção de adquirir o recurso e saber que deve agudar pela _thread_ de baixa prioridade libera-lo, uma _thread_ de prioridade média ainda pode evitar que isso aconteça, comportando-se como se tivesse uma prioridade alta. Isto é conhecido como **inversão de prioridade ilimitada** (unbounded priority inversion). Ela é ilimitada porque alguma prioridade média pode extender o tempo que _thread_ de alta prioridade tenha que esperar pelos recursos.
 
-This problem was known for long, but many times ignored, until it was reported to have affected the [NASA JPL’s Mars Pathfinder](https://en.wikipedia.org/wiki/Mars_Pathfinder) spacecraft (see [What really happened on Mars?](http://research.microsoft.com/en-us/um/people/mbj/Mars_Pathfinder/)).
+Este problema foi conhecido por certo tempo, mas muitas vezes ignorado, até ele ter sido reportado com efeito sobre a espaçonava [NASA JPL’s Mars Pathfinder](https://en.wikipedia.org/wiki/Mars_Pathfinder), (veja em [What really happened on Mars?](http://research.microsoft.com/en-us/um/people/mbj/Mars_Pathfinder/)).
 
-One of the possible solutions to avoid this is for the high priority thread to temporarily boost the priority of the low priority thread, to prevent other threads to interfere and so help the low priority thread to complete its job sooner. This is known as **priority inheritance**.
+Uma das possíveis soluções para evitar isso é a _thread_ de alta prioridade temporariamente elevar a prioridade da _thread_ de baixa prioridade, para evitar que outras _threads_ interfira e assim ajudar a _thread_ de baixa prioridade completar seu trabalho mais cedo. Isso é conhecido como **herança de prioridade** (priority inheritance).
 
 <div style="text-align:center">
 <img src="{{ site.baseurl }}/assets/images/2016/priority-inheritance.png" />
 <p>Priority inheritance</p>
 </div>
 
-To be noted that priority inheritance does not completely fix the priority inversion problem, the high priority thread still has to wait for the low priority thread to release the resource, but at least it does its best to prevent other middle priority threads to interfere. It is not a good practice to rely only on priority inheritance for correct system operation and the problem should be avoided at system design time, by considering how resources are accessed.
+Deve ser observado que este herança de prioridade não resolve o problema de inversão de prioridade completamente, a _thread_ de alta prioridade continua tendo que esperar a _thread_ de baixa prioridade liberar o recurso, mas pelo menos ela faz o melhor para evitar que outras _threads_ de meia prioridade interferir. Não é uma boa prática depender somente erança de prioridade para corrigir a operação do sistema e o problema deve ser evitado em tempo de desenvolvimento do sistema, através da consideração de como os recursos serão acessados.
 
 
-## Communicating between threads and/or ISRs
+## Comunicação entre _threads_ e/ou ISRs
 
-In a multi-tasking application, the threads and the ISRs are basically separate entities. However, in order to achieve the application's goals, they must work together and exchange information in various ways.
+Em uma aplicação multi tarefa, as _threads_ e as _ISRs_ são basicamente entidades separadas. Porém, visando atingir os objetivos da aplicação, elas devem trabalhar juntas e trocar informações de varias formas.
 
-### Periodic polling vs event waiting
 
-The easiest way to communicate between different pieces of code is by using global variables. In certain situations, it can make sense to communicate via global variables, but most of the time this method has disadvantages.
+### Sondagem periódica vs espera por evento
 
-For example, if you want to synchronize a thread to perform some action when the value of a global variable changes, the thread must continually poll this variable, wasting precious computation time and energy, and the reaction time depends on how often you poll.
+A forma fácil de comunicar entre diferentes partes de um código é por variáveis globais. Em certas situações, pode fazer sentido comunicar via variáveis globais, mas muitas vezes este método tem desvantagens.
 
-A better way is to suspend the waiting thread and, when the expected event occurs, to resume it. This method requires a bit of support from the system, to manage the operations behind suspend/resume, but has the big advantage that a suspended thread does not waste computation time and energy.
+Por exemplo, se você deseja sincronizar uma _thread_ para executar alguma ação quando o valor de uma variável global altera, a _thread_ deve continuamente sondar a variável, desperdiçando tempo de computação precioso e energia, e o tempo de reação depende de como é feita a sondagem. 
 
-### Passing messages
+Uma melhor forma é suspender a _thread_ e aguardar e quando o esperado ocorrer retoma-la. este método requer um pouco de suporte do sistema, para gerenciar as operações por traz de suspender/retomar, mas tem a grande vantagem que uma _thread_ suspensa não desperdiça tempo computacional e energia.
 
-A message queue is usually an array of structures accessed in a FIFO way. Threads or ISRs can send messages to the queue, and other threads or interrupts can consume them.
+### Passando Mensagens
 
-Threads can block while waiting for messages, and as such do not waste CPU cycles.
+Uma fila de mensagens é usualmente um _array_ de estruturas acessada em um formato FIFO. _Threads_ ou _ISRs_ podem enviar mensagens para a fila (_queue_), e outras _threads_ ou interrupções podem então consumi-las .
 
-### Semaphores
+_Threads_ podem bloquear enquanto esperam  por uma mensagem e como assim não desperdiçar ciclos de CPU.
 
-Semaphores, and especially binary semaphores, are commonly used to pass notifications between different parts of the code, mostly from ISRs to threads. However, they have a richer semantic, especially the counting semaphores, and can also be used to keep track of the number of available resources (for example total positions in a circular buffer), which somehow places them at the border with managing shared resources.
+### Semáforos
 
-### Event flags
+Semáforos e especialmente semáforos binários, são usados comumente para passar notificações entre diferentes partes do código, muitas vezes de _ISRs_ para _threads_. Porém, elas tem uma semântica mais rica, especialmente em semáforos de contagem e podem também ser usados para manter o controle do número de recursos disponíveis (por exemplo total de posições em um buffer circular), que de alguma maneira os coloca na fronteira com o gerenciamento de recursos compartilhados.
 
-An event flag is a binary variable, representing a specific condition that a thread can wait for. When the condition occurs, the flag is raised and the thread is resumed.
+### _Flags_ de Eventos
 
-Multiple flags can be grouped and the thread can be notified when all or any of the flags was raised.
+Uma _flag_ de evento é uma variável binária, representando uma condição especifica que uma _thread_ pode aguardar. Quando a condição ocorre a _flag_ (bandeira) é levantada e a _thread_ é retomada.
 
-## Managing common resources
+Múltiplas _flags_ podem ser agrupadas e as _threads_ podem ser informadas quando todas ou algumas das _flags_ foram levantadas.
 
-A shared resource is typically a variable (static or global), a data structure, table (in RAM), or registers in an I/O device, accessed in common by different parts of the code.
+## Gerenciando recursos comuns
 
-Typical examples are lists, memory allocators, storage devices, that all need a specific method to protect agains concurrent accesses.
+Um recurso compartilhado é tipicamente uma variável (static ou global), uma estrutura de dados, uma tabela (em memoria RAM), ou registradores em um dispositivo de I/O, acessado em comum por diferentes partes do código.
 
-The technique for obtaining exclusive access to shared resources is to create **critical sections**, which temporarily lock access.
+Exemplos típicos são listas, alocadores de memória, dispositivos de armazenamento, que todos precisam de um metodo para projeter contra acesso concorrente.
 
-### Disable/enable interrupts
+A técnica para obter acesso exclusivo a recursos compartilhados é criar **seções criticas**, que temporariamente travam o acesso.
 
-When the resource is also accessed from ISRs, the usual solution to prevent a high priority ISR to run in the middle of a thread or another lower priority ISR, is to temporarily disable the interrupts while using the shared resource.
+{% comment %}
+updated with: 6484f7badf1bcc2d09b45134d61484785241d0d2
+{% endcomment %}
+### Habilitando/desabilitando interrupções
 
-The overhead to disable/enable interrupts is usually low, and for some devices, like the Cortex-M[347] ones, it is even possible to disable interrupts only partially, from a given priority level down, keeping high priority interrupts enabled.
+Quando o recurso é também acessado de uma _ISRs_, a solução típica para prevenir uma _ISR_ de alta prioridade executar no meio de uma _thread_ ou ou outra _ISR_ de menor prioridade, é temporariamente desabilitar as interrupções enquanto usando os recursos compartilhados.
 
-Although apparently simple, this technique is often misused in cases of nested critical sections, when the inner critical section inadvertently enables interrupts, leading to very hard to trace bugs. The correct and bullet proof method to implement the critical sections is to always save the initial interrupt state and restore it when the critical section is exited.
+A sobrecarga de desabilitar/habilitar interrupções é normalmente baixa e para alguns dispositivos, como o Cortex-M[347] também, há até a possibilidade de desabilitar interrupções parcialmente, de um nível de prioridade para baixo. mantendo as prioridades mais baixas habilitadas.
 
-This method must be used with caution, since keeping the interrupts disabled too long impacts the system responsiveness.
+Embora aparentemente simples, esta técnica é muitas vezes mal utilizada em casos de seções críticas aninhadas, quando a seção crítica interna permite inadvertidamente interrupções, tornando o rastreamento de bugs muito difícil. O método à prova de bala e correto para implementar as secções críticas é salvar sempre o estado da interrupção inicial e restaurá-lo quando a seção crítica é encerrada.
 
-Typical resources that might be protected with interrupts critical sections are circular buffers, linked lists, memory pools, etc.
+Este método deve ser usado com cuidado, desde que mantenha a interrupção desabilitada por muito tempo isso impacta na responsividade do sistema.
 
-### Lock/unlock the scheduler
+Tipicamente recursos que podem ser protegidos com seções criticas para interrupções são buffers circulares, listas lincadas, _pool_ de memoria e etc.
 
-If the resource is not accessed from ISRs, a simple solution to prevent other threads to access it is to temporarily lock the scheduler, so that no context switches can occur.
+### Bloqueando/Desbloqueando o escalonador
 
-Locking the scheduler has the same effect as making the task that locks the scheduler the highest-priority task.
+Se o recurso não é acessado de _ISRs_, uma solução simples para prevenir que outras _threads_ acessem o recurso é temporariamente bloquear o escalonador, desta forma trocas de contexto não podem ocorrer.
 
-Similar to interrupts critical sections, the implementation of scheduler critical sections must consider nested calls, and always save the initial scheduler state and restore it when the critical section is exited.
+Bloqueando o escalonador tem o mesmo efeito que tornar a tarefa que bloqueou o escalonador em uma tarefa de maior prioridade.
 
-This method must be used with caution, since keeping the scheduler locked too long impacts the system responsiveness.
+De forma similar a interrupções de seção critica, a implementação da seção critica do escalonador deve considerar chamadas aninhadas, e sempre salvar o estado inicial do escalonador e restaura-lo quando a seção critica estiver finalizada.
 
-### Counting semaphores
+Este método deve ser usado com cuidado, desde que mantendo o agendador bloqueado por muito tempo a responsividade do sistema.
 
-Counting semaphores can be used to control access to shared resources used on ISRs, like circular buffers.
+### semáforos contadores
 
-Since they may be affected by priority inversions, their use to manage common resources should be done with caution.
+Semáforos contadores pode ser usados pra controlar acesso a recursos compartilhados usados em _ISRs_, como buffers circulares.
 
-### Mutual exclusion (mutex)
+Desde que ele pode ser afetado pela inversão de prioridade, eles são uados para gerenciar recursos que devem ser usados com certo cuidado.
 
-This is the preferred method for accessing shared resources, especially if the threads that need to access a shared resource have deadlines.
+### Exclusão Mutua (_mutex_)
 
-µOS++ mutexes have a built-in priority inheritance mechanism, which avoids unbound priority inversions.
+Este é o método preferido para acessar recursos compartilhados, especialmente se as _threads_ precisam acessar um recurso compartilhado tenham prazos (_deadline_).
 
-However, mutexes are slightly slower (in execution time) than semaphores since the priority of the owner may need to be changed, which requires more CPU processing.
+_Mutex_ do µOS++ tem um mecanismos de herança interno, que evita inversão de prioridade ilimitada.
 
-### Should a semaphore or a mutex be used?
+Porém , _mutexes_ são levemente lentos (em tempo de execução) do semáforos desde que a prioridade do proprietário pode ser alterada, o que exige mais processamento da CPU.
 
-A semaphore should be used when resources are shared with an ISR.
+### Quando se deve usar um semáforo ou um _mutex_?
 
-A semaphore can be used instead of a mutex if none of the threads competing for the shared resource have deadlines to be satisfied.
+Um semáforo deve ser usado quando recursos são compartilhados com uma _ISR_.
 
-However, if there are deadlines to meet, you should use a mutex prior to accessing shared resources. Semaphores are subject to unbounded priority inversions, while mutexes are not. On the other hand, mutexes cannot be used on interrupts, since they need an owner thread.
+Um semáforo pode ser usado ao invés de um _mutex_ se nenhuma das _threads_ competir por um recurso compartilhado tendo prazos (_deadlines_) a serem satisfeitos.
 
-### Deadlock (or deadly embrace)
+Porém, se há prazos a serem respeitados, você deve usar um _mutex_ antes de acessar o recurso. Semáforos são sujeitos a inversão de prioridades ilimitados, enquanto _mutexes_ não são. De outra forma, _mutexes_ não podem ser usados em interrupções, desde que eles precisam uma _thread_ que seja seu dono.
 
-A deadlock, also called a deadly embrace, is a situation in which two threads are each unknowingly waiting for resources held by the other.
+### Trava da morte (Deadlock ou deadly embrace)
 
-Consider the following scenario where thread A and thread B both need to acquire mutex X and mutex Y in order to perform an action:
+A trava da morte (_deadlock_), também chamada de abraço da morte (_deadly embrace_), é uma situação em que duas _threads_ estão sem saber aguardando um recurso requerido pela outra.
 
-- thread A executes and successfully locks mutex X;
-- thread A is pre-empted by thread B;
-- thread B successfully locks mutex Y before attempting to also lock mutex X, but mutex X is held by thread A, so is not available to thread B. Thread B opts to enter the wait for mutex X to be released;
-- thread A continues executing. It attempts to lock mutex Y, but mutex Y is held by thread B, so is not available to thread A. Thread A opts to wait for mutex Y to be released.
+Considere o seguinte cenário quando ambas as  _thread_ A e  _thread_ B  precisam adquirir o _mutex_ X e _mutex_ Y para executar uma ação:
 
-At the end of this scenario, thread A is waiting for a mutex held by thread B, and thread B is waiting for a mutex held by thread A. Deadlock has occurred because neither thread can proceed.
+- _Thread_ A executa e com sucesso trava o _mutex_ X;
+- _Thread_ A é preemptada pela _thread_ B;
+- _Thread_ B trava com sucesso o _mutex_ Y antes de tentar também travar o _mutex_ X, mas o _mutex_ X está preso pela _thread_ A, portanto não está disponível para a _thread_ B. _Thread_ B opta por entrar em modo de espera (_wait_) até que o _mutex_ X seja liberado;
+- _Thread_ A continua sua execução. Ela tenta travar o _mutex_ Y, mas o _mutex_ Y está travado pela _thread_ B, por tanto não está disponível para a _thread_ A. _Thread_ A opta por aguardar o _mutex_ Y ser liberado.
 
-As with priority inversion, the best method of avoiding deadlock is to consider its potential at design time, and design the system to ensure that deadlock cannot occur.
 
-The following techniques can be used to avoid deadlocks:
+No fim deste cenário, _thread_ A está aguardando pelo _mutex_ bloqueado pela _thread_ B, e _thread_ B está aguardando pelo _mutex_ bloqueado pela _thread_ A. _Deadlock_ ocorre porque nenhuma das _threads_ podem continuar.
 
-- do not acquire more than one mutex at a time
-- do not acquire a mutex directly (i.e., let them be hidden inside drivers and reentrant library calls)
-- acquire all resources before proceeding
-- acquire resources in the same order
+Com a inversão de prioridade, o melhor método de evitar _deadlock_ é considerar seu potencial em tempo de desenvolvimento, e desenvolver o sistema para assegurar que o _deadlock_ não irá acontecer.
 
-## Statically vs. dynamically allocated objects
+A seguinte técnica pode ser usada para evitar _deadlocks_:
 
-Most system objects are self-contained, and the rule is that if the storage requirements are known, constant and identical for all instances, then the storage is allocated in the object instance data.
+- Não adquirir mas que um _mutex_ de cada vez;
+- Não adquirir um _mutex_ diretamente (por exemplo: oculte dentro de chamada a um driver e bibliotecas reentrantes);
+- Adquira todos os recursos antesd e prosseguir;
+- Adquira recursos na mesma ordem;
 
-However some system objects require additional memory, different from one instance to the other. Examples for such objects are threads (which require stacks), message queues and memory pools.
+## Alocação de Objetos Estaticamente vs Dinamicamente
 
-This additional memory can be allocated either statically (at compile-time) or dynamically (at run-time).
+Muitos objetos de sistemas são auto suficientes, e a regra é que se os requisitos de armazenamento sejam conhecidos, constantes e idênticos para todas as instâncias, então o armazenamento deve ser alocado nos dados da instancia do objeto.
 
-By default, all base classes use the system allocator to get memory.
+Porém, alguns objetos de sistema requerem memoria adicional, diferente de uma instancia para outra, Exemplos para tais objetos são _threads_ (que requerem pilhas (_stacks_)), filas de mensagens e bancos (_pool_) de memória.
 
-In C++ all such classes are doubled by templates which handle allocation.
+Esta memória adicional pode ser alocada ou estaticamente (em tempo de compilação) ou dinamicamente (em tempo de execução).
 
-Another solution, also available to the C API, is to pass user defined storage areas via the attributes used during object creation.
+Por padrão, todas as classes base usam o alocador do sistema para obter memória.
 
-### The system allocator
+Em C++ tais classes são tratadas por _templates_ que tratam tais alocações.
 
-For all objects that might need memory, µOS++ uses the system allocator `os::rtos::memory::allocator<T>`, which by default is mapped to an allocator that uses the standard new/delete primitives, allocating storage on the heap.
+Outra solução, também disponível para C API, é passar áreas de armazenamento definidas pelo usuário via atributos usados durante a criação dos objetos.
 
-This allocator is a standard C++ allocator. The user can define another such standard allocator, and configure the system allocator to use it, thus customising the behaviour of all system objects.
+### O Alocador do Sistema
 
-Even more, system objects that need memory are defined as templates, which can be parametrised with an allocator, so, at the limit, each object can be constructed with its own separate allocator.
+Para todos os objetos que podem precisar de memória, o µOS++ usa o alocador do sistema `os::rtos::memory::allocator<T>`, que por padrão é mapeado para um alocador que usa as primitivas padrão new/delete, alocando armazenamento no _heap_.
 
-### Fragmentation
+Este alocador é um alocador padrão do C++. O usuário pode definir outro alocador padrão, e configurar o alocador de sistema para usa-lo, assim personalizando o comportamento de todos os objetos de sistema.
 
-The biggest concern with using dynamic memory is fragmentation, a condition that may render a system unusable.
+Ainda mais, objetos de sistemas que precisam de memoria são definidos como templates, que pode ser parametrizados com um alocador, por tanto, no limite, cada objeto pode ser construído com seu próprio alocador em separado.
 
-To be noted that internally µOS++ does not use dynamic allocation at all, so if the application is careful enough not to use objects that need dynamic allocation, the resulting code is fully static.
+### Fragmentação
 
-## Real-time clock
+O grande problema com referência ao uso de memoria dinâmica é a fragmentação, uma condição que pode gerar um sistema inútil.
 
-Most application handle time by using the scheduler timer.
+Observe que internamente µOS++ não faz uso de alocação dinâmica no todo, porém se a aplicação é cuidadosa o suficiente para não ubjetos que precisam de alocação dinâmica, o código resultante é totalmente estático.
 
-However low power applications opt to put the CPU in a deep sleep, which usually powers down most peripherals, including the scheduler timer.
+## Relógio Real-time
 
-For these situations a separate low power real-time clock is required; powered by a separate power source, possibly a battery, this clock runs even when the rest of the device is sleeping.
+Muitas aplicações tratam o tempo através do uso de um temporizador.
 
-This clock not only keeps track of time, it can also trigger interrupts to wakeup the CPU at desired moments.
+Porem aplicações de baixo consumo, optam por colocar a CPU em modo de sono profundo (deep sleep), que usualmente desliga muitos periféricos, incluindo o temporizador.
 
-The usual resolution of the real-time clock is 1 sec.
+Para esta situação um relógio de tempo real (RTC) de baixo consumo separado é necessário; alimentado por uma fonte de energia separada, possivelmente uma bateria, este relógio roda quando o resto do dispositivo está suspenso.
 
-## Terms to use with caution
+Este relógio não apenas mantem o controle do tempo, ele também dispara interrupções para acordar a CPU em momentos necessários.
+
+A resolução típica do relógio real-time é 1 sec.
+
+## Termos a serem usados com cuidado
 
 ### Kernel
 
-Many authors also refer to their RTOSes as "kernels". Well, even if _OS_ in RTOS stands for _operating system_, this definition is somehow stretched to the limit, since in bare-metal embedded systems the so called [operating system](https://en.wikipedia.org/wiki/Operating_system) is only a collection of functions handling thread switching and synchronisation, linked together with the application in a monolithic executable.
+Muitos autores também fazerem referencia a seus RTOSes como "kernels" (núcleos). Bem, mesmo que _OS_ em um RTOS é o padrão para _oprating system_ (sistema operacional), esta definição é de alguma maneira estendida ao limite, já que em sistemas embarcados do tipo _bare-metal_ o que é chamado de [Sistema Operacional](https://pt.wikipedia.org/wiki/Sistema_operativo) é apenas uma coleção de funções que tratam de trocas e sincronizações, ligado (_linked_) com a aplicação de uma formando um executável monolítico.
 
-As such, the term [kernel](https://en.wikipedia.org/wiki/Kernel_(operating_system)) is even more inappropriate, since there is no distinct component to manage all available resources (memory, CPU, I/O, etc) and to provide them to the application in a controlled way; most of the time the application has full control over the entire memory space, which, for systems with memory mapped peripherals, also means full control over the I/O.
+como tal, o termo [kernel (núcleo)](https://pt.wikipedia.org/wiki/N%C3%BAcleo_(sistema_operacional)) é ainda mais inapropriado, já que não há um componente distinto para gerenciar todos os recursos disponíveis (memoria, CPU, I/O, etc) e prover então para a aplicação de uma forma controlada; muito do tempo, a aplicação tem total controle sobre todo o espaço de memória, como para sistemas com memoria mapeada para periféricos, também tem total controle sobre o I/O.
 
-The only kernel specific function available in bare-metal embedded systems is CPU management; with multiple threads sharing the CPU, probably a more appropriate name for the RTOS core component is **scheduler**; the µOS++ IIIe documentation uses the term _operating system_ in its definition, occasionally refers to itself as a _scheduler_, and explicitly tries to avoid the term _kernel_.
+A única função especifica de um _kernel_ disponível no sistema embarcado _bare-metal_ é o gerenciamento da CPU; com múltiplas _threads_ compartilhando a CPU provavelmente um nome mais apropriada para o _core_ do RTOS é **scheduler** (Escalonador); A documentação do µOS++ IIIe usa o termo _operating system_ (Sistema Operacional) em sua definição explicita tentando evitar o termo _kernel_.
 
 ### Tasks vs threads
 
-Many authors refer to threads as "tasks". Strictly speaking, [threads](https://en.wikipedia.org/wiki/Thread_(computing)) (together with [processes](https://en.wikipedia.org/wiki/Process_(computing))) are the system primitives used to run multiple tasks in parallel in a multitasking system.
+Muitos autores preferem _threads_ como "task" (e no português usamos tarefa). Falando estritamente, [threads](https://pt.wikipedia.org/wiki/Escalonamento_de_processos#Threads) (juntamente com [processos](https://pt.wikipedia.org/wiki/Escalonamento_de_processos) são primitivas do sistema usadas para rodar multiplas tarefas em paralelos em um sistema multi tarefa.
