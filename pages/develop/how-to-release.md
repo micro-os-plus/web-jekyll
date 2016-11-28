@@ -43,6 +43,12 @@ With Eclipse,
 
 - edit the `micro-os-plus-iii.git/xpack.json` and update the release number.
 
+With Terminal, in project folder, update README.
+
+```
+$ xcdl update-readme
+```
+
 ## Run doxygen
 
 With Eclipse,
