@@ -4,5 +4,7 @@ _site_local
 reference/cmsis-plus/
 .jekyll-metadata
 *~
-.project
-.settings/
+/.Gemfile.un~
+/Gemfile~
+/.project
+/.settings/
