@@ -1,10 +1,10 @@
 ---
 layout: post
 lang: en
-title: µOS++ IIIe v6.3.9 released
+title: The µOS++ IIIe first public version v6.3.7 released
 author: Liviu Ionescu
 
-date: 2016-10-13 22:46:00 +0300
+date: 2016-09-15 15:28:00 +0300
 
 categories:
   - releases
@@ -14,7 +14,7 @@ categories:
 
 ---
 
-Version v6.3.9 is a new **µOS++ IIIe/CMSIS++** public release (v6.3.8 was an internal release). The major additions are: the first integration of the POSIX I/O subsystem and an experimental set of scripts to generate µOS++ projects.
+Version v6.3.7 is the first **µOS++ IIIe/CMSIS++** public release. The major additions are the advanced memory management features, which allow deterministic and non-fragmenting allocations in controlled environments.
 
 ## Download
 
@@ -23,24 +23,21 @@ To automate this process, some scripts were written. To experiment with **µOS++
 
 ## New features
 
-- integrate posix-io & posix-driver git subtrees from the separate projects; currently only character devices are fully functional;
-- automate char device registry by using lists; no need to manually add/remove devices;
-- in order to support tickless deep sleeps, the `update_for_slept_time()` function was added to the `clock` class, to update the internal count with the number of ticks lost during the sleep;
+- advanced memory management; several `memory_resource` classes were added, with various allocation policies (`first_fit_top`, `lifo`, `block_pool`). Based on these classes, an application allocator was implemented, and the standard C++ `new` and `delete`, as the standard C `malloc()` and `free()` were routed to this allocator. An optional allocator for the RTOS system objects can be defined. For special applications, optional pools of system objects can be created and allocation for these objects redirected to the pools.
 
 ## Addressed bugs
 
-- os-c-wrapper.c: the functions used to create objects did create objects properly, but failed to return a pointer to the created objects; fixed;
-- diag/trace.cpp: for empty strings, `puts()` did not add the terminator; fixed; 
+- none so far
 
 ## Other changes
 
-- general purpose classes were moved to the newly created `utils` folder;
-- startup: temporarily disable weak `os_startup_initialize_hardware()` (without the renamed function the linker used the weak version of this function and did not perform the hardware initialisations at all).
-
+- none
 
 ## Known problems
 
-None.
+Experience proved that one of the changes in this version was trickier than planned: the rename of the `os_startup_initialize_hardware()`, since without the renamed function the linker used the weak version of this function and did not perform the hardware initialisations at all.
+
+To help developers, the weak definition was temporarily disabled, so if this function was not yet renamed in the application, the linker will complain.
 
 ## Future developments
 

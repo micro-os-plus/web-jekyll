@@ -1,19 +1,27 @@
 <div class="site-sidebar">
-
-{% if site.latest-news-pages %}
+{% if site.latestpages.post and page.url != "/blog/" and  page.url != "/news/" %}
   <div class="custom-sidebar">
     <div class="boxed-group-inner">
-      {% capture ln %}{% include content/latest-news.markdown %}{% endcapture %}{{ ln | markdownify }}
+      {% assign title=site.data.i18n.news[include.lang] | default: "News" %}
+      {% capture url %}{{ site.baseurl | append: "/blog/" }}{% endcapture  %}
+      {% capture ln %}
+         {% include content/latest.markdown 
+                    lang=include.lang 
+                    layout="post" 
+                    url=url
+                    title=title
+                    %}
+      {% endcapture %}{{ ln | markdownify }}
     </div>
   </div>
 {% endif %}
 
   <div class="custom-sidebar">
     <div class="boxed-group-inner">
-      {% if page.lang != null and page.lang != "en" %}
-        {% capture sidebar_file %}sidebar-{{ page.lang }}.markdown{% endcapture %}
+      {% if include.lang != null and include.lang != "en" %}
+        {% capture sidebar_file %}sidebar-{{ include.lang }}.markdown{% endcapture %}
       {% endif %}
-      {% capture sb %}{% include content/{{ sidebar_file | default: "sidebar.markdown" }} %}{% endcapture %}{{ sb | markdownify }}
+      {% capture sb %}{% include content/{{ sidebar_file | default: "sidebar.markdown" }} layout=include.layout %}{% endcapture %}{{ sb | markdownify }}
     </div>
   </div>
 
