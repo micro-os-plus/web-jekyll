@@ -1,7 +1,7 @@
 ---
 layout: post
 lang: en
-title: The µOS++ IIIe v6.3.9 released
+title: µOS++ IIIe v6.3.9 released
 author: Liviu Ionescu
 
 date: 2016-10-13 22:46:00 +0300

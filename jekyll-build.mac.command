@@ -2,8 +2,8 @@
 
 cd "$(dirname "$0")"
 
-export PATH=/opt/homebrew-jekyll3/bin:$PATH
-bundle exec jekyll build --destination ../micro-os-plus.github.io.git
+export PATH="$HOME/opt/homebrew-jekyll/bin":$PATH
+bundle exec jekyll build --destination ../micro-os-plus.github.io.git --verbose
 
 echo
 echo "Done"
