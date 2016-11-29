@@ -1,4 +1,5 @@
 ---
+permalink: /blog/
 layout: default
 title: CMSIS++ / µOS++ News
 author: Liviu Ionescu
@@ -10,9 +11,11 @@ redirect_from:
 {% if site.paginate %}
 <!-- This loops through the paginated posts -->
 {% for post in paginator.posts %}
+{% if post.layout == "post" %}
   <h3><a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a></h3>
   <p><em>{{ post.date | date: "%b %-d, %Y" }}</em> - {{ post.excerpt | replace:'<p>','' | replace:'</p>','' }}</p>
   <hr />
+{% endif %} 
 {% endfor %}
 
 <!-- Pagination links -->
@@ -44,8 +47,10 @@ redirect_from:
 {% else %}
 <!-- This loops through all site posts -->
 {% for post in site.posts %}
+{% if post.layout == "post" %}
   <h3><a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a></h3>
   <p><em>{{ post.date | date: "%b %-d, %Y" }}</em> - {{ post.excerpt | replace:'<p>','' | replace:'</p>','' }}</p>
   <hr />
+{% endif %}  
 {% endfor %}
 {% endif %}

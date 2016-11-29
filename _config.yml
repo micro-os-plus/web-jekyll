@@ -50,9 +50,11 @@ kramdown:
 # paginate: 2
 # paginate_path: "/blog/page:num/"
 
-# The number of links added to the 'Latest news' box.
-latest-news-pages: 4
-
+# The number of links added to the 'Latest posts' and 'articles' box.
+latestpages:
+ post: 4
+ article: 4
+ 
 # Currently disabled, since it generates incomplete content.
 # Use manually written RSS feed.xml.
 #   - jekyll-feed
