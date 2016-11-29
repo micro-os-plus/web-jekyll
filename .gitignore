@@ -8,3 +8,4 @@ reference/cmsis-plus/
 /Gemfile~
 /.project
 /.settings/
+Gemfile.lock
