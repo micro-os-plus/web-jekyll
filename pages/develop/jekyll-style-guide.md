@@ -45,4 +45,10 @@ os_main (int argc, char* argv[])
 }
 ```
 
+To get such a display, use backticks and add the language:
+
+    ``` c++
+    ...
+    ```
+
 The `highlight` would be preferable, but since it does not work properly, the second version will be used.
