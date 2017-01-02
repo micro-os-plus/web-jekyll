@@ -85,6 +85,7 @@ With SourceTree, update `micro-os-plus-iii.git`
 * select the `develop` branch
 * commit, message like v6.3.10
 * select the `xpack` branch
+* merge the `develop` branch
 * click the **Push** button, select both branches
 * select the `develop` branch
 
@@ -93,6 +94,7 @@ With SourceTree, update `micro-os-plus-iii-cortexm.git`
 * select the `develop` branch
 * commit, message like v6.3.10
 * select the `xpack` branch
+* merge the `develop` branch
 * click the **Push** button, select both branches
 * select the `develop` branch
 
