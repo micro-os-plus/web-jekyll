@@ -9,8 +9,6 @@ date: 2015-09-11 20:28:00 +0300
 
 ---
 
-<div style="clear: both;"></div>
-
 ## Why I can’t step into the sprintf() function?
 
 Stepping into any function requires the presence of the debug information. Normally, the implementation of the `printf()` family of functions in in the standard C library, which does not include debugging information.
