@@ -21,6 +21,8 @@ exclude:
   - '*.pptx'
   - Gemfile
   - Gemfile.lock
+  - vendor
+  - scripts
 
 
 # Used in sitemap.xml.

@@ -1,0 +1,47 @@
+# Travis CI configuration file to validate and deploy 
+# the µOS++ Jekyll site.
+
+# Use the new Debian 14 containers.
+dist: trusty
+sudo: false
+
+language: ruby
+rvm:
+  - 2.3.1
+  
+env:
+  global:
+    - GITHUB_DEST_REPO="micro-os-plus/micro-os-plus.github.io"
+    - GIT_COMMIT_USER_EMAIL="ilg@livius.net"
+    - GIT_COMMIT_USER_NAME="Travis CI"
+    # The secure token is 'GITHUB_TOKEN=...' and was generated with:
+    # $ travis encrypt -r micro-os-plus/micro-os-plus.github.io-source GITHUB_TOKEN=...
+    - secure: "MpZzw9zfnodHIyfZDavLvF3nZEDmcgGaug0HQibH3EXvF8Tqrcz4rJl2hQiIKm435KyMNuE0zLzkkoxKIdE1tAQchQZPyx46wUkLfC+G1ptEJEryy5uKI3h3X+f/uX6A2V/8g2ngm+fhe9rLSSaxV2K/f/SrI0oPN8qzj66pDueWh0gHRp1yw1c6NVh48CTXnWHqZ2BxgfOmio8hHGFFnKtjs4bhosWnPG8xMJYM1sKcT9ns0m/MCO/T5Hus/3EW3/rDSKyb6SIbrXdfStQ0jkavmB47HnayF2AJdTXD9HlTMKDKaLoecjQOcVuO8NsfBvU+yLCTPRn1X+jAKYm8pzDOZYEhsYLlP8KmxOGjMXI0nTEgAfmyANcpicUSoJE2oAst//yUofVA0cf/I29jk88e5vbmgZzFdudZdjP6JzMY0XIg6bkq1EQd3K3vXUcf4gFfe6LoWzfTdCnX08JfbtYR7UXnMiD+aBEr99PggIODIMujjazTJalwzbNb0d3r870Vuzgw5MrQJvnxy/ExBcIsLHv1L2/ZliuaY+8scGD/IyOnKYHfNjtzI1XJ0Ak4vYFZTVGLxuMqW5PyHZ7kiy5myWSJVJ42MkFZcuGgYTPPk3eBhEJffCuIuaDRp3AFxzy+LTZLEkSEIKr9AfYwhr0VyJlStDwmRB8ShoSioqA="
+
+before_install:
+  - bash scripts/travis.linux.sh before_install
+
+before_script:
+  - bash scripts/travis.linux.sh before_script
+
+script:
+  - bash scripts/travis.linux.sh script
+
+# -----------------------------------------------------------------------------
+# Unused.
+
+# after_success:
+#  - bash scripts/travis.linux.sh after_success
+
+# after_failure:
+#  - bash scripts/travis.linux.sh after_failure
+
+# Deploy via script not functional (or not understood).
+# deploy:
+#  provider: script
+#  script: bash scripts/travis.linux.sh deploy
+#  on:
+#    branch: master
+  
+# after_script:
+#  - bash scripts/travis.linux.sh after_script

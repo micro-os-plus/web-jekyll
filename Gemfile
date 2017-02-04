@@ -12,4 +12,6 @@ group :jekyll_plugins do
   gem 'jekyll-redirect-from', '=0.11.0',  :platforms => [:ruby, :x64_mingw, :mswin]
   gem 'jekyll-sitemap', '=0.11.0',  :platforms => [:ruby, :x64_mingw, :mswin]
   # gem 'jekyll-multiple-languages'
+
+  gem 'html-proofer'
 end

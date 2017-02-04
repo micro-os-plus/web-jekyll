@@ -1,5 +1,6 @@
-# The µOS++ IIIe / CMSIS++ web site source
+[![Build Status](https://travis-ci.org/micro-os-plus/micro-os-plus.github.io-source.svg?branch=master)](https://travis-ci.org/micro-os-plus/micro-os-plus.github.io-source)
 
+# The µOS++ IIIe / CMSIS++ web site source
 
 ## Overview
 
@@ -8,7 +9,6 @@ This GitHub project, available from [micro-os-plus/micro-os-plus.github.io-sourc
 ## Destination URL
 
 The **µOS++ IIIe / CMSIS++ web site** is an organisation [GitHub Pages](https://pages.github.com) site, stored in the [micro-os-plus/micro-os-plus.github.io](https://github.com/micro-os-plus/micro-os-plus.github.io) Git and publicly available from [http://micro-os-plus.github.io](http://micro-os-plus.github.io).
-
 
 ## Jekyll
 
