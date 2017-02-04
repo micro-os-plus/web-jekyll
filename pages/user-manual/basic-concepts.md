@@ -60,7 +60,7 @@ Interrupt service routines (ISRs) are used to handle the asynchronous,  real-tim
 In this architecture, the functions implementing the various functionalities are inherently, even if not formally declared as such, some kind of [finite state machines](https://en.wikipedia.org/wiki/Finite-state_machine), spinning around and switching states based on inputs provided by the ISRs.
 
 <div style="text-align:center">
-<img src="{{ site.baseurl }}/assets/images/2016/superloop.png" />
+<img alt="Superloop" src="{{ site.baseurl }}/assets/images/2016/superloop.png" />
 <p>Superloop application</p>
 </div>
 
@@ -175,21 +175,21 @@ This polite behaviour, when the switch is performed by the thread itself, is cal
 The biggest disadvantage of cooperative multi-tasking is a possible low reaction speed, for example when an interrupt wants to resume a high priority thread, this might not happen until the low priority thread decides to yield.
 
 <div style="text-align:center">
-<img src="{{ site.baseurl }}/assets/images/2016/scheduling-cooperative.png" />
+<img alt="Cooperative Scheduling" src="{{ site.baseurl }}/assets/images/2016/scheduling-cooperative.png" />
 <p>Cooperative context switching.</p>
 </div>
 
 In this case the solution is to allow the interrupt to trigger a context switch from the low priority thread to the high priority thread without the threads event knowing about. This automatic kind of context switch is also called **preemptive** multi-tasking, since long running threads are _preempted_ to hog the CPU in favour of higher priority threads.
 
 <div style="text-align:center">
-<img src="{{ site.baseurl }}/assets/images/2016/scheduling-preemptive.png" />
+<img alt="Preemptive Scheduling" src="{{ site.baseurl }}/assets/images/2016/scheduling-preemptive.png" />
 <p>Preemptive context switching</p>
 </div>
 
 Once the mechanism for an interrupt to preempt a thread is functional, a further improvement can be added: a periodic timer (for example the timer used to keep track of time), can be used to automatically preempt threads and give a chance to equal priority threads to alternatively get the CPU.
 
 <div style="text-align:center">
-<img src="{{ site.baseurl }}/assets/images/2016/scheduling-preemptive-timer.png" />
+<img alt="Preemptive Scheduling Timer" src="{{ site.baseurl }}/assets/images/2016/scheduling-preemptive-timer.png" />
 <p>Preemptive context switching with periodic timer</p>
 </div>
 
@@ -297,7 +297,7 @@ An even more unfortunate scenario is the following:
 - the high priority thread is resumed and can acquire the resource to perform its job
 
 <div style="text-align:center">
-<img src="{{ site.baseurl }}/assets/images/2016/priority-inversion.png" />
+<img alt="Priority Inversion" src="{{ site.baseurl }}/assets/images/2016/priority-inversion.png" />
 <p>Priority inversion</p>
 </div>
 
@@ -308,7 +308,7 @@ This problem was known for long, but many times ignored, until it was reported t
 One of the possible solutions to avoid this is for the high priority thread to temporarily boost the priority of the low priority thread, to prevent other threads to interfere and so help the low priority thread to complete its job sooner. This is known as **priority inheritance**.
 
 <div style="text-align:center">
-<img src="{{ site.baseurl }}/assets/images/2016/priority-inheritance.png" />
+<img alt="Priority Inheritance" src="{{ site.baseurl }}/assets/images/2016/priority-inheritance.png" />
 <p>Priority inheritance</p>
 </div>
 

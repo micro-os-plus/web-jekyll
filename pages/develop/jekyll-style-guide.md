@@ -17,7 +17,7 @@ The content is written in the GitHub-flavoured [markdown](https://help.github.co
 
 ```
 <div style="text-align:center">
-<img src="{{ site.baseurl }}/assets/images/2016/micro-os-plus-collection.png" />
+<img alt="Alternate" src="{{ site.baseurl }}/assets/images/2016/micro-os-plus-collection.png" />
 </div>
 ```
 

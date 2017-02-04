@@ -33,7 +33,7 @@ The shortcut method for installing **clang** is to download and install the opti
 However, the recommended method is to first install **Xcode** from App Store, then to download the **Command Line Tools** additional component in the Preferences → Downloads → Components window.
 
 <div style="text-align:center">
-<img src="{{ site.baseurl }}/assets/images/old/Xcode-clt.png" />
+<img alt="Xcode" src="{{ site.baseurl }}/assets/images/old/Xcode-clt.png" />
 </div>
 
 To check if the compiler is available, invoke the compiler using **--version**:

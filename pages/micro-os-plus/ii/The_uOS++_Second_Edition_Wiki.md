@@ -26,7 +26,7 @@ Documentation
 The ***µOS++ SE*** reference pages are created with a quite elaborate [Doxygen](http://www.doxygen.org/index.html) configuration and are available from [a separate site](http://micro-os-plus.sourceforge.net/doc).
 
 <div style="text-align:center">
-<a href="http://micro-os-plus.sourceforge.net/doc"><img src="{{ site.baseurl }}/assets/images/old/524px-Doxy.png" /></a>
+<a href="http://micro-os-plus.sourceforge.net/doc"><img alt="Doxy" src="{{ site.baseurl }}/assets/images/old/524px-Doxy.png" /></a>
 </div>
 
 Content can be browsed by classes (hierarchically grouped by namespaces, with inheritance and collaboration graphs), by modules (a logical/functional structure), by file names (the file system hierarchy), etc.

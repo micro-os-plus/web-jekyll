@@ -18,7 +18,7 @@ An event flag can be considered as a simplified binary semaphore, that can be po
 The additional value of event flags consist in their number: event flags come in groups, and threads can be synchronised on any number of flags in a group (defined by a mask). A thread may expect either all flags in a set to have occurred (conjunctive syncronisation, logical AND), or any flag in a set (disjunctive synchronisation, logical OR).
 
 <div style="text-align:center">
-<img src="{{ site.baseurl }}/assets/images/2016/event-flags.png" />
+<img alt="Event Flags" src="{{ site.baseurl }}/assets/images/2016/event-flags.png" />
 <p>Event flags</p>
 </div>
 

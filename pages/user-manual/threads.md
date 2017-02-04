@@ -1040,7 +1040,7 @@ th_func(void* args)
 A thread may be in one of several states at any given time. The main distinction is based on the presence of the thread in the READY list; a thread in the READY list is said to be in the **ready** state.
 
 <div style="text-align:center">
-<img src="{{ site.baseurl }}/assets/images/2016/thread-states.png" />
+<img alt="Thread States" src="{{ site.baseurl }}/assets/images/2016/thread-states.png" />
 </div>
 
 The memory area associated with a not-yet-created thread may have any content, and the thread is considered to be in the **undefined** state.

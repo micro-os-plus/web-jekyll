@@ -14,7 +14,7 @@ Although the minimum development environment for µOS++ SE requires only a shell
 Currently there are no specific plug-ins required, so any recent Eclipse version should work. The below steps are based on Eclipse 4.3 Kepler, running on OS X, but should not be much different when running on Ubuntu.
 
 <div style="text-align:center">
-<img src="{{ site.baseurl }}/assets/images/old/Eclipse_Kepler.png" />
+<img alt="Eclipse Kepler" src="{{ site.baseurl }}/assets/images/old/Eclipse_Kepler.png" />
 </div>
 
 Personal preferences
@@ -67,7 +67,7 @@ In **Help** menu → **Install New Software...**
 -   enable **PyDev** and optionally **PyDev Mylyn Integration**
 
 <div style="text-align:center">
-<img src="{{ site.baseurl }}/assets/images/old/Install_PyDev.png" />
+<img alt="Install PyDev" src="{{ site.baseurl }}/assets/images/old/Install_PyDev.png" />
 </div>
 
 -   press the **Next** button
@@ -90,7 +90,7 @@ In **Help** menu → **Install New Software...**
 -   and select **C/C++ GDB Hardware Debugging**
 
 <div style="text-align:center">
-<img src="{{ site.baseurl }}/assets/images/old/Install_GDB_Hardware.png" />
+<img alt="Install GDB Hardware" src="{{ site.baseurl }}/assets/images/old/Install_GDB_Hardware.png" />
 </div>
 
 -   press the **Next \>** button
@@ -109,7 +109,7 @@ In **Eclipse** menu → **Preferences...** → **General** → **Workspace**
 -   set **Text file encoding: UTF-8**
 
 <div style="text-align:center">
-<img src="{{ site.baseurl }}/assets/images/old/General_Workspace.png" />
+<img alt="General Workspace" src="{{ site.baseurl }}/assets/images/old/General_Workspace.png" />
 </div>
 
 In **Eclipse** menu → **Preferences...** → **General** → **Editors** → **Text Editors**
@@ -119,7 +119,7 @@ In **Eclipse** menu → **Preferences...** → **General** → **Editors** → *
 -   enable **Show line numbers**
 
 <div style="text-align:center">
-<img src="{{ site.baseurl }}/assets/images/old/General_Editors.png" />
+<img alt="General Editors" src="{{ site.baseurl }}/assets/images/old/General_Editors.png" />
 </div>
 
 In **Eclipse** menu → **Preferences...** → **C/C++** → **Code Style** → **Formatter**
@@ -127,7 +127,7 @@ In **Eclipse** menu → **Preferences...** → **C/C++** → **Code Style** → 
 -   set **Active profile: GNU [built-in]**
 
 <div style="text-align:center">
-<img src="{{ site.baseurl }}/assets/images/old/Code_Style_Formatter.png" />
+<img alt="Code Style Formatter" src="{{ site.baseurl }}/assets/images/old/Code_Style_Formatter.png" />
 </div>
 
 In **Eclipse** menu → **Preferences...** → **C/C++** → **Indexer**
@@ -137,7 +137,7 @@ In **Eclipse** menu → **Preferences...** → **C/C++** → **Indexer**
 -   set **Build configuration for the indexer: Use active build configuration**
 
 <div style="text-align:center">
-<img src="{{ site.baseurl }}/assets/images/old/Indexer.png" />
+<img alt="Indexer" src="{{ site.baseurl }}/assets/images/old/Indexer.png" />
 </div>
 
 Configure PyDev preferences
@@ -151,7 +151,7 @@ In **Eclipse** menu → **Preferences...** → **PyDev** → **Interpreter - Pyt
 -   press the **OK** button
 
 <div style="text-align:center">
-<img src="{{ site.baseurl }}/assets/images/old/Python_Interpreter.png" />
+<img alt="Python Interpreter" src="{{ site.baseurl }}/assets/images/old/Python_Interpreter.png" />
 </div>
 
 In **Eclipse** menu → **Preferences...** → **PyDev** → **Editor**
@@ -160,7 +160,7 @@ In **Eclipse** menu → **Preferences...** → **PyDev** → **Editor**
 -   configure **Color** to a **50% grey**
 
 <div style="text-align:center">
-<img src="{{ site.baseurl }}/assets/images/old/PyDev_Comments.png" />
+<img alt="PyDev Comments" src="{{ site.baseurl }}/assets/images/old/PyDev_Comments.png" />
 </div>
 
 Clone repositories
@@ -187,7 +187,7 @@ For this, in the **File** menu → **Import**
 -   click the **Finish** button
 
 <div style="text-align:center">
-<img src="{{ site.baseurl }}/assets/images/old/Import_uOS.png" />
+<img alt="Import µOS" src="{{ site.baseurl }}/assets/images/old/Import_uOS.png" />
 </div>
 
 Repeat this procedure for the **xcdl-python.git** repository, and import the **xcdl-python** project.
@@ -240,7 +240,7 @@ In the **Eclipse** menu → **Preferences...** → **C/C++** → **Build** → *
 -   press the **OK** button
 
 <div style="text-align:center">
-<img src="{{ site.baseurl }}/assets/images/old/Build_Variables.png" />
+<img alt="Build Variables" src="{{ site.baseurl }}/assets/images/old/Build_Variables.png" />
 </div>
 
 In addition to the C/C++ Build Variables, we also need the µOS++ SE location for a linked folder, so an additional definition General Workspace group is required.
@@ -254,7 +254,7 @@ In the **Eclipse** menu → **Preferences...** → **General** → **Workspace**
 -   press the **OK** button
 
 <div style="text-align:center">
-<img src="{{ site.baseurl }}/assets/images/old/Linked_Resources.png" />
+<img alt="Linked Resources" src="{{ site.baseurl }}/assets/images/old/Linked_Resources.png" />
 </div>
 
 Note: The yellow exclamation mark is there because the sample path is not valid.
@@ -284,7 +284,7 @@ In the **File** menu: **New** → **C++ Project**
 -   press the **Finish** button
 
 <div style="text-align:center">
-<img src="{{ site.baseurl }}/assets/images/old/New_Project.png" />
+<img alt="New Project" src="{{ site.baseurl }}/assets/images/old/New_Project.png" />
 </div>
 
 The new project is now visible in the Project Explorer, but is completely empty, and, to be functional, it needs to be configured.
@@ -302,7 +302,7 @@ The new project is now visible in the Project Explorer, but is completely empty,
 -   press the **OK** button
 
 <div style="text-align:center">
-<img src="{{ site.baseurl }}/assets/images/old/Toochain_Path.png" />
+<img alt="Toolchain Path" src="{{ site.baseurl }}/assets/images/old/Toochain_Path.png" />
 </div>
 
 ### Configure preprocessor discovery command
@@ -322,13 +322,13 @@ The new project is now visible in the Project Explorer, but is completely empty,
 -   press the **OK** button
 
 <div style="text-align:center">
-<img src="{{ site.baseurl }}/assets/images/old/Discovery_Providers.png" />
+<img alt="Discovery Providers" src="{{ site.baseurl }}/assets/images/old/Discovery_Providers.png" />
 </div>
 
 Once the toolchain path and the discovery command are properly configured, the **Includes** list in the **Project Explorer** should be populated with the a list specific to the toolchain.
 
 <div style="text-align:center">
-<img src="{{ site.baseurl }}/assets/images/old/QEMU_Includes.png" />
+<img alt="QEMU Includes" src="{{ site.baseurl }}/assets/images/old/QEMU_Includes.png" />
 </div>
 
 ### Add the µOS++ specific include folders
@@ -359,7 +359,7 @@ Once the toolchain path and the discovery command are properly configured, the *
 To check if the definition is valid, expand the **micro-os-plus-se** folder and check if the µOS++ SE sources are available.
 
 <div style="text-align:center">
-<img src="{{ site.baseurl }}/assets/images/old/Linked_Folder.png" />
+<img alt="Linked Folder" src="{{ site.baseurl }}/assets/images/old/Linked_Folder.png" />
 </div>
 
 ### Configure the custom build command
@@ -392,7 +392,7 @@ Eventually repeat this step, and add a new build configuration named **qemu_osx_
 To build only one configuration, click on the down pointing triangle on the right of the hammer icon and select one of the existing configuration. This selects the active configuration and also starts the build process.
 
 <div style="text-align:center">
-<img src="{{ site.baseurl }}/assets/images/old/Build_configurations.png" />
+<img alt="Build Configurations" src="{{ site.baseurl }}/assets/images/old/Build_configurations.png" />
 </div>
 
 Avoid to build all defined configurations (using the Project menu: Build All) since this will also try to build the python projects, and it takes some time.
@@ -400,7 +400,7 @@ Avoid to build all defined configurations (using the Project menu: Build All) si
 The result of each build is a folder below the **build** folder, with the same name as the build configuration.
 
 <div style="text-align:center">
-<img src="{{ site.baseurl }}/assets/images/old/Minimal_build.png" />
+<img alt="Minimal Build" src="{{ site.baseurl }}/assets/images/old/Minimal_build.png" />
 </div>
 
 ### Check indexer
@@ -421,7 +421,7 @@ The **Eclipse** menu: **Preferences...** → **Run/Debug** → **Console**
 -   disable **Limit console output**
 
 <div style="text-align:center">
-<img src="{{ site.baseurl }}/assets/images/old/Run_Console.png" />
+<img alt="Run Console" src="{{ site.baseurl }}/assets/images/old/Run_Console.png" />
 </div>
 
 Configure the project Clean options
@@ -437,5 +437,5 @@ This is achieved via the **Project** menu → **Clean...**
 -   press the **OK** button
 
 <div style="text-align:center">
-<img src="{{ site.baseurl }}/assets/images/old/Clean.png" />
+<img alt="Clean" src="{{ site.baseurl }}/assets/images/old/Clean.png" />
 </div>
