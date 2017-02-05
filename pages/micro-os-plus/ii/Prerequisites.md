@@ -219,4 +219,4 @@ Git and Python should also be available:
 Eclipse installation
 --------------------
 
-For details regarding Eclipse installation, please read the separate page [Eclipse (install and config)]({{ site.baseurl }}/micro-os-plus/ii/Eclipse_(install_and_config) "wikilink").
+For details regarding Eclipse installation, please read the separate page [Eclipse (install and config)]({{ site.baseurl }}/micro-os-plus/ii/Eclipse_(install_and_config)).

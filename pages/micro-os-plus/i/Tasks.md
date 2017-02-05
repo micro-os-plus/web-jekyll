@@ -9,7 +9,7 @@ date: 2010-12-13 23:06:31 +0000
 
 ---
 
-µOS++ tasks allow the application developer to create and manage independent threads of execution. All defined tasks are automatically registered to the scheduler and thus all tasks are scheduled to use the CPU in a order based on their static priority (see the [scheduler]({{ site.baseurl }}/micro-os-plus/i/Scheduler "wikilink") page). Tasks cannot be unregistered from the scheduler.
+µOS++ tasks allow the application developer to create and manage independent threads of execution. All defined tasks are automatically registered to the scheduler and thus all tasks are scheduled to use the CPU in a order based on their static priority (see the [scheduler]({{ site.baseurl }}/micro-os-plus/i/Scheduler) page). Tasks cannot be unregistered from the scheduler.
 
 Each µOS++ task has its own stack where all task calls are performed. On architectures that do not have a separate exception stack (like AVR), when the task is running, interrupt service routines will use the task stack, so please be aware that a 'deep' interrupt service routine will affect all tasks running. When the task is created, the stack is initialized to a known static pattern. Stack activity overwrite this value, so when **getStackUsed()** is invoked it is possible to compute the maximum usage of the stack.
 

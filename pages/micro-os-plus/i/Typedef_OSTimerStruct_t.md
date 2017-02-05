@@ -34,7 +34,7 @@ union u
 
 The return value of the event.
 
-### [Timer]({{ site.baseurl }}/micro-os-plus/i/Class_Timer "wikilink") \*pTimer
+### [Timer]({{ site.baseurl }}/micro-os-plus/i/Class_Timer) \*pTimer
 
 
 Pointer to an advanced timer used to extend the capabilities of the OSTimer. Using this member the timeout could be set as periodic, or even a custom one.

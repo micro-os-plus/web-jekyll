@@ -216,7 +216,7 @@ Links
 
 To ease navigation, it is recommended to link from one wiki page to another. If the displayed text needs to be different than the link, it can be specified.
 
-[different text]({{ site.baseurl }}/micro-os-plus/i/Main_Page "wikilink")
+[different text]({{ site.baseurl }}/micro-os-plus/i/Main_Page)
 
     [[/Main_Page|different text]]
 

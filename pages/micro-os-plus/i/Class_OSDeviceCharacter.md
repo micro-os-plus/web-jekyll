@@ -20,8 +20,8 @@ The OSDeviceCharacter class may or may not derive from streambuf, based on confi
 Children classes
 ================
 
--   [OSDeviceCharacterBuffered]({{ site.baseurl }}/micro-os-plus/i/Class_OSDeviceCharacterBuffered "wikilink")
--   [DeviceCharacterUsb]({{ site.baseurl }}/micro-os-plus/i/Class_DeviceCharacterUsb "wikilink")
+-   [OSDeviceCharacterBuffered]({{ site.baseurl }}/micro-os-plus/i/Class_OSDeviceCharacterBuffered)
+-   [DeviceCharacterUsb]({{ site.baseurl }}/micro-os-plus/i/Class_DeviceCharacterUsb)
 
 Overview
 ========

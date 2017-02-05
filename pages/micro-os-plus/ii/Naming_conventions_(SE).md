@@ -302,7 +302,7 @@ Depending on the specific scope, if the constants are to be used only inside the
 
 Constants can be grouped in separated classes, like the system OSReturn class, that groups together various return values, although enums would be probably more appropriate.
 
-For group of constants, the recommended method is to use [class enumerations]({{ site.baseurl }}/micro-os-plus/ii/Naming_conventions_(SE)/#enumeration-definitions "wikilink").
+For group of constants, the recommended method is to use [class enumerations]({{ site.baseurl }}/micro-os-plus/ii/Naming_conventions_(SE)/#enumeration-definitions).
 
 static constexpr vs. constexpr static
 -------------------------------------

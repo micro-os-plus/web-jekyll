@@ -15,52 +15,52 @@ Core classes
 OSCPU
 -----
 
-The class [OSCPU]({{ site.baseurl }}/micro-os-plus/i/Class_OSCPU "wikilink") groups all CPU related calls and functionality. Here should be defined all CPU specifics, like
+The class [OSCPU]({{ site.baseurl }}/micro-os-plus/i/Class_OSCPU) groups all CPU related calls and functionality. Here should be defined all CPU specifics, like
 
 OSCPUImpl
 ---------
 
-The [OSCPUImpl]({{ site.baseurl }}/micro-os-plus/i/Class_OSCPUImpl "wikilink") class is a portability helper for the **OSCPU** class.
+The [OSCPUImpl]({{ site.baseurl }}/micro-os-plus/i/Class_OSCPUImpl) class is a portability helper for the **OSCPU** class.
 
 Here are defined the non-portable methods, specific to each architecture or family.
 
 OS
 --
 
-Without having any specific functionality, the [OS]({{ site.baseurl }}/micro-os-plus/i/Class_OS "wikilink") class is a placeholder for all µOS++ related members and methods that did not find their way in other classes.
+Without having any specific functionality, the [OS]({{ site.baseurl }}/micro-os-plus/i/Class_OS) class is a placeholder for all µOS++ related members and methods that did not find their way in other classes.
 
 The non-portable methods are based on the **OSImpl** class, where the actual implementation is defined.
 
 OSImpl
 ------
 
-The [OSImpl]({{ site.baseurl }}/micro-os-plus/i/Class_OSImpl "wikilink") class is a portability helper for the **OS** class.
+The [OSImpl]({{ site.baseurl }}/micro-os-plus/i/Class_OSImpl) class is a portability helper for the **OS** class.
 
 Here are defined the non-portable methods, specific to each architecture or family.
 
 OSScheduler
 -----------
 
-The [OSScheduler]({{ site.baseurl }}/micro-os-plus/i/Class_OSScheduler "wikilink") class implements the main µOS++ functionality, i.e. the preemptive scheduler.
+The [OSScheduler]({{ site.baseurl }}/micro-os-plus/i/Class_OSScheduler) class implements the main µOS++ functionality, i.e. the preemptive scheduler.
 
 The non portable methods are based on the **OSSchedulerImpl** class, where the actual implementation is defined.
 
 OSSchedulerImpl
 ---------------
 
-The [OSSchedulerImpl]({{ site.baseurl }}/micro-os-plus/i/Class_OSSchedulerImpl "wikilink") class is a portability helper for the **OSScheduler** class.
+The [OSSchedulerImpl]({{ site.baseurl }}/micro-os-plus/i/Class_OSSchedulerImpl) class is a portability helper for the **OSScheduler** class.
 
 Here are defined the non-portable methods, specific to each architecture or family.
 
 OSTask
 ------
 
-The [OSTask]({{ site.baseurl }}/micro-os-plus/i/Class_OSTask "wikilink") class is the parent class for all tasks running in the µOS++ environment.
+The [OSTask]({{ site.baseurl }}/micro-os-plus/i/Class_OSTask) class is the parent class for all tasks running in the µOS++ environment.
 
 OSTaskIdle
 ----------
 
-The [OSTaskIdle]({{ site.baseurl }}/micro-os-plus/i/Class_OSTaskIdle "wikilink") class is the implementation of the µOS++ idle task, i.e. the lowest priority task that gets control when no other task is running.
+The [OSTaskIdle]({{ site.baseurl }}/micro-os-plus/i/Class_OSTaskIdle) class is the implementation of the µOS++ idle task, i.e. the lowest priority task that gets control when no other task is running.
 
 It has several functionalities:
 
@@ -70,19 +70,19 @@ It has several functionalities:
 OSTimer
 -------
 
-The [OSTimer]({{ site.baseurl }}/micro-os-plus/i/Class_OSTimer "wikilink") class is the parent class of all system timer classes.
+The [OSTimer]({{ site.baseurl }}/micro-os-plus/i/Class_OSTimer) class is the parent class of all system timer classes.
 
 OSTimerTicks
 ------------
 
-The [OSTimerTicks]({{ site.baseurl }}/micro-os-plus/i/Class_OSTimerTicks "wikilink") class implements the main timer functionality in µOS++.
+The [OSTimerTicks]({{ site.baseurl }}/micro-os-plus/i/Class_OSTimerTicks) class implements the main timer functionality in µOS++.
 
 As the name implies, all timing intervals of this timer are expressed in ticks, more precisely in scheduler ticks.
 
 OSTimerSeconds
 --------------
 
-The [OSTimerSeconds]({{ site.baseurl }}/micro-os-plus/i/Class_OSTimerSeconds "wikilink") class implements the second system timer functionality, intended to measure longer intervals.
+The [OSTimerSeconds]({{ site.baseurl }}/micro-os-plus/i/Class_OSTimerSeconds) class implements the second system timer functionality, intended to measure longer intervals.
 
 As the name implies, all timing intervals of this timer are expressed in seconds.
 
@@ -93,17 +93,17 @@ For systems not equipped with a RTC, this time is derived from the existing **OS
 Timer
 -----
 
-The [Timer]({{ site.baseurl }}/micro-os-plus/i/Class_Timer "wikilink") class is the parent class of all custom timer classes.
+The [Timer]({{ site.baseurl }}/micro-os-plus/i/Class_Timer) class is the parent class of all custom timer classes.
 
 OSMutex
 -------
 
-The [OSMutex]({{ site.baseurl }}/micro-os-plus/i/Class_OSMutex "wikilink") class implements a mutual exclusion (mutex) inter-task synchronisation mechanism.
+The [OSMutex]({{ site.baseurl }}/micro-os-plus/i/Class_OSMutex) class implements a mutual exclusion (mutex) inter-task synchronisation mechanism.
 
 OSEventFlags
 ------------
 
-The [OSEventFlags]({{ site.baseurl }}/micro-os-plus/i/Class_OSEventFlags "wikilink") class implements an inter-task synchronisation mechanism allowing a task to wait for multiple events, defined as separate flags in a structure.
+The [OSEventFlags]({{ site.baseurl }}/micro-os-plus/i/Class_OSEventFlags) class implements an inter-task synchronisation mechanism allowing a task to wait for multiple events, defined as separate flags in a structure.
 
 Device classes
 ==============
@@ -111,41 +111,41 @@ Device classes
 OSDeviceDebug
 -------------
 
-The [OSDeviceDebug]({{ site.baseurl }}/micro-os-plus/i/Class_OSDeviceDebug "wikilink") class is the parent class of all debug classes used for displaying trace messages.
+The [OSDeviceDebug]({{ site.baseurl }}/micro-os-plus/i/Class_OSDeviceDebug) class is the parent class of all debug classes used for displaying trace messages.
 
 DeviceDebugI2C
 --------------
 
-The [DeviceDebugI2C]({{ site.baseurl }}/micro-os-plus/i/Class_DeviceDebugI2C "wikilink") class is the implementation of **OSDeviceDebug** where the output device is implemented as a master I2C using two generic IP pins via bit-banging.
+The [DeviceDebugI2C]({{ site.baseurl }}/micro-os-plus/i/Class_DeviceDebugI2C) class is the implementation of **OSDeviceDebug** where the output device is implemented as a master I2C using two generic IP pins via bit-banging.
 
 The main advantage of such a mechanism is independence from processor speed and from specific hardware.
 
 OSDeviceCharacter
 -----------------
 
-The [OSDeviceCharacter]({{ site.baseurl }}/micro-os-plus/i/Class_OSDeviceCharacter "wikilink") class is the parent class of all character devices in µOS++. A *character* device is defined as a device having the transfer unit as low as one ASCII character.
+The [OSDeviceCharacter]({{ site.baseurl }}/micro-os-plus/i/Class_OSDeviceCharacter) class is the parent class of all character devices in µOS++. A *character* device is defined as a device having the transfer unit as low as one ASCII character.
 
 Example of such devices are USART, CDC USB.
 
 OSDeviceCharacterBuffered
 -------------------------
 
-The [OSDeviceCharacterBuffered]({{ site.baseurl }}/micro-os-plus/i/Class_OSDeviceCharacterBuffered "wikilink") class is derived from OSDeviceCharacter and implements circular buffers for RX and TX.
+The [OSDeviceCharacterBuffered]({{ site.baseurl }}/micro-os-plus/i/Class_OSDeviceCharacterBuffered) class is derived from OSDeviceCharacter and implements circular buffers for RX and TX.
 
 DeviceCharacterBufferedBase
 ---------------------------
 
-The [OSDeviceCharacterBufferedBase]({{ site.baseurl }}/micro-os-plus/i/Class_OSDeviceCharacterBufferedBase "wikilink") class is derived from OSDeviceCharacterBuffered and contain generic implementation for all USART's.
+The [OSDeviceCharacterBufferedBase]({{ site.baseurl }}/micro-os-plus/i/Class_OSDeviceCharacterBufferedBase) class is derived from OSDeviceCharacterBuffered and contain generic implementation for all USART's.
 
 DeviceCharacterBufferedUsart0
 -----------------------------
 
-The [OSDeviceCharacterBufferedUsart0]({{ site.baseurl }}/micro-os-plus/i/Class_OSDeviceCharacterBufferedUsart0 "wikilink") class is derived from OSDeviceCharacterBase and contain specific implementation for USART0.
+The [OSDeviceCharacterBufferedUsart0]({{ site.baseurl }}/micro-os-plus/i/Class_OSDeviceCharacterBufferedUsart0) class is derived from OSDeviceCharacterBase and contain specific implementation for USART0.
 
 DeviceCharacterBufferedUsart1
 -----------------------------
 
-The [OSDeviceCharacterBufferedUsart1]({{ site.baseurl }}/micro-os-plus/i/Class_OSDeviceCharacterBufferedUsart1 "wikilink") class is derived from OSDeviceCharacterBase and contain specific implementation for USART1.
+The [OSDeviceCharacterBufferedUsart1]({{ site.baseurl }}/micro-os-plus/i/Class_OSDeviceCharacterBufferedUsart1) class is derived from OSDeviceCharacterBase and contain specific implementation for USART1.
 
 Type definitions
 ================
@@ -153,27 +153,27 @@ Type definitions
 OSTimerStruct_t
 ----------------
 
-The [OSTimerStruct_t]({{ site.baseurl }}/micro-os-plus/i/Typedef_OSTimerStruct_t "wikilink") type definition is used in OSTimer for storing the timeout set for a certain task.
+The [OSTimerStruct_t]({{ site.baseurl }}/micro-os-plus/i/Typedef_OSTimerStruct_t) type definition is used in OSTimer for storing the timeout set for a certain task.
 
 OSTimerTicks_t
 ---------------
 
-The [OSTimerTicks_t]({{ site.baseurl }}/micro-os-plus/i/Typedef_OSTimerTicks_t "wikilink") type definition is used in ... (TBD)
+The [OSTimerTicks_t]({{ site.baseurl }}/micro-os-plus/i/Typedef_OSTimerTicks_t) type definition is used in ... (TBD)
 
 OSEventWaitReturn_t
 --------------------
 
-The [OSEventWaitReturn_t]({{ site.baseurl }}/micro-os-plus/i/Typedef_OSEventWaitReturn_t "wikilink") type definition is used in ... (TBD)
+The [OSEventWaitReturn_t]({{ site.baseurl }}/micro-os-plus/i/Typedef_OSEventWaitReturn_t) type definition is used in ... (TBD)
 
 OSEvent_t
 ----------
 
-The [OSEvent_t]({{ site.baseurl }}/micro-os-plus/i/Type_OSEvent_t "wikilink") type definition is used in ... (TBD)
+The [OSEvent_t]({{ site.baseurl }}/micro-os-plus/i/Type_OSEvent_t) type definition is used in ... (TBD)
 
 OSEventFlagsBits_t
 -------------------
 
-The [OSEventFlagsBits_t]({{ site.baseurl }}/micro-os-plus/i/Typedef_OSEventFlagsBits_t "wikilink") type definition is used in [OSEventFlags]({{ site.baseurl }}/micro-os-plus/i/Class_OSEventFlags "wikilink") inter-task synchronization.
+The [OSEventFlagsBits_t]({{ site.baseurl }}/micro-os-plus/i/Typedef_OSEventFlagsBits_t) type definition is used in [OSEventFlags]({{ site.baseurl }}/micro-os-plus/i/Class_OSEventFlags) inter-task synchronization.
 
 Classes hierarchy
 =================

@@ -40,7 +40,7 @@ Destroy the custom timer.
 Methods
 =======
 
-== void start([OSTimerTicks_t]({{ site.baseurl }}/micro-os-plus/i/Typedef_OSTimerTicks_t "wikilink") ticks, bool periodic=false) == **Description**
+== void start([OSTimerTicks_t]({{ site.baseurl }}/micro-os-plus/i/Typedef_OSTimerTicks_t) ticks, bool periodic=false) == **Description**
 
 
 Start the timer to trigger an event after the given number of ticks. If periodic is true, the event will periodically be triggered.
@@ -71,7 +71,7 @@ Stop a periodic timer after the pending event is completed, i.e. do not reschedu
 
 :\* none
 
-== void cancel([OSEventWaitReturn_t]({{ site.baseurl }}/micro-os-plus/i/Typedef_OSEventWaitReturn_t "wikilink") ret=OSEventWaitReturn::OS_CANCELED) == **Description**
+== void cancel([OSEventWaitReturn_t]({{ site.baseurl }}/micro-os-plus/i/Typedef_OSEventWaitReturn_t) ret=OSEventWaitReturn::OS_CANCELED) == **Description**
 
 
 Cancel the pending event, by notifying it with the given return value.
@@ -84,7 +84,7 @@ Cancel the pending event, by notifying it with the given return value.
 
 :\* none
 
-== void eventSet([OSEvent_t]({{ site.baseurl }}/micro-os-plus/i/Typedef_OSEvent_t "wikilink") event, [OSEventWaitReturn_t]({{ site.baseurl }}/micro-os-plus/i/Typedef_OSEventWaitReturn_t "wikilink") ret=OSEventWaitReturn::OS_VOID) == **Description**
+== void eventSet([OSEvent_t]({{ site.baseurl }}/micro-os-plus/i/Typedef_OSEvent_t) event, [OSEventWaitReturn_t]({{ site.baseurl }}/micro-os-plus/i/Typedef_OSEventWaitReturn_t) ret=OSEventWaitReturn::OS_VOID) == **Description**
 
 
 Set the event, which is going to be triggered by the timer, and the return value.
@@ -99,7 +99,7 @@ Set the event, which is going to be triggered by the timer, and the return value
 
 :\* none
 
-[OSEventWaitReturn_t]({{ site.baseurl }}/micro-os-plus/i/Typedef_OSEventWaitReturn_t "wikilink") eventWait(void)
+[OSEventWaitReturn_t]({{ site.baseurl }}/micro-os-plus/i/Typedef_OSEventWaitReturn_t) eventWait(void)
 -------------------------------------------------------------------------------
 
 **Description**
@@ -131,7 +131,7 @@ Return true if the timer is set to periodic mode.
 
 :\* true if the timer is periodic
 
-[OSTimerTicks_t]({{ site.baseurl }}/micro-os-plus/i/Typedef_OSTimerTicks_t "wikilink") getTicksStart()
+[OSTimerTicks_t]({{ site.baseurl }}/micro-os-plus/i/Typedef_OSTimerTicks_t) getTicksStart()
 ---------------------------------------------------------------------
 
 **Description**
@@ -147,7 +147,7 @@ Return the number of ticks set by start(). If the timer is stopped, the returned
 
 :\* the number of ticks set by start
 
-[OSTimerTicks_t]({{ site.baseurl }}/micro-os-plus/i/Typedef_OSTimerTicks_t "wikilink") getTicks()
+[OSTimerTicks_t]({{ site.baseurl }}/micro-os-plus/i/Typedef_OSTimerTicks_t) getTicks()
 ----------------------------------------------------------------
 
 **Description**

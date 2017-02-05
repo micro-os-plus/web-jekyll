@@ -11,7 +11,7 @@ date: 2011-03-10 10:20:04 +0000
 
 OSMutex
 
-The mechanism implemented by this class is tested by the project [mutexStress]({{ site.baseurl }}/micro-os-plus/i/Sample_Mutex_Stress "wikilink").
+The mechanism implemented by this class is tested by the project [mutexStress]({{ site.baseurl }}/micro-os-plus/i/Sample_Mutex_Stress).
 
 Constructors
 ============
@@ -48,7 +48,7 @@ Try to acquire mutex. If doNotBlock is false, the task is blocked (using eventWa
 
 :\* ERROR_WOULD_BLOCK - error, the mutex is already acquired and noBlock is true
 
-== int release([OSTask]({{ site.baseurl }}/micro-os-plus/i/Class_OSTask "wikilink") \* pTask = 0) == **Description**
+== int release([OSTask]({{ site.baseurl }}/micro-os-plus/i/Class_OSTask) \* pTask = 0) == **Description**
 
 
 Release owned mutex.
@@ -65,7 +65,7 @@ Release owned mutex.
 
 :\* ERROR_NOT_ACQUIRED - error, this mutex is not acquired
 
-[OSTask]({{ site.baseurl }}/micro-os-plus/i/Class_OSTask "wikilink") \* getOwnerTask(void);
+[OSTask]({{ site.baseurl }}/micro-os-plus/i/Class_OSTask) \* getOwnerTask(void);
 ---------------------------------------------------------
 
 **Description**
@@ -81,7 +81,7 @@ Return the task owner of the mutex.
 
 :\* the (pointer to) the task which owns the mutex
 
-[OSEvent_t]({{ site.baseurl }}/micro-os-plus/i/Type_OSEvent_t "wikilink") getEvent(void);
+[OSEvent_t]({{ site.baseurl }}/micro-os-plus/i/Type_OSEvent_t) getEvent(void);
 --------------------------------------------------------
 
 **Description**
@@ -97,7 +97,7 @@ Return the event used for notification the acquire and release of the mutex.
 
 :\* the event used for notification the acquire and release of the mutex
 
-void setEvent([OSEvent_t]({{ site.baseurl }}/micro-os-plus/i/Type_OSEvent_t "wikilink") event)
+void setEvent([OSEvent_t]({{ site.baseurl }}/micro-os-plus/i/Type_OSEvent_t) event)
 -------------------------------------------------------------
 
 **Description**
@@ -113,7 +113,7 @@ Set the given event used for notification the acquire and release of the mutex.
 
 :\* none
 
-[OSEventWaitReturn_t]({{ site.baseurl }}/micro-os-plus/i/Typedef_OSEventWaitReturn_t "wikilink") getEventReturn(void)
+[OSEventWaitReturn_t]({{ site.baseurl }}/micro-os-plus/i/Typedef_OSEventWaitReturn_t) getEventReturn(void)
 ------------------------------------------------------------------------------------
 
 **Description**

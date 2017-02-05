@@ -9,7 +9,7 @@ date: 2011-02-16 13:06:56 +0000
 
 ---
 
-[OSTimer]({{ site.baseurl }}/micro-os-plus/i/Class_OSTimer "wikilink")
+[OSTimer]({{ site.baseurl }}/micro-os-plus/i/Class_OSTimer)
 
 
 OSTimerSeconds
@@ -36,7 +36,7 @@ Initializes the internal members.
 Methods
 =======
 
-static [OSTimerTicks_t]({{ site.baseurl }}/micro-os-plus/i/Typedef_OSTimerTicks_t "wikilink") getSchedulerTicks(void)
+static [OSTimerTicks_t]({{ site.baseurl }}/micro-os-plus/i/Typedef_OSTimerTicks_t) getSchedulerTicks(void)
 ----------------------------------------------------------------------------------
 
 **Description**
@@ -119,7 +119,7 @@ Check for every task if the software watchdog (counter) expired. If any software
 Variables
 =========
 
-static [OSTimerTicks_t]({{ site.baseurl }}/micro-os-plus/i/Typedef_OSTimerTicks_t "wikilink") ms_schedulerTicks
+static [OSTimerTicks_t]({{ site.baseurl }}/micro-os-plus/i/Typedef_OSTimerTicks_t) ms_schedulerTicks
 -----------------------------------------------------------------------------
 
 **Description**

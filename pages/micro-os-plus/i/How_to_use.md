@@ -12,7 +12,7 @@ date: 2012-11-01 21:43:30 +0000
 Prerequisites
 =============
 
-Before you start using the µOS++, please check that you have installed all necessary tools and packages, as described in the [How to install]({{ site.baseurl }}/micro-os-plus/i/How_to_install "wikilink") page.
+Before you start using the µOS++, please check that you have installed all necessary tools and packages, as described in the [How to install]({{ site.baseurl }}/micro-os-plus/i/How_to_install) page.
 
 Downloading the system source code and sample projects
 ======================================================

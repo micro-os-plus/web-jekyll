@@ -16,5 +16,5 @@ The **µOS++ SE** (pronounced *micro os plus plus second edition*) is the next g
 
 TODO: explain the WHYs and HOWs.
 
--   [The xCDL software requirements specifications]({{ site.baseurl }}/micro-os-plus/i/The_xCDL_software_requirements_specifications "wikilink")
--   [The xCDL Configuration Mechanism]({{ site.baseurl }}/micro-os-plus/i/The_xCDL_Configuration_Mechanism "wikilink")
+-   [The xCDL software requirements specifications]({{ site.baseurl }}/micro-os-plus/i/The_xCDL_software_requirements_specifications)
+-   [The xCDL Configuration Mechanism]({{ site.baseurl }}/micro-os-plus/i/The_xCDL_Configuration_Mechanism)

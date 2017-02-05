@@ -9,4 +9,4 @@ date: 2014-06-15 06:44:58 +0000
 
 ---
 
-1.  REDIRECT [Criticism of previous versions]({{ site.baseurl }}/micro-os-plus/ii/Criticism_of_previous_versions "wikilink")
+1.  REDIRECT [Criticism of previous versions]({{ site.baseurl }}/micro-os-plus/ii/Criticism_of_previous_versions)

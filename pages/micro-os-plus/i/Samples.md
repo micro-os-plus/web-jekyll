@@ -16,7 +16,7 @@ Several samples are provided:
 -   'blinkX3Sync' defines 4 different tasks and shows some simple task synchronization methods;
 -   'blinkPitpalac' shows how to implement a progressive blinking LED;
 -   'calibrateBustWait' allows calibration of constants used in busyWait();
--   '[mutexStress]({{ site.baseurl }}/micro-os-plus/i/Sample_Mutex_Stress "wikilink")' shows several tasks using the same resource protected by a mutex;
+-   '[mutexStress]({{ site.baseurl }}/micro-os-plus/i/Sample_Mutex_Stress)' shows several tasks using the same resource protected by a mutex;
 
 More advanced samples, using special hardware:
 

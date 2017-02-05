@@ -31,7 +31,7 @@ Initialize the internal members.
 Methods
 =======
 
-[OSEventFlagsBits_t]({{ site.baseurl }}/micro-os-plus/i/Typedef_OSEventFlagsBits_t "wikilink") notify([OSEventFlagsBits_t]({{ site.baseurl }}/micro-os-plus/i/Typedef_OSEventFlagsBits_t "wikilink") bits)
+[OSEventFlagsBits_t]({{ site.baseurl }}/micro-os-plus/i/Typedef_OSEventFlagsBits_t) notify([OSEventFlagsBits_t]({{ site.baseurl }}/micro-os-plus/i/Typedef_OSEventFlagsBits_t) bits)
 ----------------------------------------------------------------------------------------------------------------------------------------
 
 **Description**
@@ -47,7 +47,7 @@ Set bits and send an internally identified event. Return the new flags.
 
 :\* the new flags
 
-[OSEventFlagsBits_t]({{ site.baseurl }}/micro-os-plus/i/Typedef_OSEventFlagsBits_t "wikilink") get(void)
+[OSEventFlagsBits_t]({{ site.baseurl }}/micro-os-plus/i/Typedef_OSEventFlagsBits_t) get(void)
 -----------------------------------------------------------------------
 
 **Description**
@@ -63,7 +63,7 @@ Return the current flags value.
 
 :\* the current flags value
 
-[OSEventFlagsBits_t]({{ site.baseurl }}/micro-os-plus/i/Typedef_OSEventFlagsBits_t "wikilink") clear([OSEventFlagsBits_t]({{ site.baseurl }}/micro-os-plus/i/Typedef_OSEventFlagsBits_t "wikilink") bits)
+[OSEventFlagsBits_t]({{ site.baseurl }}/micro-os-plus/i/Typedef_OSEventFlagsBits_t) clear([OSEventFlagsBits_t]({{ site.baseurl }}/micro-os-plus/i/Typedef_OSEventFlagsBits_t) bits)
 ---------------------------------------------------------------------------------------------------------------------------------------
 
 **Description**
@@ -79,7 +79,7 @@ Clear the given flags.
 
 :\* the new flags
 
-== [OSReturn_t]({{ site.baseurl }}/micro-os-plus/i/Typedef_OSReturn_t "wikilink") wait([OSEventFlagsBits_t]({{ site.baseurl }}/micro-os-plus/i/Typedef_OSEventFlagsBits_t "wikilink") bits, bool isStrict = true) == **Description**
+== [OSReturn_t]({{ site.baseurl }}/micro-os-plus/i/Typedef_OSReturn_t) wait([OSEventFlagsBits_t]({{ site.baseurl }}/micro-os-plus/i/Typedef_OSEventFlagsBits_t) bits, bool isStrict = true) == **Description**
 
 
 Loop until one the requested bits are set. If isStrict is true all the requested bits must be set, in order to return. If isStrict is false just one of the requested bits must be set, in order to return. If any flag is already set, return immediately (with code OSReturn::OS_IMMEDIATELY). For timeouts please set timers to send events; this function will return the timer event.
@@ -96,7 +96,7 @@ Loop until one the requested bits are set. If isStrict is true all the requested
 
 :\* OSReturn::OS_OK - code returned if the requested bits were set
 
-[OSEvent_t]({{ site.baseurl }}/micro-os-plus/i/Typedef_OSEvent_t "wikilink") getEvent(void)
+[OSEvent_t]({{ site.baseurl }}/micro-os-plus/i/Typedef_OSEvent_t) getEvent(void)
 ----------------------------------------------------------
 
 **Description**

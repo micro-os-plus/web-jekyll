@@ -14,7 +14,7 @@ OSTimer
 Constructors
 ============
 
-OSTimer([OSTimerStruct_t]({{ site.baseurl }}/micro-os-plus/i/Typedef_OSTimerStruct_t "wikilink") \*pArray, int size)
+OSTimer([OSTimerStruct_t]({{ site.baseurl }}/micro-os-plus/i/Typedef_OSTimerStruct_t) \*pArray, int size)
 -----------------------------------------------------------------------------------
 
 **Description**
@@ -31,7 +31,7 @@ Initialize the internal members with the given array.
 Methods
 =======
 
-==[OSEventWaitReturn_t]({{ site.baseurl }}/micro-os-plus/i/Typedef_OSEventWaitReturn_t "wikilink") sleep([OSTimerTicks_t]({{ site.baseurl }}/micro-os-plus/i/Typedef_OSTimerTicks_t "wikilink") ticks, [OSEvent_t]({{ site.baseurl }}/micro-os-plus/i/Typedef_OSEvent_t "wikilink") event = 0)== **Description**
+==[OSEventWaitReturn_t]({{ site.baseurl }}/micro-os-plus/i/Typedef_OSEventWaitReturn_t) sleep([OSTimerTicks_t]({{ site.baseurl }}/micro-os-plus/i/Typedef_OSTimerTicks_t) ticks, [OSEvent_t]({{ site.baseurl }}/micro-os-plus/i/Typedef_OSEvent_t) event = 0)== **Description**
 
 
 Put a task to sleep for the given number of ticks. If the given event is not null, when the timeout expires, it is notified. Else the task is resumed.
@@ -48,7 +48,7 @@ Put a task to sleep for the given number of ticks. If the given event is not nul
 
 :\* OSEventWaitReturn::OS_IMMEDIATELY - if no sleep is required (ticks input parameter is null)
 
-void eventNotify([OSTimerTicks_t]({{ site.baseurl }}/micro-os-plus/i/Typedef_OSTimerTicks_t "wikilink") ticks, [OSEvent_t]({{ site.baseurl }}/micro-os-plus/i/Typedef_OSEvent_t "wikilink") event,[OSEventWaitReturn_t]({{ site.baseurl }}/micro-os-plus/i/Typedef_OSEventWaitReturn_t "wikilink") ret)
+void eventNotify([OSTimerTicks_t]({{ site.baseurl }}/micro-os-plus/i/Typedef_OSTimerTicks_t) ticks, [OSEvent_t]({{ site.baseurl }}/micro-os-plus/i/Typedef_OSEvent_t) event,[OSEventWaitReturn_t]({{ site.baseurl }}/micro-os-plus/i/Typedef_OSEventWaitReturn_t) ret)
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 **Description**
@@ -68,7 +68,7 @@ Schedule the timer to notify the event after the number of ticks. If the event i
 
 :\* none
 
-int eventRemove([OSEvent_t]({{ site.baseurl }}/micro-os-plus/i/Typedef_OSEvent_t "wikilink") event)
+int eventRemove([OSEvent_t]({{ site.baseurl }}/micro-os-plus/i/Typedef_OSEvent_t) event)
 ------------------------------------------------------------------
 
 **Description**
@@ -84,7 +84,7 @@ Remove the scheduled timer notifications associated with the given event.
 
 :\* n - the number of removed scheduled timer notifications
 
-[OSTimerTicks_t]({{ site.baseurl }}/micro-os-plus/i/Typedef_OSTimerTicks_t "wikilink") getTicks(void)
+[OSTimerTicks_t]({{ site.baseurl }}/micro-os-plus/i/Typedef_OSTimerTicks_t) getTicks(void)
 --------------------------------------------------------------------
 
 **Description**

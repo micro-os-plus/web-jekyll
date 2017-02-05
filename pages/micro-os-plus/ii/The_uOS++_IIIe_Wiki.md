@@ -24,12 +24,12 @@ The ***µOS++ III*** is the second major redesign of the ***µOS++*** project, i
 Style guides
 ------------
 
--   [Coding style]({{ site.baseurl }}/micro-os-plus/ii/Coding_style "wikilink")
--   [Naming conventions]({{ site.baseurl }}/micro-os-plus/ii/Naming_conventions "wikilink")
--   [Predefined macros]({{ site.baseurl }}/micro-os-plus/ii/Predefined_macros "wikilink")
--   [Wiki pages style guide]({{ site.baseurl }}/micro-os-plus/ii/Wiki_pages_style_guide "wikilink")
--   [Doxygen style guide]({{ site.baseurl }}/micro-os-plus/ii/Doxygen_style_guide "wikilink")
--   [Deviations from standards]({{ site.baseurl }}/micro-os-plus/ii/Deviations_from_standards "wikilink")
+-   [Coding style]({{ site.baseurl }}/micro-os-plus/ii/Coding_style)
+-   [Naming conventions]({{ site.baseurl }}/micro-os-plus/ii/Naming_conventions)
+-   [Predefined macros]({{ site.baseurl }}/micro-os-plus/ii/Predefined_macros)
+-   [Wiki pages style guide]({{ site.baseurl }}/micro-os-plus/ii/Wiki_pages_style_guide)
+-   [Doxygen style guide]({{ site.baseurl }}/micro-os-plus/ii/Doxygen_style_guide)
+-   [Deviations from standards]({{ site.baseurl }}/micro-os-plus/ii/Deviations_from_standards)
 
 How to evaluate
 ---------------
@@ -44,22 +44,22 @@ The µOS++ software is released under the [MIT License](http://en.wikipedia.org/
 Links & References
 ------------------
 
--   [Standards and style]({{ site.baseurl }}/micro-os-plus/ii/References#standards-and-style "wikilink")
--   [Embedded operating systems]({{ site.baseurl }}/micro-os-plus/ii/References#embedded-operating-systems "wikilink")
--   [C/C++ language libraries]({{ site.baseurl }}/micro-os-plus/ii/References#cc-language--libraries "wikilink")
--   [TCP/IP libraries]({{ site.baseurl }}/micro-os-plus/ii/References#tcpip-libraries "wikilink")
--   [Testing]({{ site.baseurl }}/micro-os-plus/ii/References#testing "wikilink")
--   [Multi-tasking related links]({{ site.baseurl }}/micro-os-plus/ii/References#multi-tasking-related-links "wikilink")
--   [Miscellaneous]({{ site.baseurl }}/micro-os-plus/ii/References#miscellaneous "wikilink")
--   [Books]({{ site.baseurl }}/micro-os-plus/ii/References#books "wikilink")
--   [References notes]({{ site.baseurl }}/micro-os-plus/ii/References_notes "wikilink")
+-   [Standards and style]({{ site.baseurl }}/micro-os-plus/ii/References#standards-and-style)
+-   [Embedded operating systems]({{ site.baseurl }}/micro-os-plus/ii/References#embedded-operating-systems)
+-   [C/C++ language libraries]({{ site.baseurl }}/micro-os-plus/ii/References#cc-language--libraries)
+-   [TCP/IP libraries]({{ site.baseurl }}/micro-os-plus/ii/References#tcpip-libraries)
+-   [Testing]({{ site.baseurl }}/micro-os-plus/ii/References#testing)
+-   [Multi-tasking related links]({{ site.baseurl }}/micro-os-plus/ii/References#multi-tasking-related-links)
+-   [Miscellaneous]({{ site.baseurl }}/micro-os-plus/ii/References#miscellaneous)
+-   [Books]({{ site.baseurl }}/micro-os-plus/ii/References#books)
+-   [References notes]({{ site.baseurl }}/micro-os-plus/ii/References_notes)
 
 Miscellaneous
 -------------
 
--   [Support]({{ site.baseurl }}/micro-os-plus/ii/Support "wikilink")
--   [Project history]({{ site.baseurl }}/micro-os-plus/ii/Project_history "wikilink")
--   [Criticism of previous versions]({{ site.baseurl }}/micro-os-plus/ii/Criticism_of_previous_versions "wikilink")
+-   [Support]({{ site.baseurl }}/micro-os-plus/ii/Support)
+-   [Project history]({{ site.baseurl }}/micro-os-plus/ii/Project_history)
+-   [Criticism of previous versions]({{ site.baseurl }}/micro-os-plus/ii/Criticism_of_previous_versions)
 
 MediaWiki links
 ---------------

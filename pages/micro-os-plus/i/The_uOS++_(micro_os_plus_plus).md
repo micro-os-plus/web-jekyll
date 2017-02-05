@@ -31,80 +31,80 @@ Technicalities
 Install the build environment
 -----------------------------
 
--   [How to install]({{ site.baseurl }}/micro-os-plus/i/How_to_install "wikilink")
+-   [How to install]({{ site.baseurl }}/micro-os-plus/i/How_to_install)
 
 Overview
 --------
 
--   [Features]({{ site.baseurl }}/micro-os-plus/i/Features "wikilink")
--   [The Scheduler]({{ site.baseurl }}/micro-os-plus/i/Scheduler "wikilink")
--   [Synchronisation events]({{ site.baseurl }}/micro-os-plus/i/Synchronisation_events "wikilink")
--   [System timers]({{ site.baseurl }}/micro-os-plus/i/System_Timers "wikilink")
--   [Advanced/Custom timers]({{ site.baseurl }}/micro-os-plus/i/Advanced_(Custom)_Timers "wikilink")
--   [Tasks]({{ site.baseurl }}/micro-os-plus/i/Tasks "wikilink")
--   [Device drivers]({{ site.baseurl }}/micro-os-plus/i/Device_drivers "wikilink")
--   [Memory management]({{ site.baseurl }}/micro-os-plus/i/Memory_management "wikilink")
--   [Interrupt service routines]({{ site.baseurl }}/micro-os-plus/i/Interrupt_service_routines "wikilink")
+-   [Features]({{ site.baseurl }}/micro-os-plus/i/Features)
+-   [The Scheduler]({{ site.baseurl }}/micro-os-plus/i/Scheduler)
+-   [Synchronisation events]({{ site.baseurl }}/micro-os-plus/i/Synchronisation_events)
+-   [System timers]({{ site.baseurl }}/micro-os-plus/i/System_Timers)
+-   [Advanced/Custom timers]({{ site.baseurl }}/micro-os-plus/i/Advanced_(Custom)_Timers)
+-   [Tasks]({{ site.baseurl }}/micro-os-plus/i/Tasks)
+-   [Device drivers]({{ site.baseurl }}/micro-os-plus/i/Device_drivers)
+-   [Memory management]({{ site.baseurl }}/micro-os-plus/i/Memory_management)
+-   [Interrupt service routines]({{ site.baseurl }}/micro-os-plus/i/Interrupt_service_routines)
 
 APIs
 ----
 
--   [Classes overview]({{ site.baseurl }}/micro-os-plus/i/Classes_overview "wikilink")
--   [Configuration definitions index]({{ site.baseurl }}/micro-os-plus/i/Configuration_definitions_index "wikilink")
--   [Class page template]({{ site.baseurl }}/micro-os-plus/i/Class_page_template "wikilink")
+-   [Classes overview]({{ site.baseurl }}/micro-os-plus/i/Classes_overview)
+-   [Configuration definitions index]({{ site.baseurl }}/micro-os-plus/i/Configuration_definitions_index)
+-   [Class page template]({{ site.baseurl }}/micro-os-plus/i/Class_page_template)
 
 Samples
 -------
 
--   [Samples]({{ site.baseurl }}/micro-os-plus/i/Samples "wikilink")
+-   [Samples]({{ site.baseurl }}/micro-os-plus/i/Samples)
 
 Debug support
 -------------
 
--   [Debug support]({{ site.baseurl }}/micro-os-plus/i/Debug_support "wikilink")
--   [Using LEDs]({{ site.baseurl }}/micro-os-plus/i/Using_LEDs "wikilink")
+-   [Debug support]({{ site.baseurl }}/micro-os-plus/i/Debug_support)
+-   [Using LEDs]({{ site.baseurl }}/micro-os-plus/i/Using_LEDs)
 
 Usage
 -----
 
--   [How to use]({{ site.baseurl }}/micro-os-plus/i/How_to_use "wikilink")
--   [The build mechanism]({{ site.baseurl }}/micro-os-plus/i/The_build_mechanism "wikilink")
--   [Application configuration]({{ site.baseurl }}/micro-os-plus/i/Application_configuration "wikilink") (includes an explanation of the headers structure)
--   [Configuration variables]({{ site.baseurl }}/micro-os-plus/i/Configuration_variables "wikilink")
+-   [How to use]({{ site.baseurl }}/micro-os-plus/i/How_to_use)
+-   [The build mechanism]({{ site.baseurl }}/micro-os-plus/i/The_build_mechanism)
+-   [Application configuration]({{ site.baseurl }}/micro-os-plus/i/Application_configuration) (includes an explanation of the headers structure)
+-   [Configuration variables]({{ site.baseurl }}/micro-os-plus/i/Configuration_variables)
 
 Portability
 -----------
 
--   [Portability]({{ site.baseurl }}/micro-os-plus/i/Portability "wikilink")
--   [How to port]({{ site.baseurl }}/micro-os-plus/i/How_to_port "wikilink")
+-   [Portability]({{ site.baseurl }}/micro-os-plus/i/Portability)
+-   [How to port]({{ site.baseurl }}/micro-os-plus/i/How_to_port)
 
 Processor specific pages
 ------------------------
 
 ### AVR32
 
--   [Programing the chip via the bootloader]({{ site.baseurl }}/micro-os-plus/i/Using_the_AVR32_bootloader "wikilink")
+-   [Programing the chip via the bootloader]({{ site.baseurl }}/micro-os-plus/i/Using_the_AVR32_bootloader)
 
 Performances
 ------------
 
--   [Footprint]({{ site.baseurl }}/micro-os-plus/i/Footprint "wikilink")
+-   [Footprint]({{ site.baseurl }}/micro-os-plus/i/Footprint)
 
 Misc
 ----
 
--   [FAQ]({{ site.baseurl }}/micro-os-plus/i/FAQ "wikilink")
--   [Reporting problems]({{ site.baseurl }}/micro-os-plus/i/Reporting_problems "wikilink")
--   [Change log]({{ site.baseurl }}/micro-os-plus/i/Change_log "wikilink")
+-   [FAQ]({{ site.baseurl }}/micro-os-plus/i/FAQ)
+-   [Reporting problems]({{ site.baseurl }}/micro-os-plus/i/Reporting_problems)
+-   [Change log]({{ site.baseurl }}/micro-os-plus/i/Change_log)
 -   [The µOS++ SE]({{ site.baseurl }}/micro-os-plus/ii/The_uOS++_Second_Edition_Wiki)
 
 Style guides
 ============
 
--   [Wiki pages style guide]({{ site.baseurl }}/micro-os-plus/i/Wiki_pages_style_guide "wikilink")
--   [C++ source code style guide]({{ site.baseurl }}/micro-os-plus/i/C++_source_code_style_guide "wikilink")
--   [C++ naming convention]({{ site.baseurl }}/micro-os-plus/i/C++_naming_convention "wikilink")
--   [Class page template]({{ site.baseurl }}/micro-os-plus/i/Class_page_template "wikilink")
+-   [Wiki pages style guide]({{ site.baseurl }}/micro-os-plus/i/Wiki_pages_style_guide)
+-   [C++ source code style guide]({{ site.baseurl }}/micro-os-plus/i/C++_source_code_style_guide)
+-   [C++ naming convention]({{ site.baseurl }}/micro-os-plus/i/C++_naming_convention)
+-   [Class page template]({{ site.baseurl }}/micro-os-plus/i/Class_page_template)
 
 Other references:
 
@@ -114,9 +114,9 @@ Other references:
 Misc
 ====
 
--   [Project history]({{ site.baseurl }}/micro-os-plus/i/Project_history "wikilink")
--   [My wiki preferences]({{ site.baseurl }}/micro-os-plus/i/Recommended_preferences "wikilink")
--   [My backup procedure]({{ site.baseurl }}/micro-os-plus/i/Project_backup "wikilink")
+-   [Project history]({{ site.baseurl }}/micro-os-plus/i/Project_history)
+-   [My wiki preferences]({{ site.baseurl }}/micro-os-plus/i/Recommended_preferences)
+-   [My backup procedure]({{ site.baseurl }}/micro-os-plus/i/Project_backup)
 
 Other resources
 ===============

@@ -184,7 +184,7 @@ Eclipse SVN client
 
 The SVN client provides Eclipse a way to use the SVN repository. For µOS++ versions later than spring 2012, SVN support is no longer mandatory, install it only if you need to acces your own repositories.
 
-For details, see the obsoleted page [How to install Eclipse SVN]({{ site.baseurl }}/micro-os-plus/i/How_to_install_Eclipse_SVN "wikilink")
+For details, see the obsoleted page [How to install Eclipse SVN]({{ site.baseurl }}/micro-os-plus/i/How_to_install_Eclipse_SVN)
 
 Other recommended packages
 ==========================

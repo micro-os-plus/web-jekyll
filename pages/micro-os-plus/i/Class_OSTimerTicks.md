@@ -9,7 +9,7 @@ date: 2011-02-16 12:48:18 +0000
 
 ---
 
-[OSTimer]({{ site.baseurl }}/micro-os-plus/i/Class_OSTimer "wikilink")
+[OSTimer]({{ site.baseurl }}/micro-os-plus/i/Class_OSTimer)
 
 
 OSTimerTicks
@@ -32,7 +32,7 @@ Initialize the internal members.
 Methods
 =======
 
-static [OSTimerTicks_t]({{ site.baseurl }}/micro-os-plus/i/Typedef_OSTimerTicks_t "wikilink") microsToTicks(unsigned short micros)
+static [OSTimerTicks_t]({{ site.baseurl }}/micro-os-plus/i/Typedef_OSTimerTicks_t) microsToTicks(unsigned short micros)
 -----------------------------------------------------------------------------------------------
 
 **Description**

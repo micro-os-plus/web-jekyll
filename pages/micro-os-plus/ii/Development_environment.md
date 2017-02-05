@@ -19,7 +19,7 @@ My main development environment is based on OS X (currently at 10.8).
 
 Here it is the main project repository **micro-os-plus-se.git** and a link to the **xcdl-python.git** repository.
 
-Running the tests can be done with the command already shown in the [How to test]({{ site.baseurl }}/micro-os-plus/ii/How_to_test "wikilink") page..
+Running the tests can be done with the command already shown in the [How to test]({{ site.baseurl }}/micro-os-plus/ii/How_to_test) page..
 
 GNU/Linux
 ---------
@@ -30,7 +30,7 @@ Since the OS X environment is much more convenient than any GNU/Linux GUI, for r
 
 Also, since I already have the full source repositories on OS X and my Home folder is already available to guest virtual machines as a standard mount point, it is more convenient to use it directly instead of cloning local repositories.
 
-Running the tests can be done with the commands already shown in the [How to tests]({{ site.baseurl }}/micro-os-plus/ii/How_to_test "wikilink") page.
+Running the tests can be done with the commands already shown in the [How to tests]({{ site.baseurl }}/micro-os-plus/ii/How_to_test) page.
 
 ### Ubuntu 13.10 x64
 

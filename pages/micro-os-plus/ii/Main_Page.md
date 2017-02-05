@@ -9,4 +9,4 @@ date: 2014-02-22 16:05:42 +0000
 
 ---
 
-1.  REDIRECT [The µOS++ IIIe Wiki]({{ site.baseurl }}/micro-os-plus/ii/The_uOS++_IIIe_Wiki "wikilink")
+1.  REDIRECT [The µOS++ IIIe Wiki]({{ site.baseurl }}/micro-os-plus/ii/The_uOS++_IIIe_Wiki)
