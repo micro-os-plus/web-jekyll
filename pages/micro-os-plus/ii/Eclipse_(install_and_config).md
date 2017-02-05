@@ -49,7 +49,7 @@ Create workspace
 
     mkdir -p "~/work/uOS/Eclipse Workspaces"
 
--   start the new Eclipse and define a new workspace, for example: **\~/work/uOS/Eclipse Workspaces/workspace-4.3-osx**
+-   start the new Eclipse and define a new workspace, for example: `~/work/uOS/Eclipse Workspaces/workspace-4.3-osx`
 
 Install plug-ins
 ----------------
@@ -203,15 +203,15 @@ In the **File** menu → **Import**
 -   press the **Next** button
 -   select **URI**
 -   press the **Next** button
--   fill in the **URI** field with **<http://git.code.sf.net/p/micro-os-plus/second>**
+-   fill in the **URI** field with ``https://github.com/micro-os-plus/micro-os-plus-ii``
 -   press the **Next** button
 -   select the **master** branch
 -   press the **Next** button
--   fill in the **Destination Directory** field with the absolute folder path, like **/Users/XXX/work/uOS/micro-os-plus-se.git**
+-   fill in the **Destination Directory** field with the absolute folder path, like `/Users/XXX/work/uOS/micro-os-plus-se.git`
 -   select the **micro-os-plus-se.git** project
 -   click the **Finish** button
 
-Similarly, repeat the steps for the second repository URI **<http://git.code.sf.net/p/xcdl/python>**, clone it to an absolute folder path like **/Users/XXX/work/uOS/xcdl-python.git** and import the **xcdl-python** project.
+Similarly, repeat the steps for the second repository URI `https://github.com/xcdl/xcdl-py`, clone it to an absolute folder path like `/Users/XXX/work/uOS/xcdl-python.git` and import the **xcdl-python** project.
 
 Configure paths and locations
 -----------------------------
@@ -223,17 +223,17 @@ Eclipse is a bit confusing when dealing with variables, since it allows several 
 In the **Eclipse** menu → **Preferences...** → **C/C++** → **Build** → **Build Variables**
 
 -   press the **Add...** button
-    -   fill in **Variable name** with **MICRO_OS_PLUS_SE_LOC**
+    -   fill in **Variable name** with `MICRO_OS_PLUS_SE_LOC`
     -   select **Type** as **Directory**
     -   in the **Value** field browse the filesystem to the **micro-os-plus-se.git** folder
     -   press the **OK** button
 -   press the **Add...** button
-    -   fill in **Variable name** with **XCDLBUILD**
+    -   fill in **Variable name** with `XCDLBUILD`
     -   select **Type** as **File**
-    -   in the **Value** field browse the filesystem and from the **xcdl-python.git** folder select **scripts/xcdlBuild.sh**
+    -   in the **Value** field browse the filesystem and from the **xcdl-python.git** folder select `scripts/xcdlBuild.sh`
     -   press the **OK** button
 -   press the **Add...** button
-    -   fill in **Variable name** with **GCC_ARM_EP_LOC**
+    -   fill in **Variable name** with `GCC_ARM_EP_LOC`
     -   select **Type** as **Directory**
     -   in the **Value** field browse the filesystem and select the bin folder where the ARM toolchain is installed
     -   press the **OK** button
@@ -248,7 +248,7 @@ In addition to the C/C++ Build Variables, we also need the µOS++ SE location fo
 In the **Eclipse** menu → **Preferences...** → **General** → **Workspace** → **Linked Resources**
 
 -   press the **New...** button
-    -   fill in the **Name** field with **MICRO_OS_PLUS_SE_LOC**
+    -   fill in the **Name** field with `MICRO_OS_PLUS_SE_LOC`
     -   in the **Location** field browse the filesystem to the absolute **micro-os-plus-se.git** folder
     -   press the **OK** button
 -   press the **OK** button
@@ -295,8 +295,8 @@ The new project is now visible in the Project Explorer, but is completely empty,
 -   in the **Project** menu: **Properties** → **C/C++ Build** → **Environment**
 -   the configuration selection should read Default (the only one in the beginning)
 -   press the **Add...** button
-    -   fill in the **Name** field with **PATH**
-    -   fill in the **Value** field with **\${GCC_ARM_EP_LOC}**
+    -   fill in the **Name** field with `PATH`
+    -   fill in the **Value** field with `${GCC_ARM_EP_LOC}`
     -   press the **OK** button
 -   a new environment definition should be added, with the variable at the end
 -   press the **OK** button
@@ -318,7 +318,7 @@ The new project is now visible in the Project Explorer, but is completely empty,
     -   **CDT GCC Built-in Compiler Settings**
 -   select **CDT GCC Built-in Compiler Settings**
 -   disable **Use global provider shared between projects**
--   edit the command line and replace the **\${COMMAND}** with the actual g++ command name, for example **arm-none-eabi-g++**
+-   edit the command line and replace the `${COMMAND}` with the actual g++ command name, for example `arm-none-eabi-g++`
 -   press the **OK** button
 
 <div style="text-align:center">
@@ -337,11 +337,11 @@ Once the toolchain path and the discovery command are properly configured, the *
 -   in the **Project** menu: **Properties** → **C/C++ General** → **Paths and Symbols**
 -   select the **Includes** tab
 -   press the **Add...** button
-    -   fill in the **Directory** field with **\${ProjDirPath}/build/\${config_name:\${ProjName}}/include**
+    -   fill in the **Directory** field with `${ProjDirPath}/build/${config_name:${ProjName}}/include`
     -   enable **Add to all languages**
     -   press the **OK** button
 -   press the **Add...** button
-    -   fill in the **Directory** field with **\${MICRO_OS_PLUS_SE_LOC}/packages**
+    -   fill in the **Directory** field with `${MICRO_OS_PLUS_SE_LOC}/packages`
     -   enable **Add to all languages**
     -   press the **OK** button
 -   press the OK button
@@ -353,7 +353,7 @@ Once the toolchain path and the discovery command are properly configured, the *
 -   fill in the **Folder name** with **micro-os-plus-se**
 -   press the **Advanced \>\>** button
 -   select the **Link to alternate location** option
--   fill in the location field with **MICRO_OS_PLUS_SE_LOC/packages** (alternatively this can be done by pushing the **Variables...** button, selecting the **MICRO_OS_PLUS_SE_LOC** variable, pushing the **Extend...** button and selecting the **packages** folder)
+-   fill in the location field with `MICRO_OS_PLUS_SE_LOC/packages` (alternatively this can be done by pushing the **Variables...** button, selecting the `MICRO_OS_PLUS_SE_LOC` variable, pushing the **Extend...** button and selecting the **packages** folder)
 -   press the **Finish** button
 
 To check if the definition is valid, expand the **micro-os-plus-se** folder and check if the µOS++ SE sources are available.
@@ -368,7 +368,7 @@ To check if the definition is valid, expand the **micro-os-plus-se** folder and 
 -   in the **Project** menu: **Properties** → **C/C++ Build**
 -   select the **Builder Settings** tab
 -   disable **Use default build command**
--   fill in the **Build command** field with **/bin/bash "\${XCDLBUILD}" --repository='\${MICRO_OS_PLUS_SE_LOC}/packages' --build_config=\${config_name:\${ProjName}}**
+-   fill in the **Build command** field with `/bin/bash "\${XCDLBUILD}" --repository='\${MICRO_OS_PLUS_SE_LOC}/packages' --build_config=\${config_name:\${ProjName}}`
 -   press the **OK** button
 
 ### Create actual build configurations
@@ -380,12 +380,12 @@ This can be done using the Manage Configurations dialog.
 -   select the project
 -   in the **Project** menu: **Build Configurations** → **Manage** (alternatively you can right click on the project and select the command)
 -   in the new window, press the **New...** button
-    -   fill in the **Name** field with an existing µOS++ configuration name, for example **qemu_osx_aep_gcc_minimal_Debug**
+    -   fill in the **Name** field with an existing µOS++ configuration name, for example `qemu_osx_aep_gcc_minimal_Debug`
     -   select the **Existing configuration** option, the **Default** entry
     -   press the **OK** button
 -   press the **OK** button
 
-Eventually repeat this step, and add a new build configuration named **qemu_osx_aep_gcc_minimal_Release**.
+Eventually repeat this step, and add a new build configuration named `qemu_osx_aep_gcc_minimal_Release`.
 
 ### Build the new configurations
 

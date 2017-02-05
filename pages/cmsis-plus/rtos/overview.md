@@ -21,13 +21,13 @@ The CMSIS++ RTOS APIs are a set of RTOS interfaces, highly portable but designed
 
 The project highlights are:
 
-- the core CMSIS++ RTOS is based on a C++ API (namespace `os::rtos`), defined in [<cmsis-plus/rtos/os.h>](https://github.com/micro-os-plus/cmsis-plus/blob/xpack/include/cmsis-plus/rtos/os.h);
+- the core CMSIS++ RTOS is based on a C++ API (namespace `os::rtos`), defined in [<cmsis-plus/rtos/os.h>](https://github.com/micro-os-plus/micro-os-plus-iii/blob/xpack/include/cmsis-plus/rtos/os.h);
 
-- exactly the same functionality is provided in C, with a C wrapper, for those who prefer to use plain C; the C API is defined in [<cmsis-plus/rtos/os-c-api.h>](https://github.com/micro-os-plus/cmsis-plus/blob/xpack/include/cmsis-plus/rtos/os-c-api.h);
+- exactly the same functionality is provided in C, with a C wrapper, for those who prefer to use plain C; the C API is defined in [<cmsis-plus/rtos/os-c-api.h>](https://github.com/micro-os-plus/micro-os-plus-iii/blob/xpack/include/cmsis-plus/rtos/os-c-api.h);
 
-- for compatibility reasons, the actual CMSIS API is also implemented in the C wrapper; it is defined in [<cmsis\_os.h>](https://github.com/micro-os-plus/cmsis-plus/blob/xpack/include/cmsis-plus/legacy/cmsis_os.h) (functional, passed the CMSIS RTOS validation, using the [FreeRTOS port](https://github.com/xpacks/freertos/blob/xpack/cmsis-plus/include/cmsis-plus/rtos/port/os-inlines.h));
+- for compatibility reasons, the actual CMSIS API is also implemented in the C wrapper; it is defined in [<cmsis\_os.h>](https://github.com/micro-os-plus/micro-os-plus-iii/blob/xpack/include/cmsis-plus/legacy/cmsis_os.h) (functional, passed the CMSIS RTOS validation, using the [FreeRTOS port](https://github.com/xpacks/freertos/blob/xpack/cmsis-plus/include/cmsis-plus/rtos/port/os-inlines.h));
 
-- on top of the core C++ API, the ISO standard thread library is fully implemented (namespace `os::estd`), and this is the recommended C++ API for future applications; the definitions are available from [<cmsis-plus/iso/*>](https://github.com/micro-os-plus/cmsis-plus/tree/xpack/include/cmsis-plus/iso);
+- on top of the core C++ API, the ISO standard thread library is fully implemented (namespace `os::estd`), and this is the recommended C++ API for future applications; the definitions are available from [<cmsis-plus/estd/*>](https://github.com/micro-os-plus/micro-os-plus-iii/tree/xpack/include/cmsis-plus/estd/);
 
 - all RTOS objects are based on the core C++ objects, and objects created in C++ can be used in C and similarly objects created in C can be used in C++ (there is no mystery here, they represent exactly the same objects);
 

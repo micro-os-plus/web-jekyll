@@ -14,7 +14,7 @@ The ***µOS++ IIIe*** (micro oh ɛs plus plus third edition) project (affectiona
 **Note:** This new version is currently an early concept, with major design choices to be taken; for those interested in a functional version, please read:
 
 -   [the µOS++ wiki](http://micro-os-plus.sourceforge.net/old-wiki/) (first edition)
--   [the µOS++ Second Edition wiki](http://micro-os-plus.sourceforge.net/wiki/The_µOS%2B%2B_Second_Edition_Wiki) and [Doxygen](http://micro-os-plus.sourceforge.net/doc/).
+-   [the µOS++ Second Edition wiki]({{ site.baseurl }}/micro-os-plus/ii/The_uOS++_Second_Edition_Wiki/).
 
 Introduction
 ------------

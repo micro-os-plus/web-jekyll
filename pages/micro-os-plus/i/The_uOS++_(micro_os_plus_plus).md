@@ -121,7 +121,7 @@ Misc
 Other resources
 ===============
 
--   [HTML-to-wiki converter](http://toolserver.org/%7Ediberri/cgi-bin/html2wiki/)
+-   [HTML-to-wiki converter](https://www.mediawiki.org/wiki/Extension:Html2Wiki)
 -   [Excel to MediaWiki convertor](http://excel2wiki.net/)
 -   [Wikipedia Tools](http://en.wikipedia.org/wiki/Wikipedia:Tools)
 

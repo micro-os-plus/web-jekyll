@@ -19,7 +19,7 @@ A dedicated [user discussions forum](https://www.element14.com/community/groups/
 
 The forum goal was initially to facilitate experience sharing between GNU ARM Eclipse users but later was extended and more categories were added, including µOS++ and CMSIS++. It serves as a place to post questions and support requests; just be sure you select the right category when posting messages.
 
-In case a problem is identified as bug or feature request, please use the corresponding GitHub Issues for  [CMSIS++](https://github.com/micro-os-plus/cmsis-plus/issues/) or [µOS++ IIIe](https://github.com/micro-os-plus/micro-os-plus-iii/issues/).
+In case a problem is identified as bug or feature request, please use the [µOS++ IIIe GitHub Issues](https://github.com/micro-os-plus/micro-os-plus-iii/issues/).
 
 ## Access
 

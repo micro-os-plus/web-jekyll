@@ -26,7 +26,7 @@ Go to */Users/ilg/My Files/MacMini Vault/Projects/SourceForge.backup/micro-os-pl
 MediaWiki backup
 ================
 
-Go to [Hosted Application Backup](https://sourceforge.net/apps/backup/micro-os-plus/)
+Go to **Hosted Application Backup** (No longer available)
 
 -   select Content to backup: **Database**
 -   select Content format: **gzip**

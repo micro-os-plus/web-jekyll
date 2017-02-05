@@ -16,7 +16,7 @@ The available test boards are:
 Discovery boards:
 
 - [STM32F4-DISCOVERY](http://www.st.com/content/st_com/en/products/evaluation-tools/product-evaluation-tools/mcu-eval-tools/stm32-mcu-eval-tools/stm32-mcu-discovery-kits/stm32f4discovery.html) (M4, STM32F407VGT6)
-  - [DM-STF4BB](http://www.embest-tech.com/product/expansion-modules-accessories/dm-stf4bb-base-board.html) Discover-MO Expansion Board for STM32F4DISCOVERY (Ethernet)
+  - [STM32F4DIS-BB](http://www.st.com/en/evaluation-tools/stm32f4dis-ext.html) STM32F4DIS-BB Base Board for STM32F4DISCOVERY (Ethernet)
 - [32F429IDISCOVERY](http://www.st.com/content/st_com/en/products/evaluation-tools/product-evaluation-tools/mcu-eval-tools/stm32-mcu-eval-tools/stm32-mcu-discovery-kits/32f429idiscovery.html) (M4, STM32F429ZIT6)
 - [STM32F3DISCOVERY](http://www.st.com/en/evaluation-tools/stm32f3discovery.html) (M4, STM32F303VCT6)
 - [STM32VLDISCOVERY](http://www.st.com/content/st_com/en/products/evaluation-tools/product-evaluation-tools/mcu-eval-tools/stm32-mcu-eval-tools/stm32-mcu-discovery-kits/stm32vldiscovery.html) (M3, STM32F100RBT6B)

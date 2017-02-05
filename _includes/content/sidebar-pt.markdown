@@ -44,7 +44,6 @@
 * [Problemas conhecidos]({{ site.baseurl }}/support/known-issues/)
 * [FAQ]({{ site.baseurl }}/support/faq/)
 * [Forum]({{ site.baseurl }}/support/forum/)
-* [Relatar problemas no CMSIS++](https://github.com/micro-os-plus/cmsis-plus/issues/)
 * [Relatar problemas no µOS++ IIIe](https://github.com/micro-os-plus/micro-os-plus-iii/issues/)
 
 #### Últimos Artigos

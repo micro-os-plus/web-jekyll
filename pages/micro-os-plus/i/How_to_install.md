@@ -127,7 +127,7 @@ To install this plug-in on Windows, use the Eclipse standard install/update mech
 
 #### AVR32 Studio
 
-Originally Atmel based its AVR32 development environment on Eclipse, and provided the [AVR32 Studio](http://www.atmel.com/dyn/products/tools_card.asp?tool_id=4116&category_id=163&family_id=607&subfamily_id=2138) as an integrated tool, based on Eclipse 3.5. It includes the GCC toolchain and all required tools for flash programming and debugging.
+Originally Atmel based its AVR32 development environment on Eclipse, and provided the **AVR32 Studio** as an integrated tool, based on Eclipse 3.5. It includes the GCC toolchain and all required tools for flash programming and debugging.
 
 In 2011 Atmel abandoned the development of the Eclipse based AVR32 Studio, and implicitly of the Eclipse plug-ins.
 
@@ -156,7 +156,7 @@ We recommend to manually install the Atmel plug-ins on Eclipse 3.6.2.
 
 -   in the *Install* window, click the **Add...** button (on future updates, just select the URL)
     -   fill in **Name:** with Atmel AVR32
-    -   fill in **Location:** with <http://distribute.atmel.no/tools/avr32studio/releases/latest/>
+    -   fill in **Location:** (No longer available!)
     -   click the **OK** button
 -   in the main window, below **CDT Optional Features** select the **AVR Eclipse Plugin**
 -   click the **Next** button

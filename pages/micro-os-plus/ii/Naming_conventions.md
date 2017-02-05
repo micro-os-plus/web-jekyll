@@ -69,7 +69,7 @@ Unless required by special cases, define aliases to types with **using** instead
 Enumeration definitions
 -----------------------
 
-C++11 solved the old C enumeration problem and introduced strongly typed and scoped enumerations (**enum class**), so usually there is no need to use embedded classes with constants.
+C++11 solved the old C enumeration problem and introduced strongly typed and scoped enumerations (`enum class`), so usually there is no need to use embedded classes with constants.
 
     using mode_t = uint32_t;
 
@@ -440,7 +440,7 @@ Depending on the specific scope, if the constants are to be used only inside the
 
 Constants can be grouped in separated classes, like the system OSReturn class, that groups together various return values, although enums would be probably more appropriate.
 
-For group of constants, the recommended method is to use [class enumerations]({{ site.baseurl }}/micro-os-plus/ii/#Enumeration_definitions "wikilink").
+For group of constants, the recommended method is to use [class enumerations]({{ site.baseurl }}/micro-os-plus/ii/Naming_conventions/#enumeration-definitions "wikilink").
 
 static constexpr vs. constexpr static
 -------------------------------------
@@ -486,13 +486,13 @@ Conditional compilation definitions
 
 These are the definitions used to select various components to compile.
 
-By convention, they all start with **OS_INCLUDE_** and are followed by the path of the component.
+By convention, they all start with `OS_INCLUDE_` and are followed by the path of the component.
 
 Examples:
 
--   OS_INCLUDE_HAL_ARCHITECTURE_SYNTHETIC_POSIX
--   OS_INCLUDE_HAL_PLATFORM_SYNTHETIC_OSX
--   OS_INCLUDE_PORTABLE_DIAGNOSTICS_TRACE
+-   `OS_INCLUDE_HAL_ARCHITECTURE_SYNTHETIC_POSIX`
+-   `OS_INCLUDE_HAL_PLATFORM_SYNTHETIC_OSX`
+-   `OS_INCLUDE_PORTABLE_DIAGNOSTICS_TRACE`
 
 Value definitions
 -----------------
@@ -501,13 +501,13 @@ These are the definitions used to configure various values at compile time.
 
 By convention, they all start with the value type:
 
--   **OS_STRING_**
--   **OS_INTEGER_**
+-   `OS_STRING_`
+-   `OS_INTEGER_`
 
 Examples:
 
--   OS_INTEGER_CORE_SCHEDULER_MAXUSERTHREADS
--   OS_STRING_CORE_SCHEDULER_CUSTOM_HEADER
+-   `OS_INTEGER_CORE_SCHEDULER_MAXUSERTHREADS`
+-   `OS_STRING_CORE_SCHEDULER_CUSTOM_HEADER`
 
 PATH definitions
 ----------------
@@ -516,8 +516,8 @@ These special definitions are used to enter strings that contain file paths, for
 
 By convention, they all start with:
 
--   **OS_PATH_**
+-   `OS_PATH_`
 
 Examples:
 
--   OS_PATH_HAL_PLATFORM_PLATFORMIMPLEMENTATION
+-   `OS_PATH_HAL_PLATFORM_PLATFORMIMPLEMENTATION`
