@@ -85,8 +85,8 @@ gems:
 
 # References to the project associated with the web.
 github-username:  ilg-ul
-github-project-name: micro-os-plus/cmsis-plus
-github-project-url: http://github.com/micro-os-plus/cmsis-plus
+github-project-name: micro-os-plus/micro-os-plus-iii
+github-project-url: http://github.com/micro-os-plus/micro-os-plus-iii
 github-this-project-url: https://github.com/micro-os-plus/micro-os-plus.github.io-source
 github-this-project-branch: master
 sourceforge-project-url: http://sourceforge.net/projects/micro-os-plus
@@ -113,4 +113,4 @@ useExistingAnchors: true
 css-date: 201608151703
 
 # Content copyright. Update it to your needs.
-copyright-message: "© 2016 Liviu Ionescu"
+copyright-message: "© 2017 Liviu Ionescu"
