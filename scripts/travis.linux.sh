@@ -21,12 +21,20 @@ IFS=$'\n\t'
 
 # https://docs.travis-ci.com/user/environment-variables/#Default-Environment-Variables
 
-build="${HOME}/build"
-slug="${build}/${TRAVIS_REPO_SLUG}"
+export build="${HOME}/build"
+export slug="${build}/${TRAVIS_REPO_SLUG}"
 
 # -----------------------------------------------------------------------------
 
-site="${HOME}/out/${GITHUB_DEST_REPO}"
+export site="${HOME}/out/${GITHUB_DEST_REPO}"
+
+# -----------------------------------------------------------------------------
+
+function do_run()
+{
+  echo "\$ $@"
+  "$@"
+}
 
 # -----------------------------------------------------------------------------
 
@@ -40,8 +48,8 @@ function do_before_install() {
 
   cd "${HOME}"
 
-  gem install html-proofer
-  htmlproofer --version
+  do_run gem install html-proofer
+  do_run htmlproofer --version
 
   return 0
 }
@@ -53,10 +61,10 @@ function do_before_script() {
 
   cd "${HOME}"
 
-  git config --global user.email "${GIT_COMMIT_USER_EMAIL}"
-  git config --global user.name "${GIT_COMMIT_USER_NAME}"
+  do_run git config --global user.email "${GIT_COMMIT_USER_EMAIL}"
+  do_run git config --global user.name "${GIT_COMMIT_USER_NAME}"
 
-  git clone --branch=master https://github.com/${GITHUB_DEST_REPO}.git "${site}"
+  do_run git clone --branch=master https://github.com/${GITHUB_DEST_REPO}.git "${site}"
 
   return 0
 }
@@ -70,12 +78,12 @@ function do_script() {
 
   # Be sure the 'vendor/' folder is excluded, 
   # otherwise a strage error occurs.
-  bundle exec jekyll build --destination "${site}"
+  do_run bundle exec jekyll build --destination "${site}"
 
-  ls -lL "${site}"
+  do_run ls -lL "${site}"
 
   # Validate images and links (internal & external).
-  bundle exec htmlproofer \
+  do_run bundle exec htmlproofer \
   --url-ignore="/reference/cmsis-plus/,/pt/,https://jekyllrb.com,http://developer.apple.com/downloads/,https://developer.apple.com/downloads/,http://kramdown.gettalong.org/syntax.html,https://www.element14.com/community/.*" \
   "${site}"
 
@@ -101,8 +109,10 @@ function do_script() {
     exit 0
   fi
 
-  git add --all .
-  git commit -m "Travis CI Deploy of ${TRAVIS_COMMIT}" 
+  # do_run git diff
+
+  do_run git add --all .
+  do_run git commit -m "Travis CI Deploy of ${TRAVIS_COMMIT}" 
 
   # git status
 
@@ -114,7 +124,7 @@ function do_script() {
   echo "Deploy to GitHub pages..."
 
   # Must be quiet and have no output, to not reveal the key.
-  git push --force --quiet "https://${GITHUB_TOKEN}@github.com/${GITHUB_DEST_REPO}" master > /dev/null 2>&1
+  do_run git push --force --quiet "https://${GITHUB_TOKEN}@github.com/${GITHUB_DEST_REPO}" master > /dev/null 2>&1
 
   return 0
 }
