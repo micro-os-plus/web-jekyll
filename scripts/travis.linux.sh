@@ -40,7 +40,6 @@ function do_before_install() {
 
   cd "${HOME}"
 
-  export NOKOGIRI_USE_SYSTEM_LIBRARIES=true
   gem install html-proofer
   htmlproofer --version
 
@@ -75,20 +74,12 @@ function do_script() {
 
   ls -lL "${site}"
 
-  export NOKOGIRI_USE_SYSTEM_LIBRARIES=true
-
-  # Temporarily move the `reference` folder out of the way, it is 
-  # too large to be validated.
-  rm -rf "${site}-reference"
-  mv "${site}/reference" "${site}-reference"
-
   # Validate images and links (internal & external).
   bundle exec htmlproofer \
   --url-ignore="/reference/cmsis-plus/,/pt/,https://www.element14.com/community/.*" \
   "${site}"
 
-  # Bring back the `reference` folder, it is needed for deployment.
-  mv "${site}-reference" "${site}/reference"
+  # TODO: add Doxygen reference.
 
   # ---------------------------------------------------------------------------
   # The deployment code is present here not in after_success, 
@@ -115,8 +106,9 @@ function do_script() {
 
   # git status
 
-  # Temporarily disable deployment, due to inconsistent results from
-  # jekyll-last-modified-at.
+  # Temporarily disable deployment, due to 
+  # - lack of Doxygen generated folder
+  # - inconsistent results from jekyll-last-modified-at.
   return 0
 
   echo "Deploy to GitHub pages..."

@@ -15,7 +15,10 @@ export NOKOGIRI_USE_SYSTEM_LIBRARIES=true
 # Temporarily move the `reference` folder out of the way, it is 
 # too large to be validated.
 rm -rf "${site}-reference"
-mv "${site}/reference" "${site}-reference"
+if [ -d "${site}/reference" ]
+then
+  mv "${site}/reference" "${site}-reference"
+fi
 
 # --log-level debug \
 
@@ -25,7 +28,10 @@ mv "${site}/reference" "${site}-reference"
 "${site}"
 
 # Bring back the `reference` folder, it is needed for deployment.
-mv "${site}-reference" "${site}/reference"
+if [ -d "${site}-reference" ]
+then
+  mv "${site}-reference" "${site}/reference"
+fi
 
 echo
 echo "Done"
