@@ -22,7 +22,7 @@ The CMSIS++ components are:
 
 * **CMSIS++ Core** - C++ API and implementation for the Cortex-M processors core and peripherals;
 * **CMSIS++ Startup** - portable C/C++ API and implementation for the processor startup code, replacing non-portable vendor assembly code;
-* [**CMSIS++ RTOS APIs**]({{ site.baseurl }}/cmsis-plus/RTOS/) - a collection of C++ and C APIs for Real-Time operating systems, based on a POSIX inspired C++ layer;
+* [**CMSIS++ RTOS APIs**]({{ site.baseurl }}/cmsis-plus/rtos/) - a collection of C++ and C APIs for Real-Time operating systems, based on a POSIX inspired C++ layer;
 * **CMSIS++ ISO Standard Threads** - an implementation of the **C++ Standard ISO/IEC 14882:2011(E)** Thread library, on top of the CMSIS++ RTOS threads;
 * **CMSIS++ Drivers** - defines generic peripheral driver interfaces for middleware making it reusable across supported devices
 * **CMSIS++ POSIX I/O** - a compatibility layer bringing together access to terminal devices, files and sockets, via a unified and standard API;
