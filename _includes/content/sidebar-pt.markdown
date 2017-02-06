@@ -1,4 +1,4 @@
-#### [Início]({{ site.baseurl }}/{{ page.lang}})
+#### [Início]({{ site.baseurl }}/{{ page.lang}}/)
 
 #### µOS++ IIIe
 
@@ -18,12 +18,12 @@
 * [Manual do usuário]({{ site.baseurl }}/{{ page.lang }}/user-manual/)
   * [Começando]({{ site.baseurl }}/{{ page.lang }}/user-manual/getting-started/)
   * [Conceitos básicos]({{ site.baseurl }}/{{ page.lang }}/user-manual/basic-concepts/)
-  * [Características]({{ site.baseurl }}/{{ page.lang }}/user-manual/features/)
-  * [Threads]({{ site.baseurl }}/{{ page.lang }}/user-manual/threads/)
-  * [Thread event flags]({{ site.baseurl }}/{{ page.lang }}/user-manual/thread-event-flags/)
-  * [Semaphores]({{ site.baseurl }}/{{ page.lang }}/user-manual/semaphores/)
-  * [Event flags]({{ site.baseurl }}/{{ page.lang }}/user-manual/event-flags/)
-  * [Mutexes]({{ site.baseurl }}/{{ page.lang }}/user-manual/mutexes/)
+  * [Características]({{ site.baseurl }}/user-manual/features/)
+  * [Threads]({{ site.baseurl }}/user-manual/threads/)
+  * [Thread event flags]({{ site.baseurl }}/user-manual/thread-event-flags/)
+  * [Semaphores]({{ site.baseurl }}/user-manual/semaphores/)
+  * [Event flags]({{ site.baseurl }}/user-manual/event-flags/)
+  * [Mutexes]({{ site.baseurl }}/user-manual/mutexes/)
   * Condition variables
   * Message queues
   * Memory pools
@@ -55,4 +55,4 @@
 
 * [MIT](https://opensource.org/licenses/MIT)
 
-#### [Sobre]({{ site.baseurl }}/{{ page.lang}}/about/)
+#### [Sobre]({{ site.baseurl }}/about/)
