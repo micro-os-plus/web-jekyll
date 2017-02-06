@@ -76,7 +76,7 @@ function do_script() {
 
   # Validate images and links (internal & external).
   bundle exec htmlproofer \
-  --url-ignore="/reference/cmsis-plus/,/pt/,https://www.element14.com/community/.*" \
+  --url-ignore="/reference/cmsis-plus/,/pt/,https://www.element14.com/community/.*,https://jekyllrb.com/" \
   "${site}"
 
   # TODO: add Doxygen reference.
