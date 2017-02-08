@@ -22,7 +22,7 @@ IFS=$'\n\t'
 # https://docs.travis-ci.com/user/environment-variables/#Default-Environment-Variables
 
 export build="${HOME}/build"
-export slug="${build}/${TRAVIS_REPO_SLUG}"
+export slug="${TRAVIS_BUILD_DIR}-full"
 
 # -----------------------------------------------------------------------------
 
@@ -47,25 +47,21 @@ function do_before_install() {
 
   echo "Before install, bring extra tools..."
 
+  # Install the html-proofer gem, to be used after jekyll build.
   cd "${HOME}"
-
   do_run gem install html-proofer
   do_run htmlproofer --version
 
   # http://packages.ubuntu.com/trusty-updates/
-
-  # libclang needed by doxygen 
+  # Install libclang, it is needed by doxygen.
   do_run sudo apt-get -y install -t trusty-backports libclang1-3.8
 
-  mkdir -p ${HOME}/downloads
-
   # https://launchpad.net/ubuntu/+source/doxygen
-  
+  # Install a newer doxygen from launchpad binaries.
   doxy_deb=doxygen_1.8.11-3_amd64.deb
+  mkdir -p ${HOME}/downloads
   do_run curl -L --silent https://launchpad.net/ubuntu/+archive/primary/+files/${doxy_deb} -o ${HOME}/downloads/${doxy_deb}
-
   do_run sudo dpkg -i ${HOME}/downloads/${doxy_deb}
-
   do_run doxygen --version
 
   return 0
@@ -76,10 +72,18 @@ function do_before_script() {
 
   echo "Before starting the test, clone the destination repo..."
 
+  # For just in case.
   cd "${HOME}"
 
   do_run git config --global user.email "${GIT_COMMIT_USER_EMAIL}"
   do_run git config --global user.name "${GIT_COMMIT_USER_NAME}"
+
+  # Clone again the repository, without the 50 commit limit, 
+  # otherwise the last-modified-at will fail. (weird!)
+  do_run git clone --branch=${TRAVIS_BRANCH} https://github.com/${TRAVIS_REPO_SLUG}.git "${slug}"
+  cd "${slug}"
+  do_run git checkout -qf ${TRAVIS_COMMIT}
+  do_run git submodule update --init --recursive
 
   # Bring in the destination repository. Perhaps --depth=2 would help.
   do_run git clone --branch=master https://github.com/${GITHUB_DEST_REPO}.git "${site}"
