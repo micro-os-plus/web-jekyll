@@ -54,7 +54,7 @@ function do_before_install() {
 
   # http://packages.ubuntu.com/trusty-updates/
   # Install libclang, it is needed by doxygen.
-  do_run sudo apt-get -y install -t trusty-backports libclang1-3.8
+  do_run sudo apt-get -y -q install -t trusty-backports libclang1-3.8
 
   # https://launchpad.net/ubuntu/+source/doxygen
   # Install a newer doxygen from launchpad binaries.
@@ -85,11 +85,11 @@ function do_before_script() {
   do_run git checkout -qf ${TRAVIS_COMMIT}
   do_run git submodule update --init --recursive
 
-  # Bring in the destination repository. Perhaps --depth=2 would help.
+  # Bring in the destination repository. 
   do_run git clone --branch=master https://github.com/${GITHUB_DEST_REPO}.git "${site}"
 
   # Bring in the µOS++ sources, for the Doxygen input.
-  do_run git clone --branch=xpack https://github.com/${GITHUB_DOXY_REPO}.git "${doxy}"
+  do_run git clone --branch=xpack --depth=1 https://github.com/${GITHUB_DOXY_REPO}.git "${doxy}"
 
   return 0
 }
@@ -148,7 +148,7 @@ function do_script() {
 
   # Commit the changes.
   cd "${site}"
-  do_run git diff
+  # do_run git diff
 
   do_run git add --all .
   do_run git commit -m "Travis CI Deploy of ${TRAVIS_COMMIT}" 
