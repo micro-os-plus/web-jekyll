@@ -153,15 +153,10 @@ function do_script() {
   do_run git add --all .
   do_run git commit -m "Travis CI Deploy of ${TRAVIS_COMMIT}" 
 
-  # Temporarily disable deployment, due to 
-  # - lack of Doxygen generated folder
-  # - inconsistent results from jekyll-last-modified-at.
-  return 0
-
   echo "Deploy to GitHub pages..."
 
   # Must be quiet and have no output, to not reveal the key.
-  do_run git push --force --quiet "https://${GITHUB_TOKEN}@github.com/${GITHUB_DEST_REPO}" master > /dev/null 2>&1
+  git push --force --quiet "https://${GITHUB_TOKEN}@github.com/${GITHUB_DEST_REPO}" master > /dev/null 2>&1
 
   return 0
 }
