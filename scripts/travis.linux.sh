@@ -55,7 +55,7 @@ function do_before_install() {
   # http://packages.ubuntu.com/trusty-updates/
 
   # libclang needed by doxygen 
-  do_run apt-get -y install -t trusty-backports libclang1-3.8
+  do_run sudo apt-get -y install -t trusty-backports libclang1-3.8
 
   mkdir -p ${HOME}/downloads
 
@@ -64,7 +64,7 @@ function do_before_install() {
   doxy_deb=doxygen_1.8.11-3_amd64.deb
   do_run curl -L --silent https://launchpad.net/ubuntu/+archive/primary/+files/${doxy_deb} -o ${HOME}/downloads/${doxy_deb}
 
-  do_run dpkg -i ${HOME}/downloads/${doxy_deb}
+  do_run sudo dpkg -i ${HOME}/downloads/${doxy_deb}
 
   do_run doxygen --version
 
