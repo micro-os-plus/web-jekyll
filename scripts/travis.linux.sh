@@ -27,6 +27,7 @@ export slug="${build}/${TRAVIS_REPO_SLUG}"
 # -----------------------------------------------------------------------------
 
 export site="${HOME}/out/${GITHUB_DEST_REPO}"
+export doxy="${build}${GITHUB_DOXY_REPO}"
 
 # -----------------------------------------------------------------------------
 
@@ -51,6 +52,22 @@ function do_before_install() {
   do_run gem install html-proofer
   do_run htmlproofer --version
 
+  # http://packages.ubuntu.com/trusty-updates/
+
+  # libclang needed by doxygen 
+  do_run sudo apt-get -y install -t trusty-backports libclang1-3.8
+
+  mkdir -p ${HOME}/downloads
+
+  # https://launchpad.net/ubuntu/+source/doxygen
+  
+  doxy_deb=doxygen_1.8.11-3_amd64.deb
+  do_run curl -L --silent https://launchpad.net/ubuntu/+archive/primary/+files/${doxy_deb} -o ${HOME}/downloads/${doxy_deb}
+
+  do_run sudo dpkg -i ${HOME}/downloads/${doxy_deb}
+
+  do_run doxygen --version
+
   return 0
 }
 
@@ -64,7 +81,11 @@ function do_before_script() {
   do_run git config --global user.email "${GIT_COMMIT_USER_EMAIL}"
   do_run git config --global user.name "${GIT_COMMIT_USER_NAME}"
 
+  # Bring in the destination repository. Perhaps --depth=2 would help.
   do_run git clone --branch=master https://github.com/${GITHUB_DEST_REPO}.git "${site}"
+
+  # Bring in the µOS++ sources, for the Doxygen input.
+  do_run git clone --branch=xpack https://github.com/${GITHUB_DOXY_REPO}.git "${doxy}"
 
   return 0
 }
@@ -87,13 +108,9 @@ function do_script() {
   --url-ignore="/reference/cmsis-plus/,/pt/,https://jekyllrb.com,http://developer.apple.com/downloads/,https://developer.apple.com/downloads/,http://kramdown.gettalong.org/syntax.html,https://www.element14.com/community/.*" \
   "${site}"
 
-  # TODO: add Doxygen reference.
-
   # ---------------------------------------------------------------------------
   # The deployment code is present here not in after_success, 
   # to break the build if not successful.
-
-  cd "${site}"
 
   if [ "${TRAVIS_BRANCH}" != "master" ]
   then 
@@ -101,6 +118,22 @@ function do_script() {
     return 0; 
   fi
 
+  if [ "${TRAVIS_PULL_REQUEST}" != "false" ]
+  then 
+    echo "A pull request, skip deploy."
+    return 0; 
+  fi
+
+  # Create the doxygen reference pages.
+  cd "${doxy}/doxygen"
+  export DOXYGEN_OUTPUT_DIRECTORY="${site}/reference"
+  export DOXYGEN_STRIP_FROM_PATH="${doxy}"
+
+  do_run doxygen config-travis.doxyfile
+  do_run ls -l "${DOXYGEN_OUTPUT_DIRECTORY}"
+
+  # Check if any changes.
+  cd "${site}"
   is_dirty=`git status --porcelain`
   # Should detect new, modified, removed files.
   if [ -z "${is_dirty}" ]
@@ -109,12 +142,12 @@ function do_script() {
     exit 0
   fi
 
-  # do_run git diff
+  # Commit the changes.
+  cd "${site}"
+  do_run git diff
 
   do_run git add --all .
   do_run git commit -m "Travis CI Deploy of ${TRAVIS_COMMIT}" 
-
-  # git status
 
   # Temporarily disable deployment, due to 
   # - lack of Doxygen generated folder
