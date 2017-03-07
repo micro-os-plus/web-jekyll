@@ -54,7 +54,7 @@ function do_before_install() {
 
   # http://packages.ubuntu.com/trusty-updates/
   # Install libclang, it is needed by doxygen.
-  do_run sudo apt-get -y -q install -t trusty-backports libclang1-3.8
+  do_run sudo apt-get --yes --quiet --target-release trusty-backports install libclang1-3.8
 
   # https://launchpad.net/ubuntu/+source/doxygen
   # Install a newer doxygen from launchpad binaries.
@@ -119,13 +119,13 @@ function do_script() {
   if [ "${TRAVIS_BRANCH}" != "master" ]
   then 
     echo "Not on master branch, skip deploy."
-    return 0; 
+    return 0
   fi
 
   if [ "${TRAVIS_PULL_REQUEST}" != "false" ]
   then 
     echo "A pull request, skip deploy."
-    return 0; 
+    return 0
   fi
 
   # Create the doxygen reference pages.
@@ -143,7 +143,7 @@ function do_script() {
   if [ -z "${is_dirty}" ]
   then
     echo "No changes to the output on this push; skip deploy."
-    exit 0
+    return 0
   fi
 
   # Commit the changes.

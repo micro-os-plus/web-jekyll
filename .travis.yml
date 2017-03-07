@@ -1,4 +1,4 @@
-# Travis CI configuration file to validate and possibly deploy 
+# Travis CI configuration file to validate and deploy 
 # the µOS++ Jekyll site.
 
 # To skip a CI build, add [skip ci] anywhere in the commit message.
