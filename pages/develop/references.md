@@ -65,6 +65,8 @@ QP Active Object (Actor) Frameworks is a [SourceForge project](http://sourceforg
 -   [libopencm3](http://www.libopencm3.org/wiki/Main_Page) - a free firmware library for various ARM Cortex-M3 microcontrollers including ST STM32, (a very elaborate doxygen configuration)
 -   [STM32plus](http://andybrown.me.uk/wk/2013/02/10/stm32plus-2-0-0/) - a C++ library for STM32
 -   [libstm32pp](http://github.com/JorgeAparicio/libstm32pp) - A template peripheral library for the STM32 microcontrollers, written in C++
+- [xpcc](http://xpcc.io) - C++ microcontroller framework; efficient enough to be deployed on a small ATtiny, yet powerful enough to make use of advanced capabilities found on the 32bit ARM Cortex-M
+- [etlcpp](http://www.etlcpp.com) - A C++ template library for embedded applications
 
 ## TCP/IP libraries
 
