@@ -87,31 +87,37 @@ When an abstract class is used as a base class for concrete implementations, the
 
 Templates are a great C++ feature, that can be used for many purposes, with the common one being to implement compile time polymorphism.
 
-### Template class names
+### Class template vs template class?
 
-Template class names follow the same convention as the class names. No need to prefix them with anything.
+As far as C++ is concerned, there is no such thing as a "template class," there is only a "class template."
+
+### Class template names
+
+Class template names follow the same convention as the class names. No need to prefix them with anything.
 
 ### Template parameter types
 
 There are several template parameter types, parameters naming user-defined types (like classes), parameters naming primitive types and constant parameters (usually integer).
 
-Although not required by the language, it is recommended to define parameters naming types with `typename Name_T`.
+Although not required by the language, it is recommended to define parameters naming types with `typename T`.
 
 In class templates, it is recommended to alias the template parameters to new names, and use these new names in code, reserving the template parameters only to define the template syntax.
 
-    template <typename GPIO_T, typename Result_T = void, int Bit_T>
+    template <typename T, typename U = void, int N>
     class pin
     {
     public:
-      using gpio = GPIO_T;
-      using result_t = Result_T ;
-      static const int bit = Bit_T;
+      using gpio = T;
+      using result_t = U ;
+      static constexpr int bit = N;
      ...
     }
 
     // Explicit instantiation
     template class pin<GPIOC1>;
-    using my_pin = class pin<GPIOC1> ;
+
+    // Define a type alias. 
+    using my_pin = class pin<GPIOC1>;
 
 ## Member function names
 
