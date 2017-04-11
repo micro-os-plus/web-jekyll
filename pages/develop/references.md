@@ -42,6 +42,7 @@ Note: Since GNU/Linux derived embedded systems are intended for a different clas
 -   [TinyOS](https://github.com/tinyos) - an open source, BSD-licensed operating system designed for low-power wireless devices
 -   [RT-Thread](https://github.com/RT-Thread/rt-thread) - an open source real-time operating system for embedded devices
 -   [uKOS-II](http://www.ukos.ch/) - RTOS µKernel
+- [TI-RTOS](http://www.ti.com/tool/ti-rtos) - TI-RTOS: Real-Time Operating System, specifically [SYS/BIOS POSIX Thread (pthread) Support](http://processors.wiki.ti.com/index.php/SYS/BIOS_POSIX_Thread_(pthread)_Support).
 
 ### Quantum Leaps (QP)
 
