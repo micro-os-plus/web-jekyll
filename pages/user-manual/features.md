@@ -29,16 +29,16 @@ The source code availability not only helps debugging, but also greatly improves
 
 ### Multiple C++ and C APIs
 
-µOS++ is based on CMSIS++, and provides services via multiple APIs, covering both C++ and C applications.
+µOS++ provides services via multiple APIs, covering both C++ and C applications.
 
 The supported APIs are:
 
-- CMSIS++ RTOS C++ API - the native µOS++ IIIe C++ API, giving direct access to the system services;
-- CMSIS++ RTOS C API - a 1:1 C wrapper on top of the C++ API;
+- µOS++ RTOS C++ API - the native µOS++ IIIe C++ API, giving direct access to the system services;
+- µOS++ RTOS C API - a 1:1 C wrapper on top of the C++ API;
 - ISO C++ Threads API - an implementation of the standard ISO threads on top of the C++ API;
 - ARM CMSIS RTOS v1 API - a compatibility layer with ARM CMSIS RTOS
 
-The CMSIS++ RTOS C API allows to write plain C applications, even if the RTOS core is written in C++.
+The µOS++ RTOS C API allows to write plain C applications, even if the RTOS core is written in C++.
 
 The ARM CMSIS RTOS API allows to run legacy applications, written for the ARM RTOS API.
 
@@ -100,7 +100,7 @@ By a careful design, only those functions that are required are linked into an a
 
 ### Portable
 
-By design µOS++/CMSIS++ is highly portable; it was developed mostly on macOS and its tests are constantly run on both 32 and 64-bits platforms.
+By design µOS++ is highly portable; it was developed mostly on macOS and its tests are constantly run on both 32 and 64-bits platforms.
 
 ### ROMable
 

@@ -2,7 +2,7 @@
 layout: page
 lang: en
 permalink: /cmsis-plus/rtos/
-title: CMSIS++ RTOS APIs
+title: µOS++ RTOS APIs
 author: Liviu Ionescu
 
 date: 2016-03-09 12:04:00 +0300
@@ -11,7 +11,7 @@ date: 2016-03-09 12:04:00 +0300
 
 ## Overview
 
-The CMSIS++ RTOS APIs are a set of RTOS interfaces, highly portable but designed to best match the ARM Cortex-M processor-based devices.
+The µOS++ RTOS APIs are a set of RTOS interfaces, highly portable but designed to best match the ARM Cortex-M processor-based devices.
 
 <div style="text-align:center">
 <img alt="Overview" src="{{ site.baseurl }}/assets/images/2016/cmsis-plus-rtos-overview.png" />
@@ -21,7 +21,7 @@ The CMSIS++ RTOS APIs are a set of RTOS interfaces, highly portable but designed
 
 The project highlights are:
 
-- the core CMSIS++ RTOS is based on a C++ API (namespace `os::rtos`), defined in [<cmsis-plus/rtos/os.h>](https://github.com/micro-os-plus/micro-os-plus-iii/blob/xpack/include/cmsis-plus/rtos/os.h);
+- the core µOS++ RTOS is based on a C++ API (namespace `os::rtos`), defined in [<cmsis-plus/rtos/os.h>](https://github.com/micro-os-plus/micro-os-plus-iii/blob/xpack/include/cmsis-plus/rtos/os.h);
 
 - exactly the same functionality is provided in C, with a C wrapper, for those who prefer to use plain C; the C API is defined in [<cmsis-plus/rtos/os-c-api.h>](https://github.com/micro-os-plus/micro-os-plus-iii/blob/xpack/include/cmsis-plus/rtos/os-c-api.h);
 
@@ -33,12 +33,12 @@ The project highlights are:
 
 - the C++ API was originally derived from the original CMSIS RTOS C API, but was adjusted to match the POSIX and ISO requirements as close as possible, so now it is generally a C++ version of the POSIX pthread library;
 
-- the CMSIS++ RTOS specification will go one step further then the original CMSIS, it will also suggest a portable scheduler API, and a set of portable synchronisation primitives, calling the portable scheduler; the portable synchronisation objects can be considered a 'reference implementation', however CMSIS++ does not mandate the use of these objects, it is quite easy to forward all calls to the underlaying implementation, as the current version using FreeRTOS does (partly implemented, to be completed soon);
+- the µOS++ RTOS specification will go one step further then the original CMSIS, it will also suggest a portable scheduler API, and a set of portable synchronisation primitives, calling the portable scheduler; the portable synchronisation objects can be considered a 'reference implementation', however µOS++ does not mandate the use of these objects, it is quite easy to forward all calls to the underlaying implementation, as the current version using FreeRTOS does (partly implemented, to be completed soon);
 
 - there will also be a reference scheduler implementation (called µOS++ III), that will also be highly portable; it will run in 32-bits and 64-bits environments but will be specifically tailored for Cortex-M cores; it'll also run on synthetic POSIX platforms, for example as a user mode POSIX process, on OS X and GNU/Linux, possibly on Windows if MinGW-w64 will allow an easy port. (will be based on prior µOS++ versions, which are fully functional);
 
-- CMSIS++ also includes a POSIX IO interface (namespace `os::posix`), bringing together access to terminal devices, files and sockets, via a unified and standard API (functional in a separate project, will be updated and moved here shortly);
+- µOS++ also includes a POSIX IO interface (namespace `os::posix`), bringing together access to terminal devices, files and sockets, via a unified and standard API (functional in a separate project, will be updated and moved here shortly);
 
-- CMSIS++ Drivers are the response to CMSIS Drivers, but designed in C++ (namespace os::drivers), and with a C API on top of them (CMSIS++ serial, USB Device and USB Host already defined and partly implemented);
+- µOS++ Drivers are the response to CMSIS Drivers, but designed in C++ (namespace os::drivers), and with a C API on top of them (µOS++ serial, USB Device and USB Host already defined and partly implemented);
 
-- the CMSIS++ packaging solution will extend and complement CMSIS Packs with **xPack/XCDL** packs.
+- the µOS++ packaging solution will extend and complement CMSIS Packs with **xPack/XCDL** packs.

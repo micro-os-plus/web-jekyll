@@ -17,7 +17,7 @@ A dedicated [user discussions forum](https://www.element14.com/community/groups/
 
 ## Goals
 
-The forum goal was initially to facilitate experience sharing between GNU ARM Eclipse users but later was extended and more categories were added, including µOS++ and CMSIS++. It serves as a place to post questions and support requests; just be sure you select the right category when posting messages.
+The forum goal was initially to facilitate experience sharing between GNU ARM Eclipse users but later was extended and more categories were added, including µOS++. It serves as a place to post questions and support requests; just be sure you select the right category when posting messages.
 
 In case a problem is identified as bug or feature request, please use the [µOS++ IIIe GitHub Issues](https://github.com/micro-os-plus/micro-os-plus-iii/issues/).
 
@@ -41,11 +41,11 @@ Unfortunatelly the Jive powered server currently has no support for markdown, so
 
 ## Categories
 
-The GNU ARM Eclipse Group is also home for discussions related to other subprojects, like CMSIS++, µOS++, and xPacks.
+The GNU ARM Eclipse Group is also home for discussions related to other subprojects, like µOS++, and xPacks.
 
 ![GNU ARM Eclipse categories]({{ site.baseurl }}/assets/images/2016/forum-categories.png)
 
-Please be sure you select either the **CMSIS++** or the **µOS++** category.
+Please be sure you select the **µOS++** category.
 
 ## Mark your questions as Answered
 

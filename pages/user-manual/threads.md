@@ -586,9 +586,9 @@ The 2011 release of the ISO/IEC C++ 14882 standard finally introduced a standard
 
 This standard definition was designed with POSIX threads in mind, and the standard C++ threads do not intend to reimplement the POSIX threads in C++, but are seen as a C++ wrapper on top of the existing C POSIX threads.
 
-With µOS++/CMSIS++ threads being a C++ reimplementation of the POSIX threads, the ISO/IEC wrapper approach matches almost 1:1 the native µOS++ threads.
+With µOS++ threads being a C++ reimplementation of the POSIX threads, the ISO/IEC wrapper approach matches almost 1:1 the native µOS++ threads.
 
-To avoid clashes with the standard library when running tests on synthetic platforms that already implement the C++ standard threads, the µOS++/CMSIS++ definitions are part of the `os::estd::` namespace ("embedded" std), instead of the `std::` namespace.
+To avoid clashes with the standard library when running tests on synthetic platforms that already implement the C++ standard threads, the µOS++ definitions are part of the `os::estd::` namespace ("embedded" std), instead of the `std::` namespace.
 
 When using the `os::estd::` namespace it is recommended to avoid `using namespace` definitions below the `os` namespace; instead, use the `rtos` and `estd` namespaces explicitly.
 

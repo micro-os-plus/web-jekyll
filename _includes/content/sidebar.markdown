@@ -4,7 +4,7 @@
 
 * [Overview]({{ site.baseurl }}/micro-os-plus/)
 
-#### CMSIS++
+#### APIs
 
 * [Overview]({{ site.baseurl }}/cmsis-plus/)
 * [RTOS API]({{ site.baseurl }}/cmsis-plus/rtos/)
@@ -29,7 +29,7 @@
   * Memory pools
   * Software timers
   * Clocks
-* [CMSIS++ **reference**]({{ site.baseurl }}/reference/cmsis-plus/)
+* [µOS++ **reference**]({{ site.baseurl }}/reference/cmsis-plus/)
 
 #### Developer
 

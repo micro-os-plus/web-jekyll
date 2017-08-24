@@ -17,7 +17,7 @@ date: 2016-06-29 21:28:00 +0300
 
 ### Multiple APIs
 
-µOS++ is based on CMSIS++, and as such it provides services via multiple APIs, covering both C++ and C applications.
+µOS++ provides services via multiple APIs, covering both C++ and C applications.
 
 <div style="text-align:center">
 <img alt="Overview" src="{{ site.baseurl }}/assets/images/2016/cmsis-plus-rtos-overview.png" />
@@ -25,14 +25,14 @@ date: 2016-06-29 21:28:00 +0300
 
 The supported APIs are:
 
-- **CMSIS++ RTOS C++ API** - the native µOS++ IIIe C++ API, giving direct access to the system services;
-- **CMSIS++ RTOS C API** - a 1:1 C wrapper on top of the C++ API;
+- **µOS++ RTOS C++ API** - the native µOS++ IIIe C++ API, giving direct access to the system services;
+- **µOS++ RTOS C API** - a 1:1 C wrapper on top of the C++ API;
 - **ISO C++ Threads API** - an implementation of the standard ISO threads on top of the C++ API;
 - **ARM CMSIS RTOS v1 API** - a compatibility layer with ARM CMSIS RTOS
 
 The functions in these APIs provide services to manage threads, semaphores, message queues, mutexes and more. As far as the user code is concerned, the calls to the µOS++ system functions are exactly as any other function calls, using the toolchain standard [ABI](https://en.wikipedia.org/wiki/Application_binary_interface); no system service calls (SVC) are used to switch from user to system modes.
 
-In this chapter, the reader will appreciate how easy it is to start using µOS++. Refer to [CMSIS++ Reference](http://micro-os-plus.github.io/reference/cmsis-plus/) for the full descriptions of the µOS++ functions used.
+In this chapter, the reader will appreciate how easy it is to start using µOS++. Refer to [µOS++ Reference](http://micro-os-plus.github.io/reference/cmsis-plus/) for the full descriptions of the µOS++ functions used.
 
 For this introductory chapter, the project setup (files and folders, toolchain and other tools, hardware initialisations) are considered not relevant and are not addressed.
 

@@ -103,8 +103,10 @@ In December 2015 the project was migrated to GitHub and restructured as xPacks, 
 
 In Jan 2016, the CMSIS++ repository was created, with a double intent: to act as a proposal for the next generation CMSIS, due in June 2016, and to serve as a portable API for the third edition of µOS++.
 
-### CMSIS++ RTOS API v0.2
+In mid 2017 support for RISC-V was added and, for more portability, the use of the CMSIS name, associted with ARM, was discontinued.
+
+### µOS++ RTOS API v0.2
 
 In June 20 the reference implementation was complete, with two functional ports, one for Cortex-M and one for a synthetic POSIX platform.
 
-The CMSIS++ RTOS API was tagged as v0.2.1.
+The µOS++ RTOS API was tagged as v0.2.1.

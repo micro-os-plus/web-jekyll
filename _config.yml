@@ -1,9 +1,9 @@
 # Site settings.
 
 # Without a clear rule enforced, both title and name are used.
-title: µOS++ IIIe / CMSIS++ / POSIX++
-name: µOS++ IIIe / CMSIS++ / POSIX++
-description: The third edition of µOS++ and CMSIS++/POSIX++, a proposal for the next generation CMSIS, written in C++.
+title: µOS++ IIIe / POSIX++
+name: µOS++ IIIe / POSIX++
+description: The third edition of µOS++ / POSIX++, an open source system, written in C++.
 motto: “Perfekt ist nicht gut genug”
 icon: wall-e-icon.png
 

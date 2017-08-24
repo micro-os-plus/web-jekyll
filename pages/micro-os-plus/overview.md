@@ -13,8 +13,6 @@ date: 2016-03-09 12:04:00 +0300
 
 The **µOS++ IIIe** (micro oh ɛs plus plus third edition) project  (affectionately called `Ilie`, Romanian for [Eliyahu/Илия́/Elijah](http://en.wikipedia.org/wiki/Elijah), also the protector of aviators) is the third iteration of **µOS++**, an open source, royalty-free, multi-tasking operating system intended for 32/64-bits embedded systems, written in C++.
 
-The corner stone is the symbiotic relationship between µOS++ IIIe and [CMSIS++]({{ site.baseurl }}/cmsis-plus/): CMSIS++ RTOS APIs provide µOS++ the programming interfaces, and µOS++ provides CMSIS++ the reference implementation for the scheduler and for the portable syncronisation objects (mutex, semaphore, etc).
-
 ## Developer
 
 The developer resources are available from a separate [page]({{ site.baseurl }}/develop/).
