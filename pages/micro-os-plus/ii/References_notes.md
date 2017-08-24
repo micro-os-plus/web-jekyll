@@ -12,7 +12,7 @@ date: 2013-02-03 10:39:25 +0000
 libopencm3
 ----------
 
--   [Home](http://www.libopencm3.org/wiki/Main_Page)
+-   [Home](http://libopencm3.org)
 -   [GitHub sources](http://github.com/libopencm3/libopencm3)
 -   [GitHub tracker](https://github.com/libopencm3/libopencm3/issues?state=open)
 

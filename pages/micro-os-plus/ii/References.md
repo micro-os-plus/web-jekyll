@@ -34,7 +34,7 @@ Note: Since GNU/Linux derived embedded systems are intended for a different clas
 
 -   [µC/OS-III](http://micrium.com/rtos/ucosiii/overview/) - µC/OS-III is a highly portable, ROMable, scalable, preemptive, real-time, deterministic, multitasking kernel for microprocessors, microcontrollers and DSPs, by [Micrium](http://micrium.com).
 -   [FreeRTOS](http://www.freertos.org) - is probably the most popular open source, cross platform, real time operating system, available from [Real Time Engineers Ltd.](http://www.freertos.org/RTOS-contact-and-support.html)
--   [CMSIS with RTOS API](http://www.arm.com/about/newsroom/arm-extends-cmsis-with-rtos-api-and-system-view-description.php) - CMSIS 3.0 is expanded with a standardized API for Real-Time Operating System (RTOS) kernels and support for System View Description (SVD) XML files; [Hitex PDF](http://www.hitex.co.uk/fileadmin/uk-files/downloads/ARM%20Day/Hitex%20Conference%20-%20CMSIS-RTOS%20Feabhas.pdf)
+-   [CMSIS with RTOS API](http://www.arm.com/about/newsroom/arm-extends-cmsis-with-rtos-api-and-system-view-description.php) - CMSIS 3.0 is expanded with a standardized API for Real-Time Operating System (RTOS) kernels and support for System View Description (SVD) XML files; [Feabhas PDF](https://www.feabhas.com/sites/default/files/2016-06/ESC-3017Paper_An_Overview_of_CMSIS-RTOS_Niall_Cooling.pdf)
 -   [Contiki](http://www.contiki-os.org) - The Open Source OS for the Internet of Things
 -   [TNKernel](http://www.tnkernel.com/index.html) - a compact and very fast real-time kernel for the embedded 32/16/8 bits microprocessors inspired by the μITRON 4.0 specification
 -   [NuttX](http://nuttx.org) - the NuttX Real-Time Operating System with TCP/IP, USB and more
