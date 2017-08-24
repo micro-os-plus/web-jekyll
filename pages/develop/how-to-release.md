@@ -29,7 +29,7 @@ With Eclipse, edit `micro-os-plus-iii.git/doxygen/pages/changes-log.markdown`
 
 ## Update the doxygen header version
 
-With Eclipse, edit `micro-os-plus-iii.git/doxygen/config.doxyfile`.
+With Eclipse, edit `micro-os-plus-iii.git/doxygen/config-common.doxyfile`.
 
 ## Update os-versions.h
 
