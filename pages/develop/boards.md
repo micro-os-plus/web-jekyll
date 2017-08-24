@@ -96,4 +96,4 @@ Possibly one other M0 device
 
 ## SEGGER ST-Link to J-Link conversion
 
-Except STM32VLDISCOVERY, which uses an unsupported version, **all other ST boards were converted to J-Link**, using the [SEGGER ST-Link conversion tools](https://www.segger.com/jlink-st-link.html). Highly recommended!
+Except STM32VLDISCOVERY, which uses an unsupported version, **all other ST boards were converted to J-Link**, using the [SEGGER Converting ST-LINK On-Board Into a J-Link](https://www.segger.com/products/debug-probes/j-link/models/other-j-links/st-link-on-board/). Highly recommended!

@@ -34,7 +34,7 @@ Note: Since GNU/Linux derived embedded systems are intended for a different clas
 - [threadX](http://rtos.com/products/threadx/) - **ThreadX** has many advanced features, including its picokernel architecture, preemption-threshold scheduling, event-chaining, execution profiling, performance metrics, and system event tracing.
 - [smx](http://www.smxrtos.com/rtos/kernel/smx.htm) - **smx** is an advanced RTOS kernel, which offers unique features related to memory management. 
 -   [FreeRTOS](http://www.freertos.org) - is probably the most popular open source, cross platform, real time operating system, available from [Real Time Engineers Ltd.](http://www.freertos.org/RTOS-contact-and-support.html)
--   [CMSIS with RTOS API](http://www.arm.com/about/newsroom/arm-extends-cmsis-with-rtos-api-and-system-view-description.php) - CMSIS 3.0 is expanded with a standardized API for Real-Time Operating System (RTOS) kernels and support for System View Description (SVD) XML files; [Hitex PDF](http://www.hitex.co.uk/fileadmin/uk-files/downloads/ARM%20Day/Hitex%20Conference%20-%20CMSIS-RTOS%20Feabhas.pdf)
+-   [CMSIS with RTOS API](http://www.arm.com/about/newsroom/arm-extends-cmsis-with-rtos-api-and-system-view-description.php) - CMSIS 3.0 is expanded with a standardized API for Real-Time Operating System (RTOS) kernels and support for System View Description (SVD) XML files; [Feabhas PDF](https://www.feabhas.com/sites/default/files/2016-06/ESC-3017Paper_An_Overview_of_CMSIS-RTOS_Niall_Cooling.pdf)
 -   [Contiki](http://www.contiki-os.org) - The Open Source OS for the Internet of Things
 -   [TNKernel](http://www.tnkernel.com/index.html) - a compact and very fast real-time kernel for the embedded 32/16/8 bits microprocessors inspired by the μITRON 4.0 specification
 -   [NuttX](http://nuttx.org) - the NuttX Real-Time Operating System with TCP/IP, USB and more
@@ -63,7 +63,7 @@ QP Active Object (Actor) Frameworks is a [SourceForge project](http://sourceforg
 -   [Platinum](http://www.pt-framework.org/htdocs/classes.html) - Platinum (Pt) is a comprehensive C++ framework, which allows developers to write high-performance applications for many platforms with only one codebase.
 -   [Dinkum EC++ Library](http://www.qnx.com/developers/docs/6.4.1/dinkum_en/ecpp/index.html) - a conforming implementation of the Embedded C++ library, as specified by the Embedded C++ Technical Committee.
 -   [Thumb2 Newlib Toolchain](http://dekar.wc3edit.net/2012/10/11/the-power-of-tnt-is-at-your-disposal/) - a GCC/Newlib based toolchain project
--   [libopencm3](http://www.libopencm3.org/wiki/Main_Page) - a free firmware library for various ARM Cortex-M3 microcontrollers including ST STM32, (a very elaborate doxygen configuration)
+-   [libopencm3](http://libopencm3.org) - a free firmware library for various ARM Cortex-M3 microcontrollers including ST STM32, (a very elaborate doxygen configuration)
 -   [STM32plus](http://andybrown.me.uk/wk/2013/02/10/stm32plus-2-0-0/) - a C++ library for STM32
 -   [libstm32pp](http://github.com/JorgeAparicio/libstm32pp) - A template peripheral library for the STM32 microcontrollers, written in C++
 - [xpcc](http://xpcc.io) - C++ microcontroller framework; efficient enough to be deployed on a small ATtiny, yet powerful enough to make use of advanced capabilities found on the 32bit ARM Cortex-M
@@ -84,7 +84,7 @@ project
 
 -   [Jenkins](http://jenkins-ci.org) - an extendable open source continuous integration server
 -   [JUnit](http://junit.sourceforge.net) - the common Java framework for unit testing
--   [CppUnit](http://sourceforge.net/apps/mediawiki/cppunit/) - C++ port of JUnit
+-   [CppUnit](https://sourceforge.net/p/cppunit/wiki/Home/) - C++ port of JUnit
 -   [CppTest](http://cpptest.sourceforge.net) - a portable and powerful, yet simple, unit testing framework for handling automated tests in C++
 -   [xUnit++](http://bitbucket.org/moswald/xunit/wiki/Home) - a unit testing platform for C++
 -   [Google Test](http://code.google.com/p/googletest/) - a great unit testing for C++

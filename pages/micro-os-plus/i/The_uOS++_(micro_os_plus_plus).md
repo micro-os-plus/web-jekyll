@@ -21,7 +21,7 @@ The "µOS++" (micro OS plus plus) project is a [SourceForge hosted](http://sourc
 
 The build mechanism is highly granular, allowing a very small ROM+RAM footprint.
 
-The authoritative documents on how to use µOS++ can be found in the [project Wiki](http://sourceforge.net/apps/mediawiki/micro-os-plus/). The source code itself, publicly available for browsing via the web [Git Browse](http://micro-os-plus.git.sourceforge.net/git/gitweb-index.cgi) interface is another good source of information. (Additional resources are the [Trac](http://sourceforge.net/apps/trac/micro-os-plus/) and the [SVN](http://micro-os-plus.svn.sourceforge.net/viewvc/micro-os-plus/trunk/).
+The authoritative documents on how to use µOS++ can be found in the [project Wiki (no longer valid, redirected to new site)](http://micro-os-plus.github.io). The source code itself, publicly available for browsing via the web [Git Browse](http://micro-os-plus.git.sourceforge.net/git/gitweb-index.cgi) interface is another good source of information. (Additional resources are the [Trac](https://sourceforge.net/projects/micro-os-plus/) and the [SVN](http://micro-os-plus.svn.sourceforge.net/viewvc/micro-os-plus/trunk/).
 
 The current version is 4.3, as Release Candidate in 2012. Since there are no clear milestones on this project (yet), there will be no periodic releases, and the download section will probably not be updated very often. For an up-to-date version of this project, it is recommended to use the Git sources instead of the released packages.
 

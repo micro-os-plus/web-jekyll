@@ -63,7 +63,7 @@ C/C++ language & libraries
 -   [Platinum](http://www.pt-framework.org/htdocs/classes.html) - Platinum (Pt) is a comprehensive C++ framework, which allows developers to write high-performance applications for many platforms with only one codebase.
 -   [Dinkum EC++ Library](http://www.qnx.com/developers/docs/6.4.1/dinkum_en/ecpp/index.html) - a conforming implementation of the Embedded C++ library, as specified by the Embedded C++ Technical Committee.
 -   [Thumb2 Newlib Toolchain](http://dekar.wc3edit.net/2012/10/11/the-power-of-tnt-is-at-your-disposal/) - a GCC/Newlib based toolchain project
--   [libopencm3](http://www.libopencm3.org/wiki/Main_Page) - a free firmware library for various ARM Cortex-M3 microcontrollers including ST STM32, (a very elaborate doxygen configuration)
+-   [libopencm3](http://libopencm3.org) - a free firmware library for various ARM Cortex-M3 microcontrollers including ST STM32, (a very elaborate doxygen configuration)
 -   [STM32plus](http://andybrown.me.uk/wk/2013/02/10/stm32plus-2-0-0/) - a C++ library for STM32
 -   [libstm32pp](http://github.com/JorgeAparicio/libstm32pp) - A template peripheral library for the STM32 microcontrollers, written in C++
 
@@ -83,7 +83,7 @@ Testing
 
 -   [Jenkins](http://jenkins-ci.org) - an extendable open source continuous integration server
 -   [JUnit](http://junit.sourceforge.net) - the common Java framework for unit testing
--   [CppUnit](http://sourceforge.net/apps/mediawiki/cppunit/) - C++ port of JUnit
+-   [CppUnit](https://sourceforge.net/p/cppunit/wiki/Home/) - C++ port of JUnit
 -   [CppTest](http://cpptest.sourceforge.net) - a portable and powerful, yet simple, unit testing framework for handling automated tests in C++
 -   [xUnit++](http://bitbucket.org/moswald/xunit/wiki/Home) - a unit testing platform for C++
 -   [Google Test](http://code.google.com/p/googletest/) - a great unit testing for C++
