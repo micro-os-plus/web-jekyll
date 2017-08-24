@@ -1,9 +1,9 @@
 # Site settings.
 
 # Without a clear rule enforced, both title and name are used.
-title: µOS++ IIIe / POSIX++
-name: µOS++ IIIe / POSIX++
-description: The third edition of µOS++ / POSIX++, an open source system, written in C++.
+title: µOS++ IIIe
+name: µOS++ IIIe
+description: The third edition of µOS++, a POSIX inspired open source system, written in C++.
 motto: “Perfekt ist nicht gut genug”
 icon: wall-e-icon.png
 
