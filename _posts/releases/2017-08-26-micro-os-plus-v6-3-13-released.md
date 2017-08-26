@@ -13,7 +13,7 @@ categories:
 
 ---
 
-Version v6.3.13 is a **µOS++ IIIe/CMSIS++** maintenance release.
+Version v6.3.13 is a **µOS++ IIIe** maintenance release.
 
 ## Affected xPacks
 
@@ -33,7 +33,7 @@ To experiment with **µOS++**, please check the demo projects, available from [G
 
 - `__posix_gettimeofday()` implemented; it calls `rtclock.now ()`
 - header `<cmsis-plus/posix/termios.h>` added
-- class posix-io/tty added with minimal tty aatributes support
+- class `os::posix::tty` added with tty atributes support
 
 ## Addressed bugs
 
@@ -41,8 +41,8 @@ None.
 
 ## Other changes
 
-- several typos in the documentation were fixed.
-- references to CMSIS++ were replaced by references to µOS++
+- several typos in the documentation were fixed
+- references to CMSIS++ were replaced by references to µOS++.
 
 ## Known problems
 
