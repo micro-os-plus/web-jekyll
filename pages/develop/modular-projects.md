@@ -31,7 +31,7 @@ In practical terms, each package should have, in addition to the source files, s
 
 This modular approach with structured metadata greatly increase the code reusability and upgreadability, by allowing automated tools to bring into the project the required components, and to automatically manage the dependencies, accepting only combinations of compatible packages.
 
-Such solutions are already available for other languages, with the most successful one being [npm - The Node Package Manager](https://www.npmjs.com), for JavaScript modules.
+Such solutions are already available for other languages, with the most successful one being [npm](https://www.npmjs.com) (The Node Package Manager), for JavaScript modules.
 
 There were also several attempts to create such solutions for C/C++ embedded applications, but they had limited success (for example CMSIS Packs, which uses huge packages and is more or less specific to Keil MDK, and yotta, originally from ARM mbed, but now abandoned, which mandates the use of cmake and python).
 
@@ -46,8 +46,8 @@ In the proposed modular aproach, the application code is clearly separated from 
 An example of such a project structure is used in the **SiFive project templates**; most of the files are part of the application; the packages are grouped below the `xpacks` folder, and the package metadata is in `package.json`:
 
 ```bash
-$ tree -L 3 hifive1-blinky/
-hifive1-blinky/
+$ tree -L 2 hifive1-blinky
+hifive1-blinky
 ├── LICENSE
 ├── README.md
 ├── build
@@ -91,8 +91,8 @@ For the above project, the `package.json` file includes the following dependenci
 {
     ...
     "dependencies": {
-        "@micro-os-plus/diag-trace": "^1.0.1"
-        ,"@sifive/hifive1-board": "^0.0.3"
+        "@micro-os-plus/diag-trace": "~1.0.1"
+        ,"@sifive/hifive1-board": "~0.0.3"
     }
     ...
 }
