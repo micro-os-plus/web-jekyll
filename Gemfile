@@ -13,5 +13,5 @@ group :jekyll_plugins do
   gem 'jekyll-sitemap', '=0.11.0',  :platforms => [:ruby, :x64_mingw, :mswin]
   # gem 'jekyll-multiple-languages'
 
-  gem 'html-proofer'
+  gem 'html-proofer', '=3.7.3'
 end
