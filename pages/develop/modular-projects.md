@@ -19,11 +19,11 @@ The trivial approach is to simply copy/paste routines or entire files from one a
 
 A slightly better solution is to create separate libraries, and include them _as is_ in different projects. Initially this may look ok, but if the number of libraries grows, and the libraries have inter-dependencies, knowing which libraries are compatible with each other may no longer be as easy as expected.
 
-This problem is agravated by the fact that each library has its own life cycle, and new versions may no longer be compatible with the other libraries.
+The problem is agravated by the fact that each library has its own life cycle, and new versions may no longer be compatible with existing or newer versions of the other libraries.
 
 ### Solution
 
-Instead of a monolythic project, where the build processes a complicated folder hierarchy, one possible solution is to build the project from separate components, stored in separate packages.
+Instead of a monolythic project, where the build has to process a complicated folder hierarchy, one possible solution is to build the project from separate components, stored in separate packages.
 
 In practical terms, each package should have, in addition to the source files, some metadata, to define its own identity and a list of dependencies from other packages.
 
