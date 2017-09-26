@@ -34,6 +34,14 @@ env:
 #      - doxygen-gui
 #      - graphviz
 
+notifications:
+  email:
+    on_success: always # default: change
+    on_failure: always # default: always
+    
+cache: 
+  bundler: true
+
 before_install:
   - bash scripts/travis.linux.sh before_install
 
