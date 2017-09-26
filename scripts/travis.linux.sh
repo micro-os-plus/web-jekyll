@@ -108,7 +108,7 @@ function do_script() {
   do_run ls -lL "${site}"
 
   # Validate images and links (internal & external).
-  do_run bundle exec htmlproofer \
+  do_run bundle exec htmlproofer --only-4xx \
   --url-ignore="/reference/cmsis-plus/,/pt/,https://jekyllrb.com,http://developer.apple.com/downloads/,https://developer.apple.com/downloads/,http://kramdown.gettalong.org/syntax.html,https://www.element14.com/community/.*" \
   "${site}"
 
