@@ -21,6 +21,7 @@ date: 2016-03-09 12:04:00 +0300
 ## Misc
 
 * [Predefined compiler macros]({{ site.baseurl }}/develop/predefined-macros/)
+* [Modular projects]({{ site.baseurl }}/develop/modular-projects/)
 
 ## Procedures
 
