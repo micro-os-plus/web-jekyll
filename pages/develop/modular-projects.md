@@ -11,9 +11,9 @@ date: 2017-09-26 13:05:00 +0300
 
 ## Objectives & benefits
 
-### Challanges
+### Challenges
 
-One of the major challanges when developing software is reusing various pieces of code among applications.
+One of the major challenges when developing software is reusing various pieces of code among applications.
 
 The trivial approach is to simply copy/paste routines or entire files from one application to another. This is ok as long as the code does not change; once the code changes, manually updating all projects is no longer trivial.
 
@@ -29,7 +29,7 @@ In practical terms, each package should have, in addition to the source files, s
 
 ### Benefits
 
-This modular approach with structured metadata greatly increase the code reusability and upgreadability, by allowing automated tools to bring into the project the required components, and to automatically manage the dependencies, accepting only combinations of compatible packages.
+This modular approach with structured metadata greatly increase the code reusability and upgradability, by allowing automated tools to bring into the project the required components, and to automatically manage the dependencies, accepting only combinations of compatible packages.
 
 Such solutions are already available for other languages, with the most successful one being [npm](https://www.npmjs.com) (The Node Package Manager), for JavaScript modules.
 
@@ -43,7 +43,7 @@ In the proposed modular aproach, the application code is clearly separated from 
 
 ### Example 
 
-An example of such a project structure is used in the **SiFive project templates**; most of the files are part of the application; the packages are grouped below the `xpacks` folder, and the package metadata is in `package.json`:
+An example of such a project structure is used in the **SiFive project templates**; most of the files are part of the application; the packages are grouped under the `xpacks` folder, and the package metadata is located in `package.json`:
 
 ```bash
 $ tree -L 2 hifive1-blinky
@@ -98,11 +98,11 @@ For the above project, the `package.json` file includes the following dependenci
 }
 ```
 
-In other words, the application requires explicit support only for diagnostics and for the **SiFive HiFive1** board. Inspecting the above project structure, it is easy to identify seven packages, not two. The explanation is that the `sifive-hifive1-board` package pulled `sifive-coreplex-devices`, which pulled `micro-os-plus-riscv-arch`, which pulled `micro-os-plus-startup` and the two libraries.
+In other words, the application requires explicit support only for diagnostics and for the **SiFive HiFive1** board. Inspecting the project's structure, it is easy to identify seven packages, not two. The explanation is that the `sifive-hifive1-board` package pulled `sifive-coreplex-devices`, which pulled `micro-os-plus-riscv-arch`, which pulled `micro-os-plus-startup` and the two libraries.
 
 ### Tools
 
-To further automate things, packages can refer not only to other source packages, but to tools packages, which include separate applications required during the development cycle, like toolchains, debuggers, builders, etc.
+To further automate the build process, packages can refer not only to other source packages, but to tools packages, which include separate applications required during the development cycle, like toolchains, debuggers, builders, etc.
 
 This is a very powerful feature, that ensures, in a portable way, that the project can be built immediately after the install is complete.
 
@@ -195,7 +195,7 @@ This approach is usualy enough, but for some cases running the first initialisat
 
 #### Code
 
-The entire startup library consist of only two files (one header and one source file), and is available as a separate GitHub project [micro-os-plus/startup](https://github.com/micro-os-plus/startup.git).
+The entire startup library consists of only two files (one header and one source file), and is available as a separate GitHub project [micro-os-plus/startup](https://github.com/micro-os-plus/startup.git).
 
 ### Board vs Device vs Architecture
 
@@ -606,7 +606,7 @@ There are also declarations for the synchronous exceptions and the common local 
 
 In modern architectures, interrupt processing is usually a no-op, there is almost nothing to do, apart from providing a list of pointers to interrupt handlers.
 
-Although for RISC-V the architecture specs make interrupt processing significantly more complicated, the current µOS++ implementation tries to provide a similar user experience, by hidding all the implementation details. The application has nothing else to do then define some fixed name functions and enable interrupts.
+Although for RISC-V the architecture specs make interrupt processing significantly more complicated, the current µOS++ implementation tries to provide a similar user experience, by hidding all the implementation details. The application has nothing else to do than to define some fixed name functions and enable interrupts.
 
 For example, to handle the machine timer interrupt, the application code looks like this:
 
@@ -657,7 +657,7 @@ $ <prefix>-gcc ... -L ldscripts -T libs.ld -T mem.ld -T sections.ld ...
 
 ### The C and C++ libraries
 
-These two packages complement the system libraries and provide missing functions are lighter implementations, more suitable in embedded applications.
+These two packages complement the system libraries and provide missing functions which are lighter implementations, more suitable for embedded applications.
 
 ```bash
 $ tree c-libs.git 
@@ -697,7 +697,7 @@ $
 
 ### Tracing support
 
-Although modern debuggers are quite advanced and can display lots of useful information, there are many cases when the classical `printf()`, placed in the right location, can be more efficient in spotting bugs.
+Although modern debuggers are quite advanced and can display lots of useful information, there are many cases when the classical `printf()`, placed at the right location, can be more efficient in spotting bugs.
 
 #### The traditional approach, redirect STDOUT/STDERR
 
