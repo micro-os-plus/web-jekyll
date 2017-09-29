@@ -13,11 +13,11 @@ date: 2017-09-26 13:05:00 +0300
 
 ### Challanges
 
-One of the major challanges when developing software is reusing various pieces of code from other applications.
+One of the major challanges when developing software is reusing various pieces of code among applications.
 
-The trivial approach is to simply copy/paste routines or entire files from one application to another. This is ok as long as the code does not change; once this happens, manually updating all projects is no longer trivial.
+The trivial approach is to simply copy/paste routines or entire files from one application to another. This is ok as long as the code does not change; once the code changes, manually updating all projects is no longer trivial.
 
-A slightly better solution is to create separate libraries, and include them _as is_ in different projects. Initially this may look ok, but if the number of libraries grows, and the libraries have inter-dependencies, knowing which libraries are compatible with each other may no longer be as easy as expected.
+A slightly better solution is to create separate libraries, and include them _as is_ in different projects. Initially this may look ok, but if the libraries have inter-dependencies, and their number grows, knowing which libraries are compatible with each other may no longer be as easy as expected.
 
 The problem is agravated by the fact that each library has its own life cycle, and new versions may no longer be compatible with existing or newer versions of the other libraries.
 
@@ -33,7 +33,7 @@ This modular approach with structured metadata greatly increase the code reusabi
 
 Such solutions are already available for other languages, with the most successful one being [npm](https://www.npmjs.com) (The Node Package Manager), for JavaScript modules.
 
-There were also several attempts to create such solutions for C/C++ embedded applications, but they had limited success (for example CMSIS Packs, which uses huge packages and is more or less specific to Keil MDK, and yotta, originally from ARM mbed, but now abandoned, which mandates the use of cmake and python).
+There were also several attempts to create such solutions for C/C++ embedded applications, but they had limited success (for example CMSIS Packs, which uses huge packages and is more or less specific to Keil MDK, and yotta, originally from ARM mbed, now abandoned, which mandates the use of cmake and python).
 
 ## Project structure
 
@@ -89,12 +89,12 @@ For the above project, the `package.json` file includes the following dependenci
 
 ```json
 {
-    ...
+    "...": "...",
     "dependencies": {
         "@micro-os-plus/diag-trace": "~1.0.1"
         ,"@sifive/hifive1-board": "~0.0.3"
-    }
-    ...
+    },
+    "...": "..."
 }
 ```
 
@@ -104,17 +104,15 @@ In other words, the application requires explicit support only for diagnostics a
 
 To further automate things, packages can refer not only to other source packages, but to tools packages, which include separate applications required during the development cycle, like toolchains, debuggers, builders, etc.
 
+This is a very powerful feature, that ensures, in a portable way, that the project can be built immediately after the install is complete.
+
 ## Embedded projects specifics
-
-### Board vs Device vs Architecture
-
-TODO: explain each package type, with content, metadata and usage
 
 ### The startup code
 
 Traditionally, the startup code is writen in assembly, the justification being that, right after reset, the run-time is not yet suitable for higher level languages, like C/C++. For some modern architectures, like Cortex-M, this is plainly wrong, since the advanced core automatically loads the stack pointer before calling the `Reset_Handler`, and the startup code can be written in C/C++ from the very beginning.
 
-#### Assembly entry code
+#### The assembly entry code
 
 Other, more traditional architectures, still require some small assembly code to explicitly set several registers. 
 
@@ -144,11 +142,11 @@ riscv_reset_entry:
 
 ```
 
-#### Portable startup
+#### The portable startup code
 
 The traditional functionality is to initialise the data & bss sections, to call the C++ static constructors and then pass control to the application `main()`.
 
-For embedded applications, the sequence is basically the same, just that several specific initialisation routines are called.
+For embedded applications, the sequence is basically the same, just that several specific initialisation routines are added.
 
 A simplified version of the portable startup code is:
 
@@ -181,29 +179,434 @@ _start (void)
 }
 ```
 
-The code is more or less self-documented. Perhaps the hardware initialisation hooks may raise some questions, especially why the initialisations are not done inside `main()`, and why there are two hardware initialisation routines.
-
-For very simple C applications, it is true that the initialisation code can be called from `main()`.
+The code is more or less self-documented. Perhaps some questions may be raised by the hardware initialisation hooks, especially why not doing the initialisations inside `main()`, and why are needed two hardware initialisation routines.
 
 #### `os_startup_initialize_hardware ()`
 
-For more complex applications, like most C++ applications, it is common to execute code before entering `main()` (like calling constructors for static objects).
+For very simple C applications, it is true that the initialisation code can be called from `main()`.
 
-This means the hardware must be initialised _before_ entering `main()`, thus the `os_startup_initialize_hardware ()` hook, that must be defined by the application, and is called before the static constructors, and after the data & bss are initialised.
+But for more complex applications, like most C++ applications, it is common to execute code before entering `main()` (like calling constructors for static objects).
+
+This implies that the hardware should be initialised _before_ entering `main()`, thus the `os_startup_initialize_hardware ()` hook, that must be defined by the application, and is called after the data & bss are initialised and before the static constructors.
 
 #### `os_startup_initialize_hardware_early ()`
 
-But for some cases this might be too late. What if the board uses external RAM? If so, it obviously must be configured _before_ initialising the data & bss sections. Also, if the core starts at a very slow speed, it might be useful to raise the speed as early as possible, to ensure a fast startup. Another interesting case is when the device starts with a watchdog enabled; if the watchdog is not properly tailored to the application, it might be possible to trigger a reset before the application reaches the main code.
+This approach is usualy enough, but for some cases running the first initialisations after the data & bss might be too late. What if the board uses external RAM? If so, it obviously must be configured _before_ initialising the data & bss sections. Also, if the core starts at a very slow speed, it might be useful to raise the speed as early as possible, to ensure a fast startup. Another interesting case is when the device starts with a watchdog enabled; if the watchdog is not properly tailored to the application, it might trigger a reset before the application reaches the main code.
 
-#### Code location
+#### Code
 
 The entire startup library consist of only two files (one header and one source file), and is available as a separate GitHub project [micro-os-plus/startup](https://github.com/micro-os-plus/startup.git).
+
+### Board vs Device vs Architecture
+
+Traditionally, boards come with a BSP (Board Support Package), that provides all board specific definitions and drivers.
+
+However, for reusability reasons, in the µOS++ implementation, the BSP is not monolythic, but modular, with three explict levels:
+
+* board (like **HiFive1**)
+* device (like **FE310-G000**)
+* architecture (like **RISC-V**)
+
+In other words, multiple boards can share the definitions of a single device, and multiple devices can share the definitions specific to a common architecture.
+
+The following examples include C++ code, and most of µOS++ is written in C++, but the application can be entirely witten in C, equivalent C APIs are also available at all levels.
+
+#### Board
+
+The board definitions can be included in the application with a single `#include` line:
+
+```c++
+#include <micro-os-plus/board.h>
+```
+
+There are currently not many mandatory definitions at board level, except a function that returns the frequency of the RTC oscillator.
+
+```c++
+namespace riscv
+{
+  namespace board
+  {
+    uint32_t
+    rtc_frequency_hz (void);
+
+  } /* namespace board */
+} /* namespace riscv */
+```
+
+The board package also includes some metadata, used to automatically configure projects using the board, for example:
+
+```json
+{
+	"schemaVersion": "0.1.0",
+	"boards": {
+		"hifive1": {
+			"vendor": {
+				"name": "sifive",
+				"id": "1",
+				"displayName": "SiFive",
+				"fullName": "SiFive, Inc.",
+				"contact": "info@sifive.com"
+			},
+			"revision": "A01",
+			"url": "https://www.sifive.com/products/hifive1/",
+			"orderForm": "https://www.crowdsupply.com/sifive/hifive1/",
+			"name": "HiFive1",
+			"description": "The HiFive1 is an Arduino-Compatible development kit featuring the Freedom E310, the industry’s first commercially available RISC-V SoC.",
+			"installedDevice": {
+				"vendor": "sifive",
+				"id": "1",
+				"name": "fe310-g000"
+			},
+			"compatibleDevices": [],
+			"features": {
+				"flash": {
+					"size": "128 Mb",
+					"interface": "spi0",
+					"memoryRegion": "rom"
+				},
+				"hfxtal": "16 MHz",
+				"lfxtal": "32768 Hz"
+			},
+			"debug": {
+				"interface": "ftdi",
+				"connector": "micro-usb",
+				"openocd": "-f &quot;board/sifive-freedom-e300-hifive1.cfg&quot;",
+				"jlink": {
+				    "device": "fe310-g000"
+				}
+			},
+			"compile": {
+				"headers": [
+					"<micro-os-plus/board.h>"
+				],
+				"macros": [
+					"SIFIVE_HIFIVE1_BOARD"
+				]
+			}
+		}
+	}
+}
+```
+
+#### Device
+
+The device definitions can be included in the application with a single `#include` line:
+
+```c++
+#include <micro-os-plus/device.h>
+```
+
+For RISC-V, the device definitions include functions to access the memory mapped system registers, for example:
+
+```c++
+namespace riscv
+{
+  namespace device
+  {
+    uint64_t
+    mtime (void);
+
+    void
+    mtime (uint64_t value);
+
+    uint64_t
+    mtimecmp (void);
+
+    void
+    mtimecmp (uint64_t value);
+
+    // ...
+  } /* namespace device */
+} /* namespace riscv */
+```
+
+There are also functions to access the PLIC registers:
+
+```c++
+namespace riscv
+{
+  namespace plic
+  {
+    void
+    initialize (void);
+
+    void
+    clear_priorities (void);
+
+    priority_t
+    threshold (priority_t priority);
+
+    priority_t
+    threshold (void);
+
+    void
+    enable_interrupt (source_t global_interrupt_id);
+
+    void
+    disable_interrupt (source_t global_interrupt_id);
+
+    bool
+    is_interrupt_enabled (source_t global_interrupt_id);
+
+    void
+    priority (source_t global_interrupt_id, priority_t priority);
+
+    priority_t
+    priority (source_t global_interrupt_id);
+
+    source_t
+    claim_interrupt (void);
+
+    void
+    complete_interrupt (source_t global_interrupt_id);
+
+  } /* namespace plic */
+} /* namespace riscv */
+```
+
+There are also declarations for the local and global interrupt handlers, for example:
+
+```c
+  // ...
+
+  void
+  riscv_interrupt_global_handle_wdogcmp (void);
+
+  void
+  riscv_interrupt_global_handle_rtccmp (void);
+
+  void
+  riscv_interrupt_global_handle_uart0 (void);
+
+  void
+  riscv_interrupt_global_handle_uart1 (void);
+
+  void
+  riscv_interrupt_global_handle_qspi0 (void);
+
+  void
+  riscv_interrupt_global_handle_qspi1 (void);
+
+  void
+  riscv_interrupt_global_handle_qspi2 (void);
+
+  void
+  riscv_interrupt_global_handle_gpio0 (void);
+
+  // ...
+```
+
+The device packages also include some metadata, to be consumed by automated tools, for example:
+
+```json
+{
+    "schemaVersion": "0.1.0",
+    "devices": {
+        "families": {
+            "fe300": {
+                "vendor": {
+                    "name": "sifive",
+                    "id": "1",
+                    "fullName": "SiFive, Inc.",
+                    "contact": "info@sifive.com"
+                },
+                "name": "Freedom E300",
+                "devices": {
+                    "fe310-g000": {
+                        "name": "Freedom E310-G000",
+                        "description": "The FE310-G000 is the first Freedom E300 SoC, and is the industrys first commercially available RISC-V SoC. The FE310-G000 is built around the E31 Coreplex instantiated in the Freedom E300 platform.",
+                        "url": "https://www.sifive.com/products/freedom-e310/",
+                        "compile": {
+                            "headers": [
+                                "<micro-os-plus/device.h>"
+                            ],
+                            "macros": [
+                                "SIFIVE_FREEDOM_E310"
+                            ],
+                            "target": [
+                                "-march=rv32imac",
+                                "-mabi=ilp32",
+                                "-mcmodel=medany",
+                                "-msmall-data-limit=8"
+                            ]
+                        },
+                        "features": {
+                            "core": "RV32IMAC",
+                            "width": "32 bits",
+                            "hfosc": "13800 kHz",
+                            "lfosc": "32768 Hz",
+                            "maxClock": "320 MHz",
+                            "package": "qfn",
+                            "leads": "48",
+                            "vcc": [ "1.8 V", "3.3 V" ]
+                        },
+                        "memoryRegions": {
+                            "ram": {
+                                "onChip": "true",
+                                "address": "0x80000000",
+                                "size": "16 KiB",
+                                "access": "rwx",
+                                "description": "On-Chip Volatile Memory - Data Tightly Integrated Memory (DTIM)"
+                            },
+                            "rom": {
+                                "onChip": "false",
+                                "address": "0x20000000",
+                                "maxSize": "512 MiB",
+                                "access": "rx",
+                                "description": "Off-Chip Non-Volatile Memory - QSPI 0 eXecute-In-Place (XIP)"
+                            }
+                        },
+                        "debug": {
+                            "jtag": {
+                                "tapindex": "0",
+                                "idcode": "0x10e31913",
+                                "irlen": "5"
+                            }
+                        },
+                        "xsvd": "xsvd/fe310-g000-xsvd.json"
+                    }
+                }
+            }
+        }
+    }
+}
+```
+
+To support debuggers and emulators, a special file with the structured definitions of the peripheral registered is used:
+
+```json
+{
+    "schemaVersion": "0.1.0",
+    "devices": {
+        "fe310-g000": {
+            "version": "1.0.0",
+            "name": "Freedom E310-G000",
+            "description": "The FE310-G000 is the first Freedom E300 SoC, and is the industrys first commercially available RISC-V SoC. The FE310-G000 is built around the E31 Coreplex instantiated in the Freedom E300 platform.",
+            "busWidth": "32",
+            "size": "32",
+            "resetValue": "0x00000000",
+            "resetMask": "0xFFFFFFFF",
+            "access": "rw",
+            "peripherals": {
+                "clint": {
+                    "description": "Coreplex-Local Interruptor (CLINT)",
+                    "baseAddress": "0x02000000",
+                    "size": "0x10000",
+                    "registers": {
+                        "msip0": {
+                            "description": "MSIP for hart 0",
+                            "addressOffset": "0x0000"
+                        },
+                        "mtimecmp0": {
+                            "description": "Timer compare register for hart 0",
+                            "addressOffset": "0x4000",
+                            "size": "64"
+                        },
+                        "mtime": {
+                            "description": "Timer register",
+                            "addressOffset": "0xBFF8",
+                            "access": "ro",
+                            "size": "64"
+                        }
+                    }
+                },
+                "...": "..."
+            },
+            "...": "..."
+        },
+        "...": "..."
+    }
+}
+```
+
+#### Architecture
+
+The architecture definitions can be included in the application with a single `#include` line:
+
+```c++
+#include <micro-os-plus/architecture.h>
+```
+
+For RISC-V, the architecture definitions include functions to access the CSRs, for example:
+
+```c++
+namespace riscv
+{
+  namespace csr
+  {
+    arch::register_t
+    mstatus (void);
+
+    void
+    mstatus (arch::register_t value);
+
+    void
+    clear_mstatus (arch::register_t mask);
+
+    void
+    set_mstatus (arch::register_t mask);
+
+    arch::register_t
+    mtvec (void);
+
+    void
+    mtvec (arch::register_t value);
+
+    arch::register_t
+    mcause (void);
+
+    arch::register_t
+    mie (void);
+
+    void
+    mie (arch::register_t value);
+
+    void
+    clear_mie (arch::register_t mask);
+
+    void
+    set_mie (arch::register_t mask);
+
+    uint64_t
+    mcycle (void);
+
+    uint32_t
+    mcycle_low (void);
+
+    uint32_t
+    mcycle_high (void);
+
+    arch::register_t
+    mhartid (void);
+
+    // ...
+  } /* namespace csr */
+} /* namespace riscv */
+```
+
+There are also declarations for the synchronous exceptions and the common local interrupt handlers, for example:
+
+```c
+  void
+  riscv_exception_handle_misaligned_fetch (void);
+
+  void
+  riscv_exception_handle_fault_fetch (void);
+
+  void
+  riscv_exception_handle_illegal_instruction (void);
+
+  void
+  riscv_exception_handle_breakpoint (void);
+
+  // ...
+```
 
 ### Interrupts
 
 In modern architectures, interrupt processing is usually a no-op, there is almost nothing to do, apart from providing a list of pointers to interrupt handlers.
 
-Although for RISC-V the architecture specs make interrupt processing significantly more complicated, the current implementation tries to provide a similar user experience, by hidding all the implementation details. The application has nothing else to do then define some fixed name functions and enable interrupts.
+Although for RISC-V the architecture specs make interrupt processing significantly more complicated, the current µOS++ implementation tries to provide a similar user experience, by hidding all the implementation details. The application has nothing else to do then define some fixed name functions and enable interrupts.
 
 For example, to handle the machine timer interrupt, the application code looks like this:
 
@@ -227,9 +630,70 @@ riscv_interrupt_global_handle_gpio4 (void)
 }
 ```
 
+The prototypes of these functions are provided by the device or architecture packages.
+
 ### Linker scripts
 
-TODO: explain the multi-file linker scripts, with configuration
+As with most other projects generated by the GNU MCU Eclipse templates, the linker script is split into three parts:
+
+```bash
+$ tree ldscripts
+ldscripts
+├── libs.ld
+├── mem.ld
+└── sections.ld
+
+0 directories, 3 files
+$
+```
+
+The names should be suggestive for the content: `libs.ld` defines the additional libraries, `mem.ld` defines the memory regions and `sections.ld` defines the  sections and the mapping to the memory regions.
+
+To make the linker use them all, add something like this when invoking the linker:
+
+```bash
+$ <prefix>-gcc ... -L ldscripts -T libs.ld -T mem.ld -T sections.ld ...
+```
+
+### The C and C++ libraries
+
+These two packages complement the system libraries and provide missing functions are lighter implementations, more suitable in embedded applications.
+
+```bash
+$ tree c-libs.git 
+c-libs.git
+├── LICENSE
+├── README.md
+├── include
+│   └── newlib
+│       └── c-syscalls.h
+├── package-lock.json
+├── package.json
+└── src
+    ├── _sbrk.c
+    ├── c-syscalls-empty.c
+    └── stdlib
+        ├── assert.c
+        ├── atexit.cpp
+        ├── atexit.h
+        ├── exit.c
+        └── init-fini.c
+
+4 directories, 12 files
+
+$ tree cpp-libs.git
+cpp-libs.git
+├── LICENSE
+├── README.md
+├── include
+├── package-lock.json
+├── package.json
+└── src
+    └── cxx.cpp
+
+2 directories, 5 files
+$
+```
 
 ### Tracing support
 
@@ -294,11 +758,12 @@ namespace os
 
     void
     flush (void);
+
   } /* namespace trace */
 } /* namespace os */
 ```
 
-#### Code location
+#### Code
 
 The entire trace library consist of only two files (one header and one source file), and is available as a separate GitHub project [micro-os-plus/diag-trace](https://github.com/micro-os-plus/diag-trace.git) that has no other dependencies and can be included in any application.
 
