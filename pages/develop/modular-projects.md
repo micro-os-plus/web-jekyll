@@ -19,11 +19,11 @@ The trivial approach is to simply copy/paste routines or entire files from one a
 
 A slightly better solution is to create separate libraries, and include them _as is_ in different projects. Initially this may look ok, but if the libraries have inter-dependencies, and their number grows, knowing which libraries are compatible with each other may no longer be as easy as expected.
 
-The problem is agravated by the fact that each library has its own life cycle, and new versions may no longer be compatible with existing or newer versions of the other libraries.
+The problem is aggravated by the fact that each library has its own life cycle, and new versions may no longer be compatible with existing or newer versions of the other libraries.
 
 ### Solution
 
-Instead of a monolythic project, where the build has to process a complicated folder hierarchy, one possible solution is to build the project from separate components, stored in separate packages.
+Instead of a monolithic project, where the build has to process a complicated folder hierarchy, one possible solution is to build the project from separate components, stored in separate packages.
 
 In practical terms, each package should have, in addition to the source files, some metadata, to define its own identity and a list of dependencies from other packages.
 
@@ -39,7 +39,7 @@ There were also several attempts to create such solutions for C/C++ embedded app
 
 ### Application vs packages
 
-In the proposed modular aproach, the application code is clearly separated from the external packages; the application folders are under full control of the user, who can edit/add/remove any files, while the packages are under the control of the package manager, and generally are read only, to prevent inadvertent changes.
+In the proposed modular approach, the application code is clearly separated from the external packages; the application folders are under full control of the user, who can edit/add/remove any files, while the packages are under the control of the package manager, and generally are read only, to prevent inadvertent changes.
 
 ### Example 
 
@@ -110,7 +110,7 @@ This is a very powerful feature, that ensures, in a portable way, that the proje
 
 ### The startup code
 
-Traditionally, the startup code is writen in assembly, the justification being that, right after reset, the run-time is not yet suitable for higher level languages, like C/C++. For some modern architectures, like Cortex-M, this is plainly wrong, since the advanced core automatically loads the stack pointer before calling the `Reset_Handler`, and the startup code can be written in C/C++ from the very beginning.
+Traditionally, the startup code is writen in assembly, the justification being that, right after reset, the run-time is not yet suitable for higher level languages, like C/C++. For some modern architectures, like Cortex-M, this is plainly wrong, since the core automatically loads the stack pointer before calling the `Reset_Handler`, and the startup code can be written in C/C++ from the very beginning.
 
 #### The assembly entry code
 
@@ -191,7 +191,7 @@ This implies that the hardware should be initialised _before_ entering `main()`,
 
 #### `os_startup_initialize_hardware_early ()`
 
-This approach is usualy enough, but for some cases running the first initialisations after the data & bss might be too late. What if the board uses external RAM? If so, it obviously must be configured _before_ initialising the data & bss sections. Also, if the core starts at a very slow speed, it might be useful to raise the speed as early as possible, to ensure a fast startup. Another interesting case is when the device starts with a watchdog enabled; if the watchdog is not properly tailored to the application, it might trigger a reset before the application reaches the main code.
+This approach is usually enough, but for some cases running the first initialisations after the data & bss might be too late. What if the board uses external RAM? If so, it obviously must be configured _before_ initialising the data & bss sections. Also, if the core starts at a very slow speed, it might be useful to raise the speed as early as possible, to ensure a fast startup. Another interesting case is when the device starts with a watchdog enabled; if the watchdog is not properly tailored to the application, it might trigger a reset before the application reaches the main code.
 
 #### Code
 
@@ -201,7 +201,7 @@ The entire startup library consists of only two files (one header and one source
 
 Traditionally, boards come with a BSP (Board Support Package), that provides all board specific definitions and drivers.
 
-However, for reusability reasons, in the µOS++ implementation, the BSP is not monolythic, but modular, with three explict levels:
+However, for reusability reasons, in the µOS++ implementation, the BSP is not monolithic, but modular, with three explicit levels:
 
 * board (like **HiFive1**)
 * device (like **FE310-G000**)
@@ -209,7 +209,7 @@ However, for reusability reasons, in the µOS++ implementation, the BSP is not m
 
 In other words, multiple boards can share the definitions of a single device, and multiple devices can share the definitions specific to a common architecture.
 
-The following examples include C++ code, and most of µOS++ is written in C++, but the application can be entirely witten in C, equivalent C APIs are also available at all levels.
+The following examples include C++ code, and most of µOS++ is written in C++, but the application can be entirely written in C, as equivalent C APIs are available at all levels.
 
 #### Board
 
@@ -604,9 +604,9 @@ There are also declarations for the synchronous exceptions and the common local 
 
 ### Interrupts
 
-In modern architectures, interrupt processing is usually a no-op, there is almost nothing to do, apart from providing a list of pointers to interrupt handlers.
+In modern architectures, the software requirements for interrupt processing are minimal, there is almost nothing to do, apart from providing a list of pointers to interrupt handlers.
 
-Although for RISC-V the architecture specs make interrupt processing significantly more complicated, the current µOS++ implementation tries to provide a similar user experience, by hidding all the implementation details. The application has nothing else to do than to define some fixed name functions and enable interrupts.
+Although for RISC-V the architecture specs make interrupt processing significantly more complicated, the current µOS++ implementation tries to provide a similar user experience, by hiding all the implementation details. The application has nothing else to do but define some fixed name functions and enable interrupts.
 
 For example, to handle the machine timer interrupt, the application code looks like this:
 
@@ -647,17 +647,17 @@ ldscripts
 $
 ```
 
-The names should be suggestive for the content: `libs.ld` defines the additional libraries, `mem.ld` defines the memory regions and `sections.ld` defines the  sections and the mapping to the memory regions.
+The names should indicate the content: `libs.ld` defines the additional libraries, `mem.ld` defines the memory regions and `sections.ld` defines the  sections and the mapping to the memory regions.
 
 To make the linker use them all, add something like this when invoking the linker:
 
 ```bash
-$ <prefix>-gcc ... -L ldscripts -T libs.ld -T mem.ld -T sections.ld ...
+$ <prefix>-g++ ... -L ldscripts -T libs.ld -T mem.ld -T sections.ld ...
 ```
 
 ### The C and C++ libraries
 
-These two packages complement the system libraries and provide missing functions which are lighter implementations, more suitable for embedded applications.
+These two packages complement the system libraries and provide missing functions or have lighter implementations, more suitable for embedded applications.
 
 ```bash
 $ tree c-libs.git 
@@ -703,11 +703,11 @@ Although modern debuggers are quite advanced and can display lots of useful info
 
 Using `printf()` in Unix environments is as easy as it can be since standard IO support is always available, but in embedded environments the full standard IO libraries may be too expensive, in terms of program size and especially in complexity; without system operating support, the traditional solution to make the trace messages go out via a dedicated peripheral (a hardware debug channel, like ARM ITM, or even an USART port), is to rewrite a low level function, like `_write()` in newlib; unfortunately, the path from `printf()` to the actual `_write()` is quite long.
 
-Plus that in some applications, like those using semihosting, the standard output and standard error are already used for a normal functionality (like outputing test results) and intermixing trace messages may interfere with the normal behaviour.
+Plus in some applications, like those using semihosting, the standard output and standard error are already used for normal functionality (like outputting test results) and intermixing trace messages may interfere with the normal behaviour.
 
 #### Use a separate trace channel
 
-Since for debug purposes things should be as simple as possible, the prefered solution is to avoid using STDOUT or STDERR at all, and use a completely separated trace channel, that does not depend at all on the usual redirected system functions.
+Since for debug purposes things should be as simple as possible, the preferred solution is to avoid using STDOUT or STDERR at all, and use a completely separated trace channel, that does not depend at all on the usual redirected system functions.
 
 Using these functions is very simple, the prototypes being identical to the standard calls, but placed in a separate namespace (in C++) or a separate prefix (in C):
 
@@ -725,7 +725,7 @@ void f(char* str, int num)
 }
 ```
 
-The complete public API is:
+The complete public C++ API is:
 
 ```c++
 int os::trace::printf (const char *format, ...);
@@ -765,7 +765,7 @@ namespace os
 
 #### Code
 
-The entire trace library consist of only two files (one header and one source file), and is available as a separate GitHub project [micro-os-plus/diag-trace](https://github.com/micro-os-plus/diag-trace.git) that has no other dependencies and can be included in any application.
+The entire trace library consists of only two files (one header and one source file), and is available as a separate GitHub project [micro-os-plus/diag-trace](https://github.com/micro-os-plus/diag-trace.git) that has no other dependencies and can be included in any application.
 
 ## Demo
 
@@ -776,6 +776,6 @@ The entire trace library consist of only two files (one header and one source fi
 
 ### Command line template
 
-- generate projct
+- generate project
 - build with xmake
 
