@@ -110,7 +110,7 @@ This is a very powerful feature, that ensures, in a portable way, that the proje
 
 ### The startup code
 
-Traditionally, the startup code is writen in assembly, the justification being that, right after reset, the run-time is not yet suitable for higher level languages, like C/C++. For some modern architectures, like Cortex-M, this is plainly wrong, since the core automatically loads the stack pointer before calling the `Reset_Handler`, and the startup code can be written in C/C++ from the very beginning.
+Traditionally, the startup code is written in assembly, the justification being that, right after reset, the run-time is not yet suitable for higher level languages, like C/C++. For some modern architectures, like Cortex-M, this is plainly wrong, since the core automatically loads the stack pointer before calling the `Reset_Handler`, and the startup code can be written in C/C++ from the very beginning.
 
 #### The assembly entry code
 
