@@ -110,7 +110,7 @@ This is a very powerful feature, that ensures, in a portable way, that the proje
 
 ### The startup code
 
-Traditionally, the startup code is written in assembly, the justification being that, right after reset, the run-time is not yet suitable for higher level languages, like C/C++. For some modern architectures, like Cortex-M, this is plainly wrong, since the core automatically loads the stack pointer before calling the `Reset_Handler`, and the startup code can be written in C/C++ from the very beginning.
+Traditionally, the startup code is written in assembly, the justification being that, right after reset, the run-time is not yet suitable for higher level languages, like C/C++. For some modern architectures, like Cortex-M, this is not necessary, since the core automatically loads the stack pointer before calling the `Reset_Handler`, and the startup code can be written in C/C++ from the very beginning.
 
 #### The assembly entry code
 
@@ -144,9 +144,9 @@ riscv_reset_entry:
 
 #### The portable startup code
 
-The traditional functionality is to initialise the data & bss sections, to call the C++ static constructors and then pass control to the application `main()`.
+The traditional functionality is to initialize the data & bss sections, to call the C++ static constructors and then pass control to the application `main()`.
 
-For embedded applications, the sequence is basically the same, just that several specific initialisation routines are added.
+For embedded applications, the sequence is basically the same, just that several specific initialization routines are added.
 
 A simplified version of the portable startup code is:
 
@@ -162,7 +162,7 @@ _start (void)
     os::trace::initialize ();
 
     os_startup_initialize_hardware ();
-    os::trace::printf ("Hardware initialised.\n");
+    os::trace::printf ("Hardware initialized.\n");
 
     os_startup_initialize_free_store (...);
 
@@ -179,19 +179,19 @@ _start (void)
 }
 ```
 
-The code is more or less self-documented. Perhaps some questions may be raised by the hardware initialisation hooks, especially why not doing the initialisations inside `main()`, and why are needed two hardware initialisation routines.
+The code is more or less self-documented. Perhaps some questions may be raised by the hardware initialization hooks, especially why not doing the initializations inside `main()`, and why are needed two hardware initialization routines.
 
 #### `os_startup_initialize_hardware ()`
 
-For very simple C applications, it is true that the initialisation code can be called from `main()`.
+For very simple C applications, it is true that the initialization code can be called from `main()`.
 
 But for more complex applications, like most C++ applications, it is common to execute code before entering `main()` (like calling constructors for static objects).
 
-This implies that the hardware should be initialised _before_ entering `main()`, thus the `os_startup_initialize_hardware ()` hook, that must be defined by the application, and is called after the data & bss are initialised and before the static constructors.
+This implies that the hardware should be initialized _before_ entering `main()`, thus the `os_startup_initialize_hardware ()` hook, that must be defined by the application, and is called after the data & bss are initialized and before the static constructors.
 
 #### `os_startup_initialize_hardware_early ()`
 
-This approach is usually enough, but for some cases running the first initialisations after the data & bss might be too late. What if the board uses external RAM? If so, it obviously must be configured _before_ initialising the data & bss sections. Also, if the core starts at a very slow speed, it might be useful to raise the speed as early as possible, to ensure a fast startup. Another interesting case is when the device starts with a watchdog enabled; if the watchdog is not properly tailored to the application, it might trigger a reset before the application reaches the main code.
+This approach is usually enough, but for some cases running the first initializations after the data & bss might be too late. What if the board uses external RAM? If so, it obviously must be configured _before_ initializing the data & bss sections. Also, if the core starts at a very slow speed, it might be useful to raise the speed as early as possible, to ensure a fast startup. Another interesting case is when the device starts with a watchdog enabled; if the watchdog is not properly tailored to the application, it might trigger a reset before the application reaches the main code.
 
 #### Code
 
@@ -649,7 +649,7 @@ $
 
 The names should indicate the content: `libs.ld` defines the additional libraries, `mem.ld` defines the memory regions and `sections.ld` defines the  sections and the mapping to the memory regions.
 
-To make the linker use them all, add something like this when invoking the linker:
+To make the build use them all, add something like this when invoking the linker:
 
 ```bash
 $ <prefix>-g++ ... -L ldscripts -T libs.ld -T mem.ld -T sections.ld ...
