@@ -110,11 +110,11 @@ This is a very powerful feature, that ensures, in a portable way, that the proje
 
 ### The startup code
 
-Traditionally, the startup code is written in assembly, the justification being that, right after reset, the run-time is not yet suitable for higher level languages, like C/C++. For some modern architectures, like Cortex-M, this is not necessary, since the core automatically loads the stack pointer before calling the `Reset_Handler`, and the startup code can be written in C/C++ from the very beginning.
+Traditionally, the startup code is written in assembly, the justification being that, right after reset, the run-time is not yet suitable for higher level languages, like C/C++. For some modern architectures, like Cortex-M, this is not necessary, since the core automatically loads the stack pointer before calling the `Reset_Handler`, and the startup code can be written in C/C++ from the very beginning (assuming some extra attention when using global variables and avoid excessive optimizations).
 
 #### The assembly entry code
 
-Other, more traditional architectures, still require some small assembly code to explicitly set several registers. 
+The more traditional architectures still require some small assembly code to explicitly set several registers. 
 
 For RISC-V, the current architecture specs require to manually load the SP and GP registers. However, after preparing these registers, it is perfectly possible to pass control to a portable C/C++ function, traditionally named `_start()`:
 
@@ -193,6 +193,12 @@ This implies that the hardware should be initialized _before_ entering `main()`,
 
 This approach is usually enough, but for some cases running the first initializations after the data & bss might be too late. What if the board uses external RAM? If so, it obviously must be configured _before_ initializing the data & bss sections. Also, if the core starts at a very slow speed, it might be useful to raise the speed as early as possible, to ensure a fast startup. Another interesting case is when the device starts with a watchdog enabled; if the watchdog is not properly tailored to the application, it might trigger a reset before the application reaches the main code.
 
+#### The `os` prefix or namespace
+
+µOS++ is not exactly the traditional RTOS, it is more a run-time environment and a collection of APIs for embedded systems. It does include its own scheduler (written in C++), but it does not mandate its use, it can also run on top of other RTOS (like FreeRTOS).
+
+As such, the `os` prefix or namespace does not imply the presence of a scheduler, it is mainly used to differentiate functions that **are not** part of the application.
+
 #### Code
 
 The entire startup library consists of only two files (one header and one source file), and is available as a separate GitHub project [micro-os-plus/startup](https://github.com/micro-os-plus/startup.git).
@@ -201,7 +207,7 @@ The entire startup library consists of only two files (one header and one source
 
 Traditionally, boards come with a BSP (Board Support Package), that provides all board specific definitions and drivers.
 
-However, for reusability reasons, in the µOS++ implementation, the BSP is not monolithic, but modular, with three explicit levels:
+However, for reusability reasons, in the µOS++ implementation, the BSP is not monolithic, but modular, with three explicit layers:
 
 * board (like **HiFive1**)
 * device (like **FE310-G000**)
@@ -209,7 +215,11 @@ However, for reusability reasons, in the µOS++ implementation, the BSP is not m
 
 In other words, multiple boards can share the definitions of a single device, and multiple devices can share the definitions specific to a common architecture.
 
-The following examples include C++ code, and most of µOS++ is written in C++, but the application can be entirely written in C, as equivalent C APIs are available at all levels.
+#### Use of C++
+
+The following examples include C++ code; actually most of µOS++ is written in C++, but this is only an implementation detail, the application can be entirely written in C, as equivalent C APIs are available at all levels.
+
+Although some voices advocate against using C++ in system code, these opinions are usually based more on believes, than on facts. C++ **can** be successfully used in embedded systems, and modern features, like constexpr, inline templates, can generate even smaller code.
 
 #### Board
 
