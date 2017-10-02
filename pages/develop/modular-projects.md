@@ -616,7 +616,7 @@ There are also declarations for the synchronous exceptions and the common local 
 
 In modern architectures, the software requirements for interrupt processing are minimal, there is almost nothing to do, apart from providing a list of pointers to interrupt handlers.
 
-Although for RISC-V the architecture specs make interrupt processing significantly more complicated, the current µOS++ implementation tries to provide a similar user experience, by hiding all the implementation details. The application has nothing else to do but define some fixed name functions and enable interrupts.
+The current µOS++ implementation tries to provide a similar user experience for the RISC-V architecture too, by hiding all the implementation details. The application has nothing else to do but define some fixed name functions and enable interrupts.
 
 For example, to handle the machine timer interrupt, the application code looks like this:
 
