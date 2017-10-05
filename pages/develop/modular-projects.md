@@ -448,7 +448,7 @@ The result is a project with the following structure:
 
 Build the project as usual and possibly run/debug it on the board.
 
-Note: Note: at the time of preparing this page, the SiFive C/C++ project template is available only from the experimental update site  http://gnu-mcu-eclipse.netlify.com/v4-neon-updates-experimental/.
+Note: Note: at the time of preparing this page, the SiFive C/C++ project template is available only from the experimental update site  [http://gnu-mcu-eclipse.netlify.com/v4-neon-updates-experimental/](http://gnu-mcu-eclipse.netlify.com/v4-neon-updates-experimental/).
 
 ## Project structure
 
