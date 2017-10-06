@@ -1225,3 +1225,38 @@ namespace os
 
 The entire trace library consists of only two files (one header and one source file), and is available as a separate GitHub project [micro-os-plus/diag-trace-xpack](https://github.com/micro-os-plus/diag-trace-xpack.git) that has no other dependencies and can be included in any application.
 
+## Future plans
+
+Although the current templates already generate functional projects, there are many things that can be added/improved.
+
+### New device drivers
+
+The first and most important one is better support for all SiFive device peripherals; new definitions of the memory mapped registers are under way, and new device drivers will be added.
+
+### Peripheral register view in Eclipse
+
+With the new device packages including the structured definitions of the peripheral registers, it is perfecly possible to use these definitions to show the register bitfields during an Eclipse debug session, similar to using ARM SVD definitions.
+
+### Support for applications using an RTOS and middleware
+
+In addition to the simple blinky projects generated now, the future templates should be able to generate more complex projects, which include a RTOS and possibly the usual middleware (like POSIX IO, File System, Network).
+
+Support for FreeRTOS and µOS++ is planned.
+
+### New and improved xPack tools
+
+In order to support scriptable builds and automated testing, the xPack tools (`xpm`, `xmake`, etc) will be enhanced with new features.
+
+### Documentation pages
+
+The current code already includes lots of Doxygen definitions, aiming to full reference manuals being generated from the source code, using the same approach as for the existing [µOS++ reference pages](http://micro-os-plus.github.io/reference/cmsis-plus/).
+
+Tutorials and User's Manuals are also planned, similar to those partly available in the [µOS++ User's Manual](http://micro-os-plus.github.io/user-manual/).
+
+### Many more
+
+Being driven by the community needs, the list is open, and is limited only by our imagination.
+
+## Feedback
+
+As usual for open source projects, any comments/criticism/suggestions are highly appreciated!
