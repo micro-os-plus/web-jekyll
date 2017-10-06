@@ -13,19 +13,19 @@ date: 2017-09-26 13:05:00 +0300
 
 ### Challenges
 
-One of the major challenges when developing software is reusing various pieces of code among applications.
+One of the major challenges when developing software is reusing various pieces of code among applications and sharing code with other developers.
 
 The trivial approach is to simply copy/paste routines or entire files from one application to another. This is ok as long as the code does not change; once the code changes, manually updating all projects is no longer trivial.
 
-A slightly better solution is to create separate libraries, and include them _as is_ in different projects. Initially this may look ok, but for many libraries, especially when they have inter-dependencies, knowing which libraries are compatible with each other may no longer be as easy as expected.
+A slightly better solution is to create separate libraries, and include them _as is_ in different projects. Initially this may look ok, but when having many libraries, especially with multiple inter-dependencies, knowing which libraries are compatible with each other may no longer be as easy as expected.
 
-The problem is aggravated by the fact that each library has its own life cycle, and new versions may no longer be compatible with existing or newer versions of the other libraries.
+The problem is aggravated by the fact that each library has its own life cycle, and new versions may no longer be compatible with existing or newer versions of any of the other libraries.
 
 ### Solution
 
-Instead of a monolithic project, where the build has to process a complicated folder hierarchy, one possible solution is to build the project from separate components, stored in separate packages.
+Instead of a monolithic project, where the build process has to deal with a complicated folder hierarchy, one possible solution is to build the project from separate components, stored as one or more files in separate packages.
 
-In practical terms, each package should have, in addition to the source files, some metadata, to define its own identity and a list of dependencies from other packages.
+In practical terms, each package should have, in addition to the source files, some **metadata**, to define its own **identity** and a list of **dependencies** from other packages.
 
 ### Benefits
 
@@ -434,11 +434,11 @@ Note: at the time of preparing this page, the `xpm` tool is under development an
 
 ### Eclipse project
 
-To create a new Eclipse project, start the new project wizard (File → New → C++ project), enter a name and select **SiFive C/C++ project**:
+To create a new Eclipse project, start the new project wizard (File → New → C++ Project), enter a name and select **SiFive C/C++ Project**:
 
 ![New SiFive C++ project]({{ site.baseurl }}/assets/images/2017/new-sifive-cpp.png)
 
-Select the board (HiFive1, Coreplex E31 Arty, Coreplex E51 Arty), the content (empty, blinky), and the other configuration options:
+Select the board (HiFive1, Coreplex E31 Arty, Coreplex E51 Arty), the content (Empty, Blinky), and set the other configuration options:
 
 ![New SiFive C++ project settings]({{ site.baseurl }}/assets/images/2017/new-sifive-cpp-settings.png)
 
@@ -509,8 +509,8 @@ For the above project, the `package.json` file includes the following dependenci
   },
   "xpack": {
     "dependencies": {
-      "@micro-os-plus/diag-trace": "~1.0.2"
-      ,"@sifive/hifive1-board": "~0.0.5"
+      "@micro-os-plus/diag-trace": "~1.0.2",
+      "@sifive/hifive1-board": "~0.0.5"
     },
     "devDependencies": {
       "@gnu-mcu-eclipse/riscv-none-gcc": "~0.0.1",
