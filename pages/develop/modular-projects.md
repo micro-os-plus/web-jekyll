@@ -196,7 +196,11 @@ The approach is similar to `cmake`, just that instead of using a proprietary scr
 
 The first such tool is `xmake`, the xPack builder; it consumes `xmake.json` directly and generates `make` files. Future versions will also import/export Eclipse CDT configurations.
 
-To build the project, the standard method is to use `xpm build`, which, for the current project, invokes `xmake build`:
+To build the project, the standard method is to use `xpm build`, which, for the current project, invokes `xmake build`, which performs the following steps:
+
+* create the usual debug and release build configurations
+* generate the `make` files 
+* finally invoke `make` to run the actual build.
 
 ```
 $ xpm build
@@ -281,12 +285,6 @@ Invoking builder: 'make all'...
 
 'xpm build' completed in 11.346 sec.
 ```
-
-As it can be seen, `xmake`:
-
-* creates the usual debug and release build configurations
-* generates the `make` files 
-* finally invokes `make` to run the actual build.
 
 As for any modern builder, subsequent invocations process only the changed file, if any:
 
