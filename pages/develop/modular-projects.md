@@ -286,7 +286,7 @@ Invoking builder: 'make all'...
 'xpm build' completed in 11.346 sec.
 ```
 
-As for any modern builder, subsequent invocations process only the changed file, if any:
+As for any modern builder, subsequent invocations process only the changed files, if any:
 
 ```
 $ xpm build
@@ -623,7 +623,7 @@ This implies that the hardware should be initialized _before_ entering `main()`,
 
 #### `os_startup_initialize_hardware_early ()`
 
-This approach is usually enough, but for some cases running the first initializations after the data & bss might be too late. What if the board uses external RAM? If so, it obviously must be configured _before_ initializing the data & bss sections. Also, if the core starts at a very slow speed, it might be useful to raise the speed as early as possible, to ensure a fast startup. Another interesting case is when the device starts with a watchdog enabled; if the watchdog is not properly tailored to the application, it might trigger a reset before the application reaches the main code.
+This approach is usually enough, but, for some cases, running the first initializations after the data & bss inits might be too late. What if the board uses external RAM? If so, it obviously must be configured and enabled _before_ initializing the data & bss sections. Also, if the core starts at a very slow speed, it might be useful to raise the speed as early as possible, to ensure a fast startup. Another interesting case is when the device starts with a watchdog enabled; if the watchdog is not properly tailored to the application, it might trigger a reset before the application reaches the main code.
 
 #### The `os` prefix or namespace
 
@@ -651,7 +651,7 @@ In other words, multiple boards can share the definitions of a single device, an
 
 The following examples include C++ code; actually most of µOS++ is written in C++, but this is only an implementation detail, the application can be entirely written in C, as equivalent C APIs are available at all levels.
 
-Although some voices advocate against using C++ in system code, these opinions are usually based more on believes, than on facts. C++ **can** be successfully used in embedded systems, and modern features, like constexpr, inline templates, can generate even smaller code.
+Although some voices advocate against using C++ in system/embedded code, these opinions are usually based more on believes, than on facts. C++ **can** be successfully used in embedded systems, and modern features, like constexpr, inline templates, can generate even smaller code.
 
 #### Board
 
@@ -661,7 +661,7 @@ The board definitions can be included in the application with a single `#include
 #include <micro-os-plus/board.h>
 ```
 
-There are currently not many mandatory definitions at board level, except a function that returns the frequency of the RTC oscillator.
+For RISC-V, there are currently not many mandatory definitions at board level, except a function that returns the frequency of the RTC oscillator.
 
 ```c++
 namespace riscv
