@@ -35,7 +35,7 @@ Such solutions are already available for other languages, the most successful on
 
 There were also several attempts to create similar solutions for C/C++ embedded applications, but they had limited success (for example CMSIS Packs, which uses huge packages and is more or less specific to Keil MDK, and yotta, originally from ARM mbed, now abandoned, based upon cmake and python).
 
-The current proposal uses a new technology, called **xPack**, that addresses the management of multi-version packages (for both source code and binary tools), and provides support for an automated build process, advanced application configuration and convenient debug.
+The current proposal uses a new technology, called **xPack**, that addresses the management of multi-version packages (for both source code and binary tools), and provides support for an automated build process, advanced application configuration and convenient debug (the [project web](https://xpack.github.io) site is currently under construction).
 
 ## Examples
 
