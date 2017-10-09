@@ -31,7 +31,7 @@ In practical terms, each package should have, in addition to the source files, s
 
 This modular approach with structured metadata greatly increase the code **reusability** and **upgradability**, by allowing automated tools to bring into the project the required components, and to automatically manage the dependencies, accepting only combinations of compatible packages.
 
-Such solutions are already available for other languages, the most successful one being [npm](https://www.npmjs.com) (The Node Package Manager), for JavaScript modules.
+Such solutions are already available for other languages, the most successful one being [npm](https://www.npmjs.com) (The Node Package Manager), for Node.js/JavaScript modules.
 
 There were also several attempts to create similar solutions for C/C++ embedded applications, but they had limited success (for example CMSIS Packs, which uses huge packages and is more or less specific to Keil MDK, and yotta, originally from ARM mbed, now abandoned, based upon cmake and python).
 
@@ -532,7 +532,7 @@ In the current project, there are three tools required during development:
 * `@gnu-mcu-eclipse/riscv-none-gcc`
 * `@gnu-mcu-eclipse/openocd`
 
-`xmake` is a `npm` module, and is installed in `node_modules`, as required by the `Node.js` specifications.
+`xmake` is a `npm` module, and is installed in `node_modules`, as required by the Node.js specifications.
 
 The other two are tool xPacks; they download and install, in a central location, platform specific binaries for the toolchain and OpenOCD, and make the path available to the current xPack.
 
