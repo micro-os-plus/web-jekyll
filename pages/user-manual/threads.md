@@ -857,7 +857,7 @@ The C++ API is:
 ``` c++
 thread th { "th", th_func, nullptr };
 
-os_thread_user_storage_t* p = = th.user_storage();
+os_thread_user_storage_t* p = th.user_storage();
 ```
 
 A similar example, but written in C:
