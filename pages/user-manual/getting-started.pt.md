@@ -25,8 +25,8 @@ date: 2016-06-29 21:28:00 +0300
 
 The supported APIs are:
 
-- **CMSIS++ RTOS C++ API** - the native µOS++ IIIe C++ API, giving direct access to the system services;
-- **CMSIS++ RTOS C API** - a 1:1 C wrapper on top of the C++ API;
+- **µOS++ RTOS C++ API** - the native µOS++ IIIe C++ API, giving direct access to the system services;
+- **µOS++ RTOS C API** - a 1:1 C wrapper on top of the C++ API;
 - **ISO C++ Threads API** - an implementation of the standard ISO threads on top of the C++ API;
 - **ARM CMSIS RTOS v1 API** - a compatibility layer with ARM CMSIS RTOS
 
