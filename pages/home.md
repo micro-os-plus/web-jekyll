@@ -25,7 +25,7 @@ From a modular point of view, **µOS++ IIIe** is a **collection of packages** ho
 * projects based on third party code are grouped under the [xPacks](https://github.com/xpacks) collection.
 
 <div style="text-align:center">
-<img alt="µOS++ Collection" src="{{ site.baseurl }}/assets/images/2016/micro-os-plus-collection.png" />
+<img alt="µOS++ RTOS" src="{{ site.baseurl }}/assets/images/2017/micro-os-plus-rtos.png" />
 </div>
 
 ### The µOS++ RTOS
@@ -33,7 +33,7 @@ From a modular point of view, **µOS++ IIIe** is a **collection of packages** ho
 From an embedded system point of view, **µOS++ IIIe** provides the **reference implementation** for the **scheduler** and **portable synchronisation** objects (like mutex, semaphore, etc).
 
 <div style="text-align:center">
-<img alt="µOS++ RTOS" src="{{ site.baseurl }}/assets/images/2016/micro-os-plus-rtos.png" />
+<img alt="µOS++ Collection" src="{{ site.baseurl }}/assets/images/2017/micro-os-plus-collection.png" />
 </div>
 
 ## License

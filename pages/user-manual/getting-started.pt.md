@@ -20,7 +20,7 @@ date: 2016-06-29 21:28:00 +0300
 µOS++ provides services via multiple APIs, covering both C++ and C applications.
 
 <div style="text-align:center">
-<img alt="Overview" src="{{ site.baseurl }}/assets/images/2016/cmsis-plus-rtos-overview.png" />
+<img alt="Overview" src="{{ site.baseurl }}/assets/images/2017/cmsis-plus-rtos-overview.png" />
 </div>
 
 The supported APIs are:
