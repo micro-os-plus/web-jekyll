@@ -124,7 +124,7 @@ os_main (int argc, char* argv[])
   os_thread_t th;
 
   // Initialise the thread object and allocate the thread stack.
-  os_thread_create(&th, "th", th_func, NULL, NULL);
+  os_thread_construct(&th, "th", th_func, NULL, NULL);
 
   // ...
 
@@ -134,7 +134,7 @@ os_main (int argc, char* argv[])
   // ...
 
   // For completeness, destroy the thread.
-  os_thread_destroy(&th);
+  os_thread_destruct(&th);
 
   return 0;
 }
@@ -339,7 +339,7 @@ os_main (int argc, char* argv[])
   // ...
 
   // Create a thread; the stack is allocated with the default RTOS allocator.
-  os_thread_create(&th1, "th1", th_func, NULL, NULL);
+  os_thread_construct(&th1, "th1", th_func, NULL, NULL);
 
   // The default stack size.
   size_t my_size = os_thread_stack_get_default_size();
@@ -350,7 +350,7 @@ os_main (int argc, char* argv[])
   attr2.th_stack_size_bytes = my_size;
 
   // Create a thread; the stack is allocated with the user allocator.
-  os_thread_create(&th2, "th2", th_func, NULL, &attr2);
+  os_thread_construct(&th2, "th2", th_func, NULL, &attr2);
 
   os_thread_attr_t attr3;
   os_thread_attr_init(&attr3);
@@ -358,7 +358,7 @@ os_main (int argc, char* argv[])
   attr3.th_stack_size_bytes = sizeof(th3_stack);
 
   // Create a thread; the stack is allocated with the user allocator.
-  os_thread_create(&th3, "th3", th_func, NULL, &attr3);
+  os_thread_construct(&th3, "th3", th_func, NULL, &attr3);
 
   // ...
 
@@ -368,9 +368,9 @@ os_main (int argc, char* argv[])
   os_thread_join(&th3, NULL);
 
   // For completeness, destroy the threads.
-  os_thread_destroy(&th1);
-  os_thread_destroy(&th2);
-  os_thread_destroy(&th3);
+  os_thread_destruct(&th1);
+  os_thread_destruct(&th2);
+  os_thread_destruct(&th3);
 
   // Free the allocated stack.
   my_allocator_deallocate(attr2.th_stack_address, attr2.th_stack_size_bytes);
@@ -532,7 +532,7 @@ os_main (int argc, char* argv[])
   os_thread_t th1;
 
   // Create a thread; the stack is allocated with the default RTOS allocator.
-  os_thread_create(&th1, "th1", th_func, NULL, NULL);
+  os_thread_construct(&th1, "th1", th_func, NULL, NULL);
 
   // The default stack size.
   size_t my_size = os_thread_stack_get_default_size();
@@ -546,7 +546,7 @@ os_main (int argc, char* argv[])
   os_thread_t th2;
 
   // Create a thread; the stack is allocated with the user allocator.
-  os_thread_create(&th2, "th2", th_func, NULL, &attr2);
+  os_thread_construct(&th2, "th2", th_func, NULL, &attr2);
 
   os_thread_attr_t attr3;
   os_thread_attr_init(&attr3);
@@ -557,7 +557,7 @@ os_main (int argc, char* argv[])
   os_thread_t th3;
 
   // Create a thread; the stack is statically allocated.
-  os_thread_create(&th3, "th3", th_func, NULL, &attr3);
+  os_thread_construct(&th3, "th3", th_func, NULL, &attr3);
 
   // ...
 
@@ -570,9 +570,9 @@ os_main (int argc, char* argv[])
   my_allocator_deallocate(attr2.th_stack_address, attr2.th_stack_size_bytes);
 
   // For completeness, destroy the threads.
-  os_thread_destroy(&th1);
-  os_thread_destroy(&th2);
-  os_thread_destroy(&th3);
+  os_thread_destruct(&th1);
+  os_thread_destruct(&th2);
+  os_thread_destruct(&th3);
 
   return 0;
 }
@@ -753,7 +753,7 @@ os_main (int argc, char* argv[])
 
   // Create a thread; the stack is allocated with the default RTOS allocator.
   // The initial priority is configured via the attributes as HIGH.
-  os_thread_create(&th1, "th1", th_func, NULL, &attr);
+  os_thread_construct(&th1, "th1", th_func, NULL, &attr);
 
   // ...
 
@@ -761,7 +761,7 @@ os_main (int argc, char* argv[])
   os_thread_join(&th1, NULL);
 
   // For completeness, destroy the thread.
-  os_thread_destroy(&th1);
+  os_thread_destruct(&th1);
 
   return 0;
 }
@@ -787,7 +787,7 @@ The C API is:
 
 ``` c
 os_thread_t th;
-os_thread_create(&th, "th", th_func, NULL, NULL };
+os_thread_construct(&th, "th", th_func, NULL, NULL };
 
 const char* name = os_thread_get_name(&th);
 ```
@@ -809,7 +809,7 @@ The C API is:
 
 ``` c
 os_thread_t th;
-os_thread_create(&th, "th", th_func, NULL, NULL };
+os_thread_construct(&th, "th", th_func, NULL, NULL };
 
 os_thread_priority_t prio = os_thread_get_priority(&th);
 os_thread_set_priority(&th, os_thread_priority_high);
@@ -837,7 +837,7 @@ The C API is:
 
 ``` c
 os_thread_t th;
-os_thread_create(&th, "th", th_func, NULL, NULL };
+os_thread_construct(&th, "th", th_func, NULL, NULL };
 
 os_thread_stack_t* stack = os_thread_get_stack(&th);
 size_t sz = os_thread_stack_get_size(stack);
@@ -864,7 +864,7 @@ A similar example, but written in C:
 
 ``` c
 os_thread_t th;
-os_thread_create(&th, "th", th_func, NULL, NULL };
+os_thread_construct(&th, "th", th_func, NULL, NULL };
 
 os_thread_user_storage_t* p = os_thread_get_user_storage(&th);
 ```
@@ -954,7 +954,7 @@ os_main (int argc, char* argv[])
 
   // Create a thread; the stack is allocated with the default RTOS allocator.
   // The initial priority is configured via the attributes as HIGH.
-  os_thread_create(&th1, "th1", th_func, NULL, &attr);
+  os_thread_construct(&th1, "th1", th_func, NULL, &attr);
 
   // Request for thread interruption.
   os_thread_interrupt(&th1, true);
@@ -965,7 +965,7 @@ os_main (int argc, char* argv[])
   os_thread_join(&th1, NULL);
 
   // For completeness, destroy the thread.
-  os_thread_destroy(&th1);
+  os_thread_destruct(&th1);
 
   return 0;
 }
@@ -980,7 +980,7 @@ There are several ways of terminating a thread:
 - return from the thread function, which automatically invoke `this_thread::exit()`
 - manually invoke `this_thread::exit()`
 - one thread may kill another thread using `thread::kill()`
-- for threads defined in a local scope, if the block terminates, the thread destructor is automatically invoked (in C, `os_thread_destroy()` must be manually invoked).
+- for threads defined in a local scope, if the block terminates, the thread destructor is automatically invoked (in C, `os_thread_destruct()` must be manually invoked).
 
 All these methods are functionally equivalent, in that the thread is destroyed, and, if the thread stack was dynamically allocated, this storage is automatically deallocated.
 
@@ -1226,7 +1226,7 @@ attr3.th_stack_size_bytes = sizeof(th3_stack);
 os_thread_t th3;
 
 // Create a thread; the stack is statically allocated.
-os_thread_create(&th3, "th3", th_func, NULL, &attr3);
+os_thread_construct(&th3, "th3", th_func, NULL, &attr3);
 ```
 
 ### Detecting stack overflow

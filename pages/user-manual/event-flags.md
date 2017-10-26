@@ -72,12 +72,12 @@ os_main (int argc, char* argv[])
   // ...
 
   // Create a global event flags object instance.
-  os_evflags_create(&ev, "ev", NULL);
+  os_evflags_construct(&ev, "ev", NULL);
 
   // ...
 
   // For completeness, destroy the event flags.
-  os_evflags_destroy(&ev);
+  os_evflags_destruct(&ev);
 
   return 0;
 }
@@ -168,12 +168,12 @@ os_main (int argc, char* argv[])
   os_evflags_t ev1;
 
   // Create an event flags object instance.
-  os_evflags_create(&ev1, "ev1", NULL);
+  os_evflags_construct(&ev1, "ev1", NULL);
 
   // ...
 
   // For completeness, destroy the event flags.
-  os_evflags_destroy(&ev1);
+  os_evflags_destruct(&ev1);
 
   return 0;
 }
@@ -226,12 +226,12 @@ os_main (int argc, char* argv[])
   os_evflags_t ev;
 
   // Create an event flags object instance.
-  os_evflags_create(&ev, "ev", &attr);
+  os_evflags_construct(&ev, "ev", &attr);
 
   // ...
 
   // For completeness, destroy the event flags.
-  os_evflags_destroy(&ev);
+  os_evflags_destruct(&ev);
 
   return 0;
 }
@@ -343,13 +343,13 @@ os_main (int argc, char* argv[])
   // ...
 
   // Create a global event flags object instance.
-  os_evflags_create(&ev, "ev", NULL);
+  os_evflags_construct(&ev, "ev", NULL);
 
   // Local storage for the thread object.
   os_thread_t th;
 
   // Initialise the thread object and allocate the thread stack.
-  os_thread_create(&th, "th", th_func, NULL, NULL);
+  os_thread_construct(&th, "th", th_func, NULL, NULL);
 
   // Raise one flag. The condition is not enough to resume the thread.
   os_evflags_raise(&ev, 0x1, NULL);
@@ -366,10 +366,10 @@ os_main (int argc, char* argv[])
   // ...
 
   // For completeness, destroy the thread.
-  os_thread_destroy(&th);
+  os_thread_destruct(&th);
 
   // For completeness, destroy the event flags.
-  os_evflags_destroy(&ev);
+  os_evflags_destruct(&ev);
 
   return 0;
 }
@@ -403,7 +403,7 @@ The C API is:
 
 ``` c
 os_evflags_t ev;
-os_evflags_create(&ev, "ev" };
+os_evflags_construct(&ev, "ev" };
 
 const char* name = os_evflags_get_name(&ev);
 ```
@@ -446,6 +446,6 @@ os_evflags_clear(&ev, 0x2, &mask);
 
 In C++, if the event flags were created using the normal way, the destructors are automatically invoked when the current block exits, or, for the global event flags instances, after the `main()` function returns. Event flags created with placement `new` need to be destructed manually.
 
-In C, all event flags must be destructed by explicit calls to `os_evflags_destroy()`.
+In C, all event flags must be destructed by explicit calls to `os_evflags_destruct()`.
 
 There should be no threads waiting on the event flags when the object is destroyed, otherwise an assert check will trigger.

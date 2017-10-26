@@ -228,10 +228,10 @@ os_main (int argc, char* argv[])
   // on a thread context, and all system functions are available.
 
   // Initialise the queue object and allocate the queue storage.
-  os_mqueue_create(&mq, "q", 7, sizeof(msg_t), NULL);
+  os_mqueue_construct(&mq, "q", 7, sizeof(msg_t), NULL);
 
   // Initialise the thread object and allocate the thread stack.
-  os_thread_create(&th, "th", th_func, NULL);
+  os_thread_construct(&th, "th", th_func, NULL);
 
   user_led_t led;
 
@@ -245,8 +245,8 @@ os_main (int argc, char* argv[])
   }
 
   // Not reached if the LED loop never ends.
-  os_thread_destroy(&th);
-  os_mqueue_destroy(&mq);
+  os_thread_destruct(&th);
+  os_mqueue_destruct(&mq);
 
   return 0;
 }

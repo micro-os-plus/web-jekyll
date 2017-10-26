@@ -138,27 +138,27 @@ os_main (int argc, char* argv[])
 
   // Create a global binary semaphore object instance,
   // with the initial count as 0.
-  os_semaphore_binary_create(&sb1, "sb1", 0);
+  os_semaphore_binary_construct(&sb1, "sb1", 0);
 
   // Create a global binary semaphore object instance,
   // with the initial count as 1.
-  os_semaphore_binary_create(&sb2, "sb2", 1);
+  os_semaphore_binary_construct(&sb2, "sb2", 1);
 
   // Create a global binary semaphore object instance,
   // with max 7 items and the initial count as 0.
-  os_semaphore_counting_create(&sc1, "sc1", 7, 0);
+  os_semaphore_counting_construct(&sc1, "sc1", 7, 0);
 
   // Create a global binary semaphore object instance,
   // with max 7 items and the initial count as 7.
-  os_semaphore_counting_create(&sc2, "sc2", 7, 7);
+  os_semaphore_counting_construct(&sc2, "sc2", 7, 7);
 
   // ...
 
   // For completeness, destroy the semaphores.
-  os_semaphore_destroy(&sb1);
-  os_semaphore_destroy(&sb2);
-  os_semaphore_destroy(&sc1);
-  os_semaphore_destroy(&sc2);
+  os_semaphore_destruct(&sb1);
+  os_semaphore_destruct(&sb2);
+  os_semaphore_destruct(&sc1);
+  os_semaphore_destruct(&sc2);
 
   return 0;
 }
@@ -265,36 +265,36 @@ os_main (int argc, char* argv[])
 
   // Create a binary semaphore,
   // with the initial count as 0.
-  os_semaphore_binary_create(&sb1, "sb1", 0);
+  os_semaphore_binary_construct(&sb1, "sb1", 0);
 
   // Local storage for the semaphore object instance.
   os_semaphore_t sb2;
 
   // Create a binary semaphore,
   // with the initial count as 1.
-  os_semaphore_binary_create(&sb2, "sb2", 1);
+  os_semaphore_binary_construct(&sb2, "sb2", 1);
 
   // Local storage for the semaphore object instance.
   os_semaphore_t sc1;
 
   // Create a counting semaphore,
   // with max 7 items and the initial count as 0.
-  os_semaphore_counting_create(&sc1, "sc1", 7, 0);
+  os_semaphore_counting_construct(&sc1, "sc1", 7, 0);
 
   // Local storage for the semaphore object instance.
   os_semaphore_t sc2;
 
   // Create a counting semaphore,
   // with max 7 items and the initial count as 7.
-  os_semaphore_counting_create(&sc2, "sc2", 7, 7);
+  os_semaphore_counting_construct(&sc2, "sc2", 7, 7);
 
   // ...
 
   // For completeness, destroy the semaphores.
-  os_semaphore_destroy(&sb1);
-  os_semaphore_destroy(&sb2);
-  os_semaphore_destroy(&sc1);
-  os_semaphore_destroy(&sc2);
+  os_semaphore_destruct(&sb1);
+  os_semaphore_destruct(&sb2);
+  os_semaphore_destruct(&sc1);
+  os_semaphore_destruct(&sc2);
 
   return 0;
 }
@@ -367,7 +367,7 @@ os_main (int argc, char* argv[])
 
   // Create a binary semaphore,
   // with the initial count as 0.
-  os_semaphore_create(&sb1, "sb1", &attr_b1);
+  os_semaphore_construct(&sb1, "sb1", &attr_b1);
 
   os_semaphore_attr_t attr_c2;
   os_semaphore_attr_counting_init(&attr_c2, 7, 0);
@@ -379,7 +379,7 @@ os_main (int argc, char* argv[])
 
   // Create a counting semaphore,
   // with max 7 items and the initial count as 0.
-  os_semaphore_create(&sc1, "sc1", &attr_c2);
+  os_semaphore_construct(&sc1, "sc1", &attr_c2);
 
   os_semaphore_attr_t attr_g1;
   os_semaphore_attr_init(&attr_g1);
@@ -393,14 +393,14 @@ os_main (int argc, char* argv[])
 
   // Create a generic counting semaphore, with max 7 items
   // and the initial count as 7.
-  os_semaphore_create(&sg1, "sg1", &attr_g1);
+  os_semaphore_construct(&sg1, "sg1", &attr_g1);
 
   // ...
 
   // For completeness, destroy the semaphores.
-  os_semaphore_destroy(&sb1);
-  os_semaphore_destroy(&sc1);
-  os_semaphore_destroy(&sg1);
+  os_semaphore_destruct(&sb1);
+  os_semaphore_destruct(&sc1);
+  os_semaphore_destruct(&sg1);
 
   return 0;
 }
@@ -529,7 +529,7 @@ The C API is:
 
 ``` c
 os_semaphore_t sem;
-os_semaphore_create(&sem, "sem", 0 };
+os_semaphore_construct(&sem, "sem", 0 };
 
 const char* name = os_semaphore_get_name(&sem);
 ```
@@ -602,7 +602,7 @@ os_semaphore_reset(&sem);
 
 In C++, if the semaphores were created using the normal way, the destructors are automatically invoked when the current block exits, or, for the global semaphores instances, after the `main()` function returns. Semaphores created with placement `new` need to be destructed manually.
 
-In C, all semaphores must be destructed by explicit calls to `os_semaphore_destroy()`.
+In C, all semaphores must be destructed by explicit calls to `os_semaphore_destruct()`.
 
 There should be no threads waiting on the semaphore when it is destroyed, otherwise an assert check will trigger.
 
@@ -658,11 +658,11 @@ os_main (int argc, char* argv[])
   // ...
 
   // Create a binary semaphore, with the initial count as 1.
-  os_semaphore_binary_create(&sem, "sem", 1);
+  os_semaphore_binary_construct(&sem, "sem", 1);
 
   // ...
 
-  os_semaphore_destroy(&sem);
+  os_semaphore_destruct(&sem);
 
   return 0;
 }
@@ -764,11 +764,11 @@ os_main (int argc, char* argv[])
   // ...
 
   // Create a binary semaphore, with the initial count as 0.
-  os_semaphore_binary_create(&sem, "sem", 0);
+  os_semaphore_binary_construct(&sem, "sem", 0);
 
   // ...
 
-  os_semaphore_destroy(&sem);
+  os_semaphore_destruct(&sem);
 
   return 0;
 }
@@ -871,11 +871,11 @@ os_main (int argc, char* argv[])
   // ...
 
   // Create a binary semaphore, with the initial count as 1.
-  os_semaphore_binary_create(&sem, "sem", 1);
+  os_semaphore_binary_construct(&sem, "sem", 1);
 
   // ...
 
-  os_semaphore_destroy(&sem);
+  os_semaphore_destruct(&sem);
 
   return 0;
 }

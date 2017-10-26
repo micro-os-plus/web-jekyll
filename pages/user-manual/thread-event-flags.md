@@ -119,7 +119,7 @@ os_main (int argc, char* argv[])
   os_thread_t th;
 
   // Initialise the thread object and allocate the thread stack.
-  os_thread_create(&th, "th", th_func, NULL, NULL);
+  os_thread_construct(&th, "th", th_func, NULL, NULL);
 
   // Raise one flag. The condition is not enough to resume the thread.
   os_thread_flags_raise(&th, 0x1);
@@ -136,7 +136,7 @@ os_main (int argc, char* argv[])
   // ...
 
   // For completeness, destroy the thread.
-  os_thread_destroy(&th);
+  os_thread_destruct(&th);
 
   return 0;
 }
