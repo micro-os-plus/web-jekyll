@@ -275,8 +275,8 @@ my_allocated_thread th2 { "th2", th_func, nullptr };
 
 constexpr std::size_t my_stack_size_bytes = 3000;
 
-// Create a thread; the stack is statically allocated.
-thread_static<my_stack_size_bytes> th3 { "th3", th_func, nullptr };
+// Create a thread; the stack is included in the definition.
+thread_inclusive<my_stack_size_bytes> th3 { "th3", th_func, nullptr };
 
 int
 os_main (int argc, char* argv[])
@@ -1203,7 +1203,7 @@ os_main (int argc, char* argv[])
 
 ### Configuring a user defined stack
 
-Except when using the `thread_static` template, by default threads are created with a dynamically allocated stack. This can be changed to a user defined stack using the `th_stack_address` and `th_stack_size_bytes` thread attributes.
+Except when using the `thread_inclusive` template, by default threads are created with a dynamically allocated stack. This can be changed to a user defined stack using the `th_stack_address` and `th_stack_size_bytes` thread attributes.
 
 ``` c++
 thread::attributtes attr;
