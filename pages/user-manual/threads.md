@@ -476,7 +476,7 @@ os_main (int argc, char* argv[])
   // Create a thread; the stack is allocated with the user allocator.
   my_allocated_thread th2 { "th2", th_func, nullptr };
 
-  thread::attributtes attr;
+  thread::attributes attr;
   attr.th_stack_address = th3_stack;
   attr.th_stack_size_bytes = sizeof(th3_stack);
 
