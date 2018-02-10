@@ -428,7 +428,7 @@ Build completed in 5.580 sec.
 'xmake build' completed in 10.799 sec.
 ```
 
-Note: at the time of preparing this page, the `xpm` tool is under development and the generic `xpm init` mechanism is not yet functional. As a temporary workaround, use the `xpm-init-sifive-coreplex-project` tool, available in the `@sifive/coreplex-templates` [xPack](https://www.npmjs.com/package/@sifive/coreplex-templates).
+Note: at the time of preparing this page, the `xpm` tool is under development and the generic `xpm init` mechanism is not yet functional. As a temporary workaround, use the `xpm-init-sifive-coreplex-project` tool, available in the `@sifive/templates` [xPack](https://www.npmjs.com/package/@sifive/templates).
 
 ### Eclipse project
 
