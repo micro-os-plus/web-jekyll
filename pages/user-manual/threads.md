@@ -428,8 +428,8 @@ os_main (int argc, char* argv[])
 
   // For completeness, call the threads destructors, which for placement new
   // is no longer called automatically.
-  th1.~thread();
-  th2.~thread();
+  reinterpret_cast<os::rtos::thread&>(th1).~thread();
+  reinterpret_cast<os::rtos::thread&>(th2).~thread();
 
   return 0;
 }
