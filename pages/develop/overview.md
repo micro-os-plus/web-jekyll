@@ -17,6 +17,7 @@ date: 2016-03-09 12:04:00 +0300
 * [C/C++ naming conventions]({{ site.baseurl }}/develop/naming-conventions/)
 * [Doxygen style]({{ site.baseurl }}/develop/doxygen-style-guide/)
 * [Jekyll style]({{ site.baseurl }}/develop/jekyll-style-guide/)
+* [Herb Sutter: C++ Coding Standards]({{ site.baseurl }}/develop/sutter-101/)
 
 ## Misc
 
