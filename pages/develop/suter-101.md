@@ -9,7 +9,7 @@ date: 2018-03-26 15:57:49 +0000
 
 ---
 
-Theis page is copied from the _Summary of Summaries_ chapter of **C++ Coding Standards: 101 Rules, Guidelines, and Best Practices**, by Herb Sutter and Andrei Alexandrescu, published in 2005 by Pearson Education, Inc.
+This page is reproduces content from the _Summary of Summaries_ chapter of **C++ Coding Standards: 101 Rules, Guidelines, and Best Practices**, by Herb Sutter and Andrei Alexandrescu, published in 2005 by Pearson Education, Inc.
 
 ## Organizational and Policy Issues
 
