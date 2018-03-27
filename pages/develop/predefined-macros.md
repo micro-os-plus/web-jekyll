@@ -13,7 +13,7 @@ date: 2015-08-05 13:48:01 +0000
 
 If some parts of the code are platform dependent, test the following preprocessor definitions:
 
-```
+```c
 #if defined(__APPLE__)
 #if defined(__linux__)
 #if defined(__x86_64__)
@@ -21,7 +21,7 @@ If some parts of the code are platform dependent, test the following preprocesso
 
 To check the compiler:
 
-```
+```c
 #if defined (__GNUC__)
 #if __GNUC__ == 4 && __GNUC_MINOR__ == 7
 #if defined(__clang__)
@@ -29,7 +29,7 @@ To check the compiler:
 
 To check the size of the pointer:
 
-```
+```c
 #if __SIZEOF_POINTER__ == __SIZEOF_INT__
 #elif __SIZEOF_POINTER__ == __SIZEOF_LONG__
 #elif __SIZEOF_POINTER__ == __SIZEOF_LONG_LONG__
@@ -37,45 +37,45 @@ To check the size of the pointer:
 
 To check if there are no **long long** variables:
 
-```
+```c
 #if !defined(__SIZEOF_LONG_LONG)
 ```
 
 To check if the compiling unit is C++:
 
-```
+```c
 #if defined (__cplusplus)
 ```
 
 To check if the compiling unit is an assembly file:
 
-```
+```c
 #if defined(__ASSEMBLER__)
 ```
 
 To check if optimisation is enabled (more than `-O0`):
 
-```
+```c
 #if defined(__OPTIMIZE__)
 ```
 
 To check if optimisation for size is enabled (`-Os`):
 
-```
+```c
 #if defined(__OPTIMIZE_SIZE__)
 ```
 
 To check if no inlines are enabled:
 
-```
+```c
 #if defined(__NO_INLINE__)
 ```
 
 To see the built-in definitions:
 
-```
-g++ -dM -E - < /dev/null
-clang++ -dM -E - < /dev/null
+```console
+$ g++ -dM -E - < /dev/null
+$ clang++ -dM -E - < /dev/null
 ```
 
 ## ARM Cortex-M
@@ -84,7 +84,7 @@ When compiling Cortex-M applications, GCC 5.4 provides the following built-in de
 
 ### ARM Cortex-M0/M0+
 
-```
+```console
 $ ./arm-none-eabi-gcc -mcpu=cortex-m0 -mthumb -E -dM - < /dev/null | egrep -i 'thumb|arm|cortex|fp[^-]|version|abi' | sort
 #define __ARMEL__ 1
 #define __ARM_ARCH 6
@@ -128,7 +128,7 @@ $ ./arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -E -dM - < /dev/null | egrep -
 
 ### ARM Cortex-M3
 
-```
+```console
 $ ./arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -E -dM - < /dev/null | egrep -i 'thumb|arm|cortex|fp[^-]|version|abi' | sort
 #define __ARMEL__ 1
 #define __ARM_32BIT_STATE 1
@@ -162,7 +162,7 @@ $ ./arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -E -dM - < /dev/null | egrep -i 't
 
 ### ARM Cortex-M4
 
-```
+```console
 $ ./arm-none-eabi-gcc -mcpu=cortex-m7 -mthumb -mfloat-abi=soft -E -dM - < /dev/null | egrep -i 'thumb|arm|cortex|fp[^-]|version|abi' | sort
 #define __ARMEL__ 1
 #define __ARM_32BIT_STATE 1
@@ -262,7 +262,7 @@ $ ./arm-none-eabi-gcc -mcpu=cortex-m7 -mthumb -mfloat-abi=hard -E -dM - < /dev/n
 
 ### ARM Cortex-M7
 
-```
+```console
 $ ./arm-none-eabi-gcc -mcpu=cortex-m7 -mthumb -mfloat-abi=soft -E -dM - < /dev/null | egrep -i 'thumb|arm|cortex|fp[^-]|version|abi' | sort
 #define __ARMEL__ 1
 #define __ARM_32BIT_STATE 1
@@ -364,7 +364,7 @@ $ ./arm-none-eabi-gcc -mcpu=cortex-m7 -mthumb -mfloat-abi=hard -E -dM - < /dev/n
 
 To check if hardware floating point is enabled (`-mfloat-abi=softfp` or `-mfloat-abi=hard`):
 
-```
+```c
 #define __ARM_FP 12
 ```
 
@@ -372,7 +372,7 @@ To check if hardware floating point is enabled (`-mfloat-abi=softfp` or `-mfloat
 
 To check if `-ffreestanding` was defined, you can use the following:
 
-```
+```c
 #define __STDC_HOSTED__ 0
 ```
 
@@ -382,13 +382,13 @@ By default, i.e. with `-fhosted` defined, the value is 1.
 
 To check if a C++ program is compiled with `-fexceptions`, use:
 
-```
+```c
 #define __EXCEPTIONS 1
 ```
 
 ## Other macros
 
-```
+```c
 #define __CHAR_UNSIGNED__ 1
 #define __LP64__ 1
 ```
@@ -397,19 +397,29 @@ To check if a C++ program is compiled with `-fexceptions`, use:
 
 When compiling third party sources, it might be necessary to temporarily disable some warnings:
 
-```
-// [ILG]
+```c
 #pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wundef"
-#pragma GCC diagnostic ignored "-Wsign-conversion"
+#pragma GCC diagnostic ignored "-Wpadded"
 
-// [ILG]
+// ...
+
 #pragma GCC diagnostic pop
+```
 
-// [ILG]
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wundef"
+clang specific warnings must be issued only for clang:
 
-// [ILG]
-#pragma clang diagnostic pop
+```c
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wsign-conversion"
+#if defined(__clang__)
+#pragma clang diagnostic ignored "-Wgnu-include-next"
+#pragma clang diagnostic ignored "-Wdisabled-macro-expansion"
+#pragma clang diagnostic ignored "-Wmissing-variable-declarations"
+#pragma clang diagnostic ignored "-Wexit-time-destructors"
+#pragma clang diagnostic ignored "-Wglobal-constructors"
+#endif
+
+// ...
+
+#pragma GCC diagnostic pop
 ```
