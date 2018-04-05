@@ -27,6 +27,12 @@ To check the compiler:
 #if defined(__clang__)
 ```
 
+To check if GCC only:
+
+```c
+#if defined(__GNUC__) && !defined(__clang__)
+```
+
 To check the size of the pointer:
 
 ```c
@@ -422,4 +428,49 @@ clang specific warnings must be issued only for clang:
 // ...
 
 #pragma GCC diagnostic pop
+```
+
+To check if POSIX:
+
+```c
+#include <unistd.h>
+
+#if defined(_POSIX_VERSION)
+// ...
+#endif
+```
+
+To include next version:
+
+```c
+#include <unistd.h>
+
+#if defined(_POSIX_VERSION)
+
+#pragma GCC diagnostic push
+#if defined(__clang__)
+#pragma clang diagnostic ignored "-Wgnu-include-next"
+#endif
+#include_next <termios.h>
+#pragma GCC diagnostic pop
+
+#else
+
+// Avoid warnings for __BSD* definitions.
+#pragma GCC system_header
+
+#ifdef __cplusplus
+extern "C"
+{
+#endif
+
+// ----------------------------------------------------------------------------
+//...
+// ----------------------------------------------------------------------------
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* defined(_POSIX_VERSION) */
 ```
