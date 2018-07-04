@@ -113,7 +113,7 @@ function do_script() {
   if echo "${TRAVIS_COMMIT_MESSAGE}" | grep -v -e '\[skip proof\]'
   then
     do_run bundle exec htmlproofer --only-4xx \
-      --url-ignore="/reference/cmsis-plus/,/pt/,/developer.apple.com/downloads/,/sourceforge.net/,/https://www.element14.com/community/" \
+      --url-ignore="/reference/cmsis-plus/,/pt/,/developer.apple.com/downloads/,/sourceforge.net/,/www.ukos.ch/,/https://www.element14.com/community/" \
       "${site}"
   fi
 

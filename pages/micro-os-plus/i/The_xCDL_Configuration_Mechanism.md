@@ -34,7 +34,7 @@ The xCDL mechanism is inspired from the eCos CDL mechanism. For details please s
 
 The XML format used to store the configuration data is the **.plist**, the Apple [property list](http://en.wikipedia.org/wiki/Property_list). For details please see:
 
--   [The plist(5) manual page](http://developer.apple.com/documentation/Darwin/Reference/ManPages/man5/plist.5.html)
+-   [Introduction to Property Lists](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/PropertyLists/Introduction/Introduction.html)
 -   [Apple's Property List Document Type Definition](http://www.apple.com/DTDs/PropertyList-1.0.dtd)
 
 Misc:
