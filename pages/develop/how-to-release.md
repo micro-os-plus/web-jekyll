@@ -11,11 +11,12 @@ date: 2016-07-11 20:50:00 +0300
 
 ## Check git repos
 
-In scripts.git, run `xpacks-git-status.mac.command` to check which repositories need to be updated.
+In `xPacks/ilg/scripts.git`, run `xpacks-git-status.mac.command` to check 
+which repositories need to be updated.
 
 ## Commit git repos
 
-With GitHub Desktop,
+With SourceTree,
 
 * commit `micro-os-plus-iii.git`
 * possibly commit `micro-os-plus-iii-cortexm.git`, `posix-arch.git`, etc
@@ -25,7 +26,7 @@ With GitHub Desktop,
 With Eclipse, edit `micro-os-plus-iii.git/doxygen/pages/changes-log.markdown`
 
 * add new `###` section, with version and date
-* copy from GitHub Desktop the relevant changes, in chronological order
+* copy from SourceTree the relevant changes, in reverse chronological order
 
 ## Update the doxygen header version
 
@@ -33,28 +34,21 @@ With Eclipse, edit `micro-os-plus-iii.git/doxygen/config-common.doxyfile`.
 
 ## Update os-versions.h
 
-With Eclipse,
+With Visual Studio Code,
 
 * edit `micro-os-plus-iii.git/include/os-versions.h`, remove `-beta`
 
-## Update the xpack.json file
-
-With Eclipse,
-
-- edit the `micro-os-plus-iii.git/xpack.json` and update the release number.
-
-With Terminal, in project folder, update README.
-
-```
-$ xcdl update-readme
-```
-
 ## Run doxygen
 
-With Eclipse,
+With Terminal,
 
-* select the `micro-os-plus-iii` project
-* click the `@` button
+```console
+$ cd /Users/ilg/Library/xPacks/ilg/micro-os-plus-iii.git/doxygen
+$ axbb
+$ doxygen --version
+1.8.14
+$ doxygen config.doxyfile
+```
 
 If errors, fix them and repeat.
 
@@ -71,12 +65,6 @@ Verify the changed pages.
 
 * in `_posts/releases/`
 * add a new post named file like `2016-11-27-micro-os-plus-v6-3-10-released.md`
-
-## Build the jekyll site
-
-In Finder,
-
-* double click the `jekyll-build.command`
 
 ## Commit git repos
 
@@ -98,17 +86,15 @@ With SourceTree, update `micro-os-plus-iii-cortexm.git`
 * click the **Push** button, select both branches
 * select the `develop` branch
 
+
+## Publish site
+
+With SourceTree,
+
 With SourceTree, update `micro-os-plus.github.io-source`
 
 * commit, message like v6.3.10
 * click the **Push** button
-
-## Publish site
-
-With GitHub Desktop,
-
-* commit `micro-os-plus.github.io`
-* click the **Sync** button
 
 ## Update os-versions.h
 
