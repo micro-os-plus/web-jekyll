@@ -1,6 +1,6 @@
 source "https://rubygems.org"
 
-gem 'jekyll', '=3.2.1', :platforms => [:ruby, :x64_mingw, :mswin]
+gem 'jekyll', '=3.6.2', :platforms => [:ruby, :x64_mingw, :mswin]
 gem 'wdm', '>= 0.1.0' if Gem.win_platform?
 
 group :jekyll_plugins do
@@ -13,5 +13,6 @@ group :jekyll_plugins do
   gem 'jekyll-sitemap', '=0.11.0',  :platforms => [:ruby, :x64_mingw, :mswin]
   # gem 'jekyll-multiple-languages'
 
-  gem 'html-proofer', '=3.7.3'
+  gem 'html-proofer'
+  gem 'nokogiri', '>=1.8.2'
 end
