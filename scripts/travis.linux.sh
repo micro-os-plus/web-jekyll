@@ -61,7 +61,7 @@ function do_before_install() {
   # https://launchpad.net/ubuntu/+source/doxygen
   # Install a newer doxygen from launchpad binaries.
   # https://launchpad.net/ubuntu/+archive/primary/+files/doxygen_1.8.13-10_amd64.deb
-  doxy_deb=doxygen_1.8.12-1_amd64.deb
+  doxy_deb=doxygen_1.8.11-3_amd64.deb
   mkdir -p ${HOME}/downloads
   do_run curl -L --silent https://launchpad.net/ubuntu/+archive/primary/+files/${doxy_deb} -o ${HOME}/downloads/${doxy_deb}
   do_run sudo dpkg -i ${HOME}/downloads/${doxy_deb}
