@@ -1,16 +1,31 @@
 # Travis CI configuration file to validate and deploy 
 # the µOS++ Jekyll site.
+# https://docs.travis-ci.com/user/getting-started/
 
 # To skip a CI build, add [skip ci] anywhere in the commit message.
 
+# https://docs.travis-ci.com/user/multi-os/
+os:
+  - linux
+
+# https://docs.travis-ci.com/user/trusty-ci-environment/
 # Use the new Debian 14 containers.
 dist: trusty
 sudo: true
 
 language: ruby
 rvm:
-  - 2.3.1
-  
+  - 2.5.0
+
+addons:
+  apt:
+    packages:
+    - libcurl4-openssl-dev
+
+# all commits required for jekyll-last-modified-at
+git:
+  depth: 999999999
+
 env:
   global:
     - GITHUB_DEST_REPO="micro-os-plus/micro-os-plus.github.io"
@@ -42,6 +57,8 @@ notifications:
 cache: 
   bundler: true
 
+# -----------------------------------------------------------------------------
+
 before_install:
   - bash scripts/travis.linux.sh before_install
 
@@ -69,3 +86,5 @@ script:
   
 # after_script:
 #  - bash scripts/travis.linux.sh after_script
+
+# -----------------------------------------------------------------------------

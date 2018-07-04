@@ -52,6 +52,8 @@ function do_before_install() {
   do_run gem install html-proofer
   do_run htmlproofer --version
 
+  do_run gem update --system
+
   # http://packages.ubuntu.com/trusty-updates/
   # Install libclang, it is needed by doxygen.
   do_run sudo apt-get --yes --quiet --target-release trusty-backports install libclang1-3.8
