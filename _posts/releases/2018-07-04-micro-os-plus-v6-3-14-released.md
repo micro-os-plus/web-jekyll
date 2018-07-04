@@ -36,26 +36,34 @@ To experiment with **µOS++**, please check the demo projects, available from
 [GitHub](https://github.com/micro-os-plus/eclipse-demo-projects), 
 and use a similar structure for your projects.
 
-
 ## New features
 
-- add support for Chan FatFS to the POSIX I/O layer; for examples how to use it, please see the `test/rtos/src/test-chan-fatfs.cpp` file
+- add support for Chan FatFS to the POSIX I/O layer; for some examples how 
+to use it, please see the `test/rtos/src/test-chan-fatfs.cpp` file
 - add `file_descriptors_manager::used()` to tell how many file 
 descriptors are used
-- [[#41](https://github.com/micro-os-plus/micro-os-plus-iii/issues/41)] add non-standard `timegm()`, as the opposite of `gmtime()`
+- [[#41](https://github.com/micro-os-plus/micro-os-plus-iii/issues/41)] 
+add non-standard `timegm()`, as the opposite of `gmtime()`
 - implement alignment in memory allocators
-- [[#40](https://github.com/micro-os-plus/micro-os-plus-iii/issues/40)] posix: add `statvfs()`/`fstatvfs()`
-- [[#36](https://github.com/micro-os-plus/micro-os-plus-iii/issues/36)] posix: add `tcdrain()`/`tcflush()`/`tcgetattr()`/`tcsendbreak()`/
+- [[#40](https://github.com/micro-os-plus/micro-os-plus-iii/issues/40)] 
+posix: add `statvfs()`/`fstatvfs()`
+- [[#36](https://github.com/micro-os-plus/micro-os-plus-iii/issues/36)] 
+posix: add `tcdrain()`/`tcflush()`/`tcgetattr()`/`tcsendbreak()`/
 `tcgetattr()` to POSIX aliases
-- [[#29](https://github.com/micro-os-plus/micro-os-plus-iii/issues/29)] add thread top try/catch for exceptions; support for C++ exceptions 
+- [[#29](https://github.com/micro-os-plus/micro-os-plus-iii/issues/29)] 
+add thread top try/catch for exceptions; support for C++ exceptions 
 was tested and is now available
-- [[#20](https://github.com/micro-os-plus/micro-os-plus-iii/issues/20)] add sys/ioctl.h
+- [[#20](https://github.com/micro-os-plus/micro-os-plus-iii/issues/20)] 
+add sys/ioctl.h
 
 ## Addressed bugs
 
-- [[#44](https://github.com/micro-os-plus/micro-os-plus-iii/issues/44)] os_main.cpp: add cast for `os_main_thread`
-- [[#35](https://github.com/micro-os-plus/micro-os-plus-iii/issues/35)] add missing `_fini()`
-- [[#17](https://github.com/micro-os-plus/micro-os-plus-iii/issues/17)] fix `_LITE_EXIT` redefinition
+- [[#44](https://github.com/micro-os-plus/micro-os-plus-iii/issues/44)] 
+os_main.cpp: add cast for `os_main_thread`
+- [[#35](https://github.com/micro-os-plus/micro-os-plus-iii/issues/35)] 
+add missing `_fini()`
+- [[#17](https://github.com/micro-os-plus/micro-os-plus-iii/issues/17)] 
+fix `_LITE_EXIT` redefinition
 - rtos/thread: unlock dangling mutexes
 
 ## Other changes
