@@ -3,7 +3,7 @@
 # Without a clear rule enforced, both title and name are used.
 title: µOS++ IIIe
 name: µOS++ IIIe
-description: The third edition of µOS++, a POSIX inspired open source system, written in C++.
+description: The third edition of µOS++, a POSIX inspired open source framework, written in C++.
 motto: “Perfekt ist nicht gut genug”
 icon: wall-e-icon.png
 
@@ -61,7 +61,7 @@ latest-news-pages: 4
 # {% feed_meta %} in head.html
 
 # jekyll-last-modified-at is not available on GitHub Pages.
-gems:
+plugins:
   - jekyll-last-modified-at
   - jekyll-mentions
   - jemoji
@@ -106,11 +106,13 @@ google-site-verification: NT_y3tqI_8mrd8gYA_FDWHT2-tkJExOC6KBkSnyZx6c
 # custom-footer-content: content/site-custom-footer.markdown
 
 # jekyll-toc-generator
+# https://github.com/dafi/jekyll-toc-generator
 tocTopTag: h2
 minItemsToShowToc: 3
 useExistingAnchors: true
 
-css-date: 201608151703
+# UTC time, YYYYMMDDHHmm (minutes)
+css-date: 201807041643
 
 # Content copyright. Update it to your needs.
-copyright-message: "© 2017 Liviu Ionescu"
+copyright-message: "© 2018 Liviu Ionescu"
