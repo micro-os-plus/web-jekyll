@@ -4,7 +4,7 @@ lang: en
 title: µOS++ IIIe v6.3.14 released
 author: Liviu Ionescu
 
-date: 2018-07-03 08:19:00 +0300
+date: 2018-07-04 08:19:00 +0300
 
 categories:
   - releases
