@@ -2,7 +2,7 @@
 
 cd "$(dirname "$0")"
 
-export PATH="$HOME/opt/homebrew-jekyll/bin":$PATH
+export PATH="$HOME/opt/homebrew/jekyll/bin":$PATH
 
 site="../micro-os-plus.github.io.git"
 
