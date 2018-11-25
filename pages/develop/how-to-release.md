@@ -107,12 +107,21 @@ With SourceTree, update `micro-os-plus-iii.git`
 * select the `develop` branch
 * commit, message like 'os-version.h: 6.3.11-beta'
 
-## Tweet
+## Share on social media
+
+### Twitter
 
 Use [TweetDeck](https://tweetdeck.twitter.com), the `@micro_os_plus` account.
 
-- in the release page, click the Tweet icon to create a new message; 
-copy/paste the message to TweetDeck;
+- go to the new post and follow the Tweet link to create a new message
+- copy/paste the message to TweetDeck;
 - check https://twitter.com/micro_os_plus
 
+### Facebook
 
+- go to the new post and follow the Share link to create a new post
+- DO NOT select **On your own Timeline**, but **On a Page you manage**
+- select **The micro OS plus plus project**
+- select posting as **The micro OS plus plus project**
+- click **Post to Facebook**
+- check the post in the [Facebook page](https://www.facebook.com/micro.os.plus/)
