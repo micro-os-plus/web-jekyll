@@ -106,3 +106,13 @@ With SourceTree, update `micro-os-plus-iii.git`
 
 * select the `develop` branch
 * commit, message like 'os-version.h: 6.3.11-beta'
+
+## Tweet
+
+Use [TweetDeck](https://tweetdeck.twitter.com), the `@micro_os_plus` account.
+
+- in the release page, click the Tweet icon to create a new message; 
+copy/paste the message to TweetDeck;
+- check https://twitter.com/micro_os_plus
+
+
