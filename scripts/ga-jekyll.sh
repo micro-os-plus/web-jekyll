@@ -44,6 +44,8 @@ else
   github_dest_repo="${GITHUB_PREVIEW_REPO}"
 fi
 
+doxy_src_folder="${HOME}/build/${GITHUB_DOXY_REPO}"
+
 commit_message=$(git log -1 --pretty=format:"%s")
 
 # Temporarily disable it if needed. Anyway htmlproofer failures are ignored.
@@ -95,13 +97,27 @@ fi
 
 # ---------------------------------------------------------------------------
 
-cd "${dest_folder}"
-
 if [ "${GITHUB_EVENT_NAME}" != "push" ]
 then
   echo "Probably a pull request, skip deploy."
   exit 0
 fi
+
+# ---------------------------------------------------------------------------
+
+run_verbose git clone --branch=xpack --depth=1 https://github.com/${GITHUB_DOXY_REPO}.git "${doxy_src_folder}"
+
+# Create the doxygen reference pages.
+export DOXYGEN_OUTPUT_DIRECTORY="${dest_folder}/reference"
+export DOXYGEN_STRIP_FROM_PATH="${doxy_src_folder}"
+
+cd "${doxy_src_folder}/doxygen"
+do_run doxygen config-travis.doxyfile
+do_run ls -l "${DOXYGEN_OUTPUT_DIRECTORY}"
+
+# ---------------------------------------------------------------------------
+
+cd "${dest_folder}"
 
 is_dirty=`git status --porcelain`
 # Should detect new, modified, removed files.
@@ -110,6 +126,8 @@ then
   echo "No changes to the output on this push; skip deploy."
   exit 0
 fi
+
+# ---------------------------------------------------------------------------
 
 # run_verbose git diff
 

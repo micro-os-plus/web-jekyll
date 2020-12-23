@@ -17,6 +17,7 @@ jobs:
       GIT_COMMIT_USER_EMAIL: "ilg@livius.net"
       GIT_COMMIT_USER_NAME: "Jekyll site CI"
       NOKOGIRI_USE_SYSTEM_LIBRARIES: true
+      GITHUB_DOXY_REPO: "micro-os-plus/micro-os-plus-iii"
 
     steps:
     - uses: actions/checkout@v2
@@ -39,6 +40,16 @@ jobs:
         bundle install --jobs 4 --retry 3
         ls -l vendor/bundle
         bundle exec htmlproofer --version
+    - name: Doxygen install
+      run: |
+        # sudo apt-get --yes --quiet --target-release trusty-backports install libclang1-3.8
+        # 1.8.13-10
+        sudo apt-get install --yes doxygen
+        # mkdir -p ${HOME}/downloads
+        # doxygen_deb=doxygen_1.8.11-3_amd64.deb
+        # curl -L --silent https://launchpad.net/ubuntu/+archive/primary/+files/${doxygen_deb} -o ${HOME}/downloads/${doxygen_deb}
+        # sudo dpkg -i ${HOME}/downloads/${doxygen_deb}
+        doxygen --version
     - name: Show environment
       run: |
         pwd
