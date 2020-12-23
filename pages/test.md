@@ -21,6 +21,10 @@ Text _italic_ text.
 
 Text `code` text.
 
+Text ~~strikethrough~~ text.
+
+## Lists
+
 A list:
 
 * one
@@ -55,7 +59,7 @@ More text.
     Code line 3
     Code line 4
 
-## Header 2
+## Images
 
 Again.
 
