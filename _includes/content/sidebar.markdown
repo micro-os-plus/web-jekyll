@@ -36,6 +36,7 @@
 * [Overview]({{ site.baseurl }}/develop/)
 * [Change log]({{ site.baseurl }}/reference/cmsis-plus/md_doxygen_pages_change-log.html)
 * [C++ coding style]({{ site.baseurl }}/develop/coding-style/)
+* [Naming conventions]({{ site.baseurl }}/develop/naming-conventions/)
 * [Links & references]({{ site.baseurl }}/develop/references/)
 
 #### Support
