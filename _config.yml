@@ -87,7 +87,7 @@ plugins:
 github-username:  ilg-ul
 github-project-name: micro-os-plus/micro-os-plus-iii
 github-project-url: http://github.com/micro-os-plus/micro-os-plus-iii
-github-this-project-url: https://github.com/micro-os-plus/micro-os-plus.github.io-source
+github-this-project-url: https://github.com/micro-os-plus/web-jekyll
 github-this-project-branch: master
 sourceforge-project-url: http://sourceforge.net/projects/micro-os-plus
 
