@@ -1,0 +1,51 @@
+name: Jekyll site CI
+
+on:
+  push:
+    branches: [ master, develop ]
+  pull_request:
+    branches: [ master, develop ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-18.04
+
+    env:
+      GITHUB_DEST_REPO: "micro-os-plus/micro-os-plus.github.io"
+      GITHUB_PREVIEW_REPO: "micro-os-plus/web-preview"
+      GIT_COMMIT_USER_EMAIL: "ilg@livius.net"
+      GIT_COMMIT_USER_NAME: "Jekyll site CI"
+      NOKOGIRI_USE_SYSTEM_LIBRARIES: true
+
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-ruby@v1
+      with:
+        # Version range or exact version of a Ruby version to use, using semvers version range syntax.
+        # https://www.ruby-lang.org/en/downloads/releases/
+        ruby-version: '2.6' 
+    - uses: actions/cache@v2
+      with:
+        path: vendor/bundle
+        key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-gems-
+    - name: Bundle install
+      run: |
+        sudo apt-get install -y build-essential patch ruby-dev zlib1g-dev liblzma-dev libxslt-dev pkg-config
+        gem install bundler:2.0.1
+        bundle config path vendor/bundle
+        bundle install --jobs 4 --retry 3
+        ls -l vendor/bundle
+        bundle exec htmlproofer --version
+    - name: Show environment
+      run: |
+        pwd
+        env | sort
+    - name: Run script to build site
+      env: 
+        GITHUB_TOKEN: ${{ secrets.ILG_TOKEN }}
+      run: bash scripts/ga-jekyll.sh
+
+
