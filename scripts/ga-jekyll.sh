@@ -108,7 +108,7 @@ fi
 run_verbose git clone --branch=xpack --depth=1 https://github.com/${GITHUB_DOXY_REPO}.git "${doxy_src_folder}"
 
 # Create the doxygen reference pages.
-export DOXYGEN_OUTPUT_DIRECTORY="${dest_folder}/reference"
+export DOXYGEN_OUTPUT_DIRECTORY="${site_folder}/reference"
 export DOXYGEN_STRIP_FROM_PATH="${doxy_src_folder}"
 
 cd "${doxy_src_folder}/doxygen"
