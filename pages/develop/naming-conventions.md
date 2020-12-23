@@ -212,11 +212,11 @@ In this case the naming convention is again simplified, according to the initial
 
 #### ~~get~~
 
-Accesses data immediately (i.e., shorthand getter of internal data). Generally to be avoided, use accessors instead.
+Accesses data immediately (i.e., shorthand getter of internal data). Generally to be avoided; instead, use accessors (see below).
 
 #### ~~set~~
 
-Declaratively sets a variable or a member to a value. Generally to be avoided, use mutators instead.
+Declaratively sets a variable or a member to a value. Generally to be avoided; instead, use mutators (see below).
 
 #### reset
 
@@ -244,7 +244,7 @@ Handles an action. Often used when naming a callback method.
 
 #### do
 
-Implement a private action, usually paired with public similar name.
+Implement a private action, usually paired with a public similar name.
 
 ### Accessors/mutators
 
