@@ -32,7 +32,7 @@ jobs:
         key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
         restore-keys: |
           ${{ runner.os }}-gems-
-    - name: Bundle install
+    - name: Install bundler
       run: |
         sudo apt-get install -y build-essential patch ruby-dev zlib1g-dev liblzma-dev libxslt-dev pkg-config
         gem install bundler:2.0.1
@@ -40,7 +40,7 @@ jobs:
         bundle install --jobs 4 --retry 3
         ls -l vendor/bundle
         bundle exec htmlproofer --version
-    - name: Doxygen install
+    - name: Install doxygen
       run: |
         # sudo apt-get --yes --quiet --target-release trusty-backports install libclang1-3.8
         # 1.8.13-10

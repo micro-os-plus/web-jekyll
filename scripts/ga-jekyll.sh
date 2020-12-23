@@ -112,8 +112,8 @@ export DOXYGEN_OUTPUT_DIRECTORY="${dest_folder}/reference"
 export DOXYGEN_STRIP_FROM_PATH="${doxy_src_folder}"
 
 cd "${doxy_src_folder}/doxygen"
-do_run doxygen config-travis.doxyfile
-do_run ls -l "${DOXYGEN_OUTPUT_DIRECTORY}"
+run_verbose doxygen config-travis.doxyfile
+run_verbose ls -l "${DOXYGEN_OUTPUT_DIRECTORY}"
 
 # ---------------------------------------------------------------------------
 
