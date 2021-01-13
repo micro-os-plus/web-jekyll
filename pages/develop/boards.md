@@ -15,21 +15,33 @@ The available test boards are:
 
 Discovery boards:
 
-- [STM32F4-DISCOVERY](http://www.st.com/content/st_com/en/products/evaluation-tools/product-evaluation-tools/mcu-eval-tools/stm32-mcu-eval-tools/stm32-mcu-discovery-kits/stm32f4discovery.html) (M4, STM32F407VGT6)
+- [STM32F4-DISCOVERY](http://www.st.com/content/st_com/en/products/evaluation-tools/product-evaluation-tools/mcu-eval-tools/stm32-mcu-eval-tools/stm32-mcu-discovery-kits/stm32f4discovery.html) (M4, STM32F407VGT6, 1MB, 192K)
   - [STM32F4DIS-BB](http://www.st.com/en/evaluation-tools/stm32f4dis-ext.html) STM32F4DIS-BB Base Board for STM32F4DISCOVERY (Ethernet)
-- [32F429IDISCOVERY](http://www.st.com/content/st_com/en/products/evaluation-tools/product-evaluation-tools/mcu-eval-tools/stm32-mcu-eval-tools/stm32-mcu-discovery-kits/32f429idiscovery.html) (M4, STM32F429ZIT6)
-- [STM32F3DISCOVERY](http://www.st.com/en/evaluation-tools/stm32f3discovery.html) (M4, STM32F303VCT6)
-- [STM32VLDISCOVERY](http://www.st.com/content/st_com/en/products/evaluation-tools/product-evaluation-tools/mcu-eval-tools/stm32-mcu-eval-tools/stm32-mcu-discovery-kits/stm32vldiscovery.html) (M3, STM32F100RBT6B)
+- [32F429IDISCOVERY](http://www.st.com/content/st_com/en/products/evaluation-tools/product-evaluation-tools/mcu-eval-tools/stm32-mcu-eval-tools/stm32-mcu-discovery-kits/32f429idiscovery.html) (M4, STM32F429ZIT6, 2MB, 256KB)
+- [STM32F3DISCOVERY](http://www.st.com/en/evaluation-tools/stm32f3discovery.html) (M4, STM32F303VCT6, 256KB, 48KB)
+- [STM32VLDISCOVERY](http://www.st.com/content/st_com/en/products/evaluation-tools/product-evaluation-tools/mcu-eval-tools/stm32-mcu-eval-tools/stm32-mcu-discovery-kits/stm32vldiscovery.html) (M3, STM32F100RBT6B, 128KB, 8KB)
 - [STM32F0DISCOVERY](http://www.st.com/content/st_com/en/products/evaluation-tools/product-evaluation-tools/mcu-eval-tools/stm32-mcu-eval-tools/stm32-mcu-discovery-kits/stm32f0discovery.html) (M0, [STM32F051R8T6](http://www.st.com/content/st_com/en/products/microcontrollers/stm32-32-bit-arm-cortex-mcus/stm32f0-series/stm32f0x1/stm32f051r8.html), 64KB, 8KB)
 
 Nucleo boards:
 
-- [NUCLEO-F103RB](http://www.st.com/content/st_com/en/products/evaluation-tools/product-evaluation-tools/mcu-eval-tools/stm32-mcu-eval-tools/stm32-mcu-nucleo/nucleo-f103rb.html) (M3, STM32F103RBT6)
-- [NUCLEO-L152RE](http://www.st.com/content/st_com/en/products/evaluation-tools/product-evaluation-tools/mcu-eval-tools/stm32-mcu-eval-tools/stm32-mcu-nucleo/nucleo-l152re.html) (M3, STM32L152RET6)
-- [NUCLEO-F334R8](http://www.st.com/content/st_com/en/products/evaluation-tools/product-evaluation-tools/mcu-eval-tools/stm32-mcu-eval-tools/stm32-mcu-nucleo/nucleo-f334r8.html) (M4, STM32F334R8T6)
-- [NUCLEO-F411RE](http://www.st.com/content/st_com/en/products/evaluation-tools/product-evaluation-tools/mcu-eval-tools/stm32-mcu-eval-tools/stm32-mcu-nucleo/nucleo-f411re.html) (M4, STM32F411RET6)
+- [NUCLEO-F103RB](http://www.st.com/content/st_com/en/products/evaluation-tools/product-evaluation-tools/mcu-eval-tools/stm32-mcu-eval-tools/stm32-mcu-nucleo/nucleo-f103rb.html) (M3, STM32F103RBT6, 128KB, 20KB)
+- [NUCLEO-L152RE](http://www.st.com/content/st_com/en/products/evaluation-tools/product-evaluation-tools/mcu-eval-tools/stm32-mcu-eval-tools/stm32-mcu-nucleo/nucleo-l152re.html) (M3, STM32L152RET6, 512KB, 80KB)
+- [NUCLEO-F334R8](http://www.st.com/content/st_com/en/products/evaluation-tools/product-evaluation-tools/mcu-eval-tools/stm32-mcu-eval-tools/stm32-mcu-nucleo/nucleo-f334r8.html) (M4, STM32F334R8T6, 64KB, 8KB)
+- [NUCLEO-F411RE](http://www.st.com/content/st_com/en/products/evaluation-tools/product-evaluation-tools/mcu-eval-tools/stm32-mcu-eval-tools/stm32-mcu-nucleo/nucleo-f411re.html) (M4, STM32F411RET6, 512KB, 128KB)
+- [NUCLEO-L073RZ](http://www.st.com/content/st_com/en/products/evaluation-tools/product-evaluation-tools/mcu-eval-tools/stm32-mcu-eval-tools/stm32-mcu-nucleo/nucleo-l073rz.html) (**M0+**, STM32L073RZ, 192KB, 20KB)
 
-- [NUCLEO-L073RZ](http://www.st.com/content/st_com/en/products/evaluation-tools/product-evaluation-tools/mcu-eval-tools/stm32-mcu-eval-tools/stm32-mcu-nucleo/nucleo-l073rz.html) (M0+, STM32L073RZ, 192KB, 20KB)
+Wish list:
+
+- [NUCLEO-F091RC](https://www.st.com/content/st_com/en/products/evaluation-tools/product-evaluation-tools/mcu-mpu-eval-tools/stm32-mcu-mpu-eval-tools/stm32-nucleo-boards/nucleo-f091rc.html) (M0+, STM32F091RC, 256KB, 32KB) $10
+- [NUCLEO-F767ZI](https://www.st.com/en/evaluation-tools/nucleo-f767zi.html) (M7, 2MB, 512KB, Ethernet) $23
+
+[Other](https://www.st.com/en/evaluation-tools/stm32-mcu-mpu-eval-tools.html):
+
+- [32F769IDISCOVERY](https://www.st.com/en/evaluation-tools/32f769idiscovery.html) (M7, STM32F769NIH6, 2MB, 512KB, 512-Mbit Quad-SPI Flash memory, 128-Mbit SDRAM, Ethernet) $80
+- [32F746GDISCOVERY](https://www.st.com/en/evaluation-tools/32f746gdiscovery.html) (M7, STM32F746NG, 1MB, 340KB, 128Mb QSPI flash, 64Mbit SDRAM, Ethernet) $54
+- [NUCLEO-G0B1RB](https://www.st.com/content/st_com/en/products/evaluation-tools/product-evaluation-tools/mcu-mpu-eval-tools/stm32-mcu-mpu-eval-tools/stm32-nucleo-boards/nucleo-g071rb.html) (M0+, STM32G071RB, 128KB, 32(36)KB)
+- [NUCLEO-L476RG](https://www.st.com/content/st_com/en/products/evaluation-tools/product-evaluation-tools/mcu-mpu-eval-tools/stm32-mcu-mpu-eval-tools/stm32-nucleo-boards/nucleo-l476rg.html) (M4, STM32L476RG, 1MB, 128KB)
+- [NUCLEO-F756ZG](https://www.st.com/content/st_com/en/products/evaluation-tools/product-evaluation-tools/mcu-mpu-eval-tools/stm32-mcu-mpu-eval-tools/stm32-nucleo-boards/nucleo-f756zg.html) (M7, STM32F756ZG, 1MB, 340KB, Ethernet) $23
 
 Olimex boards:
 
