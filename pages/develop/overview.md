@@ -9,6 +9,19 @@ date: 2016-03-09 12:04:00 +0300
 
 ---
 
+## Standards
+
+µOS++ source should comply with **C++ 17** and **C 11**
+
+- GCC: `-std=c++-17` or `-std=c11`
+- clang: `-std=c++-17` or `-std=c11`
+
+It should be possible to compile it with **GCC 8** or newer, or with
+**LLVM clang 7** or newer.
+
+- [GCC C++ status](https://gcc.gnu.org/projects/cxx-status.html)
+- [clang C++ status](https://clang.llvm.org/cxx_status.html)
+
 ## Coding styles
 
 > ... the likelihood a program will work is significantly enhanced by our ability to read it, which also increases the likelihood that it actually works as intended. It is also the nature of software to be extensively modified over its productive life. If we can read and understand it, then we can hope to modify and improve it. (Douglas Crockford)
@@ -24,6 +37,8 @@ date: 2016-03-09 12:04:00 +0300
 - [Predefined compiler macros]({{ site.baseurl }}/develop/predefined-macros/)
 - [Modular projects]({{ site.baseurl }}/develop/modular-projects/)
 - [Web preview](https://micro-os-plus.github.io/web-preview/)
+
+
 
 ## Procedures
 
