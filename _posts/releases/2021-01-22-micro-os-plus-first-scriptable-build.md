@@ -13,9 +13,12 @@ categories:
 
 ---
 
-In preparation for the future 7.x release, a major milestone was
-reached: the modularised µOS++ was, for the first time, fully built
-without Eclipse.
+In preparation for the future 7.x release, **a major milestone** was
+reached: **the modularised µOS++ was, for the first time, fully built
+in a terminal**, without Eclipse.
+
+Scriptable builds open the way for adding unit tests to each package,
+which will help preserve the robustness of the project.
 
 The preliminary version uses a simplified CMake configuration, that
 performs monolithic builds for all demo platforms:
@@ -27,3 +30,8 @@ performs monolithic builds for all demo platforms:
 
 The CMake scripts will be further refined; support for meson is also
 planned.
+
+The test project is `blinky-rtos`, part of `xpack-study-projects`,
+available from GitHub:
+
+- https://github.com/micro-os-plus/xpack-study-projects
