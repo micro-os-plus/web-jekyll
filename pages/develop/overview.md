@@ -38,11 +38,27 @@ It should be possible to compile it with **GCC 8** or newer, or with
 - [Modular projects]({{ site.baseurl }}/develop/modular-projects/)
 - [Web preview](https://micro-os-plus.github.io/web-preview/)
 
-
+- [Modules the beginner's guide - Daniela Engert - Meeting C++ 2019](https://www.youtube.com/watch?v=Kqo-jIq4V3I)
 
 ## Procedures
 
 - [How to release]({{ site.baseurl }}/develop/how-to-release/)
+
+## CMake resources
+
+- [CMake 3.18](https://cmake.org/cmake/help/v3.18/)
+- [An Introduction to Modern CMake](https://cliutils.gitlab.io/modern-cmake/)
+- [Effective Modern CMake](https://gist.github.com/mbinna/c61dbb39bca0e4fb7d1f73b0d66a4fd1)
+- [Craig Scott - Professional CMake: A Practical Guide](https://crascit.com/professional-cmake/)
+
+YouTube
+
+- [C++Now 2017: Daniel Pfeifer “Effective CMake"](https://www.youtube.com/watch?v=bsXLMQ6WgIk)
+- [CppCon 2017: Mathieu Ropert “Using Modern CMake Patterns to Enforce a Good Modular Design”](https://www.youtube.com/watch?v=eC9-iRN2b04)
+- [CppCon 2018: Mateusz Pusz “Git, CMake, Conan - How to ship and reuse our C++ projects”](https://www.youtube.com/watch?v=S4QSKLXdTtA)
+- [Deep CMake for Library Authors - Craig Scott - CppCon 2019](https://www.youtube.com/watch?v=m0DwB4OvDXk)
+- [More Modern CMake - Deniz Bahadir - Meeting C++ 2018](https://www.youtube.com/watch?v=y7ndUhdQuU8)
+- [Oh No! More Modern CMake - Deniz Bahadir - Meeting C++ 2019](https://www.youtube.com/watch?v=y9kSr5enrSk)
 
 ## Links & References
 
