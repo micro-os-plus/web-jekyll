@@ -16,7 +16,18 @@ If some parts of the code are platform dependent, test the following preprocesso
 ```c
 #if defined(__APPLE__)
 #if defined(__linux__)
-#if defined(__x86_64__)
+#if defined(__unix__)
+#if defined(WIN32)
+#if defined(__MINGW32__)
+#if defined(__MINGW64__)
+```
+
+To check if not running native on a desktop machine:
+
+```c
+#if (!(defined(__APPLE__) || defined(__linux__) || defined(__unix__))) \
+    || defined(__DOXYGEN__)
+
 ```
 
 To check the compiler:
