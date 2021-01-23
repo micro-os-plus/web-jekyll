@@ -40,6 +40,8 @@ It should be possible to compile it with **GCC 8** or newer, or with
 
 - [Modules the beginner's guide - Daniela Engert - Meeting C++ 2019](https://www.youtube.com/watch?v=Kqo-jIq4V3I)
 
+- [STM32CubeMX]({{ site.baseurl }}/develop/stm32cubemx/)
+
 ## Procedures
 
 - [How to release]({{ site.baseurl }}/develop/how-to-release/)
