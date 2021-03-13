@@ -472,7 +472,7 @@ These are custom definitions, made to increase code readability and maintainabil
 
 ```c++
 typedef uint8_t thread_priority_t;
-```c++
+```
 
 If the new type can be an alias, that does not introduce a new type definition, the C++11 syntax is:
 
