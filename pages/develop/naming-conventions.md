@@ -544,3 +544,7 @@ int length_millimetres;
 ```
 
 If possible, use the full unit names.
+
+## Links
+
+- [kettanaito Naming Cheatsheet](https://github.com/kettanaito/naming-cheatsheet)
