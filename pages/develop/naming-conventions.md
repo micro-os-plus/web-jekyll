@@ -9,9 +9,15 @@ date: 2014-02-22 16:02:04 +0000
 
 ---
 
-## Underscore separated lower case names
+## Snake case
 
-In previous versions, µOS++ used the [CamelCase](http://en.wikipedia.org/wiki/CamelCase) naming convention, but, after a long consideration, the naming was brought back to what the ISO standard libraries use, and to what existing coding styles (like MISRA, JSF) recommend, which is **underscore separated lower case names**.
+In previous versions, µOS++ used the
+[CamelCase](http://en.wikipedia.org/wiki/CamelCase) naming convention,
+but, after a long consideration, the naming was brought back to what the
+ISO standard libraries use, and to what existing coding styles
+(like MISRA, JSF) recommend, which is
+**underscore separated lower case names** (or
+[snake case](https://en.wikipedia.org/wiki/Snake_case)).
 
 ## Full words vs. short words
 
@@ -22,6 +28,15 @@ int initialise(); // instead of init();
 int configure(); // instead of config();
 ...
 int delay_seconds; // instead of delay_sec;
+```
+
+## Favor Descriptive Over Concise
+
+Names should be self explanatory, such that they do not need comments to
+further explain what they do.
+
+```c++
+search_user_by_phone_number(phone); // instead of search_user()
 ```
 
 ## Avoid context duplication
@@ -47,15 +62,19 @@ int id;
 int ids[];
 ```
 
-Even better, arrays and collections can be suffixed with the type:
+When the same data is represented by multiple types, for example
+arrays and collections, the names should be suffixed with the type:
 
 ```c++
-thread_t* waiting_threads_array[];
-
-thread_t* waiting_threads_list;
-property_t* properties_map;
-char* known_client_ids_set;
+thread_t* properties_list;
+thread_t* properties_array[];
 ```
+
+It is still debatable whether the extra type should be suffixed to all
+names. Modern editors, with accurate indexers, are capable of showing
+the variable definition when hovering over the name, thus providing help
+in case it is not clear when the variable is an array or not. Plus that
+the presense of parenthesis is a clear sign of an array.
 
 ## Pairs of opposed actions or names
 
@@ -94,7 +113,7 @@ int start_acquisition(); // instead of begin_acquisition()
 int stop_acquisition(); // instead of end_acquisition()
 ```
 
-However, when the meaning is adjectival, for example adding determinants to a noun, the pair begin/end is preferred.
+However, when the meaning is adjectival, for example adding determinants to a noun, the pair **begin**/**end** is preferred.
 
 ```c++
 int list_begin; // instead of list_start
@@ -103,7 +122,7 @@ int list_end; // instead of list_stop
 
 ## Class names
 
-Class names are singular names or nominative constructs; they do not need to start with upper case letters.
+Class names are singular nouns or nominative constructs; they do not need to start with upper case letters.
 
 ```c++
 class logger;
