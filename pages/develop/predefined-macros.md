@@ -112,12 +112,12 @@ $ ./arm-none-eabi-gcc -mcpu=cortex-m0 -mthumb -E -dM - < /dev/null | egrep -i 't
 #define __ARM_PCS 1
 #define __ARM_SIZEOF_MINIMAL_ENUM 1
 #define __ARM_SIZEOF_WCHAR_T 4
-#define __GXX_ABI_VERSION 1009
+#define __GXX_ABI_VERSION 1014
 #define __SOFTFP__ 1
-#define __STDC_VERSION__ 201112L
+#define __STDC_VERSION__ 201710L
 #define __THUMBEL__ 1
 #define __THUMB_INTERWORK__ 1
-#define __VERSION__ "5.4.1 20160919 (release) [ARM/embedded-5-branch revision 240496]"
+#define __VERSION__ "10.3.1 20210824 (release)"
 #define __VFP_FP__ 1
 #define __arm__ 1
 #define __thumb__ 1
@@ -132,12 +132,12 @@ $ ./arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -E -dM - < /dev/null | egrep -
 #define __ARM_PCS 1
 #define __ARM_SIZEOF_MINIMAL_ENUM 1
 #define __ARM_SIZEOF_WCHAR_T 4
-#define __GXX_ABI_VERSION 1009
+#define __GXX_ABI_VERSION 1014
 #define __SOFTFP__ 1
-#define __STDC_VERSION__ 201112L
+#define __STDC_VERSION__ 201710L
 #define __THUMBEL__ 1
 #define __THUMB_INTERWORK__ 1
-#define __VERSION__ "5.4.1 20160919 (release) [ARM/embedded-5-branch revision 240496]"
+#define __VERSION__ "10.3.1 20210824 (release)"
 #define __VFP_FP__ 1
 #define __arm__ 1
 #define __thumb__ 1
@@ -157,6 +157,7 @@ $ ./arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -E -dM - < /dev/null | egrep -i 't
 #define __ARM_ASM_SYNTAX_UNIFIED__ 1
 #define __ARM_EABI__ 1
 #define __ARM_FEATURE_CLZ 1
+#define __ARM_FEATURE_COPROC 15
 #define __ARM_FEATURE_IDIV 1
 #define __ARM_FEATURE_LDREX 7
 #define __ARM_FEATURE_QBIT 1
@@ -165,12 +166,12 @@ $ ./arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -E -dM - < /dev/null | egrep -i 't
 #define __ARM_PCS 1
 #define __ARM_SIZEOF_MINIMAL_ENUM 1
 #define __ARM_SIZEOF_WCHAR_T 4
-#define __GXX_ABI_VERSION 1009
+#define __GXX_ABI_VERSION 1014
 #define __SOFTFP__ 1
-#define __STDC_VERSION__ 201112L
+#define __STDC_VERSION__ 201710L
 #define __THUMBEL__ 1
 #define __THUMB_INTERWORK__ 1
-#define __VERSION__ "5.4.1 20160919 (release) [ARM/embedded-5-branch revision 240496]"
+#define __VERSION__ "10.3.1 20210824 (release)"
 #define __VFP_FP__ 1
 #define __arm__ 1
 #define __thumb2__ 1
@@ -180,7 +181,7 @@ $ ./arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -E -dM - < /dev/null | egrep -i 't
 ### ARM Cortex-M4
 
 ```console
-$ ./arm-none-eabi-gcc -mcpu=cortex-m7 -mthumb -mfloat-abi=soft -E -dM - < /dev/null | egrep -i 'thumb|arm|cortex|fp[^-]|version|abi' | sort
+$ ./arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=soft -E -dM - < /dev/null | egrep -i 'thumb|arm|cortex|fp[^-]|version|abi' | sort
 #define __ARMEL__ 1
 #define __ARM_32BIT_STATE 1
 #define __ARM_ARCH 7
@@ -191,6 +192,7 @@ $ ./arm-none-eabi-gcc -mcpu=cortex-m7 -mthumb -mfloat-abi=soft -E -dM - < /dev/n
 #define __ARM_ASM_SYNTAX_UNIFIED__ 1
 #define __ARM_EABI__ 1
 #define __ARM_FEATURE_CLZ 1
+#define __ARM_FEATURE_COPROC 15
 #define __ARM_FEATURE_DSP 1
 #define __ARM_FEATURE_IDIV 1
 #define __ARM_FEATURE_LDREX 7
@@ -201,18 +203,18 @@ $ ./arm-none-eabi-gcc -mcpu=cortex-m7 -mthumb -mfloat-abi=soft -E -dM - < /dev/n
 #define __ARM_PCS 1
 #define __ARM_SIZEOF_MINIMAL_ENUM 1
 #define __ARM_SIZEOF_WCHAR_T 4
-#define __GXX_ABI_VERSION 1009
+#define __GXX_ABI_VERSION 1014
 #define __SOFTFP__ 1
-#define __STDC_VERSION__ 201112L
+#define __STDC_VERSION__ 201710L
 #define __THUMBEL__ 1
 #define __THUMB_INTERWORK__ 1
-#define __VERSION__ "5.4.1 20160919 (release) [ARM/embedded-5-branch revision 240496]"
+#define __VERSION__ "10.3.1 20210824 (release)"
 #define __VFP_FP__ 1
 #define __arm__ 1
 #define __thumb2__ 1
 #define __thumb__ 1
 
-$ ./arm-none-eabi-gcc -mcpu=cortex-m7 -mthumb -mfloat-abi=softfp -E -dM - < /dev/null | egrep -i 'thumb|arm|cortex|fp[^-]|version|abi' | sort
+$ ./arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=softfp -E -dM - < /dev/null | egrep -i 'thumb|arm|cortex|fp[^-]|version|abi' | sort
 #define __ARMEL__ 1
 #define __ARM_32BIT_STATE 1
 #define __ARM_ARCH 7
@@ -223,28 +225,33 @@ $ ./arm-none-eabi-gcc -mcpu=cortex-m7 -mthumb -mfloat-abi=softfp -E -dM - < /dev
 #define __ARM_ASM_SYNTAX_UNIFIED__ 1
 #define __ARM_EABI__ 1
 #define __ARM_FEATURE_CLZ 1
+#define __ARM_FEATURE_COPROC 15
 #define __ARM_FEATURE_DSP 1
+#define __ARM_FEATURE_FMA 1
 #define __ARM_FEATURE_IDIV 1
 #define __ARM_FEATURE_LDREX 7
 #define __ARM_FEATURE_QBIT 1
 #define __ARM_FEATURE_SAT 1
 #define __ARM_FEATURE_SIMD32 1
 #define __ARM_FEATURE_UNALIGNED 1
-#define __ARM_FP 12
+#define __ARM_FP 4
 #define __ARM_PCS 1
 #define __ARM_SIZEOF_MINIMAL_ENUM 1
 #define __ARM_SIZEOF_WCHAR_T 4
-#define __GXX_ABI_VERSION 1009
-#define __STDC_VERSION__ 201112L
+#define __FP_FAST_FMAF 1
+#define __FP_FAST_FMAF32 1
+#define __GXX_ABI_VERSION 1014
+#define __STDC_VERSION__ 201710L
 #define __THUMBEL__ 1
 #define __THUMB_INTERWORK__ 1
-#define __VERSION__ "5.4.1 20160919 (release) [ARM/embedded-5-branch revision 240496]"
+#define __VERSION__ "10.3.1 20210824 (release)"
 #define __VFP_FP__ 1
 #define __arm__ 1
 #define __thumb2__ 1
 #define __thumb__ 1
 
-$ ./arm-none-eabi-gcc -mcpu=cortex-m7 -mthumb -mfloat-abi=hard -E -dM - < /dev/null | egrep -i 'thumb|arm|cortex|fp[^-]|version|abi' | sort
+
+$ ./arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -E -dM - < /dev/null | egrep -i 'thumb|arm|cortex|fp[^-]|version|abi' | sort
 #define __ARMEL__ 1
 #define __ARM_32BIT_STATE 1
 #define __ARM_ARCH 7
@@ -255,22 +262,26 @@ $ ./arm-none-eabi-gcc -mcpu=cortex-m7 -mthumb -mfloat-abi=hard -E -dM - < /dev/n
 #define __ARM_ASM_SYNTAX_UNIFIED__ 1
 #define __ARM_EABI__ 1
 #define __ARM_FEATURE_CLZ 1
+#define __ARM_FEATURE_COPROC 15
 #define __ARM_FEATURE_DSP 1
+#define __ARM_FEATURE_FMA 1
 #define __ARM_FEATURE_IDIV 1
 #define __ARM_FEATURE_LDREX 7
 #define __ARM_FEATURE_QBIT 1
 #define __ARM_FEATURE_SAT 1
 #define __ARM_FEATURE_SIMD32 1
 #define __ARM_FEATURE_UNALIGNED 1
-#define __ARM_FP 12
+#define __ARM_FP 4
 #define __ARM_PCS_VFP 1
 #define __ARM_SIZEOF_MINIMAL_ENUM 1
 #define __ARM_SIZEOF_WCHAR_T 4
-#define __GXX_ABI_VERSION 1009
-#define __STDC_VERSION__ 201112L
+#define __FP_FAST_FMAF 1
+#define __FP_FAST_FMAF32 1
+#define __GXX_ABI_VERSION 1014
+#define __STDC_VERSION__ 201710L
 #define __THUMBEL__ 1
 #define __THUMB_INTERWORK__ 1
-#define __VERSION__ "5.4.1 20160919 (release) [ARM/embedded-5-branch revision 240496]"
+#define __VERSION__ "10.3.1 20210824 (release)"
 #define __VFP_FP__ 1
 #define __arm__ 1
 #define __thumb2__ 1
@@ -291,6 +302,7 @@ $ ./arm-none-eabi-gcc -mcpu=cortex-m7 -mthumb -mfloat-abi=soft -E -dM - < /dev/n
 #define __ARM_ASM_SYNTAX_UNIFIED__ 1
 #define __ARM_EABI__ 1
 #define __ARM_FEATURE_CLZ 1
+#define __ARM_FEATURE_COPROC 15
 #define __ARM_FEATURE_DSP 1
 #define __ARM_FEATURE_IDIV 1
 #define __ARM_FEATURE_LDREX 7
@@ -301,12 +313,12 @@ $ ./arm-none-eabi-gcc -mcpu=cortex-m7 -mthumb -mfloat-abi=soft -E -dM - < /dev/n
 #define __ARM_PCS 1
 #define __ARM_SIZEOF_MINIMAL_ENUM 1
 #define __ARM_SIZEOF_WCHAR_T 4
-#define __GXX_ABI_VERSION 1009
+#define __GXX_ABI_VERSION 1014
 #define __SOFTFP__ 1
-#define __STDC_VERSION__ 201112L
+#define __STDC_VERSION__ 201710L
 #define __THUMBEL__ 1
 #define __THUMB_INTERWORK__ 1
-#define __VERSION__ "5.4.1 20160919 (release) [ARM/embedded-5-branch revision 240496]"
+#define __VERSION__ "10.3.1 20210824 (release)"
 #define __VFP_FP__ 1
 #define __arm__ 1
 #define __thumb2__ 1
@@ -323,22 +335,30 @@ $ ./arm-none-eabi-gcc -mcpu=cortex-m7 -mthumb -mfloat-abi=softfp -E -dM - < /dev
 #define __ARM_ASM_SYNTAX_UNIFIED__ 1
 #define __ARM_EABI__ 1
 #define __ARM_FEATURE_CLZ 1
+#define __ARM_FEATURE_COPROC 15
 #define __ARM_FEATURE_DSP 1
+#define __ARM_FEATURE_FMA 1
 #define __ARM_FEATURE_IDIV 1
 #define __ARM_FEATURE_LDREX 7
 #define __ARM_FEATURE_QBIT 1
 #define __ARM_FEATURE_SAT 1
 #define __ARM_FEATURE_SIMD32 1
 #define __ARM_FEATURE_UNALIGNED 1
-#define __ARM_FP 12
+#define __ARM_FP 14
 #define __ARM_PCS 1
 #define __ARM_SIZEOF_MINIMAL_ENUM 1
 #define __ARM_SIZEOF_WCHAR_T 4
-#define __GXX_ABI_VERSION 1009
-#define __STDC_VERSION__ 201112L
+#define __FP_FAST_FMA 1
+#define __FP_FAST_FMAF 1
+#define __FP_FAST_FMAF32 1
+#define __FP_FAST_FMAF32x 1
+#define __FP_FAST_FMAF64 1
+#define __FP_FAST_FMAL 1
+#define __GXX_ABI_VERSION 1014
+#define __STDC_VERSION__ 201710L
 #define __THUMBEL__ 1
 #define __THUMB_INTERWORK__ 1
-#define __VERSION__ "5.4.1 20160919 (release) [ARM/embedded-5-branch revision 240496]"
+#define __VERSION__ "10.3.1 20210824 (release)"
 #define __VFP_FP__ 1
 #define __arm__ 1
 #define __thumb2__ 1
@@ -355,22 +375,30 @@ $ ./arm-none-eabi-gcc -mcpu=cortex-m7 -mthumb -mfloat-abi=hard -E -dM - < /dev/n
 #define __ARM_ASM_SYNTAX_UNIFIED__ 1
 #define __ARM_EABI__ 1
 #define __ARM_FEATURE_CLZ 1
+#define __ARM_FEATURE_COPROC 15
 #define __ARM_FEATURE_DSP 1
+#define __ARM_FEATURE_FMA 1
 #define __ARM_FEATURE_IDIV 1
 #define __ARM_FEATURE_LDREX 7
 #define __ARM_FEATURE_QBIT 1
 #define __ARM_FEATURE_SAT 1
 #define __ARM_FEATURE_SIMD32 1
 #define __ARM_FEATURE_UNALIGNED 1
-#define __ARM_FP 12
+#define __ARM_FP 14
 #define __ARM_PCS_VFP 1
 #define __ARM_SIZEOF_MINIMAL_ENUM 1
 #define __ARM_SIZEOF_WCHAR_T 4
-#define __GXX_ABI_VERSION 1009
-#define __STDC_VERSION__ 201112L
+#define __FP_FAST_FMA 1
+#define __FP_FAST_FMAF 1
+#define __FP_FAST_FMAF32 1
+#define __FP_FAST_FMAF32x 1
+#define __FP_FAST_FMAF64 1
+#define __FP_FAST_FMAL 1
+#define __GXX_ABI_VERSION 1014
+#define __STDC_VERSION__ 201710L
 #define __THUMBEL__ 1
 #define __THUMB_INTERWORK__ 1
-#define __VERSION__ "5.4.1 20160919 (release) [ARM/embedded-5-branch revision 240496]"
+#define __VERSION__ "10.3.1 20210824 (release)"
 #define __VFP_FP__ 1
 #define __arm__ 1
 #define __thumb2__ 1
@@ -382,7 +410,16 @@ $ ./arm-none-eabi-gcc -mcpu=cortex-m7 -mthumb -mfloat-abi=hard -E -dM - < /dev/n
 To check if hardware floating point is enabled (`-mfloat-abi=softfp` or `-mfloat-abi=hard`):
 
 ```c
-#define __ARM_FP 12
+#define __ARM_FP 4
+#define __ARM_FP 14
+```
+
+(4 for Cortex-M4, 14 for Cortex-M7)
+
+For `-mfloat-abi=hard`:
+
+```c
+#define __ARM_PCS_VFP 1
 ```
 
 ## Freestanding
@@ -753,7 +790,7 @@ ilg@ubu20:~$ gcc -E -dM - < /dev/null | sort
 #define __PTRDIFF_MAX__ 0x7fffffffffffffffL
 #define __PTRDIFF_TYPE__ long int
 #define __PTRDIFF_WIDTH__ 64
-#define __REGISTER_PREFIX__ 
+#define __REGISTER_PREFIX__
 #define __SCHAR_MAX__ 0x7f
 #define __SCHAR_WIDTH__ 8
 #define __SEG_FS 1
@@ -832,7 +869,7 @@ ilg@ubu20:~$ gcc -E -dM - < /dev/null | sort
 #define __unix 1
 #define __unix__ 1
 #define unix 1
-#define __USER_LABEL_PREFIX__ 
+#define __USER_LABEL_PREFIX__
 #define __VERSION__ "9.3.0"
 #define __WCHAR_MAX__ 0x7fffffff
 #define __WCHAR_MIN__ (-__WCHAR_MAX__ - 1)
@@ -844,7 +881,7 @@ ilg@ubu20:~$ gcc -E -dM - < /dev/null | sort
 #define __WINT_WIDTH__ 32
 #define __x86_64 1
 #define __x86_64__ 1
-ilg@ubu20:~$ 
+ilg@ubu20:~$
 ```
 
 ## Apple clang macros
@@ -955,12 +992,12 @@ ilg@wks ~ % gcc -E -dM - < /dev/null
 #define __GNUC_STDC_INLINE__ 1
 #define __GNUC__ 4
 #define __GXX_ABI_VERSION 1002
-#define __INT16_C_SUFFIX__ 
+#define __INT16_C_SUFFIX__
 #define __INT16_FMTd__ "hd"
 #define __INT16_FMTi__ "hi"
 #define __INT16_MAX__ 32767
 #define __INT16_TYPE__ short
-#define __INT32_C_SUFFIX__ 
+#define __INT32_C_SUFFIX__
 #define __INT32_FMTd__ "d"
 #define __INT32_FMTi__ "i"
 #define __INT32_MAX__ 2147483647
@@ -970,7 +1007,7 @@ ilg@wks ~ % gcc -E -dM - < /dev/null
 #define __INT64_FMTi__ "lli"
 #define __INT64_MAX__ 9223372036854775807LL
 #define __INT64_TYPE__ long long int
-#define __INT8_C_SUFFIX__ 
+#define __INT8_C_SUFFIX__
 #define __INT8_FMTd__ "hhd"
 #define __INT8_FMTi__ "hhi"
 #define __INT8_MAX__ 127
@@ -1058,7 +1095,7 @@ ilg@wks ~ % gcc -E -dM - < /dev/null
 #define __PTRDIFF_MAX__ 9223372036854775807L
 #define __PTRDIFF_TYPE__ long int
 #define __PTRDIFF_WIDTH__ 64
-#define __REGISTER_PREFIX__ 
+#define __REGISTER_PREFIX__
 #define __SCHAR_MAX__ 127
 #define __SEG_FS 1
 #define __SEG_GS 1
@@ -1099,7 +1136,7 @@ ilg@wks ~ % gcc -E -dM - < /dev/null
 #define __STDC_UTF_32__ 1
 #define __STDC_VERSION__ 201112L
 #define __STDC__ 1
-#define __UINT16_C_SUFFIX__ 
+#define __UINT16_C_SUFFIX__
 #define __UINT16_FMTX__ "hX"
 #define __UINT16_FMTo__ "ho"
 #define __UINT16_FMTu__ "hu"
@@ -1120,7 +1157,7 @@ ilg@wks ~ % gcc -E -dM - < /dev/null
 #define __UINT64_FMTx__ "llx"
 #define __UINT64_MAX__ 18446744073709551615ULL
 #define __UINT64_TYPE__ long long unsigned int
-#define __UINT8_C_SUFFIX__ 
+#define __UINT8_C_SUFFIX__
 #define __UINT8_FMTX__ "hhX"
 #define __UINT8_FMTo__ "hho"
 #define __UINT8_FMTu__ "hhu"
@@ -1217,9 +1254,9 @@ ilg@wks ~ % gcc -E -dM - < /dev/null
 #define __pic__ 2
 #define __seg_fs __attribute__((address_space(257)))
 #define __seg_gs __attribute__((address_space(256)))
-#define __strong 
+#define __strong
 #define __tune_core2__ 1
-#define __unsafe_unretained 
+#define __unsafe_unretained
 #define __weak __attribute__((objc_gc(weak)))
 #define __x86_64 1
 #define __x86_64__ 1
