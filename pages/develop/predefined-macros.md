@@ -440,6 +440,20 @@ To check if a C++ program is compiled with `-fexceptions`, use:
 #define __EXCEPTIONS 1
 ```
 
+## PIC
+
+To detect when position independent code is generated, check for:
+
+```c
+// -fpic
+#define __pic__ 1
+#define __PIC__ 1
+
+// -fPIC
+#define __pic__ 2
+#define __PIC__ 2
+```
+
 ## Other macros
 
 ```c
