@@ -47,7 +47,7 @@ A name should not duplicate the context in which it is defined. Always remove th
 class menu_item {
   // Bad.
   void handle_menu_item_click();
-  
+
   // Good.
   void handle_click();
 }
@@ -185,7 +185,7 @@ public:
 // Explicit instantiation
 template class pin<GPIOC1>;
 
-// Define a type alias. 
+// Define a type alias.
 using my_pin = class pin<GPIOC1>;
 ```
 
@@ -324,7 +324,7 @@ bool are_members_present();
 Describes whether the current context is capable of a certain positive action.
 
 ```c++
-bool does_return();  
+bool does_return();
 
 // Bad
 bool returns();
@@ -508,9 +508,9 @@ typedef uint32_t mode_t;
 
 enum class mode : mode_t
 {
-    input = 0, 
-    output = 1, 
-    alternate = 2, 
+    input = 0,
+    output = 1,
+    alternate = 2,
     analog = 3
 };
 
@@ -563,6 +563,39 @@ int length_millimetres;
 ```
 
 If possible, use the full unit names.
+
+## Configuration macros
+
+Applications using µOS++ can be configured during build time using several
+proprocessor definitions, grouped in a header file named
+<micro-os-plus/config.h>, included when `MICRO_OS_PLUS_INCLUDE_CONFIG_H` is
+defined on the compiler line.
+
+There are several kinds of definitions:
+
+- command line (`NDEBUG`, `MICRO_OS_PLUS_INCLUDE_CONFIG_H`)
+- generic (`MICRO_OS_PLUS_DEBUG`, `MICRO_OS_PLUS_TRACE`)
+- definitions without values (`MICRO_OS_PLUS_INCLUDE_<name>`,
+`MICRO_OS_PLUS_EXCLUDE_<name>`, `MICRO_OS_PLUS_TRACE_*`,
+`MICRO_OS_PLUS_<name>_*`, ); for these definitions only the
+presence should be tested; `INCLUDE`/`EXCLUDE` should surround large blocks
+of code definitions/declarations implementing various features;
+- definitions with values; are more flexible, since they can have different
+defaults, and are prefered to definitions without values, which, when not
+present, default to false; should be
+used in expressions of the given type; to avoid misunderstandings,
+parenthesis are recommended; action properties must start with a verb;
+  - boolean (`MICRO_OS_PLUS_BOOL_USE_<name>`, `MICRO_OS_PLUS_BOOL_HAS_*`
+  `MICRO_OS_PLUS_BOOL_<name>_<action>`, `MICRO_OS_PLUS_BOOL_<name>_<property>`);
+  `HAS` should be used for physical characteristics,
+  like hardware peripherals;
+  `USE` should surround optional code that calls a feature (assuming a
+  corresponding `INCLUDE` is also defined)
+  - integer (`MICRO_OS_PLUS_INTEGER_<name>_<property>`)
+  - string (`MICRO_OS_PLUS_STRING_<name>_<property>`);
+- definitions of types (`MICRO_OS_PLUS_TYPE_*`); the values are special
+and represent expressions that can be used as types to define variables or
+other types.
 
 ## Links
 
