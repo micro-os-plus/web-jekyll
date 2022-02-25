@@ -22,8 +22,10 @@ Therecommended compilers are **GCC 10** or newer, or
 - [GCC C++ status](https://gcc.gnu.org/projects/cxx-status.html)
 - [clang C++ status](https://clang.llvm.org/cxx_status.html)
 
-For a summary of the changes:
+For a summary of the modern C++ features:
 
+- <https://en.cppreference.com/w/cpp/20>
+- <https://en.cppreference.com/w/cpp/17>
 - <https://github.com/AnthonyCalandra/modern-cpp-features>
 
 ## Coding styles
