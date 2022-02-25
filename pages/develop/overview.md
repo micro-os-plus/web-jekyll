@@ -11,16 +11,20 @@ date: 2016-03-09 12:04:00 +0300
 
 ## Standards
 
-µOS++ source should comply with **C++ 17** and **C 11**
+µOS++ source should comply with **C++ 20** and **C 11**
 
-- GCC: `-std=c++-17` or `-std=c11`
-- clang: `-std=c++-17` or `-std=c11`
+- GCC: `-std=c++-20` or `-std=c11`
+- clang: `-std=c++-20` or `-std=c11`
 
-It should be possible to compile it with **GCC 8** or newer, or with
-**LLVM clang 7** or newer.
+Therecommended compilers are **GCC 10** or newer, or
+**LLVM clang 11** or newer.
 
 - [GCC C++ status](https://gcc.gnu.org/projects/cxx-status.html)
 - [clang C++ status](https://clang.llvm.org/cxx_status.html)
+
+For a summary of the changes:
+
+- <https://github.com/AnthonyCalandra/modern-cpp-features>
 
 ## Coding styles
 
