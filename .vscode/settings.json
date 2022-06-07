@@ -1,0 +1,28 @@
+{
+  "cSpell.ignoreWords": [
+    "AAPCS",
+    "AARCH",
+    "CMODEL",
+    "Freestanding",
+    "GNUC",
+    "LLONG",
+    "MAXMIN",
+    "PATCHLEVEL",
+    "POSIX",
+    "TRUEVAL",
+    "Wdisabled",
+    "Wexit",
+    "Wglobal",
+    "Wgnu",
+    "Wmissing",
+    "Wpadded",
+    "Wsign",
+    "__cplusplus",
+    "extern",
+    "fexceptions",
+    "ffreestanding",
+    "fhosted",
+    "ifdef",
+    "unistd"
+  ]
+}
