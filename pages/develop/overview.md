@@ -34,6 +34,7 @@ For a summary of the modern C++ features:
 
 - [C++ coding style]({{ site.baseurl }}/develop/coding-style/)
 - [C/C++ naming conventions]({{ site.baseurl }}/develop/naming-conventions/)
+- [µOS++ configuration variables]({{ site.baseurl }}/reference/cmsis-plus/group__cmsis-plus-app-config.html)
 - [Doxygen style]({{ site.baseurl }}/develop/doxygen-style-guide/)
 - [Jekyll style]({{ site.baseurl }}/develop/jekyll-style-guide/)
 - [Herb Sutter: C++ Coding Standards]({{ site.baseurl }}/develop/sutter-101/)
