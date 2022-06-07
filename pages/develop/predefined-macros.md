@@ -102,7 +102,7 @@ When compiling Cortex-M applications, GCC 5.4 provides the following built-in de
 ### ARM Cortex-M0/M0+
 
 ```console
-$ ./arm-none-eabi-gcc -mcpu=cortex-m0 -mthumb -E -dM - < /dev/null | egrep -i 'thumb|arm|cortex|fp[^-]|version|abi' | sort
+$ .../arm-none-eabi-gcc -mcpu=cortex-m0 -mthumb -E -dM - < /dev/null | egrep -i 'thumb|arm|cortex|fp[^-]|version|abi' | sort
 #define __ARMEL__ 1
 #define __ARM_ARCH 6
 #define __ARM_ARCH_6M__ 1
@@ -122,7 +122,7 @@ $ ./arm-none-eabi-gcc -mcpu=cortex-m0 -mthumb -E -dM - < /dev/null | egrep -i 't
 #define __arm__ 1
 #define __thumb__ 1
 
-$ ./arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -E -dM - < /dev/null | egrep -i 'thumb|arm|cortex|fp[^-]|version|abi' | sort
+$ .../arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -E -dM - < /dev/null | egrep -i 'thumb|arm|cortex|fp[^-]|version|abi' | sort
 #define __ARMEL__ 1
 #define __ARM_ARCH 6
 #define __ARM_ARCH_6M__ 1
@@ -146,7 +146,7 @@ $ ./arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -E -dM - < /dev/null | egrep -
 ### ARM Cortex-M3
 
 ```console
-$ ./arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -E -dM - < /dev/null | egrep -i 'thumb|arm|cortex|fp[^-]|version|abi' | sort
+$ .../arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -E -dM - < /dev/null | egrep -i 'thumb|arm|cortex|fp[^-]|version|abi' | sort
 #define __ARMEL__ 1
 #define __ARM_32BIT_STATE 1
 #define __ARM_ARCH 7
@@ -181,7 +181,7 @@ $ ./arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -E -dM - < /dev/null | egrep -i 't
 ### ARM Cortex-M4
 
 ```console
-$ ./arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=soft -E -dM - < /dev/null | egrep -i 'thumb|arm|cortex|fp[^-]|version|abi' | sort
+$ .../arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=soft -E -dM - < /dev/null | egrep -i 'thumb|arm|cortex|fp[^-]|version|abi' | sort
 #define __ARMEL__ 1
 #define __ARM_32BIT_STATE 1
 #define __ARM_ARCH 7
@@ -214,7 +214,7 @@ $ ./arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=soft -E -dM - < /dev/n
 #define __thumb2__ 1
 #define __thumb__ 1
 
-$ ./arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=softfp -E -dM - < /dev/null | egrep -i 'thumb|arm|cortex|fp[^-]|version|abi' | sort
+$ .../arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=softfp -E -dM - < /dev/null | egrep -i 'thumb|arm|cortex|fp[^-]|version|abi' | sort
 #define __ARMEL__ 1
 #define __ARM_32BIT_STATE 1
 #define __ARM_ARCH 7
@@ -251,7 +251,7 @@ $ ./arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=softfp -E -dM - < /dev
 #define __thumb__ 1
 
 
-$ ./arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -E -dM - < /dev/null | egrep -i 'thumb|arm|cortex|fp[^-]|version|abi' | sort
+$ .../arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -E -dM - < /dev/null | egrep -i 'thumb|arm|cortex|fp[^-]|version|abi' | sort
 #define __ARMEL__ 1
 #define __ARM_32BIT_STATE 1
 #define __ARM_ARCH 7
@@ -291,7 +291,7 @@ $ ./arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -E -dM - < /dev/n
 ### ARM Cortex-M7
 
 ```console
-$ ./arm-none-eabi-gcc -mcpu=cortex-m7 -mthumb -mfloat-abi=soft -E -dM - < /dev/null | egrep -i 'thumb|arm|cortex|fp[^-]|version|abi' | sort
+$ .../arm-none-eabi-gcc -mcpu=cortex-m7 -mthumb -mfloat-abi=soft -E -dM - < /dev/null | egrep -i 'thumb|arm|cortex|fp[^-]|version|abi' | sort
 #define __ARMEL__ 1
 #define __ARM_32BIT_STATE 1
 #define __ARM_ARCH 7
@@ -324,7 +324,7 @@ $ ./arm-none-eabi-gcc -mcpu=cortex-m7 -mthumb -mfloat-abi=soft -E -dM - < /dev/n
 #define __thumb2__ 1
 #define __thumb__ 1
 
-$ ./arm-none-eabi-gcc -mcpu=cortex-m7 -mthumb -mfloat-abi=softfp -E -dM - < /dev/null | egrep -i 'thumb|arm|cortex|fp[^-]|version|abi' | sort
+$ .../arm-none-eabi-gcc -mcpu=cortex-m7 -mthumb -mfloat-abi=softfp -E -dM - < /dev/null | egrep -i 'thumb|arm|cortex|fp[^-]|version|abi' | sort
 #define __ARMEL__ 1
 #define __ARM_32BIT_STATE 1
 #define __ARM_ARCH 7
@@ -364,7 +364,7 @@ $ ./arm-none-eabi-gcc -mcpu=cortex-m7 -mthumb -mfloat-abi=softfp -E -dM - < /dev
 #define __thumb2__ 1
 #define __thumb__ 1
 
-$ ./arm-none-eabi-gcc -mcpu=cortex-m7 -mthumb -mfloat-abi=hard -E -dM - < /dev/null | egrep -i 'thumb|arm|cortex|fp[^-]|version|abi' | sort
+$ .../arm-none-eabi-gcc -mcpu=cortex-m7 -mthumb -mfloat-abi=hard -E -dM - < /dev/null | egrep -i 'thumb|arm|cortex|fp[^-]|version|abi' | sort
 #define __ARMEL__ 1
 #define __ARM_32BIT_STATE 1
 #define __ARM_ARCH 7
@@ -403,6 +403,134 @@ $ ./arm-none-eabi-gcc -mcpu=cortex-m7 -mthumb -mfloat-abi=hard -E -dM - < /dev/n
 #define __arm__ 1
 #define __thumb2__ 1
 #define __thumb__ 1
+```
+
+### ARM Cortex-A15
+
+```console
+$ .../arm-none-eabi-gcc -mcpu=cortex-a15 -E -dM - < /dev/null | egrep -i 'thumb|arm|cortex|aarch|fp[^-]|version|abi|atomic|gnuc|lp' | sort
+#define __ARMEL__ 1
+#define __ARM_32BIT_STATE 1
+#define __ARM_ARCH 7
+#define __ARM_ARCH_7A__ 1
+#define __ARM_ARCH_EXT_IDIV__ 1
+#define __ARM_ARCH_ISA_ARM 1
+#define __ARM_ARCH_ISA_THUMB 2
+#define __ARM_ARCH_PROFILE 65
+#define __ARM_EABI__ 1
+#define __ARM_FEATURE_CLZ 1
+#define __ARM_FEATURE_COPROC 15
+#define __ARM_FEATURE_DSP 1
+#define __ARM_FEATURE_IDIV 1
+#define __ARM_FEATURE_LDREX 15
+#define __ARM_FEATURE_QBIT 1
+#define __ARM_FEATURE_SAT 1
+#define __ARM_FEATURE_SIMD32 1
+#define __ARM_FEATURE_UNALIGNED 1
+#define __ARM_PCS 1
+#define __ARM_SIZEOF_MINIMAL_ENUM 1
+#define __ARM_SIZEOF_WCHAR_T 4
+#define __ATOMIC_ACQUIRE 2
+#define __ATOMIC_ACQ_REL 4
+#define __ATOMIC_CONSUME 1
+#define __ATOMIC_RELAXED 0
+#define __ATOMIC_RELEASE 3
+#define __ATOMIC_SEQ_CST 5
+#define __GCC_ATOMIC_BOOL_LOCK_FREE 2
+#define __GCC_ATOMIC_CHAR16_T_LOCK_FREE 2
+#define __GCC_ATOMIC_CHAR32_T_LOCK_FREE 2
+#define __GCC_ATOMIC_CHAR_LOCK_FREE 2
+#define __GCC_ATOMIC_INT_LOCK_FREE 2
+#define __GCC_ATOMIC_LLONG_LOCK_FREE 2
+#define __GCC_ATOMIC_LONG_LOCK_FREE 2
+#define __GCC_ATOMIC_POINTER_LOCK_FREE 2
+#define __GCC_ATOMIC_SHORT_LOCK_FREE 2
+#define __GCC_ATOMIC_TEST_AND_SET_TRUEVAL 1
+#define __GCC_ATOMIC_WCHAR_T_LOCK_FREE 2
+#define __GNUC_EXECUTION_CHARSET_NAME "UTF-8"
+#define __GNUC_MINOR__ 2
+#define __GNUC_PATCHLEVEL__ 1
+#define __GNUC_STDC_INLINE__ 1
+#define __GNUC_WIDE_EXECUTION_CHARSET_NAME "UTF-32LE"
+#define __GNUC__ 11
+#define __GXX_ABI_VERSION 1016
+#define __SIG_ATOMIC_MAX__ 0x7fffffff
+#define __SIG_ATOMIC_MIN__ (-__SIG_ATOMIC_MAX__ - 1)
+#define __SIG_ATOMIC_TYPE__ int
+#define __SIG_ATOMIC_WIDTH__ 32
+#define __SOFTFP__ 1
+#define __STDC_VERSION__ 201710L
+#define __THUMB_INTERWORK__ 1
+#define __VERSION__ "11.2.1 20220111"
+#define __VFP_FP__ 1
+#define __arm__ 1
+
+```
+
+### ARM Cortex-A72
+
+```console
+$ .../aarch64-none-elf-gcc -mcpu=cortex-a72 -E -dM - < /dev/null | egrep -i 'thumb|arm|cortex|aarch|fp[^-]|version|abi|atomic|gnuc|lp' | sort
+#define _LP64 1
+#define __AARCH64EL__ 1
+#define __AARCH64_CMODEL_SMALL__ 1
+#define __ARM_64BIT_STATE 1
+#define __ARM_ALIGN_MAX_PWR 28
+#define __ARM_ALIGN_MAX_STACK_PWR 16
+#define __ARM_ARCH 8
+#define __ARM_ARCH_8A 1
+#define __ARM_ARCH_ISA_A64 1
+#define __ARM_ARCH_PROFILE 65
+#define __ARM_FEATURE_CLZ 1
+#define __ARM_FEATURE_CRC32 1
+#define __ARM_FEATURE_FMA 1
+#define __ARM_FEATURE_IDIV 1
+#define __ARM_FEATURE_NUMERIC_MAXMIN 1
+#define __ARM_FEATURE_UNALIGNED 1
+#define __ARM_FP 14
+#define __ARM_FP16_ARGS 1
+#define __ARM_FP16_FORMAT_IEEE 1
+#define __ARM_NEON 1
+#define __ARM_PCS_AAPCS64 1
+#define __ARM_SIZEOF_MINIMAL_ENUM 4
+#define __ARM_SIZEOF_WCHAR_T 4
+#define __ATOMIC_ACQUIRE 2
+#define __ATOMIC_ACQ_REL 4
+#define __ATOMIC_CONSUME 1
+#define __ATOMIC_RELAXED 0
+#define __ATOMIC_RELEASE 3
+#define __ATOMIC_SEQ_CST 5
+#define __FP_FAST_FMA 1
+#define __FP_FAST_FMAF 1
+#define __FP_FAST_FMAF32 1
+#define __FP_FAST_FMAF32x 1
+#define __FP_FAST_FMAF64 1
+#define __GCC_ATOMIC_BOOL_LOCK_FREE 2
+#define __GCC_ATOMIC_CHAR16_T_LOCK_FREE 2
+#define __GCC_ATOMIC_CHAR32_T_LOCK_FREE 2
+#define __GCC_ATOMIC_CHAR_LOCK_FREE 2
+#define __GCC_ATOMIC_INT_LOCK_FREE 2
+#define __GCC_ATOMIC_LLONG_LOCK_FREE 2
+#define __GCC_ATOMIC_LONG_LOCK_FREE 2
+#define __GCC_ATOMIC_POINTER_LOCK_FREE 2
+#define __GCC_ATOMIC_SHORT_LOCK_FREE 2
+#define __GCC_ATOMIC_TEST_AND_SET_TRUEVAL 1
+#define __GCC_ATOMIC_WCHAR_T_LOCK_FREE 2
+#define __GNUC_EXECUTION_CHARSET_NAME "UTF-8"
+#define __GNUC_MINOR__ 2
+#define __GNUC_PATCHLEVEL__ 1
+#define __GNUC_STDC_INLINE__ 1
+#define __GNUC_WIDE_EXECUTION_CHARSET_NAME "UTF-32LE"
+#define __GNUC__ 11
+#define __GXX_ABI_VERSION 1016
+#define __LP64__ 1
+#define __SIG_ATOMIC_MAX__ 0x7fffffff
+#define __SIG_ATOMIC_MIN__ (-__SIG_ATOMIC_MAX__ - 1)
+#define __SIG_ATOMIC_TYPE__ int
+#define __SIG_ATOMIC_WIDTH__ 32
+#define __STDC_VERSION__ 201710L
+#define __VERSION__ "11.2.1 20220111"
+#define __aarch64__ 1
 ```
 
 ## Floating point
