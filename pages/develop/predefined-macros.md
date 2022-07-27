@@ -533,6 +533,183 @@ $ .../aarch64-none-elf-gcc -mcpu=cortex-a72 -E -dM - < /dev/null | egrep -i 'thu
 #define __aarch64__ 1
 ```
 
+### RISC-V rv32 no FP
+
+```console
+$ ./riscv-none-elf-gcc -march=rv32imac_zicsr -mabi=ilp32 -mcmodel=medany  -msmall-data-limit=8 -E -dM - < /dev/null | egrep -i 'risc|abi|atomic|float|fp|gcc|gnu|end|diff|lp|size|stdc|version' | sort
+#define __ATOMIC_ACQUIRE 2
+#define __ATOMIC_ACQ_REL 4
+#define __ATOMIC_CONSUME 1
+#define __ATOMIC_RELAXED 0
+#define __ATOMIC_RELEASE 3
+#define __ATOMIC_SEQ_CST 5
+#define __BYTE_ORDER__ __ORDER_LITTLE_ENDIAN__
+#define __FLOAT_WORD_ORDER__ __ORDER_LITTLE_ENDIAN__
+#define __GCC_ATOMIC_BOOL_LOCK_FREE 1
+#define __GCC_ATOMIC_CHAR16_T_LOCK_FREE 1
+#define __GCC_ATOMIC_CHAR32_T_LOCK_FREE 2
+#define __GCC_ATOMIC_CHAR_LOCK_FREE 1
+#define __GCC_ATOMIC_INT_LOCK_FREE 2
+#define __GCC_ATOMIC_LLONG_LOCK_FREE 1
+#define __GCC_ATOMIC_LONG_LOCK_FREE 2
+#define __GCC_ATOMIC_POINTER_LOCK_FREE 2
+#define __GCC_ATOMIC_SHORT_LOCK_FREE 1
+#define __GCC_ATOMIC_TEST_AND_SET_TRUEVAL 1
+#define __GCC_ATOMIC_WCHAR_T_LOCK_FREE 2
+#define __GCC_HAVE_SYNC_COMPARE_AND_SWAP_4 1
+#define __GCC_IEC_559 0
+#define __GCC_IEC_559_COMPLEX 0
+#define __GNUC_EXECUTION_CHARSET_NAME "UTF-8"
+#define __GNUC_MINOR__ 1
+#define __GNUC_PATCHLEVEL__ 0
+#define __GNUC_STDC_INLINE__ 1
+#define __GNUC_WIDE_EXECUTION_CHARSET_NAME "UTF-32LE"
+#define __GNUC__ 12
+#define __GXX_ABI_VERSION 1017
+#define __ORDER_BIG_ENDIAN__ 4321
+#define __ORDER_LITTLE_ENDIAN__ 1234
+#define __ORDER_PDP_ENDIAN__ 3412
+#define __PTRDIFF_MAX__ 0x7fffffff
+#define __PTRDIFF_TYPE__ int
+#define __PTRDIFF_WIDTH__ 32
+#define __SIG_ATOMIC_MAX__ 0x7fffffff
+#define __SIG_ATOMIC_MIN__ (-__SIG_ATOMIC_MAX__ - 1)
+#define __SIG_ATOMIC_TYPE__ int
+#define __SIG_ATOMIC_WIDTH__ 32
+#define __SIZEOF_DOUBLE__ 8
+#define __SIZEOF_FLOAT__ 4
+#define __SIZEOF_INT__ 4
+#define __SIZEOF_LONG_DOUBLE__ 16
+#define __SIZEOF_LONG_LONG__ 8
+#define __SIZEOF_LONG__ 4
+#define __SIZEOF_POINTER__ 4
+#define __SIZEOF_PTRDIFF_T__ 4
+#define __SIZEOF_SHORT__ 2
+#define __SIZEOF_SIZE_T__ 4
+#define __SIZEOF_WCHAR_T__ 4
+#define __SIZEOF_WINT_T__ 4
+#define __SIZE_MAX__ 0xffffffffU
+#define __SIZE_TYPE__ unsigned int
+#define __SIZE_WIDTH__ 32
+#define __STDC_HOSTED__ 1
+#define __STDC_UTF_16__ 1
+#define __STDC_UTF_32__ 1
+#define __STDC_VERSION__ 201710L
+#define __STDC__ 1
+#define __VERSION__ "12.1.0"
+#define __riscv 1
+#define __riscv_a 2001000
+#define __riscv_arch_test 1
+#define __riscv_atomic 1
+#define __riscv_c 2000000
+#define __riscv_cmodel_medany 1
+#define __riscv_compressed 1
+#define __riscv_div 1
+#define __riscv_float_abi_soft 1
+#define __riscv_i 2001000
+#define __riscv_m 2000000
+#define __riscv_mul 1
+#define __riscv_muldiv 1
+#define __riscv_xlen 32
+#define __riscv_zicsr 2000000
+```
+
+### RISC-V rv64 FP
+
+```console
+$ ./riscv-none-elf-gcc -march=rv64imafdc_zicsr -mabi=lp64d -mcmodel=medany  -msmall-data-limit=8 -E -dM - < /dev/null | egrep -i 'risc|abi|atomic|float|fp|gcc|gnu|end|diff|lp|size|stdc|version' | sort
+#define _LP64 1
+#define __ATOMIC_ACQUIRE 2
+#define __ATOMIC_ACQ_REL 4
+#define __ATOMIC_CONSUME 1
+#define __ATOMIC_RELAXED 0
+#define __ATOMIC_RELEASE 3
+#define __ATOMIC_SEQ_CST 5
+#define __BYTE_ORDER__ __ORDER_LITTLE_ENDIAN__
+#define __FLOAT_WORD_ORDER__ __ORDER_LITTLE_ENDIAN__
+#define __FP_FAST_FMA 1
+#define __FP_FAST_FMAF 1
+#define __FP_FAST_FMAF32 1
+#define __FP_FAST_FMAF32x 1
+#define __FP_FAST_FMAF64 1
+#define __GCC_ATOMIC_BOOL_LOCK_FREE 1
+#define __GCC_ATOMIC_CHAR16_T_LOCK_FREE 1
+#define __GCC_ATOMIC_CHAR32_T_LOCK_FREE 2
+#define __GCC_ATOMIC_CHAR_LOCK_FREE 1
+#define __GCC_ATOMIC_INT_LOCK_FREE 2
+#define __GCC_ATOMIC_LLONG_LOCK_FREE 2
+#define __GCC_ATOMIC_LONG_LOCK_FREE 2
+#define __GCC_ATOMIC_POINTER_LOCK_FREE 2
+#define __GCC_ATOMIC_SHORT_LOCK_FREE 1
+#define __GCC_ATOMIC_TEST_AND_SET_TRUEVAL 1
+#define __GCC_ATOMIC_WCHAR_T_LOCK_FREE 2
+#define __GCC_HAVE_SYNC_COMPARE_AND_SWAP_4 1
+#define __GCC_HAVE_SYNC_COMPARE_AND_SWAP_8 1
+#define __GCC_IEC_559 2
+#define __GCC_IEC_559_COMPLEX 2
+#define __GNUC_EXECUTION_CHARSET_NAME "UTF-8"
+#define __GNUC_MINOR__ 1
+#define __GNUC_PATCHLEVEL__ 0
+#define __GNUC_STDC_INLINE__ 1
+#define __GNUC_WIDE_EXECUTION_CHARSET_NAME "UTF-32LE"
+#define __GNUC__ 12
+#define __GXX_ABI_VERSION 1017
+#define __LP64__ 1
+#define __ORDER_BIG_ENDIAN__ 4321
+#define __ORDER_LITTLE_ENDIAN__ 1234
+#define __ORDER_PDP_ENDIAN__ 3412
+#define __PTRDIFF_MAX__ 0x7fffffffffffffffL
+#define __PTRDIFF_TYPE__ long int
+#define __PTRDIFF_WIDTH__ 64
+#define __SIG_ATOMIC_MAX__ 0x7fffffff
+#define __SIG_ATOMIC_MIN__ (-__SIG_ATOMIC_MAX__ - 1)
+#define __SIG_ATOMIC_TYPE__ int
+#define __SIG_ATOMIC_WIDTH__ 32
+#define __SIZEOF_DOUBLE__ 8
+#define __SIZEOF_FLOAT__ 4
+#define __SIZEOF_INT128__ 16
+#define __SIZEOF_INT__ 4
+#define __SIZEOF_LONG_DOUBLE__ 16
+#define __SIZEOF_LONG_LONG__ 8
+#define __SIZEOF_LONG__ 8
+#define __SIZEOF_POINTER__ 8
+#define __SIZEOF_PTRDIFF_T__ 8
+#define __SIZEOF_SHORT__ 2
+#define __SIZEOF_SIZE_T__ 8
+#define __SIZEOF_WCHAR_T__ 4
+#define __SIZEOF_WINT_T__ 4
+#define __SIZE_MAX__ 0xffffffffffffffffUL
+#define __SIZE_TYPE__ long unsigned int
+#define __SIZE_WIDTH__ 64
+#define __STDC_HOSTED__ 1
+#define __STDC_UTF_16__ 1
+#define __STDC_UTF_32__ 1
+#define __STDC_VERSION__ 201710L
+#define __STDC__ 1
+#define __VERSION__ "12.1.0"
+#define __riscv 1
+#define __riscv_a 2001000
+#define __riscv_arch_test 1
+#define __riscv_atomic 1
+#define __riscv_c 2000000
+#define __riscv_cmodel_medany 1
+#define __riscv_compressed 1
+#define __riscv_d 2002000
+#define __riscv_div 1
+#define __riscv_f 2002000
+#define __riscv_fdiv 1
+#define __riscv_flen 64
+#define __riscv_float_abi_double 1
+#define __riscv_fsqrt 1
+#define __riscv_i 2001000
+#define __riscv_m 2000000
+#define __riscv_mul 1
+#define __riscv_muldiv 1
+#define __riscv_xlen 64
+#define __riscv_zicsr 2000000
+
+```
+
 ## Floating point
 
 To check if hardware floating point is enabled (`-mfloat-abi=softfp` or `-mfloat-abi=hard`):
