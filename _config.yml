@@ -99,7 +99,7 @@ twitter-id: micro_os_plus
 twitter-url: http://twitter.com/micro_os_plus
 
 # If you have one, define it here.
-google-analytics-id: UA-16767008-14
+google-analytics-id: G-E9T84WD3CK
 google-site-verification: NT_y3tqI_8mrd8gYA_FDWHT2-tkJExOC6KBkSnyZx6c
 
 # Disable it if no site footer is needed.
@@ -113,6 +113,7 @@ useExistingAnchors: true
 
 # UTC time, YYYYMMDDHHmm (minutes)
 css-date: 201807041643
+css-date: 202211100849
 
 # Content copyright. Update it to your needs.
-copyright-message: "© 2019 Liviu Ionescu"
+copyright-message: "© 2022 Liviu Ionescu"
