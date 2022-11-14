@@ -11,7 +11,7 @@ date: 2016-07-15 10:09:00 +0300
 
 ## Overview
 
-Together with semaphores, event threads are the basic µOS++ synchronisation mechanisms.
+Together with semaphores, event flags are the basic µOS++ synchronisation mechanisms.
 
 An event flag can be considered as a simplified binary semaphore, that can be posted from a thread or an ISR.
 
