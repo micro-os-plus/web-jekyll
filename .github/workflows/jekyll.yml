@@ -21,11 +21,11 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - uses: actions/setup-ruby@v1
+    - uses: ruby/setup-ruby@v1
       with:
         # Version range or exact version of a Ruby version to use, using semvers version range syntax.
         # https://www.ruby-lang.org/en/downloads/releases/
-        ruby-version: '2.6'
+        ruby-version: '3.2'
     - uses: actions/cache@v2
       with:
         path: vendor/bundle
@@ -35,7 +35,7 @@ jobs:
     - name: Install bundler
       run: |
         sudo apt-get install -y build-essential patch ruby-dev zlib1g-dev liblzma-dev libxslt-dev pkg-config
-        gem install bundler:2.0.1
+        gem install bundler:2.4
         bundle config path vendor/bundle
         bundle install --jobs 4 --retry 3
         ls -l vendor/bundle
