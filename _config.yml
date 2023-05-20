@@ -112,8 +112,7 @@ minItemsToShowToc: 3
 useExistingAnchors: true
 
 # UTC time, YYYYMMDDHHmm (minutes)
-css-date: 201807041643
 css-date: 202211100849
 
 # Content copyright. Update it to your needs.
-copyright-message: "© 2022 Liviu Ionescu"
+copyright-message: "© 2023 Liviu Ionescu"
