@@ -9,7 +9,7 @@ on:
 jobs:
   build:
 
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-22.04
 
     env:
       GITHUB_DEST_REPO: "micro-os-plus/micro-os-plus.github.io"
@@ -25,7 +25,7 @@ jobs:
       with:
         # Version range or exact version of a Ruby version to use, using semvers version range syntax.
         # https://www.ruby-lang.org/en/downloads/releases/
-        ruby-version: '2.6' 
+        ruby-version: '2.6'
     - uses: actions/cache@v2
       with:
         path: vendor/bundle
@@ -55,7 +55,7 @@ jobs:
         pwd
         env | sort
     - name: Run script to build site
-      env: 
+      env:
         GITHUB_TOKEN: ${{ secrets.ILG_TOKEN }}
       run: bash scripts/ga-jekyll.sh
 
