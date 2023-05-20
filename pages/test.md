@@ -27,12 +27,12 @@ Text ~~strikethrough~~ text.
 
 A list:
 
-* one
+- one
 
     indented continuation
 
         Indented Code line
-* two
+- two
 
 Another list:
 
@@ -42,7 +42,7 @@ Another list:
 
         Indented Code line
 
-1. two
+2. two
 
 > note
 
@@ -50,21 +50,78 @@ Another list:
 
 More text.
 
-```
+```txt
 Code line 1
 Code line 2
 ```
+
 More text.
 
     Code line 3
     Code line 4
 
-## Images
+## Header 2 bis
 
 Again.
 
-Centered image:
+## Alignment
+
+Centred image:
 
 <div style="text-align:center">
 <img alt="Feed" src="{{ site.baseurl }}/assets/images/feed-20.png" />
 </div>
+
+Right aligned:
+
+[![EF logo]({{ site.baseurl }}/assets/images/feed-20.png){:class="right-align-image"}](https://projects.eclipse.org/projects/iot.embed-cdt/) Lorem ipsum dolor sit amet, no quo doming labore doctus, eum commune rationibus at. Lorem ipsum dolor sit amet, no quo doming labore doctus, eum commune rationibus at.
+
+## Quote
+
+> Lorem ipsum dolor sit amet, no quo doming labore doctus, eum commune rationibus at.
+
+## Special sections
+
+{% include note.html content="" %}
+
+{% include note.html content="Lorem ipsum dolor sit amet, no quo doming labore doctus, eum commune rationibus at." %}
+
+{% include tip.html content="Lorem ipsum dolor sit amet, no quo doming labore doctus, eum commune rationibus at." %}
+
+{% include warning.html content="Lorem ipsum dolor sit amet, no quo doming labore doctus, eum commune rationibus at." %}
+
+{% include important.html content="Lorem ipsum dolor sit amet, no quo doming labore doctus, eum commune rationibus at." %}
+
+{% include callout.html content="Lorem ipsum dolor sit amet, no quo doming labore doctus, eum commune rationibus at." %}
+
+## Platform Menus
+
+{% capture manual_install %}
+## Manual install
+{% endcapture %}
+
+{% capture windows %}
+
+{{ manual_install }}
+
+Windows
+
+{% endcapture %}
+
+{% capture macos %}
+
+{{ manual_install }}
+
+macOS
+
+{% endcapture %}
+
+{% capture linux %}
+
+{{ manual_install }}
+
+linux
+
+{% endcapture %}
+
+{% include platform-tabs.html %}
