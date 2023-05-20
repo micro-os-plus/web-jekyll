@@ -1,11 +1,14 @@
 ---
 layout: page
 lang: en
-permalink: /about/
+permalink: /project/about/
 title: About
 author: Liviu Ionescu
 
 date: 2016-03-03 22:45:00 +0300
+
+redirect_from:
+  - /about/
 
 ---
 
@@ -26,7 +29,7 @@ Many thanks to:
 
 Some time ago, while watching a TV documentary about Porsche, I heard this line and I liked it. If this is indeed one of Porsche mottos, then thank you Porsche for it (and for the beautiful designs). (English: _"Perfect is not good enough"_)
 
-## This site
+## This web site
 
 The first project wiki was created in November 2010 using the SourceForge hosted apps, then it was moved to a separate MediaWiki, and in 2016 the wiki content was migrated to a static Jekyll site.
 
