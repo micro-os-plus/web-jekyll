@@ -52,8 +52,8 @@
 * [CMSIS++ RTOS: fully functional reference implementation]({{ site.baseurl }}/articles/arm-com-2016-06-24/)
 * [CMSIS++: a proposal for a future CMSIS, written in C++]({{ site.baseurl }}/articles/arm-com-2016-03-11/)
 
-#### License
+#### Project
 
-* [MIT](https://opensource.org/licenses/MIT)
-
-#### [About]({{ site.baseurl }}/about/)
+* [About]({{ site.baseurl }}/project/about/)
+* [History]({{ site.baseurl }}/project/history/)
+* [License](https://opensource.org/licenses/MIT)
