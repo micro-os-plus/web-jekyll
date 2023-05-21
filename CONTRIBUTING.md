@@ -22,7 +22,7 @@ After saving the changes, create a pull request.
 
 If you discovered a typo, a broken link, or you have a pertinent suggestion how to enhance the µOS++ web site, please use the [GitHub Issues](https://github.com/micro-os-plus/micro-os-plus.github.io-source/issues) tracker.
 
-Be sure you report only issues related to the µOS++ IIIe web site. **DO NOT** use this tracker for functional issues related to µOS++.
+Be sure you report only issues related to the µOS++ web site. **DO NOT** use this tracker for functional issues related to µOS++.
 
 To be allowed to enter issues, you need to first login to GitHub.
 

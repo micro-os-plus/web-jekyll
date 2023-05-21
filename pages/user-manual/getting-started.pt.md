@@ -2,7 +2,7 @@
 layout: page
 lang: pt
 permalink: /pt/user-manual/getting-started/
-title: Começando com μOS++ IIIe
+title: Começando com µOS++
 author: Liviu Ionescu
 
 date: 2016-06-29 21:28:00 +0300
@@ -13,7 +13,7 @@ date: 2016-06-29 21:28:00 +0300
 
 **µOS++ IIIe** _(micro oh ɛs plus plus third edition)_ is the third iteration of µOS++, a POSIX-like, portable, open source, royalty-free, multi-tasking real-time operating system intended for 32/64-bits embedded applications.
 
-**µOS++ IIIe** is written in modern C++, with C++ applications in mind, but also provides equally functional C APIs.
+**µOS++** is written in modern C++, with C++ applications in mind, but also provides equally functional C APIs.
 
 ### Multiple APIs
 
@@ -25,7 +25,7 @@ date: 2016-06-29 21:28:00 +0300
 
 The supported APIs are:
 
-- **µOS++ RTOS C++ API** - the native µOS++ IIIe C++ API, giving direct access to the system services;
+- **µOS++ RTOS C++ API** - the native µOS++ C++ API, giving direct access to the system services;
 - **µOS++ RTOS C API** - a 1:1 C wrapper on top of the C++ API;
 - **ISO C++ Threads API** - an implementation of the standard ISO threads on top of the C++ API;
 - **ARM CMSIS RTOS v1 API** - a compatibility layer with ARM CMSIS RTOS

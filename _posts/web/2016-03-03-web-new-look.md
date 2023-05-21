@@ -1,7 +1,7 @@
 ---
 layout: post
 lang: en
-title: The µOS++ IIIe new web site (using GitHub Pages)
+title: The µOS++ new web site (using GitHub Pages)
 author: Liviu Ionescu
 
 date: 2016-03-03 22:10:00 +0300
@@ -12,7 +12,7 @@ categories:
 
 ---
 
-After the µOS++ IIIe project was migrated from [SourceForge](http://sourceforge.net/projects/micro-os-plus/) to [GitHub](https://github.com/micro-os-plus), a new web site was created, to replace the previous wikis.
+After the µOS++ project was migrated from [SourceForge](http://sourceforge.net/projects/micro-os-plus/) to [GitHub](https://github.com/micro-os-plus), a new web site was created, to replace the previous wikis.
 
 ## Migration to GitHub
 

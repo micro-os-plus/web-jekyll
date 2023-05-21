@@ -2,7 +2,7 @@
 layout: page
 lang: en
 permalink: /user-manual/features/
-title: µOS++ IIIe features
+title: µOS++ features
 author: Liviu Ionescu
 
 date: 2016-07-03 01:04:00 +0300
@@ -11,15 +11,15 @@ date: 2016-07-03 01:04:00 +0300
 
 ## Overview
 
-µOS++ IIIe is a POSIX-like, portable, open source, royalty-free, multi-tasking real-time operating system intended for 32/64-bits embedded applications.
+µOS++ is a POSIX-like, portable, open source, royalty-free, multi-tasking real-time operating system intended for 32/64-bits embedded applications.
 
-µOS++ IIIe is written in **modern C++ 11**, with C++ applications in mind, but also provides equally functional C APIs.
+µOS++ is written in **modern C++ 11**, with C++ applications in mind, but also provides equally functional C APIs.
 
-µOS++ IIIe is the third edition of µOS++, offering all of the services expected from a modern real-time system including resource management, synchronization, inter-thread communication, and more. µOS++ IIIe also offers many features not found in many other real-time systems, such as both C++ and C APIs, POSIX-like threads, POSIX synchronisation objects, use of standard C++ memory allocators, and more.
+µOS++ is the third edition of µOS++, offering all of the services expected from a modern real-time system including resource management, synchronization, inter-thread communication, and more. µOS++ also offers many features not found in many other real-time systems, such as both C++ and C APIs, POSIX-like threads, POSIX synchronisation objects, use of standard C++ memory allocators, and more.
 
 ## Features
 
-Here is a list of features provided by µOS++ IIIe.
+Here is a list of features provided by µOS++.
 
 ### Source code
 
@@ -33,7 +33,7 @@ The source code availability not only helps debugging, but also greatly improves
 
 The supported APIs are:
 
-- µOS++ RTOS C++ API - the native µOS++ IIIe C++ API, giving direct access to the system services;
+- µOS++ RTOS C++ API - the native µOS++ C++ API, giving direct access to the system services;
 - µOS++ RTOS C API - a 1:1 C wrapper on top of the C++ API;
 - ISO C++ Threads API - an implementation of the standard ISO threads on top of the C++ API;
 - ARM CMSIS RTOS v1 API - a compatibility layer with ARM CMSIS RTOS

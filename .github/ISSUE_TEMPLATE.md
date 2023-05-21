@@ -1,8 +1,8 @@
 ## Please
 
-Use this tracker to record any issues related to the **µOS++ IIIe** web site _**ONLY**_ (typos, wrong phrasing, suggestions, etc). Please **DO NOT** record here **any other issues (including issues related to the packages, which should be addressed to their corresponding trackers)**.
+Use this tracker to record any issues related to the **µOS++** web site _**ONLY**_ (typos, wrong phrasing, suggestions, etc). Please **DO NOT** record here **any other issues (including issues related to the packages, which should be addressed to their corresponding trackers)**.
 
-For questions and general support, use the [GNU ARM Eclipse forum](https://www.element14.com/community/groups/gnu-arm-eclipse), the **µOS++ IIIe** category.
+For questions and general support, use the [GNU ARM Eclipse forum](https://www.element14.com/community/groups/gnu-arm-eclipse), the **µOS++** category.
 
 When entering a new issue, please be sure you provide:
  

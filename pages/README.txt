@@ -3,9 +3,9 @@ lang: en
 permalink: /README.md
 ---
 
-# The µOS++ IIIe web site
+# The µOS++ web site
 
-This repository stores the actual, live, µOS++ IIIe project web.
+This repository stores the actual, live, µOS++ project web.
 
 ## URL
 

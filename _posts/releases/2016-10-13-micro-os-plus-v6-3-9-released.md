@@ -1,7 +1,7 @@
 ---
 layout: post
 lang: en
-title: µOS++ IIIe v6.3.9 released
+title: µOS++ v6.3.9 released
 author: Liviu Ionescu
 
 date: 2016-10-13 22:46:00 +0300
@@ -14,7 +14,7 @@ categories:
 
 ---
 
-Version v6.3.9 is a new **µOS++ IIIe/CMSIS++** public release (v6.3.8 was an internal release). The major additions are: the first integration of the POSIX I/O subsystem and an experimental set of scripts to generate µOS++ projects.
+Version v6.3.9 is a new **µOS++/CMSIS++** public release (v6.3.8 was an internal release). The major additions are: the first integration of the POSIX I/O subsystem and an experimental set of scripts to generate µOS++ projects.
 
 ## Download
 
@@ -30,7 +30,7 @@ To automate this process, some scripts were written. To experiment with **µOS++
 ## Addressed bugs
 
 - os-c-wrapper.c: the functions used to create objects did create objects properly, but failed to return a pointer to the created objects; fixed;
-- diag/trace.cpp: for empty strings, `puts()` did not add the terminator; fixed; 
+- diag/trace.cpp: for empty strings, `puts()` did not add the terminator; fixed;
 
 ## Other changes
 

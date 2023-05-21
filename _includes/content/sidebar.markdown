@@ -1,6 +1,6 @@
 #### [Home]({{ site.baseurl }}/)
 
-#### µOS++ IIIe
+#### µOS++
 
 * [Overview]({{ site.baseurl }}/micro-os-plus/)
 
@@ -45,7 +45,7 @@
 * [Known issues]({{ site.baseurl }}/support/known-issues/)
 * [FAQ]({{ site.baseurl }}/support/faq/)
 * [Forum]({{ site.baseurl }}/support/forum/)
-* [Report µOS++ IIIe issues](https://github.com/micro-os-plus/micro-os-plus-iii/issues/)
+* [Report µOS++ issues](https://github.com/micro-os-plus/micro-os-plus-iii/issues/)
 
 #### Latest Articles
 

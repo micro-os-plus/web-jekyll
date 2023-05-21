@@ -1,7 +1,7 @@
 ---
 layout: post
 lang: en
-title: µOS++ IIIe v6.3.10 released
+title: µOS++ v6.3.10 released
 author: Liviu Ionescu
 
 date: 2016-11-27 11:53:00 +0300
@@ -14,7 +14,7 @@ categories:
 
 ---
 
-Version v6.3.10 is a new **µOS++ IIIe/CMSIS++** public release that addresses several bugs.
+Version v6.3.10 is a new **µOS++/CMSIS++** public release that addresses several bugs.
 
 ## Affected xPacks
 
@@ -24,7 +24,7 @@ Version v6.3.10 is a new **µOS++ IIIe/CMSIS++** public release that addresses s
 ## Download or update
 
 As of now, the **µOS++** code is split between several GitHub projects and needs to be brought together to compose a project.
-To automate this process, some scripts are available from a [separate project](https://github.com/xpacks/scripts). 
+To automate this process, some scripts are available from a [separate project](https://github.com/xpacks/scripts).
 
 To update the local copy of the xPacks, use the `scripts.git/xpacks-update-repo.sh` script.
 

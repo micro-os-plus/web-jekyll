@@ -1,7 +1,7 @@
 ---
 layout: post
 lang: en
-title: First µOS++ IIIe public version v6.3.7 released
+title: First µOS++ public version v6.3.7 released
 author: Liviu Ionescu
 
 date: 2016-09-15 15:28:00 +0300
@@ -14,7 +14,7 @@ categories:
 
 ---
 
-Version v6.3.7 is the first **µOS++ IIIe/CMSIS++** public release. The major additions are the advanced memory management features, which allow deterministic and non-fragmenting allocations in controlled environments.
+Version v6.3.7 is the first **µOS++/CMSIS++** public release. The major additions are the advanced memory management features, which allow deterministic and non-fragmenting allocations in controlled environments.
 
 ## Download
 

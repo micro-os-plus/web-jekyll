@@ -1,7 +1,7 @@
 ---
 layout: post
 lang: en
-title: µOS++ IIIe v6.3.13 released
+title: µOS++ v6.3.13 released
 author: Liviu Ionescu
 
 date: 2017-08-26 23:29:00 +0300
@@ -13,7 +13,7 @@ categories:
 
 ---
 
-Version v6.3.13 is a **µOS++ IIIe** maintenance release.
+Version v6.3.13 is a **µOS++** maintenance release.
 
 ## Affected xPacks
 
@@ -22,7 +22,7 @@ Version v6.3.13 is a **µOS++ IIIe** maintenance release.
 ## Download or update
 
 As of now, the **µOS++** code is split between several GitHub projects and needs to be brought together to compose a project.
-To automate this process, some scripts are available from a [separate project](https://github.com/xpacks/scripts). 
+To automate this process, some scripts are available from a [separate project](https://github.com/xpacks/scripts).
 
 To update the local copy of the xPacks, use the `scripts.git/xpacks-update-repo.sh` script.
 

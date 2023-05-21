@@ -465,7 +465,7 @@ Many authors also refer to their RTOSes as "kernels". Well, even if _OS_ in RTOS
 
 As such, the term [kernel](https://en.wikipedia.org/wiki/Kernel_(operating_system)) is even more inappropriate, since there is no distinct component to manage all available resources (memory, CPU, I/O, etc) and to provide them to the application in a controlled way; most of the time the application has full control over the entire memory space, which, for systems with memory mapped peripherals, also means full control over the I/O.
 
-The only kernel specific function available in bare-metal embedded systems is CPU management; with multiple threads sharing the CPU, probably a more appropriate name for the RTOS core component is **scheduler**; the µOS++ IIIe documentation uses the term _operating system_ in its definition, occasionally refers to itself as a _scheduler_, and explicitly tries to avoid the term _kernel_.
+The only kernel specific function available in bare-metal embedded systems is CPU management; with multiple threads sharing the CPU, probably a more appropriate name for the RTOS core component is **scheduler**; the µOS++ documentation uses the term _operating system_ in its definition, occasionally refers to itself as a _scheduler_, and explicitly tries to avoid the term _kernel_.
 
 ### Tasks vs threads
 
