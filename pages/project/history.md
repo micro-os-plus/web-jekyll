@@ -462,7 +462,7 @@ project was selected to be fully tested using the new tools.
 
 The result was a very large set of tests, running both on the native
 platform (gcc and clang), and on lots of embedded platforms
-(Arm Cortex-M0 & M7, Cortex A15 & A72, RISC-V 32/64), running on
+(Arm **Cortex-M0 & M7**, **Cortex A15 & A72**, **RISC-V 32/64**), running on
 QEMU. I doubt that there are many projects so thoroughly tested
 on so many platforms and build tools.
 
