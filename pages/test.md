@@ -79,3 +79,17 @@ Right aligned:
 ## Quote
 
 > Lorem ipsum dolor sit amet, no quo doming labore doctus, eum commune rationibus at.
+
+## Special sections
+
+{% include note.html content="" %}
+
+{% include note.html content="Lorem ipsum dolor sit amet, no quo doming labore doctus, eum commune rationibus at." %}
+
+{% include tip.html content="Lorem ipsum dolor sit amet, no quo doming labore doctus, eum commune rationibus at." %}
+
+{% include warning.html content="Lorem ipsum dolor sit amet, no quo doming labore doctus, eum commune rationibus at." %}
+
+{% include important.html content="Lorem ipsum dolor sit amet, no quo doming labore doctus, eum commune rationibus at." %}
+
+{% include callout.html content="Lorem ipsum dolor sit amet, no quo doming labore doctus, eum commune rationibus at." %}

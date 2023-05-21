@@ -6,3 +6,5 @@
 {% include stylesheets/styles.css %}
 {% include stylesheets/footer.css %}
 {% include stylesheets/toc.css %}
+{% include stylesheets/alerts.css %}
+{% include stylesheets/font-awesome.min.css %}
