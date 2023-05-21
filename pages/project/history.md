@@ -19,8 +19,8 @@ I started to play with computers. After learning FORTRAN in my first
 high school year, I wondered how does the big computer understand my
 programs and how is it able to run multiple jobs at the same time.
 
-{% include note.html content="From this child curiosity
-to µOS++ was a long and fascinating journey." %}
+{% include note.html content="The journey from this child curiosity
+to µOS++ was long and fascinating." %}
 
 ### The Unix era and the first scheduler
 
@@ -65,7 +65,7 @@ and eCos CDL is the reason behind
 the use of a component based design for the future
 xPack Project Builder (xpmake)." %}
 
-By that time, `vim` and `make` appeared to be my friends, but the
+By that time, `vi` and `make` appeared to be my friends, but the
 experience of manually maintaining the make files turned into a
 nightmare.
 
