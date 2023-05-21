@@ -29,11 +29,11 @@ mini-computer and, remarkable for those years, also accompanied by a
 tape with the
 [Version 7 Unix](http://en.wikipedia.org/wiki/Version_7_Unix) source code.
 
-Not only that I studied it thoroughly, but by 1989 I already had a functional
-C compiler ported on [Motorola MC68000](http://en.wikipedia.org/wiki/68000)
-microprocessor, and a good knowledge of the Unix kernel.
+Not only that I studied it thoroughly, but by 1989 I already had **a functional
+C compiler** ported on [Motorola MC68000](http://en.wikipedia.org/wiki/68000)
+microprocessor, and a **good knowledge of the Unix kernel**.
 
-This knowledge of the context switching mechanism was put to test when
+This knowledge of the **context switching mechanism** was put to test when
 I needed a multi-threaded scheduler running on
 [Zilog Z80](http://en.wikipedia.org/wiki/Z80); later it was successfully
 used in a commercial product (a telex machine).
@@ -50,12 +50,12 @@ which also required a multi-threaded system.
 To implement it, I chose [eCos](http://ecos.sourceware.org), which was the
 major RTOS available as open source and with a permissive license.
 
-There were many remarkable things to be noted about eCos, but
-relevant for this story are two: first, at its core, it was written in C++,
+There were many remarkable things to be noted about **eCos**, but
+relevant for this story are two: first, at its core, it was **written in C++**,
 (a language that I met in 1990 when I ported the **AT&T C++ translator** on
 lots of Unix machines)
-and, second, that it came with an elaborate mechanism for managing
-project configurations, the
+and, second, that it came with an elaborate **mechanism for managing
+project configurations**, the
 [eCos CDL](http://ecos.sourceware.org/docs-1.3.1/cdl/language.html),
 which used [TCL](https://en.wikipedia.org/wiki/Tcl) scripts to
 define the configuration metadata.
@@ -82,13 +82,13 @@ that for the design of an aviation instrument, a framework is acceptable
 if it allows to complete the design within one day. Although this
 seems rather extreme, the idea is quite valid, and has important consequences.
 
-The first consequence is that it promotes modular design, i.e.
+The first consequence is that **it promotes modular design**, i.e.
 instead of do-it-all box (a kind of a _Swiss army knife_ like design),
 it is better to split the design into multiple independent modules,
 each performing a specific job.
 
-The second consequence is that the framework should be very well
-structured, easily configurable and as light as possible, in order
+The second consequence is that **the framework should be very well
+structured**, easily configurable and as light as possible, in order
 to run with limited resources on simple processors. By well structured
 I mean modular, object oriented design, favouring a high degree of
 code reuse, both between related projects, and between different
@@ -170,15 +170,15 @@ which automatically generated the make files." %}
 
 The initial enthusiasm of using Eclipse for building µOS++ applications
 was soon
-shaded by the difficulties of building and running tests in a scriptable
-environment.
+shaded by **the difficulties of building and running tests in a scriptable
+environment**.
 
 It must be mentioned that Eclipse CDT advertises a way of
 running headless builds, but it proved unreliable, so the only
 way of running test was manually, as regular Eclipse projects, which
 was very inconvenient.
 
-### The ARM Cortex M3 port
+### The ARM Cortex M3 preliminary port
 
 In 2009 the µOS++ was easily ported to
 [ARM Cortex M3](https://en.wikipedia.org/wiki/ARM_Cortex-M),
@@ -247,7 +247,7 @@ development boards.
 
 ### Functional full version
 
-The project grew steadily, with the scheduler running on STM32Fx
+The project grew steadily, with the scheduler running on most STM32Fx
 cores (in pre-emptive mode), and on synthetic POSIX platforms
 (OS X and GNU/Linux, in cooperative mode). The sources compiled
 without warnings on GCC 4.7, GCC 4.8 and LLVM clang 3.2/3.3,
@@ -257,7 +257,7 @@ on OS X and Ubuntu.
 The repository increased steadily, and in October 2013 it numbered
 more than 700 files, with more than 150K lines.
 
-Acknowledging the need for a better Eclipse integration, in Oct. 2013
+Acknowledging the need for a better Eclipse integration, in October 2013
 the development was temporarily interrupted, with focus changed to
 GNU ARM Eclipse plug-ins, later rebranded as the
 [Eclipse Embedded CDT](https://eclipse-embed-cdt.github.io).
@@ -343,8 +343,9 @@ use the repository for non-JavaScript packages; he replied that unless
 I do something really stupid like storing my photo library there,
 nobody will chase down my packages.
 
-This was a very kind answer, and it was the turning point
-in the xPack project, which became part of the node/npm ecosystem.
+{% include note.html content="This was a very kind answer,
+and it was the turning point
+in the xPack project, which became part of the node/npm ecosystem." %}
 
 On April 2017 the first release of **xpm** was ready, and packages
 managed by it were named **xPacks**.
@@ -402,9 +403,9 @@ tools were installed with **xpm** as existing binary xPacks.
 This was a major milestone in the life of xPack project, since it
 proved two things:
 
-- that the technology is standalone with the newer versions of the tools
+- that **the technology is standalone** with the newer versions of the tools
 being built with existing xPacks
-- that the **xpm** workflow is generic enough to be usable not only for
+- that the **xpm** workflow is **generic enough** to be usable not only for
 small embedded projects, but for complex tools, like compilers.
 
 {% include note.html content="With this, the problem of
