@@ -100,8 +100,9 @@ based on my previous experience with multitasking systems, the
 decision to develop an in-house solution came naturally.
 
 However, this decision was clouded from the very beginning by a doubt:
-"How do I know that my system really works as expected?" And
-"How do I know that, if I change something, I do not break anything?".
+"How do I know that my software really works as expected?" And
+"What is the best way to ensure that everything still works fine
+after I make some changes?".
 
 {% include note.html content="This is where the need for thorough
 testing comes into play. This permanent quest to improve the quality
