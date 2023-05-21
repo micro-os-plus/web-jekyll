@@ -378,8 +378,8 @@ versions of the same
 toolchain, and these tools can also be defined as `devDependencies`
 (development dependencies).
 
-{% include note.html content="**xpm** was extended to install
-binary packages, and a new class of tools was created as
+{% include note.html content="**xpm** was extended to also support
+installing binary packages, and a new class of tools was created as
 [xPack 3rd Party Development Tools](https://github.com/xpack-dev-tools/)." %}
 
 ### The xPack Build Box (XBB) nightmare
