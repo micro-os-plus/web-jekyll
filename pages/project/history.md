@@ -104,7 +104,8 @@ However, this decision was clouded from the very beginning by a doubt:
 "How do I know that, if I change something, I do not break anything?".
 
 {% include note.html content="This is where the need for thorough
-testing comes into play. This permanent quest will eventually lead
+testing comes into play. This permanent quest to improve the quality
+will eventually lead
 to the kindred **xPack project**, as a tool to automate testing." %}
 
 ## Why C++?
