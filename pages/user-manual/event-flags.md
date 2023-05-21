@@ -15,7 +15,7 @@ Together with semaphores, event flags are the basic µOS++ synchronisation mecha
 
 An event flag can be considered as a simplified binary semaphore, that can be posted from a thread or an ISR.
 
-The additional value of event flags consist in their number: event flags come in groups, and threads can be synchronised on any number of flags in a group (defined by a mask). A thread may expect either all flags in a set to have occurred (conjunctive syncronisation, logical AND), or any flag in a set (disjunctive synchronisation, logical OR).
+The additional value of event flags consist in their number: event flags come in groups, and threads can be synchronised on any number of flags in a group (defined by a mask). A thread may expect either all flags in a set to have occurred (conjunctive synchronisation, logical AND), or any flag in a set (disjunctive synchronisation, logical OR).
 
 <div style="text-align:center">
 <img alt="Event Flags" src="{{ site.baseurl }}/assets/images/2016/event-flags.png" />
@@ -241,7 +241,7 @@ The application programmer can create an unlimited number of event flag groups (
 
 ## Raising event flags
 
-In programing language terms, raising flags is equivalent to OR-ing the corresponding bits in the event flags mask. Once raised, the flags remain raised until they are checked, or explicitly cleared. Raising an already raised flag is a no-op.
+In programming language terms, raising flags is equivalent to OR-ing the corresponding bits in the event flags mask. Once raised, the flags remain raised until they are checked, or explicitly cleared. Raising an already raised flag is a no-op.
 
 When a thread or an ISR raises a flag, all threads that have their wait conditions satisfied will be resumed.
 

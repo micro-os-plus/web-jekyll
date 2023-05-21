@@ -5,7 +5,7 @@ Use this tracker to record any issues related to the **µOS++** web site _**ONLY
 For questions and general support, use the [GNU ARM Eclipse forum](https://www.element14.com/community/groups/gnu-arm-eclipse), the **µOS++** category.
 
 When entering a new issue, please be sure you provide:
- 
+
 #### Page URL
 
 ...

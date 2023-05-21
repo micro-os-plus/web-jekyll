@@ -15,7 +15,6 @@ date: 2016-03-09 12:04:00 +0300
 
 The original ARM Keil name stands for **Cortex Microcontroller Software Interface Standard**, and the CMSIS++ design inherits the good things from ARM CMSIS but goes one step further into the world of C++; it is not a C++ wrapper on top of ARM CMSIS, but **a completely new design in C++**, with several C APIs as wrappers on top of the native C++ APIs.
 
-
 ## Components
 
 The CMSIS++ components are:

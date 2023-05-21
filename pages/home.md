@@ -33,7 +33,6 @@ From an embedded system point of view, **µOS++** provides the **reference imple
 <img alt="µOS++ RTOS" src="{{ site.baseurl }}/assets/images/2017/micro-os-plus-rtos.png" />
 </div>
 
-
 ### The µOS++ packages
 
 From a modular point of view, **µOS++** is a **collection of packages** hosted on GitHub in two locations:
@@ -44,7 +43,6 @@ From a modular point of view, **µOS++** is a **collection of packages** hosted 
 <div style="text-align:center">
 <img alt="µOS++ Collection" src="{{ site.baseurl }}/assets/images/2017/micro-os-plus-collection.png" />
 </div>
-
 
 ## License
 

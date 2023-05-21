@@ -17,10 +17,9 @@ However, experience proved that back slashes and triple slashes are more difficu
 
 ## `/**`  Comments instead of `///`
 
-
 Use C style blocks of `/** */` instead of C++ `///` lines.
 
-```
+```c
 /**
  * ...
  */
@@ -36,7 +35,7 @@ Use `@` to prefix commands, instead of `\`, which is considered too visually hur
 
 Explicitly use the `@brief` command before the brief description. End the text with a dot. For visibility reasons, add an empty line inside the same comment block.
 
-```
+```c
 /**
  * @brief Base for all architecture implementation classes.
  */
@@ -48,7 +47,7 @@ Explicitly use the `@details` command, on a separate line, before the main docum
 
 For class member functions, the details should be placed before the implementation; although allowed by Doxygen, avoid placing details both at the declaration and definitions, since it is difficult to keep them consistent (see below).
 
-```
+```c
 /**
  * @details
  * The @ref trace_streambuf_base class implements an @ref ostream class
@@ -78,7 +77,7 @@ Use asterisks to mark **bold** texts.
 
 When including lines of code, surround them by `@code`, `@endcode` and add the language. For visibility reasons, add empty lines inside the comment block.
 
-```
+```c
 /**
  * @code{.cpp}
  * set_class_name("os::infra::test_suite");
@@ -90,7 +89,7 @@ When including lines of code, surround them by `@code`, `@endcode` and add the l
 
 When including other lines, like shell commands, surround them by `@verbatim`, `@endverbatim`:
 
-```
+```c
 /**
  * @verbatim
  * /bin/bash micro-os-plus-se.git/scripts/runTests.sh
@@ -104,7 +103,7 @@ Use `*` to enter bulleted lists, and `#` to enter numbered lists.
 
 For multiple levels use additional indentations.
 
-```
+```md
 * first level 1
   * first level 2
   * second level 2
@@ -115,7 +114,7 @@ For multiple levels use additional indentations.
 
 Use the below syntax to enter tables. Columns can be left/right aligned.
 
-```
+```md
 | Right | Center | Left  |
 | ----: | :----: | :---- |
 | 10    | 10 | 10    |
@@ -126,7 +125,7 @@ Use the below syntax to enter tables. Columns can be left/right aligned.
 
 Links to other pages can be expressed with the following markup:
 
-```
+```md
 [The link text](http://example.net/)
 ```
 
@@ -134,7 +133,7 @@ Links to other pages can be expressed with the following markup:
 
 Use `@tparam` for template parameters. Start the explanation with upper case and end it with dot.
 
-```
+```c
 /**
  * @tparam T  Type of the implementation class.
  */
@@ -146,7 +145,7 @@ Use `@param [in]` for usual input parameters, and occasionally `[out]` for outpu
 
 To make the explanation more readable, use tabs to right align the content.
 
-```
+```c
 /**
  * @param [in]  c  An additional character to consume.
  */
@@ -154,7 +153,7 @@ To make the explanation more readable, use tabs to right align the content.
 
 If the function has no parameters, use a custom paragraph containing **None.**, indented with a tab and terminated with a dot.
 
-```
+```c
 /**
  * @par Parameters
  *    None.
@@ -165,7 +164,7 @@ If the function has no parameters, use a custom paragraph containing **None.**, 
 
 If the function returns discrete values, enumerate them with `@retval` and terminate the list with an empty line.
 
-```
+```c
 /**
  * @retval -1 Error
  * @retval 0 OK
@@ -174,7 +173,7 @@ If the function returns discrete values, enumerate them with `@retval` and termi
 
 If the function returns a scalar value, use a `@return` and explain what the value represents.
 
-```
+```c
 /**
  * @return The number of bytes actually written.
  */
@@ -182,7 +181,7 @@ If the function returns a scalar value, use a `@return` and explain what the val
 
 If the function has no return value, use a custom paragraph containing **Nothing.**, indented with a tab and terminated with a dot.
 
-```
+```c
 /**
  * @par Returns
  *    Nothing.
@@ -193,7 +192,7 @@ If the function has no return value, use a custom paragraph containing **Nothing
 
 For each class, structure, enum or other object definition, use `@headerfile` to specify the full header path.
 
-```
+```c
 /**
  * @headerfile CoreInterruptNumbers.h "hal/architecture/arm/cortexm/include/CoreInterruptNumbers.h"
  * @brief ARM Cortex-M architecture interrupt numbers base
@@ -222,7 +221,7 @@ Note: In the current version, `@nosubgrouping` is not working as expected, so it
 
 Note: Groups do not nest.
 
-```
+```c
 /**
  * @name Standard template types
  *
@@ -238,7 +237,7 @@ Note: Groups do not nest.
 typedef T implementation_t;
 
 /**
- * @}  
+ * @}
  */
 
 /**
@@ -265,7 +264,7 @@ virtual
 
 ## Template sample
 
-```
+```c
 /**
  * @headerfile trace.h "portable/diagnostics/include/trace.h"
  * @ingroup diag
@@ -290,7 +289,7 @@ template<class T>
 
 To include a definition in one or more modules, use `@ingroup`.
 
-```
+```c
 /**
  * @brief Stack size type.
  * @ingroup core_thread
@@ -299,7 +298,7 @@ To include a definition in one or more modules, use `@ingroup`.
 
 If multiple definition are from the same group, they can be grouped with `@{` ... `@}`:
 
-```
+```c
 /**
  * @ingroup core_thread
  * @{
@@ -328,7 +327,7 @@ Also please note that when using together with `@name`, `@ingroup` with must be 
 
 This command allows to define the name of the section within a page. Usually it is used with `@{` ... `@}`:
 
-```
+```c
 /**
  * @name Constructors & Destructor
  * @{
@@ -351,7 +350,7 @@ main_thread(void);
 
 Recommended sections name are:
 
-```
+```c
 @name Types & Constants
 
 @name Constructors & Destructor
@@ -371,7 +370,7 @@ Recommended sections name are:
 
 Use plural.
 
-```
+```c
 @brief Type of variables holding mutex recursion counters.
 ```
 
@@ -379,7 +378,7 @@ Use plural.
 
 For headers which define `@details` too, add an extra line.
 
-```
+```c
 @brief Type of variables holding scheduler state codes.
 
 @details

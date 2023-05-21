@@ -13,7 +13,7 @@ date: 2016-07-05 11:27:00 +0300
 
 One of the early decisions during the design of a real-time application is how to partition the required functionality into separate tasks, such that each task is as simple as possible and has minimal interactions with the other tasks.
 
-µOS++ makes it easy for an application programmer to adopt this paradigm. Each **task** is executed by **a separate thread** and can talk to other threads and to ISRs via various communication/synchonisation primitives.
+µOS++ makes it easy for an application programmer to adopt this paradigm. Each **task** is executed by **a separate thread** and can talk to other threads and to ISRs via various communication/synchronisation primitives.
 
 A thread is a simple program that thinks it has the CPU all to itself. On a single CPU, only one thread can execute at any given time.
 
@@ -703,7 +703,7 @@ os_main (int argc, char* argv[])
 {
   // ...
 
-  thread::attributtes attr;
+  thread::attributes attr;
   attr.th_priority = thread::priority::high;
 
   // Create a thread; the stack is allocated with the default RTOS allocator.
@@ -1206,7 +1206,7 @@ os_main (int argc, char* argv[])
 Except when using the `thread_inclusive` template, by default threads are created with a dynamically allocated stack. This can be changed to a user defined stack using the `th_stack_address` and `th_stack_size_bytes` thread attributes.
 
 ``` c++
-thread::attributtes attr;
+thread::attributes attr;
 attr.th_stack_address = th3_stack;
 attr.th_stack_size_bytes = sizeof(th3_stack);
 

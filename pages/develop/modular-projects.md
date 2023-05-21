@@ -29,7 +29,7 @@ In practical terms, each package should have, in addition to the source files, s
 
 ### Benefits
 
-This modular approach with structured metadata greatly increase the code **reusability** and **upgradability**, by allowing automated tools to bring into the project the required components, and to automatically manage the dependencies, accepting only combinations of compatible packages.
+This modular approach with structured metadata greatly increase the code **reusability** and **upgradeability**, by allowing automated tools to bring into the project the required components, and to automatically manage the dependencies, accepting only combinations of compatible packages.
 
 Such solutions are already available for other languages, the most successful one being [npm](https://www.npmjs.com) (The Node Package Manager), for Node.js/JavaScript modules.
 
@@ -45,7 +45,7 @@ The templates can be invoked both from **command line** environments and from **
 
 ### Command line usage
 
-To create a new project based on existing xPacks, the most convenient way is to use a project template. 
+To create a new project based on existing xPacks, the most convenient way is to use a project template.
 
 Create an empty folder and invoke `xpm init` in interactive mode, pointing to the desired template.
 
@@ -55,16 +55,16 @@ $ cd /tmp/hifive1-blinky-cpp
 $ xpm init --template @sifive/coreplex-templates
 Generate a SiFive Coreplex C/C++ project
 
-Programming language? (c, cpp, ?) [cpp]: 
-Board? (hifive1, e31arty, e51arty, ?) [hifive1]: 
-Content? (empty, blinky, ?) [blinky]: 
-Use system calls? (none, retarget, ?) [retarget]: 
-Trace output? (none, uart0ftdi, ?) [uart0ftdi]: 
-Check some warnings? (true, false, ?) [true]: 
-Check most warnings? (true, false, ?) [false]: 
-Enable -Werror? (true, false, ?) [false]: 
-Use -Og on debug? (true, false, ?) [false]: 
-Use newlib nano? (true, false, ?) [true]: 
+Programming language? (c, cpp, ?) [cpp]:
+Board? (hifive1, e31arty, e51arty, ?) [hifive1]:
+Content? (empty, blinky, ?) [blinky]:
+Use system calls? (none, retarget, ?) [retarget]:
+Trace output? (none, uart0ftdi, ?) [uart0ftdi]:
+Check some warnings? (true, false, ?) [true]:
+Check most warnings? (true, false, ?) [false]:
+Enable -Werror? (true, false, ?) [false]:
+Use -Og on debug? (true, false, ?) [false]:
+Use newlib nano? (true, false, ?) [true]:
 
 Creating the C++ project 'hifive1-blinky-cpp'...
 File 'LICENSE' generated.
@@ -104,43 +104,43 @@ Programming language? (c, cpp, ?) [cpp]: ?
 Select the preferred programming language
 - C for the application files, C and C++ for the system
 - C++ for the application files, C++ and C for the system
-Programming language? (c, cpp, ?) [cpp]: 
+Programming language? (c, cpp, ?) [cpp]:
 Board? (hifive1, e31arty, e51arty, ?) [hifive1]: ?
 Select the SiFive board name
 - Freedom E310 HiFive1
 - Coreplex E31 Arty
 - Coreplex E51 Arty
-Board? (hifive1, e31arty, e51arty, ?) [hifive1]: 
+Board? (hifive1, e31arty, e51arty, ?) [hifive1]:
 Content? (empty, blinky, ?) [blinky]: ?
 Choose the project content
 - Empty (add your own content)
 - Blinky (blink one or more LEDs)
-Content? (empty, blinky, ?) [blinky]: 
+Content? (empty, blinky, ?) [blinky]:
 Use system calls? (none, retarget, ?) [retarget]: ?
 Control how system calls are implemented
 - Freestanding (no POSIX system calls)
 - POSIX (system calls implemented by application code)
-Use system calls? (none, retarget, ?) [retarget]: 
+Use system calls? (none, retarget, ?) [retarget]:
 Trace output? (none, uart0ftdi, ?) [uart0ftdi]: ?
 Control where the trace output messages are forwarded
 - None (no trace output)
 - UART0 (via FTDI)
-Trace output? (none, uart0ftdi, ?) [uart0ftdi]: 
+Trace output? (none, uart0ftdi, ?) [uart0ftdi]:
 Check some warnings? (true, false, ?) [true]: ?
 Enable -Wall and -Wextra to catch most common warnings
-Check some warnings? (true, false, ?) [true]: 
+Check some warnings? (true, false, ?) [true]:
 Check most warnings? (true, false, ?) [false]: ?
 Enable as many warnings as possible
-Check most warnings? (true, false, ?) [false]: 
+Check most warnings? (true, false, ?) [false]:
 Enable -Werror? (true, false, ?) [false]: ?
 Instruct the compiler to stop on warnings
-Enable -Werror? (true, false, ?) [false]:  
+Enable -Werror? (true, false, ?) [false]:
 Use -Og on debug? (true, false, ?) [false]: ?
 Use the new optimization flag for the debug configurations
-Use -Og on debug? (true, false, ?) [false]:  
+Use -Og on debug? (true, false, ?) [false]:
 Use newlib nano? (true, false, ?) [true]: ?
 Use the size optimised version of newlib
-Use newlib nano? (true, false, ?) [true]: 
+Use newlib nano? (true, false, ?) [true]:
 
 Creating the C++ project 'hifive1-blinky-cpp'...
 ...
@@ -199,10 +199,10 @@ The first such tool is `xmake`, the xPack builder; it consumes `xmake.json` dire
 To build the project, the standard method is to use `xpm build`, which, for the current project, invokes `xmake build`, which performs the following steps:
 
 * create the usual debug and release build configurations
-* generate the `make` files 
+* generate the `make` files
 * finally invoke `make` to run the actual build.
 
-```
+```console
 $ xpm build
 Build the package
 
@@ -288,7 +288,7 @@ Invoking builder: 'make all'...
 
 As for any modern builder, subsequent invocations process only the changed files, if any:
 
-```
+```console
 $ xpm build
 Build the package
 
@@ -324,7 +324,7 @@ make: Nothing to be done for `all'.
 
 To clean all builds, the project includes a `clean` script, which invokes `xmake`, which finally invokes `make` with the `clean` target:
 
-```
+```console
 $ xpm run clean
 Run package specific script
 
@@ -360,7 +360,7 @@ Build completed in 48 ms.
 
 An even more verbose output can be obtained by invoking `xmake` with the `-v` option:
 
-```
+```console
 $ xmake build -v
 Build one or all project configurations
 
@@ -368,9 +368,9 @@ Generating the build files for 'hifive1-blinky-cpp', target 'hifive1', toolchain
 
 Source folders: 'src', 'xpacks/micro-os-plus-c-libs/src', 'xpacks/micro-os-plus-c-libs/src/stdlib', 'xpacks/micro-os-plus-cpp-libs/src', 'xpacks/micro-os-plus-diag-trace/src', 'xpacks/micro-os-plus-riscv-arch/src', 'xpacks/micro-os-plus-startup/src', 'xpacks/sifive-coreplex-devices/src', 'xpacks/sifive-coreplex-devices/src/sifive', 'xpacks/sifive-hifive1-board/src'
 Include folders: 'include', 'xpacks/micro-os-plus-c-libs/include', 'xpacks/micro-os-plus-cpp-libs/include', 'xpacks/micro-os-plus-diag-trace/include', 'xpacks/micro-os-plus-riscv-arch/include', 'xpacks/micro-os-plus-startup/include', 'xpacks/sifive-coreplex-devices/include', 'xpacks/sifive-hifive1-board/include'
-Tool C: -march=rv32imac -mabi=ilp32 -mcmodel=medany -msmall-data-limit=8  -g3   -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -std=gnu11 -Wall -Wextra    -DSIFIVE_FREEDOM_E310 -DSIFIVE_HIFIVE1_BOARD -DDEBUG -DOS_USE_TRACE_UART0 -DTRACE 
-Tool C++: -march=rv32imac -mabi=ilp32 -mcmodel=medany -msmall-data-limit=8  -g3   -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -std=gnu++14 -fabi-version=0 -fno-exceptions -fno-rtti -fno-use-cxa-atexit -fno-threadsafe-statics -Wall -Wextra    -DSIFIVE_FREEDOM_E310 -DSIFIVE_HIFIVE1_BOARD -DDEBUG -DOS_USE_TRACE_UART0 -DTRACE 
-Tool AS: -march=rv32imac -mabi=ilp32 -mcmodel=medany -msmall-data-limit=8  -g3   -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections   -Wall -Wextra    -x assembler-with-cpp -DSIFIVE_FREEDOM_E310 -DSIFIVE_HIFIVE1_BOARD -DDEBUG -DOS_USE_TRACE_UART0 -DTRACE 
+Tool C: -march=rv32imac -mabi=ilp32 -mcmodel=medany -msmall-data-limit=8  -g3   -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -std=gnu11 -Wall -Wextra    -DSIFIVE_FREEDOM_E310 -DSIFIVE_HIFIVE1_BOARD -DDEBUG -DOS_USE_TRACE_UART0 -DTRACE
+Tool C++: -march=rv32imac -mabi=ilp32 -mcmodel=medany -msmall-data-limit=8  -g3   -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -std=gnu++14 -fabi-version=0 -fno-exceptions -fno-rtti -fno-use-cxa-atexit -fno-threadsafe-statics -Wall -Wextra    -DSIFIVE_FREEDOM_E310 -DSIFIVE_HIFIVE1_BOARD -DDEBUG -DOS_USE_TRACE_UART0 -DTRACE
+Tool AS: -march=rv32imac -mabi=ilp32 -mcmodel=medany -msmall-data-limit=8  -g3   -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections   -Wall -Wextra    -x assembler-with-cpp -DSIFIVE_FREEDOM_E310 -DSIFIVE_HIFIVE1_BOARD -DDEBUG -DOS_USE_TRACE_UART0 -DTRACE
 Tool Linker: -march=rv32imac -mabi=ilp32 -mcmodel=medany -msmall-data-limit=8  -g3   -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections   -Wall -Wextra    -nostartfiles -Xlinker --gc-sections --specs=nano.specs -L"../../ldscripts" -T mem.ld -T libs.ld -T sections.ld
 
 Creating folder 'src'...
@@ -413,7 +413,7 @@ Generating file 'build/hifive1-blinky-cpp-hifive1-riscv64-elf-gcc-debug/xpacks/s
 Changing current folder to 'build/hifive1-blinky-cpp-hifive1-riscv64-elf-gcc-debug'...
 
 Invoking builder: 'make'...
- 
+
 Building file: src/newlib-syscalls.c
 Invoking: GCC C Compiler
 riscv64-unknown-elf-gcc -c -march=rv32imac -mabi=ilp32 -mcmodel=medany -msmall-data-limit=8  -g3   -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -std=gnu11 -Wall -Wextra    -DSIFIVE_FREEDOM_E310 -DSIFIVE_HIFIVE1_BOARD -DDEBUG -DOS_USE_TRACE_UART0 -DTRACE  -I"../../include" -I"../../xpacks/micro-os-plus-c-libs/include" -I"../../xpacks/micro-os-plus-cpp-libs/include" -I"../../xpacks/micro-os-plus-diag-trace/include" -I"../../xpacks/micro-os-plus-riscv-arch/include" -I"../../xpacks/micro-os-plus-startup/include" -I"../../xpacks/sifive-coreplex-devices/include" -I"../../xpacks/sifive-hifive1-board/include" -MMD -MP -MF"src/newlib-syscalls.d" -MT"src/newlib-syscalls.o" -o "src/newlib-syscalls.o" "../../src/newlib-syscalls.c"
@@ -424,7 +424,7 @@ Invoking: GCC Linker
 riscv64-unknown-elf-g++ -march=rv32imac -mabi=ilp32 -mcmodel=medany -msmall-data-limit=8  -g3   -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections   -Wall -Wextra    -nostartfiles -Xlinker --gc-sections --specs=nano.specs -L"../../ldscripts" -T mem.ld -T libs.ld -T sections.ld src/newlib-syscalls.o src/initialize-hardware.o src/interrupts-handlers.o src/led.o src/main.o src/sysclock.o xpacks/micro-os-plus-c-libs/src/_sbrk.o xpacks/micro-os-plus-c-libs/src/c-syscalls-empty.o xpacks/micro-os-plus-c-libs/src/stdlib/assert.o xpacks/micro-os-plus-c-libs/src/stdlib/exit.o xpacks/micro-os-plus-c-libs/src/stdlib/init-fini.o xpacks/micro-os-plus-c-libs/src/stdlib/atexit.o xpacks/micro-os-plus-cpp-libs/src/cxx.o xpacks/micro-os-plus-diag-trace/src/trace.o xpacks/micro-os-plus-riscv-arch/src/arch-functions.o xpacks/micro-os-plus-riscv-arch/src/traps.o xpacks/micro-os-plus-riscv-arch/src/reset-entry.o xpacks/micro-os-plus-riscv-arch/src/trap-entry.o xpacks/micro-os-plus-startup/src/startup.o xpacks/sifive-coreplex-devices/src/device-functions.o xpacks/sifive-coreplex-devices/src/device-interrupts.o xpacks/sifive-coreplex-devices/src/plic-functions.o xpacks/sifive-coreplex-devices/src/sifive/fe300prci_driver.o xpacks/sifive-hifive1-board/src/board-functions.o xpacks/sifive-hifive1-board/src/trace-uart.o   -o "hifive1-blinky-cpp.elf"
 Finished building target: hifive1-blinky-cpp.elf
 Build completed in 5.580 sec.
-... 
+...
 'xmake build' completed in 10.799 sec.
 ```
 
@@ -454,11 +454,11 @@ Note: Note: at the time of preparing this page, the SiFive C/C++ project templat
 
 In the proposed modular approach, the application code is clearly separated from the external packages; the application folders are under full control of the user, who can edit/add/remove any files, while the packages are under the strict control of the package manager, and generally are read only, to prevent inadvertent changes.
 
-### Example 
+### Example
 
 The **SiFive project templates** created in the previous sections use this structure; most of the files are part of the application; the packages are grouped under the `xpacks` folder, and the package metadata is located in `package.json` and `xmake.json`:
 
-```
+```console
 $ tree -L 2 hifive1-blinky-cpp
 hifive1-blinky-cpp
 ├── LICENSE
@@ -536,7 +536,7 @@ In the current project, there are three tools required during development:
 
 The other two are tool xPacks; they download and install, in a central location, platform specific binaries for the toolchain and OpenOCD, and make the path available to the current xPack.
 
-All tools are installed in version specific folders, so it is perfectl possible for different xPacks to use different versions of the same tools (for example multiple toolchain versions). 
+All tools are installed in version specific folders, so it is perfectl possible for different xPacks to use different versions of the same tools (for example multiple toolchain versions).
 
 ## Embedded projects specifics
 
@@ -546,7 +546,7 @@ Traditionally, the startup code is written in assembly, the justification being 
 
 #### The assembly entry code
 
-The more traditional architectures still require some small assembly code to explicitly set several registers. 
+The more traditional architectures still require some small assembly code to explicitly set several registers.
 
 For RISC-V, the current architecture specs require to manually load the SP and GP registers. However, after preparing these registers, it is perfectly possible to pass control to a portable C/C++ function, traditionally named `_start()`:
 
@@ -1113,7 +1113,7 @@ $ <prefix>-g++ ... -L ldscripts -T libs.ld -T mem.ld -T sections.ld ...
 These two xPacks complement the system libraries and provide missing functions or have lighter implementations, more suitable for embedded applications.
 
 ```
-$ tree c-libs.git 
+$ tree c-libs.git
 c-libs.git
 ├── LICENSE
 ├── README.md
@@ -1199,7 +1199,7 @@ Support for the trace functions is enabled by adding the `TRACE` preprocessor de
 
 The implementation is simple, it uses `vsnprintf()` to output to a local buffer, then calls `trace::write()` (which must be implemented by the application) to transfer the buffer to the desired peripheral.
 
-The custom functions that need to be implemented by the application have a simple and unsurprising API: 
+The custom functions that need to be implemented by the application have a simple and unsurprising API:
 
 ```c++
 namespace os
@@ -1247,7 +1247,7 @@ In order to support scriptable builds and automated testing, the xPack tools (`x
 
 ### Better integration with Eclipse
 
-The **SiFive C/C++ Project template** is only the first step towards using RISC-V xPacks in Eclipse. 
+The **SiFive C/C++ Project template** is only the first step towards using RISC-V xPacks in Eclipse.
 
 After the command line tools will be fully functional and stable, more xPack support will be added to Eclipse, first to complement the CMSIS Packs, then possibly as an alternate solution to the managed build support available now in Eclipse CDT.
 

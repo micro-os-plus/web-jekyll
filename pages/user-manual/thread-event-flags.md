@@ -25,7 +25,7 @@ Each such event flag can be considered as a simplified binary semaphore, that ca
 
 As long as the thread identity is known, any other thread or ISR can raise any set of flags, at any time.
 
-In programing language terms, raising flags is equivalent to OR-ing the corresponding bits in the thread event flags mask. Once raised, the flag remains raised until it is checked by the thread, or explicitly cleared by the thread. Raising an already raised flag is a no-op.
+In programming language terms, raising flags is equivalent to OR-ing the corresponding bits in the thread event flags mask. Once raised, the flag remains raised until it is checked by the thread, or explicitly cleared by the thread. Raising an already raised flag is a no-op.
 
 If the thread was suspended and waits for flags, it is resumed.
 

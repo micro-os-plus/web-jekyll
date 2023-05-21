@@ -45,7 +45,7 @@ Like a railway semaphore which has two states, a binary semaphore has only two v
 
 Depending on the semaphore usage, it can start either with 0 (when used for synchronisation) or 1 (when used to protect a single shared resource).
 
-What a binary semaphore has in addition to a railway semaphore, is a signaling method (think of this mechanism as a loud horn used to wakeup the sleeping train driver, waiting for the semaphore).
+What a binary semaphore has in addition to a railway semaphore, is a signalling method (think of this mechanism as a loud horn used to wakeup the sleeping train driver, waiting for the semaphore).
 
 ### Counting semaphores
 
@@ -582,7 +582,7 @@ The C API is:
 size_t value = os_semaphore_get_initial_value(&sem);
 ```
 
-### Reseting the semaphore
+### Resetting the semaphore
 
 Real-world applications may include monitoring mechanisms to detect erroneous conditions. Recovering from such conditions may require to return the semaphore to stable state; µOS++ provides a function to return the semaphore to the initial state after construction.
 

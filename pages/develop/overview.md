@@ -16,7 +16,7 @@ date: 2016-03-09 12:04:00 +0300
 - GCC: `-std=c++-20` or `-std=c11`
 - clang: `-std=c++-20` or `-std=c11`
 
-Therecommended compilers are **GCC 10** or newer, or
+The recommended compilers are **GCC 10** or newer, or
 **LLVM clang 11** or newer.
 
 - [GCC C++ status](https://gcc.gnu.org/projects/cxx-status.html)

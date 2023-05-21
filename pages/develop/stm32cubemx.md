@@ -12,7 +12,7 @@ date: 2021-01-23 11:27:00 +0300
 ## Overview
 
 [STM32CubeMX](https://www.st.com/en/development-tools/stm32cubemx.html)
-is a graphical tool provided by ST Microelectornics,
+is a graphical tool provided by ST Microelectronics,
 that allows a very easy configuration
 of STM32 microcontrollers, as well as the generation
 of the corresponding initialization C code for the Arm® Cortex-M.
@@ -23,7 +23,7 @@ for the **STM32F4DISCOVERY** blinky projects.
 For other boards/devices, adjust the steps accordingly.
 
 Note: STM32CubeMX has a very weird implementation, and you may face many
-small issues with the interface; 
+small issues with the interface;
 
 ## Prerequisites
 
@@ -107,7 +107,7 @@ To create a new project, start by selecting the board:
   - in the **Generated files** group
     - enable **Generate peripheral initialization as a pair of `.c/.h` files per peripheral**
     - enable **Keep User Code when re-generating**
-    - enable **Delete previously gnerated files when not re-generated**
+    - enable **Delete previously generated files when not re-generated**
   - in the **HAL Settings** group
     - disable **Set all free pins as analog**
     - enable **Enable Full Assert**

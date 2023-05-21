@@ -1,6 +1,6 @@
 ## Install tools
 
-```
+```sh
 sudo port install pandoc
 curl -sS https://getcomposer.org/installer | php
 php composer.phar install
@@ -12,7 +12,7 @@ php composer.phar install
 
 In **Special:Allpages**, copy/paste names:
 
-```
+```text
 Coding style
 Coding style (SE)
 Criticism of previous versions
@@ -49,7 +49,7 @@ Copy/paste the above list, include only the current revision, save as file, rena
 
 ## Convert µOS++ IIIe Wiki
 
-```
+```sh
 php convert.php --filename=uOS-ii-mw.xml --output=uOS-ii-output --urlprefix=micro-os-plus/ii/ --layout=old-wiki-page
 ```
 
@@ -59,7 +59,7 @@ php convert.php --filename=uOS-ii-mw.xml --output=uOS-ii-output --urlprefix=micr
 
 In **Special:Allpages**, copy/paste names:
 
-```
+```text
 Advanced (Custom) Timers
 Application configuration
 C++ naming convention
@@ -140,6 +140,6 @@ Copy/paste the above list, include only the current revision, save as file, rena
 
 ## Convert µOS++ Wiki
 
-```
+```sh
 php convert.php --filename=uOS-i-mw.xml --output=uOS-i-output --urlprefix=micro-os-plus/i/ --layout=old-wiki-page
 ```

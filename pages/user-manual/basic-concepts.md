@@ -78,7 +78,7 @@ Regardless how elaborate the techniques for implementing the finite state machin
 
 ### Tasks
 
-In the µOS++ context, a task is a well defined sequence of operations, usually represented in a programing language as a function.
+In the µOS++ context, a task is a well defined sequence of operations, usually represented in a programming language as a function.
 
 A complex application can be decomposed as a series of tasks, some executed in succession, some executed in parallel and possibly exchanging data.
 
@@ -347,7 +347,7 @@ Multiple flags can be grouped and the thread can be notified when all or any of 
 
 A shared resource is typically a variable (static or global), a data structure, table (in RAM), or registers in an I/O device, accessed in common by different parts of the code.
 
-Typical examples are lists, memory allocators, storage devices, that all need a specific method to protect agains concurrent accesses.
+Typical examples are lists, memory allocators, storage devices, that all need a specific method to protect against concurrent accesses.
 
 The technique for obtaining exclusive access to shared resources is to create **critical sections**, which temporarily lock access.
 

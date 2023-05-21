@@ -30,7 +30,7 @@ int configure(); // instead of config();
 int delay_seconds; // instead of delay_sec;
 ```
 
-## Favor Descriptive Over Concise
+## Favour Descriptive Over Concise
 
 Names should be self explanatory, such that they do not need comments to
 further explain what they do.
@@ -74,7 +74,7 @@ It is still debatable whether the extra type should be suffixed to all
 names. Modern editors, with accurate indexers, are capable of showing
 the variable definition when hovering over the name, thus providing help
 in case it is not clear when the variable is an array or not. Plus that
-the presense of parenthesis is a clear sign of an array.
+the presence of parenthesis is a clear sign of an array.
 
 ## Pairs of opposed actions or names
 
@@ -247,7 +247,7 @@ Requests data, which takes time.
 
 #### remove
 
-Removes something from somewhere, for example an object from a collection. The objects thembselves may continue to live, but outside of the collection.
+Removes something from somewhere, for example an object from a collection. The objects themselves may continue to live, but outside of the collection.
 
 #### delete
 
@@ -567,7 +567,7 @@ If possible, use the full unit names.
 ## Configuration macros
 
 Applications using µOS++ can be configured during build time using several
-proprocessor definitions, grouped in a header file named
+preprocessor definitions, grouped in a header file named
 <micro-os-plus/config.h>, included when `MICRO_OS_PLUS_INCLUDE_CONFIG_H` is
 defined on the compiler line.
 
@@ -581,7 +581,7 @@ There are several kinds of definitions:
 presence should be tested; `INCLUDE`/`EXCLUDE` should surround large blocks
 of code definitions/declarations implementing various features;
 - definitions with values; are more flexible, since they can have different
-defaults, and are prefered to definitions without values, which, when not
+defaults, and are preferred to definitions without values, which, when not
 present, default to false; should be
 used in expressions of the given type; to avoid misunderstandings,
 parenthesis are recommended; action properties must start with a verb;

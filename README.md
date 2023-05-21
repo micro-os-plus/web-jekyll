@@ -64,16 +64,16 @@ Bundler version 1.12.5
 
 To manage the web site, a local copy of this repository is required.
 
-```
-$ git clone https://github.com/micro-os-plus/micro-os-plus.github.io-source.git micro-os-plus.github.io-source.git
-$ git clone https://github.com/micro-os-plus/micro-os-plus.github.io.git micro-os-plus.github.io.git
+```sh
+git clone https://github.com/micro-os-plus/micro-os-plus.github.io-source.git micro-os-plus.github.io-source.git
+git clone https://github.com/micro-os-plus/micro-os-plus.github.io.git micro-os-plus.github.io.git
 ```
 
 ## Install jekyll & gems
 
 Install jekyll and all gems referred in `Gemfile`. Probably usually there is no need to run bundler as root, it can ask for sudo if needed, but in my setup it looks necessary.
 
-```
+```console
 $ cd micro-os-plus.github.io-source.git
 $ sudo bundle install
 Fetching gem metadata from https://rubygems.org/
@@ -127,9 +127,9 @@ The current development cycle is edit-save-build-view.
 
 The build can be performed automatically by Jekyll when started in server mode.
 
-```
-$ cd micro-os-plus.github.io-source.git
-$ bundle exec jekyll serve --baseurl "" --destination _site_local --trace --port 4001
+```sh
+cd micro-os-plus.github.io-source.git
+bundle exec jekyll serve --baseurl "" --destination _site_local --trace --port 4001
 ```
 
 The build result is in `_site_local`.
@@ -138,9 +138,9 @@ To view the result, point the browser to `localhost:4001`.
 
 ## Publish
 
-```
-$ cd micro-os-plus.github.io-source.git
-$ bundle exec jekyll build --destination ../micro-os-plus.github.io.git
+```sh
+cd micro-os-plus.github.io-source.git
+bundle exec jekyll build --destination ../micro-os-plus.github.io.git
 ```
 
 The build result is in the `micro-os-plus.github.io.git` folder.
@@ -151,7 +151,7 @@ To publish, commit this Git and the new site will be automatically updated.
 
 When new versions of Jekyll, or of gems, are available, run `bundle update` and be sure the `Gemfile.lock` file is committed:
 
-```
+```console
 $ cd micro-os-plus.github.io-source.git
 $ sudo bundle update
 Fetching gem metadata from https://rubygems.org/
@@ -196,7 +196,7 @@ Using jemoji 0.7.0
 Bundle updated!
 ```
 
-People using forked repositories must run `bundle install` to be sure the required versions are properly installed. 
+People using forked repositories must run `bundle install` to be sure the required versions are properly installed.
 
 ## Folder structure
 
@@ -219,7 +219,6 @@ As per `_config.yml`, the default timezone is UTC. For other timezones, set it e
 ## Images
 
 The embedded images are located in the `/assets/images` folder.
-
 
 For a certain degree of portability, the recommended editable format is PPTX. On macOS, PPTX files can be processed with Keynote, although saving can be done only indirectly via **Export To**, not directly via **Save**.
 
