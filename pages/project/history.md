@@ -12,11 +12,12 @@ redirect_from:
 
 ---
 
-## The early years
+## The early years - a personal journey
 
 My interest in system programming dates from the first moments when
 I started to play with computers. After learning FORTRAN in my first
-high school year, I wondered how does the big computer understand my
+high school year, I wondered how does the refrigerator size box
+understand my
 programs and how is it able to run multiple jobs at the same time.
 
 {% include note.html content="The journey from this child curiosity
@@ -43,7 +44,7 @@ the precursor of µOS++." %}
 
 ### The eCos experience (CDL & C++)
 
-In the first years of the 2000s I was involved with a project
+In the first years of the 2000s I was involved in a project
 running on the [Intel i960](http://en.wikipedia.org/wiki/I960) CPU,
 which also required a multi-threaded system.
 
@@ -60,13 +61,13 @@ project configurations**, the
 which used [TCL](https://en.wikipedia.org/wiki/Tcl) scripts to
 define the configuration metadata.
 
-{% include note.html content="C++ is the reason behind µOS++,
+{% include note.html content="C++ is the reason behind the **++** in µOS++,
 and eCos CDL is the reason behind
-the use of a component based design for the planned
-xPack Project Builder (tentatively called `xpmake`)." %}
+using a component based design for the planned
+**xPack Project Builder** (tentatively called **xpmake**)." %}
 
 By that time, `vi` and `make` appeared to be my friends, but the
-experience of manually maintaining the make files turned into a
+experience of manually maintaining the **make** files turned into a
 nightmare.
 
 ## Why a new embedded operating system?
@@ -74,16 +75,17 @@ nightmare.
 There were many embedded operating systems available by the time
 this project was initiated. However, the context I planned to use
 this embedded system was slightly more specific, i.e. as firmware for
-aviation instruments.
+aviation instruments to be used in ultralight aircraft.
 
 I started to experiment with aviation instruments several years before,
 and one determining factor on the decision was an article stating
-that for the design of an aviation instrument, a framework is acceptable
+that for the design of aviation instruments, a framework is acceptable
 if it allows to complete the design within one day. Although this
-seems rather extreme, the idea is quite valid, and has important consequences.
+seems rather extreme, the idea is quite valid, and has important
+consequences.
 
 The first consequence is that **it promotes modular design**, i.e.
-instead of do-it-all box (a kind of a _Swiss army knife_ like design),
+instead of a do-it-all box (a kind of a _Swiss army knife_ like design),
 it is better to split the design into multiple independent modules,
 each performing a specific job.
 
@@ -96,13 +98,13 @@ hardware platforms.
 
 After a long and detailed search, there were many partial solutions
 identified, but none was able to address all the requirements; so,
-based on my previous experience with multitasking systems, the
+based on my previous experience with multi-tasking systems, the
 decision to develop an in-house solution came naturally.
 
 However, this decision was clouded from the very beginning by a doubt:
-"How do I know that my software really works as expected?" And
-"What is the best way to ensure that everything still works fine
-after I make some changes?".
+_"How do I know that my software really works as expected?"_ And
+_"What is the best way to ensure that everything still works fine
+after I make some changes?"_.
 
 {% include note.html content="This is where the need for thorough
 testing comes into play. This permanent quest to improve the quality
@@ -111,16 +113,18 @@ to the kindred **xPack project**, as a tool to automate testing." %}
 
 ## Why C++?
 
-The decision for C++ was a tough one, and I'm convinced it raises
+The decision for **C++** was a tough one, and I'm convinced it raises
 a lot of questions and critics. However, I'm also convinced that it was
 a good decision, and, those who take the time to seriously consider
 it, will probably reach to the same conclusion.
 
 First of all, by C++ I do not mean the full C++ implementation, but
 a limited subset: no real time typing, possibly no multiple inheritance,
-limited or no use of exceptions. Writing object oriented code
+limited or no use of exceptions.
+{% include note.html content="Writing object oriented code
 is also possible in C, but the syntax is significantly more
-complex. One common argument against C++ is the alleged performance
+complicated." %}
+One common argument against C++ is the alleged performance
 penalty, but most of those who claim this have no compiler expertise,
 since for the subset of C++ that is needed for embedded applications
 the performance gain for C vs C++ is null for regular classes, and
@@ -147,8 +151,8 @@ I had the first functional version of
 only on AVR8, the design was modular
 and portable from the very beginning." %}
 
-Central to the µOS++ design was the scheduler and the low-level
-synchronisation primitives. Based on my previous Unix experience,
+Central to the µOS++ design was the **scheduler** and the low-level
+**synchronisation primitives**. Based on my previous Unix experience,
 the main synchronisation primitives were inspired by the original
 Unix `sleep()` and `wakeup()` primitives. Later they were changed
 to better match the needs of multi-threaded systems,
@@ -168,13 +172,14 @@ embedded toolchains was not available.
 
 At the same time I started to play with the new
 [Arm Cortex-M](https://en.wikipedia.org/wiki/ARM_Cortex-M) devices,
-which looked very promising, given how ease it is to implement the
+which looked very promising, given how easy it is to implement the
 context switching code and the scheduler timer.
 
 {% include note.html content="The GNU ARM Eclipse was born,
 as a solution that greatly simplified
-the build process for µOS++, given the CDT managed build system,
-which automatically generated the make files." %}
+the build process for µOS++ Cortex-M projects,
+given the **CDT managed build** system,
+which automatically generated the **make** files." %}
 
 ### The ARM Cortex M3 preliminary port
 
@@ -211,12 +216,12 @@ environment**.
 It must be mentioned that Eclipse CDT advertises a way of
 running headless builds, but it proved unreliable, so the only
 way of running test was manually, as regular Eclipse projects, which
-was very inconvenient.
+was very inconvenient, to say the least.
 
 {% include note.html content="With µOS++ already used in some
-projects, I was afraid that the lack of proper testing will eventually
-bite; it did not, but each release still came with a good load of
-stress." %}
+commercial projects, I was afraid that the lack of proper testing
+will eventually bite; it did not, but each release still came with
+a good load of stress." %}
 
 ## The µOS++ second edition
 
@@ -256,7 +261,7 @@ which writes back the XML configuration file).
 
 ### The Cortex-M port
 
-In April 2013 the general framework with functional initialisation
+In April 2013 the general framework with functional startup
 code for STM32F1 and STM32F4 was implemented and tested on several
 development boards.
 
@@ -286,7 +291,7 @@ automate testing continued, with no answer in the short term." %}
 
 The need for the third edition of µOS++ become evident after the
 experience with GNU ARM Eclipse plug-ins and the obvious need to
-integrate µOS++ with Eclipse.
+better integrate µOS++ with Eclipse.
 
 Work on µOS++ IIIe officially started with the creation of a new
 Git repository [micro-os-plus](https://github.com/micro-os-plus)
@@ -296,17 +301,18 @@ and a new [web](http://micro-os-plus.github.io).
 
 In mid 2014 the documentation for the new
 [ARM CMSIS Packs](https://www.open-cmsis-pack.org) was
-released; some tests were performed with the Keil tools and
+released; some evaluations were performed with the Keil tools and
 an experimental package manager was implemented as an Eclipse plug-in;
 something derived from the CMSIS packages was considered to be a possible
-candidate as a distribution mechanism, but later the idea was abandoned.
+candidate for a distribution mechanism, but later the idea was dismissed,
+as unsuitable.
 
-Also a more C-friendly approach was adopted, by adding C wrappers to the
+Also a more C-friendly approach was adopted, by adding **C wrappers** to the
 core C++ API.
 
 ### More and more testing
 
-Compared to the previous edition, testing was much more thorough,
+Compared to the previous edition, testing was more thorough,
 using the **CMSIS OS Validator** and several stress tests. The majority
 of tests were performed via the synthetic POSIX platform on macOS
 and Linux; another fair share of the tests were performed via QEMU
@@ -314,7 +320,7 @@ on the emulated STM32F4DISCOVERY, and only a very small were performed
 on physical hardware.
 
 But, as the number of tests and their complexity grew,
-the problem of automating these test became worse and worse.
+the problem of automating these test became more and more critical.
 
 {% include note.html content="I ended with the tests split
 across multiple projects, each with multiple
@@ -325,11 +331,11 @@ and invoke the tests, up to the point when everything became un-manageable." %}
 
 Further research concluded that CMSIS Packs alone are not enough,
 and a more elaborate solution is necessary; initially the
-[yotta](https://github.com/ARMmbed/yotta) solution was considered,
-and in late 2015 the first XCDL packs format based on yotta was tested.
+[yotta](https://github.com/ARMmbed/yotta) tool was considered,
+and in late 2015 the first XCDL packs format based on yotta were tested.
 
 In December 2015 the project was migrated to GitHub and restructured as
-proto-xPacks, stored as separate sub-projects.
+XCDL packs, stored as separate sub-projects.
 
 Unfortunately yotta was later abandoned by Arm, and another solution was
 needed.
@@ -340,11 +346,14 @@ In January 2016, the CMSIS++ repository was created, with a double intent:
 to act as a proposal for the next generation CMSIS, due in June 2016,
 and to serve as a portable API for the third edition of µOS++.
 
-Unfortunately, experience with CMSIS RTOS, CMSIS Drivers and other components
+Unfortunately, the experience with CMSIS RTOS, CMSIS Drivers and
+other components
 was disappointing (to say the least), and further support for CMSIS
 was no longer considered appropriate.
 
-In mid 2017 support for RISC-V was added and, for more portability,
+### RISC-V
+
+In mid 2017 support for **RISC-V** was added and, for more portability,
 the use of the CMSIS name, associated with ARM, was discontinued.
 
 ### The npm/xpm era
@@ -400,14 +409,14 @@ to compile a bootstrap with some slightly older versions, and with them
 to compile the most recent versions.
 
 This got more and more complicated, and the Docker image grew to
-4-5 GB; the build took many hours to complete,
+4-5 GB; the builds took many hours to complete,
 especially for the Raspberry Pi OS images.
 
 The solution was functional, it allowed to build all GCC toolchains,
 native and cross for Arm & RISC-V, but maintenance for the Docker
-images proved close to _mission impossible_, and after the second
+images was close to _mission impossible_; after the second
 release it was evident that this is a dead end and a
-new solution is needed.
+better solution is needed.
 
 ### The XBB breakthrough
 
@@ -415,10 +424,10 @@ In the last months of 2022, work on a new XBB release started, and was
 completed in February 2023, with XBB v5.0.0.
 
 The new solution was a big improvement, since it used completely
-standard Ubuntu 18 images, without any customisations, and all modern
+standard Ubuntu 18 Docker images, without any customisations, and all modern
 tools were installed with **xpm** as existing binary xPacks.
 
-This was a major milestone in the life of xPack project, since it
+This was a **major milestone** in the life of xPack project, since it
 proved two things:
 
 - that **the technology is standalone** with the newer versions of the tools
@@ -445,7 +454,7 @@ Further work was done with
 which resulted in functional packages that can be used in projects.
 
 They were all functional, but quite heavy and not really suited
-for testing embedded projects, and a lighter solution was considered.
+for testing embedded projects; thus a lighter solution was considered.
 
 This resulted in
 [µTest++](https://github.com/micro-os-plus/micro-test-plus-xpack),
@@ -460,7 +469,8 @@ but with a lighter footprint.
 
 With most of the tools in place, the
 [@micro-os-plus/utils-lists](https://github.com/micro-os-plus/utils-lists-xpack/)
-project was selected to be fully tested using the new tools.
+project was selected as the first candidate to be fully tested
+using the new xPack tools.
 
 The result was a very large set of tests, running both on the native
 platform (gcc and clang), and on lots of embedded platforms
