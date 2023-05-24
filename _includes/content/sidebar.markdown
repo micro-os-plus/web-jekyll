@@ -56,4 +56,4 @@
 
 * [About]({{ site.baseurl }}/project/about/)
 * [History]({{ site.baseurl }}/project/history/)
-* [License](https://opensource.org/licenses/MIT)
+* [License (MIT)](https://opensource.org/licenses/MIT)
