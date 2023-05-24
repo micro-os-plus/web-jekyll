@@ -62,7 +62,7 @@ define the configuration metadata.
 
 {% include note.html content="C++ is the reason behind µOS++,
 and eCos CDL is the reason behind
-the use of a component based design for the future
+the use of a component based design for the planned
 xPack Project Builder (tentatively called `xpmake`)." %}
 
 By that time, `vi` and `make` appeared to be my friends, but the
