@@ -320,12 +320,13 @@ on the emulated STM32F4DISCOVERY, and only a very small were performed
 on physical hardware.
 
 But, as the number of tests and their complexity grew,
-the problem of automating these test became more and more critical.
+the problem of automating these tests became more and more critical.
 
 {% include note.html content="I ended with the tests split
 across multiple projects, each with multiple
 Eclipse projects, each with different prerequisites and workflows to build
-and invoke the tests, up to the point when everything became un-manageable." %}
+and invoke the tests, up to the point when everything became
+un-manageable." %}
 
 ### The XCDL packages and the migration to GitHub
 
@@ -337,8 +338,8 @@ and in late 2015 the first XCDL packs format based on yotta were tested.
 In December 2015 the project was migrated to GitHub and restructured as
 XCDL packs, stored as separate sub-projects.
 
-Unfortunately yotta was later abandoned by Arm, and another solution was
-needed.
+Later Arm decided to discontinue development for yotta,
+and another solution was needed.
 
 ### CMSIS++
 
@@ -396,23 +397,27 @@ installing binary packages, and a new class of tools was created as
 
 Building the multi-platform binary packages proved a very difficult
 task. The challenge was how to address the contradiction between having to
-build the very latest projects that run on very old
-versions of the corresponding operating systems (Windows, GNU/Linux
+build the **very latest tools** that run on **very old
+versions** of the corresponding operating systems (Windows, GNU/Linux
 and macOS).
 
-The initial solution was to start with a Docker image of an old release
+The initial [XBB](https://github.com/xpack/xpack-build-box)
+solution was to start with a Docker image of an old release
 (Ubuntu 12, to also provide support for RedHat 7), and compile from
 sources the required new versions of the compilers and other
 development tools.
-Unfortunately this was not possible directly, and an extra step was needed,
-to compile a bootstrap with some slightly older versions, and with them
+Unfortunately this was not always possible directly,
+and an extra step was needed,
+to compile a bootstrap set of tools with some slightly older versions,
+and with them
 to compile the most recent versions.
 
 This got more and more complicated, and the Docker image grew to
 4-5 GB; the builds took many hours to complete,
 especially for the Raspberry Pi OS images.
 
-The solution was functional, it allowed to build all GCC toolchains,
+The solution was functional, it eventually allowed to build all GCC
+toolchains,
 native and cross for Arm & RISC-V, but maintenance for the Docker
 images was close to _mission impossible_; after the second
 release it was evident that this is a dead end and a
