@@ -227,7 +227,7 @@ a good load of stress." %}
 
 ### The XCDL experimental version
 
-The need for a second edition of µOS++ become obvious while
+The need for a second edition of µOS++ became obvious while
 using it for several commercial projects, and active work
 started in early 2013, after the
 [XCDL](http://xcdl.github.io) (eXtended Components Definition Language)
@@ -256,8 +256,8 @@ system was considered a success, and it validated the concept." %}
 The major weakness was the limitation introduced by
 having the build configuration metadata as a Python code:
 it could be edited only manually, and not via a GUI based
-IDE (compared, for example, to the C/C++ settings in Eclipse CDT,
-which writes back the XML configuration file).
+IDE, like, for example, the C/C++ settings in Eclipse CDT,
+which writes back the XML configuration file.
 
 ### The Cortex-M port
 
