@@ -9,7 +9,7 @@
 * [Overview]({{ site.baseurl }}/cmsis-plus/)
 * [RTOS API]({{ site.baseurl }}/cmsis-plus/rtos/)
 
-#### xPacks/XCDL
+#### xPacks
 
 * [Overview]({{ site.baseurl }}/xpacks/)
 
