@@ -11,6 +11,12 @@ date: 2016-03-03 22:35:00 +0300
 
 The **µOS++ IIIe** _(micro oh ɛs plus plus third edition)_ project is the third iteration of µOS++, a POSIX-like, portable, open source, royalty-free, multi-tasking real-time framework intended for 32/64-bits embedded applications, written in C++. The project is hosted on GitHub as [micro-os-plus](https://github.com/micro-os-plus). It has a comprehensive [User's manual]({{ site.baseurl }}/user-manual/). The APIs are documented in the [µOS++ reference]({{ site.baseurl }}/reference/cmsis-plus/).
 
+The **µOS++ IVe** (micro oh ɛs plus plus fourth edition) project
+(affectionately called _Yves_, with the French pronunciation [iv],
+like in Yves Montand) is the next edition, modularised and
+with updated APIs. This is currently work in progress, with a
+tentative release date by the end of 2023.
+
 **POSIX++** is another point of view of the project; with most system APIs using the POSIX semantics, but being written in C++, the **µOS++** APIs can also be seen as a C++ version of POSIX, thus the name **POSIX++**.
 
 ## Manifold identity
