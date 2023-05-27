@@ -2,7 +2,7 @@
 layout: page
 lang: en
 permalink: /xpacks/
-title: xPacks / XCDL
+title: xPacks
 author: Liviu Ionescu
 
 date: 2016-03-09 20:27:00 +0300
@@ -11,18 +11,16 @@ date: 2016-03-09 20:27:00 +0300
 
 ## Overview
 
-The **xPacks** / **XCDL** technology provides the glue code that keeps all these components together and allows to create projects based on them.
+The [xPacks](https://xpack.github.io)
+project provides the automation to run multi-platform tests
+and to manage dependencies to source libraries and to binary tools.
 
-XCDL is a component framework, a set of metadata definitions and a collection of tools designed to manage packages and package based embedded projects.
+XCDL is a component framework inspired from
+[eCOS CDL](http://ecos.sourceware.org/ecos/docs-latest/cdl-guide/language.html).
+It includes a set of metadata definitions and tools to manage the
+configuration step of a project.
 
-## Motivation
-
-XCDL was created both as a proposal for a future CMSIS, and to overcome the limitations/problems of the current CMSIS Pack design, among them the very limited support for inter-packages configuration.
-
-## Links
-
-The [XCDL project](https://github.com/xcdl) is also hosted on GitHub, and has a separate documentation [web site](http://xcdl.github.io).
-
-The packages created using XCDL are hosted in the separate [xPacks project](https://github.com/xpacks), also hosted on GitHub.
+XCDL is currently work in progress,
+and is planned to be included in µOS++ IVe.
 
 TODO: add more content
