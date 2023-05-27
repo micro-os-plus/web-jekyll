@@ -19,7 +19,7 @@ tentative release date by the end of 2023.
 
 **POSIX++** is another point of view of the project; with most system APIs using the POSIX semantics, but being written in C++, the **µOS++** APIs can also be seen as a C++ version of POSIX, thus the name **POSIX++**.
 
-## Manifold identity
+## Multiple identities
 
 The **µOS++** project can be considered from several points of view.
 
