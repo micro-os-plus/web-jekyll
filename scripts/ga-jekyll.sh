@@ -73,7 +73,7 @@ echo "Generate the Doxygen reference pages..."
 cd "${slug}"
 
 run_verbose .local/bin/doxygen _doxygen/config.doxyfile
-run_verbose ls -l "${DOXYGEN_OUTPUT_DIRECTORY}"
+run_verbose ls -l "reference/cmsis-plus"
 
 # ---------------------------------------------------------------------------
 
