@@ -39,12 +39,15 @@ if [ "${GITHUB_REF}" == "refs/heads/master" ]
 then
   baseurl=""
   github_dest_repo="${GITHUB_DEST_REPO}"
+  github_doxy_branch="xpack"
 else
   baseurl="/web-preview"
   github_dest_repo="${GITHUB_PREVIEW_REPO}"
+  github_doxy_branch="develop"
 fi
 
 github_doxy_repo="micro-os-plus/micro-os-plus-iii"
+
 # doxy_src_folder="${HOME}/build/${github_doxy_repo}"
 doxy_src_folder="${GITHUB_WORKSPACE}/xpacks/micro-os-plus-micro-os-plus-iii"
 
@@ -65,8 +68,11 @@ run_verbose git clone --branch=master https://github.com/${github_dest_repo}.git
 
 # -----------------------------------------------------------------------------
 
-run_verbose git clone --branch=xpack --depth=1 https://github.com/${github_doxy_repo}.git "${doxy_src_folder}"
-
+run_verbose git clone \
+  --branch=${github_doxy_branch} \
+  --depth=1 \
+  https://github.com/${github_doxy_repo}.git \
+  "${doxy_src_folder}"
 
 echo "Generate the Doxygen reference pages..."
 
@@ -76,7 +82,6 @@ run_verbose .local/bin/doxygen _doxygen/config.doxyfile
 run_verbose ls -l "reference/cmsis-plus"
 
 # ---------------------------------------------------------------------------
-
 
 echo "Perform the Jekyll build..."
 
