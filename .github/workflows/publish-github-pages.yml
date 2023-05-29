@@ -1,0 +1,95 @@
+
+name: GitHub Pages
+
+on:
+  push:
+    branches: [ master, develop ]
+  pull_request:
+    branches: [ master, develop ]
+
+# Allow one concurrent deployment
+# https://docs.github.com/en/actions/using-jobs/using-concurrency
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
+# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  build:
+    name: Build the Jekyll & Doxygen pages
+
+    runs-on: ubuntu-22.04
+
+    env:
+      GITHUB_DEST_REPO: "micro-os-plus/micro-os-plus.github.io"
+      GITHUB_PREVIEW_REPO: "micro-os-plus/web-preview"
+      GIT_COMMIT_USER_EMAIL: "ilg@livius.net"
+      GIT_COMMIT_USER_NAME: "GitHub Actions"
+      NOKOGIRI_USE_SYSTEM_LIBRARIES: true
+
+    steps:
+      - name: Checkout
+        # https://github.com/actions/checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 3
+
+      - name: Install Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          # Version range or exact version of a Ruby version to use,
+          # using semvers version range syntax.
+          # https://www.ruby-lang.org/en/downloads/releases/
+          ruby-version: '3.2'
+
+      - name: Restore cache
+        uses: actions/cache@v2
+        with:
+          path: vendor/bundle
+          key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-gems-
+
+      - name: Install bundler
+        run: |
+          sudo apt-get install -y build-essential patch ruby-dev zlib1g-dev liblzma-dev libxslt-dev pkg-config
+          gem install bundler:2.4
+          bundle config path vendor/bundle
+          bundle install --jobs 4 --retry 3
+          ls -l vendor/bundle
+          bundle exec htmlproofer --version
+
+      - name: Install Doxygen
+        # https://www.doxygen.nl/download.html
+        env:
+          DOXYGEN_VERSION: "1.9.7"
+        run: |
+          curl https://www.doxygen.nl/files/doxygen-$DOXYGEN_VERSION.linux.bin.tar.gz --output doxygen-$DOXYGEN_VERSION.linux.bin.tar.gz
+          tar xf doxygen-$DOXYGEN_VERSION.linux.bin.tar.gz
+          ls -l doxygen-$DOXYGEN_VERSION
+          mkdir -pv .local/bin
+          ln -sv $(pwd)/doxygen-$DOXYGEN_VERSION/bin/doxygen .local/bin/doxygen
+          ls -l
+
+      - name: Install dependencies
+        # For the build helper and the Doxygen theme.
+        run: |
+          npm install --global xpm@latest
+          xpm install
+
+      - name: Show environment
+        run: |
+          pwd
+          env | sort
+
+      - name: Run script to build site
+        env:
+          GITHUB_TOKEN: ${{ secrets.ILG_TOKEN }}
+        run: bash scripts/ga-jekyll.sh
+
+
