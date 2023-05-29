@@ -44,7 +44,9 @@ else
   github_dest_repo="${GITHUB_PREVIEW_REPO}"
 fi
 
-doxy_src_folder="${HOME}/build/${GITHUB_DOXY_REPO}"
+github_doxy_repo="micro-os-plus/micro-os-plus-iii"
+# doxy_src_folder="${HOME}/build/${github_doxy_repo}"
+doxy_src_folder="${GITHUB_WORKSPACE}/xpacks/micro-os-plus-micro-os-plus-iii"
 
 commit_message=$(git log -1 --pretty=format:"%s")
 
@@ -62,6 +64,19 @@ run_verbose git config --global user.name "${GIT_COMMIT_USER_NAME}"
 run_verbose git clone --branch=master https://github.com/${github_dest_repo}.git "${dest_folder}"
 
 # -----------------------------------------------------------------------------
+
+run_verbose git clone --branch=xpack --depth=1 https://github.com/${github_doxy_repo}.git "${doxy_src_folder}"
+
+
+echo "Generate the Doxygen reference pages..."
+
+cd "${slug}"
+
+run_verbose .local/bin/doxygen _doxygen/config.doxyfile
+run_verbose ls -l "${DOXYGEN_OUTPUT_DIRECTORY}"
+
+# ---------------------------------------------------------------------------
+
 
 echo "Perform the Jekyll build..."
 
@@ -102,18 +117,6 @@ then
   echo "Probably a pull request, skip deploy."
   exit 0
 fi
-
-# ---------------------------------------------------------------------------
-
-run_verbose git clone --branch=xpack --depth=1 https://github.com/${GITHUB_DOXY_REPO}.git "${doxy_src_folder}"
-
-# Create the doxygen reference pages.
-export DOXYGEN_OUTPUT_DIRECTORY="${site_folder}/reference"
-export DOXYGEN_STRIP_FROM_PATH="${doxy_src_folder}"
-
-cd "${doxy_src_folder}/doxygen"
-run_verbose doxygen config-travis.doxyfile
-run_verbose ls -l "${DOXYGEN_OUTPUT_DIRECTORY}"
 
 # ---------------------------------------------------------------------------
 

@@ -1,0 +1,104 @@
+{
+  "name": "@micro-os-plus/web-jekyll",
+  "version": "0.0.0",
+  "description": "The complete Jekyll source for the µOS++ IIIe web site",
+  "main": "",
+  "scripts": {
+    "npm-install": "npm install",
+    "pack": "npm pack",
+    "version-patch": "npm version patch",
+    "version-minor": "npm version minor",
+    "postversion": "git push origin --all && git push origin --tags",
+    "git-log": "git log --pretty='%cd * %h %s' --date=short"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/micro-os-plus/web-jekyll.git/"
+  },
+  "homepage": "https://github.com/micro-os-plus/web-jekyll/",
+  "bugs": {
+    "url": "https://github.com/micro-os-plus/web-jekyll/issues"
+  },
+  "keywords": [
+    "xpack",
+    "c++",
+    "micro-os-plus"
+  ],
+  "author": {
+    "name": "Liviu Ionescu",
+    "email": "ilg@livius.net",
+    "url": "https://github.com/ilg-ul/"
+  },
+  "license": "MIT",
+  "config": {},
+  "bundleDependencies": [],
+  "devDependencies": {
+    "del-cli": "^5.0.0",
+    "open-cli": "^7.2.0"
+  },
+  "xpack": {
+    "minimumXpmRequired": "0.14.0",
+    "dependencies": {},
+    "$dependenciesUrls": [
+      "https://github.com/xpack-dev-tools/",
+      "https://github.com/micro-os-plus/"
+    ],
+    "devDependencies": {
+      "@micro-os-plus/build-helper": "github:micro-os-plus/build-helper-xpack#xpack-develop",
+      "@xpack-3rd-party/doxygen-awesome-css": "^2.2.0-1"
+    },
+    "properties": {
+    },
+    "actions": {
+      "install": [
+        "npm install",
+        "xpm install"
+      ],
+      "link-local-bundle": [
+        "mkdir -pv node_modules/.bin",
+        "rm -f node_modules/.bin/bundle",
+        "ln -sv  ${HOME}/.local/homebrew/jekyll/bin/bundle node_modules/.bin/bundle"
+      ],
+      "bundle-install": [
+        "bundle install",
+        "bundle info jekyll",
+        "bundle exec jekyll --version"
+      ],
+      "bundle-update": [
+        "bundle update",
+        "bundle show",
+        "bundle info jekyll",
+        "bundle exec jekyll --version"
+      ],
+      "which-bundle": [
+        "which bundle",
+        "bundle --version",
+        "bundle exec jekyll --version",
+        "bundle exec jekyll --help"
+      ],
+      "serve-preview": [
+        "bundle exec jekyll serve --trace --safe --baseurl \"/web-preview\" --destination _site_preview --port 4002"
+      ],
+      "serve-preview-draft": [
+        "bundle exec jekyll serve --trace --safe --baseurl \"/web-preview\" --destination _site_preview --draft --port 4002"
+      ],
+      "build-site": [
+        "bundle exec jekyll build"
+      ],
+      "build-site-preview": [
+        "del-cli _site_preview",
+        "bundle exec jekyll build --trace --safe --baseurl \"/web-preview\" --destination _site_preview"
+      ],
+      "htmlproofer-site": [
+        "bundle exec htmlproofer --allow-hash-href --http_status_ignore=429 ./_site"
+      ],
+      "doxygen": [
+        "del-cli reference/cmsis-plus",
+        "mkdir -pv reference/cmsis-plus",
+        "doxygen _doxygen/config.doxyfile"
+      ],
+      "browser": "open-cli website/html/index.html",
+      "deep-clean": "del-cli node_modules xpacks _site_preview package-lock.json"
+    }
+  }
+}

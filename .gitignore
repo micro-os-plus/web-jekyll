@@ -8,3 +8,6 @@ reference/cmsis-plus/
 /Gemfile~
 /.project
 /.settings/
+/node_modules/
+/xpacks/
+/_site_preview/

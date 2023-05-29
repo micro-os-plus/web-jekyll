@@ -1,0 +1,222 @@
+# Doxyfile 1.9.6
+
+# This file describes the settings to be used by the documentation system
+# doxygen (www.doxygen.org) for a project.
+#
+# All text after a double hash (##) is considered a comment and is placed in
+# front of the TAG it is preceding.
+#
+# All text after a single hash (#) is considered a comment and will be ignored.
+# The format is:
+# TAG = value [value, ...]
+# For lists, items can also be appended using:
+# TAG += value [value, ...]
+# Values that contain spaces should be placed between quotes (\" \").
+#
+# Note:
+#
+# Use doxygen to compare the used configuration file with the template
+# configuration file:
+# doxygen -x [configFile]
+# Use doxygen to compare the used configuration file with the template
+# configuration file without replacing the environment variables or CMake type
+# replacement variables:
+# doxygen -x_noenv [configFile]
+
+#---------------------------------------------------------------------------
+
+@INCLUDE = xpacks/micro-os-plus-build-helper/doxygen/common-config.doxyfile
+
+#---------------------------------------------------------------------------
+# Project related configuration options
+#---------------------------------------------------------------------------
+
+# The PROJECT_NAME tag is a single word (or a sequence of words surrounded by
+# double-quotes, unless you are using Doxywizard) that should identify the
+# project for which the documentation is generated. This name is used in the
+# title of most generated pages and in a few other places.
+# The default value is: My Project.
+
+PROJECT_NAME = "µOS++ IIIe Reference"
+
+# The PROJECT_NUMBER tag can be used to enter a project or revision number. This
+# could be handy for archiving the generated documentation or if some version
+# control system is used.
+
+PROJECT_NUMBER = 6.3.17
+
+# Using the PROJECT_BRIEF tag one can provide an optional one line description
+# for a project that appears at the top of each page and should give viewer a
+# quick idea about the purpose of the project. Keep the description short.
+
+PROJECT_BRIEF = \
+"The third edition of µOS++, a POSIX inspired open source framework, written in C++"
+
+# With the PROJECT_LOGO tag one can specify a logo or an icon that is included
+# in the documentation. The maximum height of the logo should not exceed 55
+# pixels and the maximum width should not exceed 200 pixels. Doxygen will copy
+# the logo to the output directory.
+
+PROJECT_LOGO = xpacks/micro-os-plus-micro-os-plus-iii/doxygen/logo.png
+
+# The STRIP_FROM_PATH tag can be used to strip a user-defined part of the path.
+# Stripping is only done if one of the specified strings matches the left-hand
+# part of the path. The tag can be used to show relative paths in the file list.
+# If left blank the directory from which doxygen is run is used as the path to
+# strip.
+#
+# Note that you can specify absolute paths here, but also relative paths, which
+# will be relative from the directory where doxygen is started.
+# This tag requires that the tag FULL_PATH_NAMES is set to YES.
+
+STRIP_FROM_PATH = xpacks/micro-os-plus-micro-os-plus-iii
+
+#---------------------------------------------------------------------------
+# Configuration options related to warning and progress messages
+#---------------------------------------------------------------------------
+
+# If the WARN_AS_ERROR tag is set to YES then doxygen will immediately stop when
+# a warning is encountered. If the WARN_AS_ERROR tag is set to FAIL_ON_WARNINGS
+# then doxygen will continue running as if WARN_AS_ERROR tag is set to NO, but
+# at the end of the doxygen process doxygen will return with a non-zero status.
+# Possible values are: NO, YES and FAIL_ON_WARNINGS.
+# The default value is: NO.
+
+WARN_AS_ERROR = NO
+
+#---------------------------------------------------------------------------
+# Configuration options related to the input files
+#---------------------------------------------------------------------------
+
+# The INPUT tag is used to specify the files and/or directories that contain
+# documented source files. You may enter file names like myfile.cpp or
+# directories like /usr/src/myproject. Separate the files or directories with
+# spaces. See also FILE_PATTERNS and EXTENSION_MAPPING
+# Note: If this tag is empty the current directory is searched.
+
+# The order is preserved in the side bar.
+
+INPUT = \
+"xpacks/micro-os-plus-micro-os-plus-iii/doxygen/pages" \
+"xpacks/micro-os-plus-micro-os-plus-iii/include/cmsis-plus/" \
+"xpacks/micro-os-plus-micro-os-plus-iii/src/" \
+"xpacks/micro-os-plus-micro-os-plus-iii/include/cmsis-plus/estd/chrono" \
+"xpacks/micro-os-plus-micro-os-plus-iii/include/cmsis-plus/estd/condition_variable" \
+"xpacks/micro-os-plus-micro-os-plus-iii/include/cmsis-plus/estd/mutex" \
+"xpacks/micro-os-plus-micro-os-plus-iii/include/cmsis-plus/estd/memory_resource" \
+"xpacks/micro-os-plus-micro-os-plus-iii/include/cmsis-plus/estd/system_error" \
+"xpacks/micro-os-plus-micro-os-plus-iii/include/cmsis-plus/estd/thread" \
+
+# The EXCLUDE tag can be used to specify files and/or directories that should be
+# excluded from the INPUT source files. This way you can easily exclude a
+# subdirectory from a directory tree whose root is specified with the INPUT tag.
+#
+# Note that relative paths are relative to the directory from which doxygen is
+# run.
+
+EXCLUDE = \
+"xpacks/micro-os-plus-micro-os-plus-iii/src/cmsis-plus/rtos/os-impl.cpp" \
+"xpacks/micro-os-plus-micro-os-plus-iii/src/cmsis-plus/libcpp/chrono.cpp" \
+"xpacks/micro-os-plus-micro-os-plus-iii/src/cmsis-plus/libcpp/condition-variable.cpp" \
+"xpacks/micro-os-plus-micro-os-plus-iii/src/cmsis-plus/libcpp/mutex.cpp" \
+"xpacks/micro-os-plus-micro-os-plus-iii/src/cmsis-plus/libcpp/thread.cpp" \
+
+# If the value of the INPUT tag contains directories, you can use the
+# EXCLUDE_PATTERNS tag to specify one or more wildcard patterns to exclude
+# certain files from those directories.
+#
+# Note that the wildcards are matched against the file with absolute path, so to
+# exclude all test directories for example use the pattern */test/*
+
+EXCLUDE_PATTERNS = "*/README*.md"
+
+# If the USE_MDFILE_AS_MAINPAGE tag refers to the name of a markdown file that
+# is part of the input, its contents will be placed on the main page
+# (index.html). This can be useful if you have a project on for instance GitHub
+# and want to reuse the introduction page also for the doxygen output.
+
+## USE_MDFILE_AS_MAINPAGE = website/pages/home.md
+
+# The INPUT_FILTER tag can be used to specify a program that doxygen should
+# invoke to filter for each input file. Doxygen will invoke the filter program
+# by executing (via popen()) the command:
+#
+# <filter> <input-file>
+#
+# where <filter> is the value of the INPUT_FILTER tag, and <input-file> is the
+# name of an input file. Doxygen will then use the output that the filter
+# program writes to standard output. If FILTER_PATTERNS is specified, this tag
+# will be ignored.
+#
+# Note that the filter must not add or remove lines; it is applied before the
+# code is scanned, but not when the output code is generated. If lines are added
+# or removed, the anchors will not be placed correctly.
+#
+# Note that doxygen will use the data processed and written to standard output
+# for further processing, therefore nothing else, like debug statements or used
+# commands (so in case of a Windows batch file always use @echo OFF), should be
+# written to standard output.
+#
+# Note that for custom extensions or not directly supported extensions you also
+# need to set EXTENSION_MAPPING for the extension otherwise the files are not
+# properly processed by doxygen.
+
+## -e 's|```.*|```|'
+INPUT_FILTER = "sed -e 's|__attribute__\s*[(]\s*[(].*[)]\s*[)]||g'"
+
+# The IMAGE_PATH tag can be used to specify one or more files or directories
+# that contain images that are to be included in the documentation (see the
+# \image command).
+
+# IMAGE_PATH =
+
+
+#---------------------------------------------------------------------------
+# Configuration options related to the preprocessor
+#---------------------------------------------------------------------------
+
+# The PREDEFINED tag can be used to specify one or more macro names that are
+# defined before the preprocessor is started (similar to the -D option of e.g.
+# gcc). The argument of the tag is a list of macros of the form: name or
+# name=definition (no spaces). If the definition and the "=" are omitted, "=1"
+# is assumed. To prevent a macro definition from being undefined via #undef or
+# recursively expanded use the := operator instead of the = operator.
+# This tag requires that the tag ENABLE_PREPROCESSING is set to YES.
+
+PREDEFINED = \
+__DOXYGEN__ \
+__cplusplus \
+__ARM_EABI__ \
+TRACE \
+OS_INCLUDE_RTOS_STATISTICS_THREAD_CONTEXT_SWITCHES \
+OS_INCLUDE_RTOS_STATISTICS_THREAD_CPU_CYCLES \
+OS_INTEGER_RTOS_DYNAMIC_MEMORY_SIZE_BYTES \
+
+
+#---------------------------------------------------------------------------
+# Configuration options related to the HTML output
+#---------------------------------------------------------------------------
+
+HTML_OUTPUT = reference/cmsis-plus
+
+HTML_HEADER = \
+_doxygen/header.html
+
+HTML_EXTRA_FILES = \
+xpacks/xpack-3rd-party-doxygen-awesome-css/doxygen-awesome-darkmode-toggle.js \
+xpacks/xpack-3rd-party-doxygen-awesome-css/doxygen-awesome-fragment-copy-button.js \
+xpacks/xpack-3rd-party-doxygen-awesome-css/doxygen-awesome-paragraph-link.js \
+xpacks/xpack-3rd-party-doxygen-awesome-css/doxygen-awesome-interactive-toc.js \
+xpacks/xpack-3rd-party-doxygen-awesome-css/doxygen-awesome-tabs.js \
+
+HTML_EXTRA_STYLESHEET = \
+xpacks/xpack-3rd-party-doxygen-awesome-css/doxygen-awesome.css \
+xpacks/micro-os-plus-build-helper/doxygen/common-custom.css \
+xpacks/micro-os-plus-build-helper/doxygen/cards.css \
+
+HTML_COLORSTYLE = LIGHT
+HTML_COLORSTYLE_HUE = 209
+HTML_COLORSTYLE_SAT = 255
+HTML_COLORSTYLE_GAMMA = 113
+
+#---------------------------------------------------------------------------

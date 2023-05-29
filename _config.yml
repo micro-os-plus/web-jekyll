@@ -23,6 +23,9 @@ exclude:
   - Gemfile.lock
   - vendor
   - scripts
+  - xpacks
+  - node_modules
+  - doxygen
 
 
 # Used in sitemap.xml.
