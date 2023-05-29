@@ -69,7 +69,7 @@ jobs:
           ln -sv $(pwd)/doxygen-$DOXYGEN_VERSION/bin/doxygen .local/bin/doxygen
           ls -l
 
-      - name: Use Nodejs
+      - name: Use Node.js
         # https://github.com/actions/setup-node
         uses: actions/setup-node@v3
         with:
