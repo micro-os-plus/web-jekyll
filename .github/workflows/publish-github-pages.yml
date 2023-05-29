@@ -57,7 +57,8 @@ jobs:
 
       - name: Install bundler
         run: |
-          sudo apt-get install -y build-essential patch ruby-dev zlib1g-dev liblzma-dev libxslt-dev pkg-config
+          sudo apt-get install -y build-essential patch ruby-dev zlib1g-dev liblzma-dev libxslt-dev pkg-config libffi
+          # https://bundler.io
           gem install bundler:2.4
           bundle config path vendor/bundle
           bundle install --jobs 4 --retry 3
@@ -75,6 +76,12 @@ jobs:
           mkdir -pv .local/bin
           ln -sv $(pwd)/doxygen-$DOXYGEN_VERSION/bin/doxygen .local/bin/doxygen
           ls -l
+
+      - name: Use Nodejs
+        # https://github.com/actions/setup-node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18.x
 
       - name: Install dependencies
         # For the build helper and the Doxygen theme.
