@@ -162,8 +162,7 @@ EXCLUDE_PATTERNS = "*/README*.md"
 # need to set EXTENSION_MAPPING for the extension otherwise the files are not
 # properly processed by doxygen.
 
-## -e 's|```.*|```|'
-INPUT_FILTER = "sed -e 's|__attribute__\s*[(]\s*[(].*[)]\s*[)]||g'"
+INPUT_FILTER = "sed -e 's|__attribute__[ 	]*[(][ 	]*[(].*[)][ 	]*[)]||g'"
 
 # The IMAGE_PATH tag can be used to specify one or more files or directories
 # that contain images that are to be included in the documentation (see the
