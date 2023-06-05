@@ -1,3 +1,7 @@
+# Build and publish the µOS++ web site.
+# https://micro-os-plus.github.io/
+# https://micro-os-plus.github.io/web-preview/
+# https://github.com/micro-os-plus/web-jekyll/actions/workflows/publish-github-pages.yml
 
 name: GitHub Pages
 
