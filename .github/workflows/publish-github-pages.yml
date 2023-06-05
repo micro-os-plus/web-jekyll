@@ -6,6 +6,8 @@ on:
     branches: [ master, develop ]
   pull_request:
     branches: [ master, develop ]
+  workflow_dispatch:
+    # https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#onworkflow_dispatchinputs
 
 # Allow one concurrent deployment
 # https://docs.github.com/en/actions/using-jobs/using-concurrency
