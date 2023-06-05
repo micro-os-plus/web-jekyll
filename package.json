@@ -13,9 +13,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/micro-os-plus/web-jekyll.git/"
+    "url": "https://github.com/micro-os-plus/web-jekyll.git"
   },
-  "homepage": "https://github.com/micro-os-plus/web-jekyll/",
+  "homepage": "https://github.com/micro-os-plus/web-jekyll",
   "bugs": {
     "url": "https://github.com/micro-os-plus/web-jekyll/issues"
   },
