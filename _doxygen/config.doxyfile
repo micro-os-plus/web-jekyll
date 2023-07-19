@@ -25,8 +25,8 @@
 
 #---------------------------------------------------------------------------
 
-@INCLUDE = xpacks/micro-os-plus-build-helper/doxygen/original-config.doxyfile
-@INCLUDE = xpacks/micro-os-plus-build-helper/doxygen/common-config.doxyfile
+@INCLUDE = xpacks/@micro-os-plus/build-helper/doxygen/original-config.doxyfile
+@INCLUDE = xpacks/@micro-os-plus/build-helper/doxygen/common-config.doxyfile
 
 #---------------------------------------------------------------------------
 # Project related configuration options
@@ -58,7 +58,7 @@ PROJECT_BRIEF = \
 # pixels and the maximum width should not exceed 200 pixels. Doxygen will copy
 # the logo to the output directory.
 
-PROJECT_LOGO = xpacks/micro-os-plus-micro-os-plus-iii/doxygen/logo.png
+PROJECT_LOGO = xpacks/@micro-os-plus/micro-os-plus-iii/doxygen/logo.png
 
 # The STRIP_FROM_PATH tag can be used to strip a user-defined part of the path.
 # Stripping is only done if one of the specified strings matches the left-hand
@@ -70,7 +70,7 @@ PROJECT_LOGO = xpacks/micro-os-plus-micro-os-plus-iii/doxygen/logo.png
 # will be relative from the directory where doxygen is started.
 # This tag requires that the tag FULL_PATH_NAMES is set to YES.
 
-STRIP_FROM_PATH = xpacks/micro-os-plus-micro-os-plus-iii
+STRIP_FROM_PATH = xpacks/@micro-os-plus/micro-os-plus-iii
 
 #---------------------------------------------------------------------------
 # Configuration options related to warning and progress messages
@@ -98,15 +98,15 @@ WARN_AS_ERROR = NO
 # The order is preserved in the side bar.
 
 INPUT = \
-"xpacks/micro-os-plus-micro-os-plus-iii/doxygen/pages" \
-"xpacks/micro-os-plus-micro-os-plus-iii/include/cmsis-plus/" \
-"xpacks/micro-os-plus-micro-os-plus-iii/src/" \
-"xpacks/micro-os-plus-micro-os-plus-iii/include/cmsis-plus/estd/chrono" \
-"xpacks/micro-os-plus-micro-os-plus-iii/include/cmsis-plus/estd/condition_variable" \
-"xpacks/micro-os-plus-micro-os-plus-iii/include/cmsis-plus/estd/mutex" \
-"xpacks/micro-os-plus-micro-os-plus-iii/include/cmsis-plus/estd/memory_resource" \
-"xpacks/micro-os-plus-micro-os-plus-iii/include/cmsis-plus/estd/system_error" \
-"xpacks/micro-os-plus-micro-os-plus-iii/include/cmsis-plus/estd/thread" \
+"xpacks/@micro-os-plus/micro-os-plus-iii/doxygen/pages" \
+"xpacks/@micro-os-plus/micro-os-plus-iii/include/cmsis-plus/" \
+"xpacks/@micro-os-plus/micro-os-plus-iii/src/" \
+"xpacks/@micro-os-plus/micro-os-plus-iii/include/cmsis-plus/estd/chrono" \
+"xpacks/@micro-os-plus/micro-os-plus-iii/include/cmsis-plus/estd/condition_variable" \
+"xpacks/@micro-os-plus/micro-os-plus-iii/include/cmsis-plus/estd/mutex" \
+"xpacks/@micro-os-plus/micro-os-plus-iii/include/cmsis-plus/estd/memory_resource" \
+"xpacks/@micro-os-plus/micro-os-plus-iii/include/cmsis-plus/estd/system_error" \
+"xpacks/@micro-os-plus/micro-os-plus-iii/include/cmsis-plus/estd/thread" \
 
 # The EXCLUDE tag can be used to specify files and/or directories that should be
 # excluded from the INPUT source files. This way you can easily exclude a
@@ -116,11 +116,11 @@ INPUT = \
 # run.
 
 EXCLUDE = \
-"xpacks/micro-os-plus-micro-os-plus-iii/src/cmsis-plus/rtos/os-impl.cpp" \
-"xpacks/micro-os-plus-micro-os-plus-iii/src/cmsis-plus/libcpp/chrono.cpp" \
-"xpacks/micro-os-plus-micro-os-plus-iii/src/cmsis-plus/libcpp/condition-variable.cpp" \
-"xpacks/micro-os-plus-micro-os-plus-iii/src/cmsis-plus/libcpp/mutex.cpp" \
-"xpacks/micro-os-plus-micro-os-plus-iii/src/cmsis-plus/libcpp/thread.cpp" \
+"xpacks/@micro-os-plus/micro-os-plus-iii/src/cmsis-plus/rtos/os-impl.cpp" \
+"xpacks/@micro-os-plus/micro-os-plus-iii/src/cmsis-plus/libcpp/chrono.cpp" \
+"xpacks/@micro-os-plus/micro-os-plus-iii/src/cmsis-plus/libcpp/condition-variable.cpp" \
+"xpacks/@micro-os-plus/micro-os-plus-iii/src/cmsis-plus/libcpp/mutex.cpp" \
+"xpacks/@micro-os-plus/micro-os-plus-iii/src/cmsis-plus/libcpp/thread.cpp" \
 
 # If the value of the INPUT tag contains directories, you can use the
 # EXCLUDE_PATTERNS tag to specify one or more wildcard patterns to exclude
@@ -221,8 +221,8 @@ _doxygen/header.html
 
 HTML_EXTRA_STYLESHEET = \
 xpacks/xpack-3rd-party-doxygen-awesome-css/doxygen-awesome.css \
-xpacks/micro-os-plus-build-helper/doxygen/common-custom.css \
-xpacks/micro-os-plus-build-helper/doxygen/cards.css \
+xpacks/@micro-os-plus/build-helper/doxygen/common-custom.css \
+xpacks/@micro-os-plus/build-helper/doxygen/cards.css \
 
 # The HTML_EXTRA_FILES tag can be used to specify one or more extra images or
 # other source files which should be copied to the HTML output directory. Note
