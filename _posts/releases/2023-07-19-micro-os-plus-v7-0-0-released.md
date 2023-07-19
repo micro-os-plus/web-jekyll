@@ -14,7 +14,7 @@ categories:
 ---
 
 Version v7.0.0 is a new **µOS++** major release. It represents
-a major milestone, being the first release that includes extensive
+an important milestone, being the first release that includes extensive
 tests running in scriptable CI environments.
 
 The main functional changes
@@ -37,12 +37,15 @@ to **add it as a dependency** to the project via **xpm**.
 ## New features
 
 - [[#78](https://github.com/micro-os-plus/micro-os-plus-iii/issues/78)]:
+  there was no support to clear the statistics;
   add a `clear()` method to thread statistics and to the scheduler.
 
 - [[#79](https://github.com/micro-os-plus/micro-os-plus-iii/issues/79)]:
+  identifying the thread which issued an assert was difficult;
   add the `this_thread` address and name when displaying the assert error
 
 - [[#81](https://github.com/micro-os-plus/micro-os-plus-iii/issues/81)]:
+  thread reuse via placement new was error prone;
   add a thread attribute to check if the thread constructor is called
   only after destroy
 
@@ -56,8 +59,9 @@ to **add it as a dependency** to the project via **xpm**.
   GCC 12 spotted a name clash between the unscoped enum `socket` definition
   and the top definition; the definition was changed to a scoped `enum class`.
 
-Note: those were both breaking changes, which required to increase
-the version major number.
+Note: although minor, those were both **breaking changes**, which
+according to semver rules, required
+to increase the version major number.
 
 ## Other changes
 
@@ -66,13 +70,13 @@ the version major number.
   silenced
 
 - [[#80](https://github.com/micro-os-plus/micro-os-plus-iii/issues/80)]:
-  in a normal use case, during thread destruction, a debug message
-  says _already gone_; fixed, do not call `kill()` in the destructor if
+  in a normal use case, during thread destruction, there was an _already gone_
+  debug message; fixed, do not call `kill()` in the destructor if
   it was already called explicitly.
 
 - [[#84](https://github.com/micro-os-plus/micro-os-plus-iii/issues/84)]:
   the stack underflow condition was tested only when asserts were enabled;
-  fixed, the condition is always tested and `abort()` is invoked
+  fixed, the condition is always tested and `abort()` is invoked if necessary
 
 ## Known problems
 
