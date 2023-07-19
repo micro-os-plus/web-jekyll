@@ -8,13 +8,13 @@ date: 2017-08-26 23:29:00 +0300
 
 categories:
   - releases
-  - micro-os-plus
+  - micro-os-plus-iii
 
 tags:
   - releases
   - rtos
   - cmsis-plus
-  - micro-os-plus-iii
+  - micro-os-plus
 
 ---
 
