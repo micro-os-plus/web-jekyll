@@ -26,6 +26,7 @@ exclude:
   - xpacks
   - node_modules
   - doxygen
+  - 'package*.json'
 
 
 # Used in sitemap.xml.
