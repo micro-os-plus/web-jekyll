@@ -220,7 +220,7 @@ _doxygen/header.html
 # This tag requires that the tag GENERATE_HTML is set to YES.
 
 HTML_EXTRA_STYLESHEET = \
-xpacks/xpack-3rd-party-doxygen-awesome-css/doxygen-awesome.css \
+xpacks/@xpack-3rd-party/doxygen-awesome-css/doxygen-awesome.css \
 xpacks/@micro-os-plus/build-helper/doxygen/common-custom.css \
 xpacks/@micro-os-plus/build-helper/doxygen/cards.css \
 
@@ -233,11 +233,11 @@ xpacks/@micro-os-plus/build-helper/doxygen/cards.css \
 # This tag requires that the tag GENERATE_HTML is set to YES.
 
 HTML_EXTRA_FILES = \
-xpacks/xpack-3rd-party-doxygen-awesome-css/doxygen-awesome-darkmode-toggle.js \
-xpacks/xpack-3rd-party-doxygen-awesome-css/doxygen-awesome-fragment-copy-button.js \
-xpacks/xpack-3rd-party-doxygen-awesome-css/doxygen-awesome-paragraph-link.js \
-xpacks/xpack-3rd-party-doxygen-awesome-css/doxygen-awesome-interactive-toc.js \
-xpacks/xpack-3rd-party-doxygen-awesome-css/doxygen-awesome-tabs.js \
+xpacks/@xpack-3rd-party/doxygen-awesome-css/doxygen-awesome-darkmode-toggle.js \
+xpacks/@xpack-3rd-party/doxygen-awesome-css/doxygen-awesome-fragment-copy-button.js \
+xpacks/@xpack-3rd-party/doxygen-awesome-css/doxygen-awesome-paragraph-link.js \
+xpacks/@xpack-3rd-party/doxygen-awesome-css/doxygen-awesome-interactive-toc.js \
+xpacks/@xpack-3rd-party/doxygen-awesome-css/doxygen-awesome-tabs.js \
 
 #---------------------------------------------------------------------------
 # Configuration options related to the preprocessor
