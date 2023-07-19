@@ -37,7 +37,7 @@
     "open-cli": "^7.2.0"
   },
   "xpack": {
-    "minimumXpmRequired": "0.14.0",
+    "minimumXpmRequired": "0.16.2",
     "dependencies": {},
     "$dependenciesUrls": [
       "https://github.com/xpack-dev-tools/",
