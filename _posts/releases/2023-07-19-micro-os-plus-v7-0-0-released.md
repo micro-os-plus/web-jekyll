@@ -38,7 +38,7 @@ to **add it as a dependency** to the project via **xpm**.
 
 - [[#78](https://github.com/micro-os-plus/micro-os-plus-iii/issues/78)]:
   there was no support to clear the statistics;
-  add a `clear()` method to thread statistics and to the scheduler.
+  add a `clear()` method to thread statistics and to the scheduler
 
 - [[#79](https://github.com/micro-os-plus/micro-os-plus-iii/issues/79)]:
   identifying the thread which issued an assert was difficult;
@@ -57,7 +57,7 @@ to **add it as a dependency** to the project via **xpm**.
 
 - [[#83](https://github.com/micro-os-plus/micro-os-plus-iii/issues/83)]:
   GCC 12 spotted a name clash between the unscoped enum `socket` definition
-  and the top definition; the definition was changed to a scoped `enum class`.
+  and the top definition; the definition was changed to a scoped `enum class`
 
 Note: although minor, those were both **breaking changes**, which
 according to semver rules, required
@@ -72,7 +72,7 @@ to increase the version major number.
 - [[#80](https://github.com/micro-os-plus/micro-os-plus-iii/issues/80)]:
   in a normal use case, during thread destruction, there was an _already gone_
   debug message; fixed, do not call `kill()` in the destructor if
-  it was already called explicitly.
+  it was already called explicitly
 
 - [[#84](https://github.com/micro-os-plus/micro-os-plus-iii/issues/84)]:
   the stack underflow condition was tested only when asserts were enabled;
@@ -81,7 +81,7 @@ to increase the version major number.
 ## Known problems
 
 - the header files are still located below a `cmsis-plus` folder; to be
-replaced by `micro-os-plus` in a future major release.
+replaced by `micro-os-plus` in a future major release
 - the `file_descriptors_manager` class is not yet synchronised
 
 ## Future developments
