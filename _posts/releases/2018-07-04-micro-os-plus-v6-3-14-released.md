@@ -80,8 +80,3 @@ and `estd::` namespaces
 - the header files are still located below a `cmsis-plus` folder; to be
 replaced by `micro-os-plus` in a future major release.
 - the `file_descriptors_manager` class is not yet synchronised
-
-## Future developments
-
-This will hopefully be the final release of µOS++ in the current monolithic
-structure. Future versions will use a modular structure, based on xPacks.

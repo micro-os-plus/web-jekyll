@@ -49,7 +49,3 @@ None.
 ## Known problems
 
 None.
-
-## Future developments
-
-Advanced tools to manage the µOS++ packages (based on XCDL/xPack) are planned, and will be available in the near future.

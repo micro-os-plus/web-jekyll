@@ -38,7 +38,3 @@ To automate this process, some scripts were written. To experiment with **µOS++
 Experience proved that one of the changes in this version was trickier than planned: the rename of the `os_startup_initialize_hardware()`, since without the renamed function the linker used the weak version of this function and did not perform the hardware initialisations at all.
 
 To help developers, the weak definition was temporarily disabled, so if this function was not yet renamed in the application, the linker will complain.
-
-## Future developments
-
-Advanced tools to manage the µOS++ packages (based on XCDL/xPack) are planned, and will be available in the near future.

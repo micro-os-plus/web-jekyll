@@ -33,7 +33,7 @@ To experiment with **µOS++**, please check the demo projects, available from [G
 
 - `__posix_gettimeofday()` implemented; it calls `rtclock.now ()`
 - header `<cmsis-plus/posix/termios.h>` added
-- class `os::posix::tty` added with tty atributes support
+- class `os::posix::tty` added with tty attributes support
 
 ## Addressed bugs
 
@@ -47,7 +47,3 @@ None.
 ## Known problems
 
 None.
-
-## Future developments
-
-Advanced tools to manage the µOS++ packages (based on XCDL/xPack) are planned, and will be available in the near future.

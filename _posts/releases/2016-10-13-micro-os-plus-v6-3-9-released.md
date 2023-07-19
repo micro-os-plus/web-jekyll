@@ -37,11 +37,6 @@ To automate this process, some scripts were written. To experiment with **µOS++
 - general purpose classes were moved to the newly created `utils` folder;
 - startup: temporarily disable weak `os_startup_initialize_hardware()` (without the renamed function the linker used the weak version of this function and did not perform the hardware initialisations at all).
 
-
 ## Known problems
 
 None.
-
-## Future developments
-
-Advanced tools to manage the µOS++ packages (based on XCDL/xPack) are planned, and will be available in the near future.
