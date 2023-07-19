@@ -3,6 +3,7 @@
 #### µOS++
 
 * [Overview]({{ site.baseurl }}/micro-os-plus/)
+* [Releases]({{ site.baseurl }}/micro-os-plus/iii/releases/)
 
 #### APIs
 
