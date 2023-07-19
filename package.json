@@ -4,12 +4,7 @@
   "description": "The complete Jekyll source for the µOS++ IIIe web site",
   "main": "",
   "scripts": {
-    "npm-install": "npm install",
-    "pack": "npm pack",
-    "version-patch": "npm version patch",
-    "version-minor": "npm version minor",
-    "postversion": "git push origin --all && git push origin --tags",
-    "git-log": "git log --pretty='%cd * %h %s' --date=short"
+    "postversion": "git push origin --all && git push origin --tags"
   },
   "repository": {
     "type": "git",
@@ -27,7 +22,7 @@
   "author": {
     "name": "Liviu Ionescu",
     "email": "ilg@livius.net",
-    "url": "https://github.com/ilg-ul/"
+    "url": "https://github.com/ilg-ul"
   },
   "license": "MIT",
   "config": {},
@@ -50,6 +45,11 @@
     "properties": {
     },
     "actions": {
+      "npm-install": "npm install",
+      "npm-pack": "npm pack",
+      "npm-version-patch": "npm version patch",
+      "npm-version-minor": "npm version minor",
+      "git-log": "git log --pretty='%cd * %h %s' --date=short",
       "install": [
         "npm install",
         "xpm install"
