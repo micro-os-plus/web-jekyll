@@ -49,7 +49,7 @@ fi
 github_doxy_repo="micro-os-plus/micro-os-plus-iii"
 
 # doxy_src_folder="${HOME}/build/${github_doxy_repo}"
-doxy_src_folder="${GITHUB_WORKSPACE}/xpacks/micro-os-plus-micro-os-plus-iii"
+doxy_src_folder="${GITHUB_WORKSPACE}/xpacks/@micro-os-plus/micro-os-plus-iii"
 
 commit_message=$(git log -1 --pretty=format:"%s")
 
