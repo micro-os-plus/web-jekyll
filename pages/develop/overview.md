@@ -47,6 +47,8 @@ For a summary of the modern C++ features:
 
 - [Modules the beginner's guide - Daniela Engert - Meeting C++ 2019](https://www.youtube.com/watch?v=Kqo-jIq4V3I)
 
+## STM32CubeMX
+
 - [STM32CubeMX]({{ site.baseurl }}/develop/stm32cubemx/)
 
 ## Procedures

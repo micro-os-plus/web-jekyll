@@ -18,7 +18,7 @@ of STM32 microcontrollers, as well as the generation
 of the corresponding initialization C code for the Arm® Cortex-M.
 
 This page documents the procedure to create the initialisation code
-for the **STM32F4DISCOVERY** blinky projects.
+for the **NUCLEO-F411RE** blinky projects.
 
 For other boards/devices, adjust the steps accordingly.
 
@@ -27,25 +27,28 @@ small issues with the interface;
 
 ## Prerequisites
 
-The application requires Java. Install OpenJava or any Java distribution.
+The application requires Java. The more recent CubeMX releases
+include a Java JRE; if this is not enough, install a recent
+Java distribution.
 
 ## Download & install
 
 Register to the STM site and download the latest version.
 
-The result is a file like `en.stm32cubemx_v6-1-1.zip`. Unpack it and follow
+The result is a file like `en.stm32cubemx-*-v6-8-1.zip`. Unpack it and follow
 the instructions.
 
 Note: for macOS, if the user account has no administrative rights
 (as it should not have!), run the install manually, with sudo:
 
 ```sh
-sudo java -jar SetupSTM32CubeMX-6.1.1.exe
+sudo xattr -cr ~/Downloads/en.stm32cubemx-mac-v6-8-1
+sudo open ~/Downloads/en.stm32cubemx-mac-v6-8-1/SetupSTM32CubeMX.app
 ```
 
-On macOS, the application is installed as
-`/Applications/STMicroelectronics/STM32CubeMX`
-and the packages repository is stored at `${HOME}/tmp/STM32Cube`
+Install in `~/Applications/STMicroelectronics/STM32CubeMX.app`
+
+On macOS, the packages repository is stored at `${HOME}/STM32Cube/Repository`
 
 ## Start
 
@@ -55,7 +58,7 @@ Start the application. The current top window looks like:
 
 ## Install the F4 package
 
-STM provides separate packages for each family. Install the F4 package.
+STM provides separate packages for each family. Install the F7 package.
 
 - in the top page, click the **INSTALL/REMOVE** button
 - scroll to the **STM32F4** family
@@ -68,12 +71,12 @@ STM provides separate packages for each family. Install the F4 package.
 ## Create a new project
 
 Before creating a new project, create a new folder in the project,
-for example `stm32cubemx`.
+for example `stm32f411cubemx`.
 
 To create a new project, start by selecting the board:
 
 - click the **ACCESS TO BOARD SELECTOR**
-- in the Commercial Part Number, enter **STM32F407G-DISC1**
+- in the Commercial Part Number, enter **NUCLEO-F411RE**
 - in the list, select the board
 - click the **Start Project** button
 
@@ -82,22 +85,23 @@ To create a new project, start by selecting the board:
 - at the **Initialize all peripherals with their default Mode**
   click the **No** button for a minimal configuration
 - in CubeMX, File -> Save Project as -> select the destination
-  (like `<project>/stm32cubemx`), **Save**
-- check if a file called `stm32cubemx.ioc` was created in the
+  (like `<project>/platform-nucleo-f411re/stm32f411cubemx`), **Save**
+- check if a file called `stm32f411cubemx.ioc` was created in the
   destination folder
 
 ## Configure the project
 
 - in the top window, click the **Project Manager** tab
 - select the **Project** category
-  - check the **Project Name: stm32cubemx**
-  - check the **Project Location: platform-stm32f407g-disc1**
+  - check the **Project Name: stm32f411cubemx**
+  - check the **Project Location: platform-nucleo-stm32f411re**
   - check the **Application Structure: Advanced**
   - enable **Do not generate the main()**
   - ignore the **Toolchain Folder Location** (no idea what it might be)
-  - in the **Toolchain/IDE** combo, select **Other Toolchains (GPDSC)**
+  - in the **Toolchain/IDE** combo, select **Makefile**
   - in the **Mcu and Firmware Package** area
-    - enable **Use latest available version**
+    - **Mcu Reference: STM32F411xE**
+    - **Firmware Package Name and Versio: STM32Cube FW_F4 V1.27.1** (use latest)
     - enable **Use Default Firmware Location**
 
 ![Project settings]({{ site.baseurl }}/assets/images/2021/cubemx-project.png)
@@ -128,6 +132,7 @@ To create a new project, start by selecting the board:
     - enable all system interrupts, up to System tick timer
   - in the Code generation tab
     - disable **Generate IRQ handler**
+  - only for Systick: enable **Call HAL handler**
 
 ![NVIC]({{ site.baseurl }}/assets/images/2021/cubemx-nvic.png)
 ![NVIC Code]({{ site.baseurl }}/assets/images/2021/cubemx-nvic-code.png)
@@ -139,8 +144,8 @@ Click the top right **GENERATE CODE** button.
 The result is a file system hierarchy like:
 
 ```console
-ilg@wks % tree stm32cubemx
-stm32cubemx
+ilg@wks % tree stm32f411cubemx
+stm32f411cubemx
 ├── Core
 │   ├── Inc
 │   │   ├── gpio.h
@@ -159,33 +164,35 @@ stm32cubemx
 │   │   │   └── ST
 │   │   │       └── STM32F4xx
 │   │   │           ├── Include
-│   │   │           │   ├── stm32f407xx.h
+│   │   │           │   ├── stm32f411xe.h
 │   │   │           │   ├── stm32f4xx.h
 │   │   │           │   └── system_stm32f4xx.h
+│   │   │           ├── LICENSE.txt
 │   │   │           └── Source
 │   │   │               └── Templates
-│   │   └── Include
-│   │       ├── cmsis_armcc.h
-│   │       ├── cmsis_armclang.h
-│   │       ├── cmsis_compiler.h
-│   │       ├── cmsis_gcc.h
-│   │       ├── cmsis_iccarm.h
-│   │       ├── cmsis_version.h
-│   │       ├── core_armv8mbl.h
-│   │       ├── core_armv8mml.h
-│   │       ├── core_cm0.h
-│   │       ├── core_cm0plus.h
-│   │       ├── core_cm1.h
-│   │       ├── core_cm23.h
-│   │       ├── core_cm3.h
-│   │       ├── core_cm33.h
-│   │       ├── core_cm4.h
-│   │       ├── core_cm7.h
-│   │       ├── core_sc000.h
-│   │       ├── core_sc300.h
-│   │       ├── mpu_armv7.h
-│   │       ├── mpu_armv8.h
-│   │       └── tz_context.h
+│   │   ├── Include
+│   │   │   ├── cmsis_armcc.h
+│   │   │   ├── cmsis_armclang.h
+│   │   │   ├── cmsis_compiler.h
+│   │   │   ├── cmsis_gcc.h
+│   │   │   ├── cmsis_iccarm.h
+│   │   │   ├── cmsis_version.h
+│   │   │   ├── core_armv8mbl.h
+│   │   │   ├── core_armv8mml.h
+│   │   │   ├── core_cm0.h
+│   │   │   ├── core_cm0plus.h
+│   │   │   ├── core_cm1.h
+│   │   │   ├── core_cm23.h
+│   │   │   ├── core_cm3.h
+│   │   │   ├── core_cm33.h
+│   │   │   ├── core_cm4.h
+│   │   │   ├── core_cm7.h
+│   │   │   ├── core_sc000.h
+│   │   │   ├── core_sc300.h
+│   │   │   ├── mpu_armv7.h
+│   │   │   ├── mpu_armv8.h
+│   │   │   └── tz_context.h
+│   │   └── LICENSE.txt
 │   └── STM32F4xx_HAL_Driver
 │       ├── Inc
 │       │   ├── Legacy
@@ -206,7 +213,17 @@ stm32cubemx
 │       │   ├── stm32f4xx_hal_rcc.h
 │       │   ├── stm32f4xx_hal_rcc_ex.h
 │       │   ├── stm32f4xx_hal_tim.h
-│       │   └── stm32f4xx_hal_tim_ex.h
+│       │   ├── stm32f4xx_hal_tim_ex.h
+│       │   ├── stm32f4xx_ll_bus.h
+│       │   ├── stm32f4xx_ll_cortex.h
+│       │   ├── stm32f4xx_ll_dma.h
+│       │   ├── stm32f4xx_ll_exti.h
+│       │   ├── stm32f4xx_ll_gpio.h
+│       │   ├── stm32f4xx_ll_pwr.h
+│       │   ├── stm32f4xx_ll_rcc.h
+│       │   ├── stm32f4xx_ll_system.h
+│       │   └── stm32f4xx_ll_utils.h
+│       ├── LICENSE.txt
 │       └── Src
 │           ├── stm32f4xx_hal.c
 │           ├── stm32f4xx_hal_cortex.c
@@ -223,32 +240,34 @@ stm32cubemx
 │           ├── stm32f4xx_hal_rcc_ex.c
 │           ├── stm32f4xx_hal_tim.c
 │           └── stm32f4xx_hal_tim_ex.c
-├── stm32cubemx.gpdsc
-└── stm32cubemx.ioc
+├── Makefile
+├── STM32F411RETx_FLASH.ld
+├── startup_stm32f411xe.s
+└── stm32f411cubemx.ioc
 
-16 directories, 68 files
+16 directories, 83 files
 ```
 
 ### Source folders
 
 Add the following source folders to the build:
 
-- `stm32cubemx/Core/Src`
-- `stm32cubemx/Drivers/STM32F4xx_HAL_Driver/Src`
+- `stm32f411cubemx/Core/Src`
+- `stm32f411cubemx/Drivers/STM32F7xx_HAL_Driver/Src`
 
 ### Include folders
 
 Add the following include folders to the build:
 
-- `stm32cubemx/Core/Inc`
-- `stm32cubemx/Drivers/CMSIS/Device/ST/STM32F4xx/Include`
-- `stm32cubemx/Drivers/CMSIS/Include`
-- `stm32cubemx/Drivers/STM32F4xx_HAL_Driver/Inc`
+- `stm32f411cubemx/Core/Inc`
+- `stm32f411cubemx/Drivers/CMSIS/Device/ST/STM32F4xx/Include`
+- `stm32f411cubemx/Drivers/CMSIS/Include`
+- `stm32f411cubemx/Drivers/STM32F4xx_HAL_Driver/Inc`
 
 ## Customisations
 
 Although not critical, for a better error reporting, some small changes
-can be performed to the `stm32cubemx/Core/Src/main.c` file.
+can be performed to the `stm32f411cubemx/Core/Src/main.c` file.
 
 Being braced by the special comments, these changes survive regenerations
 with CubeMX.
