@@ -8,8 +8,13 @@ date: 2021-05-03 13:09:00 +0200
 
 categories:
   - releases
-  - rtos
   - micro-os-plus
+
+tags:
+  - releases
+  - rtos
+  - cmsis-plus
+  - micro-os-plus-iii
 
 ---
 

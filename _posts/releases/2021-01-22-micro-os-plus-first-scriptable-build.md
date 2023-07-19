@@ -8,8 +8,6 @@ date: 2021-01-22 22:18:00 +0200
 
 categories:
   - releases
-  - rtos
-  - micro-os-plus
 
 ---
 
