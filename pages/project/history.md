@@ -503,12 +503,13 @@ nice [web site](https://micro-os-plus.github.io/utils-lists-xpack/).
 A major milestone was reached in July 2023: after updating the project
 to the more strict requirements of modern toolchains (GCC & clang),
 the tests that previously were performed manually in Eclipse were
-reworked to use CMake and the workflow was fully automated via
-**xpm** to the point of running in scriptable CI environments.
+reworked to use CMake and the workflow was fully automated with
+**xpm** in order to allow the multi-platform tests to run in
+scriptable CI environments, like GitHub Actions.
 
-The tests run on the synthetic POSIX native platform (macOS & GNU/Linux)
+The tests run natively on the synthetic POSIX platform (macOS & GNU/Linux)
 compiled with multiple GCC & clang versions,
-and on Cortex-M0+/M3/M7F, emulated on QEMU.
+and on Cortex-M0+/M3/M7F, emulated by QEMU.
 
 ## The µOS++ fourth edition
 
