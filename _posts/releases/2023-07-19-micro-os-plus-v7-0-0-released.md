@@ -19,8 +19,8 @@ tags:
 ---
 
 Version v7.0.0 is a new **µOS++** major release. It represents
-an important milestone, being the first release that includes extensive
-tests running in scriptable CI environments.
+an important **milestone**, being the first release that includes **extensive
+tests** running in **scriptable CI** environments.
 
 The main functional changes
 are several updates required to avoid warnings with the new toolchains.
@@ -38,13 +38,14 @@ are several updates required to avoid warnings with the new toolchains.
 
 ## Install
 
-As a source code library, µOS++ can be integrated into another project
+As a **source code library**, µOS++ can be integrated into another project
 in the traditional way,
 by either copying the relevant files into the target project, or by linking
 the relevant project as Git submodules.
 
 However, the workflow can be further automated and the most convenient way is
-to **add it as a dependency** to the project via **xpm**.
+to **add it as a dependency** to the project via **xpm**. For details,
+please see the project [README](https://github.com/micro-os-plus/micro-os-plus-iii#xpm) file.
 
 ## New features
 
@@ -100,4 +101,4 @@ replaced by `micro-os-plus` in a future major release
 
 This will hopefully be the final release of µOS++ in the current monolithic
 structure (IIIe). Work on the next version (IVe) is already under way;
-the main change is that it'll use a modular structure, based on xPacks.
+the main change will be the migration to a modular structure, based on xPacks.
