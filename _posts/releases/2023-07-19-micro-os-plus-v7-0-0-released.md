@@ -25,9 +25,16 @@ tests running in scriptable CI environments.
 The main functional changes
 are several updates required to avoid warnings with the new toolchains.
 
-## Affected packages
+## Updated packages
 
-- [micro-os-plus-iii](https://github.com/micro-os-plus/micro-os-plus-iii)
+- [micro-os-plus/micro-os-plus-iii](https://github.com/micro-os-plus/micro-os-plus-iii) - v7.0.0
+- [micro-os-plus/micro-os-plus-iii-cortexm](https://github.com/micro-os-plus/micro-os-plus-iii-cortexm) - v1.0.0
+- [micro-os-plus/micro-os-plus-iii-posix-arch](https://github.com/micro-os-plus/micro-os-plus-iii-posix-arch) - v1.0.0
+- [xpacks/arm-cmsis](https://github.com/xpacks/arm-cmsis) - v4.5.0-7
+- [xpacks/arm-cmsis-rtos-validator](https://github.com/xpacks/arm-cmsis-rtos-validator) - v1.0.0-1
+- [xpacks/chan-fatfs](https://github.com/xpacks/chan-fatfs) - v0.13.1-3
+- [xpack-3rd-party/raspberrypi-pico-sdk-xpack](https://github.com/xpack-3rd-party/raspberrypi-pico-sdk-xpack) - v1.5.1-1
+- [xpack-3rd-party/libucontext-xpack](https://github.com/xpack-3rd-party/libucontext-xpack) - v1.2.0-1
 
 ## Install
 
