@@ -20,7 +20,7 @@ tags:
 
 Version v7.0.0 is a new **µOS++** major release. It represents
 an important **milestone**, being the first release that includes **extensive
-tests** running in **scriptable CI** environments.
+tests** running in **scriptable CI** environments, and **CMake** support.
 
 The main functional changes
 are several updates required to avoid warnings with the new toolchains.
@@ -52,11 +52,9 @@ please see the project [README](https://github.com/micro-os-plus/micro-os-plus-i
 - [[#78](https://github.com/micro-os-plus/micro-os-plus-iii/issues/78)]:
   there was no support to clear the statistics;
   add a `clear()` method to thread statistics and to the scheduler
-
 - [[#79](https://github.com/micro-os-plus/micro-os-plus-iii/issues/79)]:
   identifying the thread which issued an assert was difficult;
   add the `this_thread` address and name when displaying the assert error
-
 - [[#81](https://github.com/micro-os-plus/micro-os-plus-iii/issues/81)]:
   thread reuse via placement new was error prone;
   add a thread attribute to check if the thread constructor is called
@@ -67,7 +65,6 @@ please see the project [README](https://github.com/micro-os-plus/micro-os-plus-i
 - [[#82](https://github.com/micro-os-plus/micro-os-plus-iii/issues/82)]:
   GCC 12 spotted a name clash between the `file_system()` method and
   the class; the method was renamed to `get_file_system()`
-
 - [[#83](https://github.com/micro-os-plus/micro-os-plus-iii/issues/83)]:
   GCC 12 spotted a name clash between the unscoped enum `socket` definition
   and the top definition; the definition was changed to a scoped `enum class`
@@ -81,15 +78,18 @@ to increase the version major number.
 - [[#77](https://github.com/micro-os-plus/micro-os-plus-iii/issues/77)]:
   the arm-none-eabi-gcc 12 complains about some new warnings;
   silenced
-
 - [[#80](https://github.com/micro-os-plus/micro-os-plus-iii/issues/80)]:
   in a normal use case, during thread destruction, there was an _already gone_
   debug message; fixed, do not call `kill()` in the destructor if
   it was already called explicitly
-
 - [[#84](https://github.com/micro-os-plus/micro-os-plus-iii/issues/84)]:
   the stack underflow condition was tested only when asserts were enabled;
   fixed, the condition is always tested and `abort()` is invoked if necessary
+
+## CMake
+
+- a `CMakeLists.txt` file was added to each project, providing a
+  convenient way to integrate them in projects built with CMake
 
 ## Known problems
 
