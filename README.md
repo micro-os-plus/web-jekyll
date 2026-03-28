@@ -4,7 +4,7 @@
 
 ## Overview
 
-This GitHub project, available from [micro-os-plus/micro-os-plus.github.io-source](https://github.com/micro-os-plus/micro-os-plus.github.io-source), contains the source files used to generate the **[µOS++ web site](http://micro-os-plus.github.io)**.
+This GitHub project, available from [micro-os-plus/web-jekyll](https://github.com/micro-os-plus/web-jekyll), contains the source files used to generate the **[µOS++ web site](http://micro-os-plus.github.io)**.
 
 ## Destination URL
 
@@ -22,7 +22,7 @@ To be able to run the Jekyll build process, the `ruby` interpreter and the `gem`
 
 If you are like me and like really separated things, install a separate homebrew instance only for the jekyll builds.
 
-```
+```console
 $ HB_PREFIX="/opt/homebrew-jekyll3"
 
 $ echo 'Enter sudo password'
@@ -44,7 +44,7 @@ The result is in `/opt/homebrew-jekyll3/Cellar/ruby/2.3.1`
 
 ### Install bundler
 
-```
+```console
 $ ruby --version
 ruby 2.3.1p112 (2016-04-26 revision 54768) [x86_64-darwin15]
 $ gem --version
@@ -65,7 +65,7 @@ Bundler version 1.12.5
 To manage the web site, a local copy of this repository is required.
 
 ```sh
-git clone https://github.com/micro-os-plus/micro-os-plus.github.io-source.git micro-os-plus.github.io-source.git
+git clone https://github.com/micro-os-plus/web-jekyll micro-os-plus.github.io-jekyll.git
 git clone https://github.com/micro-os-plus/micro-os-plus.github.io.git micro-os-plus.github.io.git
 ```
 
@@ -128,7 +128,7 @@ The current development cycle is edit-save-build-view.
 The build can be performed automatically by Jekyll when started in server mode.
 
 ```sh
-cd micro-os-plus.github.io-source.git
+cd micro-os-plus.github.io-jekyll.git
 bundle exec jekyll serve --baseurl "" --destination _site_local --trace --port 4001
 ```
 
