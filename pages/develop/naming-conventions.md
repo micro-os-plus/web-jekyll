@@ -564,6 +564,135 @@ int length_millimetres;
 
 If possible, use the full unit names.
 
+## Modern C++ attributes
+
+Starting with C++11, the language intorduced various attribute specifiers
+
+### Standard C++ attributes (both GCC and Clang)
+
+Defined by the C++ standard, supported by both:
+
+| Attribute | Since |
+|---|---|
+| `[[noreturn]]` | C++11 |
+| `[[carries_dependency]]` | C++11 |
+| `[[deprecated]]` / `[[deprecated("msg")]]` | C++14 |
+| `[[fallthrough]]` | C++17 |
+| `[[nodiscard]]` / `[[nodiscard("msg")]]` | C++17 / C++20 |
+| `[[maybe_unused]]` | C++17 |
+| `[[likely]]` / `[[unlikely]]` | C++20 |
+| `[[no_unique_address]]` | C++20 |
+| `[[assume(expr)]]` | C++23 |
+
+Explanations:
+
+- `[[noreturn]]` — function never returns (e.g. calls `exit()` or `abort()`)
+- `[[carries_dependency]]` — propagates memory-order dependency into/out of a function (used with `std::memory_order_consume`)
+- `[[deprecated]]` / `[[deprecated("msg")]]` — marks a declaration as obsolete; compiler warns on use
+- `[[fallthrough]]` — suppresses warning when a `switch` case intentionally falls through to the next
+- `[[nodiscard]]` / `[[nodiscard("msg")]]` — warns if the return value is discarded by the caller
+- `[[maybe_unused]]` — suppresses unused-variable/function/parameter warnings
+- `[[likely]]` / `[[unlikely]]` — hints to the optimiser which branch of an `if`/`switch` is more probable
+- `[[no_unique_address]]` — allows an empty member to share the address of another member (saves space)
+- `[[assume(expr)]]` — tells the optimiser the expression is always true; undefined behaviour if it is not
+
+### GCC-specific (`__attribute__((...))` syntax)
+
+Notable ones relevant to embedded/systems code:
+
+- `__attribute__((packed))` — suppress padding
+- `__attribute__((aligned(n)))` — force alignment
+- `__attribute__((weak))` — weak symbol linkage
+- `__attribute__((visibility("default|hidden")))` — symbol visibility
+- `__attribute__((section("name")))` — place in named section
+- `__attribute__((constructor))` / `__attribute__((destructor))` — run at load/unload
+- `__attribute__((format(printf, n, m)))` — printf-style format checking
+- `__attribute__((noinline))` / `__attribute__((always_inline))`
+- `__attribute__((pure))` / `__attribute__((const))` — optimisation hints
+- `__attribute__((interrupt))` — ISR functions (ARM/AVR)
+
+### Clang-specific (`__attribute__((...))` or `[[clang::...]]`)
+
+- `[[clang::nodiscard]]` — pre-C++17 equivalent
+- `[[clang::trivial_abi]]` — allow trivial ABI for non-trivial types
+- `[[clang::no_sanitize("address")]]` — suppress sanitiser for a function
+- `__attribute__((objc_...))` — Objective-C interop
+- `__attribute__((annotate("string")))` — arbitrary annotations for static analysis
+
+Clang also accepts most GCC `__attribute__` extensions for compatibility. The overlapping set (`packed`, `aligned`, `weak`, `visibility`, `section`, `format`, `noinline`, `always_inline`, `pure`, `const`) is available in both.
+
+## Headers
+
+The Google C++ Style Guide (the most widely cited convention) recommends:
+
+- **The configuration header** (`<micro-os-plus/config.h>`, conditionally included based on `MICRO_OS_PLUS_INCLUDE_CONFIG_H`)
+- Blank line
+- **The related header** (the `.h` for this `.cpp` file, if applicable)
+- Blank line
+- **Project headers** (your own `<micro-os-plus/...>`)
+- Blank line
+- **Third-party library headers**
+- Blank line
+- **System/standard headers** (`<cstddef>`, `<vector>`, `<stdio.h>`, etc.)
+
+The rationale is **dependency hygiene**: by putting your own headers first, you force them to be self-sufficient — if a project header accidentally relies on a system header being included before it, the compiler will catch it immediately rather than silently working due to transitive inclusion from a system header.
+
+The reverse order (system first, project last) is also common in practice and avoids macro pollution from project headers affecting system headers, which can be a concern on some platforms. LLVM uses this ordering.
+
+Both are defensible; the key rule that is universally agreed upon is: **the related header always comes first** in a `.cpp` file, and **each group is separated by a blank line** so that auto-formatters (like `clang-format` with `SortIncludes`) keep groups stable rather than sorting everything together.
+
+Example:
+
+```c++
+#if defined(MICRO_OS_PLUS_INCLUDE_CONFIG_H)
+#include <micro-os-plus/config.h>
+#endif // MICRO_OS_PLUS_INCLUDE_CONFIG_H
+
+#include <micro-os-plus/micro-test-plus.h>
+
+#include <time.h>
+```
+
+### Inline single line methods
+
+```c++
+  public:
+    [[nodiscard]] constexpr size_t
+    index ()
+    {
+      return index_;
+    }
+
+    constexpr size_t
+    increment_index ()
+    {
+      return ++index_;
+    }
+
+  protected:
+    /**
+     * @brief The test case index, counting from 1.
+     */
+    size_t index_ = 0;
+```
+
+### Inline headers
+
+Template methods longer than one line should be moved to a separate file, located in an `inlines` sub-folder, and possibly using the `-inlines.h` prefix to make them easier to distinguish in a multi-tab editor.
+
+All these inline headers should be included at the end of the application header.
+
+Example:
+
+```c++
+// ============================================================================
+// ===== Inlines & templates implementations ==================================
+
+// All inlines are included **after** all declarations.
+#include "micro-test-plus/inlines/literals-inlines.h"
+...
+```
+
 ## Configuration macros
 
 Applications using µOS++ can be configured during build time using several
