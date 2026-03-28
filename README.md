@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/micro-os-plus/micro-os-plus.github.io-source.svg?branch=master)](https://travis-ci.org/micro-os-plus/micro-os-plus.github.io-source)
+[![GitHub Pages](https://github.com/micro-os-plus/web-jekyll/actions/workflows/publish-github-pages.yml/badge.svg?branch=master)](https://github.com/micro-os-plus/web-jekyll/actions/workflows/publish-github-pages.yml)
 
 # The µOS++ web site source
 
