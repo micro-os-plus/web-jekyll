@@ -43,7 +43,7 @@
       "https://github.com/micro-os-plus/"
     ],
     "devDependencies": {
-      "@micro-os-plus/build-helper": "github:micro-os-plus/build-helper-xpack#xpack-develop",
+      "@micro-os-plus/build-helper": "github:micro-os-plus/build-helper-xpack",
       "@xpack-3rd-party/doxygen-awesome-css": "^2.2.0-1"
     },
     "properties": {},
