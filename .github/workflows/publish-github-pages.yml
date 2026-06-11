@@ -95,7 +95,7 @@ jobs:
 
       - name: Run script to build site
         env:
-          GITHUB_TOKEN: ${{ secrets.ILG_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.PUBLISH_TOKEN }}
         run: bash scripts/ga-jekyll.sh
 
 
