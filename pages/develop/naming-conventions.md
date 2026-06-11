@@ -625,11 +625,12 @@ Clang also accepts most GCC `__attribute__` extensions for compatibility. The ov
 
 The Google C++ Style Guide (the most widely cited convention) recommends:
 
-- **The configuration header** (`<micro-os-plus/config.h>`, conditionally included based on `MICRO_OS_PLUS_INCLUDE_CONFIG_H`)
+- **The configuration header** (`<micro-os-plus/project-config.h>`, conditionally included)
 - Blank line
-- **The related header** (the `.h` for this `.cpp` file, if applicable)
+- **The related header** (the `xxx.h` for this `xxx.cpp` file, if applicable)
 - Blank line
-- **Project headers** (your own `<micro-os-plus/...>`)
+- **Platform header** (`<micro-os-plus/platform.h>`, if not using `xxx.h`)
+- **Dependencies headers** (`<micro-os-plus/...>`)
 - Blank line
 - **Third-party library headers**
 - Blank line
@@ -644,13 +645,62 @@ Both are defensible; the key rule that is universally agreed upon is: **the rela
 Example:
 
 ```c++
-#if defined(MICRO_OS_PLUS_INCLUDE_CONFIG_H)
-#include <micro-os-plus/config.h>
-#endif // MICRO_OS_PLUS_INCLUDE_CONFIG_H
+#if __has_include(<micro-os-plus/project-config.h>)
+#include <micro-os-plus/project-config.h>
+#endif // __has_include(<micro-os-plus/project-config.h>)
 
+#include <micro-os-plus/platform.h>
 #include <micro-os-plus/micro-test-plus.h>
 
 #include <time.h>
+```
+
+### Package specific headers
+
+The package public header files should include 
+
+- the check for the standard
+- the project configuration
+- the generated defines
+
+Example
+
+```c++
+#if !(__cplusplus >= 202002L || (defined(_MSVC_LANG) && _MSVC_LANG >= 202002L))
+#error "C++20 or higher is required"
+#endif
+
+#if __has_include(<micro-os-plus/project-config.h>)
+#include <micro-os-plus/project-config.h>
+#endif // __has_include(<micro-os-plus/project-config.h>)
+
+#if __has_include(<micro-os-plus/utils/lists-defines.h>)
+#include <micro-os-plus/utils/lists-defines.h>
+#endif // __has_include(<micro-os-plus/utils/lists-defines.h>)
+
+#include "..."
+```
+
+The project configuration is first because it might be very well included
+by a previously processed file.
+
+### Package internal sources
+
+If the source files do not include the public headers, they must include
+
+- the project configuration
+- the generated defines
+
+```c++
+#if __has_include(<micro-os-plus/project-config.h>)
+#include <micro-os-plus/project-config.h>
+#endif // __has_include(<micro-os-plus/project-config.h>)
+
+#if __has_include(<micro-os-plus/utils/lists-defines.h>)
+#include <micro-os-plus/utils/lists-defines.h>
+#endif // __has_include(<micro-os-plus/utils/lists-defines.h>)
+
+#include <micro-os-plus/utils/doubly-list-links.h>
 ```
 
 ### Inline single line methods
